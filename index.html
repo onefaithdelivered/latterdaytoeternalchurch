@@ -384,6 +384,71 @@
       line-height: 1.75;
     }
 
+    /* ─── ARTICLES GRID ─────────────────────────────────────── */
+    #articles {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin-top: 3.5rem;
+    }
+    .article-card {
+      background: linear-gradient(170deg, rgba(201,168,76,0.06), rgba(26,15,5,0.5));
+      border: 1px solid rgba(201,168,76,0.18);
+      padding: 2rem 1.8rem;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+    .article-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(201,168,76,0.5);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+    }
+    .article-tag {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .article-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.98rem;
+      color: var(--parchment);
+      line-height: 1.5;
+    }
+    .article-card p {
+      font-size: 0.92rem;
+      color: var(--parchment-dk);
+      line-height: 1.7;
+      flex: 1;
+    }
+    .article-read-more {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 0.5rem;
+    }
+    .article-card.wide { grid-column: span 2; }
+    @media (max-width: 900px) {
+      .articles-grid { grid-template-columns: 1fr 1fr; }
+      .article-card.wide { grid-column: span 2; }
+    }
+    @media (max-width: 600px) {
+      .articles-grid { grid-template-columns: 1fr; }
+      .article-card.wide { grid-column: span 1; }
+    }
+
     /* ─── FEATURED TOPICS BAND ──────────────────────────────── */
     .topics-band {
       background: linear-gradient(to right, rgba(122,28,46,0.12), rgba(201,168,76,0.06), rgba(122,28,46,0.12));
@@ -484,7 +549,7 @@
     <a class="nav-brand" href="index.html">Latter-Day to Eternal Church</a>
     <ul class="nav-links">
       <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="articles.html">Articles</a></li>
+      <li><a href="#articles">Articles</a></li>
       <li><a href="topics.html">Topics</a></li>
       <li><a href="resources.html">Resources</a></li>
     </ul>
@@ -503,7 +568,7 @@
     </p>
     <div class="hero-cta">
       <a href="#about" class="btn-primary">Our Mission</a>
-      <a href="articles.html" class="btn-secondary">Explore Articles</a>
+      <a href="#articles" class="btn-secondary">Explore Articles</a>
     </div>
   </header>
 
@@ -591,6 +656,61 @@
     </div>
   </section>
 
+
+  <div class="divider"></div>
+
+  <!-- ── ARTICLES ── -->
+  <section id="articles">
+    <p class="section-label">Scholarly Articles</p>
+    <h2 class="section-title">Featured Works</h2>
+    <div class="ornament">✦</div>
+    <p class="section-body">
+      Each article examines a distinct area of Catholic and Latter-day Saint theology
+      through biblical exegesis, patristic scholarship, and rigorous historical analysis.
+    </p>
+
+    <div class="articles-grid">
+
+      <a class="article-card wide" href="ante-nicene-fathers.html">
+        <span class="article-tag">Church History &middot; Patristics</span>
+        <h3>The Ante-Nicene Church Fathers and Their Catholic Doctrines</h3>
+        <p>A comprehensive survey of the earliest post-apostolic writers — Ignatius, Justin, Irenaeus, Tertullian, and others — demonstrating their unanimous witness to distinctly Catholic teaching on the Eucharist, succession, and ecclesial authority.</p>
+        <span class="article-read-more">Read Article &rarr;</span>
+      </a>
+
+      <a class="article-card" href="fullness-of-time.html">
+        <span class="article-tag">Theology &middot; Revelation</span>
+        <h3>The Fullness of Time: Progressive Revelation vs. Primordial Dispensationalism</h3>
+        <p>Contrasts the Catholic model of salvation history building toward Christ with the LDS framework of a primordial gospel repeatedly lost and restored.</p>
+        <span class="article-read-more">Read Article &rarr;</span>
+      </a>
+
+      <a class="article-card" href="historicity-comparison.html">
+        <span class="article-tag">Archaeology &middot; Scripture</span>
+        <h3>Historicity of Scripture: The Bible vs. The Book of Mormon</h3>
+        <p>An archaeological, linguistic, manuscript, and historical analysis comparing the evidentiary foundations of the Bible and the Book of Mormon.</p>
+        <span class="article-read-more">Read Article &rarr;</span>
+      </a>
+
+      <a class="article-card" href="holy-eucharist-real-presence.html">
+        <span class="article-tag">Sacramental Theology</span>
+        <h3>The Holy Eucharist: The Real Presence of Christ in the Blessed Sacrament</h3>
+        <p>A biblical and patristic defense of Christ's true Body and Blood in the Eucharist, tracing the doctrine from the Upper Room through the earliest centuries of the Church.</p>
+        <span class="article-read-more">Read Article &rarr;</span>
+      </a>
+
+      <a class="article-card" href="smith_polygamy_timeline.html">
+        <span class="article-tag">LDS History &middot; Ethics</span>
+        <h3>The Double Life of Joseph Smith: A Timeline</h3>
+        <p>A documented chronological examination of Joseph Smith's plural marriages — their secrecy, their subjects, and their implications for claims of prophetic authority.</p>
+        <span class="article-read-more">Read Article &rarr;</span>
+      </a>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
   <!-- ── TOPICS BAND ── -->
   <div class="topics-band">
     <p class="section-label">Areas of Study</p>
@@ -623,7 +743,7 @@
       it goes.
     </p>
     <div class="hero-cta" style="opacity:1; animation:none;">
-      <a href="articles.html" class="btn-primary">Read the Articles</a>
+      <a href="#articles" class="btn-primary">Read the Articles</a>
       <a href="topics.html" class="btn-secondary">Browse by Topic</a>
     </div>
   </section>
@@ -634,7 +754,7 @@
     <p class="footer-tagline">"One Lord, one faith, one baptism." — Ephesians 4:5</p>
     <ul class="footer-nav">
       <li><a href="index.html">Home</a></li>
-      <li><a href="articles.html">Articles</a></li>
+      <li><a href="#articles">Articles</a></li>
       <li><a href="topics.html">Topics</a></li>
       <li><a href="resources.html">Resources</a></li>
     </ul>
