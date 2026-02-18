@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources | Latter-Day to Eternal Church</title>
+  <meta name="description" content="Curated books, Church Father texts, Catechism references, LDS primary sources, and websites for Catholic apologetics and LDS comparative theology." />
+  <link rel="canonical" href="https://latterdaytoeternalchurch.church/resources.html" />
+  <meta property="og:title" content="Resources | Latter-Day to Eternal Church" />
+  <meta property="og:description" content="Curated books, patristic texts, Catechism references, LDS primary sources, and websites for serious theological study." />
+  <meta property="og:url" content="https://latterdaytoeternalchurch.church/resources.html" />
+  <meta property="og:image" content="https://latterdaytoeternalchurch.church/android-chrome-512x512.png" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --gold:       #C9A84C;
+      --gold-light: #E8D08A;
+      --gold-dark:  #8B6914;
+      --crimson:    #7A1C2E;
+      --parchment:  #F5EDD8;
+      --parchment-dk:#E8D9B8;
+      --ink:        #1A0F05;
+      --ink-soft:   #3D2B1A;
+      --ivory:      #FAF6EE;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--ink);
+      color: var(--parchment);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, #3D1A08 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 10% 50%, #5C1A10 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 90% 50%, #3D1A08 0%, transparent 60%),
+        linear-gradient(to bottom, #0D0703, #1A0F05 40%, #0D0703);
+      z-index: -2;
+    }
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: linear-gradient(to bottom, rgba(13,7,3,0.98), rgba(13,7,3,0.92));
+      border-bottom: 1px solid var(--gold-dark);
+      padding: 0.75rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      backdrop-filter: blur(6px);
+    }
+    .nav-brand {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .nav-links { list-style: none; display: flex; gap: 2.5rem; }
+    .nav-links a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--parchment-dk);
+      text-decoration: none;
+      transition: color 0.25s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--gold);
+      transform: scaleX(0); transition: transform 0.25s; transform-origin: center;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links .active { color: var(--gold); }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      text-align: center;
+      padding: 5rem 2rem 3rem;
+      position: relative;
+    }
+    .page-hero::before {
+      content: '✝';
+      position: absolute;
+      font-size: 50vw;
+      color: rgba(201,168,76,0.03);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      line-height: 1;
+    }
+    .eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .page-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: var(--parchment);
+      line-height: 1.2;
+      text-shadow: 0 2px 30px rgba(201,168,76,0.2);
+      opacity: 0;
+      animation: fadeUp 0.9s 0.4s forwards;
+    }
+    .page-subtitle {
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--parchment-dk);
+      max-width: 620px;
+      margin: 1.2rem auto 0;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.65s forwards;
+    }
+
+    .ornament {
+      display: flex; align-items: center; gap: 1rem;
+      color: var(--gold); font-size: 1rem;
+      margin: 1.5rem auto; max-width: 400px;
+      justify-content: center;
+    }
+    .ornament::before, .ornament::after {
+      content: '';
+      flex: 1; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dark), var(--gold), var(--gold-dark), transparent);
+    }
+
+    .divider {
+      width: 100%; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dark) 20%, var(--gold) 50%, var(--gold-dark) 80%, transparent);
+    }
+
+    /* ─── TOPIC FILTER TABS ─── */
+    .filter-bar {
+      display: flex; flex-wrap: wrap; gap: 0.7rem;
+      justify-content: center;
+      padding: 2.5rem 2rem 0;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .filter-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--parchment-dk);
+      background: transparent;
+      border: 1px solid rgba(201,168,76,0.25);
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: rgba(201,168,76,0.12);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+    .filter-btn.active {
+      background: rgba(201,168,76,0.18);
+    }
+
+    /* ─── MAIN CONTENT ─── */
+    .resources-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem 6rem;
+    }
+
+    /* ─── TOPIC SECTION ─── */
+    .topic-section {
+      margin-bottom: 4rem;
+    }
+    .topic-header {
+      display: flex; align-items: center; gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .topic-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      color: var(--parchment);
+      white-space: nowrap;
+    }
+    .topic-header::after {
+      content: '';
+      flex: 1; height: 1px;
+      background: linear-gradient(to right, var(--gold-dark), transparent);
+    }
+
+    /* ─── RESOURCE CARDS ─── */
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.2rem;
+    }
+    .resource-card {
+      background: linear-gradient(160deg, rgba(201,168,76,0.05), rgba(26,15,5,0.4));
+      border: 1px solid rgba(201,168,76,0.15);
+      padding: 1.5rem 1.6rem;
+      display: flex; flex-direction: column; gap: 0.5rem;
+      transition: transform 0.25s, border-color 0.25s;
+      text-decoration: none;
+    }
+    .resource-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,168,76,0.4);
+    }
+    .resource-type {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid;
+      display: inline-block;
+      width: fit-content;
+    }
+    .resource-type.book    { color: #A8C5A0; border-color: rgba(168,197,160,0.4); }
+    .resource-type.father  { color: #C5A8A0; border-color: rgba(197,168,160,0.4); }
+    .resource-type.catechism { color: var(--gold); border-color: rgba(201,168,76,0.4); }
+    .resource-type.lds     { color: #A0B8C5; border-color: rgba(160,184,197,0.4); }
+    .resource-type.website { color: #C5BCA0; border-color: rgba(197,188,160,0.4); }
+
+    .resource-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.92rem;
+      color: var(--parchment);
+      line-height: 1.5;
+    }
+    .resource-card .resource-author {
+      font-style: italic;
+      font-size: 0.88rem;
+      color: var(--gold-light);
+    }
+    .resource-card p {
+      font-size: 0.9rem;
+      color: var(--parchment-dk);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .resource-link {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 0.3rem;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid rgba(201,168,76,0.2);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer-brand {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .footer-tagline {
+      font-style: italic;
+      font-size: 0.9rem;
+      color: rgba(232,217,184,0.55);
+      margin-bottom: 1.5rem;
+    }
+    .footer-nav { list-style: none; display: flex; gap: 2rem; justify-content: center; margin-bottom: 2rem; }
+    .footer-nav a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--parchment-dk);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.8rem; color: rgba(232,217,184,0.3); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .resource-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a class="nav-brand" href="index.html">Latter-Day to Eternal Church</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#articles">Articles</a></li>
+      <li><a href="topics.html">Topics</a></li>
+      <li><a href="resources.html" class="active">Resources</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── PAGE HERO ── -->
+  <header class="page-hero">
+    <p class="eyebrow">Library &amp; Reference</p>
+    <h1 class="page-title">Resources</h1>
+    <p class="page-subtitle">
+      Books, patristic texts, Catechism references, LDS primary sources,
+      and trusted websites — organized by theological topic.
+    </p>
+  </header>
+
+  <div class="ornament" style="opacity:1;">✦</div>
+  <div class="divider"></div>
+
+  <!-- ── FILTER BAR ── -->
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterTopic('all', this)">All Topics</button>
+    <button class="filter-btn" onclick="filterTopic('eucharist', this)">The Eucharist</button>
+    <button class="filter-btn" onclick="filterTopic('succession', this)">Apostolic Succession</button>
+    <button class="filter-btn" onclick="filterTopic('lds-history', this)">LDS History</button>
+    <button class="filter-btn" onclick="filterTopic('scripture', this)">Scripture &amp; Canon</button>
+    <button class="filter-btn" onclick="filterTopic('nature-of-god', this)">Nature of God</button>
+    <button class="filter-btn" onclick="filterTopic('salvation', this)">Salvation</button>
+    <button class="filter-btn" onclick="filterTopic('recommended-sites', this)">Recommended Sites</button>
+  </div>
+
+  <!-- ── RESOURCES ── -->
+  <div class="resources-wrapper">
+
+    <!-- ═══ RECOMMENDED WEBSITES ═══ -->
+    <div class="topic-section" data-topic="recommended-sites">
+      <div class="topic-header">
+        <h2>Recommended Websites</h2>
+      </div>
+      <div class="resource-grid">
+
+        <div class="resource-card">
+          <span class="resource-type website">Website</span>
+          <h3>Eternal Christendom</h3>
+          <p>A rich Catholic apologetics and evangelization hub featuring articles, a podcast, study banks, convert testimonies, and a curated bookstore. Particularly strong on the journey into the Catholic Church and engaging Protestant objections with charity and depth.</p>
+          <a class="resource-link" href="https://eternalchristendom.com/" target="_blank" rel="noopener">Visit Site &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type website">Website</span>
+          <h3>Church Fathers</h3>
+          <p>An invaluable topical index of patristic quotations organized by doctrine — the Eucharist, baptism, apostolic succession, Mary, purgatory, and more. Ideal for quickly locating what the Fathers actually said on any given question.</p>
+          <a class="resource-link" href="https://www.churchfathers.org/" target="_blank" rel="noopener">Visit Site &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type website">Website</span>
+          <h3>Catholic Answers</h3>
+          <p>The premier Catholic apologetics organization online. Features thousands of articles, tracts, and a live radio program addressing questions from Protestants, skeptics, and former Catholics. Their LDS-specific content is thorough and well-sourced.</p>
+          <a class="resource-link" href="https://www.catholic.com/" target="_blank" rel="noopener">Visit Site &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+
+        <!-- ═══ THE EUCHARIST ═══ -->
+    <div class="topic-section" data-topic="eucharist">
+      <div class="topic-header">
+        <h2>The Eucharist &amp; Real Presence</h2>
+      </div>
+      <div class="resource-grid">
+
+        <div class="resource-card">
+          <span class="resource-type book">Book</span>
+          <h3>The Lamb's Supper</h3>
+          <p class="resource-author">Scott Hahn</p>
+          <p>Connects the Mass to the Book of Revelation, showing how early Christians understood the Eucharist as participation in heavenly worship. Accessible and scholarly.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type book">Book</span>
+          <h3>The Eucharist: Our Sanctification</h3>
+          <p class="resource-author">Raniero Cantalamessa</p>
+          <p>A theological and spiritual meditation on the Eucharist by the preacher to the Papal household, drawing heavily on patristic sources.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type father">Church Father</span>
+          <h3>Letter to the Smyrnaeans, Ch. 7</h3>
+          <p class="resource-author">St. Ignatius of Antioch, c. AD 107</p>
+          <p>"They abstain from the Eucharist and from prayer, because they confess not the Eucharist to be the flesh of our Saviour Jesus Christ." The earliest extra-biblical witness to Real Presence.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type father">Church Father</span>
+          <h3>First Apology, Ch. 66</h3>
+          <p class="resource-author">St. Justin Martyr, c. AD 155</p>
+          <p>"The food which is blessed by the prayer of His word… is the flesh and blood of that Jesus who was made flesh." Explicit Real Presence testimony from the second century.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type catechism">Catechism</span>
+          <h3>CCC §§ 1322–1419</h3>
+          <p class="resource-author">Catechism of the Catholic Church</p>
+          <p>The definitive modern statement of Catholic Eucharistic theology — covering Real Presence, transubstantiation, the sacrificial dimension, and Eucharistic adoration.</p>
+          <a class="resource-link" href="https://www.vatican.va/archive/ENG0015/__P3Z.HTM" target="_blank" rel="noopener">Read Online →</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type website">Website</span>
+          <h3>Real Presence Eucharistic Education &amp; Adoration Association</h3>
+          <p>A thorough collection of patristic quotations, Scripture studies, and magisterial documents specifically on Real Presence and Eucharistic theology.</p>
+          <a class="resource-link" href="https://www.therealpresence.org" target="_blank" rel="noopener">Visit Site →</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ APOSTOLIC SUCCESSION ═══ -->
+    <div class="topic-section" data-topic="succession">
+      <div class="topic-header">
+        <h2>Apostolic Succession &amp; the Church</h2>
+      </div>
+      <div class="resource-grid">
+
+        <div class="resource-card">
+          <span class="resource-type book">Book</span>
+          <h3>Upon This Rock</h3>
+          <p class="resource-author">Stephen K. Ray</p>
+          <p>A detailed biblical and historical case for Petrine primacy and apostolic succession, examining Matthew 16:18 and the patristic record exhaustively. Heavily documented.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type book">Book</span>
+          <h3>The Apostolic Fathers</h3>
+          <p class="resource-author">Ed. Michael W. Holmes</p>
+          <p>The standard scholarly edition of the earliest post-apostolic Christian writings — Clement, Ignatius, Polycarp, the Didache — in Greek and English.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type father">Church Father</span>
+          <h3>Letter to the Ephesians, Ch. 4</h3>
+          <p class="resource-author">St. Ignatius of Antioch, c. AD 107</p>
+          <p>"It is becoming… to run together in accordance with the will of your bishop." Ignatius is the clearest early witness to monarchical episcopate as the mark of the true Church.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type father">Church Father</span>
+          <h3>Against Heresies, Book III</h3>
+          <p class="resource-author">St. Irenaeus of Lyons, c. AD 180</p>
+          <p>Provides the earliest systematic argument for apostolic succession as the test of orthodoxy, listing the succession of bishops at Rome from Peter to his own day.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type catechism">Catechism</span>
+          <h3>CCC §§ 857–896</h3>
+          <p class="resource-author">Catechism of the Catholic Church</p>
+          <p>The Catholic Church's own account of apostolic succession, episcopal collegiality, and the Petrine ministry — with full scriptural and conciliar references.</p>
+          <a class="resource-link" href="https://www.vatican.va/archive/ENG0015/__P27.HTM" target="_blank" rel="noopener">Read Online →</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type website">Website</span>
+          <h3>Catholic Answers — Apostolic Succession</h3>
+          <p>A well-organized collection of articles tracing the doctrine of succession through Scripture, the Fathers, and history, with direct engagement of Protestant and LDS objections.</p>
+          <a class="resource-link" href="https://www.catholic.com/tract/apostolic-succession" target="_blank" rel="noopener">Visit Site →</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ LDS HISTORY ═══ -->
+    <div class="topic-section" data-topic="lds-history">
+      <div class="topic-header">
+        <h2>LDS History &amp; Primary Sources</h2>
+      </div>
+      <div class="resource-grid">
+
+        <div class="resource-card">
+          <span class="resource-type book">Book</span>
+          <h3>No Man Knows My History</h3>
+          <p class="resource-author">Fawn M. Brodie</p>
+          <p>The landmark biographical study of Joseph Smith. Though written from a secular perspective, it remains the most thoroughly documented account of the founding prophet's life and claims.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type book">Book</span>
+          <h3>Mormonism Unmasked</h3>
+          <p class="resource-author">R. Philip Roberts</p>
+          <p>A clear-headed comparison of LDS and historic Christian doctrine, written for Christians seeking to understand what Latter-day Saints actually believe and why it matters.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type lds">LDS Primary Source</span>
+          <h3>Gospel Topics Essay: Plural Marriage in Kirtland and Nauvoo</h3>
+          <p class="resource-author">The Church of Jesus Christ of Latter-day Saints</p>
+          <p>The LDS Church's own official acknowledgment of Joseph Smith's plural marriages, including to already-married women and teenagers. An essential primary source.</p>
+          <a class="resource-link" href="https://www.churchofjesuschrist.org/study/manual/gospel-topics-essays/plural-marriage-in-kirtland-and-nauvoo" target="_blank" rel="noopener">Read Essay →</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type lds">LDS Primary Source</span>
+          <h3>Gospel Topics Essay: First Vision Accounts</h3>
+          <p class="resource-author">The Church of Jesus Christ of Latter-day Saints</p>
+          <p>The LDS Church's own essay acknowledging that Joseph Smith left multiple, significantly differing accounts of his First Vision — a foundational event for LDS truth claims.</p>
+          <a class="resource-link" href="https://www.churchofjesuschrist.org/study/manual/gospel-topics-essays/first-vision-accounts" target="_blank" rel="noopener">Read Essay →</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type lds">LDS Primary Source</span>
+          <h3>Gospel Topics Essay: Book of Mormon and DNA Studies</h3>
+          <p class="resource-author">The Church of Jesus Christ of Latter-day Saints</p>
+          <p>The official LDS response to genetic evidence that does not support Hebrew ancestry among Native American populations — an important concession from within the tradition itself.</p>
+          <a class="resource-link" href="https://www.churchofjesuschrist.org/study/manual/gospel-topics-essays/book-of-mormon-and-dna-studies" target="_blank" rel="noopener">Read Essay →</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type website">Website</span>
+          <h3>MormonThink</h3>
+          <p>A comprehensive resource presenting LDS historical and doctrinal issues alongside official LDS responses. Useful for understanding the full scope of documented historical concerns.</p>
+          <a class="resource-link" href="https://www.mormonthink.com" target="_blank" rel="noopener">Visit Site →</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ SCRIPTURE & CANON ═══ -->
+    <div class="topic-section" data-topic="scripture">
+      <div class="topic-header">
+        <h2>Scripture, Canon &amp; Sola Scriptura</h2>
+      </div>
+      <div class="resource-grid">
+
+        <div class="resource-card">
+          <span class="resource-type book">Book</span>
+          <h3>Where We Got the Bible</h3>
+          <p class="resource-author">Henry G. Graham</p>
+          <p>A classic, readable account of how the biblical canon was formed by the Catholic Church — directly refuting the claim that Scripture is self-authenticating apart from Tradition.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type book">Book</span>
+          <h3>The Canon of Scripture</h3>
+          <p class="resource-author">F.F. Bruce</p>
+          <p>A thorough Protestant scholarly treatment of canon formation — useful precisely because even non-Catholic scholars acknowledge the Church's role in defining the biblical canon.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type father">Church Father</span>
+          <h3>Letter to Africanus &amp; On First Principles</h3>
+          <p class="resource-author">Origen of Alexandria, c. AD 220–230</p>
+          <p>Origen's discussions of scriptural authority and interpretation show early catholic assumptions about tradition, allegory, and the teaching Church as guide to Scripture.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type catechism">Catechism</span>
+          <h3>CCC §§ 74–141</h3>
+          <p class="resource-author">Catechism of the Catholic Church</p>
+          <p>The Catholic understanding of Divine Revelation — the relationship between Scripture, Tradition, and the Magisterium as the three-legged stool of doctrinal authority.</p>
+          <a class="resource-link" href="https://www.vatican.va/archive/ENG0015/__P1.HTM" target="_blank" rel="noopener">Read Online →</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type lds">LDS Primary Source</span>
+          <h3>The Articles of Faith</h3>
+          <p class="resource-author">Joseph Smith, 1842</p>
+          <p>The LDS Church's own summary of belief, including Article 8: "We believe the Bible to be the word of God as far as it is translated correctly." A primary text for understanding LDS scriptural authority claims.</p>
+          <a class="resource-link" href="https://www.churchofjesuschrist.org/study/scriptures/pgp/a-of-f/1" target="_blank" rel="noopener">Read Online →</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type website">Website</span>
+          <h3>Catholic Answers — The Bible</h3>
+          <p>Tracts and articles addressing canon formation, deuterocanonical books, and the relationship between Scripture and Tradition from an orthodox Catholic perspective.</p>
+          <a class="resource-link" href="https://www.catholic.com/tract/the-bible" target="_blank" rel="noopener">Visit Site →</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ NATURE OF GOD ═══ -->
+    <div class="topic-section" data-topic="nature-of-god">
+      <div class="topic-header">
+        <h2>The Nature of God &amp; the Trinity</h2>
+      </div>
+      <div class="resource-grid">
+
+        <div class="resource-card">
+          <span class="resource-type book">Book</span>
+          <h3>The Holy Trinity</h3>
+          <p class="resource-author">Edmund J. Fortman, S.J.</p>
+          <p>The definitive scholarly history of Trinitarian doctrine from Scripture through the Fathers and councils. Essential for understanding why the classical theistic God differs irreconcilably from the LDS conception.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type book">Book</span>
+          <h3>The Existence and Nature of God</h3>
+          <p class="resource-author">Alfred J. Freddoso, ed.</p>
+          <p>A collection of philosophical essays engaging divine simplicity, immutability, and aseity — the attributes directly denied by LDS eternal progression theology.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type father">Church Father</span>
+          <h3>On the Holy Spirit</h3>
+          <p class="resource-author">St. Basil the Great, c. AD 375</p>
+          <p>Basil's defense of the full divinity of the Holy Spirit, arguing from Scripture and liturgical tradition — a cornerstone of Trinitarian orthodoxy against subordinationist tendencies.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type lds">LDS Primary Source</span>
+          <h3>King Follett Discourse</h3>
+          <p class="resource-author">Joseph Smith, April 7, 1844</p>
+          <p>"God himself was once as we are now, and is an exalted man." The clearest primary-source statement of LDS eternal progression and the radical departure from classical theism.</p>
+          <a class="resource-link" href="https://www.churchofjesuschrist.org/study/ensign/1971/04/the-king-follett-sermon" target="_blank" rel="noopener">Read Online →</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type catechism">Catechism</span>
+          <h3>CCC §§ 198–267</h3>
+          <p class="resource-author">Catechism of the Catholic Church</p>
+          <p>The Catholic profession of faith in God the Father — including divine unity, immutability, omnipotence, and the mystery of the Trinity. The direct contrast to LDS polytheism.</p>
+          <a class="resource-link" href="https://www.vatican.va/archive/ENG0015/__P16.HTM" target="_blank" rel="noopener">Read Online →</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type website">Website</span>
+          <h3>Catholic Answers — The Trinity</h3>
+          <p>Accessible articles defending the classical Trinitarian understanding of God against both modalist and polytheist distortions, with specific engagement of LDS theology.</p>
+          <a class="resource-link" href="https://www.catholic.com/tract/the-trinity" target="_blank" rel="noopener">Visit Site →</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ SALVATION ═══ -->
+    <div class="topic-section" data-topic="salvation">
+      <div class="topic-header">
+        <h2>Salvation, Grace &amp; Exaltation</h2>
+      </div>
+      <div class="resource-grid">
+
+        <div class="resource-card">
+          <span class="resource-type book">Book</span>
+          <h3>The Drama of Salvation</h3>
+          <p class="resource-author">Jimmy Akin</p>
+          <p>A clear explanation of the Catholic understanding of justification, grace, merit, and the sacramental economy of salvation — directly addressing common Protestant and LDS misreadings.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type book">Book</span>
+          <h3>Not By Faith Alone</h3>
+          <p class="resource-author">Robert A. Sungenis</p>
+          <p>A comprehensive biblical defense of the Catholic doctrine of justification, engaging the Council of Trent, Scripture, and the Fathers in detail.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type father">Church Father</span>
+          <h3>On Grace and Free Will</h3>
+          <p class="resource-author">St. Augustine of Hippo, c. AD 426</p>
+          <p>Augustine's mature treatment of grace, predestination, and human cooperation — the patristic foundation for Catholic soteriology and a corrective to both Pelagianism and LDS self-salvation.</p>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type lds">LDS Primary Source</span>
+          <h3>Doctrine &amp; Covenants 132</h3>
+          <p class="resource-author">LDS Standard Works</p>
+          <p>The LDS revelation on celestial marriage and exaltation — the scriptural basis for the doctrine that humans may become gods. Essential for understanding the LDS conception of salvation.</p>
+          <a class="resource-link" href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/132" target="_blank" rel="noopener">Read Online →</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type catechism">Catechism</span>
+          <h3>CCC §§ 1987–2029</h3>
+          <p class="resource-author">Catechism of the Catholic Church</p>
+          <p>The Catholic teaching on justification and grace — the free gift of God that makes us participants in divine life, not self-made gods, but adopted children of the Father.</p>
+          <a class="resource-link" href="https://www.vatican.va/archive/ENG0015/__P72.HTM" target="_blank" rel="noopener">Read Online →</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type website">Website</span>
+          <h3>Called to Communion</h3>
+          <p>A thoughtful Catholic theological blog addressing justification, ecclesiology, and the relationship between Catholic and Protestant soteriology, with rigorous biblical engagement.</p>
+          <a class="resource-link" href="https://www.calledtocommunion.com" target="_blank" rel="noopener">Visit Site →</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- end resources-wrapper -->
+
+  <div class="divider"></div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-brand">Latter-Day to Eternal Church</div>
+    <p class="footer-tagline">"One Lord, one faith, one baptism." — Ephesians 4:5</p>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#articles">Articles</a></li>
+      <li><a href="topics.html">Topics</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 Latter-Day to Eternal Church. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function filterTopic(topic, btn) {
+      // Update active button
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      // Show/hide sections
+      document.querySelectorAll('.topic-section').forEach(section => {
+        if (topic === 'all' || section.dataset.topic === topic) {
+          section.style.display = '';
+        } else {
+          section.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
