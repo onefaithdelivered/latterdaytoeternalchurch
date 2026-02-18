@@ -319,7 +319,20 @@
       .nav-links { display: none; }
       .resource-grid { grid-template-columns: 1fr; }
     }
-  </style>
+  
+    /* ─── FORCE 3-COLUMN GRID FOR WEBSITES + YOUTUBE ROWS ─── */
+    .resource-grid-3col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+    @media (max-width: 900px) {
+      .resource-grid-3col { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .resource-grid-3col { grid-template-columns: 1fr; }
+    }
+</style>
 
   <script type="application/ld+json">
   {
@@ -391,7 +404,7 @@
       <div class="topic-header">
         <h2>Recommended Websites</h2>
       </div>
-      <div class="resource-grid">
+      <div class="resource-grid-3col">
 
         <div class="resource-card">
           <span class="resource-type website">Website</span>
@@ -414,36 +427,35 @@
           <a class="resource-link" href="https://www.catholic.com/" target="_blank" rel="noopener">Visit Site &rarr;</a>
         </div>
 
+      </div>
 
-        <div class="topic-header" style="margin-top: 2.5rem;">
-          <h2 style="font-size: 1.1rem; color: var(--parchment-dk);">Recommended YouTube Channels</h2>
+      <div class="topic-header" style="margin-top: 2.5rem;">
+        <h2>Recommended YouTube Channels</h2>
+      </div>
+      <div class="resource-grid-3col">
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Shameless Popery</h3>
+          <p class="resource-author">Joe Heschmeyer — Catholic Answers</p>
+          <p>A rigorously argued video essay channel responding to Protestant and non-Christian objections to Catholicism. Heschmeyer — an attorney and theologian — is especially strong on the Church Fathers, the papacy, and LDS-specific critiques including the Great Apostasy and anti-Trinitarianism.</p>
+          <a class="resource-link" href="https://www.youtube.com/@shamelesspopery" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
         </div>
-        <div class="resource-grid">
 
-          <div class="resource-card">
-            <span class="resource-type youtube">YouTube</span>
-            <h3>Shameless Popery</h3>
-            <p class="resource-author">Joe Heschmeyer — Catholic Answers</p>
-            <p>A rigorously argued video essay channel responding to Protestant and non-Christian objections to Catholicism. Heschmeyer — an attorney and theologian — is especially strong on the Church Fathers, the papacy, and LDS-specific critiques including the Great Apostasy and anti-Trinitarianism.</p>
-            <a class="resource-link" href="https://www.youtube.com/@shamelesspopery" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
-          </div>
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Catholic Productions</h3>
+          <p class="resource-author">Dr. Brant Pitre</p>
+          <p>Dr. Pitre is one of the foremost New Testament scholars in the Catholic world. His channel covers biblical theology in depth — the Jewish roots of the Eucharist, the Last Supper, typology, and Scripture's witness to Catholic teaching. Essential viewing for anyone engaging LDS or Protestant scripture arguments.</p>
+          <a class="resource-link" href="https://www.youtube.com/@CatholicProductions" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
 
-          <div class="resource-card">
-            <span class="resource-type youtube">YouTube</span>
-            <h3>Catholic Productions</h3>
-            <p class="resource-author">Dr. Brant Pitre</p>
-            <p>Dr. Pitre is one of the foremost New Testament scholars in the Catholic world. His channel covers biblical theology in depth — the Jewish roots of the Eucharist, the Last Supper, typology, and Scripture's witness to Catholic teaching. Essential viewing for anyone engaging LDS or Protestant scripture arguments.</p>
-            <a class="resource-link" href="https://www.youtube.com/@CatholicProductions" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
-          </div>
-
-          <div class="resource-card">
-            <span class="resource-type youtube">YouTube</span>
-            <h3>The Counsel of Trent</h3>
-            <p class="resource-author">Trent Horn — Catholic Answers</p>
-            <p>Scripted, efficient 15–20 minute video essays equipping Catholics to answer tough objections from Protestants, atheists, and Latter-day Saints. Horn holds three master's degrees in theology, philosophy, and bioethics, and has authored over a dozen books including <em>The Case for Catholicism</em> and <em>20 Answers: Mormonism</em>.</p>
-            <a class="resource-link" href="https://www.youtube.com/@TheCounselofTrent" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
-          </div>
-
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>The Counsel of Trent</h3>
+          <p class="resource-author">Trent Horn — Catholic Answers</p>
+          <p>Scripted, efficient 15–20 minute video essays equipping Catholics to answer tough objections from Protestants, atheists, and Latter-day Saints. Horn holds three master's degrees in theology, philosophy, and bioethics, and has authored over a dozen books including <em>The Case for Catholicism</em> and <em>20 Answers: Mormonism</em>.</p>
+          <a class="resource-link" href="https://www.youtube.com/@TheCounselofTrent" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
         </div>
 
       </div>

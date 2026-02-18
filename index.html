@@ -495,14 +495,24 @@
       font-size: 0.78rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gold-light);
       border: 1px solid rgba(201,168,76,0.3);
+      padding: 0;
+      transition: background 0.25s, border-color 0.25s;
+      cursor: pointer;
+    }
+    .topics-list li a {
+      display: block;
       padding: 0.55rem 1.3rem;
-      transition: background 0.25s, color 0.25s;
-      cursor: default;
+      color: var(--gold-light);
+      text-decoration: none;
+      transition: color 0.25s;
     }
     .topics-list li:hover {
       background: rgba(201,168,76,0.12);
+      border-color: rgba(201,168,76,0.6);
+    }
+    .topics-list li:hover a {
+      color: var(--gold);
     }
 
     /* ─── CALL TO FAITH ─────────────────────────────────────── */
@@ -776,18 +786,18 @@
     <p class="section-label">Areas of Study</p>
     <h2 class="section-title">Topics Covered</h2>
     <ul class="topics-list">
-      <li>Apostolic Succession</li>
-      <li>The Nature of God</li>
-      <li>Eternal Progression</li>
-      <li>Priesthood Authority</li>
-      <li>Sola Scriptura</li>
-      <li>The Great Apostasy</li>
-      <li>Covenant Theology</li>
-      <li>Joseph Smith's Polygamy</li>
-      <li>The Canon of Scripture</li>
-      <li>Salvation & Exaltation</li>
-      <li>Patristic Evidence</li>
-      <li>Progressive Revelation</li>
+      <li><a href="topics.html">Apostolic Succession</a></li>
+      <li><a href="topics.html">The Nature of God</a></li>
+      <li><a href="topics.html">Eternal Progression</a></li>
+      <li><a href="topics.html">Priesthood Authority</a></li>
+      <li><a href="topics.html">Sola Scriptura</a></li>
+      <li><a href="topics.html">The Great Apostasy</a></li>
+      <li><a href="topics.html">Covenant Theology</a></li>
+      <li><a href="topics.html">Joseph Smith's Polygamy</a></li>
+      <li><a href="topics.html">The Canon of Scripture</a></li>
+      <li><a href="topics.html">Salvation & Exaltation</a></li>
+      <li><a href="topics.html">Patristic Evidence</a></li>
+      <li><a href="topics.html">Progressive Revelation</a></li>
     </ul>
   </div>
 
