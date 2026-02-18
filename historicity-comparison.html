@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historicity Comparison: The Bible vs. The Book of Mormon</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C5A355;
+    --gold-light: #D4B96A;
+    --gold-dark: #A68A3E;
+    --cream: #F5F0E8;
+    --cream-dark: #EDE5D8;
+    --ink: #2C1810;
+    --ink-light: #4A3728;
+    --burgundy: #6B1D2A;
+    --burgundy-light: #8B2E3C;
+    --parchment: #FAF6F0;
+    --green-win: #2D5A27;
+    --green-bg: #EEF5ED;
+    --red-loss: #7A1A1A;
+    --red-bg: #F5EDED;
+    --neutral-bg: #F0EDE8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #E8E0D4;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(197,163,85,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(107,29,42,0.06) 0%, transparent 50%);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: linear-gradient(160deg, #FFFDF9 0%, var(--cream) 40%, #FFF8F0 100%);
+    border: 1px solid var(--gold-dark);
+    border-radius: 2px;
+    position: relative;
+    box-shadow:
+      0 0 0 1px var(--gold-light),
+      0 0 0 5px var(--cream-dark),
+      0 0 0 6px var(--gold),
+      0 30px 80px rgba(44,24,16,0.25);
+    padding: 60px 55px 55px;
+  }
+
+  /* Corner ornaments */
+  .corner { position: absolute; color: var(--gold); font-size: 22px; line-height: 1; }
+  .corner.tl { top: 14px; left: 18px; }
+  .corner.tr { top: 14px; right: 18px; }
+  .corner.bl { bottom: 14px; left: 18px; }
+  .corner.br { bottom: 14px; right: 18px; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--gold-light);
+    position: relative;
+  }
+
+  .header::after {
+    content: '✦ ✦ ✦';
+    display: block;
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 8px;
+    margin-top: 20px;
+  }
+
+  .header-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink-light);
+    letter-spacing: 0.5px;
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 42px;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--burgundy);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--gold-light);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-num {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: var(--gold-dark);
+    background: var(--cream-dark);
+    border: 1px solid var(--gold-light);
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Comparison Table */
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .comp-table thead tr {
+    background: linear-gradient(135deg, var(--burgundy) 0%, #8B1F30 100%);
+  }
+
+  .comp-table thead th {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    padding: 12px 16px;
+    text-align: left;
+  }
+
+  .comp-table thead th:first-child {
+    width: 22%;
+    border-radius: 1px 0 0 0;
+  }
+  .comp-table thead th:last-child {
+    border-radius: 0 1px 0 0;
+  }
+
+  .comp-table tbody tr {
+    border-bottom: 1px solid var(--cream-dark);
+    transition: background 0.15s;
+  }
+
+  .comp-table tbody tr:hover {
+    background: rgba(197,163,85,0.06);
+  }
+
+  .comp-table tbody tr.verdict-row {
+    background: linear-gradient(135deg, var(--cream-dark) 0%, #EAE2D5 100%);
+    font-weight: 600;
+  }
+
+  .comp-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+    line-height: 1.55;
+    color: var(--ink);
+    border-right: 1px solid var(--cream-dark);
+  }
+
+  .comp-table td:first-child {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: var(--burgundy);
+    font-weight: 600;
+    background: rgba(107,29,42,0.03);
+  }
+
+  .bible-col { background: rgba(45,90,39,0.03); }
+  .bom-col { background: rgba(122,26,26,0.03); }
+
+  .win-badge {
+    display: inline-block;
+    background: var(--green-win);
+    color: #fff;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .zero-badge {
+    display: inline-block;
+    background: var(--red-loss);
+    color: #fff;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* Verdict block */
+  .verdict-block {
+    margin-top: 10px;
+    border-left: 3px solid var(--gold);
+    padding: 14px 18px;
+    background: linear-gradient(135deg, rgba(197,163,85,0.08) 0%, rgba(197,163,85,0.03) 100%);
+    font-style: italic;
+    font-size: 14.5px;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+
+  .verdict-block strong {
+    font-style: normal;
+    color: var(--burgundy);
+  }
+
+  /* Summary table */
+  .summary-section {
+    margin-top: 50px;
+    padding-top: 35px;
+    border-top: 2px solid var(--gold);
+  }
+
+  .summary-title {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--burgundy);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 22px;
+  }
+
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--gold-light);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .score-cell {
+    background: var(--cream);
+    padding: 16px 18px;
+    text-align: center;
+  }
+
+  .score-cell.header-cell {
+    background: linear-gradient(135deg, var(--burgundy) 0%, #8B1F30 100%);
+  }
+
+  .score-cell.header-cell span {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  .score-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .score-value {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+  }
+
+  .score-value.bible { color: var(--green-win); }
+  .score-value.bom { color: var(--red-loss); }
+  .score-value.label { font-size: 13px; color: var(--ink); }
+
+  /* Counter-claims */
+  .counter-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .counter-table thead tr {
+    background: linear-gradient(135deg, var(--ink) 0%, #3D2416 100%);
+  }
+
+  .counter-table thead th {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    padding: 11px 16px;
+    text-align: left;
+  }
+
+  .counter-table tbody tr {
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .counter-table tbody tr:hover { background: rgba(197,163,85,0.05); }
+
+  .counter-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+    line-height: 1.55;
+    border-right: 1px solid var(--cream-dark);
+  }
+
+  .counter-table td:first-child {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: var(--burgundy);
+    font-weight: 600;
+    background: rgba(107,29,42,0.03);
+    width: 28%;
+  }
+
+  /* Final verdict */
+  .final-verdict {
+    margin-top: 40px;
+    text-align: center;
+    padding: 30px 40px;
+    background: linear-gradient(135deg, var(--burgundy) 0%, #8B1F30 100%);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-verdict::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(197,163,85,0.4);
+    border-radius: 1px;
+    pointer-events: none;
+  }
+
+  .final-verdict-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .final-verdict h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .final-verdict p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: rgba(245,240,232,0.85);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Scholarly consensus */
+  .consensus-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .consensus-card {
+    border: 1px solid var(--gold-light);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .consensus-card-header {
+    background: linear-gradient(135deg, var(--ink) 0%, #3D2416 100%);
+    padding: 10px 14px;
+  }
+
+  .consensus-card-header span {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .consensus-card-body {
+    padding: 12px 14px;
+    background: var(--cream);
+  }
+
+  .consensus-item {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    color: var(--ink-light);
+    padding-left: 12px;
+    position: relative;
+  }
+
+  .consensus-item::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--gold-dark);
+    font-weight: bold;
+  }
+
+  .bible-item { color: var(--green-win); font-weight: 500; }
+  .bom-item { color: var(--red-loss); font-weight: 500; }
+
+  /* Footer ornament */
+  .footer-ornament {
+    text-align: center;
+    margin-top: 40px;
+    color: var(--gold);
+    font-size: 18px;
+    letter-spacing: 12px;
+  }
+
+  @media (max-width: 768px) {
+    .page { padding: 35px 22px 30px; }
+    .header h1 { font-size: 22px; }
+    .score-grid { grid-template-columns: 1fr; }
+    .consensus-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <span class="corner tl">✦</span>
+  <span class="corner tr">✦</span>
+  <span class="corner bl">✦</span>
+  <span class="corner br">✦</span>
+
+  <div class="header">
+    <p class="header-label">An Evidence-Based Comparative Study</p>
+    <h1>Historicity of Scripture</h1>
+    <h2>The Holy Bible vs. The Book of Mormon — Archaeological, Linguistic, Manuscript & Historical Analysis</h2>
+  </div>
+
+  <!-- Section 1: Manuscript Evidence -->
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">I</span>
+      Manuscript Evidence
+    </div>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Criterion</th>
+          <th>The Holy Bible</th>
+          <th>Book of Mormon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Earliest Manuscripts</td>
+          <td class="bible-col">Dead Sea Scrolls (250 BC – AD 68): Isaiah, Psalms, Genesis; P52 papyrus (~AD 125)</td>
+          <td class="bom-col">No original manuscripts — only an 1830 printed edition survives</td>
+        </tr>
+        <tr>
+          <td>Number of Copies</td>
+          <td class="bible-col">25,000+ New Testament manuscripts; 1,000+ Old Testament Hebrew MSS <span class="win-badge">OVERWHELMING</span></td>
+          <td class="bom-col">Zero pre-1830 manuscripts <span class="zero-badge">NONE</span></td>
+        </tr>
+        <tr>
+          <td>Textual Stability</td>
+          <td class="bible-col">99.5% stable (NT); minor variants across the manuscript tradition</td>
+          <td class="bom-col">Printer's Manuscript (1830) contains 3,000+ changes from original dictation</td>
+        </tr>
+        <tr class="verdict-row">
+          <td>Verdict</td>
+          <td class="bible-col">Overwhelming</td>
+          <td class="bom-col">None</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="verdict-block">
+      <strong>Bible wins:</strong> Physical copies from antiquity vs. zero ancient manuscripts. The manuscript tradition supporting Sacred Scripture is without parallel in the ancient world.
+    </div>
+  </div>
+
+  <!-- Section 2: Archaeological Corroboration -->
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">II</span>
+      Archaeological Corroboration
+    </div>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>The Holy Bible</th>
+          <th>Book of Mormon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cities Confirmed</td>
+          <td class="bible-col">200+: Jerusalem, Nineveh, Babylon, Lachish, Hazor, Dan, Megiddo <span class="win-badge">VERIFIED</span></td>
+          <td class="bom-col">0 cities confirmed — Zarahemla, Cumorah, etc. remain archaeologically unattested <span class="zero-badge">NONE</span></td>
+        </tr>
+        <tr>
+          <td>Inscriptions Naming People</td>
+          <td class="bible-col">50+ named kings and leaders: Hezekiah's Tunnel (2 Kings 20), Mesha Stele (Moab, mentions Israel), Pontius Pilate Inscription</td>
+          <td class="bom-col">0 inscriptions bearing BoM names such as Nephi, Moroni, or Laman</td>
+        </tr>
+        <tr>
+          <td>Artifacts</td>
+          <td class="bible-col">Tel Dan Stele ("House of David"), Cyrus Cylinder, Lachish Letters</td>
+          <td class="bom-col">No artifacts — steel swords, horses, and chariots are absent from the pre-Columbian archaeological record</td>
+        </tr>
+        <tr class="verdict-row">
+          <td>Verdict</td>
+          <td class="bible-col">Massive</td>
+          <td class="bom-col">Zero direct</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="verdict-block">
+      <strong>Bible wins:</strong> Dozens of sites, kings, and events confirmed by independent excavation. The Book of Mormon: no confirmed locations despite claiming 1,000+ years of civilization and warfare on the American continent.
+    </div>
+  </div>
+
+  <!-- Section 3: Linguistic & Cultural -->
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">III</span>
+      Linguistic &amp; Cultural Evidence
+    </div>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Criterion</th>
+          <th>The Holy Bible</th>
+          <th>Book of Mormon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Language</td>
+          <td class="bible-col">Hebrew, Aramaic, Greek — all attested and extensively documented in ancient texts</td>
+          <td class="bom-col">"Reformed Egyptian" — no known script; unattested in any ancient record</td>
+        </tr>
+        <tr>
+          <td>Names</td>
+          <td class="bible-col">1,000+ biblical names confirmed in Egyptian, Assyrian, and Babylonian records (e.g., Shishak, Sennacherib)</td>
+          <td class="bom-col">0 BoM names found in Mesoamerican, South American, or any ancient pre-Columbian records</td>
+        </tr>
+        <tr>
+          <td>Cultural Details</td>
+          <td class="bible-col"><strong>Accurate:</strong> Hittites (once doubted, now confirmed); camel domestication (Genesis)</td>
+          <td class="bom-col"><strong>Major anachronisms:</strong> Steel (1 Nephi 4:9, ~600 BC) absent from pre-Columbian Americas; Horses and wheat (2 Nephi 15) are post-Columbian introductions</td>
+        </tr>
+        <tr class="verdict-row">
+          <td>Verdict</td>
+          <td class="bible-col">Strong</td>
+          <td class="bom-col">Problematic</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="verdict-block">
+      <strong>Bible wins:</strong> Names, languages, and culture match the ancient Near East across centuries of independent scholarship. The Book of Mormon presents major anachronisms per mainstream archaeology and linguistics.
+    </div>
+  </div>
+
+  <!-- Section 4: External Historical Corroboration -->
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">IV</span>
+      External Historical Corroboration
+    </div>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Source</th>
+          <th>The Holy Bible</th>
+          <th>Book of Mormon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Non-Biblical Historians</td>
+          <td class="bible-col">Josephus, Tacitus, Pliny, and Suetonius all mention Jesus, Pilate, and early Christians</td>
+          <td class="bom-col">No external mention of Nephites, Lamanites, or any BoM event in any ancient source</td>
+        </tr>
+        <tr>
+          <td>Neighboring Cultures</td>
+          <td class="bible-col">Egypt, Assyria, and Babylon independently record Israel, Judah, David, and Solomon</td>
+          <td class="bom-col">Maya, Olmec, Aztec — no record of BoM civilizations in any pre-Columbian source</td>
+        </tr>
+        <tr class="verdict-row">
+          <td>Verdict</td>
+          <td class="bible-col">Multiple</td>
+          <td class="bom-col">Zero</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="verdict-block">
+      <strong>Bible wins:</strong> Roman, Jewish, and pagan sources independently confirm key biblical events and persons. The Book of Mormon: no trace in any pre-Columbian record.
+    </div>
+  </div>
+
+  <!-- Section 5: Internal Consistency & Geography -->
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">V</span>
+      Internal Consistency &amp; Geography
+    </div>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>Criterion</th>
+          <th>The Holy Bible</th>
+          <th>Book of Mormon</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Geography</td>
+          <td class="bible-col">Known and verifiable: Israel, Egypt, Babylon, Rome — all mapped and excavated</td>
+          <td class="bom-col">"Narrow neck of land," "Land Northward" — location unknown; no scholarly consensus after 190 years</td>
+        </tr>
+        <tr>
+          <td>Internal Map</td>
+          <td class="bible-col">Coherent distances (Jerusalem to Babylon = ~600 miles, consistent with ancient records)</td>
+          <td class="bom-col">Contradictory distances: "Day and a half's journey" for the narrow neck implies 120+ miles — implausible</td>
+        </tr>
+        <tr class="verdict-row">
+          <td>Verdict</td>
+          <td class="bible-col">Clear</td>
+          <td class="bom-col">Vague / Inconsistent</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="verdict-block">
+      <strong>Bible wins:</strong> Real-world geography, confirmed by independent archaeology. The Book of Mormon: no plausible map that coheres with known pre-Columbian archaeology has been produced.
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="summary-section">
+    <div class="summary-title">Summary of Evidence — Historicity Scorecard</div>
+
+    <div class="score-grid">
+      <div class="score-cell header-cell"><span>Evidence Type</span></div>
+      <div class="score-cell header-cell"><span>The Holy Bible</span></div>
+      <div class="score-cell header-cell"><span>Book of Mormon</span></div>
+
+      <div class="score-cell"><span class="score-label">Manuscripts</span></div>
+      <div class="score-cell"><span class="score-value bible">25,000+</span></div>
+      <div class="score-cell"><span class="score-value bom">0</span></div>
+
+      <div class="score-cell"><span class="score-label">Archaeology</span></div>
+      <div class="score-cell"><span class="score-value bible">200+ cities<br>50+ kings</span></div>
+      <div class="score-cell"><span class="score-value bom">0</span></div>
+
+      <div class="score-cell"><span class="score-label">Inscriptions</span></div>
+      <div class="score-cell"><span class="score-value label">Tel Dan, Pilate, Cyrus</span></div>
+      <div class="score-cell"><span class="score-value bom">0</span></div>
+
+      <div class="score-cell"><span class="score-label">External Sources</span></div>
+      <div class="score-cell"><span class="score-value label">Josephus, Tacitus, et al.</span></div>
+      <div class="score-cell"><span class="score-value bom">0</span></div>
+
+      <div class="score-cell"><span class="score-label">Linguistic Fit</span></div>
+      <div class="score-cell"><span class="score-value label">Hebrew/Greek attested</span></div>
+      <div class="score-cell"><span class="score-value label" style="color:var(--red-loss)">Reformed Egyptian = unknown</span></div>
+
+      <div class="score-cell"><span class="score-label">Anachronisms</span></div>
+      <div class="score-cell"><span class="score-value label">Minor (e.g., camels)</span></div>
+      <div class="score-cell"><span class="score-value label" style="color:var(--red-loss)">Major (steel, horses, wheat)</span></div>
+
+      <div class="score-cell" style="background:var(--cream-dark);"><span class="score-label" style="font-size:12px;font-weight:700;">Total Score</span></div>
+      <div class="score-cell" style="background:var(--green-bg);"><span class="score-value bible" style="font-size:32px;">9/10</span></div>
+      <div class="score-cell" style="background:var(--red-bg);"><span class="score-value bom" style="font-size:32px;">0/10</span></div>
+    </div>
+
+    <!-- LDS Apologist Counter-claims -->
+    <div class="section-title" style="margin-top:32px;">
+      <span class="section-num" style="font-size:13px;">⚖</span>
+      LDS Apologist Counter-Claims — Assessed
+    </div>
+
+    <table class="counter-table">
+      <thead>
+        <tr>
+          <th>BoM Claim</th>
+          <th>Scholarly Assessment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NHM = Nahom (1 Nephi 16:34)</td>
+          <td>Possible association, but NHM is a tribal name in Yemen — not a city. No "Nahom"-ites or contemporaneous altar have been identified matching the narrative.</td>
+        </tr>
+        <tr>
+          <td>Chiasmus (Alma 36)</td>
+          <td>A literary structure, not historical evidence. Chiasmus appears extensively in Homer and throughout the Bible — it is not unique to an ancient Hebraic source.</td>
+        </tr>
+        <tr>
+          <td>Limited Geography Theory</td>
+          <td>Shrinks the BoM world to a 100-mile area — but still yields no cities, no DNA correlation, and no metallurgy matching the text's claims.</td>
+        </tr>
+        <tr>
+          <td>Spiritual Witness</td>
+          <td>Subjective religious experience is not historical or archaeological evidence, by any recognized scholarly standard.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Scholarly consensus -->
+    <div class="section-title" style="margin-top:32px;">
+      <span class="section-num" style="font-size:13px;">🏛</span>
+      Scholarly Consensus
+    </div>
+    <div class="consensus-grid">
+      <div class="consensus-card">
+        <div class="consensus-card-header"><span>Archaeologists (ASOR / BAS)</span></div>
+        <div class="consensus-card-body">
+          <div class="consensus-item bible-item">Bible: Substantial historical core confirmed (Israel, kings, exile)</div>
+          <div class="consensus-item bom-item">BoM: No archaeological support</div>
+        </div>
+      </div>
+      <div class="consensus-card">
+        <div class="consensus-card-header"><span>Linguists (SBL)</span></div>
+        <div class="consensus-card-body">
+          <div class="consensus-item bible-item">Bible: Hebrew/Greek texts authenticated</div>
+          <div class="consensus-item bom-item">BoM: "Reformed Egyptian" unattested in any known script system</div>
+        </div>
+      </div>
+      <div class="consensus-card">
+        <div class="consensus-card-header"><span>Historians (AHA)</span></div>
+        <div class="consensus-card-body">
+          <div class="consensus-item bible-item">Bible: Jesus, Pilate, early church — historically corroborated</div>
+          <div class="consensus-item bom-item">BoM: No pre-Columbian evidence for any BoM event or figure</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Final verdict -->
+  <div class="final-verdict">
+    <div class="final-verdict-label">Final Verdict</div>
+    <h2>The Holy Bible — By an Overwhelming Margin</h2>
+    <p>Sacred Scripture possesses massive, multi-sourced, physical evidence of historicity spanning manuscript tradition, archaeology, external corroboration, and linguistic integrity. The Book of Mormon has zero direct archaeological, manuscript, or external corroboration. For historicity, the Bible stands in a class entirely apart.</p>
+  </div>
+
+  <div class="footer-ornament">✦ ✦ ✦</div>
+</div>
+
+</body>
+</html>

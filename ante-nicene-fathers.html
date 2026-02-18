@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Ante-Nicene Church Fathers and Their Catholic Doctrines</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C5A355;
+    --gold-light: #D4B96A;
+    --gold-dark: #A68A3E;
+    --cream: #F5F0E8;
+    --cream-dark: #EDE5D8;
+    --ink: #2C1810;
+    --ink-light: #4A3728;
+    --burgundy: #6B1D2A;
+    --burgundy-light: #8B2E3C;
+    --parchment: #FAF6F0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #E8E0D4;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(197,163,85,0.09) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(107,29,42,0.07) 0%, transparent 50%);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .page {
+    max-width: 1120px;
+    margin: 0 auto;
+    background: linear-gradient(160deg, #FFFDF9 0%, var(--cream) 40%, #FFF8F0 100%);
+    border: 1px solid var(--gold-dark);
+    border-radius: 2px;
+    position: relative;
+    box-shadow:
+      0 0 0 1px var(--gold-light),
+      0 0 0 5px var(--cream-dark),
+      0 0 0 6px var(--gold),
+      0 30px 80px rgba(44,24,16,0.25);
+    padding: 60px 55px 60px;
+  }
+
+  .corner { position: absolute; color: var(--gold); font-size: 22px; line-height: 1; }
+  .corner.tl { top: 14px; left: 18px; }
+  .corner.tr { top: 14px; right: 18px; }
+  .corner.bl { bottom: 14px; left: 18px; }
+  .corner.br { bottom: 14px; right: 18px; }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 44px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--gold-light);
+  }
+  .header::after {
+    content: '✦ ✦ ✦';
+    display: block;
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 8px;
+    margin-top: 20px;
+  }
+  .header-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink-light);
+  }
+
+  /* ── Introduction ── */
+  .intro {
+    margin-bottom: 40px;
+    padding: 28px 32px;
+    background: rgba(197,163,85,0.07);
+    border: 1px solid var(--gold-light);
+    border-left: 4px solid var(--gold);
+    border-radius: 1px;
+  }
+  .intro p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--ink-light);
+    margin-bottom: 14px;
+  }
+  .intro p:last-child { margin-bottom: 0; }
+
+  /* ── Doctrine Key ── */
+  .key-section {
+    margin-bottom: 40px;
+  }
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--burgundy);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--gold-light);
+    padding-bottom: 8px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-num {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: var(--gold-dark);
+    background: var(--cream-dark);
+    border: 1px solid var(--gold-light);
+    width: 26px; height: 26px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .doctrine-key-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .doctrine-key-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 10px;
+    border: 1px solid var(--cream-dark);
+    border-radius: 2px;
+    background: var(--cream);
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink-light);
+  }
+  .doctrine-key-item .num {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    color: var(--gold-dark);
+    background: var(--cream-dark);
+    border: 1px solid var(--gold-light);
+    min-width: 22px; height: 22px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── Father Cards ── */
+  .fathers-section { margin-bottom: 40px; }
+
+  .father-card {
+    border: 1px solid var(--gold-light);
+    border-radius: 2px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .father-card:hover { box-shadow: 0 4px 18px rgba(197,163,85,0.18); }
+
+  .father-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, var(--burgundy) 0%, #7A1F2E 100%);
+    cursor: pointer;
+    user-select: none;
+    gap: 16px;
+  }
+  .father-header:hover { background: linear-gradient(135deg, #7A1F2E 0%, #8B2535 100%); }
+
+  .father-header-left {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex: 1;
+    min-width: 0;
+  }
+  .father-name {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gold-light);
+    white-space: nowrap;
+  }
+  .father-dates {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(212, 185, 106, 0.75);
+    white-space: nowrap;
+  }
+  .father-writings {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12.5px;
+    color: rgba(245,240,232,0.55);
+    font-style: italic;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .father-toggle {
+    color: var(--gold-light);
+    font-size: 18px;
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+  .father-card.open .father-toggle { transform: rotate(180deg); }
+
+  .father-body {
+    display: none;
+    padding: 20px 24px 22px;
+    background: linear-gradient(160deg, #FFFDF9 0%, var(--cream) 100%);
+    border-top: 1px solid var(--gold-light);
+  }
+  .father-card.open .father-body { display: block; }
+
+  .writings-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .writings-value {
+    font-size: 13.5px;
+    font-style: italic;
+    color: var(--ink-light);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .doctrines-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .doctrine-entry {
+    display: flex;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(237,229,216,0.7);
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .doctrine-entry:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .doctrine-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 9.5px;
+    letter-spacing: 0.5px;
+    color: var(--burgundy);
+    background: rgba(107,29,42,0.07);
+    border: 1px solid rgba(107,29,42,0.15);
+    padding: 3px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+    height: fit-content;
+    flex-shrink: 0;
+    margin-top: 2px;
+    min-width: 120px;
+    text-align: center;
+  }
+
+  .doctrine-desc {
+    flex: 1;
+    color: var(--ink-light);
+  }
+  .doctrine-desc strong { color: var(--ink); font-weight: 600; }
+
+  .note-box {
+    margin-top: 14px;
+    padding: 10px 14px;
+    background: rgba(107,29,42,0.04);
+    border-left: 3px solid var(--burgundy-light);
+    font-size: 13px;
+    font-style: italic;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+
+  /* ── Summary / Conclusions ── */
+  .summary-section { margin-top: 48px; padding-top: 36px; border-top: 2px solid var(--gold); }
+  .summary-title {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--burgundy);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 26px;
+  }
+
+  .conclusion-item {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 18px;
+    padding: 16px 20px;
+    border: 1px solid var(--cream-dark);
+    border-left: 4px solid var(--gold);
+    background: var(--cream);
+    border-radius: 1px;
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--ink-light);
+  }
+  .conclusion-num {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold-dark);
+    flex-shrink: 0;
+    line-height: 1;
+    padding-top: 2px;
+  }
+  .conclusion-item strong { color: var(--burgundy); font-weight: 600; font-style: normal; }
+
+  /* ── Methodology Note ── */
+  .methodology {
+    margin-top: 32px;
+    padding: 22px 26px;
+    background: rgba(197,163,85,0.06);
+    border: 1px solid var(--gold-light);
+    border-radius: 1px;
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: var(--ink-light);
+    font-style: italic;
+  }
+  .methodology strong { font-style: normal; color: var(--burgundy); }
+
+  .footer-ornament {
+    text-align: center;
+    margin-top: 44px;
+    color: var(--gold);
+    font-size: 18px;
+    letter-spacing: 12px;
+  }
+
+  /* expand-all toggle */
+  .controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .ctrl-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    background: var(--cream);
+    border: 1px solid var(--gold-light);
+    padding: 6px 14px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .ctrl-btn:hover { background: var(--burgundy); color: var(--gold-light); border-color: var(--burgundy); }
+
+  @media (max-width: 800px) {
+    .page { padding: 36px 18px 40px; }
+    .header h1 { font-size: 20px; }
+    .doctrine-key-grid { grid-template-columns: 1fr 1fr; }
+    .father-writings { display: none; }
+  }
+  @media (max-width: 540px) {
+    .doctrine-key-grid { grid-template-columns: 1fr; }
+    .doctrine-tag { min-width: unset; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <span class="corner tl">✦</span>
+  <span class="corner tr">✦</span>
+  <span class="corner bl">✦</span>
+  <span class="corner br">✦</span>
+
+  <!-- Header -->
+  <div class="header">
+    <p class="header-label">A Comprehensive Survey of Extant Writings</p>
+    <h1>The Ante-Nicene Church Fathers</h1>
+    <h2>and Their Catholic Doctrines</h2>
+  </div>
+
+  <!-- Introduction -->
+  <div class="intro">
+    <p>The Ante-Nicene Fathers are the Christian writers and theologians who lived and wrote before the First Council of Nicaea in AD 325. Their writings constitute the earliest surviving witness to how Christianity was understood, practiced, and taught in the centuries immediately following the Apostles. This document catalogs every major ante-Nicene writer whose works survive (in whole or in significant part) and identifies the distinctly Catholic doctrines found in their writings.</p>
+    <p>The purpose of this survey is to demonstrate that the theological landscape of early Christianity was overwhelmingly consistent with Catholic teaching — and incompatible with distinctly Protestant doctrines (such as <em>sola fide</em>, <em>sola scriptura</em>, symbolic-only Eucharist, rejection of a visible hierarchical Church, and denial of baptismal regeneration) and with Mormon theology (such as a plurality of gods, a non-eternal God, the Great Apostasy, and denial of creation <em>ex nihilo</em>).</p>
+  </div>
+
+  <!-- Doctrine Key -->
+  <div class="key-section">
+    <div class="section-title"><span class="section-num">✦</span>Key Catholic Doctrines</div>
+    <div class="doctrine-key-grid">
+      <div class="doctrine-key-item"><span class="num">1</span>Real Presence of Christ in the Eucharist</div>
+      <div class="doctrine-key-item"><span class="num">2</span>Eucharistic Sacrifice</div>
+      <div class="doctrine-key-item"><span class="num">3</span>Baptismal Regeneration</div>
+      <div class="doctrine-key-item"><span class="num">4</span>Apostolic Succession &amp; Authority of Bishops</div>
+      <div class="doctrine-key-item"><span class="num">5</span>Primacy of Rome / the Papacy</div>
+      <div class="doctrine-key-item"><span class="num">6</span>Sacred Tradition alongside Scripture</div>
+      <div class="doctrine-key-item"><span class="num">7</span>Trinity: One God in Three Co-Eternal Persons</div>
+      <div class="doctrine-key-item"><span class="num">8</span>Creation <em>Ex Nihilo</em></div>
+      <div class="doctrine-key-item"><span class="num">9</span>Penance / Confession of Sins to Priests</div>
+      <div class="doctrine-key-item"><span class="num">10</span>Prayers for the Dead</div>
+      <div class="doctrine-key-item"><span class="num">11</span>Intercession of Saints</div>
+      <div class="doctrine-key-item"><span class="num">12</span>Mary as New Eve / Perpetual Virginity</div>
+      <div class="doctrine-key-item"><span class="num">13</span>The Visible Church as Necessary for Salvation</div>
+    </div>
+  </div>
+
+  <!-- Father Cards -->
+  <div class="fathers-section">
+    <div class="section-title"><span class="section-num">✦</span>The Fathers &amp; Their Teachings</div>
+    <div class="controls">
+      <button class="ctrl-btn" onclick="expandAll()">Expand All</button>
+      <button class="ctrl-btn" onclick="collapseAll()">Collapse All</button>
+    </div>
+
+    <!-- 1. Clement of Rome -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Clement of Rome</span>
+          <span class="father-dates">c. 35–99 AD</span>
+          <span class="father-writings">1 authentic letter (+ 1 attributed homily)</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">1 authentic letter (1 Clement) + 1 attributed homily (2 Clement)</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Apostolic Succession</span><span class="doctrine-desc">Taught that the apostles appointed bishops/presbyters in an unbroken line <em>(1 Clem. 42–44)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Primacy of Rome</span><span class="doctrine-desc">Authoritatively intervened in the Corinthian church's affairs from Rome, sending delegates and demanding obedience <em>(1 Clem. 59, 63)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Hierarchical Church</span><span class="doctrine-desc">Bishops, presbyters, and deacons hold divinely ordained offices <em>(1 Clem. 40–44)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Liturgical Worship</span><span class="doctrine-desc">References to ordered, liturgical worship with set prayers and offerings <em>(1 Clem. 40–41)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Faith &amp; Works</span><span class="doctrine-desc">Justification by faith working through love and obedience, not faith alone <em>(1 Clem. 30–33)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Church Unity</span><span class="doctrine-desc">Submission to church authorities as essential to Christian life <em>(1 Clem. 1, 57)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Eucharistic Sacrifice</span><span class="doctrine-desc">References to "offerings" and "sacrifices" made at the proper time by appointed ministers <em>(1 Clem. 40–44)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Bodily Resurrection</span><span class="doctrine-desc">Affirmed the physical resurrection of the dead <em>(1 Clem. 24–26)</em></span></div>
+      </div>
+    </div>
+
+    <!-- 2. Ignatius of Antioch -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Ignatius of Antioch</span>
+          <span class="father-dates">c. 50–c. 110 AD</span>
+          <span class="father-writings">7 letters</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">7 letters (to Ephesians, Magnesians, Trallians, Romans, Philadelphians, Smyrnaeans, and Polycarp)</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Real Presence</span><span class="doctrine-desc">"The Eucharist is the flesh of our Savior Jesus Christ" <em>(Smyrn. 7:1)</em>; called it "medicine of immortality" <em>(Eph. 20:2)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Monarchical Episcopate</span><span class="doctrine-desc">First to articulate the threefold hierarchy of bishop, presbyter, and deacon; bishop presides "in the place of God" <em>(Magn. 6; Trall. 3)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">The Catholic Church</span><span class="doctrine-desc">First known use of the term "Catholic Church": "Wherever the bishop appears, there let the people be; as wherever Jesus Christ is, there is the Catholic Church" <em>(Smyrn. 8)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Authority of the Bishop</span><span class="doctrine-desc">Nothing valid without the bishop: no baptism, no Eucharist, no love-feast <em>(Smyrn. 8)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Primacy of Rome</span><span class="doctrine-desc">Addressed the Roman church as "presiding in love" and as having authority to teach others <em>(Rom. intro, 3)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Deity of Christ</span><span class="doctrine-desc">Repeatedly calls Jesus "Our God" <em>(Eph. 1, 15, 18; Rom. intro; Polyc. 8)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Virgin Birth</span><span class="doctrine-desc">Affirmed Mary's virginity as a core truth against the Docetists <em>(Eph. 19; Smyrn. 1)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Anti-Docetism</span><span class="doctrine-desc">Christ truly suffered in the flesh; condemns those who deny it <em>(Trall. 9–10; Smyrn. 1–3)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Sunday Worship</span><span class="doctrine-desc">Christians live "according to the Lord's Day" rather than the Sabbath <em>(Magn. 9)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Bodily Resurrection</span><span class="doctrine-desc">Affirmed against the Docetists <em>(Smyrn. 3)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Eucharistic Sacrifice</span><span class="doctrine-desc">"One altar, as there is one bishop" <em>(Philad. 4)</em></span></div>
+      </div>
+    </div>
+
+    <!-- 3. Polycarp of Smyrna -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Polycarp of Smyrna</span>
+          <span class="father-dates">c. 69–c. 155 AD</span>
+          <span class="father-writings">1 letter + martyrdom account</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">1 letter (to the Philippians) + 1 martyrdom account (Martyrdom of Polycarp)</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Deity of Christ</span><span class="doctrine-desc">Calls Jesus "Our Lord and God Jesus Christ" <em>(Phil. 12)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Bodily Resurrection</span><span class="doctrine-desc">Affirms the resurrection of the flesh <em>(Phil. 7)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Anti-Heresy</span><span class="doctrine-desc">Condemns Docetism and those who deny the Incarnation <em>(Phil. 7)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Faith &amp; Works</span><span class="doctrine-desc">Exhorts good works as essential to the Christian life <em>(Phil. 2, 5, 10)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Clerical Hierarchy</span><span class="doctrine-desc">Refers to presbyters and deacons and their duties <em>(Phil. 5–6)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Veneration of Martyrs</span><span class="doctrine-desc">The Smyrnaeans collected his relics and honored his martyrdom anniversary — an early form of the veneration of saints <em>(Mart. 17–18)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Apostolic Tradition</span><span class="doctrine-desc">Appeals to the faith handed down from the apostles <em>(Phil. 3, 7)</em></span></div>
+      </div>
+    </div>
+
+    <!-- 4. The Didache -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">The Didache</span>
+          <span class="father-dates">c. 50–100 AD</span>
+          <span class="father-writings">1 treatise (Teaching of the Twelve Apostles)</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">1 treatise: the <em>Didache</em> (Teaching of the Twelve Apostles)</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Trinitarian Baptism</span><span class="doctrine-desc">Baptize "in the name of the Father, Son, and Holy Spirit" <em>(Did. 7)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Eucharistic Sacrifice</span><span class="doctrine-desc">The Eucharist is called a "sacrifice" fulfilling Malachi 1:11 <em>(Did. 14)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Penance / Confession</span><span class="doctrine-desc">"Confess your sins" before receiving the Eucharist so the sacrifice is pure <em>(Did. 4, 14)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Eucharist Reserved</span><span class="doctrine-desc">"Let no one eat or drink of your Eucharist except those baptized" <em>(Did. 9:5)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Fasting &amp; Set Prayers</span><span class="doctrine-desc">Wednesday and Friday fasting; the Lord's Prayer three times daily <em>(Did. 8)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Church Offices</span><span class="doctrine-desc">Church offices of bishops and deacons <em>(Did. 15)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Moral Theology</span><span class="doctrine-desc">A moral framework of the "Way of Life" and the "Way of Death" <em>(Did. 1–6)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Pro-Life Ethics</span><span class="doctrine-desc">Explicitly condemns killing unborn children — abortion and infanticide <em>(Did. 2:2)</em></span></div>
+      </div>
+    </div>
+
+    <!-- 5. Pseudo-Barnabas -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Pseudo-Barnabas</span>
+          <span class="father-dates">c. 70–132 AD</span>
+          <span class="father-writings">Epistle of Barnabas</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">1 letter: the <em>Epistle of Barnabas</em></div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Typological Exegesis</span><span class="doctrine-desc">The Old Testament foreshadows Christ and the Church <em>(Barn. 6–16)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Baptismal Regeneration</span><span class="doctrine-desc">We descend into the water full of sins and come up bearing fruit <em>(Barn. 11:11)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">The Cross</span><span class="doctrine-desc">Extensive use of the Cross as a saving symbol <em>(Barn. 11–12)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Pro-Life Ethics</span><span class="doctrine-desc">"You shall not murder a child by abortion" <em>(Barn. 19:5)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Sunday Worship</span><span class="doctrine-desc">The "eighth day" is the day of worship <em>(Barn. 15:9)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Confession of Sins</span><span class="doctrine-desc">"You shall confess your sins" <em>(Barn. 19:12)</em></span></div>
+      </div>
+    </div>
+
+    <!-- 6. Hermas -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Hermas (Shepherd of Hermas)</span>
+          <span class="father-dates">c. 100–160 AD</span>
+          <span class="father-writings">1 large work (Visions, Mandates, Similitudes)</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">1 large work: the <em>Shepherd</em> (5 Visions, 12 Mandates, 10 Similitudes)</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Baptismal Regeneration</span><span class="doctrine-desc">Baptism is necessary for salvation; entry into the Church <em>(Vis. 3.3.5; Sim. 9.16)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Post-Baptismal Penance</span><span class="doctrine-desc">One opportunity for repentance after baptism for grave sin, prefiguring the Sacrament of Penance <em>(Mand. 4.3.1–6)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">The Visible Church</span><span class="doctrine-desc">The Church is depicted as a tower; one must be built into it for salvation <em>(Vis. 3; Sim. 9)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Trinity</span><span class="doctrine-desc">References to Father, Son (as pre-existent), and Holy Spirit <em>(Sim. 5.6; 9.1)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Indissoluble Marriage</span><span class="doctrine-desc">Discusses marital obligations even after a spouse's adultery <em>(Mand. 4.1)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Good Works / Almsgiving</span><span class="doctrine-desc">Merit and reward for works of charity <em>(Sim. 1; 5.3)</em></span></div>
+      </div>
+    </div>
+
+    <!-- 7. Papias -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Papias of Hierapolis</span>
+          <span class="father-dates">c. 60–c. 130 AD</span>
+          <span class="father-writings">Fragments only (from a lost 5-volume work)</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">Fragments only, preserved in Eusebius and Irenaeus (from a lost 5-volume <em>Exposition of the Dominical Oracles</em>)</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Apostolic Oral Tradition</span><span class="doctrine-desc">Valued the "living voice" of apostolic tradition alongside written Scripture <em>(frag. in Eusebius, HE 3.39)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Gospel Authorship</span><span class="doctrine-desc">Testified that Matthew wrote in Hebrew and Mark recorded Peter's preaching <em>(frag. in Eusebius, HE 3.39)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Millenarianism</span><span class="doctrine-desc">Taught a literal thousand-year earthly reign of Christ <em>(frag. in Irenaeus, Adv. Haer. 5.33.3–4)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Bodily Resurrection</span><span class="doctrine-desc">Affirmed the physical resurrection of the dead</span></div>
+      </div>
+    </div>
+
+    <!-- 8. Letter to Diognetus -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Letter to Diognetus</span>
+          <span class="father-dates">c. 130–200 AD</span>
+          <span class="father-writings">1 apologetic letter</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">1 apologetic letter (anonymous)</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Incarnation &amp; Atonement</span><span class="doctrine-desc">God sent His Son to save mankind; Christ's death is a ransom <em>(Diogn. 7–9)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Christians in the World</span><span class="doctrine-desc">Christians are to the world what the soul is to the body <em>(Diogn. 6)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Rejection of Paganism</span><span class="doctrine-desc">Rejects pagan and Jewish worship while affirming the God of the Old Testament <em>(Diogn. 3–4)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Deity of Christ</span><span class="doctrine-desc">Calls Jesus the Creator and God sent from heaven <em>(Diogn. 7)</em></span></div>
+      </div>
+    </div>
+
+    <!-- 9. Justin Martyr -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Justin Martyr</span>
+          <span class="father-dates">c. 100–165 AD</span>
+          <span class="father-writings">3 major extant works (+ fragments)</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">3 major works: <em>First Apology</em>, <em>Second Apology</em>, <em>Dialogue with Trypho</em> (+ fragments of lost works)</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Real Presence</span><span class="doctrine-desc">"The food which has been made into the Eucharist… is both the flesh and the blood of that incarnated Jesus" <em>(1 Apol. 66)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Eucharistic Sacrifice</span><span class="doctrine-desc">Identifies the Eucharist with the "pure sacrifice" of Malachi 1:11 <em>(Dial. 41, 117)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Baptismal Regeneration</span><span class="doctrine-desc">Calls baptism "the washing for the remission of sins and for regeneration" <em>(1 Apol. 61, 66)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Trinitarian Theology</span><span class="doctrine-desc">Describes baptism in the name of the Trinity and the distinct persons of the Godhead <em>(1 Apol. 61)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Sunday Liturgy</span><span class="doctrine-desc">Provides the earliest detailed description of the Sunday liturgy: readings, homily, prayers, Eucharist <em>(1 Apol. 67)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Logos Christology</span><span class="doctrine-desc">Christ is the pre-existent Logos/Word of God made flesh <em>(1 Apol. 63; Dial. 128)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Virgin Birth</span><span class="doctrine-desc">Affirms Christ born of the Virgin Mary <em>(1 Apol. 33; Dial. 43, 84)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Free Will</span><span class="doctrine-desc">Defends human free will and moral responsibility against fatalism <em>(1 Apol. 43; 2 Apol. 7)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">OT Typology</span><span class="doctrine-desc">Extensive use of Old Testament types and prophecies fulfilled in Christ <em>(Dial. passim)</em></span></div>
+      </div>
+    </div>
+
+    <!-- 10. Irenaeus -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Irenaeus of Lyons</span>
+          <span class="father-dates">c. 130–c. 202 AD</span>
+          <span class="father-writings">2 major works (+ fragments)</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">2 major works: <em>Against Heresies</em> (Adversus Haereses) and <em>Demonstration of the Apostolic Preaching</em></div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Apostolic Succession</span><span class="doctrine-desc">Bishops in succession from the apostles guarantee the "certain gift of truth"; lists the succession of Roman bishops from Peter <em>(Adv. Haer. 3.3–4)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Primacy of Rome</span><span class="doctrine-desc">"It is a matter of necessity that every church should agree with this church [Rome], on account of its preeminent authority" <em>(Adv. Haer. 3.3.2)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Real Presence</span><span class="doctrine-desc">The bread and wine "receives the Word of God and becomes the Eucharist, the body of Christ" <em>(Adv. Haer. 4.18.5; 5.2.2–3)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Sacred Tradition</span><span class="doctrine-desc">The Church's tradition is the authoritative standard for interpreting Scripture <em>(Adv. Haer. 1.10; 3.2–4)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Canon of Scripture</span><span class="doctrine-desc">Affirmed four and only four canonical Gospels <em>(Adv. Haer. 3.11.8)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Mary as New Eve</span><span class="doctrine-desc">Mary's obedience reverses Eve's disobedience; the knot of Eve's disobedience untied by Mary's faith <em>(Adv. Haer. 3.22.4; 5.19.1)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Recapitulation</span><span class="doctrine-desc">Christ "recapitulates" all of human history and experience to redeem it <em>(Adv. Haer. 3.18.1; 5.21.1)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Baptismal Regeneration</span><span class="doctrine-desc">Baptism gives rebirth to God <em>(Dem. 3; Adv. Haer. 3.17.1)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Trinity</span><span class="doctrine-desc">One God in three persons; the Son and Spirit are the "two hands of God" <em>(Adv. Haer. 4.20.1; 5.6.1)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Anti-Gnosticism</span><span class="doctrine-desc">The material world is good; one God created all things; Old and New Testaments are unified <em>(Adv. Haer. 1–5 passim)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Physical Resurrection</span><span class="doctrine-desc">The flesh will rise, nourished by the Eucharist <em>(Adv. Haer. 5.2.2–3)</em></span></div>
+      </div>
+    </div>
+
+    <!-- 11. Tatian -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Tatian the Assyrian</span>
+          <span class="father-dates">c. 120–c. 180 AD</span>
+          <span class="father-writings">1 extant apology (+ Diatessaron fragments)</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">1 apology: <em>Address to the Greeks (Oratio ad Graecos)</em>; the <em>Diatessaron</em> (Gospel harmony) survives in fragments and quotations</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Monotheism / Creation</span><span class="doctrine-desc">Defends the one Creator God against paganism <em>(Orat. 4–5)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Logos Theology</span><span class="doctrine-desc">The Word was begotten of the Father before creation <em>(Orat. 5)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Bodily Resurrection</span><span class="doctrine-desc">Affirms bodily resurrection <em>(Orat. 6)</em></span></div>
+        <div class="note-box"><strong>Note:</strong> Tatian later fell into Encratite heresy (extreme asceticism), and his later views were condemned. His orthodox writings are still catalogued here.</div>
+      </div>
+    </div>
+
+    <!-- 12. Athenagoras -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Athenagoras of Athens</span>
+          <span class="father-dates">c. 133–c. 190 AD</span>
+          <span class="father-writings">2 works</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value"><em>Legatio pro Christianis</em> (A Plea for the Christians) and <em>On the Resurrection of the Dead</em></div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Trinity</span><span class="doctrine-desc">Clear articulation: "The Father, the Son, and the Holy Spirit… united in power and distinguished in rank" <em>(Leg. 10, 12, 24)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Monotheism</span><span class="doctrine-desc">Philosophical defense of one God against polytheism <em>(Leg. 4–10)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Bodily Resurrection</span><span class="doctrine-desc">An entire treatise arguing for the physical resurrection of the flesh <em>(De Res.)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Christian Morality</span><span class="doctrine-desc">Defends Christians against charges of immorality; condemns abortion <em>(Leg. 35)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Indissoluble Marriage</span><span class="doctrine-desc">Calls remarriage "respectable adultery" <em>(Leg. 33)</em></span></div>
+      </div>
+    </div>
+
+    <!-- 13. Theophilus of Antioch -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Theophilus of Antioch</span>
+          <span class="father-dates">c. 120–c. 185 AD</span>
+          <span class="father-writings">1 work in 3 books (Ad Autolycum)</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">1 work in 3 books: <em>To Autolycus (Ad Autolycum)</em></div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Trinity</span><span class="doctrine-desc">First known writer to use the Greek word "Trias" (Trinity) for the Godhead <em>(Autol. 2.15)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Creation Ex Nihilo</span><span class="doctrine-desc">God created the world from nothing <em>(Autol. 1.4; 2.4)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Inspiration of Scripture</span><span class="doctrine-desc">The prophets spoke by the Holy Spirit <em>(Autol. 2.9)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Bodily Resurrection</span><span class="doctrine-desc">Affirms the resurrection of the flesh <em>(Autol. 1.13)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Monotheism</span><span class="doctrine-desc">Defends the one God against pagan mythology <em>(Autol. 1–3)</em></span></div>
+      </div>
+    </div>
+
+    <!-- 14. Clement of Alexandria -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Clement of Alexandria</span>
+          <span class="father-dates">c. 150–c. 215 AD</span>
+          <span class="father-writings">4 major extant works (+ fragments)</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">4 major works: <em>Protrepticus</em>, <em>Paedagogus</em>, <em>Stromata</em>, <em>Quis Dives Salvetur</em> (+ fragments)</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Deity of Christ</span><span class="doctrine-desc">Calls Christ God and the Word Incarnate <em>(Protr. 1; Paed. 1.2)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Faith &amp; Reason</span><span class="doctrine-desc">Philosophy is a "schoolmaster" leading to Christ, paralleling the Law for the Jews <em>(Strom. 1.5)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Allegorical Exegesis</span><span class="doctrine-desc">Pioneered the tradition of spiritual/allegorical reading of Sacred Scripture <em>(Strom. 5–6)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Baptismal Regeneration</span><span class="doctrine-desc">Baptism illuminates and regenerates the believer <em>(Paed. 1.6)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Eucharist</span><span class="doctrine-desc">Describes the Eucharist as Christ's flesh and blood that nourishes the soul <em>(Paed. 1.6; 2.2)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Theosis / Divinization</span><span class="doctrine-desc">The goal of Christian life is to become like God <em>(Protr. 11; Strom. 7.10)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Apostolic Tradition</span><span class="doctrine-desc">References secret apostolic traditions preserved in the Church <em>(Strom. 1.1; 6.7)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Prayer for the Dead</span><span class="doctrine-desc">The righteous dead may undergo purification; prayers offered on their behalf <em>(Strom. 7.6)</em></span></div>
+      </div>
+    </div>
+
+    <!-- 15. Tertullian -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Tertullian</span>
+          <span class="father-dates">c. 155–c. 220 AD</span>
+          <span class="father-writings">31 extant treatises (+ fragments)</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">31 extant treatises including <em>Apology</em>, <em>Against Praxeas</em>, <em>Prescription Against Heretics</em>, <em>On Baptism</em>, <em>On the Resurrection of the Flesh</em>, and many others</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Trinity</span><span class="doctrine-desc">Coined the term "Trinitas" and the formula "one substance, three persons" <em>(Adv. Prax. 2, 25–26)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Apostolic Succession</span><span class="doctrine-desc">The "prescription" argument: only churches with apostolic succession hold the true faith <em>(Praescr. 20–21, 32, 36)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Primacy of Rome</span><span class="doctrine-desc">Points to Rome as the preeminent apostolic church where Peter and Paul taught and died <em>(Praescr. 36)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Real Presence</span><span class="doctrine-desc">"The flesh feeds on the body and blood of Christ" <em>(De Res. Carn. 8)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Baptismal Regeneration</span><span class="doctrine-desc">Wrote an entire treatise on baptism; the flesh is washed so the soul is cleansed <em>(De Bapt.)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Confirmation</span><span class="doctrine-desc">References the laying on of hands after baptism for receiving the Holy Spirit <em>(De Bapt. 8)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Original Sin</span><span class="doctrine-desc">Taught a form of the transmission of sin from Adam <em>(De Anima 40–41)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Rule of Faith</span><span class="doctrine-desc">Summarized the apostolic "rule of faith" similar to the later Apostles' Creed <em>(Praescr. 13)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Sign of the Cross</span><span class="doctrine-desc">Christians sign themselves with the cross as a matter of tradition <em>(De Cor. 3)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Prayers for the Dead</span><span class="doctrine-desc">References annual offerings and prayers on behalf of the deceased <em>(De Cor. 3; De Monog. 10)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Penance / Confession</span><span class="doctrine-desc">Discusses public penance for post-baptismal sin <em>(De Paen. 9–10)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Mary &amp; New Eve</span><span class="doctrine-desc">Affirms the Virgin Birth and Mary as the New Eve <em>(De Carn. Chr. 17)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Bodily Resurrection</span><span class="doctrine-desc">Wrote an entire treatise defending the physical resurrection <em>(De Res. Carn.)</em></span></div>
+        <div class="note-box"><strong>Note:</strong> Later fell into the Montanist movement (c. 207+), but his pre-Montanist and many Montanist-period works remain doctrinally consistent with Catholic teaching on most points.</div>
+      </div>
+    </div>
+
+    <!-- 16. Hippolytus -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Hippolytus of Rome</span>
+          <span class="father-dates">c. 170–c. 235 AD</span>
+          <span class="father-writings">5+ major extant works (+ fragments)</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">Multiple major works: <em>Apostolic Tradition</em>, <em>Refutation of All Heresies</em>, <em>Against Noetus</em>, <em>Commentary on Daniel</em>, and others</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Apostolic Liturgy</span><span class="doctrine-desc">His <em>Apostolic Tradition</em> preserves the earliest known Eucharistic prayer and ordination rites for bishops, priests, and deacons</span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Real Presence</span><span class="doctrine-desc">Speaks of "the body and the blood" through which the Church is saved <em>(Apost. Trad.)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Trinity</span><span class="doctrine-desc">The Logos is God from God; Father, Son, and Holy Spirit are distinct yet one <em>(Ref. 10.29; Ag. Noetus 14, 17)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Deity of Christ</span><span class="doctrine-desc">"The Logos alone of this God is from God himself; wherefore also the Logos is God" <em>(Ref. 10.29)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Baptismal Regeneration</span><span class="doctrine-desc">References baptism as the laver of regeneration fulfilling Titus 3:5 <em>(Apost. Trad.)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Confirmation</span><span class="doctrine-desc">Describes anointing with oil and laying on of hands after baptism <em>(Apost. Trad. 21–22)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Holy Orders</span><span class="doctrine-desc">Detailed ordination rites for bishops, priests, and deacons <em>(Apost. Trad. 2–8)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Eucharistic Sacrifice</span><span class="doctrine-desc">The Eucharistic prayer is offered as a sacrifice; references to "offering" <em>(Apost. Trad. 4)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Catechumenate</span><span class="doctrine-desc">Describes the process of becoming Christian including exorcisms and instruction <em>(Apost. Trad. 15–21)</em></span></div>
+      </div>
+    </div>
+
+    <!-- 17. Origen -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Origen of Alexandria</span>
+          <span class="father-dates">c. 185–c. 253 AD</span>
+          <span class="father-writings">Hundreds of works (dozens survive)</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">Hundreds of works produced; dozens survive in full or in part: <em>On First Principles (De Principiis)</em>, <em>Against Celsus (Contra Celsum)</em>, <em>On Prayer (De Oratione)</em>, and extensive biblical homilies and commentaries</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Trinity</span><span class="doctrine-desc">Affirmed three distinct divine persons, the eternal generation of the Son <em>(De Princ. 1.2)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Deity of Christ</span><span class="doctrine-desc">The Son is eternally begotten, not created; true God from true God <em>(De Princ. 1.2.2–10; Contra Cels. 5.11)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Allegorical Exegesis</span><span class="doctrine-desc">Pioneered the threefold sense of Scripture: literal, moral, and spiritual/allegorical <em>(De Princ. 4.2–3)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Baptismal Regeneration</span><span class="doctrine-desc">Taught that baptism remits sins and regenerates the soul <em>(Hom. on Luke 14; Hom. on Romans 5.9)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Real Presence</span><span class="doctrine-desc">"The bread which God the Word acknowledges as his own body is the Word which nourishes souls" <em>(Hom. on Num. 7.2)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Eucharistic Sacrifice</span><span class="doctrine-desc">Calls the Eucharist a "memorial of that first and ever-memorable table" offered sacrificially</span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Ordained Priesthood</span><span class="doctrine-desc">Distinguishes the ordained priesthood from the laity <em>(Hom. on Lev. 6.3)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Prayer for the Dead</span><span class="doctrine-desc">References purification after death and prayers offered on behalf of the deceased <em>(De Princ.)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Intercession of Saints</span><span class="doctrine-desc">The saints in heaven pray for those on earth <em>(De Orat. 11; Contra Cels. 8.64)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Free Will</span><span class="doctrine-desc">Strong defender of human free will and moral responsibility <em>(De Princ. 3.1)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Penance / Confession</span><span class="doctrine-desc">Multiple means of obtaining forgiveness of sins, including confession to a priest <em>(Hom. on Lev. 2.4)</em></span></div>
+        <div class="note-box"><strong>Note:</strong> Some of Origen's speculative views (e.g., pre-existence of souls, apokatastasis) were later condemned, but the majority of his theological work is consistent with Catholic orthodoxy.</div>
+      </div>
+    </div>
+
+    <!-- 18. Cyprian -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Cyprian of Carthage</span>
+          <span class="father-dates">c. 200–258 AD</span>
+          <span class="father-writings">~13 treatises + 81 letters</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">~13 treatises (including <em>On the Unity of the Church</em>, <em>On the Lapsed</em>) + 81 letters</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Unity of the Church</span><span class="doctrine-desc">"He can no longer have God for his father, who has not the Church for his mother" <em>(De Unit. 6)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Primacy of Peter</span><span class="doctrine-desc">Peter received the keys first to demonstrate the Church's unity; the "Chair of Peter" is the source of unity <em>(De Unit. 4; Ep. 59.14)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Extra Ecclesiam Nulla Salus</span><span class="doctrine-desc">Salvation is found within the visible Catholic Church <em>(De Unit. 6; Ep. 73.21)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Eucharistic Sacrifice</span><span class="doctrine-desc">The priest "offers a true and full sacrifice in the Church to God the Father" <em>(Ep. 63)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Real Presence</span><span class="doctrine-desc">One who receives unworthily is "guilty of the body and blood of the Lord" <em>(De Lapsis 15–16)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Baptismal Regeneration</span><span class="doctrine-desc">Baptism remits sins; rebirth in Christ <em>(Ep. 64; 69; De Unit.)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Infant Baptism</span><span class="doctrine-desc">Explicitly argued that baptism should not be delayed even for infants <em>(Ep. 64)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Penance &amp; Reconciliation</span><span class="doctrine-desc">Detailed system for readmitting the "lapsed" through confession, penance, and absolution by the bishop <em>(De Lapsis)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Episcopacy</span><span class="doctrine-desc">The bishop is the center of each local church; the college of bishops governs the universal Church <em>(Ep. 33; 55; 66)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Prayers for the Dead</span><span class="doctrine-desc">References offering the Eucharistic sacrifice on behalf of the dead <em>(Ep. 1.2)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Martyrdom &amp; Merit</span><span class="doctrine-desc">Martyrdom as a "second baptism" in blood that remits sin <em>(Ep. 73.22)</em></span></div>
+      </div>
+    </div>
+
+    <!-- 19. Minucius Felix -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Minucius Felix</span>
+          <span class="father-dates">Late 2nd–Early 3rd century AD</span>
+          <span class="father-writings">1 work (Octavius)</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">1 work: the <em>Octavius</em> (a philosophical dialogue)</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Monotheism</span><span class="doctrine-desc">Philosophical defense of one God against paganism <em>(Oct. 17–18)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Providence &amp; Creation</span><span class="doctrine-desc">God's care for the world <em>(Oct. 17)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Bodily Resurrection</span><span class="doctrine-desc">Defends the resurrection of the body <em>(Oct. 34)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Christian Morality</span><span class="doctrine-desc">Defends Christian ethics against pagan accusations <em>(Oct. 31–38)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Rejection of Idolatry</span><span class="doctrine-desc">Refutation of pagan idol worship <em>(Oct. 20–27)</em></span></div>
+      </div>
+    </div>
+
+    <!-- 20. Novatian -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Novatian</span>
+          <span class="father-dates">c. 200–258 AD</span>
+          <span class="father-writings">2 major treatises + letters</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">2 major treatises: <em>On the Trinity (De Trinitate)</em>, <em>On Jewish Foods</em>; plus letters</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Trinity</span><span class="doctrine-desc">Wrote the first systematic Latin treatise on the Trinity; Father, Son, and Holy Spirit are one God <em>(De Trin.)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Deity of Christ</span><span class="doctrine-desc">Christ is true God and true man <em>(De Trin. 11–25)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Rule of Faith</span><span class="doctrine-desc">Appeals to the Church's traditional creedal formula <em>(De Trin. 1)</em></span></div>
+        <div class="note-box"><strong>Note:</strong> Novatian formed a schismatic rigorist sect denying the Church could readmit the lapsed, and was condemned. However, his Trinitarian theology was recognized as orthodox.</div>
+      </div>
+    </div>
+
+    <!-- 21. Gregory Thaumaturgus -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Gregory Thaumaturgus</span>
+          <span class="father-dates">c. 213–c. 270 AD</span>
+          <span class="father-writings">3–4 extant works + fragments</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">3–4 works including <em>Declaration of Faith</em>, <em>Canonical Epistle</em>, <em>Panegyric to Origen</em></div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Trinity</span><span class="doctrine-desc">His Creed contains a clear, orthodox Trinitarian formula: "One God, the Father… one Lord… one Holy Spirit" <em>(Decl. of Faith)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Deity of Christ</span><span class="doctrine-desc">The Son is "perfect from perfect" <em>(Decl. of Faith)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Church Discipline</span><span class="doctrine-desc">His Canonical Epistle establishes penitential canons for Christians who sinned during Gothic invasions</span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Miracles &amp; Intercession</span><span class="doctrine-desc">His "Thaumaturgus" (Wonder-Worker) title reflects Catholic belief in miraculous gifts continuing in the Church</span></div>
+      </div>
+    </div>
+
+    <!-- 22. Dionysius of Alexandria -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Dionysius of Alexandria</span>
+          <span class="father-dates">c. 190–264 AD</span>
+          <span class="father-writings">Fragments and letters only</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">Fragments and letters preserved in Eusebius, Athanasius, and other sources</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Trinity</span><span class="doctrine-desc">Defended the distinction of persons against Sabellianism; later clarified his language on the unity of substance after dialogue with Pope Dionysius of Rome</span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Authority of Rome</span><span class="doctrine-desc">Submitted his theology to the correction of Pope Dionysius, demonstrating Roman primacy in doctrinal disputes</span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Canon of Scripture</span><span class="doctrine-desc">Contributed to the discussion of the canonicity of the Book of Revelation</span></div>
+      </div>
+    </div>
+
+    <!-- 23. Methodius of Olympus -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Methodius of Olympus</span>
+          <span class="father-dates">c. 250–c. 311 AD</span>
+          <span class="father-writings">3 major extant works + fragments</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">3 major works: <em>Symposium (Banquet of the Ten Virgins)</em>, <em>On the Resurrection (De Resurrectione)</em>, <em>On Free Will</em></div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Bodily Resurrection</span><span class="doctrine-desc">Wrote against Origen's view, insisting on the physical resurrection of the same body <em>(De Res.)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Free Will</span><span class="doctrine-desc">Defended free will against determinism <em>(On Free Will)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Virginity &amp; Chastity</span><span class="doctrine-desc">Exalts virginity as the highest Christian calling; strong Marian overtones <em>(Symposium)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Mary &amp; the Church</span><span class="doctrine-desc">The Church is depicted as a virgin mother, paralleling Mary <em>(Symp. 8.5)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Anti-Origenism</span><span class="doctrine-desc">Opposed Origen's speculation on the pre-existence of souls while maintaining orthodox doctrine</span></div>
+      </div>
+    </div>
+
+    <!-- 24. Arnobius -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Arnobius of Sicca</span>
+          <span class="father-dates">c. 255–330 AD</span>
+          <span class="father-writings">1 work in 7 books (Against the Nations)</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">1 work in 7 books: <em>Against the Nations (Adversus Nationes)</em></div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Monotheism</span><span class="doctrine-desc">Attacks pagan polytheism and defends one supreme God <em>(Adv. Nat. 1–2)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Deity of Christ</span><span class="doctrine-desc">Christ is divine and performed miracles <em>(Adv. Nat. 1.38–43)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Rejection of Idolatry</span><span class="doctrine-desc">Extensive refutation of pagan idol worship <em>(Adv. Nat. 3–7)</em></span></div>
+        <div class="note-box"><strong>Note:</strong> Arnobius's theology is sometimes considered imprecise, as he was a recent convert; his work is primarily apologetic rather than systematic.</div>
+      </div>
+    </div>
+
+    <!-- 25. Lactantius -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Lactantius</span>
+          <span class="father-dates">c. 250–c. 325 AD</span>
+          <span class="father-writings">4 major works</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">4 major works: <em>Divine Institutes (Divinae Institutiones)</em>, <em>On the Wrath of God (De Ira Dei)</em>, <em>On the Deaths of the Persecutors</em>, <em>On the Workmanship of God</em></div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Monotheism &amp; Providence</span><span class="doctrine-desc">Defends one God who governs the world with justice and providence <em>(Div. Inst. 1–2)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Deity of Christ</span><span class="doctrine-desc">Affirms Christ as Son of God <em>(Div. Inst. 4)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Trinity</span><span class="doctrine-desc">Affirms Father and Son, though his Trinitarian language is sometimes imprecise <em>(Div. Inst. 4.29)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Bodily Resurrection</span><span class="doctrine-desc">Defends the resurrection and last judgment <em>(Div. Inst. 7)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Christian Ethics</span><span class="doctrine-desc">True justice and virtue come only through knowledge of the true God <em>(Div. Inst. 5–6)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Divine Wrath</span><span class="doctrine-desc">God righteously punishes the wicked <em>(De Ira Dei)</em></span></div>
+      </div>
+    </div>
+
+    <!-- 26. Julius Africanus -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Julius Africanus</span>
+          <span class="father-dates">c. 160–c. 240 AD</span>
+          <span class="father-writings">Fragments of 2 major works + 2 letters</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">Fragments of 2 major works (<em>Chronographiae</em>, <em>Kestoi</em>) + 2 letters (to Origen, to Aristides)</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Biblical Chronology</span><span class="doctrine-desc">Established a Christian chronology from Creation to his own time <em>(Chron.)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Canon of Scripture</span><span class="doctrine-desc">Contributed to canonical discussions, questioning the Susanna addition to Daniel in a letter to Origen</span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Gospel Harmony</span><span class="doctrine-desc">His letter to Aristides reconciles the genealogies of Christ in Matthew and Luke</span></div>
+      </div>
+    </div>
+
+    <!-- 27. Commodian -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Commodian</span>
+          <span class="father-dates">c. mid-3rd century AD</span>
+          <span class="father-writings">2 works</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">2 works: <em>Instructions (Instructiones)</em> and <em>Carmen Apologeticum</em> (apologetic poem)</div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Monotheism</span><span class="doctrine-desc">Poetic attacks on pagan gods and defense of one true God</span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Eschatology</span><span class="doctrine-desc">Millenarian expectations of Christ's second coming and earthly kingdom</span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Christian Ethics</span><span class="doctrine-desc">Exhortations to Christian moral living</span></div>
+      </div>
+    </div>
+
+    <!-- 28. Victorinus of Pettau -->
+    <div class="father-card" onclick="toggle(this)">
+      <div class="father-header">
+        <div class="father-header-left">
+          <span class="father-name">Victorinus of Pettau</span>
+          <span class="father-dates">c. 250–c. 304 AD</span>
+          <span class="father-writings">2 extant works + fragments</span>
+        </div>
+        <span class="father-toggle">▾</span>
+      </div>
+      <div class="father-body">
+        <div class="writings-label">Extant Writings</div>
+        <div class="writings-value">2 extant works: <em>Commentary on the Apocalypse</em>, <em>On the Creation of the World (De Fabrica Mundi)</em></div>
+        <div class="doctrines-label">Catholic Doctrines Taught</div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Millenarianism</span><span class="doctrine-desc">Taught a literal earthly millennium <em>(Comm. on Apoc.)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Fasting</span><span class="doctrine-desc">Defended fasting on Saturdays as a spiritual discipline <em>(De Fabrica Mundi)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Christological Interpretation</span><span class="doctrine-desc">The Apocalypse is interpreted with reference to Christ and the Church <em>(Comm. on Apoc.)</em></span></div>
+        <div class="doctrine-entry"><span class="doctrine-tag">Bodily Resurrection</span><span class="doctrine-desc">Affirms the physical resurrection <em>(Comm. on Apoc.)</em></span></div>
+      </div>
+    </div>
+
+  </div><!-- /fathers-section -->
+
+  <!-- Summary & Conclusions -->
+  <div class="summary-section">
+    <div class="summary-title">Summary &amp; Conclusions</div>
+
+    <div class="conclusion-item">
+      <span class="conclusion-num">1</span>
+      <span>The <strong>Real Presence of Christ in the Eucharist</strong> was taught from the very earliest post-apostolic writings — Ignatius (c. 110 AD), Justin Martyr (c. 155 AD), Irenaeus (c. 180 AD) — and was universally affirmed. <em>No ante-Nicene Father taught a merely symbolic view of the Eucharist</em>, which is the standard Protestant position.</span>
+    </div>
+    <div class="conclusion-item">
+      <span class="conclusion-num">2</span>
+      <span><strong>Baptismal regeneration</strong> — the belief that baptism truly remits sins and regenerates the soul — was universal. <em>No Father taught that baptism is a mere symbol or ordinance without saving efficacy.</em></span>
+    </div>
+    <div class="conclusion-item">
+      <span class="conclusion-num">3</span>
+      <span><strong>Apostolic succession</strong> and the hierarchical structure of bishop-presbyter-deacon was affirmed by Clement of Rome (c. 96 AD), Ignatius (c. 110 AD), Irenaeus, Tertullian, Cyprian, Hippolytus, and virtually all others. <em>No Father advocated for congregational self-governance without bishops.</em></span>
+    </div>
+    <div class="conclusion-item">
+      <span class="conclusion-num">4</span>
+      <span>The <strong>primacy of the Roman Church</strong> was recognized by Clement (who exercised it), Ignatius (who honored it), Irenaeus (who cited it as the standard), Cyprian (who referenced the "Chair of Peter"), and Dionysius of Alexandria (who submitted to it). <em>No Father denied Rome's preeminent role.</em></span>
+    </div>
+    <div class="conclusion-item">
+      <span class="conclusion-num">5</span>
+      <span><strong>Sacred Tradition</strong> was consistently upheld alongside Scripture as a source of Christian teaching. Irenaeus and Tertullian made this a central argument against heretics. <em>No Father advocated for sola scriptura</em> — which is a distinctly Protestant principle from the 16th century.</span>
+    </div>
+    <div class="conclusion-item">
+      <span class="conclusion-num">6</span>
+      <span>The <strong>Trinity</strong> — one God in three co-eternal, co-equal persons — was clearly taught by Theophilus, Athenagoras, Irenaeus, Tertullian, Hippolytus, Origen, Novatian, and Gregory Thaumaturgus. This directly <strong>contradicts Mormon doctrine</strong> of three separate gods and the Mormon teaching that God the Father has a physical body.</span>
+    </div>
+    <div class="conclusion-item">
+      <span class="conclusion-num">7</span>
+      <span><strong>Creation from nothing (<em>ex nihilo</em>)</strong> was explicitly taught by Theophilus, Irenaeus, Tertullian, Origen, and others, directly <strong>contradicting the Mormon belief</strong> in pre-existing eternal matter.</span>
+    </div>
+    <div class="conclusion-item">
+      <span class="conclusion-num">8</span>
+      <span><strong>Penance, confession of sins, prayers for the dead, the intercession of saints, and the exalted role of Mary</strong> were all attested in the ante-Nicene period — all Catholic distinctives rejected by most Protestant traditions.</span>
+    </div>
+    <div class="conclusion-item">
+      <span class="conclusion-num">9</span>
+      <span><em>No ante-Nicene Father taught the distinctly Protestant doctrines</em> of <strong>sola fide</strong> (justification by faith alone), <strong>sola scriptura</strong> (Scripture alone), total depravity without free will, or the "invisible church" theory.</span>
+    </div>
+    <div class="conclusion-item">
+      <span class="conclusion-num">10</span>
+      <span><em>No ante-Nicene Father taught any distinctly Mormon doctrine</em> such as: God having a physical body, a plurality of gods, pre-mortal existence of human spirits, temple rituals, a Great Apostasy eliminating all priesthood authority, or continuing public revelation through new prophets and scriptures.</span>
+    </div>
+
+    <div class="methodology">
+      <strong>Note on Methodology and Sources:</strong> This survey draws on the standard <em>Ante-Nicene Fathers</em> collection (Roberts &amp; Donaldson, 10 volumes) as well as modern critical editions and translations. The doctrinal identifications reference specific works and chapter/section numbers where possible. The term "Catholic doctrines" refers to teachings held by the Catholic Church (and in most cases also the Eastern Orthodox churches) that distinguish these traditions from Protestant and Latter-day Saint (Mormon) theology. Some Fathers (Tertullian, Origen, Tatian) held certain views later considered heterodox; these are noted, but their orthodox teachings are still catalogued. Full texts are available at the Christian Classics Ethereal Library (ccel.org), New Advent (newadvent.org), or the original ANF volumes.
+    </div>
+  </div>
+
+  <div class="footer-ornament">✦ ✦ ✦</div>
+</div>
+
+<script>
+  function toggle(card) {
+    card.classList.toggle('open');
+  }
+  function expandAll() {
+    document.querySelectorAll('.father-card').forEach(c => c.classList.add('open'));
+  }
+  function collapseAll() {
+    document.querySelectorAll('.father-card').forEach(c => c.classList.remove('open'));
+  }
+</script>
+</body>
+</html>
