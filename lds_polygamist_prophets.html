@@ -3,10 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Polygamist Prophets — LDS Presidents & Their Wives</title>
+<title>The Polygamist Prophets — LDS Presidents & Their Wives | Latter-Day to Eternal Church</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#0F0F0F;color:#E8E0D4;font-family:Georgia,serif;line-height:1.6}
+
+/* ─── SITE NAV ─── */
+.site-nav {
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(13,7,3,0.98), rgba(13,7,3,0.93));
+  border-bottom: 1px solid #8B6914;
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  font-family: 'Cinzel', serif;
+}
+.site-nav a.nav-home {
+  font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: #E8D08A; text-decoration: none; transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: #C9A84C; }
+.site-nav .nav-back {
+  font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: #C9A84C; text-decoration: none;
+  border: 1px solid rgba(201,168,76,0.35); padding: 0.4rem 1.1rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+.site-nav .nav-back:hover { background: rgba(201,168,76,0.1); border-color: #C9A84C; }
+.site-nav .nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.site-nav .nav-links a {
+  font-size: 0.72rem; letter-spacing: 0.13em; text-transform: uppercase;
+  color: #C5B07A; text-decoration: none; transition: color 0.2s;
+}
+.site-nav .nav-links a:hover { color: #E8D08A; }
 
 .hero{background:linear-gradient(135deg,#1A0505 0%,#2A0808 50%,#150A15 100%);padding:48px 24px 36px;text-align:center}
 .hero h1{font-size:2.2em;font-weight:700;letter-spacing:-0.5px;line-height:1.2}
@@ -98,6 +130,17 @@ body{background:#0F0F0F;color:#E8E0D4;font-family:Georgia,serif;line-height:1.6}
 </style>
 </head>
 <body>
+
+<nav class="site-nav">
+  <a href="index.html" class="nav-home">Latter-Day to Eternal Church</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="articles.html">Articles</a></li>
+    <li><a href="topics.html">Topics</a></li>
+    <li><a href="resources.html">Resources</a></li>
+  </ul>
+  <a href="articles.html" class="nav-back">&#8592; All Articles</a>
+</nav>
 
 <div class="hero">
   <h1>The <span>Polygamist Prophets</span></h1>
