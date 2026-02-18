@@ -478,9 +478,49 @@
     .score-grid { grid-template-columns: 1fr; }
     .consensus-grid { grid-template-columns: 1fr; }
   }
+
+/* ─── SITE NAV BAR ─────────────────────────────────────── */
+.site-nav {
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(13,7,3,0.98), rgba(13,7,3,0.93));
+  border-bottom: 1px solid #8B6914;
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  font-family: 'Cinzel', serif;
+}
+.site-nav a.nav-home {
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #E8D08A;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: #C9A84C; }
+.site-nav .nav-back {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #C9A84C;
+  text-decoration: none;
+  border: 1px solid rgba(201,168,76,0.35);
+  padding: 0.4rem 1.1rem;
+  transition: background 0.2s, color 0.2s;
+}
+.site-nav .nav-back:hover {
+  background: rgba(201,168,76,0.12);
+  color: #E8D08A;
+}
+
 </style>
 </head>
 <body>
+<nav class="site-nav">
+  <a class="nav-home" href="index.html">Latter-Day to Eternal Church</a>
+  <a class="nav-back" href="index.html">&#8592; Back to Home</a>
+</nav>
+
 
 <div class="page">
   <span class="corner tl">✦</span>
