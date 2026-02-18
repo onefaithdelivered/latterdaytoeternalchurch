@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Polygamist Prophets — LDS Presidents & Their Wives</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0F0F0F;color:#E8E0D4;font-family:Georgia,serif;line-height:1.6}
+
+.hero{background:linear-gradient(135deg,#1A0505 0%,#2A0808 50%,#150A15 100%);padding:48px 24px 36px;text-align:center}
+.hero h1{font-size:2.2em;font-weight:700;letter-spacing:-0.5px;line-height:1.2}
+.hero h1 span{color:#C5A55A}
+.hero .sub{color:rgba(232,224,212,0.5);font-size:0.95em;margin-top:8px;font-style:italic;max-width:600px;margin-left:auto;margin-right:auto}
+.hero .verse{color:#C5A55A;font-size:0.8em;margin-top:16px;font-style:italic;opacity:0.7}
+
+.legend{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;padding:16px 20px;background:#181818;border-bottom:1px solid #2A2A2A;font-size:0.72em;letter-spacing:0.5px;text-transform:uppercase;font-family:monospace}
+.legend-item{display:flex;align-items:center;gap:6px}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+
+.container{max-width:1000px;margin:0 auto;padding:32px 16px 60px}
+
+.card{background:#161616;border:1px solid #222;border-radius:8px;margin-bottom:16px;overflow:hidden;transition:all 0.2s}
+.card.open{background:#1E1E1E;border-color:#3A3A3A}
+.card-header{padding:20px 24px;cursor:pointer;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.card-header:hover{background:rgba(255,255,255,0.02)}
+
+.wife-count{flex:0 0 auto}
+.wife-count .num{font-size:2.4em;font-weight:900;color:#C5A55A;font-family:monospace;line-height:1}
+.wife-count .lbl{font-size:0.65em;color:rgba(232,224,212,0.4);text-transform:uppercase;letter-spacing:1px;font-family:monospace}
+
+.prophet-info{flex:1;min-width:150px}
+.prophet-info .name{font-size:1.3em;font-weight:700}
+.prophet-info .meta{font-size:0.8em;color:rgba(232,224,212,0.5)}
+
+.mini-dots{display:flex;flex-wrap:wrap;gap:3px;flex:0 0 auto;max-width:280px}
+.mini-dot{width:10px;height:10px;border-radius:50%;opacity:0.8}
+.mini-dot.married-ring{border:2px solid #FFF;box-sizing:border-box}
+
+.quick-stats{display:flex;gap:16px;font-size:0.75em;font-family:monospace;color:rgba(232,224,212,0.5);flex:0 0 auto}
+.quick-stats .teen-ct{color:#EA580C}
+.quick-stats .mar-ct{color:#DC2626}
+
+.arrow{font-size:1.2em;color:rgba(232,224,212,0.3);flex:0 0 auto;transition:transform 0.2s}
+.card.open .arrow{transform:rotate(180deg)}
+
+.detail{padding:0 24px 24px;display:none}
+.card.open .detail{display:block}
+.divider{height:1px;background:#2A2A2A;margin-bottom:20px}
+
+.stats-row{display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap;font-size:0.8em}
+.stat-box{background:#222;padding:10px 16px;border-radius:6px}
+.stat-box .val{font-family:monospace;font-size:1.6em;font-weight:700}
+.stat-box .lbl{color:rgba(232,224,212,0.4);font-size:0.85em}
+
+.chart-label{font-size:0.7em;color:rgba(232,224,212,0.4);text-transform:uppercase;letter-spacing:1px;font-family:monospace;margin-bottom:8px}
+.chart-wrapper{position:relative;padding-bottom:24px}
+.axis-row{display:flex;justify-content:space-between;margin-bottom:4px;font-size:0.65em;font-family:monospace;color:rgba(232,224,212,0.3)}
+.chart-area{position:relative;background:#1A1A1A;border-radius:4px;overflow:hidden}
+.grid-line{position:absolute;top:0;bottom:0;width:1px;background:#252525}
+.age18-line{position:absolute;top:0;bottom:0;width:1px;background:rgba(220,38,38,0.4);z-index:2}
+.age18-label{position:absolute;bottom:0;transform:translateX(-50%);font-size:0.6em;font-family:monospace;color:#DC2626}
+
+.bar-row{position:relative;height:20px;margin-bottom:2px;cursor:pointer}
+.bar{position:absolute;left:0;top:2px;height:16px;border-radius:0 3px 3px 0;opacity:0.75;transition:opacity 0.15s}
+.bar-row:hover .bar{opacity:1}
+.bar-ring{position:absolute;right:4px;top:2px;font-size:0.7em;line-height:16px}
+.tooltip{position:absolute;top:0;background:#333;color:#E8E0D4;padding:3px 8px;border-radius:4px;font-size:0.72em;font-family:monospace;white-space:nowrap;z-index:10;pointer-events:none;display:none;border:1px solid #555}
+.bar-row:hover .tooltip{display:block}
+
+.summary{background:linear-gradient(135deg,#1A0505,#200808);border:1px solid #3A2020;border-radius:8px;padding:32px 24px;text-align:center;margin-top:32px}
+.summary h2{color:#C5A55A;font-size:1.4em;margin-bottom:16px}
+.summary-grid{display:flex;justify-content:center;flex-wrap:wrap;gap:24px;margin-bottom:20px}
+.summary-stat{background:rgba(255,255,255,0.04);padding:16px 24px;border-radius:6px;min-width:120px}
+.summary-stat .num{color:#C5A55A;font-family:monospace;font-size:2em;font-weight:900}
+.summary-stat .lbl{color:rgba(232,224,212,0.4);font-size:0.75em;margin-top:4px}
+.summary p{color:rgba(232,224,212,0.5);font-size:0.85em;font-style:italic;max-width:600px;margin:0 auto}
+
+.closing{text-align:center;margin-top:40px;padding:0 20px}
+.closing .verse{color:#C5A55A;font-style:italic;font-size:1.05em;line-height:1.7;max-width:500px;margin:0 auto}
+.closing cite{color:rgba(232,224,212,0.4);font-size:0.85em;display:block;margin-top:8px;font-style:normal}
+
+.sources{margin-top:40px;padding:20px 24px;background:#161616;border-radius:6px;border:1px solid #222}
+.sources p{color:rgba(232,224,212,0.3);font-size:0.7em;line-height:1.7}
+.sources strong{color:rgba(232,224,212,0.5)}
+
+@media(max-width:768px){
+  .hero h1{font-size:1.6em}
+  .card-header{gap:12px}
+  .wife-count .num{font-size:1.8em}
+  .prophet-info .name{font-size:1.1em}
+  .mini-dots{display:none}
+  .quick-stats{font-size:0.65em;gap:8px}
+  .stats-row{gap:8px}
+  .stat-box{padding:8px 12px}
+  .summary-grid{gap:12px}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>The <span>Polygamist Prophets</span></h1>
+  <p class="sub">Every wife of the first six LDS Church presidents, visualized by age at marriage</p>
+  <p class="verse">"The two shall become one flesh." — Matthew 19:5</p>
+</div>
+
+<div class="legend" id="legend"></div>
+
+<div class="container" id="app"></div>
+
+<script>
+const prophets = [
+  {name:"Joseph Smith",title:"1st President",years:"1830–1844",born:1805,totalWives:34,children:0,note:"0 children from plural wives",
+   wives:[{age:14,s:"single",n:"Helen Mar Kimball"},{age:14,s:"single",n:"Nancy M. Winchester"},{age:16,s:"single",n:"Fanny Alger"},{age:16,s:"single",n:"Flora Ann Woodworth"},{age:17,s:"single",n:"Sarah Ann Whitney"},{age:17,s:"single",n:"Lucy Walker"},{age:17,s:"single",n:"Sarah Lawrence"},{age:19,s:"single",n:"Emily Dow Partridge"},{age:19,s:"single",n:"Maria Lawrence"},{age:19,s:"single",n:"Melissa Lott"},{age:20,s:"married",n:"Zina Huntington Jacobs"},{age:22,s:"single",n:"Eliza Partridge"},{age:23,s:"married",n:"Sylvia Sessions Lyon"},{age:23,s:"married",n:"Mary E.R. Lightner"},{age:26,s:"single",n:"Louisa Beaman"},{age:27,s:"married",n:"Marinda N. Johnson Hyde"},{age:27,s:"single",n:"Olive Frost"},{age:29,s:"married",n:"Elvira Cowles Holmes"},{age:30,s:"single",n:"Almera W. Johnson"},{age:30,s:"single",n:"Hannah Ells"},{age:31,s:"married",n:"Presendia Huntington Buell"},{age:32,s:"single",n:"Desdemona Fullmer"},{age:33,s:"single",n:"Agnes Coolbrith"},{age:33,s:"married",n:"Ruth Vose Sayers"},{age:38,s:"single",n:"Eliza R. Snow"},{age:41,s:"married",n:"Lucinda P.M. Harris"},{age:47,s:"married",n:"Patsy Bartlett Sessions"},{age:50,s:"single",n:"Elizabeth Davis Durfee"},{age:53,s:"married",n:"Sarah K. Cleveland"},{age:56,s:"single",n:"Fanny Young"},{age:58,s:"single",n:"Rhoda Richards"}]},
+  {name:"Brigham Young",title:"2nd President",years:"1847–1877",born:1801,totalWives:55,children:57,note:"children by 16 wives",
+   wives:[{age:15,s:"single",n:"Clarissa C. Decker"},{age:16,s:"single",n:"Elizabeth Fairchild"},{age:16,s:"single",n:"Ellen Rockwood"},{age:16,s:"single",n:"Lucy Bigelow"},{age:17,s:"single",n:"Diana Chase"},{age:18,s:"single",n:"Emmeline Free"},{age:18,s:"single",n:"Mary Ann Turley"},{age:19,s:"single",n:"Harriet E. Cook"},{age:19,s:"single",n:"Mary Jane Bigelow"},{age:19,s:"single",n:"Martha Bowker"},{age:20,s:"single",n:"Lucy Ann Decker"},{age:20,s:"single",n:"Naamah K.J. Carter"},{age:22,s:"single",n:"Amelia Folsom"},{age:22,s:"single",n:"Mary Van Cott"},{age:23,s:"widow",n:"Emily Partridge"},{age:24,s:"single",n:"Harriet Barney"},{age:25,s:"widow",n:"Margaret Alley"},{age:26,s:"widow",n:"Louisa Beaman"},{age:27,s:"widow",n:"Jane Terry"},{age:28,s:"married",n:"Augusta Adams"},{age:29,s:"widow",n:"Margaret Pierce"},{age:30,s:"single",n:"Mary Ann Angel"},{age:31,s:"widow",n:"Harriet Cook"},{age:33,s:"widow",n:"Eliza Burgess"},{age:34,s:"married",n:"Zina D. Huntington"},{age:36,s:"widow",n:"Clarissa Ross"},{age:38,s:"widow",n:"Eliza R. Snow"},{age:39,s:"widow",n:"Susannah Snively"},{age:42,s:"widow",n:"Mary Oldfield"},{age:47,s:"widow",n:"Ann Eliza Webb"},{age:53,s:"single",n:"Lydia Farnsworth"},{age:56,s:"widow",n:"Hannah T. King"}]},
+  {name:"John Taylor",title:"3rd President",years:"1880–1887",born:1808,totalWives:7,children:35,note:"wrote 1886 revelation defending polygamy",
+   wives:[{age:17,s:"single",n:"Josephine Roueche"},{age:20,s:"single",n:"Mary Ann Oakley"},{age:23,s:"single",n:"Sophia Whitaker"},{age:26,s:"single",n:"Harriet Whitaker"},{age:36,s:"single",n:"Leonora Cannon"},{age:36,s:"widow",n:"Elizabeth Kaighin"},{age:56,s:"widow",n:"Jane Ballantyne"}]},
+  {name:"Wilford Woodruff",title:"4th President",years:"1889–1898",born:1807,totalWives:10,children:33,note:"issued 1890 Manifesto ending polygamy",
+   wives:[{age:15,s:"single",n:"Emma Smith (Smoot)"},{age:17,s:"single",n:"Mary C. Jackson"},{age:20,s:"single",n:"Sarah Brown"},{age:24,s:"single",n:"Sarah Delight Stocking"},{age:26,s:"single",n:"Eudora L. Young"},{age:27,s:"single",n:"Mary G. Webster"},{age:30,s:"single",n:"Phebe W. Carter"},{age:33,s:"widow",n:"Hannah T. Smith"},{age:33,s:"single",n:"Delight Empey"},{age:36,s:"single",n:"Sarah E. Hanks"}]},
+  {name:"Lorenzo Snow",title:"5th President",years:"1898–1901",born:1814,totalWives:9,children:42,note:"imprisoned 11 months for bigamy",
+   wives:[{age:15,s:"single",n:"Sarah E. Jensen"},{age:16,s:"single",n:"Mary Elizabeth Houtz"},{age:17,s:"single",n:"Phebe A. Woodruff"},{age:18,s:"single",n:"Eleanor Houtz"},{age:21,s:"single",n:"Harriet Amelia Squires"},{age:22,s:"single",n:"Sarah A. Prichard"},{age:24,s:"single",n:"Mary Adaline Goddard"},{age:25,s:"single",n:"Charlotte Squires"},{age:26,s:"single",n:"Hannah M. Goddard"}]},
+  {name:"Joseph F. Smith",title:"6th President",years:"1901–1918",born:1838,totalWives:6,children:48,note:"issued 1904 Second Manifesto",
+   wives:[{age:16,s:"single",n:"Julina Lambson"},{age:17,s:"single",n:"Edna Lambson"},{age:17,s:"single",n:"Alice Ann Kimball"},{age:20,s:"single",n:"Mary T. Schwartz"},{age:22,s:"single",n:"Levira A. Smith"},{age:25,s:"single",n:"Sarah E. Richards"}]}
+];
+
+function ageColor(a){
+  if(a<=15) return "#DC2626";
+  if(a<=17) return "#EA580C";
+  if(a<=19) return "#D97706";
+  if(a<=25) return "#65A30D";
+  if(a<=35) return "#0891B2";
+  if(a<=45) return "#6366F1";
+  return "#9333EA";
+}
+
+function statusLabel(s){return s==="married"?"(already married)":s==="widow"?"(widow)":"";}
+
+// Build legend
+const legendEl = document.getElementById("legend");
+const legendItems = [
+  {l:"14–15",c:"#DC2626"},{l:"16–17",c:"#EA580C"},{l:"18–19",c:"#D97706"},
+  {l:"20–25",c:"#65A30D"},{l:"26–35",c:"#0891B2"},{l:"36–45",c:"#6366F1"},{l:"46+",c:"#9333EA"}
+];
+legendItems.forEach(i=>{
+  legendEl.innerHTML += `<div class="legend-item"><div class="legend-dot" style="background:${i.c}"></div><span style="color:rgba(232,224,212,0.6)">${i.l} yrs</span></div>`;
+});
+legendEl.innerHTML += `<div class="legend-item"><span>💍</span><span style="color:rgba(232,224,212,0.6)">Already married</span></div>`;
+
+// Build cards
+const app = document.getElementById("app");
+let openCard = null;
+
+prophets.forEach((p,pi) => {
+  const sorted = [...p.wives].sort((a,b)=>a.age-b.age);
+  const teens = sorted.filter(w=>w.age<20).length;
+  const married = sorted.filter(w=>w.s==="married").length;
+  const youngest = sorted[0]?.age || 0;
+
+  const card = document.createElement("div");
+  card.className = "card";
+  card.id = "card-"+pi;
+
+  // Mini dots HTML
+  let dotsHtml = sorted.map(w=>{
+    const ring = w.s==="married"?" married-ring":"";
+    return `<div class="mini-dot${ring}" style="background:${ageColor(w.age)}"></div>`;
+  }).join("");
+
+  // Bar chart HTML
+  const chartH = sorted.length * 22;
+  const gridLines = [10,20,30,40,50,60].map(a=>`<div class="grid-line" style="left:${((a-10)/50)*100}%"></div>`).join("");
+  const age18pos = ((18-10)/50)*100;
+
+  let barsHtml = sorted.map((w,wi)=>{
+    const barW = ((w.age-10)/50)*100;
+    const tipLeft = Math.min(barW+2, 70);
+    const tipText = `${w.n} — age ${w.age} ${statusLabel(w.s)}`;
+    const ringIcon = w.s==="married" ? `<div class="bar-ring">💍</div>` : "";
+    return `<div class="bar-row">
+      <div class="bar" style="width:${barW}%;background:linear-gradient(90deg,${ageColor(w.age)}88,${ageColor(w.age)})"></div>
+      ${ringIcon}
+      <div class="tooltip" style="left:${tipLeft}%;border-color:${ageColor(w.age)}">${tipText}</div>
+    </div>`;
+  }).join("");
+
+  // Quick stats in header
+  let qStats = "";
+  if(teens>0) qStats += `<div><span class="teen-ct">${teens}</span> teen${teens>1?"s":""}</div>`;
+  if(married>0) qStats += `<div><span class="mar-ct">${married}</span> married</div>`;
+  qStats += `<div>youngest: <span style="color:${ageColor(youngest)}">${youngest}</span></div>`;
+
+  card.innerHTML = `
+    <div class="card-header" onclick="toggleCard(${pi})">
+      <div class="wife-count">
+        <div class="num">${p.totalWives}</div>
+        <div class="lbl">wives</div>
+      </div>
+      <div class="prophet-info">
+        <div class="name">${p.name}</div>
+        <div class="meta">${p.title} · ${p.years}</div>
+      </div>
+      <div class="mini-dots">${dotsHtml}</div>
+      <div class="quick-stats">${qStats}</div>
+      <div class="arrow">▼</div>
+    </div>
+    <div class="detail">
+      <div class="divider"></div>
+      <div class="stats-row">
+        <div class="stat-box"><div class="val" style="color:#C5A55A">${p.totalWives}</div><div class="lbl">Total wives</div></div>
+        <div class="stat-box"><div class="val" style="color:#DC2626">${youngest}</div><div class="lbl">Youngest wife</div></div>
+        <div class="stat-box"><div class="val" style="color:#EA580C">${teens}</div><div class="lbl">Teenagers</div></div>
+        <div class="stat-box"><div class="val" style="color:#E8E0D4">💍 ${married}</div><div class="lbl">Already married</div></div>
+        <div class="stat-box"><div class="val" style="color:#65A30D">${p.children}</div><div class="lbl">Children (${p.note})</div></div>
+      </div>
+      <div>
+        <div class="chart-label">Wife ages at time of marriage (each bar = one wife)</div>
+        <div class="chart-wrapper">
+          <div class="axis-row"><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span><span>60</span></div>
+          <div class="chart-area" style="height:${chartH}px">
+            ${gridLines}
+            <div class="age18-line" style="left:${age18pos}%"></div>
+            ${barsHtml}
+          </div>
+          <div class="age18-label" style="left:${age18pos}%">▲ age 18</div>
+        </div>
+      </div>
+    </div>
+  `;
+  app.appendChild(card);
+});
+
+// Summary
+app.innerHTML += `
+<div class="summary">
+  <h2>Combined Totals: First Six LDS Presidents</h2>
+  <div class="summary-grid">
+    <div class="summary-stat"><div class="num">~121</div><div class="lbl">Total wives</div></div>
+    <div class="summary-stat"><div class="num">6</div><div class="lbl">Prophets practicing<br>polygamy</div></div>
+    <div class="summary-stat"><div class="num">14</div><div class="lbl">Youngest wife<br>(Helen Kimball)</div></div>
+    <div class="summary-stat"><div class="num">~30+</div><div class="lbl">Teen brides<br>across all six</div></div>
+  </div>
+  <p>Every one of the first six presidents of the LDS Church practiced polygamy.
+  The practice was not ended until government pressure forced the 1890 Manifesto —
+  and even then, secret plural marriages continued until 1904.</p>
+</div>
+
+<div class="closing">
+  <p class="verse">"You will recognize them by their fruits. Are grapes gathered from thornbushes, or figs from thistles?"</p>
+  <cite>— Matthew 7:16</cite>
+</div>
+
+<div class="sources">
+  <p><strong>Sources:</strong> Todd Compton, <em>In Sacred Loneliness</em> (1997, 2022) · Brian C. Hales, <em>Joseph Smith's Polygamy</em> (2013) · Wikipedia lists of wives for each president with scholarly citations · LDS Church Gospel Topics Essays on plural marriage (2014) · George D. Smith, <em>Nauvoo Polygamy</em> (2008) · Mormonism Research Ministry (mrm.org) · wasmormon.org wife compilations · Ages sourced from FamilySearch, Compton, Hales, and Wikipedia biographical data. Some ages are approximate where exact dates are disputed.</p>
+</div>`;
+
+function toggleCard(idx){
+  const cards = document.querySelectorAll(".card");
+  cards.forEach((c,i)=>{
+    if(i===idx){
+      c.classList.toggle("open");
+    } else {
+      c.classList.remove("open");
+    }
+  });
+}
+</script>
+</body>
+</html>
