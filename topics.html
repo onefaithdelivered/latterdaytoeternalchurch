@@ -237,6 +237,7 @@
       transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
       position: relative;
       overflow: hidden;
+      scroll-margin-top: 4rem;
     }
     .topic-card::before {
       content: '';
@@ -355,6 +356,37 @@
       color: rgba(201,168,76,0.2);
     }
 
+    /* ─── TOPIC JUMP NAV ─── */
+    .topic-jump-nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+    .topic-jump-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: transparent;
+      border: 1px solid rgba(201,168,76,0.3);
+      padding: 0.5rem 1.1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .topic-jump-btn:hover {
+      background: rgba(201,168,76,0.12);
+      border-color: var(--gold);
+      color: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
     /* ─── FOOTER ─── */
     footer {
       border-top: 1px solid rgba(201,168,76,0.2);
@@ -453,12 +485,27 @@
     </p>
   </div>
 
+  <!-- ── TOPIC JUMP NAV ── -->
+  <div class="topic-jump-nav">
+    <a href="#eucharist" class="topic-jump-btn">Eucharist</a>
+    <a href="#succession" class="topic-jump-btn">Apostolic Succession</a>
+    <a href="#god" class="topic-jump-btn">Nature of God</a>
+    <a href="#salvation" class="topic-jump-btn">Salvation &amp; Grace</a>
+    <a href="#scripture" class="topic-jump-btn">Scripture &amp; Canon</a>
+    <a href="#lds-history" class="topic-jump-btn">LDS History</a>
+    <a href="#apostasy" class="topic-jump-btn">Great Apostasy</a>
+    <a href="#covenant" class="topic-jump-btn">Covenant Theology</a>
+    <a href="#authority" class="topic-jump-btn">Doctrinal Authority</a>
+    <a href="#women" class="topic-jump-btn">Women &amp; the Church</a>
+    <a href="#rome" class="topic-jump-btn">Church History &amp; Rome</a>
+  </div>
+
   <!-- ── TOPICS GRID ── -->
   <div class="topics-wrapper">
     <div class="topics-grid">
 
       <!-- THE EUCHARIST -->
-      <div class="topic-card">
+      <div class="topic-card" id="eucharist">
         <div class="topic-icon"><svg viewBox="0 0 100 100" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><rect x="43" y="5" width="14" height="90" fill="currentColor"/><rect x="10" y="28" width="80" height="14" fill="currentColor"/></svg></div>
         <h2>The Holy Eucharist &amp; Real Presence</h2>
         <p class="topic-summary">
@@ -483,7 +530,7 @@
       </div>
 
       <!-- APOSTOLIC SUCCESSION -->
-      <div class="topic-card">
+      <div class="topic-card" id="succession">
         <div class="topic-icon">⛪</div>
         <h2>Apostolic Succession &amp; Ecclesial Authority</h2>
         <p class="topic-summary">
@@ -510,7 +557,7 @@
       </div>
 
       <!-- NATURE OF GOD -->
-      <div class="topic-card">
+      <div class="topic-card" id="god">
         <div class="topic-icon">☀</div>
         <h2>The Nature of God &amp; the Trinity</h2>
         <p class="topic-summary">
@@ -534,7 +581,7 @@
       </div>
 
       <!-- SALVATION -->
-      <div class="topic-card">
+      <div class="topic-card" id="salvation">
         <div class="topic-icon">✦</div>
         <h2>Salvation, Grace &amp; Exaltation</h2>
         <p class="topic-summary">
@@ -560,7 +607,7 @@
       </div>
 
       <!-- SCRIPTURE & CANON — WIDE -->
-      <div class="topic-card wide">
+      <div class="topic-card wide" id="scripture">
         <div class="topic-icon">📜</div>
         <h2>Scripture, Canon &amp; Sola Scriptura</h2>
         <p class="topic-summary">
@@ -587,7 +634,7 @@
       </div>
 
       <!-- LDS HISTORY -->
-      <div class="topic-card">
+      <div class="topic-card" id="lds-history">
         <div class="topic-icon">⚖</div>
         <h2>LDS History &amp; Truth Claims</h2>
         <p class="topic-summary">
@@ -615,7 +662,7 @@
       </div>
 
       <!-- THE GREAT APOSTASY -->
-      <div class="topic-card">
+      <div class="topic-card" id="apostasy">
         <div class="topic-icon">🕊</div>
         <h2>The Great Apostasy</h2>
         <p class="topic-summary">
@@ -643,7 +690,7 @@
       </div>
 
       <!-- COVENANT THEOLOGY -->
-      <div class="topic-card">
+      <div class="topic-card" id="covenant">
         <div class="topic-icon">✡</div>
         <h2>Covenant Theology &amp; Salvation History</h2>
         <p class="topic-summary">
@@ -667,7 +714,7 @@
       </div>
 
       <!-- DOCTRINAL AUTHORITY -->
-      <div class="topic-card">
+      <div class="topic-card" id="authority">
         <div class="topic-icon">⛩</div>
         <h2>Doctrinal Authority &amp; Prophetic Claims</h2>
         <p class="topic-summary">
@@ -693,7 +740,7 @@
       </div>
 
       <!-- WOMEN & THE CHURCH -->
-      <div class="topic-card">
+      <div class="topic-card" id="women">
         <div class="topic-icon">✝</div>
         <h2>Women &amp; the Church</h2>
         <p class="topic-summary">
@@ -719,7 +766,7 @@
       </div>
 
       <!-- CHURCH HISTORY & ROME -->
-      <div class="topic-card">
+      <div class="topic-card" id="rome">
         <div class="topic-icon">🏛</div>
         <h2>Church History &amp; the Roman Question</h2>
         <p class="topic-summary">
