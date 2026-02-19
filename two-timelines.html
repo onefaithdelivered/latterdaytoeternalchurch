@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Two Timelines: Succession vs. Apostasy | One Faith Delivered</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C5A355;
+    --gold-light: #D4B96A;
+    --gold-dark: #A68A3E;
+    --cream: #F5F0E8;
+    --cream-dark: #EDE5D8;
+    --ink: #2C1810;
+    --ink-light: #4A3728;
+    --burgundy: #6B1D2A;
+    --burgundy-light: #8B2E3C;
+    --burgundy-deep: #4A0F1A;
+    --cath-line: #C5A355;
+    --lds-line: #6B4226;
+    --void-color: #1A0E08;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0D0704;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: var(--cream);
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(197,163,85,0.25);
+  }
+  .header-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .header-title {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.25;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+  .header-sub {
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.5;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .header-ornament {
+    margin-top: 24px;
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 10px;
+  }
+
+  /* ── Legend ── */
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-bottom: 48px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(197,163,85,0.12);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .legend-line {
+    width: 36px;
+    height: 3px;
+  }
+  .legend-line.cath {
+    background: var(--cath-line);
+    box-shadow: 0 0 8px rgba(197,163,85,0.4);
+  }
+  .legend-line.lds { background: var(--lds-line); }
+  .legend-line.void {
+    background: transparent;
+    border-top: 2px dashed rgba(107,66,38,0.4);
+  }
+  .legend-text {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .legend-text.cath { color: var(--gold); }
+  .legend-text.lds { color: rgba(180,140,80,0.6); }
+  .legend-text.void { color: rgba(180,140,80,0.35); }
+
+  /* ── Timeline Container ── */
+  .timeline {
+    position: relative;
+    padding: 0 0 40px;
+  }
+
+  /* ── Era Block ── */
+  .era {
+    position: relative;
+    margin-bottom: 8px;
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    min-height: 64px;
+    align-items: stretch;
+  }
+
+  /* Center column with dual lines */
+  .era-center {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dual-lines {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+  .line-cath, .line-lds {
+    width: 3px;
+    height: 100%;
+  }
+  .line-cath {
+    background: var(--cath-line);
+    box-shadow: 0 0 10px rgba(197,163,85,0.25);
+  }
+  .line-lds {
+    background: var(--lds-line);
+  }
+  .line-lds.void {
+    background: transparent;
+    border-left: 2px dashed rgba(107,66,38,0.3);
+    width: 2px;
+  }
+  .line-lds.absent {
+    background: transparent;
+  }
+
+  /* Date marker */
+  .era-date {
+    position: relative;
+    z-index: 2;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--gold);
+    background: #0D0704;
+    padding: 4px 8px;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  /* Left panel (Catholic) */
+  .era-left {
+    text-align: right;
+    padding: 12px 24px 12px 0;
+  }
+
+  /* Right panel (LDS) */
+  .era-right {
+    text-align: left;
+    padding: 12px 0 12px 24px;
+  }
+
+  .event-title {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+  }
+  .era-left .event-title { color: var(--cream); }
+  .era-right .event-title { color: rgba(245,240,232,0.7); }
+
+  .event-desc {
+    font-size: 13.5px;
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .era-left .event-desc { color: rgba(245,240,232,0.55); }
+  .era-right .event-desc { color: rgba(245,240,232,0.4); }
+
+  /* Void label */
+  .void-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(107,66,38,0.5);
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    position: absolute;
+    right: -28px;
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+  /* ── Era Divider ── */
+  .era-divider {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    margin: 24px 0;
+  }
+  .era-divider-left, .era-divider-right {
+    border-bottom: 1px solid rgba(197,163,85,0.1);
+    align-self: center;
+  }
+  .era-divider-center {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    padding: 0 4px;
+    white-space: nowrap;
+  }
+
+  /* ── Emphasis row ── */
+  .era.emphasis {
+    background: linear-gradient(90deg, rgba(197,163,85,0.04) 0%, rgba(197,163,85,0.08) 50%, rgba(197,163,85,0.04) 100%);
+    border-top: 1px solid rgba(197,163,85,0.1);
+    border-bottom: 1px solid rgba(197,163,85,0.1);
+  }
+
+  /* ── Verdict Box ── */
+  .verdict {
+    margin-top: 48px;
+    padding: 28px 36px;
+    border: 1px solid rgba(197,163,85,0.25);
+    background: linear-gradient(135deg, rgba(107,29,42,0.15) 0%, rgba(15,10,6,0.8) 100%);
+    text-align: center;
+    position: relative;
+  }
+  .verdict::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(197,163,85,0.1);
+    pointer-events: none;
+  }
+  .verdict-title {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .verdict-text {
+    font-size: 16px;
+    font-style: italic;
+    color: var(--cream);
+    line-height: 1.75;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(197,163,85,0.15);
+  }
+  .footer-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 8px;
+  }
+  .footer-url {
+    font-size: 13px;
+    color: rgba(245,240,232,0.35);
+    font-style: italic;
+  }
+  .footer-ornament {
+    margin-top: 20px;
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 10px;
+  }
+
+  @media (max-width: 700px) {
+    body { padding: 16px 8px; }
+    .header-title { font-size: 24px; }
+    .era { grid-template-columns: 1fr 50px 1fr; }
+    .era-left { padding: 10px 12px 10px 0; }
+    .era-right { padding: 10px 0 10px 12px; }
+    .event-title { font-size: 11px; }
+    .event-desc { font-size: 12px; }
+    .legend { gap: 20px; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <p class="header-label">One Faith Delivered · Historical Theology</p>
+    <h1 class="header-title">Two Timelines</h1>
+    <p class="header-sub">Unbroken Apostolic Succession vs. the LDS Apostasy-and-Restoration Narrative</p>
+    <p class="header-ornament">✦ ✦ ✦</p>
+  </div>
+
+  <!-- Legend -->
+  <div class="legend">
+    <div class="legend-item">
+      <div class="legend-line cath"></div>
+      <span class="legend-text cath">Catholic — Unbroken Succession</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-line lds"></div>
+      <span class="legend-text lds">LDS — Claimed Authority</span>
+    </div>
+    <div class="legend-item">
+      <div class="legend-line void"></div>
+      <span class="legend-text void">LDS — "Great Apostasy" (No Authority)</span>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline">
+
+    <!-- ══════════ APOSTOLIC ERA ══════════ -->
+    <div class="era-divider">
+      <div class="era-divider-left"></div>
+      <div class="era-divider-center">Apostolic Era</div>
+      <div class="era-divider-right"></div>
+    </div>
+
+    <div class="era emphasis">
+      <div class="era-left">
+        <div class="event-title">Pentecost — The Church Is Born</div>
+        <div class="event-desc">The Holy Spirit descends; Peter preaches; 3,000 baptized. The Church begins with apostolic authority, the Eucharist, and visible structure.</div>
+      </div>
+      <div class="era-center">
+        <div class="dual-lines"><div class="line-cath"></div><div class="line-lds"></div></div>
+        <div class="era-date">AD 33</div>
+      </div>
+      <div class="era-right">
+        <div class="event-title">LDS Agreement</div>
+        <div class="event-desc">LDS theology affirms apostolic authority was present. Both timelines begin together.</div>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-left">
+        <div class="event-title">St. Peter Leads from Rome</div>
+        <div class="event-desc">Peter establishes the Roman church; martyred under Nero c. AD 64–67. Bishop of Rome inherits Petrine authority.</div>
+      </div>
+      <div class="era-center">
+        <div class="dual-lines"><div class="line-cath"></div><div class="line-lds"></div></div>
+        <div class="era-date">~AD 64</div>
+      </div>
+      <div class="era-right">
+        <div class="event-title">Deaths of Peter &amp; Paul</div>
+        <div class="event-desc">LDS narrative: apostolic authority begins to weaken as original Apostles die.</div>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-left">
+        <div class="event-title">St. Clement of Rome writes to Corinth</div>
+        <div class="event-desc">Third successor of Peter intervenes in the Corinthian church — exercising Roman primacy while the Apostle John is still alive.</div>
+      </div>
+      <div class="era-center">
+        <div class="dual-lines"><div class="line-cath"></div><div class="line-lds"></div></div>
+        <div class="era-date">~AD 96</div>
+      </div>
+      <div class="era-right">
+        <div class="event-title">The Didache Composed</div>
+        <div class="event-desc">Describes bishops, Eucharistic sacrifice, baptism — recognizably Catholic, written within the apostolic generation.</div>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-left">
+        <div class="event-title">St. Ignatius of Antioch</div>
+        <div class="event-desc">Writes seven letters en route to martyrdom. Describes bishops, priests, deacons; insists on the Eucharist as Christ's true flesh; names the "Catholic Church."</div>
+      </div>
+      <div class="era-center">
+        <div class="dual-lines"><div class="line-cath"></div><div class="line-lds void"></div></div>
+        <div class="era-date">AD 107</div>
+      </div>
+      <div class="era-right">
+        <div class="event-title">⚠ LDS: "Apostasy Begins"</div>
+        <div class="event-desc">LDS claim: by this period, total apostasy has set in. Yet Ignatius — a disciple of the Apostles — describes a fully Catholic Church.</div>
+      </div>
+    </div>
+
+    <!-- ══════════ THE GREAT DIVERGENCE ══════════ -->
+    <div class="era-divider">
+      <div class="era-divider-left"></div>
+      <div class="era-divider-center">The Great Divergence</div>
+      <div class="era-divider-right"></div>
+    </div>
+
+    <div class="era">
+      <div class="era-left">
+        <div class="event-title">St. Justin Martyr</div>
+        <div class="event-desc">Describes Sunday worship: scripture readings, a homily, prayers, and the Eucharist — "the flesh and blood of that Jesus who was made flesh." Identical to the Mass today.</div>
+      </div>
+      <div class="era-center">
+        <div class="dual-lines"><div class="line-cath"></div><div class="line-lds void"></div></div>
+        <div class="era-date">~AD 155</div>
+      </div>
+      <div class="era-right">
+        <div class="event-title">&nbsp;</div>
+        <div class="event-desc" style="color: rgba(107,66,38,0.5); font-size: 12px;">— According to LDS theology, no priesthood authority exists on earth —</div>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-left">
+        <div class="event-title">St. Irenaeus of Lyon</div>
+        <div class="event-desc">Lists the unbroken succession of Roman bishops from Peter to his own day — names and dates. Teaches the Eucharist, apostolic tradition, and the authority of the visible Church against Gnostic heresies.</div>
+      </div>
+      <div class="era-center">
+        <div class="dual-lines"><div class="line-cath"></div><div class="line-lds void"></div></div>
+        <div class="era-date">~AD 180</div>
+      </div>
+      <div class="era-right">
+        <div class="event-desc" style="color: rgba(107,66,38,0.5); font-size: 12px;">— Total apostasy (LDS claim) —</div>
+      </div>
+    </div>
+
+    <div class="era emphasis">
+      <div class="era-left">
+        <div class="event-title">Council of Nicaea</div>
+        <div class="event-desc">318 bishops define the divinity of Christ: "true God from true God, consubstantial with the Father." The Nicene Creed. The Church speaks with conciliar authority.</div>
+      </div>
+      <div class="era-center">
+        <div class="dual-lines"><div class="line-cath"></div><div class="line-lds void"></div></div>
+        <div class="era-date">AD 325</div>
+      </div>
+      <div class="era-right">
+        <div class="event-desc" style="color: rgba(107,66,38,0.5); font-size: 12px;">— Total apostasy (LDS claim). But these "apostate" bishops defined the Christology that all Christianity — including LDS — inherits.</div>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-left">
+        <div class="event-title">St. Augustine of Hippo</div>
+        <div class="event-desc">The greatest theologian of the Latin West. Develops doctrines of grace, original sin, the Trinity, and the visible Church that shape all subsequent Christian thought.</div>
+      </div>
+      <div class="era-center">
+        <div class="dual-lines"><div class="line-cath"></div><div class="line-lds void"></div></div>
+        <div class="era-date">AD 354–430</div>
+      </div>
+      <div class="era-right">
+        <div class="event-desc" style="color: rgba(107,66,38,0.5); font-size: 12px;">— Total apostasy (LDS claim) —</div>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-left">
+        <div class="event-title">Councils of Hippo &amp; Carthage</div>
+        <div class="event-desc">The biblical canon is formally defined — the very Bible all Christians (including LDS) read was assembled by these "apostate" Catholic bishops.</div>
+      </div>
+      <div class="era-center">
+        <div class="dual-lines"><div class="line-cath"></div><div class="line-lds void"></div></div>
+        <div class="era-date">AD 393–397</div>
+      </div>
+      <div class="era-right">
+        <div class="event-desc" style="color: rgba(107,66,38,0.5); font-size: 12px;">— LDS trust a Bible compiled by a Church they claim had no authority to compile it —</div>
+      </div>
+    </div>
+
+    <!-- ══════════ THE MIDDLE CENTURIES ══════════ -->
+    <div class="era-divider">
+      <div class="era-divider-left"></div>
+      <div class="era-divider-center">The Middle Centuries</div>
+      <div class="era-divider-right"></div>
+    </div>
+
+    <div class="era">
+      <div class="era-left">
+        <div class="event-title">St. Benedict &amp; Western Monasticism</div>
+        <div class="event-desc">Monasteries preserve scripture, scholarship, and civilization through the collapse of Rome. The Church is the anchor of Western culture.</div>
+      </div>
+      <div class="era-center">
+        <div class="dual-lines"><div class="line-cath"></div><div class="line-lds void"></div></div>
+        <div class="era-date">~AD 529</div>
+      </div>
+      <div class="era-right">
+        <div class="event-desc" style="color: rgba(107,66,38,0.5); font-size: 12px;">— Total apostasy (LDS claim) —</div>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-left">
+        <div class="event-title">St. Thomas Aquinas</div>
+        <div class="event-desc">The <em>Summa Theologiae</em> — the greatest synthesis of faith and reason in human history. Catholic theology reaches its intellectual summit.</div>
+      </div>
+      <div class="era-center">
+        <div class="dual-lines"><div class="line-cath"></div><div class="line-lds void"></div></div>
+        <div class="era-date">AD 1225–1274</div>
+      </div>
+      <div class="era-right">
+        <div class="event-desc" style="color: rgba(107,66,38,0.5); font-size: 12px;">— Total apostasy (LDS claim) —</div>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-left">
+        <div class="event-title">Council of Trent</div>
+        <div class="event-desc">Defines the sacraments, justification, the canon of Scripture, and the Real Presence with precision. The Catholic Reformation.</div>
+      </div>
+      <div class="era-center">
+        <div class="dual-lines"><div class="line-cath"></div><div class="line-lds void"></div></div>
+        <div class="era-date">AD 1545–1563</div>
+      </div>
+      <div class="era-right">
+        <div class="event-desc" style="color: rgba(107,66,38,0.5); font-size: 12px;">— Total apostasy (LDS claim) —</div>
+      </div>
+    </div>
+
+    <!-- ══════════ THE LDS "RESTORATION" ══════════ -->
+    <div class="era-divider">
+      <div class="era-divider-left"></div>
+      <div class="era-divider-center">The LDS "Restoration"</div>
+      <div class="era-divider-right"></div>
+    </div>
+
+    <div class="era">
+      <div class="era-left">
+        <div class="event-title">Pope Pius VII governs the universal Church</div>
+        <div class="event-desc">The 251st successor of St. Peter. An unbroken chain of named, documented bishops from Peter to the present day.</div>
+      </div>
+      <div class="era-center">
+        <div class="dual-lines"><div class="line-cath"></div><div class="line-lds void"></div></div>
+        <div class="era-date">AD 1820</div>
+      </div>
+      <div class="era-right">
+        <div class="event-title">The "First Vision"</div>
+        <div class="event-desc">Joseph Smith claims God the Father and Jesus Christ appeared to him in a grove in Palmyra, NY, telling him all churches are wrong. Multiple conflicting accounts exist.</div>
+      </div>
+    </div>
+
+    <div class="era emphasis">
+      <div class="era-left">
+        <div class="event-title">Apostolic Succession Continues</div>
+        <div class="event-desc">Catholic bishops worldwide continue ordaining priests and celebrating the Eucharist exactly as they have for 1,800 years — uninterrupted.</div>
+      </div>
+      <div class="era-center">
+        <div class="dual-lines"><div class="line-cath"></div><div class="line-lds"></div></div>
+        <div class="era-date">AD 1829</div>
+      </div>
+      <div class="era-right">
+        <div class="event-title">Priesthood "Restored"</div>
+        <div class="event-desc">Joseph Smith claims angelic visitations restored the Aaronic and Melchizedek Priesthoods. No contemporary witnesses. Details change in later retellings.</div>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-left">
+        <div class="event-title">First Vatican Council</div>
+        <div class="event-desc">Defines papal infallibility and the knowability of God through reason. The Church continues to develop doctrine — never contradicting, always deepening.</div>
+      </div>
+      <div class="era-center">
+        <div class="dual-lines"><div class="line-cath"></div><div class="line-lds"></div></div>
+        <div class="era-date">AD 1870</div>
+      </div>
+      <div class="era-right">
+        <div class="event-title">Polygamy Crisis</div>
+        <div class="event-desc">Brigham Young's church practices polygamy as doctrine. Federal government intervenes. The practice is officially abandoned in 1890 under political pressure — not new revelation.</div>
+      </div>
+    </div>
+
+    <div class="era">
+      <div class="era-left">
+        <div class="event-title">Second Vatican Council</div>
+        <div class="event-desc">The Church engages the modern world while reaffirming all prior doctrine. 2,500+ bishops participate — the largest council in history.</div>
+      </div>
+      <div class="era-center">
+        <div class="dual-lines"><div class="line-cath"></div><div class="line-lds"></div></div>
+        <div class="era-date">AD 1962–1965</div>
+      </div>
+      <div class="era-right">
+        <div class="event-title">Doctrinal Revisions Continue</div>
+        <div class="event-desc">LDS Church will reverse the priesthood and temple ban on Black members (1978), revise the temple endowment multiple times, and quietly abandon core doctrines like blood atonement and Adam-God.</div>
+      </div>
+    </div>
+
+    <div class="era emphasis">
+      <div class="era-left">
+        <div class="event-title">Pope Francis — 266th Successor of Peter</div>
+        <div class="event-desc">The line continues. Every Catholic bishop alive today can trace his ordination, name by name, back through the centuries to the Apostles themselves.</div>
+      </div>
+      <div class="era-center">
+        <div class="dual-lines"><div class="line-cath"></div><div class="line-lds"></div></div>
+        <div class="era-date">Today</div>
+      </div>
+      <div class="era-right">
+        <div class="event-title">LDS Church — ~195 Years Old</div>
+        <div class="event-desc">The entire LDS priesthood authority rests on the uncorroborated testimony of one man about a private supernatural event in 1829.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Verdict -->
+  <div class="verdict">
+    <p class="verdict-title">The Question</p>
+    <p class="verdict-text">The LDS narrative requires you to believe that Christ's Church — the one He promised the gates of hell would not prevail against (Matthew 16:18) — vanished entirely for eighteen centuries, leaving no priesthood, no sacraments, and no authority on earth. The Catholic timeline asks you to believe what the historical record actually shows: that the Church survived, governed, taught, and sanctified without interruption from Pentecost to this morning's Mass.</p>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p class="footer-brand">One Faith Delivered</p>
+    <p class="footer-url">onefaithdelivered.org</p>
+    <p class="footer-ornament">✦</p>
+  </div>
+
+</div>
+
+</body>
+</html>

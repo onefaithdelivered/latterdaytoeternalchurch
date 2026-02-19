@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Side-by-Side: LDS vs. Catholic Doctrine | One Faith Delivered</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C5A355;
+    --gold-light: #D4B96A;
+    --gold-dark: #A68A3E;
+    --cream: #F5F0E8;
+    --cream-dark: #EDE5D8;
+    --ink: #2C1810;
+    --ink-light: #4A3728;
+    --burgundy: #6B1D2A;
+    --burgundy-light: #8B2E3C;
+    --burgundy-deep: #4A0F1A;
+    --parchment: #FAF6F0;
+    --lds-bg: #3B2A1A;
+    --cath-bg: #1A1A2E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0D0704;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: var(--cream);
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ── Master Header ── */
+  .master-header {
+    text-align: center;
+    margin-bottom: 56px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(197,163,85,0.25);
+  }
+  .master-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .master-title {
+    font-family: 'Cinzel', serif;
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+  .master-sub {
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.5;
+  }
+  .master-ornament {
+    margin-top: 24px;
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 10px;
+  }
+
+  /* ── Chart Panel ── */
+  .chart-panel {
+    margin-bottom: 60px;
+    border: 1px solid rgba(197,163,85,0.2);
+    background: rgba(15,10,6,0.7);
+    position: relative;
+  }
+  .chart-panel::before {
+    content: '';
+    position: absolute;
+    inset: 4px;
+    border: 1px solid rgba(197,163,85,0.1);
+    pointer-events: none;
+  }
+
+  .chart-title-bar {
+    text-align: center;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, var(--burgundy-deep) 0%, var(--burgundy) 100%);
+    border-bottom: 2px solid var(--gold);
+    position: relative;
+  }
+  .chart-title-bar::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: var(--gold-light);
+  }
+  .chart-number {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .chart-title {
+    font-family: 'Cinzel', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: 1.5px;
+  }
+
+  /* ── Column Headers ── */
+  .col-headers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid rgba(197,163,85,0.2);
+  }
+  .col-header {
+    padding: 14px 20px;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .col-header.lds {
+    background: rgba(59,42,26,0.6);
+    color: rgba(212,185,106,0.8);
+    border-right: 1px solid rgba(197,163,85,0.15);
+  }
+  .col-header.cath {
+    background: rgba(26,26,46,0.6);
+    color: rgba(197,163,85,0.95);
+  }
+
+  /* ── Comparison Row ── */
+  .comp-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid rgba(197,163,85,0.08);
+    transition: background 0.2s;
+  }
+  .comp-row:last-child { border-bottom: none; }
+  .comp-row:hover {
+    background: rgba(197,163,85,0.03);
+  }
+
+  .comp-cell {
+    padding: 16px 22px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .comp-cell.lds {
+    border-right: 1px solid rgba(197,163,85,0.1);
+    background: rgba(59,42,26,0.15);
+  }
+  .comp-cell.cath {
+    background: rgba(26,26,46,0.15);
+  }
+
+  .cell-marker {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    margin-top: 8px;
+    border-radius: 50%;
+  }
+  .lds .cell-marker { background: rgba(212,185,106,0.4); }
+  .cath .cell-marker { background: var(--gold); }
+
+  .cell-content {}
+  .cell-title {
+    font-family: 'Cinzel', serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+  }
+  .lds .cell-title { color: rgba(245,240,232,0.85); }
+  .cath .cell-title { color: var(--cream); }
+
+  .cell-desc {
+    font-size: 13.5px;
+    line-height: 1.6;
+    font-style: italic;
+  }
+  .lds .cell-desc { color: rgba(245,240,232,0.5); }
+  .cath .cell-desc { color: rgba(245,240,232,0.65); }
+
+  /* ── Arrow / vs indicator ── */
+  .vs-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
+  .vs-strip::before {
+    content: 'VS';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    background: rgba(15,10,6,0.95);
+    padding: 4px 10px;
+    border: 1px solid rgba(197,163,85,0.3);
+    z-index: 2;
+  }
+
+  /* ── Category Label Row ── */
+  .category-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid rgba(197,163,85,0.15);
+  }
+  .category-label {
+    padding: 10px 22px;
+    font-family: 'Cinzel', serif;
+    font-size: 9.5px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .category-label.lds {
+    color: rgba(212,185,106,0.5);
+    border-right: 1px solid rgba(197,163,85,0.1);
+    background: rgba(59,42,26,0.25);
+  }
+  .category-label.cath {
+    color: rgba(197,163,85,0.7);
+    background: rgba(26,26,46,0.25);
+  }
+
+  /* ── Verdict Banner ── */
+  .verdict-banner {
+    padding: 18px 24px;
+    background: linear-gradient(135deg, rgba(197,163,85,0.08) 0%, rgba(197,163,85,0.03) 100%);
+    border-top: 1px solid rgba(197,163,85,0.2);
+    text-align: center;
+  }
+  .verdict-text {
+    font-size: 14px;
+    font-style: italic;
+    color: var(--gold-light);
+    line-height: 1.6;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(197,163,85,0.15);
+  }
+  .footer-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 8px;
+  }
+  .footer-url {
+    font-size: 13px;
+    color: rgba(245,240,232,0.35);
+    font-style: italic;
+  }
+  .footer-ornament {
+    margin-top: 20px;
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 10px;
+  }
+
+  @media (max-width: 700px) {
+    body { padding: 16px 8px; }
+    .master-title { font-size: 24px; }
+    .comp-cell { padding: 12px 14px; gap: 8px; }
+    .cell-title { font-size: 11.5px; }
+    .cell-desc { font-size: 12.5px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Master Header -->
+  <div class="master-header">
+    <p class="master-label">One Faith Delivered · Comparative Doctrine</p>
+    <h1 class="master-title">Side by Side</h1>
+    <p class="master-sub">Latter-day Saint Doctrine and Catholic Teaching in Contrast</p>
+    <p class="master-ornament">✦ ✦ ✦</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- CHART 1: Priesthood Offices vs Holy Orders -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="chart-panel">
+    <div class="chart-title-bar">
+      <p class="chart-number">Chart I</p>
+      <p class="chart-title">Priesthood Offices vs. Holy Orders</p>
+    </div>
+
+    <div class="col-headers">
+      <div class="col-header lds">LDS Priesthood Offices</div>
+      <div class="col-header cath">Catholic Holy Orders</div>
+    </div>
+
+    <!-- Aaronic / Lower -->
+    <div class="category-row">
+      <div class="category-label lds">Aaronic Priesthood (ages 11+)</div>
+      <div class="category-label cath">— No equivalent; Aaronic order fulfilled in Christ —</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Deacon</div>
+          <div class="cell-desc">Passes the sacrament; age 11–12</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Deacon (Ordained Minister)</div>
+          <div class="cell-desc">Proclaims the Gospel, assists at the altar, baptizes, witnesses marriages; permanent or transitional</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Teacher</div>
+          <div class="cell-desc">Home teaching; prepares sacrament; age 14+</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">— No parallel office —</div>
+          <div class="cell-desc">Teaching authority belongs to the ordained and to catechists under episcopal mandate</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Priest</div>
+          <div class="cell-desc">Blesses the sacrament, baptizes; age 16+</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Priest (Presbyter)</div>
+          <div class="cell-desc">Offers the Eucharistic sacrifice <em>in persona Christi</em>; absolves sins; anoints the sick; ordained through apostolic succession</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Melchizedek / Higher -->
+    <div class="category-row">
+      <div class="category-label lds">Melchizedek Priesthood (age 18+)</div>
+      <div class="category-label cath">Fullness of the Sacrament of Orders</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Elder</div>
+          <div class="cell-desc">Confirms, gives blessings, serves mission; most common adult male office</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Priest / Pastor</div>
+          <div class="cell-desc">Shepherd of a parish; full sacramental ministry except ordination and (normally) Confirmation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">High Priest</div>
+          <div class="cell-desc">Presides over stakes and wards; administrative leadership</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Bishop (Episcopos)</div>
+          <div class="cell-desc">Fullness of priesthood; ordains priests and deacons; governs a diocese; successor of the Apostles</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Seventy</div>
+          <div class="cell-desc">General or area authority; assists the Twelve; missionary oversight</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Archbishop / Metropolitan</div>
+          <div class="cell-desc">Bishop who leads a province of dioceses; coordinates regional governance</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Apostle (Quorum of the Twelve)</div>
+          <div class="cell-desc">Highest governing body under the First Presidency; "special witnesses of Christ"</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Cardinal</div>
+          <div class="cell-desc">Senior advisors to the Pope; elect the successor of Peter; govern major sees and curial offices</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Prophet / President of the Church</div>
+          <div class="cell-desc">Living prophet, seer, and revelator; presides over all; receives new revelation for the Church</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Pope (Bishop of Rome)</div>
+          <div class="cell-desc">Successor of St. Peter; supreme pastor and teacher; exercises infallible teaching authority under defined conditions; Vicar of Christ</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="verdict-banner">
+      <p class="verdict-text">The LDS priesthood was "restored" in 1829. The Catholic priesthood has been conferred in unbroken succession from the Apostles — documented, historical, and continuous for two thousand years.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- CHART 2: Temple Ordinances vs Sacraments -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="chart-panel">
+    <div class="chart-title-bar">
+      <p class="chart-number">Chart II</p>
+      <p class="chart-title">Temple Ordinances vs. Catholic Sacraments</p>
+    </div>
+
+    <div class="col-headers">
+      <div class="col-header lds">LDS Ordinances</div>
+      <div class="col-header cath">Catholic Sacraments</div>
+    </div>
+
+    <!-- Initiation -->
+    <div class="category-row">
+      <div class="category-label lds">Ordinances of Initiation</div>
+      <div class="category-label cath">Sacraments of Initiation</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Baptism by Immersion</div>
+          <div class="cell-desc">Age 8+; by one holding Aaronic Priesthood; remission of sins and entry into the Church</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Baptism</div>
+          <div class="cell-desc">Infants or converts; removes original sin; infuses sanctifying grace; imprints indelible character; incorporation into Christ and His Church</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Confirmation / Gift of the Holy Ghost</div>
+          <div class="cell-desc">By Melchizedek Priesthood holder; bestows the "constant companionship" of the Spirit</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Confirmation</div>
+          <div class="cell-desc">Bishop or delegated priest; strengthens baptismal grace; imprints permanent character; full outpouring of the Holy Spirit with His sevenfold gifts</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">The Sacrament (Bread &amp; Water)</div>
+          <div class="cell-desc">Weekly memorial; renews baptismal covenants; symbolic remembrance only; no sacrifice offered</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">The Eucharist (Holy Communion)</div>
+          <div class="cell-desc">The true Body, Blood, Soul, and Divinity of Christ; the sacrifice of Calvary re-presented; source and summit of the Christian life; available daily</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Healing -->
+    <div class="category-row">
+      <div class="category-label lds">Ordinances of Healing &amp; Blessing</div>
+      <div class="category-label cath">Sacraments of Healing</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Blessing of the Sick</div>
+          <div class="cell-desc">Anointing with oil by Melchizedek Priesthood holders; healing and comfort</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Anointing of the Sick</div>
+          <div class="cell-desc">Administered by a priest; confers grace, forgiveness, and sometimes physical healing; preparation for passing to eternal life</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Repentance (through Bishop's interview)</div>
+          <div class="cell-desc">Confession to bishop for serious sins; bishop may impose disciplinary action; no sacramental absolution</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Confession (Reconciliation)</div>
+          <div class="cell-desc">Sacramental absolution by a priest acting <em>in persona Christi</em>; sins truly forgiven by Christ's authority; seal of confession absolute and inviolable</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vocation -->
+    <div class="category-row">
+      <div class="category-label lds">Ordinances of Vocation &amp; Covenant</div>
+      <div class="category-label cath">Sacraments of Vocation</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Temple Sealing (Marriage)</div>
+          <div class="cell-desc">Performed in the temple; binds husband and wife "for time and all eternity"; requires temple recommend</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Holy Matrimony</div>
+          <div class="cell-desc">Sacrament conferring grace on the spouses; indissoluble bond reflecting Christ's union with the Church; open to all baptized Catholics in a state of grace</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Ordination to the Priesthood</div>
+          <div class="cell-desc">Conferred on virtually all worthy males age 11+; two tiers (Aaronic, Melchizedek); no apostolic succession required</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Holy Orders</div>
+          <div class="cell-desc">Sacramental ordination of deacons, priests, and bishops; imprints indelible character; requires apostolic succession; confers power to offer the Eucharistic sacrifice</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Temple-specific -->
+    <div class="category-row">
+      <div class="category-label lds">Temple-Only Ordinances</div>
+      <div class="category-label cath">Catholic Parallels</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Initiatory (Washing &amp; Anointing)</div>
+          <div class="cell-desc">Symbolic washing and anointing; prerequisite for endowment; performed in the temple</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Baptismal Rites &amp; Chrismation</div>
+          <div class="cell-desc">Anointing with sacred chrism at Baptism and Confirmation; no separate "initiatory" required</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">The Endowment</div>
+          <div class="cell-desc">Dramatic presentation of creation, fall, and covenant-making; sacred clothing; signs and tokens; passing through the veil</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">— No parallel —</div>
+          <div class="cell-desc">The Mass itself is the supreme act of worship; no additional esoteric ritual required. Christ tore the veil (Matt 27:51); access to God is through the Eucharist, not through signs and tokens</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Baptism for the Dead</div>
+          <div class="cell-desc">Vicarious baptism performed by proxy in the temple on behalf of deceased persons</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Prayers for the Dead / Purgatory</div>
+          <div class="cell-desc">The faithful departed are aided by Masses, prayers, and indulgences offered on their behalf; the Communion of Saints unites the living and the dead</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="verdict-banner">
+      <p class="verdict-text">The seven Catholic sacraments convey grace <em>ex opere operato</em> — by the power of Christ working through them. LDS ordinances are covenantal commitments made by the individual. One is God acting; the other is man promising.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- CHART 3: Plan of Salvation vs Eschatology -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="chart-panel">
+    <div class="chart-title-bar">
+      <p class="chart-number">Chart III</p>
+      <p class="chart-title">Plan of Salvation vs. Catholic Eschatology</p>
+    </div>
+
+    <div class="col-headers">
+      <div class="col-header lds">LDS Plan of Salvation</div>
+      <div class="col-header cath">Catholic Eschatology</div>
+    </div>
+
+    <!-- Pre-mortal -->
+    <div class="category-row">
+      <div class="category-label lds">Pre-Mortal Existence</div>
+      <div class="category-label cath">Before Earthly Life</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Pre-mortal Spirit World</div>
+          <div class="cell-desc">All humans existed as spirit children of Heavenly Father and Heavenly Mother before birth; chose to follow Christ's plan</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">— No pre-mortal existence —</div>
+          <div class="cell-desc">Each human soul is created by God at conception; the soul does not pre-exist the body (Lateran Council V, 1513)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mortal Life -->
+    <div class="category-row">
+      <div class="category-label lds">Mortal Life</div>
+      <div class="category-label cath">Mortal Life</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">A Test and Probation</div>
+          <div class="cell-desc">Mortality is a time to gain a physical body, be tested, and prove worthiness through obedience to LDS ordinances and covenants</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Pilgrimage Toward God</div>
+          <div class="cell-desc">Life is a journey of faith, sustained by grace and the sacraments; we grow in holiness through cooperation with God's grace, not by earning merit through a checklist of ordinances</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Death -->
+    <div class="category-row">
+      <div class="category-label lds">After Death</div>
+      <div class="category-label cath">After Death</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Spirit World (Paradise / Prison)</div>
+          <div class="cell-desc">Righteous go to spirit paradise; others to spirit prison where they may accept the gospel through missionary work by the dead</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Particular Judgment</div>
+          <div class="cell-desc">Immediately after death, each soul faces judgment: heaven (directly or through purgatory) or hell. There is no post-mortem conversion or second chance</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">— No purgatory —</div>
+          <div class="cell-desc">The concept is rejected; "spirit prison" serves a partially similar role but includes the possibility of accepting LDS ordinances after death</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Purgatory</div>
+          <div class="cell-desc">A state of purification for those who die in God's grace but with remaining imperfections; aided by the prayers and Masses of the living</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Final State -->
+    <div class="category-row">
+      <div class="category-label lds">Final State (Three Kingdoms)</div>
+      <div class="category-label cath">Final State (Two Destinies)</div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Celestial Kingdom</div>
+          <div class="cell-desc">Those who received all LDS ordinances and lived faithfully; become gods and create spirit children; eternal marriage</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Heaven (Beatific Vision)</div>
+          <div class="cell-desc">The soul sees God face to face; perfect, eternal communion with the Trinity; not becoming a god but sharing in God's own life by grace — true <em>theosis</em> (2 Peter 1:4)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Terrestrial Kingdom</div>
+          <div class="cell-desc">Honorable people who rejected the LDS gospel in life; lesser glory; visited by Christ but not the Father</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">— No "middle kingdom" —</div>
+          <div class="cell-desc">Scripture presents two roads, not three: "Enter by the narrow gate" (Matt 7:13–14). There is no graduated glory — only union with God or separation from Him</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Telestial Kingdom</div>
+          <div class="cell-desc">The wicked who rejected Christ; still a kingdom of glory, superior to earthly life; visited by the Holy Spirit</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Hell</div>
+          <div class="cell-desc">Eternal separation from God; freely chosen by the soul's final rejection of grace; not a "kingdom of glory" but the definitive loss of God — the supreme tragedy of existence</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Outer Darkness</div>
+          <div class="cell-desc">Reserved only for Satan, his angels, and "sons of perdition" who deny the Holy Ghost with full knowledge; virtually no one goes here</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">— Encompassed within Hell —</div>
+          <div class="cell-desc">There is no separate "outer darkness." Hell is hell. The Church warns that it is a real and permanent possibility for any soul that definitively rejects God</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-row">
+      <div class="comp-cell lds">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Exaltation / Becoming Gods</div>
+          <div class="cell-desc">The faithful become gods, create worlds, produce spirit children, and continue the eternal cycle</div>
+        </div>
+      </div>
+      <div class="comp-cell cath">
+        <div class="cell-marker"></div>
+        <div class="cell-content">
+          <div class="cell-title">Theosis / Divinization</div>
+          <div class="cell-desc">Participation in the divine nature by grace (2 Peter 1:4). Creatures do not become new gods or creators. The distinction between Creator and creature is eternal and absolute</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="verdict-banner">
+      <p class="verdict-text">The LDS plan softens the stakes — almost everyone receives a "kingdom of glory." Catholic eschatology preserves the biblical drama: two roads, one choice, eternal consequences. Heaven is not becoming a god. It is seeing God as He is (1 John 3:2).</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p class="footer-brand">One Faith Delivered</p>
+    <p class="footer-url">onefaithdelivered.org</p>
+    <p class="footer-ornament">✦</p>
+  </div>
+
+</div>
+
+</body>
+</html>
