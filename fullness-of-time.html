@@ -397,11 +397,67 @@
     text-transform: uppercase;
   }
 
+  /* ── Cycle Diagram (LDS Dispensational) ── */
+  .cycle-diagram {
+    margin: 36px 0;
+    padding: 28px 24px;
+    background: rgba(44,24,16,0.03);
+    border: 1px solid var(--gold-light);
+    text-align: center;
+  }
+  .cycle-diagram .flow-title {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 20px;
+  }
+  .cycle-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .cycle-box {
+    padding: 7px 12px;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    border: 1px solid;
+  }
+  .cycle-box.reveal {
+    background: rgba(197,163,85,0.08);
+    color: var(--ink);
+    border-color: var(--gold-light);
+  }
+  .cycle-box.apostasy {
+    background: rgba(44,24,16,0.08);
+    color: var(--ink-light);
+    border-color: rgba(44,24,16,0.2);
+  }
+  .cycle-arrow {
+    font-size: 14px;
+    color: rgba(44,24,16,0.3);
+  }
+  .cycle-label {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--ink-light);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
   @media (max-width: 700px) {
     .page { padding: 40px 22px 44px; }
     .title-main { font-size: 24px; }
     .title-sub  { font-size: 16px; }
     p { font-size: 15px; }
+    .cycle-row { flex-direction: column; gap: 4px; }
+    .cycle-arrow { transform: rotate(90deg); }
   }
 
 /* ─── SITE NAV BAR ─────────────────────────────────────── */
@@ -598,6 +654,42 @@
 
   <div class="critique-box">
     <strong>The LDS Dispensational Framework:</strong> In the LDS Pearl of Great Price, Adam is baptized, receives the Holy Ghost, is born of God, and is told about the plan of salvation in explicitly Christian terminology. Enoch preaches repentance and baptism in the name of Jesus Christ. Noah preaches the same message. Abraham possesses the "fullness of the gospel." Each dispensation head receives essentially the same gospel; each time humanity corrupts and loses it, necessitating a complete restoration by the next prophet. This cycle culminates in Joseph Smith's "Restoration of all things" in the nineteenth century.
+  </div>
+
+  <!-- LDS Dispensational Cycle Diagram -->
+  <div class="cycle-diagram">
+    <div class="flow-title">The LDS Dispensational Cycle — Fullness Lost and Restored</div>
+    <div class="cycle-row">
+      <div class="cycle-box reveal">Adam</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-box apostasy">Apostasy</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-box reveal">Enoch</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-box apostasy">Apostasy</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-box reveal">Noah</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-box apostasy">Apostasy</div>
+    </div>
+    <div class="cycle-row">
+      <div class="cycle-box reveal">Abraham</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-box apostasy">Apostasy</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-box reveal">Moses</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-box apostasy">Apostasy</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-box reveal">Christ</div>
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-box apostasy">Great Apostasy</div>
+    </div>
+    <div class="cycle-row">
+      <div class="cycle-arrow">→</div>
+      <div class="cycle-box reveal">Joseph Smith</div>
+    </div>
+    <div class="cycle-label">In this model, the "fullness" never develops — it is simply given, lost, and given again. History is a treadmill, not a journey.</div>
   </div>
 
   <p>This model, when examined carefully, reveals several deeply problematic features that undermine its theological credibility. The following sections address these problems systematically.</p>
