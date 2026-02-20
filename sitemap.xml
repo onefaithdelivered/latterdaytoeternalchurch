@@ -3,98 +3,252 @@
 
   <url>
     <loc>https://onefaithdelivered.org/</loc>
-    <lastmod>2026-02-18</lastmod>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://onefaithdelivered.org/articles.html</loc>
-    <lastmod>2026-02-18</lastmod>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/charts.html</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://onefaithdelivered.org/topics.html</loc>
-    <lastmod>2026-02-18</lastmod>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://onefaithdelivered.org/resources.html</loc>
-    <lastmod>2026-02-18</lastmod>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
-    <loc>https://onefaithdelivered.org/ante-nicene-fathers.html</loc>
-    <lastmod>2026-02-18</lastmod>
+    <loc>https://onefaithdelivered.org/articles/angelic-authority-closed-canon.html</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://onefaithdelivered.org/catholic-lds-marriage.html</loc>
-    <lastmod>2026-02-18</lastmod>
+    <loc>https://onefaithdelivered.org/articles/ante-nicene-fathers.html</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://onefaithdelivered.org/clement-apostolic-succession.html</loc>
-    <lastmod>2026-02-18</lastmod>
+    <loc>https://onefaithdelivered.org/articles/apostolic-office-foundational.html</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://onefaithdelivered.org/crowned-in-glory.html</loc>
-    <lastmod>2026-02-18</lastmod>
+    <loc>https://onefaithdelivered.org/articles/baptism-dead-communion-saints.html</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://onefaithdelivered.org/fullness-of-time.html</loc>
-    <lastmod>2026-02-18</lastmod>
+    <loc>https://onefaithdelivered.org/articles/catholic-lds-marriage.html</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://onefaithdelivered.org/historicity-comparison.html</loc>
-    <lastmod>2026-02-18</lastmod>
+    <loc>https://onefaithdelivered.org/articles/clement-apostolic-succession.html</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://onefaithdelivered.org/holy-eucharist-real-presence.html</loc>
-    <lastmod>2026-02-18</lastmod>
+    <loc>https://onefaithdelivered.org/articles/covenant-theology-catholic-vs-lds.html</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://onefaithdelivered.org/lds_polygamist_prophets.html</loc>
-    <lastmod>2026-02-18</lastmod>
+    <loc>https://onefaithdelivered.org/articles/crowned-in-glory.html</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://onefaithdelivered.org/rock-and-the-sand.html</loc>
-    <lastmod>2026-02-18</lastmod>
+    <loc>https://onefaithdelivered.org/articles/from-testimony-to-faith.html</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://onefaithdelivered.org/smith_polygamy_timeline.html</loc>
-    <lastmod>2026-02-18</lastmod>
+    <loc>https://onefaithdelivered.org/articles/fullness-of-time.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/articles/holy-eucharist-real-presence.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/articles/iron-scepter-eternal-city.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/articles/one-god-unchanging.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/articles/rock-and-the-sand.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/articles/theosis-without-heresy.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/charts/apostolic-succession.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/charts/biblical-typology.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/charts/book-of-abraham-problem.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/charts/councils-creeds-timeline.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/charts/doctrine-changes.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/charts/early-church-believed.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/charts/great-apostasy-claim.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/charts/historicity-comparison.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/charts/joseph-smith-evolving-god.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/charts/lds_polygamist_prophets.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/charts/manuscript-evidence.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/charts/nature-of-god-three-views.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/charts/salvation-flowchart.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/charts/side-by-side-charts.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/charts/smith_polygamy_timeline.html</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://onefaithdelivered.org/charts/two-timelines.html</loc>
+    <lastmod>2026-02-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
