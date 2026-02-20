@@ -47,6 +47,7 @@
     --bg: #0D0703;
   }
 
+  html { scroll-behavior: smooth; scroll-padding-top: 70px; }
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
@@ -517,6 +518,39 @@
     .sidebar-overlay { display: block; }
     .chart-preview { height: 100px; }
   }
+
+  /* ─── SECTION JUMP NAV ─── */
+  .jump-nav {
+    display: flex; flex-wrap: wrap; gap: 0.65rem;
+    justify-content: center;
+    padding: 1.5rem 2rem 0;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .jump-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    text-decoration: none;
+    padding: 0.55rem 1.25rem;
+    border: 1px solid var(--gold-dark);
+    border-radius: 2px;
+    background: rgba(201,168,76,0.06);
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+    white-space: nowrap;
+  }
+  .jump-btn:hover {
+    background: rgba(201,168,76,0.14);
+    color: var(--gold);
+    border-color: var(--gold);
+  }
+  @media (max-width: 600px) {
+    .jump-nav { padding: 1.25rem 1rem 0; gap: 0.5rem; }
+    .jump-btn { font-size: 0.68rem; padding: 0.5rem 1rem; }
+  }
+
 </style>
 
 <script type="application/ld+json">
@@ -571,11 +605,18 @@
   </p>
 </header>
 
+<!-- ─── SECTION JUMP NAV ─── -->
+<nav class="jump-nav" aria-label="Jump to section">
+  <a class="jump-btn" href="#comparison">Comparison Charts</a>
+  <a class="jump-btn" href="#timelines">Timelines</a>
+  <a class="jump-btn" href="#lds-history">LDS History &amp; Polygamy</a>
+</nav>
+
 <!-- ─── MAIN ─── -->
 <main class="charts-page">
 
   <!-- ══ COMPARISON CHARTS ══ -->
-  <div class="section-intro">
+  <div class="section-intro" id="comparison">
     <div class="section-divider">
       <span class="section-divider-label">Comparison Charts</span>
     </div>
@@ -648,10 +689,172 @@
       </div>
     </a>
 
+    <a class="chart-card" href="nature-of-god-three-views.html">
+      <div class="chart-preview preview-comparison">
+        <div class="preview-inner">
+          <div class="preview-col lds">
+            <div class="preview-col-header"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+          </div>
+          <div class="preview-vs"><span>3</span></div>
+          <div class="preview-col cath">
+            <div class="preview-col-header"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card-body">
+        <span class="chart-tag">Comparative Doctrine &middot; Three Traditions</span>
+        <h3>The Nature of God: Three Views</h3>
+        <p>A three-column comparative infographic examining how the nature of God differs across Catholic, LDS, and Biblical frameworks &mdash; eternal vs. created, immaterial vs. embodied, one Being vs. three separate gods.</p>
+        <span class="chart-read-more">View Chart &rarr;</span>
+      </div>
+    </a>
+
+    <a class="chart-card" href="early-church-believed.html">
+      <div class="chart-preview preview-comparison">
+        <div class="preview-inner">
+          <div class="preview-col lds">
+            <div class="preview-col-header"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+          </div>
+          <div class="preview-vs"><span>VS</span></div>
+          <div class="preview-col cath">
+            <div class="preview-col-header"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card-body">
+        <span class="chart-tag">Church Fathers &middot; Comparative Doctrine</span>
+        <h3>What the Early Church Believed</h3>
+        <p>A doctrine-by-doctrine comparison showing what the ante-Nicene Church Fathers actually taught &mdash; and how their words align with Catholic theology, not LDS theology.</p>
+        <span class="chart-read-more">View Chart &rarr;</span>
+      </div>
+    </a>
+
+    <a class="chart-card" href="great-apostasy-claim.html">
+      <div class="chart-preview preview-comparison">
+        <div class="preview-inner">
+          <div class="preview-col lds">
+            <div class="preview-col-header"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+          </div>
+          <div class="preview-vs"><span>VS</span></div>
+          <div class="preview-col cath">
+            <div class="preview-col-header"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card-body">
+        <span class="chart-tag">LDS Claims &middot; Historical Record</span>
+        <h3>The &ldquo;Great Apostasy&rdquo; Claim vs. The Historical Record</h3>
+        <p>A chart comparing the LDS claim of total apostasy with the documented historical activity of orthodox Christianity during those same centuries &mdash; was the Church really gone?</p>
+        <span class="chart-read-more">View Chart &rarr;</span>
+      </div>
+    </a>
+
+    <a class="chart-card" href="salvation-flowchart.html">
+      <div class="chart-preview preview-comparison">
+        <div class="preview-inner">
+          <div class="preview-col lds">
+            <div class="preview-col-header"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+          </div>
+          <div class="preview-vs"><span>VS</span></div>
+          <div class="preview-col cath">
+            <div class="preview-col-header"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card-body">
+        <span class="chart-tag">Soteriology &middot; Flowchart Comparison</span>
+        <h3>Salvation: Two Paths &mdash; Catholic vs. LDS Soteriology</h3>
+        <p>Side-by-side flowcharts comparing how salvation works in Catholicism versus LDS theology &mdash; faith, sacraments, grace, exaltation, degrees of glory, and eternal progression.</p>
+        <span class="chart-read-more">View Chart &rarr;</span>
+      </div>
+    </a>
+
+    <a class="chart-card" href="biblical-typology.html">
+      <div class="chart-preview preview-comparison">
+        <div class="preview-inner">
+          <div class="preview-col cath">
+            <div class="preview-col-header"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+          </div>
+          <div class="preview-vs"><span>&rarr;</span></div>
+          <div class="preview-col cath">
+            <div class="preview-col-header"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card-body">
+        <span class="chart-tag">Scripture &middot; Typology</span>
+        <h3>Biblical Typology Fulfilled</h3>
+        <p>Old Testament types &mdash; Passover Lamb, Manna, Brazen Serpent &mdash; with their New Testament fulfillments in Christ and the Catholic sacraments. A visual demonstration of salvation history&rsquo;s coherence.</p>
+        <span class="chart-read-more">View Chart &rarr;</span>
+      </div>
+    </a>
+
+    <a class="chart-card" href="manuscript-evidence.html">
+      <div class="chart-preview preview-comparison">
+        <div class="preview-inner">
+          <div class="preview-col cath">
+            <div class="preview-col-header"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+          </div>
+          <div class="preview-vs"><span>VS</span></div>
+          <div class="preview-col lds">
+            <div class="preview-col-header"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card-body">
+        <span class="chart-tag">Scripture &middot; Manuscript Evidence</span>
+        <h3>Manuscript Evidence Comparison</h3>
+        <p>A visual comparison of the manuscript tradition behind the New Testament versus the single claimed source of the Book of Mormon &mdash; tens of thousands of manuscripts vs. none.</p>
+        <span class="chart-read-more">View Chart &rarr;</span>
+      </div>
+    </a>
+
   </div>
 
   <!-- ══ TIMELINES ══ -->
-  <div class="section-intro" style="margin-top: 5rem;">
+  <div class="section-intro" id="timelines" style="margin-top: 5rem;">
     <div class="section-divider">
       <span class="section-divider-label">Timelines</span>
     </div>
@@ -688,10 +891,107 @@
       </div>
     </a>
 
+    <a class="chart-card" href="apostolic-succession.html">
+      <div class="chart-preview preview-timeline">
+        <div class="preview-inner">
+          <div class="preview-line-track">
+            <div class="preview-solid-line"></div>
+            <div class="preview-solid-line"></div>
+            <div class="preview-solid-line"></div>
+            <div class="preview-solid-line"></div>
+            <div class="preview-solid-line"></div>
+          </div>
+          <div class="preview-dot"></div>
+          <div class="preview-dot"></div>
+          <div class="preview-dot"></div>
+          <div class="preview-dot"></div>
+          <div class="preview-dot"></div>
+          <div class="preview-dot"></div>
+        </div>
+      </div>
+      <div class="chart-card-body">
+        <span class="chart-tag">Church History &middot; Apostolic Succession</span>
+        <h3>The Apostolic Chain: Peter to Today</h3>
+        <p>A visual genealogy of papal succession from St. Peter to today &mdash; the unbroken chain of apostolic authority that has transmitted the faith across two millennia, and which the LDS Church cannot produce.</p>
+        <span class="chart-read-more">View Chart &rarr;</span>
+      </div>
+    </a>
+
+    <a class="chart-card" href="councils-creeds-timeline.html">
+      <div class="chart-preview preview-timeline">
+        <div class="preview-inner">
+          <div class="preview-line-track">
+            <div class="preview-solid-line"></div>
+            <div class="preview-solid-line"></div>
+            <div class="preview-solid-line"></div>
+            <div class="preview-solid-line"></div>
+          </div>
+          <div class="preview-dot"></div>
+          <div class="preview-dot"></div>
+          <div class="preview-dot dim"></div>
+          <div class="preview-dot"></div>
+          <div class="preview-dot dim"></div>
+          <div class="preview-dot"></div>
+        </div>
+      </div>
+      <div class="chart-card-body">
+        <span class="chart-tag">Church History &middot; Creeds &amp; Councils</span>
+        <h3>Councils &amp; Creeds: A Timeline of Doctrinal Continuity</h3>
+        <p>A visual timeline of the seven Ecumenical Councils alongside a parallel LDS revelation timeline &mdash; demonstrating Catholic doctrinal continuity versus Mormon doctrinal reversals across the centuries.</p>
+        <span class="chart-read-more">View Timeline &rarr;</span>
+      </div>
+    </a>
+
+    <a class="chart-card" href="doctrine-changes.html">
+      <div class="chart-preview preview-timeline">
+        <div class="preview-inner">
+          <div class="preview-line-track">
+            <div class="preview-solid-line" style="background: rgba(139,45,60,0.8); box-shadow: 0 0 6px rgba(139,45,60,0.3);"></div>
+            <div class="preview-solid-line" style="background: rgba(139,45,60,0.8); box-shadow: 0 0 6px rgba(139,45,60,0.3);"></div>
+            <div class="preview-solid-line" style="background: rgba(139,45,60,0.8); box-shadow: 0 0 6px rgba(139,45,60,0.3);"></div>
+            <div class="preview-solid-line" style="background: rgba(139,45,60,0.8); box-shadow: 0 0 6px rgba(139,45,60,0.3);"></div>
+          </div>
+          <div class="preview-dot" style="background: rgba(139,45,60,0.9);"></div>
+          <div class="preview-dot" style="background: rgba(139,45,60,0.9);"></div>
+          <div class="preview-dot" style="background: var(--gold);"></div>
+          <div class="preview-dot" style="background: rgba(139,45,60,0.9);"></div>
+          <div class="preview-dot" style="background: rgba(139,45,60,0.9);"></div>
+        </div>
+      </div>
+      <div class="chart-card-body">
+        <span class="chart-tag">LDS History &middot; Doctrine</span>
+        <h3>LDS Doctrine Changes Over Time</h3>
+        <p>A documented timeline of specific LDS doctrines that have been reversed, abandoned, or substantially altered &mdash; with dates and primary sources drawn from official LDS records.</p>
+        <span class="chart-read-more">View Timeline &rarr;</span>
+      </div>
+    </a>
+
+    <a class="chart-card" href="joseph-smith-evolving-god.html">
+      <div class="chart-preview preview-timeline">
+        <div class="preview-inner">
+          <div class="preview-line-track">
+            <div class="preview-solid-line" style="background: rgba(139,45,60,0.8); box-shadow: 0 0 6px rgba(139,45,60,0.3);"></div>
+            <div class="preview-solid-line" style="background: rgba(139,45,60,0.8); box-shadow: 0 0 6px rgba(139,45,60,0.3);"></div>
+            <div class="preview-solid-line" style="background: rgba(139,45,60,0.8); box-shadow: 0 0 6px rgba(139,45,60,0.3);"></div>
+          </div>
+          <div class="preview-dot" style="background: rgba(139,45,60,0.9);"></div>
+          <div class="preview-dot" style="background: rgba(139,45,60,0.9);"></div>
+          <div class="preview-dot" style="background: rgba(139,45,60,0.9);"></div>
+          <div class="preview-dot" style="background: var(--gold);"></div>
+        </div>
+      </div>
+      <div class="chart-card-body">
+        <span class="chart-tag">LDS History &middot; Theology</span>
+        <h3>Joseph Smith&rsquo;s God: An Evolving Theology</h3>
+        <p>A focused timeline showing how Joseph Smith&rsquo;s descriptions of God changed dramatically from 1830 to 1844 &mdash; from a spiritual being to a corporeal exalted man &mdash; in his own words.</p>
+        <span class="chart-read-more">View Timeline &rarr;</span>
+      </div>
+    </a>
+
   </div>
 
   <!-- ══ LDS HISTORY CHARTS ══ -->
-  <div class="section-intro" style="margin-top: 5rem;">
+  <div class="section-intro" id="lds-history" style="margin-top: 5rem;">
     <div class="section-divider">
       <span class="section-divider-label">LDS History &amp; Polygamy</span>
     </div>
@@ -750,6 +1050,34 @@
         <span class="chart-tag">LDS History &middot; Polygamy</span>
         <h3>The Polygamist Prophets: LDS Presidents &amp; Their Wives</h3>
         <p>A documented accounting of the plural marriages of Latter-day Saint presidents &mdash; the number of wives, the ages, and the patterns that defined polygamy at the highest levels of Church leadership.</p>
+        <span class="chart-read-more">View Chart &rarr;</span>
+      </div>
+    </a>
+
+    <a class="chart-card" href="book-of-abraham-problem.html">
+      <div class="chart-preview preview-comparison">
+        <div class="preview-inner">
+          <div class="preview-col lds">
+            <div class="preview-col-header" style="background: rgba(139,45,60,0.7);"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+          </div>
+          <div class="preview-vs"><span>VS</span></div>
+          <div class="preview-col cath">
+            <div class="preview-col-header"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+            <div class="preview-col-row"></div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card-body">
+        <span class="chart-tag">LDS Scripture &middot; Egyptology</span>
+        <h3>The Book of Abraham Problem</h3>
+        <p>A side-by-side examination of what Joseph Smith claimed to translate from the Egyptian papyri versus what professional Egyptologists say the texts actually say &mdash; a direct, documented comparison.</p>
         <span class="chart-read-more">View Chart &rarr;</span>
       </div>
     </a>
