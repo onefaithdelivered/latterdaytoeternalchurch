@@ -71,6 +71,10 @@ body {
   padding: 40px 20px;
 }
 
+@media (max-width: 700px) {
+  body { padding: 0; }
+}
+
 .page, .container {
   max-width: 1100px;
   margin: 0 auto;
@@ -80,6 +84,15 @@ body {
   position: relative;
   box-shadow: 0 4px 32px rgba(44,24,16,0.10), 0 1px 0 var(--gold);
   padding: 60px 55px 55px;
+}
+
+@media (max-width: 700px) {
+  .page, .container {
+    padding: 20px 16px;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+  }
 }
 
 /* Corner ornaments */
@@ -675,8 +688,109 @@ body {
 /* ── Page-Specific Styles ── */
 
 
+  /* ── MOBILE STYLES ── */
   @media (max-width: 700px) {
-    .nav-hamburger { display: flex; }
+
+    /* NAV */
+    .site-nav {
+      padding: 0.6rem 1rem;
+    }
+    .nav-links { display: none; }
+    .nav-back { display: none; }
+    .nav-hamburger {
+      display: flex;
+      margin-left: auto;
+      order: 3;
+    }
+    .site-nav a.nav-home { order: 1; }
+
+    /* PAGE HEADER */
+    .page-header {
+      padding: 48px 20px 36px;
+    }
+    .page-header h1 {
+      font-size: clamp(1.4rem, 6vw, 2rem);
+    }
+    .page-header .subtitle {
+      font-size: 0.95rem;
+    }
+
+    /* MAIN CONTENT */
+    main {
+      padding: 0;
+    }
+
+    /* FLOWCHART: stack columns vertically */
+    .flow-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 1rem;
+    }
+
+    .flow-col {
+      margin-bottom: 2.5rem;
+    }
+
+    .flow-header {
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .flow-header .track-title {
+      font-size: 0.95rem;
+    }
+
+    /* NODES */
+    .node-box {
+      padding: 0.85rem 1rem;
+    }
+    .node-title {
+      font-size: 0.88rem;
+    }
+    .node-desc {
+      font-size: 0.82rem;
+    }
+    .node-note {
+      font-size: 0.74rem;
+    }
+
+    /* BRANCH ROW: stack on mobile */
+    .branch-row {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    .branch-node .b-desc {
+      font-size: 0.78rem;
+    }
+
+    /* CONTRAST SECTION */
+    .contrast-section {
+      margin-top: 2rem;
+      padding: 0 1rem;
+    }
+    .contrast-points {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .contrast-point {
+      padding: 1rem;
+    }
+    .contrast-point p {
+      font-size: 0.86rem;
+    }
+
+    /* SIDEBAR */
+    .sidebar { display: block; }
+    .sidebar-inner { padding: 4rem 1.5rem 2rem; }
+  }
+
+  /* Medium screens */
+  @media (max-width: 900px) and (min-width: 701px) {
+    .flow-wrapper { gap: 1.5rem; }
+    .node-desc { font-size: 0.83rem; }
+    .branch-row { gap: 0.35rem; }
+    .branch-node .b-desc { font-size: 0.72rem; }
+    .contrast-points { gap: 1rem; }
   }
 .back-link { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dark); text-decoration: none; margin-bottom: 2rem; transition: color 0.2s; }
 .ornament { color: var(--gold); font-size: 1.1rem; letter-spacing: 12px; margin-bottom: 1.5rem; display: block; }
@@ -775,8 +889,8 @@ body {
 
 footer { text-align: center; padding: 2.5rem 2rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(166,138,62,0.55); background: var(--cream); }
 .sidebar-overlay { display: none; pointer-events: none; position: fixed; inset: 0; background: rgba(44,24,16,0.45); z-index: 150; opacity: 0; transition: opacity 0.3s; }
-.sidebar-overlay.visible { pointer-events: auto; opacity: 1; }
-.sidebar { display: none; position: fixed; top: 0; right: 0; width: 280px; max-width: 80vw; height: 100vh; background: linear-gradient(170deg, #FAF6F0 0%, var(--cream) 100%); border-left: 1px solid var(--gold-dark); z-index: 200; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); overflow-y: auto; }
+.sidebar-overlay.visible { display: block; pointer-events: auto; opacity: 1; }
+.sidebar { position: fixed; top: 0; right: 0; width: 280px; max-width: 80vw; height: 100vh; background: linear-gradient(170deg, #FAF6F0 0%, var(--cream) 100%); border-left: 1px solid var(--gold-dark); z-index: 200; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); overflow-y: auto; }
 .sidebar.open { transform: translateX(0); }
 .sidebar-brand { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--gold-dark); margin-bottom: 2rem; letter-spacing: 0.1em; }
 .sidebar a { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); text-decoration: none; padding: 0.9rem 0; border-bottom: 1px solid rgba(201,168,76,0.12); transition: color 0.2s, padding-left 0.2s; display: block; }
