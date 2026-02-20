@@ -10,27 +10,34 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --gold: #C9A84C; --gold-light: #E8D08A; --gold-dark: #8B6914;
-  --cream: #F5F0E8; --burgundy: #6B1D2A; --burgundy-light: #8B2D3A;
-  --parchment: #FAF6F0; --bg: #0D0703;
+  --gold: #C9A84C;
+  --gold-light: #D4B96A;
+  --gold-dark: #A68A3E;
+  --cream: #F5F0E8;
+  --cream-dark: #EDE5D8;
+  --ink: #2C1810;
+  --ink-light: #4A3728;
+  --burgundy: #6B1D2A;
+  --burgundy-light: #8B2E3C;
+  --parchment: #FAF6F0;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background-color: var(--bg); background-image: radial-gradient(ellipse at 20% 0%, rgba(107,29,42,0.18) 0%, transparent 50%), radial-gradient(ellipse at 80% 100%, rgba(201,168,76,0.10) 0%, transparent 50%); font-family: 'Cormorant Garamond', Georgia, serif; color: var(--cream); min-height: 100vh; }
-nav { position: sticky; top: 0; z-index: 100; background: linear-gradient(to bottom, rgba(13,7,3,0.98), rgba(13,7,3,0.92)); border-bottom: 1px solid var(--gold-dark); padding: 0.75rem 2rem; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(6px); }
-.nav-brand { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.15em; color: var(--gold-light); text-transform: uppercase; text-decoration: none; }
+body { background-color: #E8E0D4; background-image: radial-gradient(ellipse at 15% 10%, rgba(197,163,85,0.10) 0%, transparent 55%), radial-gradient(ellipse at 85% 90%, rgba(107,29,42,0.08) 0%, transparent 55%); font-family: 'Cormorant Garamond', Georgia, serif; color: var(--ink); min-height: 100vh; }
+nav { position: sticky; top: 0; z-index: 100; background: linear-gradient(to bottom, rgba(250,246,240,0.98), rgba(245,240,232,0.95)); border-bottom: 1px solid var(--gold-dark); padding: 0.75rem 2rem; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(6px); box-shadow: 0 2px 12px rgba(44,24,16,0.08); }
+.nav-brand { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.15em; color: var(--ink); text-transform: uppercase; text-decoration: none; }
 .nav-links { list-style: none; display: flex; gap: 2.5rem; }
-.nav-links a { font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cream); text-decoration: none; transition: color 0.25s; }
-.nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
-.page-header { text-align: center; padding: 5rem 2rem 3rem; border-bottom: 1px solid rgba(201,168,76,0.2); }
+.nav-links a { font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; transition: color 0.25s; }
+.nav-links a:hover, .nav-links a.active { color: var(--burgundy); }
+.page-header { text-align: center; padding: 5rem 2rem 3rem; border-bottom: 1px solid rgba(166,138,62,0.25); background: linear-gradient(170deg, #FFFDF9 0%, var(--cream) 60%, #FFF8F0 100%); }
 .back-link { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dark); text-decoration: none; margin-bottom: 2rem; transition: color 0.2s; }
 .back-link:hover { color: var(--gold); }
-.ornament { color: var(--gold-dark); font-size: 1.2rem; letter-spacing: 12px; margin-bottom: 1.5rem; display: block; }
-.page-header h1 { font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 3vw, 2.4rem); font-weight: 600; color: var(--gold-light); letter-spacing: 0.04em; line-height: 1.3; margin-bottom: 0.8rem; }
-.page-header .subtitle { font-size: 1.1rem; font-style: italic; color: rgba(245,240,232,0.6); max-width: 640px; margin: 0 auto; }
+.ornament { color: var(--gold); font-size: 1.2rem; letter-spacing: 12px; margin-bottom: 1.5rem; display: block; }
+.page-header h1 { font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 3vw, 2.4rem); font-weight: 600; color: var(--ink); letter-spacing: 0.04em; line-height: 1.3; margin-bottom: 0.8rem; }
+.page-header .subtitle { font-size: 1.1rem; font-style: italic; color: var(--ink-light); max-width: 640px; margin: 0 auto; }
 main { max-width: 980px; margin: 0 auto; padding: 3rem 2rem 6rem; }
 
-.intro-box { padding: 1.8rem 2.2rem; margin-bottom: 3.5rem; border: 1px solid rgba(201,168,76,0.2); background: rgba(201,168,76,0.03); }
-.intro-box p { font-size: 1rem; line-height: 1.85; color: rgba(245,240,232,0.7); }
+.intro-box { padding: 1.8rem 2.2rem; margin-bottom: 3.5rem; border: 1px solid rgba(201,168,76,0.2); background: rgba(197,163,85,0.07); }
+.intro-box p { font-size: 1rem; line-height: 1.85; color: var(--ink-light); }
 .intro-box strong { color: var(--cream); font-weight: 500; }
 
 /* MAIN VERTICAL TIMELINE */
@@ -56,7 +63,7 @@ main { max-width: 980px; margin: 0 auto; padding: 3rem 2rem 6rem; }
 }
 .tl-era {
   font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.15em;
-  text-transform: uppercase; color: rgba(245,240,232,0.35);
+  text-transform: uppercase; color: var(--ink-light); opacity: 0.7;
 }
 
 /* Dot on the spine */
@@ -87,20 +94,20 @@ main { max-width: 980px; margin: 0 auto; padding: 3rem 2rem 6rem; }
 /* Belief card */
 .belief-card {
   border: 1px solid rgba(201,168,76,0.15);
-  background: rgba(201,168,76,0.03);
+  background: rgba(197,163,85,0.07);
   margin-bottom: 1rem;
 }
 .belief-card-header {
   padding: 0.5rem 1rem;
   border-bottom: 1px solid rgba(201,168,76,0.1);
-  background: rgba(201,168,76,0.04);
+  background: rgba(197,163,85,0.07);
 }
 .belief-label {
   font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 .label-god { color: #7ec8a0; }
-.label-nature { color: var(--gold-light); }
+.label-nature { color: var(--burgundy); }
 .label-plurality { color: rgba(200,160,80,0.9); }
 
 .belief-card-body { padding: 0.9rem 1rem; }
@@ -114,7 +121,7 @@ main { max-width: 980px; margin: 0 auto; padding: 3rem 2rem 6rem; }
 }
 
 .tl-analysis {
-  font-size: 0.9rem; line-height: 1.7; color: rgba(245,240,232,0.55);
+  font-size: 0.9rem; line-height: 1.7; color: var(--ink-light); opacity: 0.7;
   font-style: italic; border-left: 2px solid rgba(201,168,76,0.2);
   padding-left: 0.9rem; margin-top: 0.8rem;
 }
@@ -123,7 +130,7 @@ main { max-width: 980px; margin: 0 auto; padding: 3rem 2rem 6rem; }
 .conflict-banner {
   display: flex; align-items: center; gap: 1rem;
   margin: 0 0 0 2rem; padding: 0.6rem 1rem;
-  background: rgba(107,29,42,0.12); border: 1px solid rgba(139,45,60,0.2);
+  background: rgba(107,29,42,0.08); border: 1px solid rgba(139,45,60,0.2);
   border-left: 3px solid rgba(139,45,60,0.5);
 }
 .conflict-icon { color: rgba(180,80,80,0.7); font-size: 0.85rem; flex-shrink: 0; }
@@ -137,32 +144,32 @@ main { max-width: 980px; margin: 0 auto; padding: 3rem 2rem 6rem; }
   display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 1px; margin-top: 3.5rem; border: 1px solid rgba(201,168,76,0.15);
 }
-.summary-cell { padding: 1.3rem 1rem; text-align: center; background: rgba(201,168,76,0.02); }
+.summary-cell { padding: 1.3rem 1rem; text-align: center; background: rgba(197,163,85,0.07); }
 .summary-cell:not(:last-child) { border-right: 1px solid rgba(201,168,76,0.1); }
 .summary-year { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--gold); font-weight: 700; margin-bottom: 0.3rem; }
-.summary-desc { font-size: 0.82rem; line-height: 1.5; color: rgba(245,240,232,0.5); }
+.summary-desc { font-size: 0.82rem; line-height: 1.5; color: var(--ink-light); opacity: 0.7; }
 .summary-arrow {
   display: flex; align-items: center; justify-content: center;
   color: rgba(201,168,76,0.3); font-size: 1.4rem;
 }
 
-.verdict-box { margin-top: 3.5rem; padding: 2.5rem; border: 1px solid rgba(201,168,76,0.25); background: rgba(201,168,76,0.04); text-align: center; }
-.verdict-box h3 { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--gold-light); margin-bottom: 1rem; }
-.verdict-box p { font-size: 1rem; line-height: 1.85; color: rgba(245,240,232,0.65); max-width: 780px; margin: 0 auto; }
+.verdict-box { margin-top: 3.5rem; padding: 2.5rem; border: 1px solid rgba(201,168,76,0.25); background: rgba(197,163,85,0.07); text-align: center; }
+.verdict-box h3 { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--burgundy); margin-bottom: 1rem; }
+.verdict-box p { font-size: 1rem; line-height: 1.85; color: var(--ink-light); max-width: 780px; margin: 0 auto; }
 .verdict-box p + p { margin-top: 0.85rem; }
 
 .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 28px; height: 28px; cursor: pointer; background: none; border: none; padding: 0; z-index: 201; }
-.nav-hamburger span { display: block; width: 100%; height: 2px; background: var(--gold-light); border-radius: 1px; }
-.sidebar-overlay { display: none; pointer-events: none; position: fixed; inset: 0; background: rgba(13,7,3,0.6); z-index: 150; opacity: 0; transition: opacity 0.3s; }
+.nav-hamburger span { display: block; width: 100%; height: 2px; background: var(--ink); border-radius: 1px; }
+.sidebar-overlay { display: none; pointer-events: none; position: fixed; inset: 0; background: rgba(44,24,16,0.45); z-index: 150; opacity: 0; transition: opacity 0.3s; }
 .sidebar-overlay.visible { pointer-events: auto; opacity: 1; }
-.sidebar { display: none; position: fixed; top: 0; right: 0; width: 280px; max-width: 80vw; height: 100vh; background: linear-gradient(170deg, #0D0703 0%, #1A0F05 100%); border-left: 1px solid var(--gold-dark); z-index: 200; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); overflow-y: auto; }
+.sidebar { display: none; position: fixed; top: 0; right: 0; width: 280px; max-width: 80vw; height: 100vh; background: linear-gradient(170deg, #FAF6F0 0%, var(--cream) 100%); border-left: 1px solid var(--gold-dark); z-index: 200; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); overflow-y: auto; }
 .sidebar.open { transform: translateX(0); }
 .sidebar-inner { padding: 5rem 2rem 3rem; display: flex; flex-direction: column; gap: 0.5rem; }
-.sidebar-brand { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--gold); margin-bottom: 2rem; letter-spacing: 0.1em; }
-.sidebar a { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cream); text-decoration: none; padding: 0.9rem 0; border-bottom: 1px solid rgba(201,168,76,0.12); transition: color 0.2s, padding-left 0.2s; display: block; }
-.sidebar a:hover { color: var(--gold-light); padding-left: 0.5rem; }
-.sidebar-ornament { text-align: center; color: var(--gold-dark); font-size: 1rem; margin-top: 2rem; letter-spacing: 8px; }
-footer { text-align: center; padding: 2.5rem 2rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(201,168,76,0.35); }
+.sidebar-brand { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--gold-dark); margin-bottom: 2rem; letter-spacing: 0.1em; }
+.sidebar a { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); text-decoration: none; padding: 0.9rem 0; border-bottom: 1px solid rgba(201,168,76,0.12); transition: color 0.2s, padding-left 0.2s; display: block; }
+.sidebar a:hover { color: var(--gold-dark); padding-left: 0.5rem; }
+.sidebar-ornament { text-align: center; color: var(--gold); font-size: 1rem; margin-top: 2rem; letter-spacing: 8px; }
+footer { background: var(--cream); text-align: center; padding: 2.5rem 2rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dark); }
 
 @media (max-width: 680px) {
   .timeline-spine { left: 90px; }
@@ -359,7 +366,7 @@ footer { text-align: center; padding: 2.5rem 2rem 3rem; border-top: 1px solid rg
       <div style="font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color: #7ec8a0; margin-bottom:0.8rem;">Catholic Development of Doctrine</div>
       <div style="font-size:0.92rem; line-height:1.75; color:rgba(245,240,232,0.7);">The Catholic doctrine of the Trinity — articulated more precisely at Nicaea (325), Constantinople (381), and Chalcedon (451) — did not change what was believed, but clarified <em>how to express</em> what Scripture and Tradition had always taught. Nicaea did not invent the Trinity; it defined the vocabulary to guard against a specific heresy (Arianism). The substance was identical to what Ignatius, Justin, and Irenaeus had taught two centuries earlier.</div>
     </div>
-    <div style="padding: 1.8rem; background: rgba(107,29,42,0.04);">
+    <div style="padding: 1.8rem; background: rgba(107,29,42,0.06);">
       <div style="font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color: rgba(180,80,80,0.85); margin-bottom:0.8rem;">Smith's "Revelatory" Reversals</div>
       <div style="font-size:0.92rem; line-height:1.75; color:rgba(245,240,232,0.7);">Smith's shifts are not refinements — they are categorical reversals. An "unchangeable" God who gains a body. A "personage of spirit" who acquires flesh and bones. A singular, eternal God who was once a mortal. The 1830 Book of Mormon and the 1844 King Follett Discourse cannot both be true. Yet both are presented as the word of God. This is not development; it is contradiction.</div>
     </div>
@@ -393,3 +400,4 @@ document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && doc
 </script>
 </body>
 </html>
+
