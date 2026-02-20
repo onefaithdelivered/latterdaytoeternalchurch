@@ -9,24 +9,1198 @@
 <link rel="icon" href="../favicons/favicon.ico" sizes="any" />
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --gold: #C9A84C;
-  --gold-light: #D4B96A;
-  --gold-dark: #A68A3E;
-  --cream: #F5F0E8;
-  --cream-dark: #EDE5D8;
-  --ink: #2C1810;
-  --ink-light: #4A3728;
-  --burgundy: #6B1D2A;
-  --burgundy-light: #8B2E3C;
-  --parchment: #FAF6F0;
+  :root {
+    --gold: #C5A355;
+    --gold-light: #D4B96A;
+    --gold-dark: #A68A3E;
+    --cream: #F5F0E8;
+    --cream-dark: #EDE5D8;
+    --ink: #2C1810;
+    --ink-light: #4A3728;
+    --burgundy: #6B1D2A;
+    --burgundy-light: #8B2E3C;
+    --parchment: #FAF6F0;
+    --green-win: #2D5A27;
+    --green-bg: #EEF5ED;
+    --red-loss: #7A1A1A;
+    --red-bg: #F5EDED;
+    --neutral-bg: #F0EDE8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #E8E0D4;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, rgba(197,163,85,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(107,29,42,0.06) 0%, transparent 50%);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: linear-gradient(160deg, #FFFDF9 0%, var(--cream) 40%, #FFF8F0 100%);
+    border: 1px solid var(--gold-dark);
+    border-radius: 2px;
+    position: relative;
+    box-shadow:
+      0 0 0 1px var(--gold-light),
+      0 0 0 5px var(--cream-dark),
+      0 0 0 6px var(--gold),
+      0 30px 80px rgba(44,24,16,0.25);
+    padding: 60px 55px 55px;
+  }
+
+  /* Corner ornaments */
+  .corner { position: absolute; color: var(--gold); font-size: 22px; line-height: 1; }
+  .corner.tl { top: 14px; left: 18px; }
+  .corner.tr { top: 14px; right: 18px; }
+  .corner.bl { bottom: 14px; left: 18px; }
+  .corner.br { bottom: 14px; right: 18px; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--gold-light);
+    position: relative;
+  }
+
+  .header::after {
+    content: '✦ ✦ ✦';
+    display: block;
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 8px;
+    margin-top: 20px;
+  }
+
+  .header-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink-light);
+    letter-spacing: 0.5px;
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 42px;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--burgundy);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--gold-light);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-num {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: var(--gold-dark);
+    background: var(--cream-dark);
+    border: 1px solid var(--gold-light);
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Comparison Table */
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .comp-table thead tr {
+    background: linear-gradient(135deg, var(--burgundy) 0%, #8B1F30 100%);
+  }
+
+  .comp-table thead th {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    padding: 12px 16px;
+    text-align: left;
+  }
+
+  .comp-table thead th:first-child {
+    width: 22%;
+    border-radius: 1px 0 0 0;
+  }
+  .comp-table thead th:last-child {
+    border-radius: 0 1px 0 0;
+  }
+
+  .comp-table tbody tr {
+    border-bottom: 1px solid var(--cream-dark);
+    transition: background 0.15s;
+  }
+
+  .comp-table tbody tr:hover {
+    background: rgba(197,163,85,0.06);
+  }
+
+  .comp-table tbody tr.verdict-row {
+    background: linear-gradient(135deg, var(--cream-dark) 0%, #EAE2D5 100%);
+    font-weight: 600;
+  }
+
+  .comp-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+    line-height: 1.55;
+    color: var(--ink);
+    border-right: 1px solid var(--cream-dark);
+  }
+
+  .comp-table td:first-child {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: var(--burgundy);
+    font-weight: 600;
+    background: rgba(107,29,42,0.03);
+  }
+
+  .bible-col { background: rgba(45,90,39,0.03); }
+  .bom-col { background: rgba(122,26,26,0.03); }
+
+  .win-badge {
+    display: inline-block;
+    background: var(--green-win);
+    color: #fff;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .zero-badge {
+    display: inline-block;
+    background: var(--red-loss);
+    color: #fff;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* Verdict block */
+  .verdict-block {
+    margin-top: 10px;
+    border-left: 3px solid var(--gold);
+    padding: 14px 18px;
+    background: linear-gradient(135deg, rgba(197,163,85,0.08) 0%, rgba(197,163,85,0.03) 100%);
+    font-style: italic;
+    font-size: 14.5px;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+
+  .verdict-block strong {
+    font-style: normal;
+    color: var(--burgundy);
+  }
+
+  /* Summary table */
+  .summary-section {
+    margin-top: 50px;
+    padding-top: 35px;
+    border-top: 2px solid var(--gold);
+  }
+
+  .summary-title {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--burgundy);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 22px;
+  }
+
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--gold-light);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .score-cell {
+    background: var(--cream);
+    padding: 16px 18px;
+    text-align: center;
+  }
+
+  .score-cell.header-cell {
+    background: linear-gradient(135deg, var(--burgundy) 0%, #8B1F30 100%);
+  }
+
+  .score-cell.header-cell span {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  .score-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .score-value {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+  }
+
+  .score-value.bible { color: var(--green-win); }
+  .score-value.bom { color: var(--red-loss); }
+  .score-value.label { font-size: 13px; color: var(--ink); }
+
+  /* Counter-claims */
+  .counter-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .counter-table thead tr {
+    background: linear-gradient(135deg, var(--ink) 0%, #3D2416 100%);
+  }
+
+  .counter-table thead th {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    padding: 11px 16px;
+    text-align: left;
+  }
+
+  .counter-table tbody tr {
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .counter-table tbody tr:hover { background: rgba(197,163,85,0.05); }
+
+  .counter-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+    line-height: 1.55;
+    border-right: 1px solid var(--cream-dark);
+  }
+
+  .counter-table td:first-child {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: var(--burgundy);
+    font-weight: 600;
+    background: rgba(107,29,42,0.03);
+    width: 28%;
+  }
+
+  /* Final verdict */
+  .final-verdict {
+    margin-top: 40px;
+    text-align: center;
+    padding: 30px 40px;
+    background: linear-gradient(135deg, var(--burgundy) 0%, #8B1F30 100%);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-verdict::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(197,163,85,0.4);
+    border-radius: 1px;
+    pointer-events: none;
+  }
+
+  .final-verdict-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .final-verdict h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .final-verdict p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: rgba(245,240,232,0.85);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Scholarly consensus */
+  .consensus-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .consensus-card {
+    border: 1px solid var(--gold-light);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .consensus-card-header {
+    background: linear-gradient(135deg, var(--ink) 0%, #3D2416 100%);
+    padding: 10px 14px;
+  }
+
+  .consensus-card-header span {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .consensus-card-body {
+    padding: 12px 14px;
+    background: var(--cream);
+  }
+
+  .consensus-item {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    color: var(--ink-light);
+    padding-left: 12px;
+    position: relative;
+  }
+
+  .consensus-item::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--gold-dark);
+    font-weight: bold;
+  }
+
+  .bible-item { color: var(--green-win); font-weight: 500; }
+  .bom-item { color: var(--red-loss); font-weight: 500; }
+
+  /* Footer ornament */
+  .footer-ornament {
+    text-align: center;
+    margin-top: 40px;
+    color: var(--gold);
+    font-size: 18px;
+    letter-spacing: 12px;
+  }
+
+  @media (max-width: 768px) {
+    body { padding: 0 0 40px; overflow-x: hidden; }
+    .page { padding: 35px 22px 30px;
+    .site-nav .nav-links { display: none; }
+  }
+    .header h1 { font-size: 22px; }
+    .score-grid { grid-template-columns: 1fr; }
+    .consensus-grid { grid-template-columns: 1fr; }
+  }
+
+/* ─── SITE NAV BAR ─────────────────────────────────────── */
+.site-nav {
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(13,7,3,0.98), rgba(13,7,3,0.93));
+  border-bottom: 1px solid #8B6914;
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  font-family: 'Cinzel', serif;
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background-color: #E8E0D4; background-image: radial-gradient(ellipse at 15% 10%, rgba(197,163,85,0.10) 0%, transparent 55%), radial-gradient(ellipse at 85% 90%, rgba(107,29,42,0.08) 0%, transparent 55%); font-family: 'Cormorant Garamond', Georgia, serif; color: var(--ink); min-height: 100vh; }
-nav { position: sticky; top: 0; z-index: 100; background: linear-gradient(to bottom, rgba(250,246,240,0.98), rgba(245,240,232,0.95)); border-bottom: 1px solid var(--gold-dark); padding: 0.75rem 2rem; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(6px); box-shadow: 0 2px 12px rgba(44,24,16,0.08); }
-.nav-brand { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.15em; color: var(--ink); text-transform: uppercase; text-decoration: none; }
-.nav-links { list-style: none; display: flex; gap: 2.5rem; }
-.nav-links a { font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; transition: color 0.25s; }
+.site-nav a.nav-home {
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #E8D08A;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: #C9A84C; }
+.site-nav .nav-back {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #C9A84C;
+  text-decoration: none;
+  border: 1px solid rgba(201,168,76,0.35);
+  padding: 0.4rem 1.1rem;
+  transition: background 0.2s, color 0.2s;
+}
+.site-nav .nav-back:hover {
+  background: rgba(201,168,76,0.12);
+  color: #E8D08A;
+}
+
+    .site-nav .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .site-nav .nav-links a {
+      font-size: 0.72rem; letter-spacing: 0.13em; text-transform: uppercase;
+      color: #C5B07A; text-decoration: none; transition: color 0.2s;
+    }
+    .site-nav .nav-links a:hover { color: #E8D08A; }
+  
+  /* ── Hamburger Button ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    background: none;
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 3px;
+    padding: 6px;
+    z-index: 10001;
+  }
+  .nav-hamburger span {
+    display: block;
+    height: 2px;
+    background: #C9A84C;
+    border-radius: 2px;
+    transition: all 0.25s;
+    transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── Sidebar Drawer ── */
+  .sidebar-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 10000;
+    backdrop-filter: blur(2px);
+  }
+  .sidebar-overlay.visible { display: block; }
+  .sidebar {
+    position: fixed;
+    top: 0; right: -280px;
+    width: 260px;
+    height: 100%;
+    background: linear-gradient(to bottom, #1a0d05, #120800);
+    border-left: 1px solid rgba(201,168,76,0.3);
+    z-index: 10002;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+  }
+  .sidebar.open { right: 0; }
+  .sidebar-inner {
+    padding: 5rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .sidebar-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #C9A84C;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .sidebar-inner a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #C5B07A;
+    text-decoration: none;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    transition: color 0.2s;
+  }
+  .sidebar-inner a:hover { color: #E8D08A; }
+  .sidebar-inner a.sidebar-back {
+    color: #C9A84C;
+    margin-top: 1.5rem;
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 0.7rem 1rem;
+    text-align: center;
+    border-radius: 2px;
+  }
+  .sidebar-ornament {
+    color: #8B6914;
+    font-size: 11px;
+    letter-spacing: 8px;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  @media (max-width: 700px) {
+    .nav-hamburger { display: flex; }
+  }
+
+
+  /* ── Page-Specific Styles ── */
+
+  
+
+  
+
+  
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: linear-gradient(160deg, #FFFDF9 0%, var(--cream) 40%, #FFF8F0 100%);
+    border: 1px solid var(--gold-dark);
+    border-radius: 2px;
+    position: relative;
+    box-shadow:
+      0 0 0 1px var(--gold-light),
+      0 0 0 5px var(--cream-dark),
+      0 0 0 6px var(--gold),
+      0 30px 80px rgba(44,24,16,0.25);
+    padding: 60px 55px 55px;
+  }
+
+  /* Corner ornaments */
+  .corner { position: absolute; color: var(--gold); font-size: 22px; line-height: 1; }
+  .corner.tl { top: 14px; left: 18px; }
+  .corner.tr { top: 14px; right: 18px; }
+  .corner.bl { bottom: 14px; left: 18px; }
+  .corner.br { bottom: 14px; right: 18px; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--gold-light);
+    position: relative;
+  }
+
+  .header::after {
+    content: '✦ ✦ ✦';
+    display: block;
+    color: var(--gold);
+    font-size: 13px;
+    letter-spacing: 8px;
+    margin-top: 20px;
+  }
+
+  .header-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink-light);
+    letter-spacing: 0.5px;
+  }
+
+  /* Section */
+  .section {
+    margin-bottom: 42px;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--burgundy);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--gold-light);
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-num {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: var(--gold-dark);
+    background: var(--cream-dark);
+    border: 1px solid var(--gold-light);
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Comparison Table */
+  .comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .comp-table thead tr {
+    background: linear-gradient(135deg, var(--burgundy) 0%, #8B1F30 100%);
+  }
+
+  .comp-table thead th {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    padding: 12px 16px;
+    text-align: left;
+  }
+
+  .comp-table thead th:first-child {
+    width: 22%;
+    border-radius: 1px 0 0 0;
+  }
+  .comp-table thead th:last-child {
+    border-radius: 0 1px 0 0;
+  }
+
+  .comp-table tbody tr {
+    border-bottom: 1px solid var(--cream-dark);
+    transition: background 0.15s;
+  }
+
+  .comp-table tbody tr:hover {
+    background: rgba(197,163,85,0.06);
+  }
+
+  .comp-table tbody tr.verdict-row {
+    background: linear-gradient(135deg, var(--cream-dark) 0%, #EAE2D5 100%);
+    font-weight: 600;
+  }
+
+  .comp-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+    line-height: 1.55;
+    color: var(--ink);
+    border-right: 1px solid var(--cream-dark);
+  }
+
+  .comp-table td:first-child {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: var(--burgundy);
+    font-weight: 600;
+    background: rgba(107,29,42,0.03);
+  }
+
+  .bible-col { background: rgba(45,90,39,0.03); }
+  .bom-col { background: rgba(122,26,26,0.03); }
+
+  .win-badge {
+    display: inline-block;
+    background: var(--green-win);
+    color: #fff;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .zero-badge {
+    display: inline-block;
+    background: var(--red-loss);
+    color: #fff;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* Verdict block */
+  .verdict-block {
+    margin-top: 10px;
+    border-left: 3px solid var(--gold);
+    padding: 14px 18px;
+    background: linear-gradient(135deg, rgba(197,163,85,0.08) 0%, rgba(197,163,85,0.03) 100%);
+    font-style: italic;
+    font-size: 14.5px;
+    color: var(--ink-light);
+    line-height: 1.6;
+  }
+
+  .verdict-block strong {
+    font-style: normal;
+    color: var(--burgundy);
+  }
+
+  /* Summary table */
+  .summary-section {
+    margin-top: 50px;
+    padding-top: 35px;
+    border-top: 2px solid var(--gold);
+  }
+
+  .summary-title {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--burgundy);
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 22px;
+  }
+
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--gold-light);
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .score-cell {
+    background: var(--cream);
+    padding: 16px 18px;
+    text-align: center;
+  }
+
+  .score-cell.header-cell {
+    background: linear-gradient(135deg, var(--burgundy) 0%, #8B1F30 100%);
+  }
+
+  .score-cell.header-cell span {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  .score-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .score-value {
+    font-family: 'Cinzel', serif;
+    font-size: 22px;
+    font-weight: 700;
+    display: block;
+    line-height: 1;
+  }
+
+  .score-value.bible { color: var(--green-win); }
+  .score-value.bom { color: var(--red-loss); }
+  .score-value.label { font-size: 13px; color: var(--ink); }
+
+  /* Counter-claims */
+  .counter-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .counter-table thead tr {
+    background: linear-gradient(135deg, var(--ink) 0%, #3D2416 100%);
+  }
+
+  .counter-table thead th {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    padding: 11px 16px;
+    text-align: left;
+  }
+
+  .counter-table tbody tr {
+    border-bottom: 1px solid var(--cream-dark);
+  }
+
+  .counter-table tbody tr:hover { background: rgba(197,163,85,0.05); }
+
+  .counter-table td {
+    padding: 12px 16px;
+    vertical-align: top;
+    line-height: 1.55;
+    border-right: 1px solid var(--cream-dark);
+  }
+
+  .counter-table td:first-child {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: var(--burgundy);
+    font-weight: 600;
+    background: rgba(107,29,42,0.03);
+    width: 28%;
+  }
+
+  /* Final verdict */
+  .final-verdict {
+    margin-top: 40px;
+    text-align: center;
+    padding: 30px 40px;
+    background: linear-gradient(135deg, var(--burgundy) 0%, #8B1F30 100%);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-verdict::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(197,163,85,0.4);
+    border-radius: 1px;
+    pointer-events: none;
+  }
+
+  .final-verdict-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .final-verdict h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+
+  .final-verdict p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: rgba(245,240,232,0.85);
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Scholarly consensus */
+  .consensus-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-top: 4px;
+  }
+
+  .consensus-card {
+    border: 1px solid var(--gold-light);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .consensus-card-header {
+    background: linear-gradient(135deg, var(--ink) 0%, #3D2416 100%);
+    padding: 10px 14px;
+  }
+
+  .consensus-card-header span {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .consensus-card-
+
+  .consensus-item {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    color: var(--ink-light);
+    padding-left: 12px;
+    position: relative;
+  }
+
+  .consensus-item::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--gold-dark);
+    font-weight: bold;
+  }
+
+  .bible-item { color: var(--green-win); font-weight: 500; }
+  .bom-item { color: var(--red-loss); font-weight: 500; }
+
+  /* Footer ornament */
+  .footer-ornament {
+    text-align: center;
+    margin-top: 40px;
+    color: var(--gold);
+    font-size: 18px;
+    letter-spacing: 12px;
+  }
+
+  
+
+/* ─── SITE NAV BAR ─────────────────────────────────────── */
+.site-
+.site-nav a.nav-home {
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #E8D08A;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: #C9A84C; }
+.site-nav .nav-back {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #C9A84C;
+  text-decoration: none;
+  border: 1px solid rgba(201,168,76,0.35);
+  padding: 0.4rem 1.1rem;
+  transition: background 0.2s, color 0.2s;
+}
+.site-nav .nav-back:hover {
+  background: rgba(201,168,76,0.12);
+  color: #E8D08A;
+}
+
+    .site-nav 
+    .site-nav 
+    .site-nav 
+  
+  /* ── Hamburger Button ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    background: none;
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 3px;
+    padding: 6px;
+    z-index: 10001;
+  }
+  .nav-hamburger span {
+    display: block;
+    height: 2px;
+    background: #C9A84C;
+    border-radius: 2px;
+    transition: all 0.25s;
+    transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── Sidebar Drawer ── */
+  .sidebar-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 10000;
+    backdrop-filter: blur(2px);
+  }
+  .sidebar-overlay.visible { display: block; }
+  .sidebar {
+    position: fixed;
+    top: 0; right: -280px;
+    width: 260px;
+    height: 100%;
+    background: linear-gradient(to bottom, #1a0d05, #120800);
+    border-left: 1px solid rgba(201,168,76,0.3);
+    z-index: 10002;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+  }
+  .sidebar.open { right: 0; }
+  .sidebar-inner {
+    padding: 5rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .sidebar-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #C9A84C;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .sidebar-inner a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #C5B07A;
+    text-decoration: none;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    transition: color 0.2s;
+  }
+  .sidebar-inner a:hover { color: #E8D08A; }
+  .sidebar-inner a.sidebar-back {
+    color: #C9A84C;
+    margin-top: 1.5rem;
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 0.7rem 1rem;
+    text-align: center;
+    border-radius: 2px;
+  }
+  .sidebar-ornament {
+    color: #8B6914;
+    font-size: 11px;
+    letter-spacing: 8px;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  
+
+
+  /* ── Page-Specific Styles ── */
+
+
+
+
+
+
+
+
 .nav-links a:hover, .nav-links a.active { color: var(--burgundy); }
 .page-header { text-align: center; padding: 5rem 2rem 3rem; border-bottom: 1px solid rgba(166,138,62,0.25); background: linear-gradient(170deg, #FFFDF9 0%, var(--cream) 60%, #FFF8F0 100%); }
 .back-link { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dark); text-decoration: none; margin-bottom: 2rem; transition: color 0.2s; }
@@ -34,7 +1208,7 @@ nav { position: sticky; top: 0; z-index: 100; background: linear-gradient(to bot
 .ornament { color: var(--gold); font-size: 1.2rem; letter-spacing: 12px; margin-bottom: 1.5rem; display: block; }
 .page-header h1 { font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 3vw, 2.4rem); font-weight: 600; color: var(--ink); letter-spacing: 0.04em; line-height: 1.3; margin-bottom: 0.8rem; }
 .page-header .subtitle { font-size: 1.1rem; font-style: italic; color: var(--ink-light); max-width: 640px; margin: 0 auto; }
-main { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+
 
 .intro-box { padding: 1.8rem 2.2rem; margin-bottom: 3rem; border: 1px solid rgba(201,168,76,0.2); background: rgba(197,163,85,0.07); }
 .intro-box p { font-size: 1rem; line-height: 1.85; color: var(--ink-light); }
@@ -59,7 +1233,9 @@ main { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 6rem; }
 .fac-name { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-light); opacity: 0.7; }
 
 /* SVG DIAGRAM AREA */
-.fac-diagram { padding: 1.5rem; border-bottom: 1px solid rgba(201,168,76,0.08); background: rgba(0,0,0,0.2); display: flex; justify-content: center; }
+.fac-diagram { padding: 1.5rem; border-bottom: 1px solid rgba(201,168,76,0.08); background: rgba(0,0,0,0.2); display: flex; justify-content: center; align-items: flex-start; gap: 1rem; flex-wrap: wrap; }
+.fac-diagram figure { margin: 0; }
+.fac-diagram img { display: block; }
 .fac-diagram svg { max-width: 100%; }
 
 /* COMPARISON GRID */
@@ -118,27 +1294,23 @@ main { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 6rem; }
 .sidebar-ornament { text-align: center; color: var(--gold); font-size: 1rem; margin-top: 2rem; letter-spacing: 8px; }
 footer { background: var(--cream); text-align: center; padding: 2.5rem 2rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dark); }
 
-@media (max-width: 750px) {
-  .fac-compare { grid-template-columns: 1fr; }
-  .fac-col:first-child { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.08); }
-  .problem-cards { grid-template-columns: 1fr; }
-  .response-grid { grid-template-columns: 1fr; }
-  .history-bar { grid-template-columns: 1fr 1fr; }
-  nav .nav-links { display: none; } .nav-hamburger { display: flex; } .sidebar { display: block; } .sidebar-overlay { display: block; }
-}
+
+
+
 </style>
 </head>
 <body>
-<nav>
-  <a class="nav-brand" href="../index.html">One Faith Delivered</a>
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">One Faith Delivered</a>
   <ul class="nav-links">
     <li><a href="../index.html">Home</a></li>
     <li><a href="../articles.html">Articles</a></li>
-    <li><a href="../charts.html" class="active">Charts</a></li>
+    <li><a href="../charts.html">Charts</a></li>
     <li><a href="../topics.html">Topics</a></li>
     <li><a href="../resources.html">Resources</a></li>
   </ul>
-  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Menu"><span></span><span></span><span></span></button>
+  <a href="../articles.html" class="nav-back">&#8592; All Articles</a>
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
 
 <header class="page-header">
@@ -189,78 +1361,19 @@ footer { background: var(--cream); text-align: center; padding: 2.5rem 2rem 3rem
     </div>
 
     <!-- SVG diagram of facsimile 1 -->
-    <div class="fac-diagram">
-      <svg viewBox="0 0 700 300" width="680" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
-        <!-- Background -->
-        <rect width="700" height="300" fill="#0a0501"/>
-        <!-- Papyrus area -->
-        <rect x="20" y="20" width="660" height="260" rx="2" fill="#0f0904" stroke="#8B6914" stroke-width="1"/>
-
-        <!-- Lion couch (bier) -->
-        <rect x="180" y="165" width="200" height="14" rx="3" fill="#5a4020" stroke="#C9A84C" stroke-width="0.8"/>
-        <!-- Lion legs -->
-        <rect x="190" y="179" width="12" height="22" rx="2" fill="#5a4020" stroke="#C9A84C" stroke-width="0.7"/>
-        <rect x="358" y="179" width="12" height="22" rx="2" fill="#5a4020" stroke="#C9A84C" stroke-width="0.7"/>
-        <!-- Lion head (left side) -->
-        <ellipse cx="185" cy="173" rx="12" ry="10" fill="#5a4020" stroke="#C9A84C" stroke-width="0.7"/>
-
-        <!-- Figure on couch (Hor / "Abraham") — horizontal, arms raised -->
-        <ellipse cx="300" cy="150" rx="14" ry="14" fill="none" stroke="#C9A84C" stroke-width="1.2"/>
-        <line x1="300" y1="164" x2="300" y2="190" stroke="#C9A84C" stroke-width="1.2"/>
-        <!-- Arm raised (figure 1) -->
-        <line x1="300" y1="172" x2="280" y2="158" stroke="#C9A84C" stroke-width="1.2"/>
-        <line x1="280" y1="158" x2="272" y2="148" stroke="#C9A84C" stroke-width="1"/>
-        <!-- Phallus (censored in Smith's version) -->
-        <line x1="300" y1="185" x2="310" y2="185" stroke="rgba(201,168,76,0.4)" stroke-width="1" stroke-dasharray="3,2"/>
-
-        <!-- Fig 2: Anubis / "Priest of Elkenah" standing -->
-        <ellipse cx="390" cy="120" rx="11" ry="11" fill="none" stroke="#C9A84C" stroke-width="1.1"/>
-        <line x1="390" y1="131" x2="390" y2="168" stroke="#C9A84C" stroke-width="1.1"/>
-        <line x1="390" y1="145" x2="370" y2="135" stroke="#C9A84C" stroke-width="1.1"/>
-        <line x1="390" y1="145" x2="410" y2="138" stroke="#C9A84C" stroke-width="1.1"/>
-        <line x1="390" y1="168" x2="378" y2="195" stroke="#C9A84C" stroke-width="1.1"/>
-        <line x1="390" y1="168" x2="402" y2="195" stroke="#C9A84C" stroke-width="1.1"/>
-        <!-- Jackal head (Anubis) — pointed snout -->
-        <path d="M385,112 Q390,103 395,112" fill="#2a1a08" stroke="#C9A84C" stroke-width="0.8"/>
-        <line x1="395" y1="112" x2="402" y2="107" stroke="#C9A84C" stroke-width="0.8"/>
-
-        <!-- Fig 3: Bird (human-headed falcon = ba) above figure 1 -->
-        <ellipse cx="290" cy="115" rx="8" ry="8" fill="none" stroke="#C9A84C" stroke-width="0.9"/>
-        <path d="M282,115 Q280,108 298,115" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
-        <path d="M298,115 Q300,108 284,115" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
-        <!-- Human face indicator -->
-        <text x="290" y="118" text-anchor="middle" fill="#C9A84C" font-size="7">☥</text>
-
-        <!-- Altar beneath fig 1 -->
-        <rect x="255" y="192" width="90" height="12" rx="1" fill="#2a1a08" stroke="#C9A84C" stroke-width="0.7"/>
-        <rect x="265" y="204" width="70" height="8" rx="1" fill="#2a1a08" stroke="#8B6914" stroke-width="0.5"/>
-
-        <!-- Canopic jars (fig 4,5,6,7 beneath altar) -->
-        <ellipse cx="245" cy="230" rx="8" ry="11" fill="#2a1a08" stroke="#C9A84C" stroke-width="0.7"/>
-        <ellipse cx="265" cy="230" rx="8" ry="11" fill="#2a1a08" stroke="#C9A84C" stroke-width="0.7"/>
-        <ellipse cx="285" cy="230" rx="8" ry="11" fill="#2a1a08" stroke="#C9A84C" stroke-width="0.7"/>
-        <ellipse cx="305" cy="230" rx="8" ry="11" fill="#2a1a08" stroke="#C9A84C" stroke-width="0.7"/>
-
-        <!-- FIGURE LABELS -->
-        <text x="300" y="102" text-anchor="middle" fill="#E8D08A" font-size="10" font-family="'Cinzel', serif">Fig. 1</text>
-        <text x="390" y="108" text-anchor="middle" fill="#E8D08A" font-size="10" font-family="'Cinzel', serif">Fig. 2</text>
-        <text x="270" y="108" text-anchor="middle" fill="#E8D08A" font-size="10" font-family="'Cinzel', serif">Fig. 3</text>
-        <text x="245" y="252" text-anchor="middle" fill="#E8D08A" font-size="9" font-family="'Cinzel', serif">4</text>
-        <text x="265" y="252" text-anchor="middle" fill="#E8D08A" font-size="9" font-family="'Cinzel', serif">5</text>
-        <text x="285" y="252" text-anchor="middle" fill="#E8D08A" font-size="9" font-family="'Cinzel', serif">6</text>
-        <text x="305" y="252" text-anchor="middle" fill="#E8D08A" font-size="9" font-family="'Cinzel', serif">7</text>
-
-        <!-- Hieratic text columns on left -->
-        <text x="80" y="80" fill="rgba(201,168,76,0.25)" font-size="9" font-family="serif">𓄿𓏏𓇋</text>
-        <text x="70" y="100" fill="rgba(201,168,76,0.2)" font-size="9" font-family="serif">𓅓𓂝𓈖</text>
-        <text x="80" y="120" fill="rgba(201,168,76,0.25)" font-size="9" font-family="serif">𓇋𓏏𓆑</text>
-        <text x="70" y="140" fill="rgba(201,168,76,0.2)" font-size="9" font-family="serif">𓄿𓈖𓊪</text>
-        <text x="80" y="160" fill="rgba(201,168,76,0.25)" font-size="9" font-family="serif">𓅱𓏏𓄿</text>
-        <text x="70" y="180" fill="rgba(201,168,76,0.2)" font-size="9" font-family="serif">𓇋𓆑𓄿</text>
-
-        <!-- Caption -->
-        <text x="350" y="270" text-anchor="middle" fill="rgba(201,168,76,0.3)" font-size="9" font-family="'Cinzel', serif" letter-spacing="1">SCHEMATIC REPRESENTATION — NOT ORIGINAL ARTWORK</text>
-      </svg>
+    <div class="fac-diagram" style="display:flex; gap:1rem; justify-content:center; align-items:flex-start; flex-wrap:wrap;">
+      <figure style="flex:1; min-width:180px; max-width:220px; margin:0; text-align:center;">
+        <img src="../images/Facsimiles/fac1-1.jpg" alt="Facsimile 1 — Original Papyrus" style="width:100%; border:1px solid rgba(201,168,76,0.3);">
+        <figcaption style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(245,240,232,0.55); margin-top:0.5rem;">Original Papyrus</figcaption>
+      </figure>
+      <figure style="flex:1; min-width:180px; max-width:220px; margin:0; text-align:center;">
+        <img src="../images/Facsimiles/fac1-2.jpg" alt="Facsimile 1 — Smith's Published Version" style="width:100%; border:1px solid rgba(201,168,76,0.3);">
+        <figcaption style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(245,240,232,0.55); margin-top:0.5rem;">Smith's Published Version</figcaption>
+      </figure>
+      <figure style="flex:1; min-width:180px; max-width:220px; margin:0; text-align:center;">
+        <img src="../images/Facsimiles/fac1-3.jpg" alt="Facsimile 1 — Comparable Egyptian Scene" style="width:100%; border:1px solid rgba(201,168,76,0.3);">
+        <figcaption style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.15em; text-transform:uppercase; color:rgba(245,240,232,0.55); margin-top:0.5rem;">Comparable Egyptian Scene</figcaption>
+      </figure>
     </div>
 
     <div class="fac-compare">
@@ -322,49 +1435,10 @@ footer { background: var(--cream); text-align: center; padding: 2.5rem 2rem 3rem
     </div>
 
     <!-- SVG for Facsimile 2 — circular hypocephalus -->
-    <div class="fac-diagram">
-      <svg viewBox="0 0 500 280" width="500" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
-        <rect width="500" height="280" fill="#0a0501"/>
-        <!-- Outer circle -->
-        <circle cx="250" cy="140" r="120" fill="#0f0904" stroke="#8B6914" stroke-width="1.5"/>
-        <!-- Inner ring -->
-        <circle cx="250" cy="140" r="85" fill="none" stroke="rgba(201,168,76,0.2)" stroke-width="0.8"/>
-        <!-- Inner circle -->
-        <circle cx="250" cy="140" r="50" fill="#0a0602" stroke="rgba(201,168,76,0.25)" stroke-width="0.8"/>
-
-        <!-- Central figure (Khnum-Ra / "Kolob") — four-headed figure -->
-        <line x1="250" y1="115" x2="250" y2="165" stroke="#C9A84C" stroke-width="1.2"/>
-        <!-- heads -->
-        <ellipse cx="250" cy="112" rx="7" ry="7" fill="none" stroke="#C9A84C" stroke-width="0.9"/>
-        <ellipse cx="250" cy="112" rx="4" ry="7" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="0.5"/>
-        <text x="250" y="145" text-anchor="middle" fill="rgba(201,168,76,0.3)" font-size="8">Fig. 1</text>
-
-        <!-- Outer band figures (clockwise) -->
-        <!-- Fig 2 top right -->
-        <ellipse cx="320" cy="100" rx="9" ry="9" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
-        <text x="335" y="96" fill="#E8D08A" font-size="9" font-family="'Cinzel', serif">2</text>
-        <!-- Fig 3 right -->
-        <ellipse cx="355" cy="145" rx="9" ry="9" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
-        <text x="370" y="149" fill="#E8D08A" font-size="9" font-family="'Cinzel', serif">3</text>
-        <!-- Fig 4 bottom right -->
-        <ellipse cx="320" cy="190" rx="9" ry="9" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
-        <text x="333" y="200" fill="#E8D08A" font-size="9" font-family="'Cinzel', serif">4</text>
-        <!-- Fig 5 bottom left -->
-        <ellipse cx="180" cy="190" rx="9" ry="9" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
-        <text x="158" y="200" fill="#E8D08A" font-size="9" font-family="'Cinzel', serif">5</text>
-        <!-- Fig 6 left -->
-        <ellipse cx="145" cy="145" rx="9" ry="9" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
-        <text x="122" y="149" fill="#E8D08A" font-size="9" font-family="'Cinzel', serif">6</text>
-        <!-- Fig 7 top left -->
-        <ellipse cx="180" cy="100" rx="9" ry="9" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
-        <text x="158" y="96" fill="#E8D08A" font-size="9" font-family="'Cinzel', serif">7</text>
-
-        <!-- Hieratic script band (between rings) -->
-        <text x="250" y="232" text-anchor="middle" fill="rgba(201,168,76,0.2)" font-size="8" font-family="serif">𓄿𓏏𓇋𓅓𓂝𓈖𓇋𓏏𓆑𓄿𓈖𓊪</text>
-
-        <!-- Label -->
-        <text x="250" y="272" text-anchor="middle" fill="rgba(201,168,76,0.3)" font-size="9" font-family="'Cinzel', serif" letter-spacing="1">HYPOCEPHALUS — SCHEMATIC</text>
-      </svg>
+    <div class="fac-diagram" style="justify-content:center;">
+      <figure style="margin:0; text-align:center;">
+        <img src="../images/Facsimiles/fac2.jpg" alt="Facsimile 2 — The Hypocephalus" style="max-width:100%; max-height:320px; border:1px solid rgba(201,168,76,0.3);">
+      </figure>
     </div>
 
     <div class="fac-compare">
@@ -430,71 +1504,10 @@ footer { background: var(--cream); text-align: center; padding: 2.5rem 2rem 3rem
     </div>
 
     <!-- SVG for Facsimile 3 -->
-    <div class="fac-diagram">
-      <svg viewBox="0 0 640 260" width="620" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
-        <rect width="640" height="260" fill="#0a0501"/>
-        <rect x="20" y="20" width="600" height="220" rx="2" fill="#0f0904" stroke="#8B6914" stroke-width="1"/>
-
-        <!-- Throne (Osiris / "Abraham's throne") left center -->
-        <rect x="90" y="90" width="55" height="80" rx="2" fill="#1a0f05" stroke="#C9A84C" stroke-width="1"/>
-        <rect x="85" y="80" width="65" height="15" rx="1" fill="#2a1a08" stroke="#C9A84C" stroke-width="0.8"/>
-        <!-- Osiris seated on throne -->
-        <ellipse cx="118" cy="72" rx="13" ry="13" fill="none" stroke="#C9A84C" stroke-width="1.1"/>
-        <line x1="118" y1="85" x2="118" y2="130" stroke="#C9A84C" stroke-width="1.1"/>
-        <line x1="118" y1="100" x2="98" y2="90" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="118" y1="100" x2="138" y2="90" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="118" y1="130" x2="105" y2="158" stroke="#C9A84C" stroke-width="1.1"/>
-        <line x1="118" y1="130" x2="131" y2="158" stroke="#C9A84C" stroke-width="1.1"/>
-        <!-- Atef crown (Osiris) -->
-        <rect x="113" y="55" width="10" height="18" rx="1" fill="none" stroke="#C9A84C" stroke-width="0.8"/>
-        <line x1="108" y1="62" x2="113" y2="60" stroke="#C9A84C" stroke-width="0.7"/>
-        <line x1="127" y1="62" x2="123" y2="60" stroke="#C9A84C" stroke-width="0.7"/>
-        <text x="118" y="175" text-anchor="middle" fill="#E8D08A" font-size="10" font-family="'Cinzel', serif">Fig. 1</text>
-
-        <!-- Isis standing (Fig 2) -->
-        <ellipse cx="200" cy="80" rx="11" ry="11" fill="none" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="200" y1="91" x2="200" y2="140" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="200" y1="110" x2="180" y2="100" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="200" y1="110" x2="220" y2="100" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="200" y1="140" x2="188" y2="168" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="200" y1="140" x2="212" y2="168" stroke="#C9A84C" stroke-width="1"/>
-        <!-- Isis headdress — throne symbol -->
-        <rect x="196" y="67" width="8" height="5" rx="0" fill="none" stroke="#C9A84C" stroke-width="0.7"/>
-        <text x="200" y="185" text-anchor="middle" fill="#E8D08A" font-size="10" font-family="'Cinzel', serif">Fig. 2</text>
-
-        <!-- "Abraham" / Hor standing (Fig 3) -->
-        <ellipse cx="290" cy="80" rx="11" ry="11" fill="none" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="290" y1="91" x2="290" y2="140" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="290" y1="110" x2="268" y2="102" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="290" y1="110" x2="312" y2="100" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="290" y1="140" x2="278" y2="168" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="290" y1="140" x2="302" y2="168" stroke="#C9A84C" stroke-width="1"/>
-        <text x="290" y="185" text-anchor="middle" fill="#E8D08A" font-size="10" font-family="'Cinzel', serif">Fig. 3</text>
-
-        <!-- Maat (Fig 4) -->
-        <ellipse cx="380" cy="80" rx="11" ry="11" fill="none" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="380" y1="91" x2="380" y2="140" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="380" y1="110" x2="360" y2="100" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="380" y1="110" x2="400" y2="102" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="380" y1="140" x2="368" y2="168" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="380" y1="140" x2="392" y2="168" stroke="#C9A84C" stroke-width="1"/>
-        <!-- Maat feather -->
-        <path d="M380,67 Q384,57 383,55 Q380,58 376,55 Q375,57 380,67" fill="none" stroke="#C9A84C" stroke-width="0.7"/>
-        <text x="380" y="185" text-anchor="middle" fill="#E8D08A" font-size="10" font-family="'Cinzel', serif">Fig. 4</text>
-
-        <!-- Shulem / Hor (Fig 5) -->
-        <ellipse cx="470" cy="80" rx="11" ry="11" fill="none" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="470" y1="91" x2="470" y2="140" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="470" y1="110" x2="450" y2="100" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="470" y1="110" x2="490" y2="102" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="470" y1="140" x2="458" y2="168" stroke="#C9A84C" stroke-width="1"/>
-        <line x1="470" y1="140" x2="482" y2="168" stroke="#C9A84C" stroke-width="1"/>
-        <text x="470" y="185" text-anchor="middle" fill="#E8D08A" font-size="10" font-family="'Cinzel', serif">Fig. 5</text>
-
-        <!-- Hieroglyphs above -->
-        <text x="320" y="45" text-anchor="middle" fill="rgba(201,168,76,0.25)" font-size="10" font-family="serif">𓇋𓄿𓏏𓅓𓂝𓈖𓄿𓇋𓆑</text>
-        <text x="320" y="235" text-anchor="middle" fill="rgba(201,168,76,0.3)" font-size="9" font-family="'Cinzel', serif" letter-spacing="1">SCHEMATIC REPRESENTATION — NOT ORIGINAL ARTWORK</text>
-      </svg>
+    <div class="fac-diagram" style="justify-content:center;">
+      <figure style="margin:0; text-align:center;">
+        <img src="../images/Facsimiles/fac3.jpg" alt="Facsimile 3 — The Throne Scene" style="max-width:100%; max-height:320px; border:1px solid rgba(201,168,76,0.3);">
+      </figure>
     </div>
 
     <div class="fac-compare">
@@ -611,12 +1624,17 @@ footer { background: var(--cream); text-align: center; padding: 2.5rem 2rem 3rem
 
 <footer>&copy; One Faith Delivered &nbsp;&#8901;&nbsp; All Rights Reserved</footer>
 <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
-<aside class="sidebar">
-  <div class="sidebar-inner">
-    <div class="sidebar-brand">One Faith Delivered</div>
-    <a href="../index.html">Home</a><a href="../articles.html">Articles</a><a href="../charts.html" style="color:var(--gold-light)">Charts</a><a href="../topics.html">Topics</a><a href="../resources.html">Resources</a>
-    <div class="sidebar-ornament">✦ ✦ ✦</div>
-  </div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sidebar-brand">One Faith Delivered</div>
+      <a href="../index.html">Home</a>
+      <a href="../articles.html">Articles</a>
+      <a href="../charts.html">Charts</a>
+      <a href="../topics.html">Topics</a>
+      <a href="../resources.html">Resources</a>
+      <a href="../articles.html" class="sidebar-back">&#8592; All Articles</a>
+      <div class="sidebar-ornament">✦ ✦ ✦</div>
+    </div>
 </aside>
 <script>
 function toggleSidebar() {
