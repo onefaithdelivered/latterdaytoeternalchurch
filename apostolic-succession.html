@@ -44,29 +44,19 @@ nav {
 .nav-links { list-style: none; display: flex; gap: 2.5rem; }
 .nav-links a { font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); text-decoration: none; transition: color 0.25s; }
 .nav-links a:hover { color: var(--gold-dark); }
-
-.page-header {
-  text-align: center; padding: 5rem 2rem 3rem;
-  border-bottom: 1px solid rgba(166,138,62,0.25);
-  background: linear-gradient(170deg, #FFFDF9 0%, var(--cream) 60%, #FFF8F0 100%);
-}
+.page-header { text-align: center; padding: 5rem 2rem 3rem; border-bottom: 1px solid rgba(166,138,62,0.25); background: linear-gradient(170deg, #FFFDF9 0%, var(--cream) 60%, #FFF8F0 100%); }
 .back-link { display: inline-block; font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dark); text-decoration: none; margin-bottom: 2rem; transition: color 0.2s; }
 .back-link:hover { color: var(--gold); }
-.ornament { color: var(--gold); font-size: 1.1rem; letter-spacing: 10px; margin-bottom: 1.5rem; display: block; }
+.ornament { color: var(--gold); font-size: 1.1rem; letter-spacing: 12px; margin-bottom: 1.5rem; display: block; }
 .page-header h1 { font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: 600; color: var(--ink); letter-spacing: 0.04em; line-height: 1.3; margin-bottom: 0.8rem; }
 .page-header .subtitle { font-size: 1.1rem; font-style: italic; color: var(--ink-light); max-width: 600px; margin: 0 auto; }
-
-main {
-  max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 6rem;
-}
+main { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 6rem; }
 
 /* INTRO */
 .intro-verse {
   text-align: center; margin-bottom: 3rem;
-  padding: 2rem;
-  border: 1px solid rgba(166,138,62,0.3);
-  background: linear-gradient(135deg, #FFFDF9 0%, var(--cream) 100%);
-  box-shadow: 0 2px 12px rgba(44,24,16,0.06);
+  padding: 2rem; border: 1px solid rgba(201,168,76,0.2);
+  background: rgba(201,168,76,0.04);
 }
 .intro-verse blockquote {
   font-size: 1.15rem; font-style: italic; line-height: 1.8;
@@ -74,13 +64,16 @@ main {
 }
 .intro-verse cite { font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-dark); }
 
+/* CHAIN LAYOUT */
+.chain-container { position: relative; }
+
 /* Era headers */
 .era-label {
   font-family: 'Cinzel', serif; font-size: 0.72rem;
   letter-spacing: 0.25em; text-transform: uppercase;
   color: var(--burgundy); border-left: 3px solid var(--gold);
-  padding: 0.35rem 0.9rem; margin-bottom: 1.2rem; margin-top: 2.5rem;
-  background: rgba(197,163,85,0.08);
+  padding: 0.3rem 0.8rem; margin-bottom: 1.2rem; margin-top: 2.5rem;
+  background: rgba(201,168,76,0.05);
 }
 
 /* POPE GRID */
@@ -88,21 +81,19 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 0;
-  border: 1px solid rgba(166,138,62,0.25);
-  background: #FFFDF9;
-  box-shadow: 0 2px 8px rgba(44,24,16,0.06);
+  border: 1px solid rgba(201,168,76,0.15);
 }
 .pope-cell {
   padding: 0.8rem 1rem;
-  border-right: 1px solid rgba(166,138,62,0.15);
-  border-bottom: 1px solid rgba(166,138,62,0.15);
+  border-right: 1px solid rgba(201,168,76,0.1);
+  border-bottom: 1px solid rgba(201,168,76,0.1);
   position: relative;
   transition: background 0.2s;
-  background: #FFFDF9;
 }
-.pope-cell:hover { background: rgba(197,163,85,0.07); }
+.pope-cell:hover { background: rgba(201,168,76,0.05); }
 .pope-cell.highlighted {
-  background: rgba(197,163,85,0.06);
+  background: rgba(201,168,76,0.08);
+  border-color: rgba(201,168,76,0.25);
 }
 .pope-num {
   font-family: 'Cinzel', serif; font-size: 0.58rem;
@@ -118,31 +109,35 @@ main {
   font-size: 0.78rem; color: var(--ink-light); font-style: italic; opacity: 0.75;
 }
 .pope-cell.peter {
-  background: rgba(197,163,85,0.12);
-  border: 2px solid rgba(166,138,62,0.45);
+  background: rgba(201,168,76,0.12);
+  border: 2px solid rgba(201,168,76,0.5);
   grid-column: span 2;
 }
 .pope-cell.peter .pope-name { font-size: 1.1rem; color: var(--burgundy); }
 .pope-cell.peter .pope-dates { font-size: 0.88rem; color: var(--ink-light); opacity: 0.85; }
-.pope-cell.modern { background: rgba(107,29,42,0.04); }
+.pope-cell.modern { background: rgba(107,29,42,0.06); }
 .pope-cell.current {
-  background: rgba(197,163,85,0.15);
-  border: 1px solid rgba(166,138,62,0.5);
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.4);
 }
 .pope-cell.current .pope-name { color: var(--burgundy); }
+
+/* CONNECTOR LINE */
+.connector { 
+  display: flex; align-items: center; justify-content: center;
+  padding: 0.5rem 0; color: var(--gold-dark); font-size: 1.1rem;
+}
 
 /* COUNTER STATS */
 .stats-row {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1px; margin-bottom: 3rem;
-  border: 1px solid rgba(166,138,62,0.25);
-  background: #FFFDF9;
-  box-shadow: 0 2px 8px rgba(44,24,16,0.06);
+  border: 1px solid rgba(201,168,76,0.15);
 }
 .stat-box {
   padding: 1.5rem; text-align: center;
   background: #FFFDF9;
-  border-right: 1px solid rgba(166,138,62,0.15);
+  border-right: 1px solid rgba(201,168,76,0.1);
 }
 .stat-box:last-child { border-right: none; }
 .stat-number { font-family: 'Cinzel', serif; font-size: 2.5rem; font-weight: 700; color: var(--gold-dark); display: block; line-height: 1; margin-bottom: 0.4rem; }
@@ -151,48 +146,33 @@ main {
 /* LDS CONTRAST BOX */
 .contrast-box {
   margin-top: 4rem; padding: 2.5rem;
-  border: 1px solid rgba(107,29,42,0.2);
-  background: linear-gradient(135deg, #FFFDF9 0%, var(--cream) 100%);
-  box-shadow: 0 2px 12px rgba(44,24,16,0.06);
+  border: 1px solid rgba(139,45,60,0.3);
+  background: rgba(107,29,42,0.06);
 }
 .contrast-box h3 { font-family: 'Cinzel', serif; font-size: 1.05rem; color: var(--ink); margin-bottom: 1.2rem; letter-spacing: 0.03em; }
 .contrast-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
 .contrast-col h4 { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.8rem; padding-bottom: 0.5rem; border-bottom: 1px solid; }
-.contrast-col.cath h4 { color: var(--gold-dark); border-color: rgba(166,138,62,0.4); }
+.contrast-col.cath h4 { color: var(--gold); border-color: rgba(201,168,76,0.3); }
 .contrast-col.lds h4 { color: var(--burgundy); border-color: rgba(107,29,42,0.2); }
 .contrast-col p { font-size: 0.95rem; line-height: 1.75; color: var(--ink-light); }
 
 /* CLOSING NOTE */
-.closing-note {
-  margin-top: 4rem; text-align: center; padding: 2.5rem;
-  border: 1px solid rgba(166,138,62,0.3);
-  background: linear-gradient(135deg, #FFFDF9 0%, var(--cream) 100%);
-  box-shadow: 0 2px 8px rgba(44,24,16,0.06);
-}
+.closing-note { margin-top: 4rem; text-align: center; padding: 2.5rem; border: 1px solid rgba(201,168,76,0.2); background: rgba(201,168,76,0.04); }
 .closing-note h3 { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--burgundy); margin-bottom: 1rem; }
 .closing-note p { font-size: 1rem; line-height: 1.8; color: var(--ink-light); max-width: 700px; margin: 0 auto; }
 
-footer {
-  text-align: center; padding: 2.5rem 2rem 3rem;
-  border-top: 1px solid rgba(166,138,62,0.2);
-  font-family: 'Cinzel', serif; font-size: 0.65rem;
-  letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(166,138,62,0.55);
-  background: var(--cream);
-}
-
+footer { text-align: center; padding: 2.5rem 2rem 3rem; border-top: 1px solid rgba(201,168,76,0.15); font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(166,138,62,0.55); background: var(--cream); }
 .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 28px; height: 28px; cursor: pointer; background: none; border: none; padding: 0; z-index: 201; }
 .nav-hamburger span { display: block; width: 100%; height: 2px; background: var(--ink); border-radius: 1px; }
 .sidebar-overlay { display: none; pointer-events: none; position: fixed; inset: 0; background: rgba(44,24,16,0.45); z-index: 150; opacity: 0; transition: opacity 0.3s; }
 .sidebar-overlay.visible { pointer-events: auto; opacity: 1; }
-.sidebar { display: none; position: fixed; top: 0; right: 0; width: 280px; max-width: 80vw; height: 100vh; background: linear-gradient(170deg, #FAF6F0 0%, var(--cream) 100%); border-left: 1px solid var(--gold-dark); z-index: 200; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); overflow-y: auto; box-shadow: -4px 0 24px rgba(44,24,16,0.1); }
+.sidebar { display: none; position: fixed; top: 0; right: 0; width: 280px; max-width: 80vw; height: 100vh; background: linear-gradient(170deg, #FAF6F0 0%, var(--cream) 100%); border-left: 1px solid var(--gold-dark); z-index: 200; transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); overflow-y: auto; }
 .sidebar.open { transform: translateX(0); }
 .sidebar-inner { padding: 5rem 2rem 3rem; display: flex; flex-direction: column; gap: 0.5rem; }
 .sidebar-brand { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--gold-dark); margin-bottom: 2rem; letter-spacing: 0.1em; }
-.sidebar a { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); text-decoration: none; padding: 0.9rem 0; border-bottom: 1px solid rgba(166,138,62,0.18); transition: color 0.2s, padding-left 0.2s; display: block; }
+.sidebar a { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink); text-decoration: none; padding: 0.9rem 0; border-bottom: 1px solid rgba(201,168,76,0.12); transition: color 0.2s, padding-left 0.2s; display: block; }
 .sidebar a:hover { color: var(--gold-dark); padding-left: 0.5rem; }
-.sidebar-ornament { text-align: center; color: var(--gold); font-size: 1rem; margin-top: 2rem; letter-spacing: 8px; }
-
+.sidebar-ornament { text-align: center; color: var(--gold-dark); font-size: 1rem; margin-top: 2rem; letter-spacing: 8px; }
 @media (max-width: 768px) {
   .stats-row { grid-template-columns: 1fr; }
   .contrast-grid { grid-template-columns: 1fr; }
@@ -243,7 +223,7 @@ footer {
     </div>
     <div class="stat-box">
       <span class="stat-number">0</span>
-      <span class="stat-label">Years of "Total Apostasy"<br><small style="font-size:0.7em;opacity:0.7;">(per historical record)</small></span>
+      <span class="stat-label">Years of "Total Apostasy"<br><small style="font-size:0.7em;opacity:0.6;">(per historical record)</small></span>
     </div>
   </div>
 
@@ -366,3 +346,4 @@ document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && doc
 </script>
 </body>
 </html>
+

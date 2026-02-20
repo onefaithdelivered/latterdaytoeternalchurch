@@ -7,29 +7,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --gold: #C5A355;
-    --gold-light: #D4B96A;
-    --gold-dark: #A68A3E;
-    --cream: #F5F0E8;
-    --cream-dark: #EDE5D8;
-    --ink: #2C1810;
-    --ink-light: #4A3728;
-    --burgundy: #6B1D2A;
-    --burgundy-light: #8B2E3C;
-    --burgundy-deep: #4A0F1A;
-    --cath-line: #C5A355;
-    --lds-line: #6B4226;
-    --void-color: #1A0E08;
-  }
+  --gold: #C5A355;
+  --gold-light: #D4B96A;
+  --gold-dark: #A68A3E;
+  --cream: #F5F0E8;
+  --cream-dark: #EDE5D8;
+  --ink: #2C1810;
+  --ink-light: #4A3728;
+  --burgundy: #6B1D2A;
+  --burgundy-light: #8B2E3C;
+  --burgundy-deep: #4A0F1A;
+  --parchment: #FAF6F0;
+  --lds-bg: #F0EAE0;
+  --cath-bg: #EAE8F0;
+  --cath-line: #C5A355;
+  --lds-line: #8B6240;
+  --void-color: #D4C8B8;
+}
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: #0D0704;
+  background: #E8E0D4;
     font-family: 'Cormorant Garamond', Georgia, serif;
-    color: var(--cream);
-    min-height: 100vh;
-    padding: 40px 20px;
+    color: var(--ink);
+  min-height: 100vh;
+  padding: 40px 20px;
   }
 
   .container {
@@ -109,9 +112,9 @@
     letter-spacing: 2px;
     text-transform: uppercase;
   }
-  .legend-text.cath { color: var(--gold); }
-  .legend-text.lds { color: rgba(180,140,80,0.6); }
-  .legend-text.void { color: rgba(180,140,80,0.35); }
+  .legend-text.cath { color: var(--gold-dark); }
+  .legend-text.lds { color: var(--ink-light); }
+  .legend-text.void { color: var(--ink-light); opacity: 0.5; }
 
   /* ── Timeline Container ── */
   .timeline {
@@ -176,7 +179,7 @@
     font-weight: 700;
     letter-spacing: 1px;
     color: var(--gold);
-    background: #0D0704;
+    background: #FAF6F0;
     padding: 4px 8px;
     text-align: center;
     line-height: 1.3;
@@ -201,16 +204,16 @@
     letter-spacing: 0.5px;
     margin-bottom: 3px;
   }
-  .era-left .event-title { color: var(--cream); }
-  .era-right .event-title { color: rgba(245,240,232,0.7); }
+  .era-left .event-title { color: var(--ink); }
+  .era-right .event-title { color: var(--ink-light); }
 
   .event-desc {
     font-size: 13.5px;
     line-height: 1.55;
     font-style: italic;
   }
-  .era-left .event-desc { color: rgba(245,240,232,0.55); }
-  .era-right .event-desc { color: rgba(245,240,232,0.4); }
+  .era-left .event-desc { color: var(--ink-light); }
+  .era-right .event-desc { color: var(--ink-light); opacity: 0.8; }
 
   /* Void label */
   .void-label {
@@ -276,13 +279,13 @@
     font-size: 12px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--gold-dark);
     margin-bottom: 14px;
   }
   .verdict-text {
     font-size: 16px;
     font-style: italic;
-    color: var(--cream);
+    color: var(--ink-light);
     line-height: 1.75;
     max-width: 700px;
     margin: 0 auto;
@@ -328,34 +331,35 @@
 
   /* ─── SITE NAV BAR ─── */
   .site-nav {
-    position: sticky; top: 0; z-index: 9999;
-    background: linear-gradient(to bottom, rgba(13,7,3,0.98), rgba(13,7,3,0.93));
-    border-bottom: 1px solid #8B6914;
-    padding: 0.75rem 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    backdrop-filter: blur(6px);
-    font-family: 'Cinzel', serif;
-  }
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(250,246,240,0.98), rgba(245,240,232,0.95));
+  border-bottom: 1px solid var(--gold-dark);
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 12px rgba(44,24,16,0.08);
+  font-family: 'Cinzel', serif;
+}
   .site-nav a.nav-home {
     font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
-    color: #E8D08A; text-decoration: none; transition: color 0.2s;
+    color: var(--ink); text-decoration: none; transition: color 0.2s;
   }
-  .site-nav a.nav-home:hover { color: #C9A84C; }
+  .site-nav a.nav-home:hover { color: var(--gold-dark); }
   .site-nav .nav-links {
     display: flex; gap: 2rem; list-style: none;
   }
   .site-nav .nav-links a {
     font-size: 0.72rem; letter-spacing: 0.13em; text-transform: uppercase;
-    color: #C5B07A; text-decoration: none; transition: color 0.2s;
+    color: var(--ink-light); text-decoration: none; transition: color 0.2s;
   }
-  .site-nav .nav-links a:hover { color: #E8D08A; }
+  .site-nav .nav-links a:hover { color: var(--gold-dark); }
   .site-nav .nav-back {
     font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
-    color: #C9A84C; text-decoration: none;
-    border: 1px solid rgba(201,168,76,0.35); padding: 0.4rem 1.1rem;
+    color: var(--gold-dark); text-decoration: none;
+    border: 1px solid rgba(166,138,62,0.35); padding: 0.4rem 1.1rem;
     transition: background 0.2s, color 0.2s;
   }
-  .site-nav .nav-back:hover { background: rgba(201,168,76,0.12); color: #E8D08A; }
+  .site-nav .nav-back:hover { background: rgba(197,163,85,0.12); color: var(--ink); }
   @media (max-width: 700px) {
     .site-nav .nav-links { display: none; }
   }
@@ -370,7 +374,7 @@
     height: 36px;
     cursor: pointer;
     background: none;
-    border: 1px solid rgba(201,168,76,0.35);
+    border: 1px solid rgba(166,138,62,0.35);
     border-radius: 3px;
     padding: 6px;
     z-index: 10001;
@@ -378,7 +382,7 @@
   .nav-hamburger span {
     display: block;
     height: 2px;
-    background: #C9A84C;
+    background: var(--ink);
     border-radius: 2px;
     transition: all 0.25s;
     transform-origin: center;
@@ -391,7 +395,7 @@
   .sidebar-overlay {
     display: none;
     position: fixed; inset: 0;
-    background: rgba(0,0,0,0.55);
+    background: rgba(44,24,16,0.45);
     z-index: 10000;
     backdrop-filter: blur(2px);
   }
@@ -401,7 +405,7 @@
     top: 0; right: -280px;
     width: 260px;
     height: 100%;
-    background: linear-gradient(to bottom, #1a0d05, #120800);
+    background: linear-gradient(to bottom, #FAF6F0, var(--cream));
     border-left: 1px solid rgba(201,168,76,0.3);
     z-index: 10002;
     transition: right 0.3s ease;
@@ -419,7 +423,7 @@
     font-size: 0.75rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #C9A84C;
+    color: var(--gold-dark);
     margin-bottom: 2rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid rgba(201,168,76,0.2);
@@ -429,15 +433,15 @@
     font-size: 0.8rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: #C5B07A;
+    color: var(--ink-light);
     text-decoration: none;
     padding: 0.85rem 0;
     border-bottom: 1px solid rgba(201,168,76,0.1);
     transition: color 0.2s;
   }
-  .sidebar-inner a:hover { color: #E8D08A; }
+  .sidebar-inner a:hover { color: var(--gold-dark); }
   .sidebar-inner a.sidebar-back {
-    color: #C9A84C;
+    color: var(--gold-dark);
     margin-top: 1.5rem;
     border: 1px solid rgba(201,168,76,0.3);
     padding: 0.7rem 1rem;
@@ -445,7 +449,7 @@
     border-radius: 2px;
   }
   .sidebar-ornament {
-    color: #8B6914;
+    color: var(--gold-dark);
     font-size: 11px;
     letter-spacing: 8px;
     text-align: center;
@@ -587,7 +591,7 @@
       </div>
       <div class="era-right">
         <div class="event-title">&nbsp;</div>
-        <div class="event-desc" style="color: rgba(107,66,38,0.5); font-size: 12px;">— According to LDS theology, no priesthood authority exists on earth —</div>
+        <div class="event-desc" style="color: var(--ink-light); opacity: 0.55; font-size: 12px;">— According to LDS theology, no priesthood authority exists on earth —</div>
       </div>
     </div>
 
@@ -601,7 +605,7 @@
         <div class="era-date">~AD 180</div>
       </div>
       <div class="era-right">
-        <div class="event-desc" style="color: rgba(107,66,38,0.5); font-size: 12px;">— Total apostasy (LDS claim) —</div>
+        <div class="event-desc" style="color: var(--ink-light); opacity: 0.55; font-size: 12px;">— Total apostasy (LDS claim) —</div>
       </div>
     </div>
 
@@ -615,7 +619,7 @@
         <div class="era-date">AD 325</div>
       </div>
       <div class="era-right">
-        <div class="event-desc" style="color: rgba(107,66,38,0.5); font-size: 12px;">— Total apostasy (LDS claim). But these "apostate" bishops defined the Christology that all Christianity — including LDS — inherits.</div>
+        <div class="event-desc" style="color: var(--ink-light); opacity: 0.55; font-size: 12px;">— Total apostasy (LDS claim). But these "apostate" bishops defined the Christology that all Christianity — including LDS — inherits.</div>
       </div>
     </div>
 
@@ -629,7 +633,7 @@
         <div class="era-date">AD 354–430</div>
       </div>
       <div class="era-right">
-        <div class="event-desc" style="color: rgba(107,66,38,0.5); font-size: 12px;">— Total apostasy (LDS claim) —</div>
+        <div class="event-desc" style="color: var(--ink-light); opacity: 0.55; font-size: 12px;">— Total apostasy (LDS claim) —</div>
       </div>
     </div>
 
@@ -643,7 +647,7 @@
         <div class="era-date">AD 393–397</div>
       </div>
       <div class="era-right">
-        <div class="event-desc" style="color: rgba(107,66,38,0.5); font-size: 12px;">— LDS trust a Bible compiled by a Church they claim had no authority to compile it —</div>
+        <div class="event-desc" style="color: var(--ink-light); opacity: 0.55; font-size: 12px;">— LDS trust a Bible compiled by a Church they claim had no authority to compile it —</div>
       </div>
     </div>
 
@@ -664,7 +668,7 @@
         <div class="era-date">~AD 529</div>
       </div>
       <div class="era-right">
-        <div class="event-desc" style="color: rgba(107,66,38,0.5); font-size: 12px;">— Total apostasy (LDS claim) —</div>
+        <div class="event-desc" style="color: var(--ink-light); opacity: 0.55; font-size: 12px;">— Total apostasy (LDS claim) —</div>
       </div>
     </div>
 
@@ -678,7 +682,7 @@
         <div class="era-date">AD 1225–1274</div>
       </div>
       <div class="era-right">
-        <div class="event-desc" style="color: rgba(107,66,38,0.5); font-size: 12px;">— Total apostasy (LDS claim) —</div>
+        <div class="event-desc" style="color: var(--ink-light); opacity: 0.55; font-size: 12px;">— Total apostasy (LDS claim) —</div>
       </div>
     </div>
 
@@ -692,7 +696,7 @@
         <div class="era-date">AD 1545–1563</div>
       </div>
       <div class="era-right">
-        <div class="event-desc" style="color: rgba(107,66,38,0.5); font-size: 12px;">— Total apostasy (LDS claim) —</div>
+        <div class="event-desc" style="color: var(--ink-light); opacity: 0.55; font-size: 12px;">— Total apostasy (LDS claim) —</div>
       </div>
     </div>
 
@@ -835,3 +839,4 @@
 
 </body>
 </html>
+
