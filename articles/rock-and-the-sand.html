@@ -482,21 +482,7 @@
     text-transform: uppercase;
   }
 
-  @media (max-width: 700px) {
-    body { padding: 0 0 40px; overflow-x: hidden; }
-    .page { padding: 40px 24px 44px; }
-    .site-nav .nav-links { display: none; }
-
-    .title-main { font-size: 28px; }
-    p { font-size: 15px; }
-    .scripture-block { padding: 16px 18px; }
-    .father-block { padding: 16px 18px; }
-    .sources-list { columns: 1; }
-    .comparison-table { font-size: 13px; }
-    .comparison-table td, .comparison-table th { padding: 8px 10px; }
-  }
-
-/* ─── SITE NAV BAR ─────────────────────────────────────── */
+  /* ─── SITE NAV BAR ─────────────────────────────────────── */
 .site-nav {
   position: sticky; top: 0; z-index: 9999;
   background: linear-gradient(to bottom, rgba(13,7,3,0.98), rgba(13,7,3,0.93));
@@ -634,7 +620,20 @@
     margin-top: 2rem;
   }
 
-  @media (max-width: 700px) {
+  
+
+@media (max-width: 700px) {
+    body { padding: 0 0 40px; overflow-x: hidden; }
+    .page { padding: 40px 24px 44px; }
+    .site-nav .nav-links { display: none; }
+
+    .title-main { font-size: 28px; }
+    p { font-size: 15px; }
+    .scripture-block { padding: 16px 18px; }
+    .father-block { padding: 16px 18px; }
+    .sources-list { columns: 1; }
+    .comparison-table { font-size: 13px; }
+    .comparison-table td, .comparison-table th { padding: 8px 10px; }
     .nav-hamburger { display: flex; }
   }
 </style>
