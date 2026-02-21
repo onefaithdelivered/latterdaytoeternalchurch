@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Theological Glossary | One Faith Delivered</title>
+<meta name="description" content="A comparative theological lexicon defining key terms — God, priesthood, scripture, church, salvation, and more — as understood in Catholic and Latter-day Saint contexts." />
+<link rel="canonical" href="https://onefaithdelivered.org/glossary.html" />
+<link rel="icon" href="favicons/favicon.ico" sizes="any" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --crimson:      #8B0000;
+  --dark-crimson: #5C0000;
+  --gold:         #C5A55A;
+  --dark-gold:    #8B7335;
+  --parchment:    #F5F0E8;
+  --text:         #2A2A2A;
+  --muted:        #666;
+  --line-gray:    #D0C8B8;
+  --problem-blue: #1E3A5F;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--parchment);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.6;
+}
+
+/* ── SITE NAV ── */
+.site-nav {
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(245,240,232,0.98), rgba(240,235,225,0.95));
+  border-bottom: 1px solid var(--line-gray);
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.site-nav a.nav-home {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem; font-weight: 700;
+  letter-spacing: 0.05em; color: var(--crimson);
+  text-decoration: none; transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: var(--dark-crimson); }
+.site-nav .nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.site-nav .nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text); text-decoration: none; transition: color 0.2s;
+}
+.site-nav .nav-links a:hover { color: var(--crimson); }
+.nav-print-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--dark-gold); background: none;
+  border: 1px solid rgba(139,115,53,0.35);
+  padding: 0.4rem 1.1rem; border-radius: 3px;
+  cursor: pointer; transition: background 0.2s, color 0.2s;
+  display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap;
+}
+.nav-print-btn:hover { background: rgba(139,115,53,0.08); color: var(--crimson); }
+
+/* ── Hamburger ── */
+.nav-hamburger {
+  display: none; flex-direction: column;
+  justify-content: center; gap: 5px;
+  width: 36px; height: 36px; cursor: pointer;
+  background: none; border: 1px solid rgba(139,115,53,0.3);
+  border-radius: 3px; padding: 6px; z-index: 10001;
+}
+.nav-hamburger span {
+  display: block; height: 2px;
+  background: var(--text); border-radius: 2px;
+  transition: all 0.25s; transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Sidebar ── */
+.sidebar-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45); z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+.sidebar-overlay.visible { display: block; }
+.sidebar {
+  position: fixed; top: 0; right: -280px;
+  width: 260px; height: 100%;
+  background: linear-gradient(to bottom, #FAF6F0, #F5F0E8);
+  border-left: 1px solid var(--line-gray);
+  z-index: 10002; transition: right 0.3s ease; overflow-y: auto;
+}
+.sidebar.open { right: 0; }
+.sidebar-inner {
+  padding: 5rem 2rem 2rem;
+  display: flex; flex-direction: column; gap: 0;
+}
+.sidebar-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem; font-weight: 700;
+  color: var(--crimson); margin-bottom: 2rem;
+  padding-bottom: 1rem; border-bottom: 1px solid var(--line-gray);
+}
+.sidebar-inner a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text); text-decoration: none;
+  padding: 0.85rem 0; border-bottom: 1px solid rgba(208,200,184,0.5);
+  transition: color 0.2s;
+}
+.sidebar-inner a:hover { color: var(--crimson); }
+.sidebar-inner a.sidebar-back {
+  color: var(--dark-gold); margin-top: 1.5rem;
+  border: 1px solid rgba(139,115,53,0.3);
+  padding: 0.7rem 1rem; text-align: center; border-radius: 2px;
+}
+.sidebar-ornament {
+  color: var(--gold); font-size: 11px;
+  letter-spacing: 8px; text-align: center; margin-top: 2rem;
+}
+
+/* ── READING PROGRESS BAR ── */
+#reading-progress-bar {
+  position: fixed; top: 0; left: 0;
+  height: 3px; width: 0%;
+  background: linear-gradient(to right, #8B0000, #C5A55A);
+  z-index: 99999; transition: width 0.12s linear;
+  pointer-events: none; border-radius: 0 2px 2px 0;
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  background: linear-gradient(135deg, #4A0F1A 0%, #6B1D2A 40%, #3D1520 100%);
+  color: #F5F0E8;
+  padding: 72px 40px 56px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.page-header::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+  pointer-events: none;
+}
+.ornament {
+  display: block; color: var(--gold);
+  font-size: 1rem; letter-spacing: 12px;
+  margin-bottom: 1.2rem; opacity: 0.7; position: relative; z-index: 1;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2em, 4vw, 3.2em); font-weight: 900;
+  letter-spacing: -0.5px; color: #F5F0E8;
+  margin-bottom: 14px; line-height: 1.2; position: relative; z-index: 1;
+}
+.page-header h1 span { color: var(--gold); }
+.page-header .subtitle {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.1em; font-weight: 300; font-style: italic;
+  color: rgba(245,240,232,0.75);
+  max-width: 680px; margin: 0 auto; position: relative; z-index: 1;
+}
+.page-header .meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(197,165,90,0.65); margin-top: 1.4rem;
+  position: relative; z-index: 1;
+}
+
+/* ── MAIN LAYOUT ── */
+main {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 56px 24px 88px;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 0 48px;
+  align-items: start;
+}
+
+/* ── STICKY ALPHABET INDEX (sidebar) ── */
+.alpha-index {
+  position: sticky;
+  top: 80px;
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-radius: 4px;
+  padding: 20px 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.alpha-index-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62em; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--dark-gold);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line-gray);
+}
+.alpha-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+.alpha-grid a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em; font-weight: 600;
+  color: var(--dark-gold);
+  text-decoration: none;
+  text-align: center;
+  padding: 5px 2px;
+  border-radius: 2px;
+  transition: background 0.15s, color 0.15s;
+}
+.alpha-grid a:hover { background: var(--crimson); color: #fff; }
+.alpha-grid a.disabled { color: var(--line-gray); pointer-events: none; }
+
+.alpha-index-note {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line-gray);
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.78em;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── INTRO BOX ── */
+.intro-box {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-left: 5px solid var(--crimson);
+  border-radius: 4px;
+  padding: 28px 32px;
+  margin-bottom: 40px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.intro-box p {
+  font-size: 1.02rem; line-height: 1.9; color: var(--text);
+}
+.intro-box p + p { margin-top: 0.9rem; }
+.intro-box strong { color: var(--crimson); font-weight: 600; }
+
+/* ── LETTER GROUP ── */
+.letter-group {
+  margin-bottom: 48px;
+}
+.letter-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2em; font-weight: 900;
+  color: var(--crimson);
+  border-bottom: 2px solid var(--line-gray);
+  padding-bottom: 6px;
+  margin-bottom: 24px;
+  scroll-margin-top: 90px;
+}
+
+/* ── ENTRY CARD ── */
+.entry {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  scroll-margin-top: 90px;
+}
+.entry-term {
+  background: #FAF6F0;
+  border-bottom: 1px solid var(--line-gray);
+  padding: 16px 24px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.entry-term h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25em; font-weight: 700;
+  color: var(--crimson);
+}
+.entry-term .pronunciation {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7em; font-weight: 400;
+  color: var(--muted);
+  font-style: italic;
+}
+.entry-term .pos {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65em; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--dark-gold);
+  border: 1px solid rgba(139,115,53,0.3);
+  padding: 2px 8px; border-radius: 2px;
+  margin-left: auto;
+}
+.entry-body { padding: 0; }
+
+/* ── TWO COLUMN COMPARE ── */
+.entry-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--line-gray);
+}
+.entry-col {
+  padding: 20px 24px;
+}
+.entry-col:first-child {
+  border-right: 1px solid var(--line-gray);
+  background: #FFF8F8;
+}
+.entry-col:last-child {
+  background: #F5F8FF;
+}
+.entry-col-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62em; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid;
+}
+.label-catholic { color: var(--crimson); border-color: var(--crimson); }
+.label-lds { color: var(--problem-blue); border-color: var(--problem-blue); }
+.entry-col p {
+  font-size: 0.9em;
+  line-height: 1.8;
+  color: var(--text);
+}
+.entry-col p + p { margin-top: 0.6rem; }
+
+/* ── KEY DIFFERENCE FOOTER ── */
+.entry-tension {
+  background: linear-gradient(to right, rgba(139,0,0,0.04), rgba(30,58,95,0.04));
+  border-top: 1px solid var(--line-gray);
+  padding: 14px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.entry-tension-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62em; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--dark-gold);
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+.entry-tension p {
+  font-size: 0.88em; font-style: italic;
+  line-height: 1.7; color: var(--muted);
+}
+.entry-tension a {
+  color: var(--crimson);
+  text-decoration: none;
+  border-bottom: 1px dotted var(--crimson);
+  transition: opacity 0.2s;
+}
+.entry-tension a:hover { opacity: 0.75; }
+
+/* ── SECTION DIVIDER ── */
+.section-divider {
+  margin: 52px 0 32px;
+  display: flex; align-items: center; gap: 16px;
+}
+.section-divider-line { flex: 1; height: 1px; background: var(--line-gray); }
+.section-divider-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66em; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--dark-gold); white-space: nowrap;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #fff;
+  text-align: center; padding: 28px 20px;
+  border-top: 1px solid var(--line-gray);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted);
+}
+.print-colophon { display: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  main { grid-template-columns: 1fr; }
+  .alpha-index { position: static; margin-bottom: 32px; }
+}
+@media (max-width: 640px) {
+  .entry-compare { grid-template-columns: 1fr; }
+  .entry-col:first-child { border-right: none; border-bottom: 1px solid var(--line-gray); }
+  .page-header { padding: 48px 20px 36px; }
+  main { padding: 32px 16px 60px; }
+}
+@media (max-width: 700px) {
+  .nav-hamburger { display: flex; }
+  .site-nav .nav-links { display: none; }
+  .nav-print-btn { display: none; }
+  .site-nav { padding: 0.55rem 1rem; }
+  .sidebar { display: block; transform: translateX(100%); right: 0; position: fixed; }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-overlay.visible { display: block; }
+  .nav-hamburger { display: flex; margin-left: auto; order: 99; flex-shrink: 0; }
+}
+@media print {
+  #reading-progress-bar, .site-nav, .sidebar-overlay,
+  .sidebar, .nav-print-btn, footer, .alpha-index { display: none !important; }
+  main { display: block !important; padding: 0 !important; max-width: 100% !important; }
+  body { background: #fff !important; color: #000 !important; font-size: 11pt; }
+  .page-header {
+    background: none !important; color: #000 !important;
+    border-bottom: 2pt solid #8B0000; padding: 0.4cm 0 0.5cm !important;
+  }
+  .page-header h1, .page-header h1 span { color: #8B0000 !important; }
+  .page-header .subtitle, .page-header .meta { color: #333 !important; }
+  .entry { page-break-inside: avoid; box-shadow: none; }
+  a { color: #000; text-decoration: none; }
+  .print-colophon {
+    display: block !important; margin-top: 2cm;
+    padding-top: 0.5cm; border-top: 1pt solid #ccc;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt; color: #666; text-align: center;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div id="reading-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+
+<!-- ── SITE NAV ── -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-home">One Faith Delivered</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="articles.html">Articles</a></li>
+    <li><a href="charts.html">Charts</a></li>
+    <li><a href="topics.html">Topics</a></li>
+    <li><a href="resources.html">Resources</a></li>
+  </ul>
+  <button class="nav-print-btn" onclick="window.print()">
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+      <rect x="3" y="1" width="10" height="9" rx="1"/><rect x="3" y="10" width="10" height="5" rx="1"/>
+      <rect x="5" y="12" width="6" height="1"/><circle cx="11.5" cy="6.5" r="0.75" fill="currentColor" stroke="none"/>
+    </svg>
+    Save as PDF
+  </button>
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <span class="ornament">✦ ✦ ✦</span>
+  <h1>Theological <span>Glossary</span></h1>
+  <p class="subtitle">A comparative lexicon defining key terms as understood in Catholic tradition and Latter-day Saint theology — because the same word does not always carry the same meaning.</p>
+  <p class="meta">Catholic · LDS · Comparative Theology</p>
+</header>
+
+<!-- ── MAIN ── -->
+<main>
+
+  <!-- ── LEFT: ALPHABET INDEX ── -->
+  <aside class="alpha-index">
+    <div class="alpha-index-title">Browse by Letter</div>
+    <div class="alpha-grid">
+      <a href="#A">A</a>
+      <a href="#B">B</a>
+      <a href="#C">C</a>
+      <a href="#D">D</a>
+      <a href="#E">E</a>
+      <a href="#F">F</a>
+      <a href="#G">G</a>
+      <a class="disabled">H</a>
+      <a href="#I">I</a>
+      <a class="disabled">J</a>
+      <a href="#K">K</a>
+      <a class="disabled">L</a>
+      <a href="#M">M</a>
+      <a class="disabled">N</a>
+      <a href="#O">O</a>
+      <a href="#P">P</a>
+      <a class="disabled">Q</a>
+      <a href="#R">R</a>
+      <a href="#S">S</a>
+      <a href="#T">T</a>
+      <a class="disabled">U</a>
+      <a class="disabled">V</a>
+      <a class="disabled">W</a>
+      <a class="disabled">X</a>
+      <a class="disabled">Y</a>
+      <a class="disabled">Z</a>
+    </div>
+    <div class="alpha-index-note">
+      Terms in grey indicate letters not yet covered. This lexicon will expand as new articles are added.
+    </div>
+  </aside>
+
+  <!-- ── RIGHT: ENTRIES ── -->
+  <div>
+
+    <div class="intro-box">
+      <p>Catholic and Latter-day Saint theology often employ the same vocabulary — God, priesthood, scripture, salvation, church — but with meanings so fundamentally different that dialogue without definition is confusion. This lexicon exists to clarify those distinctions. Each entry presents the Catholic understanding, rooted in Scripture and the continuous tradition of the Church, alongside the LDS definition, drawn from its own canonical texts and prophetic statements. The goal is not polemic but precision: honest comparison begins with honest definition.</p>
+      <p><strong>How to use this page:</strong> Terms are arranged alphabetically. Each entry links to relevant articles on this site where the doctrine is treated at greater length. Readers are encouraged to trace the primary sources cited in those articles rather than relying on secondary summaries alone.</p>
+    </div>
+
+    <!-- ══ A ══ -->
+    <div class="letter-group" id="A">
+      <div class="letter-heading">A</div>
+
+      <div class="entry" id="apostasy">
+        <div class="entry-term">
+          <h2>Apostasy, The Great</h2>
+          <span class="pos">noun · historical theology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>The Catholic Church does not recognize a "Great Apostasy" — a total collapse of the Church Christ founded. Christ's promise that "the gates of hell shall not prevail" against His Church (Mt 16:18) is understood as a guarantee of indefectibility: the Church may suffer corruption, heresy, or persecution, but it cannot cease to exist or lose the deposit of faith entrusted to it. Individual members and even clergy may apostatize; the Church itself cannot.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>A foundational LDS claim is that the primitive Church established by Christ fell into complete apostasy shortly after the death of the Apostles, losing both its authority and its doctrinal integrity. This universal apostasy — leaving no true church on earth — is said to have necessitated a complete restoration through Joseph Smith in 1820. Without this premise, the Restoration has no rationale.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>The Great Apostasy theory requires Christ's promise in Matthew 16:18 to have failed within a generation. Catholic theology holds this to be impossible by divine guarantee. See: <a href="articles/ante-nicene-fathers.html">The Ante-Nicene Church Fathers and Their Catholic Doctrines</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry" id="apostolic-succession">
+        <div class="entry-term">
+          <h2>Apostolic Succession</h2>
+          <span class="pos">noun · ecclesiology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>The unbroken chain of episcopal ordination from the Apostles to the present college of bishops, by which the authority, sacramental power, and teaching office of the original Apostles are transmitted across time. This succession is both historical (documented) and sacramental (effected through valid ordination). It is the basis for the Church's claim to binding authority in matters of faith and morals.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>LDS theology denies the legitimacy of traditional apostolic succession, arguing the chain was broken during the Great Apostasy. Authority was not transmitted but entirely lost, and could only be <em>restored</em> — not recovered — through direct angelic visitation. John the Baptist is said to have restored the Aaronic Priesthood to Joseph Smith in 1829, and Peter, James, and John the Melchizedek Priesthood.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>If traditional succession was legitimate enough to transmit authority to the Apostles and their first successors — as even LDS theology implicitly concedes — the case for its total rupture requires an argument beyond mere historical decline. See: <a href="articles/ante-nicene-fathers.html">The Ante-Nicene Fathers</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry" id="atonement">
+        <div class="entry-term">
+          <h2>Atonement</h2>
+          <span class="pos">noun · soteriology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>Christ's suffering, death, and resurrection constitute a single redemptive act that objectively reconciles humanity to God and merits the grace necessary for salvation. The atonement is infinite in scope — sufficient for all, applied through faith and the sacraments. It is completed and unrepeatable, though made present in every Mass through the unbloody representation of Calvary.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>The LDS Atonement is understood to have occurred primarily in the Garden of Gethsemane rather than on the cross (a distinctive emphasis). Its scope is conditioned by obedience to gospel laws and ordinances. The Atonement enables resurrection for all (universal), but exaltation — the highest degree of salvation — requires compliance with temple ordinances, celestial marriage, and related covenants.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>The Pauline insistence that justification is by grace through faith — not works of law (Rom 3:28; Gal 2:16) — stands in tension with an Atonement that is conditioned upon performance of specific ordinances for its fullest application. See: <a href="articles/fullness-of-time.html">Progressive Revelation vs. Primordial Dispensationalism</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ B ══ -->
+    <div class="letter-group" id="B">
+      <div class="letter-heading">B</div>
+
+      <div class="entry" id="baptism">
+        <div class="entry-term">
+          <h2>Baptism</h2>
+          <span class="pos">noun · sacramental theology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>The first sacrament of initiation, which effects regeneration — a genuine new birth (Jn 3:5) that removes original sin, infuses sanctifying grace, and incorporates the person into the Body of Christ. Baptism is necessary for salvation (with exceptions for baptism of desire and blood). It is administered by water and the Trinitarian formula and is valid when performed by any Christian with proper intention — including Latter-day Saint baptisms if performed in the name of the Trinity.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>Baptism is an ordinance required for entrance into God's kingdom and is only valid when performed by one holding the proper priesthood authority — specifically the Aaronic Priesthood. Baptism removes personal sins committed after the age of accountability (8 years), not an inherited original sin (a concept LDS theology substantially rejects). Proxy baptism for the dead is also practiced, based on 1 Corinthians 15:29, to offer deceased ancestors the opportunity to accept the gospel.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>The Book of Mormon's epistle of Moroni (ch. 8) explicitly condemns infant baptism and declares that "baptism availeth nothing" for those who die without the law — a position that contradicts the LDS practice of baptism for the dead. See: <a href="articles/a-house-divided-against-itself.html">A House Divided Against Itself</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ C ══ -->
+    <div class="letter-group" id="C">
+      <div class="letter-heading">C</div>
+
+      <div class="entry" id="canon">
+        <div class="entry-term">
+          <h2>Canon of Scripture</h2>
+          <span class="pos">noun · bibliology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>The Catholic canon consists of 73 books — 46 in the Old Testament (including the deuterocanonical books affirmed at Trent) and 27 in the New Testament. The canon was definitively established by Church authority, not discovered by individual judgment. Scripture is authoritative within the Tradition that produced and preserves it, and is interpreted authentically by the Magisterium.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>The LDS canon — the "standard works" — comprises the King James Bible ("as far as it is translated correctly"), the Book of Mormon, the Doctrine and Covenants, and the Pearl of Great Price. The canon is open: additional scripture can be added by a living prophet. The Bible is considered the most error-prone of these texts due to transmission corruptions; the Book of Mormon is described as "the most correct book on earth."</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>An open canon governed by a living prophet means no doctrine is ever finally settled — a structural instability that stands in contrast to the Catholic understanding of a completed and closed public revelation. See: <a href="articles/rock-and-the-sand.html">The Rock and the Sand</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry" id="church">
+        <div class="entry-term">
+          <h2>Church</h2>
+          <span class="pos">noun · ecclesiology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>The Catholic Church understands itself as the one Church Christ founded, which "subsists in" the Catholic Church while elements of sanctification exist in other Christian communities (Lumen Gentium 8). The Church is simultaneously a visible hierarchical institution and the mystical Body of Christ — these two aspects cannot be separated. It is apostolic, holy, catholic, and one — marks that are not merely aspirational but descriptive of her essential nature.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>The Church of Jesus Christ of Latter-day Saints claims to be the only true and living church on the face of the earth (D&C 1:30). All other churches are considered to be in a state of apostasy, lacking valid priesthood authority. The LDS Church is governed by a President who holds the office of prophet, seer, and revelator, and who can receive binding new revelation for the entire Church.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>Both traditions claim exclusive or singular status. The critical historical question is whether Christ's Church maintained visible, organizational continuity — as Catholic evidence from Ignatius, Irenaeus, and the councils suggests — or was entirely lost and required recreation. See: <a href="articles/ante-nicene-fathers.html">The Ante-Nicene Fathers</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ D ══ -->
+    <div class="letter-group" id="D">
+      <div class="letter-heading">D</div>
+
+      <div class="entry" id="deification">
+        <div class="entry-term">
+          <h2>Deification (Theosis / Exaltation)</h2>
+          <span class="pos">noun · soteriology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p><em>Theosis</em> or divinization is the patristic doctrine — expressed in Athanasius's formula "God became man so that man might become God" — that believers participate in the divine nature (2 Pet 1:4) by grace. This participation is ontological but always remains participatory: the creature never becomes identical with or equal to God. The distinction between Creator and creature is eternal and essential.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>LDS exaltation goes significantly further: faithful Latter-day Saints who receive all temple ordinances and live celestial law become gods in the fullest sense — ruling their own worlds, procreating spirit children, and possessing the same nature as Heavenly Father. The Lorenzo Snow couplet encapsulates this: "As man now is, God once was; as God now is, man may become." Exaltation is not participation but ontological elevation to divine status.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>Catholic theosis preserves the eternal Creator-creature distinction. LDS exaltation collapses it, producing a polytheistic cosmology incompatible with classical monotheism and the consistent witness of both Testaments. See: <a href="articles/rock-and-the-sand.html">The Rock and the Sand</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ E ══ -->
+    <div class="letter-group" id="E">
+      <div class="letter-heading">E</div>
+
+      <div class="entry" id="eternal">
+        <div class="entry-term">
+          <h2>Eternal</h2>
+          <span class="pos">adjective · theology proper</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>When predicated of God, <em>eternal</em> denotes existence entirely outside of time — not merely endless duration but timelessness itself. God has no past or future; He exists in an eternal present (the <em>nunc stans</em>). God's attributes — knowledge, power, love, justice — are therefore absolute and unchanging. He cannot learn, grow, or progress because He already possesses all perfection without limit.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>In LDS theology, <em>eternal</em> often carries a different technical meaning. D&C 19:10–12 explicitly redefines "eternal punishment" and "endless punishment" as God's punishment (named after Him), not necessarily punishment without end. More significantly, God Himself is understood to exist within time — "eternal" describes endless duration, not timelessness. Heavenly Father was once a man who progressed to godhood and continues to grow with His creation.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>A God who progresses is a God who was once less than He is now — which means He was once less than perfectly good, omniscient, or omnipotent. This creates profound difficulties for worship, trust, and the very concept of divine authority. See: <a href="articles/rock-and-the-sand.html">The Rock and the Sand</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry" id="eucharist">
+        <div class="entry-term">
+          <h2>Eucharist (Lord's Supper / Sacrament)</h2>
+          <span class="pos">noun · sacramental theology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>The central sacrament of Catholic worship, in which the bread and wine become — through transubstantiation — the true Body, Blood, Soul, and Divinity of Jesus Christ. This is not symbolic but ontological: the substance changes while the accidents (appearance) remain. Every valid Mass makes present the one sacrifice of Calvary. The Real Presence is attested unambiguously in Ignatius of Antioch, Justin Martyr, Irenaeus, and Cyril of Jerusalem centuries before any medieval controversy.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>The LDS "Sacrament" — taken weekly in ward meetings using bread and water — is understood as a memorial ordinance and a covenant renewal. There is no claim of Real Presence; the bread and water remain bread and water. The sacrament functions to renew baptismal covenants and is conditioned upon the worthiness of the participant. It is a spiritual aid to remembrance rather than an objective efficacious encounter with Christ's Body.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>The unbroken patristic witness to the Real Presence — "not common bread" (Justin Martyr, c. AD 150) — predates any Catholic institutional structure and represents the universal early Christian understanding. See: <a href="articles/holy-eucharist-real-presence.html">The Holy Eucharist: The Real Presence of Christ</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ F ══ -->
+    <div class="letter-group" id="F">
+      <div class="letter-heading">F</div>
+
+      <div class="entry" id="faith">
+        <div class="entry-term">
+          <h2>Faith</h2>
+          <span class="pos">noun · soteriology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>Faith is the theological virtue by which we believe all that God has revealed, on the authority of God Himself who can neither deceive nor be deceived. It is a free gift (infused virtue), but it involves the intellect assenting to revealed truth and the will embracing it. Faith working through love (<em>fides caritate formata</em>) is the operative form of saving faith. Faith without works is incomplete, not because works earn salvation, but because genuine faith naturally produces charity.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>Faith in LDS theology is often understood more functionally — as trust and action, the first principle of the gospel. It is explicitly linked to the necessity of works: "Faith without works is dead" is applied in a more merit-based framework. Faith in Christ is the starting point, but exaltation requires sustained compliance with covenants, ordinances, and commandments. Faith as a cognitive assent to propositional revelation is less emphasized than faith as active obedience.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>The Pauline formula "justified by faith apart from works of law" (Rom 3:28) is central to the Catholic reading of grace; LDS soteriology tends to read the same texts through a framework where ordinance-compliance is structurally necessary for the highest salvation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ G ══ -->
+    <div class="letter-group" id="G">
+      <div class="letter-heading">G</div>
+
+      <div class="entry" id="god">
+        <div class="entry-term">
+          <h2>God (Nature of)</h2>
+          <span class="pos">noun · theology proper</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>God is one infinite, eternal, immaterial, omniscient, omnipotent, and perfectly simple Being — identical with His own existence (<em>ipsum esse subsistens</em>). He is without body, parts, or passions. The doctrine of the Trinity teaches that this one God exists in three co-equal, co-eternal Persons: Father, Son, and Holy Spirit — not three gods, but one God in three Persons. This understanding is continuous from Scripture through the Nicene Creed (AD 325) to the present.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>The LDS Godhead consists of three separate and distinct beings: a corporeal Heavenly Father, a resurrected corporeal Jesus Christ, and an immaterial Holy Ghost. They are unified in purpose but not in substance. God the Father has "a body of flesh and bones as tangible as man's" (D&C 130:22). He was once a mortal man who progressed to godhood. There are potentially innumerable gods — exalted beings who rule their own creations. This is an explicitly polytheistic framework.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>The LDS conception of God contradicts not only the Nicene Creed but the earliest Christian sources: Ignatius of Antioch, Justin Martyr, and Irenaeus all affirm the classical theistic God. The King Follett Discourse (1844) represents a radical departure even from the Book of Mormon's own monotheism. See: <a href="articles/rock-and-the-sand.html">The Rock and the Sand</a>; <a href="articles/a-house-divided-against-itself.html">A House Divided Against Itself</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry" id="grace">
+        <div class="entry-term">
+          <h2>Grace</h2>
+          <span class="pos">noun · soteriology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>Grace is God's free, unmerited gift by which He elevates the soul to participation in His divine life. <em>Sanctifying grace</em> is a real, ontological transformation of the soul — not merely imputed righteousness or a legal declaration. It is infused through the sacraments and merited (in a secondary, instrumental sense) by acts of charity performed in the state of grace. Grace does not destroy nature but perfects it.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>In early and folk LDS theology, grace was often minimized: a common formulation was "after all we can do" (2 Nephi 25:23), suggesting that grace supplements human effort rather than undergirds and initiates it. More recent LDS scholarship has nuanced this, emphasizing grace as enabling power. However, grace is still generally understood as God's enabling assistance to human effort rather than the primary cause of salvation, and it does not eliminate the necessity of ordinance compliance for exaltation.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>The "after all we can do" formulation inverts the Pauline order: Catholic theology insists that even our best efforts are themselves the fruit of grace, not its precondition. We do not do our part and then God does His.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ I ══ -->
+    <div class="letter-group" id="I">
+      <div class="letter-heading">I</div>
+
+      <div class="entry" id="infallibility">
+        <div class="entry-term">
+          <h2>Infallibility</h2>
+          <span class="pos">noun · ecclesiology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>The charism by which the Church — and specifically the Pope speaking <em>ex cathedra</em> on matters of faith and morals — is preserved from error. Papal infallibility (defined at Vatican I, 1870) is a narrowly defined, rarely exercised protection — not a claim that the Pope cannot sin or err in ordinary speech, governance, or personal judgment. The Magisterium's ordinary teaching authority (<em>magisterium ordinarium</em>) also commands religious assent, though not the absolute assent owed to defined dogmas.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>LDS prophets are believed to speak for God, but the Church does not formally define prophetic infallibility in the Catholic sense. LDS teaching holds that a prophet can err when "speaking as a man," and past prophetic statements have been officially disavowed (e.g., race-based priesthood restrictions, the Adam-God theory). The living prophet is considered more authoritative than past prophets — including in cases of apparent contradiction — which makes doctrinal continuity dependent on the current leadership.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>A teaching authority that can be overturned by successive leaders provides no stable foundation for doctrinal certainty. Catholic infallibility is defined precisely to prevent this: defined dogmas cannot be contradicted by later popes. See: <a href="articles/rock-and-the-sand.html">The Rock and the Sand</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ K ══ -->
+    <div class="letter-group" id="K">
+      <div class="letter-heading">K</div>
+
+      <div class="entry" id="kingdom">
+        <div class="entry-term">
+          <h2>Kingdom of God</h2>
+          <span class="pos">noun · eschatology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>The Kingdom of God is both present and eschatological — already inaugurated in Christ's ministry, sacramentally present in the Church, and awaiting final consummation at the Second Coming. Participation in the Kingdom is through faith, baptism, and life in Christ. The Kingdom is not an earthly political arrangement but the reign of God over hearts transformed by grace, oriented toward the beatific vision in the resurrection.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>The Kingdom of God in LDS thought has both a spiritual dimension (the Church) and a literal geopolitical expectation: Christ will literally reign from a restored Zion in Missouri during the Millennium. Theocratic governance by the LDS Church was an early and recurring theme in LDS political theology. The celestial kingdom — the highest of three post-mortem degrees of glory — is the ultimate destination of the fully exalted.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>Christ's reply to Pilate — "My kingdom is not of this world" (Jn 18:36) — directly resists the literalistic, geopolitical vision of a Millennial theocracy headquartered in Missouri.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ M ══ -->
+    <div class="letter-group" id="M">
+      <div class="letter-heading">M</div>
+
+      <div class="entry" id="marriage">
+        <div class="entry-term">
+          <h2>Marriage</h2>
+          <span class="pos">noun · moral theology · sacramental theology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>Marriage is one of the seven sacraments — a covenant between one man and one woman, ordered to the good of the spouses and the procreation and education of children. It is indissoluble ("what God has joined together, let no man separate," Mt 19:6) and monogamous. Christ explicitly closes the Mosaic concession for divorce and polygamy as accommodations to hardness of heart, restoring the original design from the beginning (Mt 19:4–8). Marriage is temporal — in the resurrection, people "neither marry nor are given in marriage" (Mt 22:30).</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>Celestial (temple) marriage is essential for exaltation: without it, one cannot attain the highest degree of the celestial kingdom (D&C 131:1–4). Marriage is "sealed" by priesthood authority and extends eternally. Historically, plural marriage (polygamy) was a divinely commanded practice revealed in D&C 132, with Joseph Smith himself contracting between 30–40 marriages. The practice was suspended in 1890 under federal pressure, though D&C 132 remains canonical scripture.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>Christ's clear teaching in Matthew 19 — restoring monogamy and indissolubility as the creational norm — stands in direct conflict with D&C 132's command of plural marriage. The Book of Mormon itself condemns polygamy as abominable (Jacob 2:24–27), creating an internal LDS contradiction. See: <a href="articles/catholic-lds-marriage.html">The Marriage Dilemma</a>; <a href="articles/a-house-divided-against-itself.html">A House Divided Against Itself</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry" id="magisterium">
+        <div class="entry-term">
+          <h2>Magisterium</h2>
+          <span class="pos">noun · ecclesiology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>The living teaching authority of the Church, exercised by the Pope and the college of bishops in communion with him. The Magisterium does not create doctrine but guards, interprets, and transmits the deposit of faith entrusted to the Apostles. Defined dogmas are irreversible: they cannot be contradicted by later councils or popes, only understood more deeply. This structural permanence is the basis for theological certainty across centuries.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>LDS teaching authority is vested in the First Presidency (the President and two counselors) and the Quorum of the Twelve Apostles. The living prophet holds paramount authority and can in principle supersede past teaching. There is no formal equivalent of defined dogma with guaranteed irreversibility — the Church's position on polygamy, the nature of God, and racial restrictions on the priesthood have all undergone official reversal, described as further revelation rather than correction.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>An authority structure in which any doctrine can be reversed by a successor prophet offers no stable locus of certainty. Calling doctrinal reversals "further revelation" raises the question of whether revelation can contradict itself — and if so, how a believer would know when to trust any given teaching. See: <a href="articles/rock-and-the-sand.html">The Rock and the Sand</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ O ══ -->
+    <div class="letter-group" id="O">
+      <div class="letter-heading">O</div>
+
+      <div class="entry" id="original-sin">
+        <div class="entry-term">
+          <h2>Original Sin</h2>
+          <span class="pos">noun · anthropology · soteriology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>The sin of Adam and Eve resulted in the loss of original holiness and justice for all their descendants. Human nature is wounded — the intellect darkened, the will weakened, disordered concupiscence introduced, and death entering the world. Original sin is inherited, not imitated: every human being is born in a state of privation from which only Baptism can restore them. This doctrine explains both the universality of human sinfulness and the necessity of a Redeemer.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>LDS theology substantially rejects the Catholic doctrine of original sin. The Second Article of Faith states: "We believe that men will be punished for their own sins, and not for Adam's transgression." Adam's Fall is often viewed positively — a "fortunate fall" (<em>felix culpa</em> recast) that enabled mortal experience and the potential for exaltation. Infants are considered innocent and do not require baptism; accountability begins at age 8.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>Paul's argument in Romans 5 — that sin and death entered through one man and spread to all — is the exegetical basis for original sin. The universality of human sinfulness, the necessity of Christ's redemption, and the Catholic practice of infant baptism are all grounded in this doctrine. Its rejection requires a substantially different reading of Pauline soteriology.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ P ══ -->
+    <div class="letter-group" id="P">
+      <div class="letter-heading">P</div>
+
+      <div class="entry" id="priesthood">
+        <div class="entry-term">
+          <h2>Priesthood</h2>
+          <span class="pos">noun · ecclesiology · sacramental theology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>The ministerial priesthood participates in the one priesthood of Jesus Christ and is distinct in kind (not merely degree) from the common priesthood of all the baptized. Holy Orders — Bishop, Priest, Deacon — is a sacrament that confers an indelible character and the authority to offer the Eucharistic sacrifice, absolve sins, and govern the Church. The priesthood is transmitted by apostolic succession through the laying on of hands, not by direct heavenly commission.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>LDS theology posits two priesthood orders: the Aaronic (lesser) and Melchizedek (higher). Every worthy male member receives the Aaronic Priesthood at age 12 and can advance to the Melchizedek Priesthood. The priesthood encompasses governance, ordinance performance, and spiritual authority broadly. Because valid succession was lost in the Great Apostasy, the LDS priesthood was restored directly by angelic visitation — John the Baptist and the Apostles Peter, James, and John — rather than transmitted through historical succession.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>The earliest Christian evidence shows no "Aaronic" and "Melchizedek" bifurcation of ministerial authority. The New Testament's <em>Letter to the Hebrews</em> explicitly argues that Christ's Melchizedekian priesthood supersedes and fulfills the Aaronic — rather than existing alongside it as a separate tier. See: <a href="articles/ante-nicene-fathers.html">The Ante-Nicene Fathers</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry" id="prophet">
+        <div class="entry-term">
+          <h2>Prophet</h2>
+          <span class="pos">noun · revelation · ecclesiology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>Prophecy in the biblical sense is a charism — a gift of the Holy Spirit for the building up of the Church — not necessarily an ongoing institutional office. The prophetic office culminated in Christ, who is the fullness of revelation (Heb 1:1–2). Public revelation closed with the death of the last Apostle; no subsequent prophetic utterance can add to the deposit of faith. Private revelations (apparitions, mystics) may be approved by the Church but are never binding and cannot contradict defined doctrine.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>The President of the LDS Church holds the office of "prophet, seer, and revelator" — a living, institutionalized prophetic office that can receive new scripture and binding revelation for the entire Church. This ongoing prophetic authority is considered essential: without a living prophet, the Church would fall into apostasy again. Past prophets' teachings are subordinate to the current prophet's, making authority inherently present-tense rather than historically anchored.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>If the prophetic office can generate new binding revelation indefinitely, then no doctrinal position is ever finally settled — including the claims of Joseph Smith himself, who could in principle be superseded. The criterion of "follow the living prophet" is self-undermining when applied retroactively to Joseph Smith's own teachings, many of which later prophets have abandoned. See: <a href="articles/rock-and-the-sand.html">The Rock and the Sand</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ R ══ -->
+    <div class="letter-group" id="R">
+      <div class="letter-heading">R</div>
+
+      <div class="entry" id="revelation">
+        <div class="entry-term">
+          <h2>Revelation</h2>
+          <span class="pos">noun · fundamental theology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>Public revelation — God's authoritative self-disclosure to humanity — is complete in Christ and was transmitted through the Apostles in Scripture and Tradition. It closed with the death of the last Apostle and cannot be added to. The role of the Magisterium is to interpret and protect this fixed deposit, not to receive new content. Private revelations (Fatima, Lourdes, etc.) are possible and may be approved by the Church, but they add nothing to the deposit of faith and carry no universal binding authority.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>Revelation is ongoing and open-ended. The Ninth Article of Faith states: "We believe all that God has revealed, all that He does now reveal, and we believe that He will yet reveal many great and important things pertaining to the Kingdom of God." The living prophet can receive binding new revelation, and individual members are expected to receive personal revelation confirming Church teachings. The primary criterion of authentic revelation is a "burning in the bosom" (D&C 9:8–9).</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>An epistemology grounded in subjective spiritual experience (burning in the bosom) provides no public, verifiable standard for distinguishing authentic revelation from error. Paul's warning that "even an angel from heaven" can preach a false gospel (Gal 1:8) applies precisely here. See: <a href="articles/fullness-of-time.html">Progressive Revelation vs. Primordial Dispensationalism</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ S ══ -->
+    <div class="letter-group" id="S">
+      <div class="letter-heading">S</div>
+
+      <div class="entry" id="salvation">
+        <div class="entry-term">
+          <h2>Salvation</h2>
+          <span class="pos">noun · soteriology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>Salvation encompasses justification (being made right with God), sanctification (growth in holiness), and final glorification (the beatific vision). It is effected by grace alone, mediated through the sacraments and the Church, and requires the cooperation of human free will. All who are saved are saved through Christ, even those who never knew Him explicitly — through the grace He merited applied in ways known to God. The goal of salvation is union with the Triune God through the beatific vision.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>LDS soteriology distinguishes between general salvation (resurrection, which all receive through Christ's Atonement) and exaltation (the highest celestial glory, requiring temple ordinances, celestial marriage, and covenant faithfulness). Most people will attain some degree of glory; very few are consigned to outer darkness. "Salvation" in the fullest LDS sense is roughly equivalent to Catholic "exaltation" or glorification — but it is earned rather than given, requiring specific, priesthood-administered ordinances.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>LDS exaltation is structurally meritocratic in a way that creates a tiered afterlife determined by ordinance compliance — a framework foreign to the consistent Pauline insistence on grace as the decisive factor in salvation and the singular destiny of the redeemed as union with God. See: <a href="articles/fullness-of-time.html">Progressive Revelation vs. Primordial Dispensationalism</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry" id="scripture">
+        <div class="entry-term">
+          <h2>Scripture</h2>
+          <span class="pos">noun · bibliology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>Sacred Scripture is the word of God committed to writing under the inspiration of the Holy Spirit. It forms one unified source of revelation along with Sacred Tradition — neither is complete without the other. Scripture is inerrant in matters of faith and morals and must be interpreted within the living Tradition of the Church. Its meaning cannot be privately determined; the Magisterium is the authentic interpreter. The canon is closed, fixed, and authoritative.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>The LDS standard works (Bible, Book of Mormon, D&C, Pearl of Great Price) are all scripture, with the Bible qualified as authoritative only "as far as it is translated correctly." The living prophet's words, when speaking under inspiration, can function as scripture (D&C 68:4). Scripture is subject to revision by new revelation — Joseph Smith produced an "Inspired Translation" of the Bible — and the canon remains open. Personal confirmation through the Holy Ghost is the individual's standard for truth.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>A scripture whose authority is qualified by translation accuracy concerns — raised selectively, and without any specified corrupted passages — effectively removes the Bible's authority wherever it conflicts with LDS teaching, while retaining it where it does not. See: <a href="articles/historicity-comparison.html">Historicity of Scripture: The Bible vs. The Book of Mormon</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ T ══ -->
+    <div class="letter-group" id="T">
+      <div class="letter-heading">T</div>
+
+      <div class="entry" id="tradition">
+        <div class="entry-term">
+          <h2>Tradition</h2>
+          <span class="pos">noun · fundamental theology</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>Sacred Tradition is the living transmission of the Church's faith — the apostolic deposit passed on through the preaching, worship, and teaching of the Church from the Apostles to the present. It is not human custom or ecclesiastical development in a modernist sense, but the very life of the faith in the Church's memory. Along with Scripture, it forms the single source of divine revelation. Tradition interprets Scripture and Scripture nourishes Tradition; neither stands alone.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>LDS theology largely rejects the Catholic understanding of Sacred Tradition as a source of binding divine revelation, viewing it instead as a vehicle of corruption — the mechanism by which the Great Apostasy occurred. "Traditions of men" is a critical phrase in LDS discourse, used to dismiss doctrines that lack direct scriptural citation in the LDS canon. The living prophet's current teaching supersedes accumulated tradition.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>The irony is that the Book of Mormon and the early LDS canon are themselves now "tradition" — inherited texts interpreted by living leaders who have sometimes significantly departed from them. Rejecting Tradition as a category of authority does not eliminate its operation; it only makes it unaccountable. See: <a href="articles/ante-nicene-fathers.html">The Ante-Nicene Fathers</a>.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="entry" id="trinity">
+        <div class="entry-term">
+          <h2>Trinity</h2>
+          <span class="pos">noun · theology proper</span>
+        </div>
+        <div class="entry-body">
+          <div class="entry-compare">
+            <div class="entry-col">
+              <div class="entry-col-label label-catholic">Catholic</div>
+              <p>God is one Being in three co-equal, co-eternal, consubstantial Persons: Father, Son, and Holy Spirit. The three Persons share one divine substance (<em>ousia</em>) and are not three gods but one God. The Son is eternally begotten of the Father; the Spirit proceeds from the Father and the Son. The doctrine of the Trinity is not a philosophical innovation but the Church's reflection on the explicit data of Scripture and the experience of salvation — worshipping Jesus as Lord while maintaining monotheism.</p>
+            </div>
+            <div class="entry-col">
+              <div class="entry-col-label label-lds">Latter-day Saint</div>
+              <p>The LDS Godhead consists of three wholly separate beings. The Father and Son have physical, resurrected bodies; the Holy Ghost is a personage of spirit. They are one in purpose and will, but not in substance or nature. This is closer to ancient tritheism than to Nicene orthodoxy. Joseph Smith explicitly rejected the Nicene doctrine, describing his 1820 First Vision as revealing two separate, embodied beings — Father and Son.</p>
+            </div>
+          </div>
+          <div class="entry-tension">
+            <span class="entry-tension-label">Key Tension →</span>
+            <p>The Nicene formula is not a fourth-century invention imposed on a simpler faith: Ignatius of Antioch (d. c. 107) addresses Christ as God; Justin Martyr (c. 155) distinguishes three divine "Persons" while maintaining monotheism. The LDS Godhead has no pre-1820 analog in Christian history. See: <a href="articles/ante-nicene-fathers.html">The Ante-Nicene Fathers</a>; <a href="articles/a-house-divided-against-itself.html">A House Divided Against Itself</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider">
+      <div class="section-divider-line"></div>
+      <span class="section-divider-label">Lexicon continues to expand</span>
+      <div class="section-divider-line"></div>
+    </div>
+
+    <div class="intro-box">
+      <p>This glossary is a living document. As new articles are added to One Faith Delivered, additional terms will be defined and cross-referenced here. If you encounter a term in an article that you believe warrants its own entry, the contact page is the appropriate place to suggest it. Priority will be given to terms that are technically shared between traditions but carry divergent meanings — the most fertile ground for both confusion and genuine dialogue.</p>
+      <p><strong>A note on sources:</strong> Catholic definitions are drawn from the Catechism of the Catholic Church, the documents of the Second Vatican Council, and the patristic sources cited throughout this site. LDS definitions are drawn from the Standard Works, the <em>Gospel Principles</em> manual, official Gospel Topics Essays at churchofjesuschrist.org, and statements of LDS General Authorities. Where possible, primary LDS sources are preferred over apologetic summaries.</p>
+    </div>
+
+  </div><!-- end right column -->
+
+</main>
+
+<div class="print-colophon">One Faith Delivered &nbsp;&middot;&nbsp; <span id="print-url-text">onefaithdelivered.org</span></div>
+
+<footer>&copy; 2026 One Faith Delivered &nbsp;&#8901;&nbsp; All Rights Reserved</footer>
+
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">One Faith Delivered</div>
+    <a href="index.html">Home</a>
+    <a href="articles.html">Articles</a>
+    <a href="charts.html">Charts</a>
+    <a href="topics.html">Topics</a>
+    <a href="resources.html">Resources</a>
+    <a href="index.html" class="sidebar-back">&#8592; Home</a>
+    <div class="sidebar-ornament">✦ ✦ ✦</div>
+  </div>
+</aside>
+
+<script>
+function toggleSidebar() {
+  var btn = document.querySelector('.nav-hamburger'),
+      sidebar = document.querySelector('.sidebar'),
+      overlay = document.querySelector('.sidebar-overlay');
+  var isOpen = sidebar.classList.contains('open');
+  if (isOpen) {
+    sidebar.classList.remove('open'); btn.classList.remove('open');
+    overlay.classList.remove('visible'); document.body.style.overflow = '';
+  } else {
+    sidebar.classList.add('open'); btn.classList.add('open');
+    overlay.classList.add('visible'); document.body.style.overflow = 'hidden';
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar();
+});
+</script>
+
+<script>
+(function () {
+  var bar = document.getElementById('reading-progress-bar');
+  function updateProgress() {
+    if (!bar) return;
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+    bar.style.width = pct + '%';
+    bar.setAttribute('aria-valuenow', Math.round(pct));
+  }
+  if (bar) { window.addEventListener('scroll', updateProgress, { passive: true }); updateProgress(); }
+  var urlEl = document.getElementById('print-url-text');
+  if (urlEl) {
+    var href = window.location.href;
+    urlEl.textContent = href && href !== 'about:blank' ? href : 'onefaithdelivered.org';
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Justification: Catholic vs. LDS | One Faith Delivered</title>
+<meta name="description" content="A rigorous comparison of the Catholic and Latter-day Saint doctrines of justification — tracing each view to its scriptural, patristic, and theological sources." />
+<link rel="canonical" href="https://onefaithdelivered.org/articles/justification-catholic-vs-lds.html" />
+<link rel="icon" href="../favicons/favicon.ico" sizes="any" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   JUSTIFICATION: CATHOLIC VS. LDS
+   Design system: matches book-of-abraham-problem.html
+   Fonts: Playfair Display + Source Serif 4 + JetBrains Mono
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --crimson:      #8B0000;
+  --dark-crimson: #5C0000;
+  --gold:         #C5A55A;
+  --dark-gold:    #8B7335;
+  --parchment:    #F5F0E8;
+  --dark-bg:      #1A1A1A;
+  --text:         #2A2A2A;
+  --muted:        #666;
+  --smith-red:    #A02020;
+  --egypt-green:  #1A5C38;
+  --problem-blue: #1E3A5F;
+  --line-gray:    #D0C8B8;
+  --lds-blue:     #1B3A6B;
+  --catholic-gold:#7A5C1E;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--parchment);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.6;
+}
+
+/* ── HERO / PAGE HEADER ── */
+.page-header {
+  background: linear-gradient(135deg, #4A0F1A 0%, #6B1D2A 40%, #3D1520 100%);
+  color: #F5F0E8;
+  padding: 72px 40px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+  pointer-events: none;
+}
+.back-link {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  margin-bottom: 1.8rem;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+  position: relative;
+  z-index: 1;
+}
+.back-link:hover { opacity: 1; }
+.ornament {
+  display: block;
+  color: var(--gold);
+  font-size: 1rem;
+  letter-spacing: 12px;
+  margin-bottom: 1.2rem;
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2em, 4vw, 3.2em);
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: #F5F0E8;
+  margin-bottom: 14px;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+}
+.page-header h1 span { color: var(--gold); }
+.page-header .subtitle {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(245,240,232,0.75);
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── MAIN CONTENT AREA ── */
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 50px 24px 80px;
+}
+
+/* ── INTRO BOX ── */
+.intro-box {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-left: 5px solid var(--crimson);
+  border-radius: 4px;
+  padding: 28px 32px;
+  margin-bottom: 48px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.intro-box p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--text);
+}
+.intro-box p + p { margin-top: 0.9rem; }
+.intro-box strong { color: var(--crimson); font-weight: 700; }
+
+/* ── SCRIPTURE VERSE CALLOUT ── */
+.intro-verse {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-left: 5px solid var(--dark-gold);
+  border-radius: 4px;
+  padding: 22px 32px;
+  margin-bottom: 40px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.intro-verse blockquote {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.08em;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.9;
+}
+.intro-verse cite {
+  display: block;
+  margin-top: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  font-style: normal;
+}
+
+/* ── HISTORY BAR ── */
+.history-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-bottom: 48px;
+  border: 1px solid var(--line-gray);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.history-cell {
+  padding: 20px 16px;
+  text-align: center;
+  background: #fff;
+  border-right: 1px solid var(--line-gray);
+}
+.history-cell:last-child { border-right: none; }
+.history-year {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5em;
+  font-weight: 900;
+  color: var(--crimson);
+  margin-bottom: 6px;
+}
+.history-desc {
+  font-size: 0.83em;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* ── SECTION DIVIDER ── */
+.section-divider {
+  margin: 40px 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.section-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line-gray);
+}
+.section-divider-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  white-space: nowrap;
+}
+
+/* ── DOCTRINE BLOCKS (primary comparison units) ── */
+.doc-block {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-radius: 6px;
+  margin-bottom: 36px;
+  overflow: hidden;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.07);
+  transition: box-shadow 0.2s;
+}
+.doc-block:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.11); }
+
+.doc-header {
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #3D1520, #6B1D2A);
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+.doc-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--gold);
+}
+.doc-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,0.65);
+}
+
+/* ── TWO-COLUMN DOCTRINE COMPARE ── */
+.doc-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.doc-col {
+  padding: 22px 24px;
+}
+.doc-col:first-child {
+  border-right: 1px solid var(--line-gray);
+  background: #F8F4EE;
+}
+.doc-col:last-child {
+  background: #F2F5FB;
+}
+.doc-col-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid;
+}
+.label-catholic {
+  color: var(--catholic-gold);
+  border-color: var(--catholic-gold);
+}
+.label-lds {
+  color: var(--lds-blue);
+  border-color: var(--lds-blue);
+}
+
+.doc-point {
+  margin-bottom: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.doc-bullet {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7em;
+  font-weight: 600;
+  color: var(--dark-gold);
+  flex-shrink: 0;
+  padding-top: 3px;
+}
+.doc-text {
+  font-size: 0.9em;
+  line-height: 1.7;
+  color: var(--text);
+}
+.doc-text strong { color: var(--crimson); font-weight: 700; }
+.doc-text em {
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* ── QUOTE BLOCK within doc-col ── */
+.doc-quote {
+  background: rgba(0,0,0,0.03);
+  border-left: 3px solid var(--line-gray);
+  padding: 10px 14px;
+  margin: 12px 0;
+  font-size: 0.88em;
+  line-height: 1.7;
+  font-style: italic;
+  color: #444;
+  border-radius: 0 2px 2px 0;
+}
+.doc-quote cite {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  font-style: normal;
+  margin-top: 6px;
+}
+
+/* ── SOURCE STRIP ── */
+.source-strip {
+  padding: 10px 20px;
+  border-top: 1px solid var(--line-gray);
+  background: #FAFAF8;
+}
+.source-strip p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62em;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── PROBLEM / CONTRAST CARDS ── */
+.contrast-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+.contrast-card {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-top: 4px solid var(--crimson);
+  border-radius: 4px;
+  padding: 22px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.contrast-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.09);
+}
+.contrast-card-icon { font-size: 1.4em; margin-bottom: 10px; }
+.contrast-card-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.05em;
+  color: var(--crimson);
+  margin-bottom: 8px;
+}
+.contrast-card-text {
+  font-size: 0.88em;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* ── RESPONSE GRID (LDS objections vs Catholic replies) ── */
+.response-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--line-gray);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.response-card {
+  padding: 22px 24px;
+}
+.response-card:nth-child(odd) {
+  background: linear-gradient(135deg, #FFFCF0, #FFF8E0);
+  border-right: 1px solid var(--line-gray);
+  border-bottom: 1px solid var(--line-gray);
+}
+.response-card:nth-child(even) {
+  background: linear-gradient(135deg, #F5F7FF, #EEF2FB);
+  border-bottom: 1px solid var(--line-gray);
+}
+.response-card:nth-last-child(-n+2) { border-bottom: none; }
+.response-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 2px solid;
+}
+.label-lds-obj {
+  color: var(--lds-blue);
+  border-color: var(--lds-blue);
+}
+.label-catholic-reply {
+  color: var(--smith-red);
+  border-color: var(--smith-red);
+}
+.response-text {
+  font-size: 0.9em;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* ── PATRISTIC STRIP ── */
+.patristic-strip {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-radius: 6px;
+  padding: 28px 32px;
+  margin-bottom: 36px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.patristic-strip h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--crimson);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.patristic-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.patristic-card {
+  background: #F8F4EE;
+  border: 1px solid var(--line-gray);
+  border-left: 4px solid var(--dark-gold);
+  border-radius: 4px;
+  padding: 18px 20px;
+}
+.patristic-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  margin-bottom: 8px;
+}
+.patristic-quote {
+  font-size: 0.9em;
+  font-style: italic;
+  line-height: 1.75;
+  color: var(--text);
+}
+.patristic-quote cite {
+  display: block;
+  font-style: normal;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* ── VERDICT BOX ── */
+.verdict-box {
+  background: linear-gradient(135deg, #4A0F1A, #6B1D2A);
+  color: #F5F0E8;
+  border-radius: 6px;
+  padding: 44px 40px;
+  margin-top: 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.verdict-box::before {
+  content: '';
+  position: absolute; inset: 8px;
+  border: 1px solid rgba(197,165,90,0.25);
+  border-radius: 4px;
+  pointer-events: none;
+}
+.verdict-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4em;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+.verdict-box p {
+  font-size: 1em;
+  line-height: 1.85;
+  color: rgba(245,240,232,0.9);
+  max-width: 780px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.verdict-box p + p { margin-top: 14px; }
+
+/* ── FOOTER ── */
+footer {
+  background: #fff;
+  text-align: center;
+  padding: 28px 20px;
+  border-top: 1px solid var(--line-gray);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── SITE NAV ── */
+.site-nav {
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(245,240,232,0.98), rgba(240,235,225,0.95));
+  border-bottom: 1px solid var(--line-gray);
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  font-family: 'Source Serif 4', serif;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.site-nav a.nav-home {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--crimson);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: var(--dark-crimson); }
+.site-nav .nav-back {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  text-decoration: none;
+  border: 1px solid rgba(139,115,53,0.35);
+  padding: 0.4rem 1.1rem;
+  border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
+}
+.site-nav .nav-back:hover {
+  background: rgba(139,115,53,0.08);
+  color: var(--crimson);
+}
+.site-nav .nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.site-nav .nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav .nav-links a:hover { color: var(--crimson); }
+
+/* ── Hamburger ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  cursor: pointer;
+  background: none;
+  border: 1px solid rgba(139,115,53,0.3);
+  border-radius: 3px;
+  padding: 6px;
+  z-index: 10001;
+}
+.nav-hamburger span {
+  display: block; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Sidebar ── */
+.sidebar-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+.sidebar-overlay.visible { display: block; }
+.sidebar {
+  position: fixed;
+  top: 0; right: -280px;
+  width: 260px; height: 100%;
+  background: linear-gradient(to bottom, #FAF6F0, #F5F0E8);
+  border-left: 1px solid var(--line-gray);
+  z-index: 10002;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+.sidebar.open { right: 0; }
+.sidebar-inner {
+  padding: 5rem 2rem 2rem;
+  display: flex; flex-direction: column; gap: 0;
+}
+.sidebar-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--crimson);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line-gray);
+}
+.sidebar-inner a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(208,200,184,0.5);
+  transition: color 0.2s;
+}
+.sidebar-inner a:hover { color: var(--crimson); }
+.sidebar-inner a.sidebar-back {
+  color: var(--dark-gold);
+  margin-top: 1.5rem;
+  border: 1px solid rgba(139,115,53,0.3);
+  padding: 0.7rem 1rem;
+  text-align: center;
+  border-radius: 2px;
+}
+.sidebar-ornament {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 8px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .page-header { padding: 48px 24px 40px; }
+  .page-header h1 { font-size: 1.9em; }
+  .history-bar { grid-template-columns: repeat(2, 1fr); }
+  .doc-compare { grid-template-columns: 1fr; }
+  .doc-col:first-child { border-right: none; border-bottom: 1px solid var(--line-gray); }
+  .contrast-cards { grid-template-columns: 1fr; }
+  .response-grid { grid-template-columns: 1fr; }
+  .response-card:nth-child(odd) { border-right: none; }
+  .patristic-grid { grid-template-columns: 1fr; }
+  .verdict-box { padding: 32px 24px; }
+  main { padding: 32px 16px 60px; }
+}
+@media (max-width: 700px) {
+  .nav-hamburger { display: flex; }
+  .site-nav .nav-links { display: none; }
+  .site-nav .nav-back { display: none; }
+  body { padding: 0 !important; overflow-x: hidden; }
+  .site-nav { padding: 0.55rem 1rem !important; }
+  .nav-hamburger { display: flex !important; margin-left: auto !important; order: 99 !important; flex-shrink: 0 !important; }
+  .page-header { padding: 44px 18px 32px !important; }
+  .page-header h1 { font-size: clamp(1.35rem, 5.5vw, 2rem) !important; }
+  .page-header .subtitle { font-size: 0.92rem !important; }
+  .sidebar { display: block !important; transform: translateX(100%) !important; right: 0 !important; position: fixed !important; }
+  .sidebar.open { transform: translateX(0) !important; }
+  .sidebar-inner { padding: 4rem 1.5rem 2rem !important; }
+  .sidebar-overlay.visible { display: block !important; }
+  .history-bar { grid-template-columns: 1fr !important; }
+  .history-cell { border-right: none !important; border-bottom: 1px solid var(--line-gray) !important; }
+  .doc-compare { grid-template-columns: 1fr !important; }
+  .doc-col:first-child { border-right: none !important; border-bottom: 1px solid var(--line-gray) !important; }
+  .contrast-cards { grid-template-columns: 1fr !important; }
+  .response-grid { grid-template-columns: 1fr !important; }
+  .response-card:nth-child(odd) { border-right: none !important; }
+  .patristic-grid { grid-template-columns: 1fr !important; }
+  .verdict-box { padding: 24px 16px !important; }
+  .verdict-box p { font-size: 0.9rem !important; }
+  main { padding: 24px 14px 48px !important; }
+  .intro-box { padding: 1rem 1.1rem !important; }
+  .intro-box p { font-size: 0.88rem !important; }
+  .intro-verse { padding: 1rem 1.2rem !important; }
+  footer { padding: 1.5rem 1rem 2rem !important; }
+}
+@media (max-width: 960px) and (min-width: 701px) {
+  .site-nav .nav-links { gap: 1.2rem !important; }
+  .site-nav .nav-links a { font-size: 0.68rem !important; }
+}
+
+/* ── READING PROGRESS BAR ── */
+#reading-progress-bar {
+  position: fixed; top: 0; left: 0;
+  height: 3px; width: 0%;
+  background: linear-gradient(to right, #8B0000, #C5A55A);
+  z-index: 99999; transition: width 0.12s linear;
+  pointer-events: none; border-radius: 0 2px 2px 0;
+}
+
+/* ── PRINT BUTTON ── */
+.nav-print-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--dark-gold); background: none;
+  border: 1px solid rgba(139,115,53,0.35);
+  padding: 0.4rem 1.1rem; border-radius: 3px;
+  cursor: pointer; transition: background 0.2s, color 0.2s;
+  display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap;
+}
+.nav-print-btn:hover { background: rgba(139,115,53,0.08); color: var(--crimson); }
+
+/* ── PRINT COLOPHON ── */
+.print-colophon { display: none; }
+
+/* ── PRINT STYLES ── */
+@media (max-width: 700px) {
+  .nav-print-btn { display: none !important; }
+}
+@media print {
+  #reading-progress-bar, .site-nav, .sidebar-overlay,
+  .sidebar, .nav-print-btn, footer { display: none !important; }
+  main { padding: 0 !important; max-width: 100% !important; }
+  body { background: #fff !important; color: #000 !important; font-size: 11pt; }
+  .page-header {
+    background: none !important; color: #000 !important;
+    border-bottom: 2pt solid #8B0000; padding: 0.4cm 0 0.5cm !important;
+  }
+  .page-header h1, .page-header h1 span { color: #8B0000 !important; }
+  .page-header .subtitle { color: #333 !important; }
+  .doc-block, .contrast-card, .patristic-card { page-break-inside: avoid; box-shadow: none; }
+  a { color: #000; text-decoration: none; }
+  .print-colophon {
+    display: block !important; margin-top: 2cm;
+    padding-top: 0.5cm; border-top: 1pt solid #ccc;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt; color: #666; text-align: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<div id="reading-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">One Faith Delivered</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../articles.html">Articles</a></li>
+    <li><a href="../charts.html">Charts</a></li>
+    <li><a href="../topics.html">Topics</a></li>
+    <li><a href="../resources.html">Resources</a></li>
+  </ul>
+  <a href="../articles.html" class="nav-back">&#8592; All Articles</a>
+  <button class="nav-print-btn" onclick="window.print()">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg">
+      <rect x="3" y="1" width="10" height="9" rx="1"/><rect x="3" y="10" width="10" height="5" rx="1"/>
+      <rect x="5" y="12" width="6" height="1"/><circle cx="11.5" cy="6.5" r="0.75" fill="currentColor" stroke="none"/>
+    </svg>
+    Save as PDF
+  </button>
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="page-header">
+  <a class="back-link" href="../articles.html">← Back to Articles</a>
+  <span class="ornament">✦ ✦ ✦</span>
+  <h1>Justification: <span>Catholic</span> vs. LDS</h1>
+  <p class="subtitle">How are sinners made right before God? The two traditions answer this question in ways that are not merely different in degree — they are different in kind.</p>
+</header>
+
+<main>
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <p>Few theological questions carry more weight than this one: how does a fallen human being stand justified before a holy God? The Catholic tradition, rooted in Scripture, the Council of Trent, and nineteen centuries of patristic consensus, offers a richly sacramental answer. The Latter-day Saint tradition, assembled by Joseph Smith beginning in the 1830s, offers a competing framework that draws on Protestant vocabulary while arriving at conclusions categorically different from either Protestantism or historic Christianity.</p>
+    <p><strong>The disagreement is not peripheral.</strong> Both traditions claim to be the restored or preserved Church of Jesus Christ. Yet on the question of justification — the very mechanism by which salvation operates — they contradict each other at virtually every point: what righteousness is, where it comes from, how it is received, whether it can be lost, and what it ultimately accomplishes. This article examines those contradictions systematically.</p>
+  </div>
+
+  <!-- ANCHOR VERSE -->
+  <div class="intro-verse">
+    <blockquote>"We believe that through the Atonement of Christ, all mankind may be saved, by obedience to the laws and ordinances of the Gospel."
+      <cite>Articles of Faith 3 — Joseph Smith (1842)</cite>
+    </blockquote>
+  </div>
+
+  <!-- TIMELINE BAR -->
+  <div class="history-bar">
+    <div class="history-cell">
+      <div class="history-year">AD 397</div>
+      <div class="history-desc">Augustine's <em>Confessions</em> articulates grace as the sole initiating cause of man's turning to God — foundational to Catholic soteriology.</div>
+    </div>
+    <div class="history-cell">
+      <div class="history-year">1547</div>
+      <div class="history-desc">Council of Trent defines Catholic doctrine of justification against Protestant errors, affirming infused righteousness and cooperative grace.</div>
+    </div>
+    <div class="history-cell">
+      <div class="history-year">1830</div>
+      <div class="history-desc">Book of Mormon published. Early LDS soteriology emphasizes faith, repentance, baptism, and "enduring to the end."</div>
+    </div>
+    <div class="history-cell">
+      <div class="history-year">1835+</div>
+      <div class="history-desc">LDS doctrine develops through Smith's revelations toward a works-intensive, eternal progression model absent from any prior Christian tradition.</div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 1: THE NATURE OF RIGHTEOUSNESS ═══ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">Point I — The Nature of Righteousness in Justification</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="doc-block">
+    <div class="doc-header">
+      <span class="doc-num">The Core Question</span>
+      <span class="doc-name">Whose righteousness justifies — and how does it become ours?</span>
+    </div>
+    <div class="doc-compare">
+      <div class="doc-col">
+        <div class="doc-col-label label-catholic">Catholic Teaching</div>
+        <div class="doc-point">
+          <span class="doc-bullet">✦</span>
+          <span class="doc-text">Justification is <strong>intrinsic and real</strong>: God does not merely declare the sinner righteous, but actually makes him so. The righteousness received is genuinely the sinner's own — not an external legal fiction, but a new quality of the soul infused by grace (Council of Trent, Session VI, Canon 10).</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">✦</span>
+          <span class="doc-text">The formal cause of justification is <strong>infused sanctifying grace</strong> — charity poured into the soul by the Holy Spirit. Christ's merits are the meritorious cause, but what is actually communicated is a genuine share in God's own righteousness.</span>
+        </div>
+        <div class="doc-quote">
+          "Justification is not merely the remission of sins, but also the sanctification and renewal of the interior man through the voluntary reception of the grace and gifts, whereby an unrighteous man becomes righteous."
+          <cite>Council of Trent, Decree on Justification, Ch. VII (1547)</cite>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">✦</span>
+          <span class="doc-text">This righteousness is received in <strong>baptism</strong> as its instrumental cause — the first and indispensable sacrament by which original sin is remitted and the soul is born again into the life of grace.</span>
+        </div>
+      </div>
+      <div class="doc-col">
+        <div class="doc-col-label label-lds">LDS Teaching</div>
+        <div class="doc-point">
+          <span class="doc-bullet">◆</span>
+          <span class="doc-text">LDS soteriology blends juridical and developmental categories in a way that resists easy classification. On one hand, Christ's Atonement satisfies the demands of justice; on the other, individual merit and obedience are <strong>genuinely required for exaltation</strong>, not merely as expressions of faith but as co-causes of the final outcome.</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">◆</span>
+          <span class="doc-text">The standard LDS framing: <strong>"after all we can do"</strong> (2 Nephi 25:23) — Christ's grace covers what remains after human effort is exhausted. This places individual obedience logically prior to the Atonement's full benefit, a structure with no parallel in any classical Christian tradition.</span>
+        </div>
+        <div class="doc-quote">
+          "It is by grace that we are saved, after all we can do."
+          <cite>2 Nephi 25:23, Book of Mormon</cite>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">◆</span>
+          <span class="doc-text">LDS theological development complicates this further: different authorities — Bruce R. McConkie, Stephen Robinson, Brad Wilcox — have offered strikingly divergent accounts of how grace and works relate, suggesting the tradition lacks a definitive resolution comparable to Trent.</span>
+        </div>
+      </div>
+    </div>
+    <div class="source-strip">
+      <p>Sources: Council of Trent, Decree on Justification (1547) · Catechism of the Catholic Church §§1987–1995 · 2 Nephi 25:23 · Bruce R. McConkie, <em>Mormon Doctrine</em> (1966) · Stephen E. Robinson, <em>Believing Christ</em> (1992)</p>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2: THE ROLE OF WORKS ═══ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">Point II — Works, Merit, and the Mechanism of Salvation</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="doc-block">
+    <div class="doc-header">
+      <span class="doc-num">Works & Merit</span>
+      <span class="doc-name">Do human actions contribute causally to justification and salvation?</span>
+    </div>
+    <div class="doc-compare">
+      <div class="doc-col">
+        <div class="doc-col-label label-catholic">Catholic Teaching</div>
+        <div class="doc-point">
+          <span class="doc-bullet">✦</span>
+          <span class="doc-text">Works performed in a state of grace are <strong>genuinely meritorious</strong>, but only because God graciously ordains them to be so. The merit is real but entirely derivative — it flows from grace, not from natural human capacity. Trent anathematizes anyone who says good works are merely "fruits and signs" of justification with no causal role in eternal life (Session VI, Canon 32).</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">✦</span>
+          <span class="doc-text">The crucial Catholic distinction: <strong>grace is prior to and the source of meritorious works</strong>. God first justifies the sinner; the justified sinner then cooperates with grace and merits increase in sanctification and eternal reward. Works follow justification; they do not produce it.</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">✦</span>
+          <span class="doc-text">This framework preserves the absolute gratuity of salvation while affirming genuine human cooperation — a both/and, not an either/or. St. Augustine's formula captures it: "He who made you without you will not justify you without you."</span>
+        </div>
+      </div>
+      <div class="doc-col">
+        <div class="doc-col-label label-lds">LDS Teaching</div>
+        <div class="doc-point">
+          <span class="doc-bullet">◆</span>
+          <span class="doc-text">LDS soteriology assigns specific, <strong>enumerated ordinances as necessary conditions</strong> for the highest degree of exaltation: faith, repentance, baptism by immersion, gift of the Holy Ghost, and (for full exaltation) temple endowment and celestial marriage. These are not optional expressions of faith — they are required acts.</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">◆</span>
+          <span class="doc-text">The LDS concept of <strong>eternal progression</strong> — the idea that God himself was once as man now is, and man may become as God now is — fundamentally reframes the role of works. Obedience does not merely express gratitude for grace; it is the mechanism by which one <em>becomes</em> a god. This is categorically different from Catholic merit theology.</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">◆</span>
+          <span class="doc-text">LDS General Authority Bruce R. McConkie was direct: <strong>"Salvation is not by grace alone."</strong> The King Follett Discourse, Joseph Smith's most developed theological statement, frames the goal of salvation as literal deification through works in a way that has no precedent in patristic Christian tradition.</span>
+        </div>
+        <div class="doc-quote">
+          "Men are that they might have joy" — but the joy of exaltation is conditioned on covenantal obedience to specific ordinances administered by priesthood authority.
+          <cite>2 Nephi 2:25; D&C 131:1–4</cite>
+        </div>
+      </div>
+    </div>
+    <div class="source-strip">
+      <p>Sources: Council of Trent, Session VI, Canons 1–33 · CCC §2006–2011 · D&C 131:1–4 · Bruce R. McConkie, <em>Mormon Doctrine</em>, s.v. "Salvation" · Joseph Smith, King Follett Discourse (1844) · 2 Nephi 2:25</p>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 3: SACRAMENTS ═══ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">Point III — Sacramental Theology and Baptismal Grace</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="doc-block">
+    <div class="doc-header">
+      <span class="doc-num">Baptism & the Sacraments</span>
+      <span class="doc-name">How do outward rites relate to inward grace?</span>
+    </div>
+    <div class="doc-compare">
+      <div class="doc-col">
+        <div class="doc-col-label label-catholic">Catholic Teaching</div>
+        <div class="doc-point">
+          <span class="doc-bullet">✦</span>
+          <span class="doc-text">Baptism operates <em>ex opere operato</em> — by the very performance of the sacramental act, when properly administered and received with no obstacle. It is not merely a sign of grace already given; it is the <strong>instrumental cause of justification</strong>, truly remitting original sin and infusing sanctifying grace.</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">✦</span>
+          <span class="doc-text">The seven sacraments constitute the ordinary means by which Christ's redemptive grace is communicated to the soul throughout the Christian life. The Eucharist sustains and deepens justifying grace; Penance restores it when lost by mortal sin. Sacramental life is the <strong>ongoing economy of salvation</strong>, not a one-time event.</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">✦</span>
+          <span class="doc-text">The sacramental system connects directly to apostolic succession: valid sacraments require valid orders, which require unbroken transmission from the Apostles. This is why Catholic ecclesiology and soteriology are inseparable — one cannot have the sacraments without the Church.</span>
+        </div>
+      </div>
+      <div class="doc-col">
+        <div class="doc-col-label label-lds">LDS Teaching</div>
+        <div class="doc-point">
+          <span class="doc-bullet">◆</span>
+          <span class="doc-text">LDS baptism is likewise necessary for salvation but operates within a different framework. It remits <em>personal</em> sins but not Adamic original sin — LDS theology explicitly rejects original sin in the Augustinian sense (Article of Faith 2: "men will be punished for their own sins, and not for Adam's transgression").</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">◆</span>
+          <span class="doc-text">The ordinance is valid only when performed by a holder of the <strong>restored Melchizedek or Aaronic Priesthood</strong>. LDS theology holds that all Christian baptisms performed between the close of the Apostolic Age and the 1829 restoration of priesthood authority by John the Baptist (to Smith and Oliver Cowdery) were <strong>null and void</strong>. This is a breathtaking historical claim.</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">◆</span>
+          <span class="doc-text">Temple ordinances — the endowment and sealing — are required for the highest degree of exaltation and are unavailable outside an LDS temple. These are not merely devotional rites; they are <strong>soteriologically necessary</strong> conditions for Celestial glory with God. This has no analogue in Catholic sacramental theology.</span>
+        </div>
+      </div>
+    </div>
+    <div class="source-strip">
+      <p>Sources: CCC §§1213–1284 · Council of Trent, Decree on Baptism · Articles of Faith 2 · D&C 131:1–4 · Joseph Smith, History 1:66–73 (restoration of Aaronic Priesthood) · Gospel Principles (LDS Church, 2011), Ch. 20</p>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 4: ASSURANCE / LOSS OF GRACE ═══ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">Point IV — Assurance, Apostasy, and the Loss of Justification</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="doc-block">
+    <div class="doc-header">
+      <span class="doc-num">Assurance & Perseverance</span>
+      <span class="doc-name">Can justification be lost — and what certainty may the faithful have?</span>
+    </div>
+    <div class="doc-compare">
+      <div class="doc-col">
+        <div class="doc-col-label label-catholic">Catholic Teaching</div>
+        <div class="doc-point">
+          <span class="doc-bullet">✦</span>
+          <span class="doc-text">Justifying grace can be <strong>lost by mortal sin</strong>. Trent explicitly rejects the Protestant doctrine of once-saved-always-saved (Canon 23). The soul in mortal sin loses charity and sanctifying grace while retaining faith — it is in a state of spiritual death, though not necessarily complete apostasy.</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">✦</span>
+          <span class="doc-text">The sacrament of Penance restores lost grace to the repentant sinner — not as a "second baptism" but as the <strong>ordinary means of reconciliation</strong> for the baptized. The sinner must confess, have genuine contrition, receive absolution, and perform satisfaction. Grace is genuinely restored, not merely covered over.</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">✦</span>
+          <span class="doc-text">Catholics may not claim <strong>absolute certainty of their own salvation</strong> without special revelation — a humility Trent mandates (Canon 16). Yet Catholics possess well-founded hope, rooted in the promises of Christ and the reliability of the sacraments, not in subjective feelings of assurance.</span>
+        </div>
+      </div>
+      <div class="doc-col">
+        <div class="doc-col-label label-lds">LDS Teaching</div>
+        <div class="doc-point">
+          <span class="doc-bullet">◆</span>
+          <span class="doc-text">LDS theology likewise affirms that grace and covenantal standing can be forfeited. The requirement to "endure to the end" (2 Nephi 31:20; D&C 14:7) is a persistent condition of exaltation — salvation is not finalized at any point in mortal life. This parallels the Catholic rejection of once-saved-always-saved.</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">◆</span>
+          <span class="doc-text">LDS repentance, however, does not involve sacramental confession to a priesthood holder for ordinary sins, though <strong>serious sins may require confession to a bishop</strong>. There is no absolution formula; restoration of standing depends on a bishop's judgment and is more administrative than sacramental in character.</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">◆</span>
+          <span class="doc-text">The LDS concept of <strong>"sons of perdition"</strong> — those who receive a sure witness of God and then deny it — introduces a class of damnation more severe than Catholic theology envisions for ordinary apostates. Most who reject LDS claims will receive a lesser degree of glory (Terrestrial or Telestial), not outright damnation — a more universalist structure than traditional Catholicism.</span>
+        </div>
+      </div>
+    </div>
+    <div class="source-strip">
+      <p>Sources: Council of Trent, Session VI, Canons 15–16, 23 · CCC §§1446–1460 · 2 Nephi 31:20 · D&C 76:31–49 (sons of perdition) · D&C 14:7 · Gospel Principles, Ch. 19 (repentance)</p>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 5: DEIFICATION / THEOSIS ═══ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">Point V — Deification: Theosis vs. Eternal Progression</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="doc-block">
+    <div class="doc-header">
+      <span class="doc-num">Deification & Theosis</span>
+      <span class="doc-name">What is the ultimate end of the justified soul — and what does it mean to "become like God"?</span>
+    </div>
+    <div class="doc-compare">
+      <div class="doc-col">
+        <div class="doc-col-label label-catholic">Catholic Teaching</div>
+        <div class="doc-point">
+          <span class="doc-bullet">✦</span>
+          <span class="doc-text">Catholic tradition robustly affirms <em>theosis</em> — divinization — as the final end of the Christian life. St. Athanasius: "God became man so that man might become God." But Catholic theosis is <strong>participatory, not ontological</strong>: the soul shares in God's nature by grace, not by becoming a separate divine being of the same species as God.</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">✦</span>
+          <span class="doc-text">The key philosophical distinction: <strong>God remains absolutely simple, eternal, and uncreated</strong> — the creature can share in God's life, but can never become a being of the same kind as God. The infinite qualitative difference between Creator and creature is preserved even in the Beatific Vision.</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">✦</span>
+          <span class="doc-text">Catholic theosis is grounded in the Incarnation: the divine Word assumed human nature, and through union with Him in the Church and sacraments, human nature is elevated and progressively transformed. The glory of heaven is not becoming a god but <strong>seeing God as He is</strong> (1 John 3:2).</span>
+        </div>
+      </div>
+      <div class="doc-col">
+        <div class="doc-col-label label-lds">LDS Teaching</div>
+        <div class="doc-point">
+          <span class="doc-bullet">◆</span>
+          <span class="doc-text">LDS exaltation involves <strong>literal, ontological godhood</strong>: the faithful will become gods — not by participation in the one God, but by becoming gods in the same sense that the Heavenly Father is God. Joseph Smith's King Follett Discourse is unambiguous: "You have got to learn how to be Gods yourselves… the same as all Gods have done before you."</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">◆</span>
+          <span class="doc-text">This entails that <strong>God the Father was himself once a mortal man</strong> on another world, who progressed to godhood through eternal law. Lorenzo Snow's famous couplet: "As man now is, God once was; as God now is, man may become." This teaching — now softened in official LDS communications — represents a fundamental break with Christian monotheism.</span>
+        </div>
+        <div class="doc-point">
+          <span class="doc-bullet">◆</span>
+          <span class="doc-text">The consequences for justification are significant: if God is a being who was once unjustified and is now exalted, the entire framework of salvation changes. <strong>Justification becomes a stage in an infinite cosmological process</strong>, not a unique event of reconciliation between Creator and creature. This is not a development of Christian theosis — it is a replacement of it.</span>
+        </div>
+      </div>
+    </div>
+    <div class="source-strip">
+      <p>Sources: Athanasius, <em>On the Incarnation</em>, §54 · CCC §§460, 1988, 2013 · Joseph Smith, King Follett Discourse (April 7, 1844) · Lorenzo Snow Couplet (ca. 1840s) · LDS Gospel Topics Essay: "Becoming Like God" (2014)</p>
+    </div>
+  </div>
+
+  <!-- ═══ PATRISTIC CONSENSUS ═══ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">The Witness of the Fathers — Grace, Merit, and Transformation</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="patristic-strip">
+    <h3>✦ &nbsp; What the Early Church Believed About Justification</h3>
+    <div class="patristic-grid">
+      <div class="patristic-card">
+        <div class="patristic-name">St. Augustine of Hippo (354–430)</div>
+        <div class="patristic-quote">
+          "Our heart is restless until it rests in Thee." Grace is not cooperation with our initiative — it is the very cause of our turning. Without prevenient grace, the will cannot even begin to move toward God. Augustine's anti-Pelagian writings form the backbone of Trent's doctrine of grace.
+          <cite>Confessions I.1 · De Gratia et Libero Arbitrio</cite>
+        </div>
+      </div>
+      <div class="patristic-card">
+        <div class="patristic-name">St. Cyril of Jerusalem (313–386)</div>
+        <div class="patristic-quote">
+          Baptism is not a bare sign but the actual death of the old man and rebirth of the new. "In the same hour you were both dying and being born." The sacramental realism of the early Church — grace truly conferred by the rite — is foundational to the Catholic, not the LDS, account of justification.
+          <cite>Mystagogical Catecheses II.4</cite>
+        </div>
+      </div>
+      <div class="patristic-card">
+        <div class="patristic-name">St. Irenaeus of Lyon (ca. 130–202)</div>
+        <div class="patristic-quote">
+          "The glory of God is man fully alive; and the life of man is the vision of God." Irenaeus's <em>recapitulation</em> theology grounds salvation in Christ's assumption of human nature — not in an eternal progression of beings through stages of cosmic law. Salvation is Christological, not cosmological.
+          <cite>Against Heresies IV.20.7</cite>
+        </div>
+      </div>
+      <div class="patristic-card">
+        <div class="patristic-name">St. John Chrysostom (347–407)</div>
+        <div class="patristic-quote">
+          Commenting on Romans, Chrysostom insists that justification is God's act, not man's achievement: faith is the instrument, not the cause. Yet he equally insists on the necessity of perseverance in charity and good works — anticipating the Tridentine synthesis of grace and cooperation, not the LDS model of accumulated merit.
+          <cite>Homilies on Romans, Hom. 7–8</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ KEY CONTRASTS ═══ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">Five Irreconcilable Differences at a Glance</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="contrast-cards">
+    <div class="contrast-card">
+      <div class="contrast-card-icon">⚖️</div>
+      <div class="contrast-card-title">The Nature of God</div>
+      <div class="contrast-card-text">Catholic: God is eternal, uncreated, absolute Being — incapable of having once been a mortal. LDS: God the Father was once a man who progressed to godhood. This single divergence makes LDS "justification" incommensurable with Catholic soteriology, since the God who justifies is a fundamentally different being in each system.</div>
+    </div>
+    <div class="contrast-card">
+      <div class="contrast-card-icon">✝️</div>
+      <div class="contrast-card-title">Infused vs. Earned Righteousness</div>
+      <div class="contrast-card-text">Catholic: righteousness is infused by the Holy Spirit — genuinely imparted to the soul as a new quality of being. LDS: righteousness is substantially accumulated through covenantal obedience. The "after all we can do" formula places human effort as a prior condition, inverting the Catholic order of grace-then-merit.</div>
+    </div>
+    <div class="contrast-card">
+      <div class="contrast-card-icon">🕍</div>
+      <div class="contrast-card-title">Temple Ordinances as Necessary</div>
+      <div class="contrast-card-text">Catholicism requires no secret initiatory rites for full salvation; the sacraments are public and universal. LDS exaltation requires temple endowment and celestial sealing — ordinances administered in closed buildings, unavailable to most of human history without proxy work. No early Christian source envisions such a structure.</div>
+    </div>
+    <div class="contrast-card">
+      <div class="contrast-card-icon">⛪</div>
+      <div class="contrast-card-title">Apostolic Succession vs. Total Apostasy</div>
+      <div class="contrast-card-text">Catholic doctrine affirms unbroken apostolic succession from the Apostles to the present episcopate. LDS doctrine requires a total apostasy of the Church — including the complete loss of saving ordinances — lasting from roughly the 2nd century until 1830. The historical record does not support this claim.</div>
+    </div>
+    <div class="contrast-card">
+      <div class="contrast-card-icon">♾️</div>
+      <div class="contrast-card-title">Theosis vs. Eternal Progression</div>
+      <div class="contrast-card-text">Catholic theosis is participatory: the soul shares in God's life by grace while remaining ontologically creature. LDS exaltation is ontological: the righteous literally become gods of the same species as the Father, ruling their own worlds. These are not two versions of the same idea — they are incompatible visions of ultimate reality.</div>
+    </div>
+    <div class="contrast-card">
+      <div class="contrast-card-icon">📜</div>
+      <div class="contrast-card-title">The Patristic Record</div>
+      <div class="contrast-card-text">Every major element of Catholic justification theology — infused grace, sacramental instrumentality, real transformation of the soul — is attested in the first four centuries of Christian writing. None of the distinctive LDS soteriological claims — eternal progression, pre-mortal existence as a condition of salvation, temple ordinances — appear in any patristic source.</div>
+    </div>
+  </div>
+
+  <!-- ═══ LDS OBJECTIONS & CATHOLIC REPLIES ═══ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">Common LDS Arguments — and Catholic Responses</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="response-grid">
+    <div class="response-card">
+      <div class="response-label label-lds-obj">LDS Argument</div>
+      <div class="response-text">"Catholics also believe in works for salvation — you pray, do sacraments, go to confession. You're not that different from us."</div>
+    </div>
+    <div class="response-card">
+      <div class="response-label label-catholic-reply">Catholic Response</div>
+      <div class="response-text">The order is everything. Catholic works flow <em>from</em> grace already received — they are grace's fruit, not its precondition. LDS obedience is a <em>prior condition</em> for the full benefit of the Atonement ("after all we can do"). This is the difference between a son doing chores in his father's house and a laborer earning wages from a stranger.</div>
+    </div>
+    <div class="response-card">
+      <div class="response-label label-lds-obj">LDS Argument</div>
+      <div class="response-text">"Early Christians believed in deification too — Athanasius said man can become God. We're just restoring that ancient teaching."</div>
+    </div>
+    <div class="response-card">
+      <div class="response-label label-catholic-reply">Catholic Response</div>
+      <div class="response-text">Patristic theosis and LDS exaltation are not the same concept with different names. Athanasius meant participatory union with an eternal, uncreated God by grace. LDS exaltation means literally becoming a god of the same kind as the Father — who was himself once a mortal man. No Father of the Church ever taught that God the Father progressed to his divine status. The comparison fails at its foundation.</div>
+    </div>
+    <div class="response-card">
+      <div class="response-label label-lds-obj">LDS Argument</div>
+      <div class="response-text">"The Catholic Church added all these doctrines about grace in the Middle Ages. The original Church was simpler — just faith and ordinances."</div>
+    </div>
+    <div class="response-card">
+      <div class="response-label label-catholic-reply">Catholic Response</div>
+      <div class="response-text">The Catholic theology of grace developed in precise formulation, not in content. Sacramental realism, infused grace, and the necessity of the Church's sacraments for salvation are present in Ignatius of Antioch, Justin Martyr, Irenaeus, Tertullian, and Cyprian — all within the first three centuries. The "simple early Church" of LDS imagination, practicing ordinances under restored Melchizedek Priesthood, exists nowhere in the documentary record.</div>
+    </div>
+    <div class="response-card">
+      <div class="response-label label-lds-obj">LDS Argument</div>
+      <div class="response-text">"LDS theology is more optimistic about humanity — God loves us enough to let us become gods. Catholic theology keeps us permanently subordinate."</div>
+    </div>
+    <div class="response-card">
+      <div class="response-label label-catholic-reply">Catholic Response</div>
+      <div class="response-text">The Beatific Vision — the direct, unmediated sight of God as He is — is the most intimate union possible between person and God. Catholic theosis does not subordinate humanity; it elevates it to the fullest possible sharing in divine life, while preserving the truth that God is God and we are not. What LDS theology calls "optimism" requires making God finite, contingent, and progressive — which diminishes God rather than elevating man.</div>
+    </div>
+  </div>
+
+  <!-- VERDICT -->
+  <div class="verdict-box">
+    <h3>✦ &nbsp; The Weight of This Divergence &nbsp; ✦</h3>
+    <p>The Catholic and LDS accounts of justification share certain surface-level vocabulary — grace, faith, repentance, baptism, eternal life — but the conceptual content of those terms has been so thoroughly redefined in LDS theology that they no longer describe the same realities. A Catholic and a Latter-day Saint who agree that "salvation requires grace" have agreed to nothing, because they mean different things by "salvation," different things by "grace," and worship a different God.</p>
+    <p>The Catholic position has a decisive historical advantage: its core claims — infused righteousness, sacramental instrumentality, participatory theosis, the necessity of the Church — are attested continuously from the Apostolic Fathers forward. The LDS soteriological framework — eternal progression, pre-mortal spirit birth, temple ordinances as necessary for exaltation, God as an exalted man — appears nowhere in Christian history before 1830. The question the honest inquirer must answer is not which system feels more generous or optimistic, but which one can actually trace its roots to the Apostles.</p>
+  </div>
+
+</main>
+
+<div class="print-colophon">One Faith Delivered &nbsp;&middot;&nbsp; <span id="print-url-text">onefaithdelivered.org</span></div>
+
+<footer>&copy; One Faith Delivered &nbsp;&#8901;&nbsp; All Rights Reserved</footer>
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">One Faith Delivered</div>
+    <a href="../index.html">Home</a>
+    <a href="../articles.html">Articles</a>
+    <a href="../charts.html">Charts</a>
+    <a href="../topics.html">Topics</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../articles.html" class="sidebar-back">&#8592; All Articles</a>
+    <div class="sidebar-ornament">✦ ✦ ✦</div>
+  </div>
+</aside>
+<script>
+function toggleSidebar() {
+  var btn = document.querySelector('.nav-hamburger'), sidebar = document.querySelector('.sidebar'), overlay = document.querySelector('.sidebar-overlay');
+  var isOpen = sidebar.classList.contains('open');
+  if (isOpen) { sidebar.classList.remove('open'); btn.classList.remove('open'); overlay.classList.remove('visible'); document.body.style.overflow = ''; }
+  else { sidebar.classList.add('open'); btn.classList.add('open'); overlay.classList.add('visible'); document.body.style.overflow = 'hidden'; }
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar(); });
+</script>
+<script>
+(function () {
+  var bar = document.getElementById('reading-progress-bar');
+  function updateProgress() {
+    if (!bar) return;
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+    bar.style.width = pct + '%';
+    bar.setAttribute('aria-valuenow', Math.round(pct));
+  }
+  if (bar) { window.addEventListener('scroll', updateProgress, { passive: true }); updateProgress(); }
+  var urlEl = document.getElementById('print-url-text');
+  if (urlEl) {
+    var href = window.location.href;
+    urlEl.textContent = href && href !== 'about:blank' ? href : 'onefaithdelivered.org';
+  }
+})();
+</script>
+</body>
+</html>

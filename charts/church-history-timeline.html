@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Church History Timeline | One Faith Delivered</title>
+<meta name="description" content="An interactive visual timeline tracing the history of the Christian Church from Pentecost through the present — major councils, patristic figures, schisms, and LDS events mapped against the Catholic tradition." />
+<link rel="canonical" href="https://onefaithdelivered.org/charts/church-history-timeline.html" />
+<link rel="icon" href="../favicons/favicon.ico" sizes="any" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════════
+   CHURCH HISTORY TIMELINE
+   Design system: matches a-house-divided-against-itself.html
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --crimson:       #8B0000;
+  --dark-crimson:  #5C0000;
+  --gold:          #C5A55A;
+  --dark-gold:     #8B7335;
+  --parchment:     #F5F0E8;
+  --text:          #2A2A2A;
+  --muted:         #666;
+  --line-gray:     #D0C8B8;
+  --problem-blue:  #1E3A5F;
+
+  /* Era / category colors */
+  --cat-apostolic: #6B3A2A;   /* warm brown-red  */
+  --cat-council:   #8B0000;   /* crimson          */
+  --cat-father:    #1E3A5F;   /* deep navy        */
+  --cat-schism:    #5A4500;   /* dark amber       */
+  --cat-medieval:  #2E5C3E;   /* forest green     */
+  --cat-lds:       #4A1A6B;   /* purple           */
+  --cat-modern:    #333;      /* charcoal         */
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--parchment);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── SITE NAV ── */
+.site-nav {
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(245,240,232,0.98), rgba(240,235,225,0.95));
+  border-bottom: 1px solid var(--line-gray);
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.site-nav a.nav-home {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem; font-weight: 700;
+  letter-spacing: 0.05em; color: var(--crimson);
+  text-decoration: none; transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: var(--dark-crimson); }
+.site-nav .nav-links { display: flex; gap: 2rem; list-style: none; }
+.site-nav .nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text); text-decoration: none; transition: color 0.2s;
+}
+.site-nav .nav-links a:hover { color: var(--crimson); }
+.nav-print-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--dark-gold); background: none;
+  border: 1px solid rgba(139,115,53,0.35);
+  padding: 0.4rem 1.1rem; border-radius: 3px; cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap;
+}
+.nav-print-btn:hover { background: rgba(139,115,53,0.08); color: var(--crimson); }
+
+/* ── HAMBURGER ── */
+.nav-hamburger {
+  display: none; flex-direction: column; justify-content: center;
+  gap: 5px; width: 36px; height: 36px; cursor: pointer;
+  background: none; border: 1px solid rgba(139,115,53,0.3);
+  border-radius: 3px; padding: 6px; z-index: 10001;
+}
+.nav-hamburger span {
+  display: block; height: 2px; background: var(--text);
+  border-radius: 2px; transition: all 0.25s; transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── SIDEBAR ── */
+.sidebar-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45); z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+.sidebar-overlay.visible { display: block; }
+.sidebar {
+  position: fixed; top: 0; right: -280px;
+  width: 260px; height: 100%;
+  background: linear-gradient(to bottom, #FAF6F0, #F5F0E8);
+  border-left: 1px solid var(--line-gray);
+  z-index: 10002; transition: right 0.3s ease; overflow-y: auto;
+}
+.sidebar.open { right: 0; }
+.sidebar-inner {
+  padding: 5rem 2rem 2rem;
+  display: flex; flex-direction: column; gap: 0;
+}
+.sidebar-brand {
+  font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: 700;
+  color: var(--crimson); margin-bottom: 2rem; padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line-gray);
+}
+.sidebar-inner a {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text); text-decoration: none;
+  padding: 0.85rem 0; border-bottom: 1px solid rgba(208,200,184,0.5);
+  transition: color 0.2s;
+}
+.sidebar-inner a:hover { color: var(--crimson); }
+.sidebar-inner a.sidebar-back {
+  color: var(--dark-gold); margin-top: 1.5rem;
+  border: 1px solid rgba(139,115,53,0.3);
+  padding: 0.7rem 1rem; text-align: center; border-radius: 2px;
+}
+.sidebar-ornament { color: var(--gold); font-size: 11px; letter-spacing: 8px; text-align: center; margin-top: 2rem; }
+
+/* ── READING PROGRESS BAR ── */
+#reading-progress-bar {
+  position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+  background: linear-gradient(to right, #8B0000, #C5A55A);
+  z-index: 99999; transition: width 0.12s linear;
+  pointer-events: none; border-radius: 0 2px 2px 0;
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  background: linear-gradient(135deg, #4A0F1A 0%, #6B1D2A 40%, #3D1520 100%);
+  color: #F5F0E8; padding: 72px 40px 56px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.page-header::before {
+  content: ''; position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+  pointer-events: none;
+}
+.ornament {
+  display: block; color: var(--gold); font-size: 1rem;
+  letter-spacing: 12px; margin-bottom: 1.2rem; opacity: 0.7;
+  position: relative; z-index: 1;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2em, 4vw, 3.2em); font-weight: 900;
+  letter-spacing: -0.5px; color: #F5F0E8; margin-bottom: 14px;
+  line-height: 1.2; position: relative; z-index: 1;
+}
+.page-header h1 span { color: var(--gold); }
+.page-header .subtitle {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.1em; font-weight: 300; font-style: italic;
+  color: rgba(245,240,232,0.75); max-width: 680px;
+  margin: 0 auto; position: relative; z-index: 1;
+}
+.page-header .meta {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.68em;
+  font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(197,165,90,0.65); margin-top: 1.4rem;
+  position: relative; z-index: 1;
+}
+
+/* ── CONTROLS BAR ── */
+.controls-bar {
+  background: #fff;
+  border-bottom: 1px solid var(--line-gray);
+  padding: 14px 32px;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  position: sticky; top: 57px; z-index: 900;
+}
+.controls-bar-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65em;
+  font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--dark-gold); white-space: nowrap; margin-right: 4px;
+}
+.filter-btn {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65em;
+  font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 20px; cursor: pointer;
+  border: 1px solid; transition: all 0.2s; white-space: nowrap;
+  background: transparent;
+}
+.filter-btn.active { color: #fff !important; }
+.filter-btn[data-cat="all"]       { border-color: var(--text);          color: var(--text); }
+.filter-btn[data-cat="apostolic"] { border-color: var(--cat-apostolic); color: var(--cat-apostolic); }
+.filter-btn[data-cat="council"]   { border-color: var(--cat-council);   color: var(--cat-council); }
+.filter-btn[data-cat="father"]    { border-color: var(--cat-father);    color: var(--cat-father); }
+.filter-btn[data-cat="schism"]    { border-color: var(--cat-schism);    color: var(--cat-schism); }
+.filter-btn[data-cat="medieval"]  { border-color: var(--cat-medieval);  color: var(--cat-medieval); }
+.filter-btn[data-cat="lds"]       { border-color: var(--cat-lds);       color: var(--cat-lds); }
+.filter-btn[data-cat="modern"]    { border-color: var(--cat-modern);    color: var(--cat-modern); }
+
+.filter-btn.active[data-cat="all"]       { background: var(--text); }
+.filter-btn.active[data-cat="apostolic"] { background: var(--cat-apostolic); }
+.filter-btn.active[data-cat="council"]   { background: var(--cat-council); }
+.filter-btn.active[data-cat="father"]    { background: var(--cat-father); }
+.filter-btn.active[data-cat="schism"]    { background: var(--cat-schism); }
+.filter-btn.active[data-cat="medieval"]  { background: var(--cat-medieval); }
+.filter-btn.active[data-cat="lds"]       { background: var(--cat-lds); }
+.filter-btn.active[data-cat="modern"]    { background: var(--cat-modern); }
+
+/* ── MAIN LAYOUT ── */
+.page-wrapper {
+  max-width: 1060px; margin: 0 auto;
+  padding: 48px 24px 88px;
+}
+
+/* ── INTRO BOX ── */
+.intro-box {
+  background: #fff; border: 1px solid var(--line-gray);
+  border-left: 5px solid var(--crimson); border-radius: 4px;
+  padding: 28px 32px; margin-bottom: 40px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.intro-box p { font-size: 1.02rem; line-height: 1.9; color: var(--text); }
+.intro-box p + p { margin-top: 0.9rem; }
+.intro-box strong { color: var(--crimson); font-weight: 600; }
+
+/* ── ERA BANDS ── */
+.era-band {
+  margin-bottom: 64px;
+}
+.era-heading {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 32px;
+}
+.era-heading-line { flex: 1; height: 1px; background: var(--line-gray); }
+.era-heading-text {
+  font-family: 'Playfair Display', serif; font-size: 1.05em; font-weight: 700;
+  color: var(--crimson); white-space: nowrap; padding: 0 8px;
+}
+.era-dates {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.62em; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--dark-gold);
+  white-space: nowrap;
+}
+
+/* ── TIMELINE TRACK ── */
+.timeline-track {
+  position: relative;
+  padding-left: 40px;
+}
+.timeline-track::before {
+  content: '';
+  position: absolute; left: 12px; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold), rgba(197,165,90,0.2));
+}
+
+/* ── TIMELINE NODE ── */
+.tl-node {
+  position: relative;
+  margin-bottom: 4px;
+  transition: opacity 0.3s;
+}
+.tl-node.filtered-out {
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* Dot on the spine */
+.tl-dot {
+  position: absolute;
+  left: -34px; top: 18px;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--parchment);
+  box-shadow: 0 0 0 2px currentColor;
+  z-index: 2;
+  transition: transform 0.2s;
+}
+.tl-node:hover .tl-dot { transform: scale(1.3); }
+
+/* Card */
+.tl-card {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+  margin-bottom: 16px;
+}
+.tl-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); transform: translateX(2px); }
+.tl-card.expanded { box-shadow: 0 6px 28px rgba(0,0,0,0.12); }
+
+.tl-card-header {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 16px 20px;
+}
+.tl-year {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.75em; font-weight: 600;
+  letter-spacing: 0.05em; color: var(--dark-gold);
+  min-width: 52px; flex-shrink: 0; padding-top: 2px;
+}
+.tl-card-title {
+  flex: 1;
+}
+.tl-card-title h3 {
+  font-family: 'Playfair Display', serif; font-size: 1.05em; font-weight: 700;
+  color: var(--crimson); line-height: 1.3; margin-bottom: 4px;
+}
+.tl-tag {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.6em; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 2px;
+  display: inline-block; margin-top: 2px;
+  color: #fff;
+}
+.tl-card-toggle {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.75em; font-weight: 600;
+  color: var(--dark-gold); flex-shrink: 0; padding-top: 3px;
+  transition: transform 0.25s;
+}
+.tl-card.expanded .tl-card-toggle { transform: rotate(180deg); }
+
+.tl-card-body {
+  display: none;
+  border-top: 1px solid var(--line-gray);
+  padding: 18px 20px 18px 88px;
+  background: #FDFAF6;
+}
+.tl-card.expanded .tl-card-body { display: block; }
+.tl-card-body p {
+  font-size: 0.92em; line-height: 1.85; color: var(--text);
+}
+.tl-card-body p + p { margin-top: 0.7rem; }
+.tl-card-body .tl-link {
+  display: inline-block; margin-top: 12px;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65em; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--crimson); text-decoration: none;
+  border-bottom: 1px solid rgba(139,0,0,0.3);
+  padding-bottom: 1px; transition: border-color 0.2s;
+}
+.tl-card-body .tl-link:hover { border-color: var(--crimson); }
+
+/* Category dot colors */
+.tl-dot[data-cat="apostolic"], .tl-tag[data-cat="apostolic"] { color: var(--cat-apostolic); background: var(--cat-apostolic); }
+.tl-dot[data-cat="council"],   .tl-tag[data-cat="council"]   { color: var(--cat-council);   background: var(--cat-council); }
+.tl-dot[data-cat="father"],    .tl-tag[data-cat="father"]    { color: var(--cat-father);    background: var(--cat-father); }
+.tl-dot[data-cat="schism"],    .tl-tag[data-cat="schism"]    { color: var(--cat-schism);    background: var(--cat-schism); }
+.tl-dot[data-cat="medieval"],  .tl-tag[data-cat="medieval"]  { color: var(--cat-medieval);  background: var(--cat-medieval); }
+.tl-dot[data-cat="lds"],       .tl-tag[data-cat="lds"]       { color: var(--cat-lds);       background: var(--cat-lds); }
+.tl-dot[data-cat="modern"],    .tl-tag[data-cat="modern"]    { color: var(--cat-modern);    background: var(--cat-modern); }
+
+/* Dot ring colors */
+.tl-dot[data-cat="apostolic"] { box-shadow: 0 0 0 2px var(--cat-apostolic); }
+.tl-dot[data-cat="council"]   { box-shadow: 0 0 0 2px var(--cat-council); }
+.tl-dot[data-cat="father"]    { box-shadow: 0 0 0 2px var(--cat-father); }
+.tl-dot[data-cat="schism"]    { box-shadow: 0 0 0 2px var(--cat-schism); }
+.tl-dot[data-cat="medieval"]  { box-shadow: 0 0 0 2px var(--cat-medieval); }
+.tl-dot[data-cat="lds"]       { box-shadow: 0 0 0 2px var(--cat-lds); }
+.tl-dot[data-cat="modern"]    { box-shadow: 0 0 0 2px var(--cat-modern); }
+
+/* LDS-category card gets a left accent */
+.tl-node[data-cat="lds"] .tl-card { border-left: 3px solid var(--cat-lds); }
+
+/* Catholic-specific card gets a red left accent */
+.tl-node[data-cat="council"] .tl-card,
+.tl-node[data-cat="father"] .tl-card { border-left: 3px solid var(--crimson); }
+
+/* ── LEGEND ── */
+.legend {
+  display: flex; flex-wrap: wrap; gap: 10px 20px;
+  background: #fff; border: 1px solid var(--line-gray);
+  border-radius: 4px; padding: 18px 24px; margin-bottom: 40px;
+}
+.legend-item {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65em;
+  font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+}
+.legend-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  border: 2px solid var(--parchment);
+  flex-shrink: 0;
+}
+.legend-dot[data-cat="apostolic"] { background: var(--cat-apostolic); box-shadow: 0 0 0 1.5px var(--cat-apostolic); }
+.legend-dot[data-cat="council"]   { background: var(--cat-council);   box-shadow: 0 0 0 1.5px var(--cat-council); }
+.legend-dot[data-cat="father"]    { background: var(--cat-father);    box-shadow: 0 0 0 1.5px var(--cat-father); }
+.legend-dot[data-cat="schism"]    { background: var(--cat-schism);    box-shadow: 0 0 0 1.5px var(--cat-schism); }
+.legend-dot[data-cat="medieval"]  { background: var(--cat-medieval);  box-shadow: 0 0 0 1.5px var(--cat-medieval); }
+.legend-dot[data-cat="lds"]       { background: var(--cat-lds);       box-shadow: 0 0 0 1.5px var(--cat-lds); }
+.legend-dot[data-cat="modern"]    { background: var(--cat-modern);    box-shadow: 0 0 0 1.5px var(--cat-modern); }
+
+/* ── FOOTER ── */
+footer {
+  background: #fff; text-align: center; padding: 28px 20px;
+  border-top: 1px solid var(--line-gray);
+  font-family: 'JetBrains Mono', monospace; font-size: 0.68em;
+  font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--muted);
+}
+.print-colophon { display: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .nav-hamburger { display: flex; margin-left: auto; order: 99; flex-shrink: 0; }
+  .site-nav .nav-links { display: none; }
+  .nav-print-btn { display: none; }
+  .site-nav { padding: 0.55rem 1rem; }
+  .sidebar { display: block; transform: translateX(100%); right: 0; position: fixed; }
+  .sidebar.open { transform: translateX(0); }
+  .controls-bar { padding: 10px 16px; top: 48px; }
+  .tl-card-body { padding: 16px 16px 16px 16px; }
+  .page-header { padding: 48px 20px 36px; }
+  .page-wrapper { padding: 28px 14px 60px; }
+  .timeline-track { padding-left: 30px; }
+  .tl-dot { left: -24px; }
+  .tl-year { min-width: 42px; font-size: 0.68em; }
+}
+@media print {
+  #reading-progress-bar, .site-nav, .sidebar-overlay, .sidebar,
+  .nav-print-btn, .controls-bar, footer { display: none !important; }
+  body { background: #fff !important; color: #000 !important; font-size: 11pt; }
+  .page-header {
+    background: none !important; color: #000 !important;
+    border-bottom: 2pt solid #8B0000; padding: 0.4cm 0 0.5cm !important;
+  }
+  .page-header h1, .page-header h1 span { color: #8B0000 !important; }
+  .page-header .subtitle, .page-header .meta { color: #333 !important; }
+  .tl-card { page-break-inside: avoid; box-shadow: none; }
+  .tl-card-body { display: block !important; }
+  .tl-card-toggle { display: none; }
+  .page-wrapper { padding: 0 !important; max-width: 100% !important; }
+  .print-colophon {
+    display: block !important; margin-top: 2cm; padding-top: 0.5cm;
+    border-top: 1pt solid #ccc; font-family: monospace;
+    font-size: 8pt; color: #666; text-align: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<div id="reading-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+
+<!-- ── SITE NAV ── -->
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">One Faith Delivered</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../articles.html">Articles</a></li>
+    <li><a href="../charts.html">Charts</a></li>
+    <li><a href="../topics.html">Topics</a></li>
+    <li><a href="../resources.html">Resources</a></li>
+  </ul>
+  <button class="nav-print-btn" onclick="window.print()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px">
+      <polyline points="6 9 6 2 18 2 18 9"/>
+      <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+      <rect x="6" y="14" width="12" height="8"/>
+    </svg>
+    Print
+  </button>
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <span class="ornament">✦ &nbsp; ✦ &nbsp; ✦</span>
+  <h1>Church History<br><span>Timeline</span></h1>
+  <p class="subtitle">From Pentecost to the present — tracing the unbroken thread of the Catholic Church against the backdrop of councils, schisms, fathers, and the rise of Latter-day Saint claims.</p>
+  <p class="meta">Interactive Chart &nbsp;·&nbsp; Church History &nbsp;·&nbsp; Apologetics</p>
+</header>
+
+<!-- ── FILTER CONTROLS (sticky) ── -->
+<div class="controls-bar">
+  <span class="controls-bar-label">Filter:</span>
+  <button class="filter-btn active" data-cat="all">All Events</button>
+  <button class="filter-btn" data-cat="apostolic">Apostolic Age</button>
+  <button class="filter-btn" data-cat="father">Church Fathers</button>
+  <button class="filter-btn" data-cat="council">Councils</button>
+  <button class="filter-btn" data-cat="schism">Schisms</button>
+  <button class="filter-btn" data-cat="medieval">Medieval Church</button>
+  <button class="filter-btn" data-cat="lds">LDS History</button>
+  <button class="filter-btn" data-cat="modern">Modern Era</button>
+</div>
+
+<!-- ── PAGE BODY ── -->
+<div class="page-wrapper">
+
+  <div class="intro-box">
+    <p>The Catholic claim rests on a single, irreducible assertion: that the Church Christ founded has never ceased to exist, and that its essential structure — apostolic succession, sacramental life, episcopal governance, and doctrinal continuity — can be traced from the Upper Room to the present. This timeline maps that claim against the historical record. It includes the councils that defined Christian doctrine, the Fathers who articulated it, the schisms that divided Christendom, and the events of Latter-day Saint history — placed in their proper historical context.</p>
+    <p><strong>How to use this timeline:</strong> Click any event to expand its description. Use the filter buttons above to display only events of a particular type. Nodes linked to articles on this site include a direct link in the expanded view. The timeline is organized by historical era, with approximate dates noted for events spanning multiple years.</p>
+  </div>
+
+  <!-- ── LEGEND ── -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" data-cat="apostolic"></div> Apostolic Age</div>
+    <div class="legend-item"><div class="legend-dot" data-cat="father"></div> Church Fathers</div>
+    <div class="legend-item"><div class="legend-dot" data-cat="council"></div> Councils &amp; Creeds</div>
+    <div class="legend-item"><div class="legend-dot" data-cat="schism"></div> Schisms &amp; Controversies</div>
+    <div class="legend-item"><div class="legend-dot" data-cat="medieval"></div> Medieval Church</div>
+    <div class="legend-item"><div class="legend-dot" data-cat="lds"></div> LDS History</div>
+    <div class="legend-item"><div class="legend-dot" data-cat="modern"></div> Modern Era</div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       ERA I — THE APOSTOLIC AGE
+       ══════════════════════════════════════ -->
+  <div class="era-band" data-era="apostolic">
+    <div class="era-heading">
+      <div class="era-heading-line"></div>
+      <span class="era-heading-text">I — The Apostolic Age</span>
+      <span class="era-dates">AD 33 – 100</span>
+      <div class="era-heading-line"></div>
+    </div>
+
+    <div class="timeline-track">
+
+      <div class="tl-node" data-cat="apostolic">
+        <div class="tl-dot" data-cat="apostolic"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">AD 33</span>
+            <div class="tl-card-title">
+              <h3>Pentecost — The Church Is Born</h3>
+              <span class="tl-tag" data-cat="apostolic">Apostolic Age</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>The descent of the Holy Spirit upon the Apostles in Jerusalem (Acts 2) marks the public inauguration of the Church Christ founded. Peter, the first among the Apostles, delivers the first apostolic sermon and baptizes three thousand souls. The primitive Church is immediately characterized by communal worship, the breaking of bread (the Eucharist), apostolic teaching, and prayer — a fourfold structure continuous with Catholic life to the present.</p>
+            <p>For the LDS Great Apostasy theory to hold, the corruption of this Church must have begun within this same generation — a claim the New Testament does not support and the earliest post-apostolic writers expressly deny.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="apostolic">
+        <div class="tl-dot" data-cat="apostolic"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">AD 49</span>
+            <div class="tl-card-title">
+              <h3>Council of Jerusalem — The First Church Council</h3>
+              <span class="tl-tag" data-cat="apostolic">Apostolic Age</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>The Apostles and elders gather in Jerusalem to resolve the question of Gentile circumcision (Acts 15). The council's decision — delivered with the formula "it has seemed good to the Holy Spirit and to us" — establishes the pattern for the Catholic conciliar tradition: doctrinal questions are settled by the gathered authority of the Church, not by private interpretation. James, Peter, and Paul reach binding consensus that carries authority over all the churches.</p>
+            <p>This conciliar model, exercised within the lifetime of the Apostles themselves, is the direct ancestor of Nicaea, Chalcedon, and the subsequent ecumenical councils.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="apostolic">
+        <div class="tl-dot" data-cat="apostolic"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">AD 67</span>
+            <div class="tl-card-title">
+              <h3>Martyrdom of Peter and Paul in Rome</h3>
+              <span class="tl-tag" data-cat="apostolic">Apostolic Age</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>Both Peter and Paul are martyred in Rome during the Neronian persecution, confirming Rome's unique role in the apostolic witness. Peter's succession is transmitted to Linus, then Anacletus, then Clement — a list preserved by Irenaeus of Lyon writing c. AD 180, demonstrating an unbroken and documented chain of Roman episcopal succession within living memory of the Apostles themselves.</p>
+            <p>The martyrdom tradition and the Roman episcopal lists represent the kind of historical documentation that LDS claims of a total apostasy must account for and cannot dismiss as invention.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="apostolic">
+        <div class="tl-dot" data-cat="apostolic"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">c. 95</span>
+            <div class="tl-card-title">
+              <h3>Clement of Rome Writes to the Corinthians</h3>
+              <span class="tl-tag" data-cat="apostolic">Apostolic Age</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>The third successor of Peter writes to the church in Corinth to resolve a dispute about episcopal authority — exercising a Roman primacy of jurisdiction over a distant church within the apostolic generation. Clement's letter affirms apostolic succession, hierarchical church order, and the Eucharist. It is one of the earliest non-canonical Christian documents and displays Catholic ecclesiological consciousness within living memory of the Apostles.</p>
+            <p>Clement writes with the authority of one whose voice carries binding weight — not as a mere advisor but as a governor of the universal Church.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       ERA II — THE ANTE-NICENE FATHERS
+       ══════════════════════════════════════ -->
+  <div class="era-band" data-era="fathers">
+    <div class="era-heading">
+      <div class="era-heading-line"></div>
+      <span class="era-heading-text">II — The Ante-Nicene Fathers</span>
+      <span class="era-dates">AD 100 – 325</span>
+      <div class="era-heading-line"></div>
+    </div>
+
+    <div class="timeline-track">
+
+      <div class="tl-node" data-cat="father">
+        <div class="tl-dot" data-cat="father"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">c. 107</span>
+            <div class="tl-card-title">
+              <h3>Ignatius of Antioch — Seven Letters En Route to Martyrdom</h3>
+              <span class="tl-tag" data-cat="father">Church Father</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>Bishop Ignatius of Antioch, a disciple of the Apostle John, writes seven letters to churches across Asia Minor while being transported to Rome for execution. In them he articulates a fully developed Catholic ecclesiology: the threefold ministry of bishop, priest, and deacon; the Real Presence in the Eucharist ("not common bread"); the first recorded use of the term "Catholic Church"; and the primacy of the Roman church.</p>
+            <p>Ignatius writes: "Where the bishop is present, there let the congregation gather, just as where Jesus Christ is, there is the Catholic Church." This is not medieval innovation — it is documented AD 107, within living memory of the Apostles and before any plausible apostasy could have occurred.</p>
+            <a class="tl-link" href="../articles/ante-nicene-fathers.html">Read: The Ante-Nicene Fathers →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="father">
+        <div class="tl-dot" data-cat="father"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">c. 155</span>
+            <div class="tl-card-title">
+              <h3>Justin Martyr — First Apology and the Eucharist</h3>
+              <span class="tl-tag" data-cat="father">Church Father</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>Justin Martyr's <em>First Apology</em>, addressed to the Emperor Antoninus Pius, provides the earliest detailed description of Christian worship — including the Sunday Eucharist. Justin states explicitly that the bread and wine are "not common bread and common drink" but become the flesh and blood of Jesus Christ. He describes the full liturgical structure: readings, a homily, intercessory prayer, the Eucharistic prayer, and communion — identical in structure to the Catholic Mass today.</p>
+            <p>Justin also affirms the distinction of three divine "Persons" while maintaining monotheism — the embryo of Trinitarian theology fully formed within the second century, without any Nicene Council yet having met.</p>
+            <a class="tl-link" href="../articles/ante-nicene-fathers.html">Read: The Ante-Nicene Fathers →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="father">
+        <div class="tl-dot" data-cat="father"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">c. 180</span>
+            <div class="tl-card-title">
+              <h3>Irenaeus of Lyon — Against Heresies</h3>
+              <span class="tl-tag" data-cat="father">Church Father</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>Irenaeus, bishop of Lyon and a disciple of Polycarp (who knew the Apostle John personally), writes <em>Adversus Haereses</em> — the first systematic refutation of Gnosticism and the first major defense of Catholic doctrinal tradition. He provides the list of Roman bishops from Peter through Eleutherus, demonstrating apostolic succession as a concrete, historically verifiable reality.</p>
+            <p>Irenaeus articulates the "rule of faith" — the doctrinal summary transmitted through episcopal succession — as the standard against which all private revelations and novel teachings must be measured. His criterion is directly applicable to Joseph Smith's claims eighteen centuries later.</p>
+            <a class="tl-link" href="../articles/ante-nicene-fathers.html">Read: The Ante-Nicene Fathers →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="father">
+        <div class="tl-dot" data-cat="father"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">c. 200</span>
+            <div class="tl-card-title">
+              <h3>Tertullian — First Latin Theologian; Trinitarian Vocabulary</h3>
+              <span class="tl-tag" data-cat="father">Church Father</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>Tertullian of Carthage becomes the first theologian to write in Latin and coins the term <em>Trinitas</em> ("Trinity") along with the vocabulary of <em>una substantia, tres personae</em> ("one substance, three persons"). Though he later falls into the Montanist heresy, his Trinitarian theology is adopted wholesale by orthodox Christianity. His work demonstrates that the theological content of Nicaea (325) was not invented there but articulated from materials already present in the Church.</p>
+            <p>Tertullian also provides some of the earliest evidence for infant baptism and the Real Presence, establishing both as existing Christian practices — not later medieval innovations.</p>
+            <a class="tl-link" href="../articles/ante-nicene-fathers.html">Read: The Ante-Nicene Fathers →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="father">
+        <div class="tl-dot" data-cat="father"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">c. 248</span>
+            <div class="tl-card-title">
+              <h3>Origen of Alexandria — Christian Scholarship at Its Heights</h3>
+              <span class="tl-tag" data-cat="father">Church Father</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>Origen of Alexandria produces the most extensive body of biblical scholarship in the ancient world — homilies, commentaries, and the <em>Hexapla</em> (a six-column parallel edition of the Old Testament). Though some of his speculative opinions were later condemned, his work demonstrates the intellectual vitality and doctrinal seriousness of the pre-Nicene Church at its peak.</p>
+            <p>Far from a corrupted institution drifting from apostolic truth, the third-century Church is engaged in sophisticated biblical scholarship and doctrinal reflection that assumes the inherited structures of episcopal authority, sacramental practice, and Trinitarian theology.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       ERA III — COUNCILS AND CREEDS
+       ══════════════════════════════════════ -->
+  <div class="era-band" data-era="councils">
+    <div class="era-heading">
+      <div class="era-heading-line"></div>
+      <span class="era-heading-text">III — Councils &amp; Creeds</span>
+      <span class="era-dates">AD 325 – 787</span>
+      <div class="era-heading-line"></div>
+    </div>
+
+    <div class="timeline-track">
+
+      <div class="tl-node" data-cat="council">
+        <div class="tl-dot" data-cat="council"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">325</span>
+            <div class="tl-card-title">
+              <h3>First Council of Nicaea — The Divinity of Christ Defined</h3>
+              <span class="tl-tag" data-cat="council">Ecumenical Council</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>The first ecumenical council, convened by Emperor Constantine and presided over by papal legates, gathers over 300 bishops to address the Arian heresy — the claim that the Son is a created being, subordinate to the Father. The Council defines Christ as <em>homoousios</em> ("of the same substance") with the Father, condemning Arianism and establishing the Nicene Creed as the standard of orthodox faith.</p>
+            <p>LDS theology's claim that God the Father and Jesus Christ are separate, distinct beings of the same species — with the Father being a glorified, embodied man — aligns far more closely with Arianism than with Nicene orthodoxy. The LDS Godhead is, in technical terms, a form of tritheism that Nicaea was convened explicitly to refute.</p>
+            <a class="tl-link" href="../articles/rock-and-the-sand.html">Read: The Rock and the Sand →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="council">
+        <div class="tl-dot" data-cat="council"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">381</span>
+            <div class="tl-card-title">
+              <h3>First Council of Constantinople — The Holy Spirit Defined</h3>
+              <span class="tl-tag" data-cat="council">Ecumenical Council</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>The second ecumenical council expands the Nicene Creed to include the full divinity of the Holy Spirit, completing the Trinitarian definition: one God in three co-equal, co-eternal Persons. The council also condemns Apollinarianism (which denied the fullness of Christ's human nature) and reaffirms the full humanity and full divinity of the Incarnate Word.</p>
+            <p>The Niceno-Constantinopolitan Creed — still recited at every Sunday Catholic Mass — is the product of this council. It represents the distilled faith of the Church on the Trinity, defined by the gathered episcopate within three centuries of Pentecost.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="council">
+        <div class="tl-dot" data-cat="council"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">431</span>
+            <div class="tl-card-title">
+              <h3>Council of Ephesus — Mary Declared Theotokos</h3>
+              <span class="tl-tag" data-cat="council">Ecumenical Council</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>The third ecumenical council condemns Nestorianism — the view that Christ's divine and human natures constituted two separate persons — and affirms the unity of Christ's Person. Mary is defined as <em>Theotokos</em>, "God-bearer" (Mother of God), not as a title that elevates Mary but as a statement about the unity of Christ's divine and human natures. If she bore the Son of God in the flesh, she is the Mother of God.</p>
+            <p>The council also includes Pope Celestine I's action through his legates — a demonstration of papal authority over a universal council from outside Rome. The gathered bishops ratify the definition as binding on the entire Church.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="council">
+        <div class="tl-dot" data-cat="council"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">451</span>
+            <div class="tl-card-title">
+              <h3>Council of Chalcedon — Christ's Two Natures Defined</h3>
+              <span class="tl-tag" data-cat="council">Ecumenical Council</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>The fourth ecumenical council defines the doctrine of the Hypostatic Union: Christ is one Person in two complete, unconfused, unmixed, undivided, and inseparable natures — fully divine and fully human. The Chalcedonian definition, based on the "Tome of Leo" (Pope Leo I's doctrinal letter), is perhaps the most precise and enduring Christological statement in Christian history.</p>
+            <p>The assembled bishops respond to Leo's Tome with the declaration: "Peter has spoken through Leo." This moment crystallizes the doctrine of papal teaching authority exercised through a council — a foretaste of Vatican I's definition of papal infallibility fourteen centuries later.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="council">
+        <div class="tl-dot" data-cat="council"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">787</span>
+            <div class="tl-card-title">
+              <h3>Second Council of Nicaea — Icons Vindicated</h3>
+              <span class="tl-tag" data-cat="council">Ecumenical Council</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>The seventh and last ecumenical council recognized by both Catholic and Eastern Orthodox churches resolves the Iconoclast controversy, affirming that images of Christ, Mary, and the saints may be venerated (not worshipped) as expressions of the Incarnation. The definition rests on Christological logic: because the Son of God truly took on human flesh, He can be depicted in material form.</p>
+            <p>The council represents the last moment of full East-West conciliar unity before the growing tensions that would culminate in the Great Schism of 1054.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       ERA IV — SCHISMS & CONTROVERSIES
+       ══════════════════════════════════════ -->
+  <div class="era-band" data-era="schisms">
+    <div class="era-heading">
+      <div class="era-heading-line"></div>
+      <span class="era-heading-text">IV — Schisms &amp; Controversies</span>
+      <span class="era-dates">AD 1054 – 1648</span>
+      <div class="era-heading-line"></div>
+    </div>
+
+    <div class="timeline-track">
+
+      <div class="tl-node" data-cat="schism">
+        <div class="tl-dot" data-cat="schism"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">1054</span>
+            <div class="tl-card-title">
+              <h3>The Great Schism — East and West Divide</h3>
+              <span class="tl-tag" data-cat="schism">Schism</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>Centuries of theological, jurisdictional, and cultural tensions between Rome and Constantinople culminate in the mutual excommunications of Cardinal Humbert and Patriarch Michael Cerularius in 1054 — the formal break between Latin Catholic and Eastern Orthodox Christianity. The primary theological issue is the <em>Filioque</em> ("and the Son") addition to the Nicene Creed, along with disputes over papal jurisdiction.</p>
+            <p>Significantly, neither the Catholic nor the Orthodox church claimed the Christian faith had been lost and needed restoration. Both sides claimed to preserve the authentic apostolic tradition — a posture radically incompatible with the LDS Great Apostasy thesis, which requires that <em>all</em> Christian churches had lost valid authority by 1054.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="medieval">
+        <div class="tl-dot" data-cat="medieval"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">1215</span>
+            <div class="tl-card-title">
+              <h3>Fourth Lateran Council — Transubstantiation Defined</h3>
+              <span class="tl-tag" data-cat="medieval">Medieval Church</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>The Fourth Lateran Council under Innocent III gives formal doctrinal definition to the term "transubstantiation" — the philosophical account of how the bread and wine become the Body and Blood of Christ at Mass. This is not an invention but the Church's effort to articulate with precision what Justin Martyr had described in AD 155 as "not common bread."</p>
+            <p>The council also mandates annual Confession and Communion for all Catholics and addresses a range of disciplinary and doctrinal matters — demonstrating the institutional coherence and governing authority of the Catholic Church at the height of the medieval period.</p>
+            <a class="tl-link" href="../articles/holy-eucharist-real-presence.html">Read: The Holy Eucharist →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="schism">
+        <div class="tl-dot" data-cat="schism"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">1517</span>
+            <div class="tl-card-title">
+              <h3>Protestant Reformation — Luther Posts His Theses</h3>
+              <span class="tl-tag" data-cat="schism">Schism</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>Martin Luther's Ninety-Five Theses, posted at Wittenberg, ignites the Protestant Reformation — the largest rupture in Western Christianity since the Great Schism. Luther's core principles of <em>sola scriptura</em> (Scripture alone) and <em>sola fide</em> (faith alone) challenge the sacramental and hierarchical structure of the Catholic Church.</p>
+            <p>Within thirty years, hundreds of competing Protestant denominations exist across Europe, each interpreting Scripture by private judgment. This fragmentation is historically important for the LDS context: by 1820, the religious landscape of America — the "burned-over district" in which Joseph Smith grew up — was a direct product of this three-century proliferation of conflicting Protestant sects. The LDS narrative presents this chaos as evidence of apostasy; the Catholic counter-narrative is that it demonstrates precisely why an authoritative Magisterium is necessary.</p>
+            <a class="tl-link" href="../articles/rock-and-the-sand.html">Read: The Rock and the Sand →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="council">
+        <div class="tl-dot" data-cat="council"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">1545–63</span>
+            <div class="tl-card-title">
+              <h3>Council of Trent — Catholic Reform and Doctrinal Clarity</h3>
+              <span class="tl-tag" data-cat="council">Ecumenical Council</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>The Council of Trent is the Catholic Church's comprehensive response to the Protestant Reformation. It definitively defines the canon of Scripture (73 books), the relationship of Scripture and Tradition, the doctrine of justification (against <em>sola fide</em>), the seven sacraments, and the sacrificial nature of the Mass. Trent also mandates seminaries for priestly formation and comprehensive ecclesiastical reform.</p>
+            <p>Trent demonstrates the Catholic principle of doctrinal development: the Council defines nothing new but clarifies, with greater precision, what the Church has always believed — exactly what Newman would later analyze as authentic doctrinal development versus corruption.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       ERA V — THE LDS FOUNDING ERA
+       ══════════════════════════════════════ -->
+  <div class="era-band" data-era="lds">
+    <div class="era-heading">
+      <div class="era-heading-line"></div>
+      <span class="era-heading-text">V — The LDS Founding Era</span>
+      <span class="era-dates">AD 1820 – 1890</span>
+      <div class="era-heading-line"></div>
+    </div>
+
+    <div class="timeline-track">
+
+      <div class="tl-node" data-cat="lds">
+        <div class="tl-dot" data-cat="lds"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">1820</span>
+            <div class="tl-card-title">
+              <h3>Joseph Smith's First Vision — The Claimed Theophany</h3>
+              <span class="tl-tag" data-cat="lds">LDS History</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>Joseph Smith claims to have received a vision of God the Father and Jesus Christ as two separate, embodied beings in a grove of trees in Palmyra, New York. In the canonical 1838 account, he is told that all churches are in error and that he will be the instrument of restoration. At least nine distinct accounts of this vision exist, differing in significant details — including whether one or two beings appeared, what was said, and whether angels were also present.</p>
+            <p>The First Vision is theologically decisive: it claims the Trinity is false, the Church entirely apostate, and the restoration of all things necessary. Each claim demands historical scrutiny. Significantly, this vision describes God as a corporeal being — directly contradicting the traditional theistic understanding of divine immateriality, and the Book of Mormon's own description of God as the "Great Spirit."</p>
+            <a class="tl-link" href="../articles/a-house-divided-against-itself.html">Read: A House Divided Against Itself →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="lds">
+        <div class="tl-dot" data-cat="lds"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">1830</span>
+            <div class="tl-card-title">
+              <h3>Publication of the Book of Mormon; Church Founded</h3>
+              <span class="tl-tag" data-cat="lds">LDS History</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>The Book of Mormon is published in Palmyra, New York, and the Church of Christ (later renamed the Church of Jesus Christ of Latter-day Saints) is formally organized on April 6. The Book of Mormon claims to be a record of ancient Israelites who migrated to the Americas around 600 BC, compiled and abridged by a prophet named Mormon, and translated by Joseph Smith through the Urim and Thummim.</p>
+            <p>Archaeological, linguistic, genetic, and historical evidence has consistently failed to corroborate any aspect of the Book of Mormon's historical claims — no ancient Israelite DNA in pre-Columbian populations, no Hebrew linguistic traces in Amerindian languages, no evidence of the civilizations described, no horses, chariots, steel, or wheat in the relevant periods. These evidentiary problems are addressed in detail in the article linked below.</p>
+            <a class="tl-link" href="../charts/historicity-comparison.html">Read: Historicity of Scripture — Bible vs. Book of Mormon →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="lds">
+        <div class="tl-dot" data-cat="lds"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">c. 1833</span>
+            <div class="tl-card-title">
+              <h3>Joseph Smith Begins Taking Plural Wives — In Secret</h3>
+              <span class="tl-tag" data-cat="lds">LDS History</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>Joseph Smith's first plural marriage — to Fanny Alger, a teenage household servant — occurs while Smith is already married to Emma Hale. The practice is conducted in secret for years; Emma Smith, the Church membership at large, and civil authorities are not informed. By the time of Smith's death in 1844, he has contracted between 30 and 40 plural marriages, including marriages to women already married to other men (polyandry) and to girls as young as 14.</p>
+            <p>Smith publicly denied practicing polygamy during this period. The practice directly contradicts the Book of Mormon's condemnation of polygamy as "abominable" (Jacob 2:24–27) and Christ's restoration of monogamy as the divine standard (Mt 19:4–8).</p>
+            <a class="tl-link" href="../articles/catholic-lds-marriage.html">Read: The Marriage Dilemma →</a>
+            <br>
+            <a class="tl-link" href="../charts/smith_polygamy_timeline.html">View: Joseph Smith Polygamy Timeline →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="lds">
+        <div class="tl-dot" data-cat="lds"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">1835</span>
+            <div class="tl-card-title">
+              <h3>Joseph Smith Acquires Egyptian Papyri — The Book of Abraham</h3>
+              <span class="tl-tag" data-cat="lds">LDS History</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>Joseph Smith purchases Egyptian mummies and accompanying papyri from a traveling exhibitor and claims to translate them as the "Book of Abraham" — later canonized in the Pearl of Great Price. The Book of Abraham introduces several of the most distinctive LDS doctrines: the pre-mortal existence of souls, the plurality of gods, and God's location near a star called Kolob.</p>
+            <p>The papyri were presumed lost in the Great Chicago Fire but were rediscovered in 1966 in the Metropolitan Museum of Art. Egyptologists — including LDS scholars — have confirmed they are standard Egyptian funerary texts (the Book of Breathings) with no relationship to Abraham. The facsimiles Smith provided with his "translation" bear no correspondence to the text he attributed to them. This represents one of the most thoroughly documented evidentiary problems in LDS history.</p>
+            <a class="tl-link" href="../articles/fullness-of-time.html">Read: Progressive Revelation vs. Primordial Dispensationalism →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="lds">
+        <div class="tl-dot" data-cat="lds"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">1844</span>
+            <div class="tl-card-title">
+              <h3>King Follett Discourse — The Nature of God Radically Revised</h3>
+              <span class="tl-tag" data-cat="lds">LDS History</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>Joseph Smith delivers the King Follett Discourse at the general conference of the Church, publicly teaching for the first time that God was once a mortal man who progressed to godhood, that there is a plurality of gods, and that faithful Latter-day Saints may themselves become gods. This theology is entirely absent from the Book of Mormon (which teaches strict monotheism) and represents the most dramatic doctrinal shift in LDS history.</p>
+            <p>Two months later, Smith is killed by a mob in Carthage, Illinois. The King Follett Discourse captures his most developed theological position — a position that directly contradicts his own first scripture and aligns with no recognizable strand of Christian tradition before or since.</p>
+            <a class="tl-link" href="../articles/a-house-divided-against-itself.html">Read: A House Divided Against Itself →</a>
+            <br>
+            <a class="tl-link" href="../articles/rock-and-the-sand.html">Read: The Rock and the Sand →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="lds">
+        <div class="tl-dot" data-cat="lds"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">1890</span>
+            <div class="tl-card-title">
+              <h3>Manifesto — Polygamy Officially Suspended</h3>
+              <span class="tl-tag" data-cat="lds">LDS History</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>LDS President Wilford Woodruff issues the Manifesto suspending the practice of plural marriage — a practice that had been revealed to Joseph Smith as an "everlasting covenant" (D&C 132:4), the violation of which would incur damnation. The Manifesto comes under intense federal pressure, including the Edmunds-Tucker Act of 1887 which threatened the confiscation of Church property and the disenfranchisement of Church members.</p>
+            <p>D&C 132 — which commands plural marriage — remains in the LDS canon to this day. The tension between the continued canonization of the revelation and the suspension of its practice illustrates the structural problem of an open revelation system: how does one discern which "thus saith the Lord" supersedes which?</p>
+            <a class="tl-link" href="../articles/catholic-lds-marriage.html">Read: The Marriage Dilemma →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       ERA VI — MODERN ERA
+       ══════════════════════════════════════ -->
+  <div class="era-band" data-era="modern">
+    <div class="era-heading">
+      <div class="era-heading-line"></div>
+      <span class="era-heading-text">VI — The Modern Era</span>
+      <span class="era-dates">AD 1869 – Present</span>
+      <div class="era-heading-line"></div>
+    </div>
+
+    <div class="timeline-track">
+
+      <div class="tl-node" data-cat="council">
+        <div class="tl-dot" data-cat="council"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">1869–70</span>
+            <div class="tl-card-title">
+              <h3>First Vatican Council — Papal Infallibility Defined</h3>
+              <span class="tl-tag" data-cat="council">Ecumenical Council</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>Vatican I defines the dogma of papal infallibility: when the Pope speaks <em>ex cathedra</em> — formally defining a matter of faith or morals for the universal Church — he is preserved from error by the Holy Spirit. This charism is narrow, rarely invoked, and applies to the content of defined doctrine — not the Pope's personal opinions, governance decisions, or ordinary teaching.</p>
+            <p>The definition resolves a centuries-long theological dispute and establishes a clear locus of doctrinal authority. Crucially, it also means defined dogmas cannot be reversed by successor popes — an explicit structural bulwark against the kind of doctrinal instability visible in LDS history, where core teachings have been abandoned by successive prophets.</p>
+            <a class="tl-link" href="../articles/rock-and-the-sand.html">Read: The Rock and the Sand →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="council">
+        <div class="tl-dot" data-cat="council"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">1962–65</span>
+            <div class="tl-card-title">
+              <h3>Second Vatican Council — Renewal and Dialogue</h3>
+              <span class="tl-tag" data-cat="council">Ecumenical Council</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>The twenty-first ecumenical council, convened by John XXIII and concluded under Paul VI, addresses the Church's engagement with the modern world. Its major documents — <em>Lumen Gentium</em> (on the Church), <em>Dei Verbum</em> (on divine revelation), <em>Sacrosanctum Concilium</em> (on the liturgy), and <em>Gaudium et Spes</em> (on the Church and the world) — represent the most comprehensive doctrinal and pastoral expression of modern Catholicism.</p>
+            <p>Vatican II affirms that the Church of Christ "subsists in" the Catholic Church while acknowledging "elements of sanctification and truth" in other Christian communities. It explicitly does not claim that all salvation is impossible outside the visible Church — a nuance important for ecumenical dialogue, including with Latter-day Saints who sincerely seek God.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="lds">
+        <div class="tl-dot" data-cat="lds"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">1978</span>
+            <div class="tl-card-title">
+              <h3>LDS Priesthood Extended to Black Men — Official Declaration 2</h3>
+              <span class="tl-tag" data-cat="lds">LDS History</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>LDS President Spencer W. Kimball announces Official Declaration 2, extending priesthood ordination and temple access to men of all races. Prior to this date, Black men were barred from the LDS priesthood and Black members from temple ordinances — a policy taught by Brigham Young and subsequent prophets as divine revelation, grounded in the doctrine of pre-mortal "fence sitting" during the war in heaven.</p>
+            <p>In 2013, the LDS Church's Gospel Topics Essay on Race and the Priesthood officially disavowed the theological justifications for the ban, stating they were "theories" that "never reflected the official doctrine of the Church." This represents an official repudiation of teachings delivered by multiple LDS prophets as the word of God — illustrating the structural problem of a prophetic authority that can authorize and then reverse doctrines without a stable criterion for distinguishing authentic revelation from error.</p>
+            <a class="tl-link" href="../articles/rock-and-the-sand.html">Read: The Rock and the Sand →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="modern">
+        <div class="tl-dot" data-cat="modern"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">2013–14</span>
+            <div class="tl-card-title">
+              <h3>LDS Gospel Topics Essays Published</h3>
+              <span class="tl-tag" data-cat="modern">Modern Era</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>The LDS Church publishes a series of candid essays on its official website addressing historical and doctrinal problems that had previously been either suppressed or minimized: Joseph Smith's polygamy (including polyandrous marriages), the Book of Abraham translation methodology, the multiple First Vision accounts, the Book of Mormon translation process (using a seer stone in a hat rather than the Urim and Thummim), the priesthood ban, and DNA evidence failing to support Book of Mormon geography claims.</p>
+            <p>These essays represent a significant shift in institutional transparency. For many Latter-day Saints, the information contained in them — long available to scholars but absent from correlated Church curriculum — was unexpected and faith-challenging. The essays are useful primary sources for anyone engaged in Catholic-LDS apologetic dialogue.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-node" data-cat="modern">
+        <div class="tl-dot" data-cat="modern"></div>
+        <div class="tl-card" onclick="toggleCard(this)">
+          <div class="tl-card-header">
+            <span class="tl-year">Present</span>
+            <div class="tl-card-title">
+              <h3>The Catholic Church — Continuity Across Two Millennia</h3>
+              <span class="tl-tag" data-cat="modern">Modern Era</span>
+            </div>
+            <span class="tl-card-toggle">▾</span>
+          </div>
+          <div class="tl-card-body">
+            <p>The Catholic Church today confesses the same Creed formulated at Nicaea and Constantinople, celebrates the same Eucharist described by Justin Martyr in AD 155, maintains the same apostolic succession documented by Irenaeus in AD 180, and is governed by the same office of Roman bishop whose succession Clement of Rome exercised in AD 95. The doctrines defined at Ephesus, Chalcedon, Trent, and the Vatican Councils remain binding — not because they invented new truth, but because they articulated with greater precision what the Church has always believed.</p>
+            <p>This unbroken institutional, sacramental, and doctrinal continuity across two millennia is the Catholic claim. It is a historical claim — and it is verifiable. The invitation extended by this site, in the spirit of Jude 1:3, is to follow that argument wherever it honestly leads.</p>
+            <a class="tl-link" href="../articles/ante-nicene-fathers.html">Read: The Ante-Nicene Fathers →</a>
+            <br>
+            <a class="tl-link" href="../articles/rock-and-the-sand.html">Read: The Rock and the Sand →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- end page-wrapper -->
+
+<div class="print-colophon">One Faith Delivered &nbsp;&middot;&nbsp; <span id="print-url-text">onefaithdelivered.org</span></div>
+
+<footer>&copy; 2026 One Faith Delivered &nbsp;&#8901;&nbsp; All Rights Reserved</footer>
+
+<!-- ── SIDEBAR ── -->
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">One Faith Delivered</div>
+    <a href="../index.html">Home</a>
+    <a href="../articles.html">Articles</a>
+    <a href="../charts.html">Charts</a>
+    <a href="../topics.html">Topics</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../charts.html" class="sidebar-back">&#8592; All Charts</a>
+    <div class="sidebar-ornament">✦ ✦ ✦</div>
+  </div>
+</aside>
+
+<script>
+/* ── Sidebar ── */
+function toggleSidebar() {
+  var btn     = document.querySelector('.nav-hamburger'),
+      sidebar = document.querySelector('.sidebar'),
+      overlay = document.querySelector('.sidebar-overlay');
+  var isOpen  = sidebar.classList.contains('open');
+  if (isOpen) {
+    sidebar.classList.remove('open'); btn.classList.remove('open');
+    overlay.classList.remove('visible'); document.body.style.overflow = '';
+  } else {
+    sidebar.classList.add('open'); btn.classList.add('open');
+    overlay.classList.add('visible'); document.body.style.overflow = 'hidden';
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar();
+});
+
+/* ── Card expand/collapse ── */
+function toggleCard(card) {
+  var wasExpanded = card.classList.contains('expanded');
+  // collapse all
+  document.querySelectorAll('.tl-card.expanded').forEach(function(c) {
+    c.classList.remove('expanded');
+  });
+  // re-expand clicked if it was closed
+  if (!wasExpanded) card.classList.add('expanded');
+}
+
+/* ── Category filter ── */
+document.querySelectorAll('.filter-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var cat = this.getAttribute('data-cat');
+    // update active button
+    document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+    this.classList.add('active');
+    // filter nodes
+    document.querySelectorAll('.tl-node').forEach(function(node) {
+      if (cat === 'all' || node.getAttribute('data-cat') === cat) {
+        node.classList.remove('filtered-out');
+      } else {
+        node.classList.add('filtered-out');
+      }
+    });
+  });
+});
+
+/* ── Reading Progress Bar ── */
+(function () {
+  var bar = document.getElementById('reading-progress-bar');
+  function updateProgress() {
+    if (!bar) return;
+    var scrollTop  = window.scrollY || document.documentElement.scrollTop;
+    var docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+    bar.style.width = pct + '%';
+    bar.setAttribute('aria-valuenow', Math.round(pct));
+  }
+  if (bar) { window.addEventListener('scroll', updateProgress, { passive: true }); updateProgress(); }
+  var urlEl = document.getElementById('print-url-text');
+  if (urlEl) {
+    var href = window.location.href;
+    urlEl.textContent = href && href !== 'about:blank' ? href : 'onefaithdelivered.org';
+  }
+})();
+</script>
+
+</body>
+</html>
