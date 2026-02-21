@@ -539,6 +539,108 @@
     .father-block { padding: 16px 18px; }
     .nav-hamburger { display: flex; }
   }
+
+/* ── READING PROGRESS BAR ── */
+#reading-progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(to right, #8B0000, #C5A55A);
+  z-index: 99999;
+  transition: width 0.12s linear;
+  pointer-events: none;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── PRINT / PDF BUTTON ── */
+.nav-print-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-gold, #8B7335);
+  background: none;
+  border: 1px solid rgba(139,115,53,0.35);
+  padding: 0.4rem 1.1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+.nav-print-btn:hover { background: rgba(139,115,53,0.08); color: var(--crimson, #8B0000); }
+.nav-print-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+/* ── PRINT COLOPHON ── */
+.print-colophon {
+  display: none;
+}
+
+/* ── @MEDIA PRINT ── */
+@media print {
+  #reading-progress-bar,
+  .site-nav,
+  .sidebar-overlay,
+  .sidebar,
+  .nav-print-btn,
+  .back-link,
+  footer { display: none !important; }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt;
+    line-height: 1.65;
+  }
+
+  .page-header {
+    background: none !important;
+    color: #000 !important;
+    border-bottom: 2pt solid #8B0000;
+    padding: 0.4cm 0 0.5cm !important;
+    margin-bottom: 1cm;
+    page-break-after: avoid;
+  }
+  .page-header h1,
+  .page-header h1 span,
+  .page-header .ornament { color: #8B0000 !important; text-shadow: none !important; }
+  .page-header .subtitle,
+  .page-header .byline,
+  .page-header .meta,
+  .page-header .date,
+  .page-header .tag { color: #333 !important; background: none !important; border: none !important; }
+
+  main {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .article-section { page-break-inside: avoid; }
+  .verdict-box { page-break-inside: avoid; border-color: #8B0000 !important; background: #fff !important; }
+  .endnotes { page-break-inside: avoid; }
+  blockquote, .source-box, .compare-grid, .doctrine-grid { page-break-inside: avoid; }
+
+  a { color: #000; text-decoration: none; }
+  a[href]:after { content: none !important; }
+
+  .print-colophon {
+    display: block !important;
+    margin-top: 2cm;
+    padding-top: 0.5cm;
+    border-top: 1pt solid #ccc;
+    font-family: 'JetBrains Mono', monospace, sans-serif;
+    font-size: 8pt;
+    color: #666;
+    text-align: center;
+    page-break-inside: avoid;
+  }
+}
+
 </style>
 
   <script type="application/ld+json">
@@ -747,8 +849,15 @@
     <li><a href="../resources.html">Resources</a></li>
   </ul>
   <a href="../articles.html" class="nav-back">&#8592; All Articles</a>
+  <button class="nav-print-btn" onclick="window.print()" aria-label="Print or save as PDF" title="Print / Save as PDF">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Print
+  </button>
+
   <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
+<div id="reading-progress-bar" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
 
 <div class="page">
   <span class="corner tl">✦</span>
@@ -1033,6 +1142,32 @@
       if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar();
     });
   </script>
+
+
+<script>
+/* Reading Progress Bar + Print URL */
+(function () {
+  var bar = document.getElementById('reading-progress-bar');
+  function updateProgress() {
+    if (!bar) return;
+    var scrollTop  = window.scrollY || document.documentElement.scrollTop;
+    var docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+    bar.style.width = pct + '%';
+    bar.setAttribute('aria-valuenow', Math.round(pct));
+  }
+  if (bar) {
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
+  /* Populate print URL */
+  var urlEl = document.getElementById('print-url-text');
+  if (urlEl) {
+    var href = window.location.href;
+    urlEl.textContent = href && href !== 'about:blank' ? href : 'onefaithdelivered.org';
+  }
+})();
+</script>
 
 </body>
 </html>
