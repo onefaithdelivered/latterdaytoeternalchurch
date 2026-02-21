@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A House Divided Against Itself | One Faith Delivered</title>
+<meta name="description" content="A research paper examining how modern LDS doctrine contradicts the Book of Mormon on the nature of God, salvation, polygamy, post-mortem repentance, and temple ordinances." />
+<link rel="canonical" href="https://onefaithdelivered.org/articles/a-house-divided-against-itself.html" />
+<link rel="icon" href="../favicons/favicon.ico" sizes="any" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+/* ═══════════════════════════════════════════════════════════
+   A HOUSE DIVIDED AGAINST ITSELF
+   Design system: matches book-of-abraham-problem.html
+   Fonts: Playfair Display + Source Serif 4 + JetBrains Mono
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --crimson:      #8B0000;
+  --dark-crimson: #5C0000;
+  --gold:         #C5A55A;
+  --dark-gold:    #8B7335;
+  --parchment:    #F5F0E8;
+  --text:         #2A2A2A;
+  --muted:        #666;
+  --line-gray:    #D0C8B8;
+  --smith-red:    #A02020;
+  --problem-blue: #1E3A5F;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--parchment);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.6;
+}
+
+/* ── SITE NAV ── */
+.site-nav {
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(245,240,232,0.98), rgba(240,235,225,0.95));
+  border-bottom: 1px solid var(--line-gray);
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.site-nav a.nav-home {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--crimson);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: var(--dark-crimson); }
+.site-nav .nav-back {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  text-decoration: none;
+  border: 1px solid rgba(139,115,53,0.35);
+  padding: 0.4rem 1.1rem;
+  border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
+}
+.site-nav .nav-back:hover { background: rgba(139,115,53,0.08); color: var(--crimson); }
+.site-nav .nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.site-nav .nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav .nav-links a:hover { color: var(--crimson); }
+
+/* ── Hamburger ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  cursor: pointer;
+  background: none;
+  border: 1px solid rgba(139,115,53,0.3);
+  border-radius: 3px;
+  padding: 6px;
+  z-index: 10001;
+}
+.nav-hamburger span {
+  display: block; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Sidebar ── */
+.sidebar-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+.sidebar-overlay.visible { display: block; }
+.sidebar {
+  position: fixed;
+  top: 0; right: -280px;
+  width: 260px; height: 100%;
+  background: linear-gradient(to bottom, #FAF6F0, #F5F0E8);
+  border-left: 1px solid var(--line-gray);
+  z-index: 10002;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+.sidebar.open { right: 0; }
+.sidebar-inner {
+  padding: 5rem 2rem 2rem;
+  display: flex; flex-direction: column; gap: 0;
+}
+.sidebar-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--crimson);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line-gray);
+}
+.sidebar-inner a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(208,200,184,0.5);
+  transition: color 0.2s;
+}
+.sidebar-inner a:hover { color: var(--crimson); }
+.sidebar-inner a.sidebar-back {
+  color: var(--dark-gold);
+  margin-top: 1.5rem;
+  border: 1px solid rgba(139,115,53,0.3);
+  padding: 0.7rem 1rem;
+  text-align: center;
+  border-radius: 2px;
+}
+.sidebar-ornament {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 8px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  background: linear-gradient(135deg, #4A0F1A 0%, #6B1D2A 40%, #3D1520 100%);
+  color: #F5F0E8;
+  padding: 72px 40px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+  pointer-events: none;
+}
+.back-link {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  margin-bottom: 1.8rem;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+  position: relative;
+  z-index: 1;
+}
+.back-link:hover { opacity: 1; }
+.ornament {
+  display: block;
+  color: var(--gold);
+  font-size: 1rem;
+  letter-spacing: 12px;
+  margin-bottom: 1.2rem;
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2em, 4vw, 3.2em);
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: #F5F0E8;
+  margin-bottom: 14px;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+}
+.page-header h1 span { color: var(--gold); }
+.page-header .subtitle {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(245,240,232,0.75);
+  max-width: 680px;
+  margin: 0 auto 0;
+  position: relative;
+  z-index: 1;
+}
+.page-header .meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(197,165,90,0.65);
+  margin-top: 1.4rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── MAIN CONTENT ── */
+main {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 56px 24px 88px;
+}
+
+/* ── INTRO / ABSTRACT BOX ── */
+.intro-box {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-left: 5px solid var(--crimson);
+  border-radius: 4px;
+  padding: 28px 32px;
+  margin-bottom: 48px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.intro-box p {
+  font-size: 1.02rem;
+  line-height: 1.9;
+  color: var(--text);
+}
+.intro-box p + p { margin-top: 0.9rem; }
+.intro-box strong { color: var(--crimson); font-weight: 600; }
+.intro-box sup {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65em;
+  color: var(--dark-gold);
+}
+
+/* ── SECTION DIVIDER ── */
+.section-divider {
+  margin: 52px 0 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.section-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line-gray);
+}
+.section-divider-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  white-space: nowrap;
+}
+
+/* ── ARTICLE SECTION ── */
+.article-section { margin-bottom: 8px; }
+.article-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75em;
+  font-weight: 700;
+  color: var(--crimson);
+  line-height: 1.25;
+  margin-bottom: 22px;
+}
+.article-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15em;
+  font-weight: 700;
+  color: var(--problem-blue);
+  margin: 28px 0 12px;
+  letter-spacing: 0.01em;
+}
+.article-section p {
+  font-size: 1.01rem;
+  line-height: 1.9;
+  color: var(--text);
+  margin-bottom: 1.1rem;
+}
+.article-section p:last-child { margin-bottom: 0; }
+.article-section sup {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65em;
+  color: var(--dark-gold);
+  font-weight: 600;
+}
+
+/* ── SCRIPTURE / BLOCK QUOTE ── */
+.scripture-block {
+  border-left: 4px solid var(--gold);
+  margin: 28px 0;
+  padding: 18px 26px;
+  background: rgba(197,165,90,0.07);
+  border-radius: 0 4px 4px 0;
+}
+.scripture-block p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05em !important;
+  font-style: italic;
+  font-weight: 400;
+  color: #3A1A1A !important;
+  line-height: 1.7 !important;
+  margin-bottom: 0 !important;
+}
+.scripture-block .ref {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  margin-top: 10px;
+  display: block;
+}
+
+/* ── COMPARISON BLOCK (BOM vs Modern LDS) ── */
+.compare-block {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--line-gray);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 28px 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.compare-col {
+  padding: 22px 24px;
+}
+.compare-col:first-child {
+  background: #FFF8F8;
+  border-right: 1px solid var(--line-gray);
+}
+.compare-col:last-child {
+  background: #F5F8FF;
+}
+.compare-col-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid;
+}
+.label-bom {
+  color: var(--smith-red);
+  border-color: var(--smith-red);
+}
+.label-modern {
+  color: var(--problem-blue);
+  border-color: var(--problem-blue);
+}
+.compare-col p {
+  font-size: 0.9em !important;
+  line-height: 1.75 !important;
+  color: var(--text) !important;
+  margin-bottom: 0 !important;
+}
+.compare-col p em { font-style: italic; color: var(--smith-red); }
+
+/* ── CATHOLIC OBSERVATION BOX ── */
+.catholic-box {
+  background: linear-gradient(135deg, #F0EAF5, #EBE4F2);
+  border: 1px solid rgba(30,58,95,0.2);
+  border-left: 5px solid var(--problem-blue);
+  border-radius: 4px;
+  padding: 22px 28px;
+  margin: 28px 0 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.catholic-box-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--problem-blue);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(30,58,95,0.2);
+}
+.catholic-box p {
+  font-size: 0.95rem !important;
+  line-height: 1.85 !important;
+  color: #1A1A2E !important;
+  margin-bottom: 0 !important;
+}
+
+/* ── MISSING DOCTRINES LIST (Section V) ── */
+.doctrine-list {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 24px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.doctrine-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  border-bottom: 1px solid var(--line-gray);
+}
+.doctrine-item:last-child { border-bottom: none; }
+.doctrine-item-label {
+  min-width: 240px;
+  padding: 16px 20px;
+  background: #FAF6F0;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 0.95em;
+  color: var(--crimson);
+  border-right: 1px solid var(--line-gray);
+  line-height: 1.4;
+}
+.doctrine-item-text {
+  padding: 16px 20px;
+  font-size: 0.9em;
+  line-height: 1.75;
+  color: var(--text);
+  flex: 1;
+}
+
+/* ── VERDICT / CONCLUSION ── */
+.verdict-box {
+  background: linear-gradient(135deg, #4A0F1A, #6B1D2A);
+  color: #F5F0E8;
+  border-radius: 6px;
+  padding: 48px 44px;
+  margin-top: 56px;
+  position: relative;
+  overflow: hidden;
+}
+.verdict-box::before {
+  content: '';
+  position: absolute; inset: 8px;
+  border: 1px solid rgba(197,165,90,0.25);
+  border-radius: 4px;
+  pointer-events: none;
+}
+.verdict-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.verdict-box p {
+  font-size: 1em;
+  line-height: 1.9;
+  color: rgba(245,240,232,0.9);
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.verdict-box p + p { margin-top: 14px; }
+
+/* ── ENDNOTES ── */
+.endnotes {
+  margin-top: 56px;
+  border-top: 1px solid var(--line-gray);
+  padding-top: 28px;
+}
+.endnotes-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  margin-bottom: 18px;
+}
+.endnotes ol {
+  list-style: none;
+  padding: 0;
+  counter-reset: note-counter;
+}
+.endnotes li {
+  counter-increment: note-counter;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+  font-size: 0.83em;
+  line-height: 1.65;
+  color: var(--muted);
+}
+.endnotes li::before {
+  content: "[" counter(note-counter) "]";
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--dark-gold);
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #fff;
+  text-align: center;
+  padding: 28px 20px;
+  border-top: 1px solid var(--line-gray);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .page-header { padding: 48px 24px 40px; }
+  .page-header h1 { font-size: 1.9em; }
+  .compare-block { grid-template-columns: 1fr; }
+  .compare-col:first-child { border-right: none; border-bottom: 1px solid var(--line-gray); }
+  .doctrine-item { flex-direction: column; }
+  .doctrine-item-label { min-width: unset; border-right: none; border-bottom: 1px solid var(--line-gray); }
+  .verdict-box { padding: 32px 24px; }
+  main { padding: 32px 16px 60px; }
+  .intro-box { padding: 22px 20px; }
+}
+@media (max-width: 700px) {
+  .nav-hamburger { display: flex; }
+  .site-nav .nav-links { display: none; }
+  .site-nav .nav-back { display: none; }
+  body { overflow-x: hidden; }
+  .site-nav { padding: 0.55rem 1rem; }
+  .page-header { padding: 44px 18px 32px; }
+  .page-header h1 { font-size: clamp(1.35rem, 5.5vw, 2rem); }
+  .page-header .subtitle { font-size: 0.92rem; }
+  .sidebar {
+    display: block;
+    transform: translateX(100%);
+    right: 0;
+    position: fixed;
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-inner { padding: 4rem 1.5rem 2rem; }
+  .sidebar-overlay.visible { display: block; }
+  .nav-hamburger { display: flex; margin-left: auto; order: 99; flex-shrink: 0; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── SITE NAV ── -->
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">One Faith Delivered</a>
+  <ul class="nav-links">
+    <li><a href="../articles.html">Articles</a></li>
+    <li><a href="../charts.html">Charts</a></li>
+    <li><a href="../topics.html">Topics</a></li>
+    <li><a href="../resources.html">Resources</a></li>
+  </ul>
+  <a href="../articles.html" class="nav-back">&#8592; All Articles</a>
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <a href="../articles.html" class="back-link">&#8592; All Articles</a>
+  <span class="ornament">✦ &nbsp; ✦ &nbsp; ✦</span>
+  <h1>A House Divided<br><span>Against Itself</span></h1>
+  <p class="subtitle">How Modern LDS Doctrine Contradicts the Book of Mormon</p>
+  <p class="meta">Research Paper &nbsp;·&nbsp; LDS Canon &nbsp;·&nbsp; Internal Contradictions &nbsp;·&nbsp; February 2026</p>
+</header>
+
+<!-- ── MAIN ── -->
+<main>
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <p>The Church of Jesus Christ of Latter-day Saints occupies a unique position among religious movements in that it simultaneously affirms the Book of Mormon as "the most correct of any book on earth"<sup>[1]</sup> and yet teaches numerous doctrines that find no support — and in many cases direct contradiction — within its pages. Joseph Smith himself established the standard by which the Book of Mormon should be measured, declaring that "a man would get nearer to God by abiding by its precepts, than by any other book."<sup>[2]</sup></p>
+    <p>Yet a careful examination reveals that modern LDS doctrine has drifted substantially from what the Book of Mormon actually teaches on matters as fundamental as the nature of God, the sufficiency of Christ's atonement for those who die without the law, the practice of polygamy, the necessity of temple ordinances, and the possibility of post-mortem repentance. This paper examines these contradictions from primary LDS sources — the Book of Mormon, the Doctrine and Covenants, the Pearl of Great Price, the Journal of Discourses, and official LDS publications — to demonstrate, from within the LDS canon, that the modern Church has a serious internal coherence problem.</p>
+    <p>From a Catholic perspective, these contradictions illustrate why an authoritative, living <strong>Magisterium</strong> guided by the Holy Spirit — rather than a succession of prophets who may contradict both one another and their own scriptures — is necessary to preserve doctrinal integrity across the centuries.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION I — NATURE OF GOD
+       ══════════════════════════════════════════ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">I — The Nature of God</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="article-section">
+    <h2>Monotheism versus Polytheism</h2>
+
+    <h3>What the Book of Mormon Teaches</h3>
+    <p>The Book of Mormon is remarkably clear and consistent in its presentation of God as one, eternal, and unchangeable — a monotheistic theology strikingly at odds with the polytheism that later developed in LDS thought.</p>
+
+    <div class="scripture-block">
+      <p>"For I know that God is not a partial God, neither a changeable being; but he is unchangeable from all eternity to all eternity."</p>
+      <span class="ref">Moroni 8:18</span>
+    </div>
+
+    <p>The prophet Amulek, in his dialogue with Zeezrom, affirms unequivocally that there is only one God (Alma 11:26–31). The text of 3 Nephi 11:27 and 11:36 both teach that the Father, Son, and Holy Ghost are "one God." Mormon 7:7 reiterates this. These are not ambiguous passages — they present a theology far more compatible with classical Christian Trinitarianism than with the tritheism or polytheism that would later become standard LDS teaching.</p>
+    <p>The Book of Mormon also describes God as the "Great Spirit" (Alma 18:26–28; 22:9–10), an identification incompatible with the later LDS teaching that God possesses a tangible body of flesh and bones (D&C 130:22). Mosiah 15:1–5 presents a Christology that has led scholars — including LDS-sympathetic historians Thomas Alexander and Boyd Kirkland — to conclude that the earliest layer of LDS theology was essentially trinitarian or modalistic.</p>
+
+    <h3>What Modern LDS Doctrine Teaches</h3>
+    <p>Joseph Smith's theology evolved dramatically over his lifetime. By the time of the King Follett Discourse in April 1844, Smith was teaching openly that God was once a man who progressed to godhood, that there exists a plurality of gods, and that faithful Latter-day Saints can themselves become gods.</p>
+
+    <div class="scripture-block">
+      <p>"I have always declared God to be a distinct personage, Jesus Christ a separate and distinct personage from God the Father, and that the Holy Ghost was a distinct personage and a Spirit: and these three constitute three distinct personages and three Gods."</p>
+      <span class="ref">Joseph Smith, Teachings of the Prophet Joseph Smith, p. 370</span>
+    </div>
+
+    <p>Lorenzo Snow, the fifth LDS president, codified this theology in his famous couplet: "As man now is, God once was; as God now is, man may be."<sup>[3]</sup> This directly contradicts the Book of Mormon's declaration that God is "unchangeable from all eternity to all eternity" (Moroni 8:18). A being who was once a man and then became God has, by definition, changed.</p>
+
+    <div class="compare-block">
+      <div class="compare-col">
+        <div class="compare-col-label label-bom">Book of Mormon</div>
+        <p>God is one, eternal, and <em>unchangeable from all eternity to all eternity</em> (Moroni 8:18). The Father, Son, and Holy Ghost are "one God" (3 Nephi 11:27). No plurality of gods is taught anywhere in the text.</p>
+      </div>
+      <div class="compare-col">
+        <div class="compare-col-label label-modern">Modern LDS Teaching</div>
+        <p>"There are three Gods — the Father, the Son, and the Holy Ghost" and "a plurality of Gods exists" (McConkie, <em>Mormon Doctrine</em>). God was once a mortal man who progressed to divinity through obedience.</p>
+      </div>
+    </div>
+
+    <div class="catholic-box">
+      <div class="catholic-box-label">✦ Catholic Observation</div>
+      <p>The Catholic Church confesses, with the Council of Nicaea (325 AD) and subsequent ecumenical councils, that the Father, Son, and Holy Spirit are three Persons of one divine substance. This dogma was not an invention of the fourth century but a precise articulation of what had been believed from the Apostolic age. The Book of Mormon's own language comes far closer to this classical Christian formulation than to the polytheism that Joseph Smith and his successors eventually adopted. The LDS trajectory away from its own founding scripture on so fundamental a question as the nature of God raises serious questions about the reliability of the prophetic office that introduced these changes.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION II — FATE OF THOSE WITHOUT THE LAW
+       ══════════════════════════════════════════ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">II — The Fate of Those Without the Law</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="article-section">
+    <h2>The Atonement and Baptism for the Dead</h2>
+
+    <h3>What the Book of Mormon Teaches</h3>
+    <p>One of the most significant and underappreciated contradictions between the Book of Mormon and modern LDS practice concerns the fate of those who die without knowledge of the gospel.</p>
+
+    <div class="scripture-block">
+      <p>"Wherefore, he has given a law; and where there is no law given there is no punishment; and where there is no punishment there is no condemnation; and where there is no condemnation the mercies of the Holy One of Israel have claim upon them, because of the atonement; for they are delivered by the power of him."</p>
+      <span class="ref">2 Nephi 9:25</span>
+    </div>
+
+    <p>The text continues: "For the atonement satisfieth the demands of his justice upon all those who have not the law given to them, that they are delivered from that awful monster, death and hell" (2 Nephi 9:26). The logic is straightforward: where no law has been given, there is no transgression; where there is no transgression, Christ's atonement covers those souls automatically.</p>
+    <p>Mormon reinforces this in his epistle on infant baptism: "For behold that all little children are alive in Christ, and also all they that are without the law. For the power of redemption cometh on all them that have no law; wherefore, he that is not condemned, or he that is under no condemnation, cannot repent; and <em>unto such baptism availeth nothing</em>" (Moroni 8:22). The final clause is especially significant — baptism is not merely unnecessary for those without the law; it is positively pointless.</p>
+
+    <h3>What Modern LDS Doctrine Teaches</h3>
+    <p>Modern LDS theology has developed an elaborate system of proxy ordinances — most notably baptism for the dead — premised on the assumption that those who die without the gospel still require saving ordinances performed on their behalf. This practice, introduced by Joseph Smith in 1840 and canonized in D&C 128, drives the entire LDS genealogical enterprise.</p>
+    <p>The Book of Mormon does not merely fail to mention baptism for the dead — it articulates a theological framework in which such a practice is logically unnecessary. LDS apologists from the FAIR organization acknowledge the absence, suggesting proxy baptism was not "germane to the Book of Mormon's purpose."<sup>[6]</sup> But the problem is not silence. The Book of Mormon positively teaches a soteriology that renders it unnecessary. "Unto such baptism availeth nothing" is not a gap in the text — it is a clear doctrinal statement.</p>
+
+    <div class="catholic-box">
+      <div class="catholic-box-label">✦ Catholic Observation</div>
+      <p>Catholic theology has always recognized that God's mercy extends to those who, through no fault of their own, never heard the gospel. The Second Vatican Council affirmed that "those also can attain to salvation who through no fault of their own do not know the Gospel of Christ or His Church, yet sincerely seek God and moved by grace strive by their deeds to do His will" (<em>Lumen Gentium</em> 16). The Book of Mormon's teaching on this point is, ironically, closer to Catholic teaching than it is to the theology the LDS Church eventually developed.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION III — POLYGAMY
+       ══════════════════════════════════════════ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">III — Polygamy</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="article-section">
+    <h2>Condemned and Then Commanded</h2>
+
+    <h3>What the Book of Mormon Teaches</h3>
+    <p>The Book of Mormon's most direct treatment of polygamy appears in Jacob 2, where the prophet Jacob delivers a searing condemnation of the practice.</p>
+
+    <div class="scripture-block">
+      <p>"Behold, David and Solomon truly had many wives and concubines, which thing was abominable before me, saith the Lord."</p>
+      <span class="ref">Jacob 2:24</span>
+    </div>
+
+    <p>Jacob then states God's standard plainly: "Wherefore, my brethren, hear me, and hearken to the word of the Lord: For there shall not any man among you have save it be one wife; and concubines he shall have none; For I, the Lord God, delight in the chastity of women" (Jacob 2:27–28). The condemnation is comprehensive — David and Solomon's polygamy is called "abominable," and the standard for the Lord's people is strict monogamy.</p>
+
+    <h3>What the Doctrine and Covenants Teaches</h3>
+    <p>Section 132 of the Doctrine and Covenants, recorded in 1843, presents a dramatically different picture.</p>
+
+    <div class="scripture-block">
+      <p>"David also received many wives and concubines, and also Solomon and Moses my servants, as also many others of my servants, from the beginning of creation until this time; and in nothing did they sin save in those things which they received not of me."</p>
+      <span class="ref">D&amp;C 132:38</span>
+    </div>
+
+    <div class="compare-block">
+      <div class="compare-col">
+        <div class="compare-col-label label-bom">Book of Mormon — Jacob 2:24</div>
+        <p>David and Solomon's many wives were <em>"abominable before"</em> the Lord. God's standard is monogamy. "There shall not any man among you have save it be one wife."</p>
+      </div>
+      <div class="compare-col">
+        <div class="compare-col-label label-modern">D&amp;C 132:38 — 1843</div>
+        <p>David and Solomon received their wives from the Lord and <em>"in nothing did they sin."</em> Plural marriage is presented as divinely authorized and commanded for Latter-day Saints.</p>
+      </div>
+    </div>
+
+    <p>The contradiction is stark. Jacob 2:24 says David and Solomon's many wives were "abominable before" the Lord. D&C 132:38 says they received those wives from the Lord and "in nothing did they sin." These two statements cannot both be true. LDS apologists argue that Jacob condemned only <em>unauthorized</em> polygamy, while D&C 132 justifies divinely authorized polygamy — but Jacob's language does not make this distinction. He calls the entire practice abominable and immediately commands monogamy.</p>
+    <p>The historical record further complicates the picture. Joseph Smith had between 30 and 40 plural wives,<sup>[7]</sup> some as young as 14, several already married to other men — facts acknowledged in the LDS Church's own Gospel Topics essays. Yet the Book of Mormon text that Joseph Smith himself produced condemns the very practice he later adopted.</p>
+
+    <div class="catholic-box">
+      <div class="catholic-box-label">✦ Catholic Observation</div>
+      <p>The Catholic Church has maintained from the Apostolic age that marriage is an indissoluble union between one man and one woman, reflecting the union of Christ and His Church (Ephesians 5:31–32). While the Church recognizes that God tolerated polygamy among the patriarchs under the Old Covenant as part of His progressive pedagogy, the fullness of revelation in Christ established monogamy as the definitive and irrevocable standard. The internal contradiction between the Book of Mormon and D&C 132 presents a problem that the LDS Church has never satisfactorily resolved.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION IV — POST-MORTEM REPENTANCE
+       ══════════════════════════════════════════ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">IV — Post-Mortem Repentance</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="article-section">
+    <h2>The Finality of Death</h2>
+
+    <h3>What the Book of Mormon Teaches</h3>
+    <p>The Book of Mormon presents death as the decisive boundary for repentance. Alma 34 is perhaps the most direct statement in the entire LDS canon on the finality of the mortal probationary period.</p>
+
+    <div class="scripture-block">
+      <p>"For behold, this life is the time for men to prepare to meet God; yea, behold the day of this life is the day for men to perform their labors… Do not procrastinate the day of your repentance even until death, behold, ye have become subjected to the spirit of the devil, and he doth seal you his… and this is the final state of the wicked."</p>
+      <span class="ref">Alma 34:32, 35</span>
+    </div>
+
+    <p>The language is emphatic: "this life is the time." Those who procrastinate repentance until death are sealed as the devil's, and this is described as their "final state." There is no mention of a post-mortem opportunity for conversion, no spirit prison where the gospel is preached. Second Nephi 9:38 reinforces the theme: "wo unto all those who die in their sins; for they shall return to God, and behold his face, and remain in their sins."</p>
+
+    <h3>What Modern LDS Doctrine Teaches</h3>
+    <p>Modern LDS theology has developed an elaborate post-mortem soteriology standing in direct tension with these passages. D&C 138, recorded by Joseph F. Smith in 1918, describes Christ's visit to the spirit world to organize missionary work among the dead. Those who accept the gospel in the spirit world can then have saving ordinances — baptism, confirmation, endowment, and sealing — performed vicariously on their behalf by living members in LDS temples.</p>
+    <p>This entire system presupposes that death is <em>not</em> the final boundary for repentance — precisely the opposite of what Alma 34 and 2 Nephi 9 teach. The Book of Mormon insists that "this life is the time for men to prepare to meet God" and that those who die in their sins "remain in their sins." The later revelations construct a secondary chance that the Book of Mormon expressly forecloses.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION V — TEMPLE ORDINANCES
+       ══════════════════════════════════════════ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">V — Temple Ordinances and the "Fulness of the Gospel"</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="article-section">
+    <h2>What the "Most Correct Book" Does Not Contain</h2>
+
+    <p>The Book of Mormon is described by LDS scripture as containing "the fulness of the everlasting gospel" (D&C 27:5). If this claim is taken at face value, one would expect to find within its pages at least the basic contours of the doctrines and ordinances the LDS Church considers essential for salvation. Yet a survey of the Book of Mormon reveals that the following LDS-essential doctrines and practices are entirely absent from the text:</p>
+
+    <div class="doctrine-list">
+      <div class="doctrine-item">
+        <div class="doctrine-item-label">Temple Endowment Ceremonies</div>
+        <div class="doctrine-item-text">The Book of Mormon mentions temples (2 Nephi 5:16; Mosiah 1:18), but none of the ordinances performed in modern LDS temples — washings, anointings, the endowment ceremony, or celestial marriage — appear anywhere in the text. Alma 32:36 points to personal holiness rather than temple ritual as the locus of God's presence.</div>
+      </div>
+      <div class="doctrine-item">
+        <div class="doctrine-item-label">Celestial Marriage &amp; Eternal Sealings</div>
+        <div class="doctrine-item-text">The concept that marriage extends beyond death and that family relationships must be "sealed" through priesthood ordinances is entirely absent from the Book of Mormon. The LDS Church regards celestial marriage as essential for exaltation (D&amp;C 131:1–4; 132:19–20), making its complete absence from "the most correct book on earth" a profound gap.</div>
+      </div>
+      <div class="doctrine-item">
+        <div class="doctrine-item-label">Baptism for the Dead</div>
+        <div class="doctrine-item-text">As discussed in Section II, the Book of Mormon not only fails to mention this practice but articulates a theology that renders it unnecessary: "unto such baptism availeth nothing" (Moroni 8:22).</div>
+      </div>
+      <div class="doctrine-item">
+        <div class="doctrine-item-label">Three Degrees of Glory</div>
+        <div class="doctrine-item-text">The elaborate post-mortem cosmology of the celestial, terrestrial, and telestial kingdoms (D&amp;C 76) has no parallel in the Book of Mormon, which presents a simpler framework of paradise and the "prison" of outer darkness.</div>
+      </div>
+      <div class="doctrine-item">
+        <div class="doctrine-item-label">Pre-Mortal Existence</div>
+        <div class="doctrine-item-text">The LDS doctrine that all humans existed as spirit children of Heavenly Father before birth is not taught in the Book of Mormon. Alma 13 is sometimes cited, but the passage discusses foreordination, not a pre-mortal life in the developed LDS sense.</div>
+      </div>
+      <div class="doctrine-item">
+        <div class="doctrine-item-label">Plurality of Gods &amp; Human Deification</div>
+        <div class="doctrine-item-text">As discussed in Section I, the Book of Mormon teaches strict monotheism and an unchangeable God, leaving no room for the Lorenzo Snow couplet or the King Follett Discourse.</div>
+      </div>
+    </div>
+
+    <p>If the Book of Mormon truly contains the "fulness of the gospel," then either these doctrines are not part of the gospel, or the Book of Mormon does not contain what the LDS Church claims it contains. Either horn of this dilemma is deeply problematic for LDS claims.</p>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION VI — ADDITIONAL TENSIONS
+       ══════════════════════════════════════════ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">VI — Additional Points of Tension</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="article-section">
+    <h2>Two Further Christological and Theological Contradictions</h2>
+
+    <h3>The Conception of Christ</h3>
+    <p>The Book of Mormon teaches that Mary "shall be overshadowed and conceive by the power of the Holy Ghost" (Alma 7:10), consistent with Matthew 1:20 and Luke 1:35. However, Brigham Young publicly declared: "Now remember from this time forth, and for ever, that Jesus Christ was not begotten by the Holy Ghost."<sup>[9]</sup> Joseph Fielding Smith went further: "They tell us the Book of Mormon states that Jesus was begotten of the Holy Ghost. I challenge that statement. The Book of Mormon teaches no such thing."<sup>[10]</sup> But the Book of Mormon <em>does</em> teach exactly this (Alma 7:10). LDS prophets here directly contradict the text of their own founding scripture on a matter of Christological importance.</p>
+
+    <h3>God as Spirit versus God as Corporeal</h3>
+    <p>The Book of Mormon identifies God as the "Great Spirit" (Alma 18:26–28; 22:9–11), consistent with the biblical declaration that "God is spirit" (John 4:24). Yet D&C 130:22 states that "the Father has a body of flesh and bones as tangible as man's." The Book of Mormon and the Doctrine and Covenants present fundamentally different theologies of the divine nature — not as a development of understanding, but as an outright contradiction on the most basic metaphysical question about God.</p>
+  </div>
+
+  <!-- CONCLUSION -->
+  <div class="verdict-box">
+    <h3>✦ &nbsp; Conclusion &nbsp; ✦</h3>
+    <p>The contradictions documented in this paper are not the product of hostile misreading or selective quotation. They emerge from a straightforward comparison of LDS canonical texts with one another. The Book of Mormon teaches that God is one and unchangeable; later LDS teaching makes Him one of many gods who was once a man. The Book of Mormon teaches that those who die without the law need no baptism; later LDS teaching constructs an entire system of proxy ordinances for the dead. The Book of Mormon condemns David and Solomon's polygamy as abominable; D&C 132 justifies it as divinely authorized. The Book of Mormon declares that death seals one's fate; later LDS teaching opens a post-mortem window for conversion.</p>
+    <p>These contradictions present a serious challenge to the claim that the same God who inspired the Book of Mormon also inspired the Doctrine and Covenants and the teachings of subsequent prophets. From the Catholic perspective, they confirm what the Church has always taught: that the deposit of faith was delivered "once for all to the saints" (Jude 1:3) and that the Magisterium exists precisely to guard, interpret, and transmit that deposit faithfully across the centuries. Authentic doctrinal development deepens understanding without contradicting prior teaching — a criterion that John Henry Newman articulated in his <em>Essay on the Development of Christian Doctrine</em> and that the LDS trajectory manifestly fails to meet.</p>
+    <p>The invitation to our LDS brothers and sisters is not to abandon their sincere love for Christ or their desire to follow God's will. It is to examine honestly whether the theological structure they have inherited can bear the weight of these contradictions, and whether there exists a Church that has, by God's grace, maintained doctrinal coherence and apostolic authority across two millennia.</p>
+  </div>
+
+  <!-- ENDNOTES -->
+  <div class="endnotes">
+    <div class="endnotes-title">Notes</div>
+    <ol>
+      <li>Joseph Smith, <em>History of the Church</em>, 4:461.</li>
+      <li>Ibid.</li>
+      <li>LeRoi C. Snow, "Devotion to Divine Inspiration," <em>Improvement Era</em>, June 1919, p. 656; cf. <em>Teachings of Presidents of the Church: Lorenzo Snow</em> (2012), ch. 5.</li>
+      <li>Bruce R. McConkie, <em>Mormon Doctrine</em>, 2nd ed. (Salt Lake City: Bookcraft, 1966), pp. 576–577.</li>
+      <li>Howard W. Hunter, "A Temple-Motivated People," <em>Ensign</em>, March 2004, p. 41.</li>
+      <li>FairLatterDaySaints.org, "Book of Mormon: Why Is Baptism for the Dead Not Taught?"</li>
+      <li>"Plural Marriage in Kirtland and Nauvoo," Gospel Topics Essays, churchofjesuschrist.org. Estimates range between 30–40 plural wives.</li>
+      <li>William Clayton, Affidavit, Salt Lake County, Utah Territory, 16 Feb. 1874, Church History Library.</li>
+      <li>Brigham Young, <em>Journal of Discourses</em>, vol. 1, p. 51.</li>
+      <li>Joseph Fielding Smith, <em>Doctrines of Salvation</em>, vol. 1, p. 19.</li>
+    </ol>
+  </div>
+
+</main>
+
+<footer>&copy; One Faith Delivered &nbsp;&#8901;&nbsp; All Rights Reserved</footer>
+
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">One Faith Delivered</div>
+    <a href="../index.html">Home</a>
+    <a href="../articles.html">Articles</a>
+    <a href="../charts.html">Charts</a>
+    <a href="../topics.html">Topics</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../articles.html" class="sidebar-back">&#8592; All Articles</a>
+    <div class="sidebar-ornament">✦ ✦ ✦</div>
+  </div>
+</aside>
+
+<script>
+function toggleSidebar() {
+  var btn = document.querySelector('.nav-hamburger'),
+      sidebar = document.querySelector('.sidebar'),
+      overlay = document.querySelector('.sidebar-overlay');
+  var isOpen = sidebar.classList.contains('open');
+  if (isOpen) {
+    sidebar.classList.remove('open');
+    btn.classList.remove('open');
+    overlay.classList.remove('visible');
+    document.body.style.overflow = '';
+  } else {
+    sidebar.classList.add('open');
+    btn.classList.add('open');
+    overlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar();
+});
+</script>
+
+</body>
+</html>

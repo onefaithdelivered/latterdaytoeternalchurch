@@ -697,12 +697,9 @@ main {
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: #E8E0D4;
-    background-image:
-      radial-gradient(ellipse at 20% 20%, rgba(197,163,85,0.08) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 80%, rgba(107,29,42,0.06) 0%, transparent 50%);
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    color: var(--ink);
+    background: var(--parchment);
+    font-family: 'Source Serif 4', Georgia, serif;
+    color: var(--text);
 }
 
   .page {
@@ -888,9 +885,10 @@ main {
   }
 
   .final-verdict p {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Source Serif 4', serif;
     font-size: 16px;
     font-style: italic;
+    font-weight: 300;
     color: rgba(245,240,232,0.85);
     line-height: 1.6;
     max-width: 600px;
@@ -968,7 +966,7 @@ main {
   .sidebar-overlay {
     display: none;
     position: fixed; inset: 0;
-    background: rgba(0,0,0,0.55);
+    background: rgba(0,0,0,0.45);
     z-index: 10000;
     backdrop-filter: blur(2px);
   }
@@ -978,25 +976,24 @@ main {
     top: 0; right: -280px;
     width: 260px;
     height: 100%;
-    background: linear-gradient(to bottom, #1a0d05, #120800);
-    border-left: 1px solid rgba(201,168,76,0.3);
+    background: linear-gradient(to bottom, #FAF6F0, #F5F0E8);
+    border-left: 1px solid var(--line-gray);
     z-index: 10002;
     transition: right 0.3s ease;
     overflow-y: auto;
   }
   .sidebar.open { right: 0; }
   .sidebar-brand {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #C9A84C;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--crimson);
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(201,168,76,0.2);
+    border-bottom: 1px solid var(--line-gray);
   }
   .sidebar-ornament {
-    color: #8B6914;
+    color: var(--gold);
     font-size: 11px;
     letter-spacing: 8px;
     text-align: center;
@@ -1258,7 +1255,7 @@ main {
   .verdict-text {
     font-size: 14px;
     font-style: italic;
-    color: var(--gold-light);
+    color: var(--text);
     line-height: 1.6;
   }
 
@@ -1279,7 +1276,7 @@ main {
   }
   .footer-url {
     font-size: 13px;
-    color: rgba(245,240,232,0.35);
+    color: var(--muted);
     font-style: italic;
   }
   .footer-ornament {
@@ -1296,7 +1293,7 @@ main {
   .sidebar-overlay {
     display: none;
     position: fixed; inset: 0;
-    background: rgba(44,24,16,0.45);
+    background: rgba(0,0,0,0.45);
     z-index: 10000;
     backdrop-filter: blur(2px);
   }
@@ -1306,25 +1303,24 @@ main {
     top: 0; right: -280px;
     width: 260px;
     height: 100%;
-    background: linear-gradient(to bottom, #FAF6F0, var(--cream));
-    border-left: 1px solid rgba(201,168,76,0.3);
+    background: linear-gradient(to bottom, #FAF6F0, #F5F0E8);
+    border-left: 1px solid var(--line-gray);
     z-index: 10002;
     transition: right 0.3s ease;
     overflow-y: auto;
   }
   .sidebar.open { right: 0; }
   .sidebar-brand {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--dark-gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--crimson);
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(201,168,76,0.2);
+    border-bottom: 1px solid var(--line-gray);
   }
   .sidebar-ornament {
-    color: var(--dark-gold);
+    color: var(--gold);
     font-size: 11px;
     letter-spacing: 8px;
     text-align: center;
