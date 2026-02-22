@@ -559,6 +559,82 @@
     .jump-btn { font-size: 0.68rem; padding: 0.5rem 1rem; }
   }
 
+  /* ─── FILTER BAR ─── */
+  .filter-bar {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding: 0 1.5rem 1.5rem;
+  }
+  .filter-group {
+    margin-bottom: 1.5rem;
+  }
+  .filter-group-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+  .filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+  }
+  .filter-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--gold-dark);
+    border-radius: 20px;
+    background: rgba(201,168,76,0.08);
+    color: var(--gold-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+  .filter-btn:hover {
+    background: rgba(201,168,76,0.16);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+  .filter-btn.active {
+    background: var(--gold);
+    color: var(--bg);
+    border-color: var(--gold);
+    font-weight: 600;
+  }
+  @media (max-width: 768px) {
+    .filter-bar { padding: 0 1rem 1.5rem; }
+    .filter-btn { font-size: 0.68rem; padding: 0.5rem 1rem; }
+  }
+  @media (max-width: 600px) {
+    .filter-bar { margin: 1.5rem auto 0; padding: 0 1rem 1rem; }
+    .filter-group { margin-bottom: 1rem; }
+    .filter-group-title { font-size: 0.75rem; margin-bottom: 0.5rem; }
+    .filter-buttons { gap: 0.4rem; }
+    .filter-btn { font-size: 0.65rem; padding: 0.45rem 0.9rem; border-radius: 15px; }
+  }
+
+  /* ─── FILTER ANIMATIONS ─── */
+  @keyframes chartFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes chartFadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+  .chart-card.hidden {
+    display: none;
+  }
+  .chart-card.visible {
+    animation: chartFadeIn 0.4s ease-in-out;
+  }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -618,12 +694,32 @@
   </p>
 </header>
 
-<!-- ─── SECTION JUMP NAV ─── -->
-<nav class="jump-nav" aria-label="Jump to section">
-  <a class="jump-btn" href="#comparison">Comparison Charts</a>
-  <a class="jump-btn" href="#timelines">Timelines</a>
-  <a class="jump-btn" href="#lds-history">LDS History &amp; Polygamy</a>
-</nav>
+<!-- ─── FILTER BAR ─── -->
+<div class="filter-bar">
+  <div class="filter-group">
+    <div class="filter-group-title">By Visual Type</div>
+    <div class="filter-buttons">
+      <button class="filter-btn filter-type-btn active" data-type="all">All</button>
+      <button class="filter-btn filter-type-btn" data-type="comparison">Comparison Charts</button>
+      <button class="filter-btn filter-type-btn" data-type="timeline">Timelines</button>
+      <button class="filter-btn filter-type-btn" data-type="flowchart">Flowcharts</button>
+      <button class="filter-btn filter-type-btn" data-type="interactive">Interactive Tools</button>
+      <button class="filter-btn filter-type-btn" data-type="reference">Reference</button>
+      <button class="filter-btn filter-type-btn" data-type="matrix">Matrix</button>
+    </div>
+  </div>
+  <div class="filter-group">
+    <div class="filter-group-title">By Topic</div>
+    <div class="filter-buttons">
+      <button class="filter-btn filter-topic-btn active" data-topic="all">All</button>
+      <button class="filter-btn filter-topic-btn" data-topic="doctrine">Doctrine</button>
+      <button class="filter-btn filter-topic-btn" data-topic="scripture">Scripture &amp; Evidence</button>
+      <button class="filter-btn filter-topic-btn" data-topic="church-history">Church History</button>
+      <button class="filter-btn filter-topic-btn" data-topic="lds-history">LDS History</button>
+      <button class="filter-btn filter-topic-btn" data-topic="lds-claims">LDS Claims</button>
+    </div>
+  </div>
+</div>
 
 <!-- ─── MAIN ─── -->
 <main class="charts-page">
@@ -638,7 +734,7 @@
 
   <div class="charts-grid">
 
-    <a class="chart-card" href="charts/side-by-side-charts.html">
+    <a class="chart-card" href="charts/side-by-side-charts.html" data-type="comparison" data-topic="doctrine">
       <div class="chart-preview preview-comparison">
         <div class="preview-inner">
           <div class="preview-col lds">
@@ -672,7 +768,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/historicity-comparison.html">
+    <a class="chart-card" href="charts/historicity-comparison.html" data-type="comparison" data-topic="scripture">
       <div class="chart-preview preview-comparison">
         <div class="preview-inner">
           <div class="preview-col lds">
@@ -702,7 +798,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/nature-of-god-three-views.html">
+    <a class="chart-card" href="charts/nature-of-god-three-views.html" data-type="comparison" data-topic="doctrine">
       <div class="chart-preview preview-comparison">
         <div class="preview-inner">
           <div class="preview-col lds">
@@ -728,7 +824,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/early-church-believed.html">
+    <a class="chart-card" href="charts/early-church-believed.html" data-type="comparison" data-topic="church-history">
       <div class="chart-preview preview-comparison">
         <div class="preview-inner">
           <div class="preview-col lds">
@@ -756,7 +852,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/great-apostasy-claim.html">
+    <a class="chart-card" href="charts/great-apostasy-claim.html" data-type="comparison" data-topic="church-history">
       <div class="chart-preview preview-comparison">
         <div class="preview-inner">
           <div class="preview-col lds">
@@ -784,7 +880,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/salvation-flowchart.html">
+    <a class="chart-card" href="charts/salvation-flowchart.html" data-type="flowchart" data-topic="doctrine">
       <div class="chart-preview preview-comparison">
         <div class="preview-inner">
           <div class="preview-col lds">
@@ -810,7 +906,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/biblical-typology.html">
+    <a class="chart-card" href="charts/biblical-typology.html" data-type="comparison" data-topic="scripture">
       <div class="chart-preview preview-comparison">
         <div class="preview-inner">
           <div class="preview-col cath">
@@ -836,7 +932,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/manuscript-evidence.html">
+    <a class="chart-card" href="charts/manuscript-evidence.html" data-type="comparison" data-topic="scripture">
       <div class="chart-preview preview-comparison">
         <div class="preview-inner">
           <div class="preview-col cath">
@@ -864,7 +960,7 @@
       </div>
     </a>
 
-    <a class="chart-card wide" href="charts/doctrine-comparison-matrix.html">
+    <a class="chart-card wide" href="charts/doctrine-comparison-matrix.html" data-type="matrix" data-topic="doctrine">
       <div class="chart-preview preview-comparison">
         <div class="preview-inner">
           <div class="preview-col cath">
@@ -892,7 +988,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/citation-tracer.html">
+    <a class="chart-card" href="charts/citation-tracer.html" data-type="interactive" data-topic="lds-claims">
       <div class="chart-preview preview-comparison">
         <div class="preview-inner">
           <div class="preview-col cath">
@@ -918,7 +1014,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/theological-glossary.html">
+    <a class="chart-card" href="charts/theological-glossary.html" data-type="reference" data-topic="doctrine">
       <div class="chart-preview preview-comparison">
         <div class="preview-inner">
           <div class="preview-col cath">
@@ -944,7 +1040,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/christian-family-tree.html">
+    <a class="chart-card" href="charts/christian-family-tree.html" data-type="interactive" data-topic="church-history">
       <div class="chart-preview preview-comparison">
         <div class="preview-inner">
           <div class="preview-col cath">
@@ -975,7 +1071,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/lds-contradiction-tracker.html">
+    <a class="chart-card" href="charts/lds-contradiction-tracker.html" data-type="interactive" data-topic="lds-claims">
       <div class="chart-preview preview-comparison">
         <div class="preview-inner">
           <div class="preview-col lds">
@@ -1003,7 +1099,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/prophetic-criteria-checker.html">
+    <a class="chart-card" href="charts/prophetic-criteria-checker.html" data-type="interactive" data-topic="lds-claims">
       <div class="chart-preview preview-comparison">
         <div class="preview-inner">
           <div class="preview-col cath">
@@ -1043,7 +1139,7 @@
 
   <div class="charts-grid">
 
-    <a class="chart-card wide" href="charts/church-history-timeline.html">
+    <a class="chart-card wide" href="charts/church-history-timeline.html" data-type="timeline" data-topic="church-history">
       <div class="chart-preview preview-timeline">
         <div class="preview-inner">
           <div class="preview-line-track">
@@ -1068,7 +1164,7 @@
       </div>
     </a>
 
-    <a class="chart-card wide" href="charts/two-timelines.html">
+    <a class="chart-card wide" href="charts/two-timelines.html" data-type="timeline" data-topic="church-history">
       <div class="chart-preview preview-timeline">
         <div class="preview-inner">
           <div class="preview-line-track">
@@ -1096,7 +1192,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/apostolic-succession.html">
+    <a class="chart-card" href="charts/apostolic-succession.html" data-type="timeline" data-topic="church-history">
       <div class="chart-preview preview-timeline">
         <div class="preview-inner">
           <div class="preview-line-track">
@@ -1122,7 +1218,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/councils-creeds-timeline.html">
+    <a class="chart-card" href="charts/councils-creeds-timeline.html" data-type="timeline" data-topic="church-history">
       <div class="chart-preview preview-timeline">
         <div class="preview-inner">
           <div class="preview-line-track">
@@ -1147,7 +1243,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/doctrine-changes.html">
+    <a class="chart-card" href="charts/doctrine-changes.html" data-type="timeline" data-topic="lds-history">
       <div class="chart-preview preview-timeline">
         <div class="preview-inner">
           <div class="preview-line-track">
@@ -1171,7 +1267,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/joseph-smith-evolving-god.html">
+    <a class="chart-card" href="charts/joseph-smith-evolving-god.html" data-type="timeline" data-topic="lds-history">
       <div class="chart-preview preview-timeline">
         <div class="preview-inner">
           <div class="preview-line-track">
@@ -1193,7 +1289,7 @@
       </div>
     </a>
 
-    <a class="chart-card wide" href="charts/scripture-trail.html">
+    <a class="chart-card wide" href="charts/scripture-trail.html" data-type="timeline" data-topic="scripture">
       <div class="chart-preview preview-timeline">
         <div class="preview-inner">
           <div class="preview-line-track">
@@ -1232,7 +1328,7 @@
 
   <div class="charts-grid">
 
-    <a class="chart-card" href="charts/smith_polygamy_timeline.html">
+    <a class="chart-card" href="charts/smith_polygamy_timeline.html" data-type="timeline" data-topic="lds-history">
       <div class="chart-preview preview-timeline">
         <div class="preview-inner">
           <div class="preview-line-track">
@@ -1257,7 +1353,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/lds_polygamist_prophets.html">
+    <a class="chart-card" href="charts/lds_polygamist_prophets.html" data-type="comparison" data-topic="lds-history">
       <div class="chart-preview preview-comparison">
         <div class="preview-inner">
           <div class="preview-col lds">
@@ -1286,7 +1382,7 @@
       </div>
     </a>
 
-    <a class="chart-card" href="charts/book-of-abraham-problem.html">
+    <a class="chart-card" href="charts/book-of-abraham-problem.html" data-type="comparison" data-topic="scripture">
       <div class="chart-preview preview-comparison">
         <div class="preview-inner">
           <div class="preview-col lds">
@@ -1314,7 +1410,7 @@
       </div>
     </a>
 
-    <a class="chart-card wide" href="charts/lds-race-priesthood-ban.html">
+    <a class="chart-card wide" href="charts/lds-race-priesthood-ban.html" data-type="timeline" data-topic="lds-history">
       <div class="chart-preview preview-timeline">
         <div class="preview-inner">
           <div class="preview-line-track">
@@ -1386,6 +1482,97 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar();
     });
+
+    // ─── CHART FILTERING LOGIC ───
+    let currentTypeFilter = 'all';
+    let currentTopicFilter = 'all';
+
+    function initializeFilterButtons() {
+      const typeButtons = document.querySelectorAll('.filter-type-btn');
+      const topicButtons = document.querySelectorAll('.filter-topic-btn');
+
+      typeButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          currentTypeFilter = this.getAttribute('data-type');
+          updateTypeButtonStates(typeButtons);
+          applyFilters();
+        });
+      });
+
+      topicButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+          currentTopicFilter = this.getAttribute('data-topic');
+          updateTopicButtonStates(topicButtons);
+          applyFilters();
+        });
+      });
+    }
+
+    function updateTypeButtonStates(buttons) {
+      buttons.forEach(btn => {
+        if (btn.getAttribute('data-type') === currentTypeFilter) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    function updateTopicButtonStates(buttons) {
+      buttons.forEach(btn => {
+        if (btn.getAttribute('data-topic') === currentTopicFilter) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+    }
+
+    function applyFilters() {
+      const chartCards = document.querySelectorAll('.chart-card');
+      const sections = document.querySelectorAll('.section-intro');
+
+      // Filter individual cards
+      chartCards.forEach(card => {
+        const cardType = card.getAttribute('data-type');
+        const cardTopic = card.getAttribute('data-topic');
+
+        const typeMatch = currentTypeFilter === 'all' || cardType === currentTypeFilter;
+        const topicMatch = currentTopicFilter === 'all' || cardTopic === currentTopicFilter;
+
+        if (typeMatch && topicMatch) {
+          card.classList.remove('hidden');
+          card.classList.add('visible');
+        } else {
+          card.classList.add('hidden');
+          card.classList.remove('visible');
+        }
+      });
+
+      // Show/hide sections based on visible cards
+      sections.forEach(section => {
+        const sectionId = section.id;
+        const grid = section.nextElementSibling;
+
+        if (grid && grid.classList.contains('charts-grid')) {
+          const visibleCards = grid.querySelectorAll('.chart-card:not(.hidden)');
+          if (visibleCards.length > 0) {
+            section.style.display = 'block';
+            grid.style.display = 'grid';
+          } else {
+            section.style.display = 'none';
+            grid.style.display = 'none';
+          }
+        }
+      });
+    }
+
+    // Initialize filters when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeFilterButtons);
+    } else {
+      initializeFilterButtons();
+    }
   </script>
 
 </body>

@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>What Do You Believe? | One Faith Delivered</title>
+<meta name="description" content="A 12-question theological self-assessment. Answer what you believe about God, Scripture, salvation, and the afterlife — and discover which Christian tradition your beliefs actually align with." />
+<link rel="canonical" href="https://onefaithdelivered.org/quiz.html" />
+<link rel="icon" href="favicons/favicon.ico" sizes="any" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+
+/* ══════════════════════════════════════════════════════════
+   DESIGN SYSTEM — matches index.html exactly
+   ══════════════════════════════════════════════════════════ */
+:root {
+  --gold:        #C9A84C;
+  --gold-light:  #E8D08A;
+  --gold-dark:   #8B6914;
+  --crimson:     #7A1C2E;
+  --crimson-lt:  #B04060;
+  --parchment:   #F5EDD8;
+  --parchment-dk:#E8D9B8;
+  --ink:         #1A0F05;
+  --ink-soft:    #3D2B1A;
+  --ivory:       #FAF6EE;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--ink);
+  color: var(--parchment);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.8;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, #3D1A08 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 10% 50%, #5C1A10 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 90% 50%, #3D1A08 0%, transparent 60%),
+    linear-gradient(to bottom, #0D0703, #1A0F05 40%, #0D0703);
+  z-index: -2;
+}
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  z-index: -1; pointer-events: none;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: linear-gradient(to bottom, rgba(13,7,3,0.98), rgba(13,7,3,0.92));
+  border-bottom: 1px solid var(--gold-dark);
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+}
+.nav-brand {
+  font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold-light); text-decoration: none;
+}
+.nav-back {
+  font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold-dark); text-decoration: none;
+  border: 1px solid rgba(201,168,76,0.3); padding: 0.35rem 1rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-back:hover { color: var(--gold); border-color: var(--gold); }
+
+/* ── SHARED TYPOGRAPHY ── */
+.eyebrow {
+  font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.35em;
+  text-transform: uppercase; color: var(--gold);
+  display: block; margin-bottom: 0.6rem;
+}
+.ornament {
+  display: flex; align-items: center; gap: 1rem;
+  color: var(--gold); font-size: 1.1rem; justify-content: center; margin: 1.2rem 0;
+}
+.ornament::before, .ornament::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-dark), var(--gold), var(--gold-dark), transparent);
+}
+
+/* ── PAGE WRAPPER ── */
+.page {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 5rem 2rem 6rem;
+}
+
+/* ══════════════════════════════════════════════════════════
+   INTRO SCREEN
+   ══════════════════════════════════════════════════════════ */
+#screen-intro {
+  text-align: center;
+  animation: fadeUp 0.7s 0.1s both;
+}
+.intro-badge {
+  font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--gold-dark);
+  border: 1px solid rgba(201,168,76,0.3); padding: 0.35rem 1.2rem; border-radius: 2px;
+  display: inline-block; margin-bottom: 2rem;
+}
+.intro-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2rem, 5vw, 3.6rem); font-weight: 700; line-height: 1.15;
+  color: var(--parchment); margin-bottom: 0.4rem;
+}
+.intro-title span { color: var(--gold); display: block; }
+.intro-subtitle {
+  font-style: italic; font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--parchment-dk); max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7;
+}
+.intro-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  margin: 2.5rem 0; text-align: left;
+}
+.intro-card {
+  background: linear-gradient(160deg, rgba(201,168,76,0.06), rgba(26,15,5,0.4));
+  border: 1px solid rgba(201,168,76,0.18); padding: 1.3rem 1.2rem;
+}
+.intro-card-icon { font-size: 1.4rem; margin-bottom: 0.6rem; display: block; color: var(--gold); }
+.intro-card h4 {
+  font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--parchment); margin-bottom: 0.4rem;
+}
+.intro-card p { font-size: 0.88rem; color: var(--parchment-dk); line-height: 1.6; }
+.intro-note {
+  font-size: 0.85rem; color: rgba(232,217,184,0.45); font-style: italic;
+  margin: 1.5rem 0 2.5rem;
+}
+.btn-start {
+  font-family: 'Cinzel', serif; font-size: 0.82rem; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+  border: none; padding: 1rem 3rem; cursor: pointer; text-decoration: none;
+  transition: opacity 0.25s, transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 4px 20px rgba(201,168,76,0.35); display: inline-block;
+}
+.btn-start:hover { opacity: 0.88; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.45); }
+
+/* ══════════════════════════════════════════════════════════
+   QUESTION SCREEN
+   ══════════════════════════════════════════════════════════ */
+#screen-quiz { display: none; }
+
+/* Progress bar */
+.quiz-progress-wrap {
+  margin-bottom: 2.5rem;
+}
+.quiz-progress-meta {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 0.6rem;
+}
+.quiz-progress-label {
+  font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold-dark);
+}
+.quiz-progress-count {
+  font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.1em; color: var(--gold);
+}
+.quiz-progress-track {
+  height: 2px; background: rgba(201,168,76,0.15); overflow: hidden;
+}
+.quiz-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--crimson), var(--gold));
+  transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+  width: 0%;
+}
+
+/* Question card */
+.question-card {
+  animation: fadeUp 0.45s both;
+}
+.question-theme {
+  font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold-dark); margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 10px;
+}
+.question-theme::before {
+  content: ''; display: inline-block; width: 18px; height: 1px;
+  background: var(--gold-dark); flex-shrink: 0;
+}
+.question-text {
+  font-family: 'EB Garamond', serif; font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 500; line-height: 1.5; color: var(--parchment);
+  margin-bottom: 2rem;
+}
+
+/* Answer options */
+.answers { display: flex; flex-direction: column; gap: 0.9rem; margin-bottom: 2rem; }
+
+.answer-btn {
+  background: linear-gradient(160deg, rgba(201,168,76,0.04), rgba(26,15,5,0.5));
+  border: 1px solid rgba(201,168,76,0.18);
+  padding: 1.2rem 1.5rem 1.2rem 4.2rem;
+  cursor: pointer; text-align: left; position: relative;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  color: var(--parchment-dk); font-family: 'EB Garamond', serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.05rem); line-height: 1.6;
+  display: block; width: 100%;
+}
+.answer-btn:hover:not(:disabled) {
+  border-color: rgba(201,168,76,0.5);
+  background: linear-gradient(160deg, rgba(201,168,76,0.09), rgba(26,15,5,0.4));
+  transform: translateX(4px);
+  color: var(--parchment);
+}
+.answer-btn::before {
+  content: attr(data-letter);
+  position: absolute; left: 1.4rem; top: 50%; transform: translateY(-50%);
+  font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.1em;
+  color: var(--gold-dark); width: 1.6rem; text-align: center;
+  border: 1px solid rgba(201,168,76,0.25); padding: 0.1rem 0;
+  transition: all 0.2s;
+}
+.answer-btn:hover:not(:disabled)::before {
+  border-color: var(--gold-dark); color: var(--gold);
+}
+
+/* Selected states */
+.answer-btn.selected-catholic {
+  border-color: var(--crimson-lt);
+  background: linear-gradient(160deg, rgba(122,28,46,0.15), rgba(26,15,5,0.5));
+  color: var(--parchment); transform: none;
+}
+.answer-btn.selected-catholic::before {
+  background: var(--crimson); border-color: var(--crimson); color: #fff;
+}
+.answer-btn.selected-lds {
+  border-color: rgba(100,100,100,0.6);
+  background: linear-gradient(160deg, rgba(80,80,80,0.14), rgba(26,15,5,0.5));
+  color: var(--parchment); transform: none;
+}
+.answer-btn.selected-lds::before {
+  background: #5A5A5A; border-color: #5A5A5A; color: #fff;
+}
+.answer-btn.correct {
+  border-color: rgba(201,168,76,0.55);
+  background: linear-gradient(160deg, rgba(201,168,76,0.1), rgba(26,15,5,0.45));
+}
+.answer-btn:disabled { cursor: default; transform: none !important; }
+
+/* Reveal block (shown after answering) */
+.reveal-block {
+  display: none;
+  padding: 1.2rem 1.5rem;
+  border-left: 3px solid var(--gold-dark);
+  background: rgba(201,168,76,0.05);
+  margin-bottom: 2rem;
+  animation: fadeUp 0.35s both;
+}
+.reveal-block.visible { display: block; }
+.reveal-heading {
+  font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold-dark); margin-bottom: 0.6rem;
+}
+.reveal-text { font-size: 0.92rem; color: var(--parchment-dk); line-height: 1.7; }
+.reveal-text em { color: var(--gold-light); font-style: italic; }
+.reveal-cite {
+  font-family: 'EB Garamond', serif; font-style: italic; font-size: 0.78rem;
+  color: rgba(232,217,184,0.4); margin-top: 0.5rem; display: block;
+}
+
+/* Next button */
+.btn-next {
+  font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--gold); background: transparent;
+  border: 1px solid var(--gold-dark); padding: 0.75rem 2.2rem;
+  cursor: pointer; transition: background 0.2s, color 0.2s, transform 0.2s;
+  display: none;
+}
+.btn-next.visible { display: inline-block; }
+.btn-next:hover { background: rgba(201,168,76,0.1); transform: translateX(4px); }
+.btn-next-wrap { text-align: right; }
+
+/* ══════════════════════════════════════════════════════════
+   RESULTS SCREEN
+   ══════════════════════════════════════════════════════════ */
+#screen-results { display: none; }
+
+.results-intro {
+  text-align: center; margin-bottom: 3rem;
+  animation: fadeUp 0.5s 0.1s both;
+}
+.results-verdict {
+  font-family: 'Cinzel', serif; font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+  font-weight: 700; line-height: 1.3; color: var(--parchment); margin-bottom: 0.6rem;
+}
+.results-verdict span.highlight-catholic { color: var(--crimson-lt); }
+.results-verdict span.highlight-lds      { color: #A0A0A0; }
+.results-verdict span.highlight-mixed    { color: var(--gold); }
+.results-tagline {
+  font-style: italic; font-size: 1rem; color: rgba(232,217,184,0.55); margin-bottom: 2rem;
+}
+
+/* Dual percentage bars */
+.score-bars {
+  background: linear-gradient(160deg, rgba(201,168,76,0.05), rgba(26,15,5,0.4));
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 2rem 2rem 1.8rem;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.5s 0.25s both;
+}
+.score-bar-row {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem;
+}
+.score-bar-row:last-child { margin-bottom: 0; }
+.score-bar-label {
+  font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.14em;
+  text-transform: uppercase; width: 90px; flex-shrink: 0;
+}
+.score-bar-label.lbl-catholic { color: var(--crimson-lt); }
+.score-bar-label.lbl-lds      { color: #A0A0A0; }
+.score-bar-track {
+  flex: 1; height: 8px; background: rgba(255,255,255,0.06); overflow: hidden;
+}
+.score-bar-fill {
+  height: 100%; width: 0%;
+  transition: width 1s cubic-bezier(0.4,0,0.2,1);
+}
+.fill-catholic {
+  background: linear-gradient(90deg, var(--crimson), var(--crimson-lt));
+}
+.fill-lds {
+  background: linear-gradient(90deg, #4A4A4A, #909090);
+}
+.score-bar-pct {
+  font-family: 'Cinzel', serif; font-size: 0.82rem; letter-spacing: 0.08em;
+  width: 44px; flex-shrink: 0; text-align: right;
+}
+.pct-catholic { color: var(--crimson-lt); }
+.pct-lds      { color: #A0A0A0; }
+
+/* Per-question breakdown */
+.breakdown-section {
+  margin-bottom: 2.5rem; animation: fadeUp 0.5s 0.35s both;
+}
+.breakdown-title {
+  font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold-dark);
+  border-bottom: 1px solid rgba(201,168,76,0.15); padding-bottom: 0.6rem; margin-bottom: 1rem;
+}
+.breakdown-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem;
+}
+.breakdown-item {
+  display: flex; align-items: flex-start; gap: 0.7rem;
+  padding: 0.8rem 1rem;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(201,168,76,0.1);
+  font-size: 0.82rem;
+}
+.breakdown-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 5px;
+}
+.dot-catholic { background: var(--crimson-lt); }
+.dot-lds      { background: #707070; }
+.breakdown-theme {
+  font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold-dark); display: block; margin-bottom: 2px;
+}
+.breakdown-answer { color: var(--parchment-dk); line-height: 1.45; }
+
+/* Key distinctions panel */
+.distinctions {
+  border: 1px solid rgba(201,168,76,0.2);
+  background: linear-gradient(160deg, rgba(201,168,76,0.04), rgba(26,15,5,0.4));
+  padding: 2rem; margin-bottom: 2.5rem; animation: fadeUp 0.5s 0.45s both;
+}
+.distinctions-title {
+  font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem;
+}
+.distinction-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+  padding: 0.9rem 0;
+  font-size: 0.88rem;
+}
+.distinction-row:last-child { border-bottom: none; padding-bottom: 0; }
+.distinction-theme {
+  font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold-dark);
+  grid-column: 1 / -1; margin-bottom: 0.4rem;
+}
+.distinction-catholic {
+  color: var(--parchment-dk); padding-right: 1.5rem;
+  border-right: 1px solid rgba(201,168,76,0.12);
+}
+.distinction-lds { color: rgba(232,217,184,0.45); padding-left: 1.5rem; }
+.distinction-col-header {
+  font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em;
+  text-transform: uppercase; display: block; margin-bottom: 3px;
+}
+.col-h-catholic { color: var(--crimson-lt); }
+.col-h-lds      { color: #707070; }
+
+/* Results CTA */
+.results-cta { text-align: center; animation: fadeUp 0.5s 0.55s both; }
+.results-cta-title {
+  font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold-dark); margin-bottom: 1rem;
+}
+.cta-buttons {
+  display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.btn-primary {
+  font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--ink);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark));
+  border: none; padding: 0.85rem 2.2rem; cursor: pointer; text-decoration: none;
+  transition: opacity 0.25s, transform 0.25s; display: inline-block;
+  box-shadow: 0 4px 20px rgba(201,168,76,0.3);
+}
+.btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
+.btn-secondary {
+  font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--gold); background: transparent;
+  border: 1px solid var(--gold-dark); padding: 0.85rem 2.2rem;
+  cursor: pointer; text-decoration: none; transition: background 0.25s, transform 0.25s;
+  display: inline-block;
+}
+.btn-secondary:hover { background: rgba(201,168,76,0.1); transform: translateY(-2px); }
+.btn-retake {
+  font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.16em;
+  text-transform: uppercase; color: rgba(201,168,76,0.35); background: none;
+  border: none; cursor: pointer; transition: color 0.2s; padding: 0.5rem 0;
+  text-decoration: underline; text-decoration-color: rgba(201,168,76,0.2);
+}
+.btn-retake:hover { color: var(--gold-dark); }
+
+/* Footer */
+footer {
+  border-top: 1px solid rgba(201,168,76,0.15);
+  padding: 2.5rem 2rem; text-align: center;
+}
+.footer-brand {
+  font-family: 'Cinzel Decorative', serif; font-size: 0.9rem;
+  color: var(--gold); margin-bottom: 0.4rem;
+}
+.footer-copy { font-size: 0.78rem; color: rgba(232,217,184,0.25); }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .page { padding: 3rem 1.2rem 4rem; }
+  .intro-cards { grid-template-columns: 1fr; }
+  .breakdown-grid { grid-template-columns: 1fr; }
+  .distinction-row { grid-template-columns: 1fr; gap: 0.6rem; }
+  .distinction-catholic { border-right: none; border-bottom: 1px solid rgba(201,168,76,0.12); padding-right: 0; padding-bottom: 0.6rem; }
+  .distinction-lds { padding-left: 0; }
+  .score-bar-label { width: 72px; font-size: 0.6rem; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a class="nav-brand" href="index.html">One Faith Delivered</a>
+  <a class="nav-back" href="index.html">&#8592; Home</a>
+</nav>
+
+<!-- ── PAGE ── -->
+<div class="page">
+
+  <!-- ════════════ INTRO SCREEN ════════════ -->
+  <div id="screen-intro">
+    <div style="text-align:center; margin-bottom:1.5rem;">
+      <span class="intro-badge">Theological Self-Assessment</span>
+    </div>
+    <h1 class="intro-title">What Do<br><span>You Believe?</span></h1>
+    <div class="ornament">✦</div>
+    <p class="intro-subtitle">
+      Twelve questions about God, Scripture, salvation, and eternity.
+      No correct answers. No tricks. Just an honest look at what you
+      actually believe — and what tradition those beliefs belong to.
+    </p>
+
+    <div class="intro-cards">
+      <div class="intro-card">
+        <span class="intro-card-icon">✝&#xFE0E;</span>
+        <h4>Theology</h4>
+        <p>Questions about the nature of God, the Trinity, and human identity before Him.</p>
+      </div>
+      <div class="intro-card">
+        <span class="intro-card-icon">📜</span>
+        <h4>Authority</h4>
+        <p>Questions about Scripture, revelation, the canon, and where truth is found.</p>
+      </div>
+      <div class="intro-card">
+        <span class="intro-card-icon">⚖</span>
+        <h4>Eternity</h4>
+        <p>Questions about salvation, the afterlife, marriage, and humanity's final destiny.</p>
+      </div>
+    </div>
+
+    <p class="intro-note">Takes about 5 minutes. Primary-source citations appear after each question.</p>
+
+    <div style="text-align:center;">
+      <button class="btn-start" onclick="startQuiz()">Begin the Assessment &rarr;</button>
+    </div>
+  </div>
+
+  <!-- ════════════ QUIZ SCREEN ════════════ -->
+  <div id="screen-quiz">
+
+    <div class="quiz-progress-wrap">
+      <div class="quiz-progress-meta">
+        <span class="quiz-progress-label">Progress</span>
+        <span class="quiz-progress-count" id="progress-count">Question 1 of 12</span>
+      </div>
+      <div class="quiz-progress-track">
+        <div class="quiz-progress-fill" id="progress-fill"></div>
+      </div>
+    </div>
+
+    <div class="question-card" id="question-card">
+      <div class="question-theme" id="q-theme"></div>
+      <p class="question-text" id="q-text"></p>
+      <div class="answers" id="q-answers"></div>
+      <div class="reveal-block" id="q-reveal">
+        <div class="reveal-heading">Why This Question Matters</div>
+        <div class="reveal-text" id="q-reveal-text"></div>
+        <span class="reveal-cite" id="q-reveal-cite"></span>
+      </div>
+      <div class="btn-next-wrap">
+        <button class="btn-next" id="btn-next" onclick="nextQuestion()">
+          Next Question &rarr;
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ════════════ RESULTS SCREEN ════════════ -->
+  <div id="screen-results">
+
+    <div class="results-intro">
+      <span class="eyebrow">Your Results</span>
+      <h2 class="results-verdict" id="results-verdict"></h2>
+      <p class="results-tagline" id="results-tagline"></p>
+      <div class="ornament">✦</div>
+    </div>
+
+    <div class="score-bars">
+      <div class="score-bar-row">
+        <div class="score-bar-label lbl-catholic">Catholic</div>
+        <div class="score-bar-track"><div class="score-bar-fill fill-catholic" id="bar-catholic"></div></div>
+        <div class="score-bar-pct pct-catholic" id="pct-catholic">0%</div>
+      </div>
+      <div class="score-bar-row">
+        <div class="score-bar-label lbl-lds">LDS</div>
+        <div class="score-bar-track"><div class="score-bar-fill fill-lds" id="bar-lds"></div></div>
+        <div class="score-bar-pct pct-lds" id="pct-lds">0%</div>
+      </div>
+    </div>
+
+    <div class="breakdown-section">
+      <div class="breakdown-title">Your Answers by Topic</div>
+      <div class="breakdown-grid" id="breakdown-grid"></div>
+    </div>
+
+    <div class="distinctions">
+      <div class="distinctions-title">✦ &nbsp; The Key Theological Distinctions</div>
+
+      <div class="distinction-row">
+        <span class="distinction-theme">The Nature of God</span>
+        <div class="distinction-catholic">
+          <span class="distinction-col-header col-h-catholic">Catholic</span>
+          Eternal, incorporeal, unchanging spirit. "Before the mountains were brought forth… from everlasting to everlasting you are God." God was never a mortal man.
+        </div>
+        <div class="distinction-lds">
+          <span class="distinction-col-header col-h-lds">LDS</span>
+          "God himself was once as we are now, and is an exalted man." — Joseph Smith, King Follett Discourse (1844). God the Father has a body of flesh and bones.
+        </div>
+      </div>
+
+      <div class="distinction-row">
+        <span class="distinction-theme">The Great Apostasy</span>
+        <div class="distinction-catholic">
+          <span class="distinction-col-header col-h-catholic">Catholic</span>
+          Christ promised the gates of Hell would not prevail against His Church (Mt 16:18). The Church persisted — documented in 2,000 years of unbroken apostolic succession.
+        </div>
+        <div class="distinction-lds">
+          <span class="distinction-col-header col-h-lds">LDS</span>
+          "All their creeds were an abomination… those professors were all corrupt." — Joseph Smith–History 1:19. Total apostasy occurred; complete restoration was required.
+        </div>
+      </div>
+
+      <div class="distinction-row">
+        <span class="distinction-theme">Human Destiny</span>
+        <div class="distinction-catholic">
+          <span class="distinction-col-header col-h-catholic">Catholic</span>
+          Eternal life is union with God as His beloved creatures — sharing in the divine nature by grace, not becoming gods by nature. Creator and creature remain distinct.
+        </div>
+        <div class="distinction-lds">
+          <span class="distinction-col-header col-h-lds">LDS</span>
+          "As man now is, God once was; as God now is, man may be." — Lorenzo Snow couplet. Exaltation means becoming gods, inheriting all the Father has.
+        </div>
+      </div>
+
+      <div class="distinction-row">
+        <span class="distinction-theme">Scripture &amp; Canon</span>
+        <div class="distinction-catholic">
+          <span class="distinction-col-header col-h-catholic">Catholic</span>
+          The 73-book canon was defined at the Council of Rome (AD 382). Scripture is interpreted through Tradition and the Magisterium. No new scripture will be added.
+        </div>
+        <div class="distinction-lds">
+          <span class="distinction-col-header col-h-lds">LDS</span>
+          "We believe the Bible to be the word of God as far as it is translated correctly; we also believe the Book of Mormon to be the word of God." — Articles of Faith 8.
+        </div>
+      </div>
+
+    </div><!-- /distinctions -->
+
+    <div class="results-cta">
+      <div class="results-cta-title">Continue the Investigation</div>
+      <div class="cta-buttons">
+        <a href="articles.html" class="btn-primary">Read the Articles</a>
+        <a href="charts.html" class="btn-secondary">Explore the Charts</a>
+      </div>
+      <button class="btn-retake" onclick="retake()">&#8635; &nbsp; Retake the Quiz</button>
+    </div>
+
+  </div><!-- /screen-results -->
+
+</div><!-- /page -->
+
+<footer>
+  <div class="footer-brand">One Faith Delivered</div>
+  <p class="footer-copy">&copy; 2026 One Faith Delivered. All rights reserved.</p>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════
+     QUIZ ENGINE
+     ══════════════════════════════════════════════════════════ -->
+<script>
+/* ────────────────────────────────────────────────────────────
+   QUESTION DATA
+   Each question:
+     theme  — display label
+     text   — the question itself (neutral framing)
+     opts   — [ { letter, text, tradition: 'catholic'|'lds' }, … ]
+     reveal — text shown after answering
+     cite   — source citation for the reveal
+   ──────────────────────────────────────────────────────────── */
+var QUESTIONS = [
+  {
+    theme: 'The Nature of God',
+    text: 'Which description of God feels most true to you?',
+    opts: [
+      {
+        letter: 'A',
+        text: 'God is eternal, incorporeal spirit — without a physical body, without passions, unchanging and unlimited, who has always been God and could never have been otherwise.',
+        tradition: 'catholic'
+      },
+      {
+        letter: 'B',
+        text: 'God the Father has a perfected physical body of flesh and bones. He is an exalted, glorified being who progressed to His current state, as we have the potential to progress.',
+        tradition: 'lds'
+      }
+    ],
+    reveal: 'This may be the most fundamental theological divide. Catholic teaching (rooted in Exodus 3:14, Psalm 90:2, Malachi 3:6, and the unanimous testimony of the Church Fathers) holds that God is eternal, unchanging spirit. LDS doctrine, defined in Joseph Smith\'s <em>King Follett Discourse</em> (1844) and D&C 130:22, holds that God the Father has a body "as tangible as man\'s."',
+    cite: 'Catholic: CCC §202–221; Psalm 90:2. LDS: D&C 130:22; King Follett Discourse (1844).'
+  },
+  {
+    theme: 'The Trinity',
+    text: 'How would you describe the relationship between the Father, the Son, and the Holy Spirit?',
+    opts: [
+      {
+        letter: 'A',
+        text: 'Three distinct Persons — Father, Son, and Holy Spirit — who share one divine nature and are co-equal, co-eternal, and inseparable. They are one God, not three gods.',
+        tradition: 'catholic'
+      },
+      {
+        letter: 'B',
+        text: 'Three separate, distinct beings who are unified in purpose, will, and testimony — but genuinely separate in substance and person. The Father and Son each have glorified bodies; the Holy Ghost is a personage of spirit.',
+        tradition: 'lds'
+      }
+    ],
+    reveal: 'The Council of Nicaea (AD 325) defined Trinitarian theology against Arianism — the belief that the Son was a separate, lesser being. All 318 bishops present affirmed one divine substance (<em>homoousios</em>). LDS theology explicitly rejects this definition, teaching three distinct beings. The original Book of Mormon (1830) actually contained Trinitarian language that later editions reduced.',
+    cite: 'Catholic: Nicene Creed (AD 325); CCC §§253–256. LDS: D&C 130:22; cf. 2 Nephi 31:21 vs. later editions.'
+  },
+  {
+    theme: 'The Great Apostasy',
+    text: 'What happened to Christ\'s Church after the Apostles died?',
+    opts: [
+      {
+        letter: 'A',
+        text: 'The Church suffered persecution, internal disputes, and human failures — but Christ\'s promise that "the gates of Hell shall not prevail" meant the Church persisted. Authority passed from bishop to bishop in an unbroken line.',
+        tradition: 'catholic'
+      },
+      {
+        letter: 'B',
+        text: 'The Church fell into total apostasy. Priesthood authority was lost from the earth, true doctrine was corrupted, and all existing churches became invalid — requiring a complete restoration through a new prophet in the 19th century.',
+        tradition: 'lds'
+      }
+    ],
+    reveal: 'The LDS "Great Apostasy" claim requires Matthew 16:18 to have failed completely — the gates of Hell prevailing for nearly 1,800 years. Catholic theology points to documented apostolic succession from the first century, patristic writings, and 21 ecumenical councils as evidence of continuity. Irenaeus (AD 180) already lists the complete succession of popes from Peter as apologetic evidence.',
+    cite: 'LDS: JS–History 1:19; D&C 1:30. Catholic: Matthew 16:18; Irenaeus, Against Heresies III.3.3 (AD 180).'
+  },
+  {
+    theme: 'Priesthood Authority',
+    text: 'How does valid religious authority originate and continue?',
+    opts: [
+      {
+        letter: 'A',
+        text: 'Priesthood authority flows in an unbroken line from Christ through the Apostles to ordained bishops and priests today. It has never been removed — it has been transmitted across twenty centuries.',
+        tradition: 'catholic'
+      },
+      {
+        letter: 'B',
+        text: 'Because the original priesthood was lost in the apostasy, it had to be physically restored by heavenly messengers — John the Baptist, and then Peter, James, and John — appearing to Joseph Smith between 1829 and 1830.',
+        tradition: 'lds'
+      }
+    ],
+    reveal: 'The LDS priesthood restoration account first appeared in print in the 1830s — years after it was claimed to have occurred — and the earliest version of D&C 27 lacks the John the Baptist narrative found in later editions. Catholic apostolic succession, by contrast, is documented continuously from the first century in patristic literature, conciliar records, and episcopal lineages available to any researcher.',
+    cite: 'LDS: LDS Gospel Topics Essay "Priesthood Restoration" (LDS.org, 2013). Catholic: CCC §§1536–1538; Clement of Rome, Epistle to the Corinthians §44 (c. AD 96).'
+  },
+  {
+    theme: 'Scripture & Revelation',
+    text: 'Is God\'s written revelation to humanity complete, or is it ongoing?',
+    opts: [
+      {
+        letter: 'A',
+        text: 'The canon of Scripture is closed. God\'s written revelation to the Church is complete in the 73 books of the Bible, interpreted through Tradition and the Church\'s teaching authority. No new scripture will be added.',
+        tradition: 'catholic'
+      },
+      {
+        letter: 'B',
+        text: 'The canon of Scripture is open. God has revealed additional scriptures — the Book of Mormon, Doctrine and Covenants, Pearl of Great Price — through living prophets, and may reveal more.',
+        tradition: 'lds'
+      }
+    ],
+    reveal: 'The Catholic 73-book canon was formally defined at the Council of Rome (AD 382) under Pope Damasus I, confirmed at Hippo (393) and Carthage (397). The Protestant 66-book canon dropped 7 deuterocanonical books in the 16th century. LDS scripture adds four standard works, and Articles of Faith 9 explicitly states: "We believe all that God has revealed, all that He does now reveal, and we believe that He will yet reveal many great and important things."',
+    cite: 'Catholic: Council of Rome (AD 382); Revelation 22:18. LDS: Articles of Faith 8–9; D&C 1:38.'
+  },
+  {
+    theme: 'Human Divine Potential',
+    text: 'What is the ultimate destiny of faithful human beings?',
+    opts: [
+      {
+        letter: 'A',
+        text: 'Eternal union with God — sharing in the divine nature by grace (2 Peter 1:4) and beholding God face-to-face. Humans become "partakers of the divine nature" but remain creatures distinct from the Creator, forever.',
+        tradition: 'catholic'
+      },
+      {
+        letter: 'B',
+        text: 'Exaltation — becoming gods and goddesses, inheriting all that the Father has. "As man now is, God once was; as God now is, man may be." The highest form of eternal life is godhood.',
+        tradition: 'lds'
+      }
+    ],
+    reveal: 'The Catholic concept of <em>theosis</em> (divinization) — becoming partakers of the divine nature — is ancient and real, but it maintains an eternal distinction between Creator and creature. LDS exaltation goes further: humans can become gods in the same ontological sense God is God. Isaiah 43:10 addresses this directly: "Before me no god was formed, nor shall there be any after me."',
+    cite: 'Catholic: CCC §§460, 1023; 2 Peter 1:4; Isaiah 43:10. LDS: Lorenzo Snow couplet; D&C 132:20; King Follett Discourse.'
+  },
+  {
+    theme: 'The Afterlife',
+    text: 'How would you describe what happens to people after death?',
+    opts: [
+      {
+        letter: 'A',
+        text: 'There are fundamentally two ultimate destinations — union with God in heaven (with purgatory as purification for those not fully ready) or eternal separation in hell. The choices made in this life are definitive.',
+        tradition: 'catholic'
+      },
+      {
+        letter: 'B',
+        text: 'There are three degrees of glory — the celestial, terrestrial, and telestial kingdoms — plus outer darkness for the most wicked. Almost everyone will be saved to some level of glory. Hell is reserved for very few.',
+        tradition: 'lds'
+      }
+    ],
+    reveal: 'LDS theology, revealed in D&C 76, presents a significantly more universalist afterlife than the biblical two-way framework. Jesus repeatedly describes a binary outcome — sheep and goats, saved and lost, narrow and wide gates — not a graduated tri-level system. The three degrees of glory have no counterpart in any Christian tradition before 1832.',
+    cite: 'Catholic: CCC §§1021–1037; Matthew 25:31–46; Luke 16:19–31. LDS: D&C 76 (vision of the three degrees of glory, 1832).'
+  },
+  {
+    theme: 'Salvation',
+    text: 'What does it mean to be "saved," and how does it happen?',
+    opts: [
+      {
+        letter: 'A',
+        text: 'Salvation is justification and sanctification by grace through faith, received through baptism and the sacraments. Christ\'s sacrifice on the Cross is fully sufficient. The goal is eternal life as God\'s beloved children.',
+        tradition: 'catholic'
+      },
+      {
+        letter: 'B',
+        text: 'General salvation (resurrection) is available to almost everyone. Exaltation — the highest form — requires faith, repentance, baptism by proper authority, receiving the Holy Ghost, and temple ordinances including eternal marriage.',
+        tradition: 'lds'
+      }
+    ],
+    reveal: 'LDS theology distinguishes between "salvation" (general resurrection, available to nearly all) and "exaltation" (godhood, available only through temple ordinances). Catholic theology holds that Christ\'s sacrifice is complete and sufficient — temple rituals, secret ordinances, and eternal marriage sealing are not conditions for entering eternal life. Paul writes: "For by grace you have been saved through faith. And this is not your own doing; it is the gift of God" (Ephesians 2:8).',
+    cite: 'Catholic: CCC §§1987–2005; Ephesians 2:8–9. LDS: Articles of Faith 3–4; D&C 131:1–4; D&C 132:19–20.'
+  },
+  {
+    theme: 'Marriage',
+    text: 'What is the nature and duration of marriage as God designed it?',
+    opts: [
+      {
+        letter: 'A',
+        text: 'Marriage is a sacrament — a covenant between one man and one woman, indissoluble until death. Christ restored the original one-flesh design, explicitly overriding the Mosaic accommodation. Marriage ends at death.',
+        tradition: 'catholic'
+      },
+      {
+        letter: 'B',
+        text: 'Marriage can be an eternal covenant, sealed by proper priesthood authority in a temple. Eternal marriage between a man and a woman — and potentially multiple wives — is required for the highest degree of exaltation.',
+        tradition: 'lds'
+      }
+    ],
+    reveal: 'Jesus\'s teaching in Matthew 19:4–8 restores the original monogamous, lifelong marriage, explicitly overriding the Mosaic permission for divorce and polygamy. D&C 132 — revealed in 1843 — rehabilitates polygamy and presents eternal marriage as a requirement for godhood. The Book of Mormon\'s own Jacob 2:24 had already condemned David\'s and Solomon\'s plural wives as "abomination" — a position D&C 132 reverses.',
+    cite: 'Catholic: Matthew 19:4–9; CCC §§1601–1666. LDS: D&C 132:19–20, 37–38; cf. Jacob 2:24 (Book of Mormon).'
+  },
+  {
+    theme: 'The Canon & Trustworthiness of Scripture',
+    text: 'How do you regard the reliability of the Bible as we currently have it?',
+    opts: [
+      {
+        letter: 'A',
+        text: 'The Bible, while transmitted by human hands, is reliably preserved by God\'s providence. The manuscript tradition — over 5,800 Greek NT manuscripts — gives us exceptional confidence in the text. It does not require correction by a prophet.',
+        tradition: 'catholic'
+      },
+      {
+        letter: 'B',
+        text: 'The Bible contains God\'s word "as far as it is translated correctly." Transmission errors, deliberate corruptions, and missing plain truths make it incomplete without additional scripture and living prophetic clarification.',
+        tradition: 'lds'
+      }
+    ],
+    reveal: 'The LDS claim of biblical corruption is a foundational apologetic move — but it creates a problem: no manuscript evidence exists for the "plain and precious truths" allegedly removed. The NT manuscript tradition (5,800+ Greek mss., some within 30 years of composition) is far superior to any text of antiquity. By contrast, the Book of Mormon has no manuscript tradition, no archaeology, and no external corroboration.',
+    cite: 'LDS: Articles of Faith 8; 1 Nephi 13:26–29. Catholic/Historical: Bruce Metzger, The Text of the New Testament (1992); CCC §§105–108.'
+  },
+  {
+    theme: 'Living Prophetic Authority',
+    text: 'Does God continue to reveal new doctrine and binding commandments through a living prophet today?',
+    opts: [
+      {
+        letter: 'A',
+        text: 'Public revelation — the deposit of faith given through Christ and the Apostles — is complete. God guides the Church through Scripture, Tradition, and the Magisterium to understand what has been revealed. No new doctrine is added.',
+        tradition: 'catholic'
+      },
+      {
+        letter: 'B',
+        text: 'God speaks through a living prophet and apostles today, who can receive new revelation, binding commandments, and doctrinal clarification for the whole Church — just as God communicated through prophets in Scripture.',
+        tradition: 'lds'
+      }
+    ],
+    reveal: 'The Catholic Magisterium — the pope and bishops in union — possesses authority to define doctrine and apply the deposit of faith, but it cannot add new public revelation beyond what was given in Christ. The LDS "living prophet" model has led to significant doctrinal reversals: polygamy was rescinded (1890 Manifesto), black priesthood exclusion was reversed (1978), and the Adam-God doctrine taught by Brigham Young is now officially rejected — raising questions about prophetic infallibility.',
+    cite: 'Catholic: CCC §§84–86; Jude 1:3. LDS: D&C 107:22; Official Declaration 1 (1890); Official Declaration 2 (1978).'
+  },
+  {
+    theme: 'The Church Christ Founded',
+    text: 'Where is Christ\'s Church today?',
+    opts: [
+      {
+        letter: 'A',
+        text: 'The Church Christ founded — with its apostolic succession, sacraments, and teaching authority — has existed continuously from Pentecost. It is found today in the Catholic Church and (in varying degrees of communion) in the Orthodox and other apostolic churches.',
+        tradition: 'catholic'
+      },
+      {
+        letter: 'B',
+        text: 'The Church Christ founded completely apostatized. It was restored in 1830 through Joseph Smith, and is today found exclusively in The Church of Jesus Christ of Latter-day Saints — "the only true and living church upon the face of the whole earth."',
+        tradition: 'lds'
+      }
+    ],
+    reveal: 'This is the culminating question. D&C 1:30 claims unique and total truth — all other churches lack authority and saving ordinances. The Catholic claim is based on traceable historical continuity: the same institution Ignatius described in AD 107, that Irenaeus catalogued in AD 180, that assembled at Nicaea in AD 325, that defined the biblical canon in AD 382, exists today. The question is not which feels more compelling — it is which claim is historically warranted.',
+    cite: 'LDS: D&C 1:30; JS–History 1:19. Catholic: Matthew 16:18; CCC §§816–819; Ignatius, Epistle to the Smyrnaeans §8 (AD 107).'
+  }
+];
+
+/* ────────────────────────────────────────────────────────────
+   STATE
+   ──────────────────────────────────────────────────────────── */
+var currentQ   = 0;
+var answers    = []; // array of 'catholic' | 'lds'
+var answered   = false;
+
+/* ────────────────────────────────────────────────────────────
+   SCREEN MANAGEMENT
+   ──────────────────────────────────────────────────────────── */
+function show(id) {
+  ['screen-intro','screen-quiz','screen-results'].forEach(function(s) {
+    document.getElementById(s).style.display = 'none';
+  });
+  document.getElementById(id).style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ────────────────────────────────────────────────────────────
+   START QUIZ
+   ──────────────────────────────────────────────────────────── */
+function startQuiz() {
+  currentQ = 0;
+  answers  = [];
+  answered = false;
+  show('screen-quiz');
+  renderQuestion();
+}
+
+/* ────────────────────────────────────────────────────────────
+   RENDER QUESTION
+   ──────────────────────────────────────────────────────────── */
+function renderQuestion() {
+  var q   = QUESTIONS[currentQ];
+  var tot = QUESTIONS.length;
+
+  // Progress
+  document.getElementById('progress-count').textContent =
+    'Question ' + (currentQ + 1) + ' of ' + tot;
+  document.getElementById('progress-fill').style.width =
+    (currentQ / tot * 100) + '%';
+
+  // Animate card reset
+  var card = document.getElementById('question-card');
+  card.style.animation = 'none';
+  void card.offsetWidth; // reflow
+  card.style.animation = 'fadeUp 0.45s both';
+
+  // Theme & question
+  document.getElementById('q-theme').textContent = q.theme;
+  document.getElementById('q-text').textContent  = q.text;
+
+  // Answers
+  var answersEl = document.getElementById('q-answers');
+  answersEl.innerHTML = '';
+  q.opts.forEach(function(opt) {
+    var btn = document.createElement('button');
+    btn.className = 'answer-btn';
+    btn.setAttribute('data-letter', opt.letter);
+    btn.setAttribute('data-tradition', opt.tradition);
+    btn.textContent = opt.text;
+    btn.addEventListener('click', function() { selectAnswer(this); });
+    answersEl.appendChild(btn);
+  });
+
+  // Reset reveal & next
+  var revealEl = document.getElementById('q-reveal');
+  revealEl.classList.remove('visible');
+  document.getElementById('btn-next').classList.remove('visible');
+
+  answered = false;
+
+  // Last question changes button label
+  var nextBtn = document.getElementById('btn-next');
+  if (currentQ === QUESTIONS.length - 1) {
+    nextBtn.textContent = 'See My Results →';
+  } else {
+    nextBtn.textContent = 'Next Question →';
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   SELECT ANSWER
+   ──────────────────────────────────────────────────────────── */
+function selectAnswer(btn) {
+  if (answered) return;
+  answered = true;
+
+  var tradition = btn.getAttribute('data-tradition');
+  answers.push(tradition);
+
+  // Disable all buttons
+  var allBtns = document.querySelectorAll('#q-answers .answer-btn');
+  allBtns.forEach(function(b) {
+    b.disabled = true;
+    b.classList.remove('selected-catholic','selected-lds');
+  });
+
+  // Style selected
+  btn.classList.add('selected-' + tradition);
+
+  // Reveal
+  var q = QUESTIONS[currentQ];
+  document.getElementById('q-reveal-text').innerHTML = q.reveal;
+  document.getElementById('q-reveal-cite').textContent = q.cite;
+  var revealEl = document.getElementById('q-reveal');
+  revealEl.classList.add('visible');
+
+  // Show next button
+  document.getElementById('btn-next').classList.add('visible');
+}
+
+/* ────────────────────────────────────────────────────────────
+   NEXT QUESTION
+   ──────────────────────────────────────────────────────────── */
+function nextQuestion() {
+  currentQ++;
+  if (currentQ >= QUESTIONS.length) {
+    showResults();
+  } else {
+    renderQuestion();
+    window.scrollTo({ top: document.getElementById('screen-quiz').offsetTop - 80, behavior: 'smooth' });
+  }
+}
+
+/* ────────────────────────────────────────────────────────────
+   SHOW RESULTS
+   ──────────────────────────────────────────────────────────── */
+function showResults() {
+  var catholicCount = answers.filter(function(a) { return a === 'catholic'; }).length;
+  var ldsCount      = answers.length - catholicCount;
+  var total         = answers.length;
+  var cathPct       = Math.round((catholicCount / total) * 100);
+  var ldsPct        = 100 - cathPct;
+
+  show('screen-results');
+
+  // Animate bars after a tick
+  setTimeout(function() {
+    document.getElementById('bar-catholic').style.width = cathPct + '%';
+    document.getElementById('bar-lds').style.width      = ldsPct + '%';
+    document.getElementById('pct-catholic').textContent = cathPct + '%';
+    document.getElementById('pct-lds').textContent      = ldsPct + '%';
+  }, 180);
+
+  // Verdict text
+  var verdict  = document.getElementById('results-verdict');
+  var tagline  = document.getElementById('results-tagline');
+
+  if (catholicCount >= 10) {
+    verdict.innerHTML  = 'Your beliefs align strongly with <span class="highlight-catholic">Catholic teaching</span>.';
+    tagline.textContent = 'Across almost every theological question, you chose the answer that reflects two thousand years of Catholic tradition.';
+  } else if (catholicCount >= 7) {
+    verdict.innerHTML  = 'Your beliefs lean significantly toward <span class="highlight-catholic">Catholic teaching</span>.';
+    tagline.textContent = 'On most core questions — God, the Church, Scripture, and eternity — your instincts run with the Catholic tradition.';
+  } else if (catholicCount >= 5) {
+    verdict.innerHTML  = 'Your beliefs are <span class="highlight-mixed">genuinely divided</span> between the two traditions.';
+    tagline.textContent = 'You hold a mix of views that don\'t fit cleanly in either camp. That\'s worth exploring — the tensions you feel are real theological tensions.';
+  } else if (catholicCount >= 3) {
+    verdict.innerHTML  = 'Your beliefs lean toward <span class="highlight-lds">LDS theology</span>.';
+    tagline.textContent = 'On most questions, you chose the answer that reflects Latter-day Saint teaching. The evidence on this site is for you especially.';
+  } else {
+    verdict.innerHTML  = 'Your beliefs align strongly with <span class="highlight-lds">LDS theology</span>.';
+    tagline.textContent = 'Across almost every question, you chose the LDS position. The case this site makes is addressed directly to you — examine it honestly.';
+  }
+
+  // Breakdown grid
+  var grid = document.getElementById('breakdown-grid');
+  grid.innerHTML = '';
+  answers.forEach(function(a, i) {
+    var q    = QUESTIONS[i];
+    var item = document.createElement('div');
+    item.className = 'breakdown-item';
+    item.innerHTML =
+      '<div class="breakdown-dot dot-' + a + '"></div>' +
+      '<div>' +
+        '<span class="breakdown-theme">' + q.theme + '</span>' +
+        '<span class="breakdown-answer">' +
+          (a === 'catholic' ? 'Aligned with Catholic teaching' : 'Aligned with LDS theology') +
+        '</span>' +
+      '</div>';
+    grid.appendChild(item);
+  });
+}
+
+/* ────────────────────────────────────────────────────────────
+   RETAKE
+   ──────────────────────────────────────────────────────────── */
+function retake() {
+  // Reset bars immediately (no transition)
+  document.getElementById('bar-catholic').style.transition = 'none';
+  document.getElementById('bar-lds').style.transition      = 'none';
+  document.getElementById('bar-catholic').style.width = '0%';
+  document.getElementById('bar-lds').style.width      = '0%';
+  setTimeout(function() {
+    document.getElementById('bar-catholic').style.transition = '';
+    document.getElementById('bar-lds').style.transition      = '';
+  }, 50);
+  startQuiz();
+}
+</script>
+
+</body>
+</html>
