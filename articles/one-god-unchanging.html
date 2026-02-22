@@ -533,6 +533,65 @@
   }
 }
 
+/* ── NEXT ARTICLE NAV ── */
+.next-article-nav {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line-gray);
+  text-align: center;
+}
+.next-article-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66em;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  margin-bottom: 14px;
+}
+.next-article-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: var(--crimson);
+  text-decoration: none;
+  padding: 16px 28px;
+  border: 1px solid rgba(139,0,0,0.2);
+  border-radius: 4px;
+  background: rgba(139,0,0,0.03);
+  transition: all 0.25s ease;
+  max-width: 100%;
+}
+.next-article-link:hover {
+  background: rgba(139,0,0,0.08);
+  border-color: rgba(139,0,0,0.4);
+  transform: translateX(4px);
+}
+.next-article-title {
+  line-height: 1.3;
+}
+.next-article-arrow {
+  font-size: 1.3em;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+.next-article-link:hover .next-article-arrow {
+  transform: translateX(4px);
+}
+@media (max-width: 768px) {
+  .next-article-link {
+    font-size: 1em;
+    padding: 14px 20px;
+    gap: 10px;
+  }
+}
+@media print {
+  .next-article-nav { display: none !important; }
+}
+
 </style>
 
 <script type="application/ld+json">
@@ -737,6 +796,17 @@
   <div class="footer-ornament">✦</div>
 
 </div>
+
+
+<!-- ── NEXT ARTICLE NAV ── -->
+<div class="next-article-nav">
+  <div class="next-article-label">Next Article</div>
+  <a href="rock-and-the-sand.html" class="next-article-link">
+    <span class="next-article-title">The Rock and the Sand: Doctrinal Continuity in the Catholic Church vs. Doctrinal Instability in the LDS Tradition</span>
+    <span class="next-article-arrow">&#8594;</span>
+  </a>
+</div>
+
 
 
   <!-- ── MOBILE SIDEBAR ── -->
