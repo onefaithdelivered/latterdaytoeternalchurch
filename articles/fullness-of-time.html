@@ -339,6 +339,64 @@
     margin-bottom: 4px;
   }
 
+  /* ── Works Cited Box ── */
+  .works-cited-box {
+    margin-top: 56px;
+    padding: 32px 36px;
+    background: linear-gradient(135deg, rgba(197,163,85,0.06) 0%, rgba(197,163,85,0.02) 100%);
+    border: 1px solid var(--gold);
+    border-top: 4px solid var(--gold-dark);
+    position: relative;
+  }
+  .works-cited-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 24px;
+    text-align: center;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--gold-light);
+  }
+  .works-cited-section {
+    font-family: 'Cinzel', serif;
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin: 22px 0 10px;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed rgba(197,163,85,0.4);
+  }
+  .works-cited-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 6px;
+  }
+  .works-cited-list li {
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: var(--ink-light);
+    margin-bottom: 10px;
+    padding-left: 18px;
+    position: relative;
+  }
+  .works-cited-list li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--gold-dark);
+  }
+  .works-cited-list a {
+    color: var(--burgundy);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .works-cited-list a:hover { color: var(--burgundy-light); }
+
   /* ── Closing verse panel ── */
   .closing-panel {
     text-align: center;
@@ -777,7 +835,7 @@
     <p>How does God reveal Himself to humanity across the ages? Does divine revelation unfold progressively through history, building from shadows and types toward a definitive climax in the Incarnation of the Son of God? Or was the fullness of the gospel delivered complete to Adam at the dawn of creation, only to be lost and restored in recurring cycles until a final restoration in the nineteenth century? These two competing answers define one of the most fundamental theological divides between Catholic Christianity and the Church of Jesus Christ of Latter-day Saints.</p>
     <p>The Catholic model, rooted in Sacred Scripture and articulated by the Church Fathers and the Magisterium, holds that God's revelation is <em>progressive</em> — a divine pedagogy in which each covenant era builds upon the last, preparing humanity for the fullness of truth revealed in Jesus Christ. The Second Vatican Council's <em>Dei Verbum</em> summarizes this vision: God revealed Himself first to our first parents, entered into covenant with Abraham and then with Israel through Moses, and through the prophets trained His people to recognize the coming of universal salvation, until in the fullness of time He sent His Son.</p>
     <p>The Latter-day Saint model inverts this structure. According to LDS scripture, Adam received Christian baptism, the gift of the Holy Ghost, and explicit knowledge of Jesus Christ by name at the very beginning of human history. Noah preached repentance and baptism "in the name of Jesus Christ" thousands of years before the Incarnation. Each successive dispensation head — Enoch, Abraham, Moses — supposedly received the same gospel, and each time it was lost through apostasy until the next prophet restored it. The final and definitive restoration came through Joseph Smith in 1830. This framework may be called <em>primordial dispensationalism</em>: the belief that the fullness existed from the beginning and was repeatedly lost and recovered.</p>
-    <p>This paper argues that the Catholic model of progressive revelation is vastly more coherent with the biblical witness, more faithful to the testimony of the early Church Fathers, and more theologically satisfying than the LDS alternative. Furthermore, it demonstrates that the LDS model creates profound internal contradictions, undermines the typological structure of Scripture, diminishes the uniqueness of Christ's work, and implies a portrait of God's sovereignty that is theologically untenable.</p>
+    <p>This essay argues that the Catholic model of progressive revelation is vastly more coherent with the biblical witness, more faithful to the testimony of the early Church Fathers, and more theologically satisfying than the LDS alternative. Furthermore, it demonstrates that the LDS model creates profound internal contradictions, undermines the typological structure of Scripture, diminishes the uniqueness of Christ's work, and implies a portrait of God's sovereignty that is theologically untenable.</p>
   </div>
 
   <!-- Comparison Summary Table -->
@@ -1014,6 +1072,59 @@
   </div>
 
   <div class="footer-ornament">✦ ✦ ✦</div>
+
+  <!-- Works Cited -->
+  <div class="works-cited-box">
+    <div class="works-cited-title">Works Cited</div>
+
+    <div class="works-cited-section">Sacred Scripture</div>
+    <ul class="works-cited-list">
+      <li>Genesis 12:1–3. <em>Abrahamic Covenant.</em> All Scripture citations from the Revised Standard Version, Catholic Edition (RSV-CE). San Francisco: Ignatius Press, 1966.</li>
+      <li>Exodus 6:2–3. <em>Divine name YHWH revealed to Moses.</em></li>
+      <li>Isaiah 52–53. <em>The Suffering Servant.</em></li>
+      <li>Jeremiah 31:31–34. <em>The New Covenant.</em></li>
+      <li>Daniel 7:13–14. <em>Son of Man.</em></li>
+      <li>Matthew 5:17. <em>"Not to abolish but to fulfill."</em></li>
+      <li>Matthew 16:18. <em>Promise of the Church's indefectibility.</em></li>
+      <li>John 1:17. <em>"Grace and truth came through Jesus Christ."</em></li>
+      <li>Romans (multiple passages). <em>The purpose of the Mosaic Law.</em></li>
+      <li>1 Corinthians 10:1–13. <em>Events of the Exodus as types for Christians.</em></li>
+      <li>Galatians 3:24. <em>The Law as </em>paidagogos<em> leading to Christ.</em></li>
+      <li>Galatians 4:4–5. <em>"When the fullness of time had come."</em></li>
+      <li>Ephesians 3:5. <em>The mystery of Christ not made known in prior generations.</em></li>
+      <li>Colossians 1:26. <em>"The mystery hidden for ages and generations."</em></li>
+      <li>Hebrews 1:1–2. <em>"In many and various ways God spoke of old."</em></li>
+      <li>Hebrews 8–10. <em>The old sacrificial system as shadow and type of Christ's once-for-all sacrifice.</em></li>
+      <li>Hebrews 10:1. <em>"A shadow of the good things to come."</em></li>
+      <li>1 Peter 1:10–11. <em>The prophets searching and inquiring about salvation.</em></li>
+      <li>1 Peter 3:20–21. <em>The Flood as a type of baptism.</em></li>
+    </ul>
+
+    <div class="works-cited-section">Church Fathers</div>
+    <ul class="works-cited-list">
+      <li>Augustine of Hippo. <em>On the Catechising of the Uninstructed</em> and related writings on the signs of the Old and New Covenants. ca. AD 400. Available at <a href="https://www.newadvent.org/fathers/" target="_blank" rel="noopener">newadvent.org/fathers</a>.</li>
+      <li>Clement of Alexandria. <em>Paedagogus</em> (<em>The Instructor</em>). ca. AD 198. God as divine Pedagogue leading humanity through stages of instruction. Available at <a href="https://www.newadvent.org/fathers/" target="_blank" rel="noopener">newadvent.org/fathers</a>.</li>
+      <li>Irenaeus of Lyons. <em>Against Heresies</em> (<em>Adversus Haereses</em>). ca. AD 180. Book III, ch. 4: Apostolic succession as the guarantee of preserved truth, refuting claims of primordial secret restoration. Book IV: The four covenants as stages of divine pedagogy; God gradually accustoming humanity to bear His Spirit. Available at <a href="https://www.newadvent.org/fathers/0103.htm" target="_blank" rel="noopener">newadvent.org/fathers/0103.htm</a>.</li>
+      <li>Justin Martyr. <em>Dialogue with Trypho</em>. ca. AD 155. Old Testament ceremonies as medicinal and preparatory rather than degraded substitutes. Available at <a href="https://www.newadvent.org/fathers/0128.htm" target="_blank" rel="noopener">newadvent.org/fathers/0128.htm</a>.</li>
+    </ul>
+
+    <div class="works-cited-section">Magisterial Documents</div>
+    <ul class="works-cited-list">
+      <li>Second Vatican Council. <em>Dei Verbum</em> [Dogmatic Constitution on Divine Revelation]. November 18, 1965. Vatican City: Libreria Editrice Vaticana. Available at <a href="https://www.vatican.va/archive/hist_councils/ii_vatican_council/documents/vat-ii_const_19651118_dei-verbum_en.html" target="_blank" rel="noopener">vatican.va</a>. Cited for the summary of progressive revelation through Adam, Abraham, Moses, the Prophets, and Christ.</li>
+    </ul>
+
+    <div class="works-cited-section">Scholastic Works</div>
+    <ul class="works-cited-list">
+      <li>Aquinas, Thomas. <em>Summa Theologiae</em>. ca. AD 1265–1274. Prima Secundae, QQ. 98–108 (Treatise on Law): The Old Law as imperfect by divine design, proportioned to the state of the people and ordered toward the perfection of the New Law of grace. Available at <a href="https://www.newadvent.org/summa/" target="_blank" rel="noopener">newadvent.org/summa</a>.</li>
+    </ul>
+
+    <div class="works-cited-section">Latter-day Saint Sources</div>
+    <ul class="works-cited-list">
+      <li>The Church of Jesus Christ of Latter-day Saints. <em>The Pearl of Great Price</em>: <em>Book of Moses</em>. Salt Lake City: The Church of Jesus Christ of Latter-day Saints. Cited for Adam's baptism, the gift of the Holy Ghost, and explicit Christian terminology in the Adamic dispensation; and for Noah's preaching repentance and baptism in the name of Jesus Christ. Available at <a href="https://www.churchofjesuschrist.org/study/scriptures/pgp/moses" target="_blank" rel="noopener">churchofjesuschrist.org</a>.</li>
+      <li>Smith, Joseph, Jr. <em>History of the Church of Jesus Christ of Latter-day Saints</em>. Vol. 1. Salt Lake City: Deseret Book, 1902. Cited for the account of the Restoration of 1830 and the claim of universal apostasy requiring a complete restoration of priesthood and ordinances.</li>
+    </ul>
+  </div>
+
 </div>
 
   <!-- ── MOBILE SIDEBAR ── -->
