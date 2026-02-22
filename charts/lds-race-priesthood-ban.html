@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LDS Prophets on Race: A Historical Documentation | One Faith Delivered</title>
+<meta name="description" content="A carefully sourced documentation of LDS prophetic statements on race, the pre-1978 priesthood ban, its theological justifications, the 1978 reversal, and the 2013 disavowal — and what this record means for the LDS claim to continuous prophetic authority." />
+<link rel="canonical" href="https://onefaithdelivered.org/charts/lds-race-priesthood-ban.html" />
+<link rel="icon" href="../favicons/favicon.ico" sizes="any" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   LDS PROPHETS ON RACE — HISTORICAL DOCUMENTATION
+   Design system: matches book-of-abraham-problem.html
+   Palette: deep archival sepia / ochre / parchment
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --crimson:       #8B0000;
+  --dark-crimson:  #5C0000;
+  --gold:          #C5A55A;
+  --dark-gold:     #8B7335;
+  --parchment:     #F5F0E8;
+  --text:          #2A2A2A;
+  --muted:         #666;
+  --line-gray:     #D0C8B8;
+
+  /* Page-specific palette: archival sepia tones */
+  --sepia-dark:    #2C1A08;
+  --sepia-mid:     #4A2E0E;
+  --sepia-warm:    #6B3E12;
+  --ochre:         #9C6B20;
+  --ochre-light:   #C4943A;
+  --ban-red:       #7A1818;
+  --ban-bg:        #FBF0EF;
+  --reversal-green:#1A4A28;
+  --reversal-bg:   #EEF5F0;
+  --disavow-blue:  #1A2C4A;
+  --disavow-bg:    #EBF0F7;
+  --quote-border:  #C4943A;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--parchment);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.6;
+}
+
+/* ── SITE NAV ── */
+.site-nav {
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(245,240,232,0.98), rgba(240,235,225,0.95));
+  border-bottom: 1px solid var(--line-gray);
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.site-nav a.nav-home {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem; font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--crimson); text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: var(--dark-crimson); }
+.site-nav .nav-back {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--dark-gold); text-decoration: none;
+  border: 1px solid rgba(139,115,53,0.35);
+  padding: 0.4rem 1.1rem; border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
+}
+.site-nav .nav-back:hover { background: rgba(139,115,53,0.08); color: var(--crimson); }
+.site-nav .nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.site-nav .nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text); text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav .nav-links a:hover { color: var(--crimson); }
+
+/* ── Hamburger ── */
+.nav-hamburger {
+  display: none; flex-direction: column;
+  justify-content: center; gap: 5px;
+  width: 36px; height: 36px; cursor: pointer;
+  background: none; border: 1px solid rgba(139,115,53,0.3);
+  border-radius: 3px; padding: 6px; z-index: 10001;
+}
+.nav-hamburger span {
+  display: block; height: 2px;
+  background: var(--text); border-radius: 2px;
+  transition: all 0.25s; transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Sidebar ── */
+.sidebar-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45); z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+.sidebar-overlay.visible { display: block; }
+.sidebar {
+  position: fixed; top: 0; right: -280px;
+  width: 260px; height: 100%;
+  background: linear-gradient(to bottom, #FAF6F0, #F5F0E8);
+  border-left: 1px solid var(--line-gray);
+  z-index: 10002; transition: right 0.3s ease; overflow-y: auto;
+}
+.sidebar.open { right: 0; }
+.sidebar-inner {
+  padding: 5rem 2rem 2rem;
+  display: flex; flex-direction: column; gap: 0;
+}
+.sidebar-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem; font-weight: 700; color: var(--crimson);
+  margin-bottom: 2rem; padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line-gray);
+}
+.sidebar-inner a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text); text-decoration: none;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(208,200,184,0.5);
+  transition: color 0.2s;
+}
+.sidebar-inner a:hover { color: var(--crimson); }
+.sidebar-inner a.sidebar-back {
+  color: var(--dark-gold); margin-top: 1.5rem;
+  border: 1px solid rgba(139,115,53,0.3);
+  padding: 0.7rem 1rem; text-align: center; border-radius: 2px;
+}
+.sidebar-ornament {
+  color: var(--gold); font-size: 11px;
+  letter-spacing: 8px; text-align: center; margin-top: 2rem;
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  background: linear-gradient(135deg, var(--sepia-dark) 0%, var(--sepia-mid) 45%, #1C0E02 100%);
+  color: #F5F0E8; padding: 72px 40px 56px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(255,255,255,0.025) 2px, rgba(255,255,255,0.025) 4px
+  );
+  pointer-events: none;
+}
+.back-link {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none;
+  margin-bottom: 1.8rem; opacity: 0.85;
+  transition: opacity 0.2s; position: relative; z-index: 1;
+}
+.back-link:hover { opacity: 1; }
+.ornament {
+  display: block; color: var(--gold);
+  font-size: 1rem; letter-spacing: 12px;
+  margin-bottom: 1.2rem; opacity: 0.7;
+  position: relative; z-index: 1;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2em, 4vw, 3.2em);
+  font-weight: 900; letter-spacing: -0.5px;
+  color: #F5F0E8; margin-bottom: 14px;
+  line-height: 1.2; position: relative; z-index: 1;
+}
+.page-header h1 span { color: var(--gold); }
+.page-header .subtitle {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.1em; font-weight: 300; font-style: italic;
+  color: rgba(245,240,232,0.75); max-width: 700px;
+  margin: 0 auto; position: relative; z-index: 1;
+}
+
+/* ── MAIN ── */
+main { max-width: 980px; margin: 0 auto; padding: 50px 24px 80px; }
+
+/* ── INTRO BOX ── */
+.intro-box {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-left: 5px solid var(--sepia-warm);
+  border-radius: 4px; padding: 28px 32px;
+  margin-bottom: 40px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.intro-box p { font-size: 1rem; line-height: 1.85; }
+.intro-box p + p { margin-top: 0.9rem; }
+.intro-box strong { color: var(--sepia-warm); font-weight: 700; }
+.intro-box em { color: var(--ban-red); font-style: italic; }
+
+/* ── METHODOLOGY NOTE ── */
+.method-note {
+  background: linear-gradient(135deg, #FFFDF5, #FFF9EC);
+  border: 1px solid rgba(196,148,58,0.3);
+  border-radius: 4px; padding: 18px 24px;
+  margin-bottom: 48px;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.method-icon { font-size: 1.2em; flex-shrink: 0; margin-top: 2px; }
+.method-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7em; font-weight: 600;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--ochre); line-height: 1.7;
+}
+
+/* ── TIMELINE BAR ── */
+.history-bar {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 0; margin-bottom: 52px;
+  border: 1px solid var(--line-gray); border-radius: 4px;
+  overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.history-cell {
+  padding: 18px 14px; text-align: center;
+  background: #fff; border-right: 1px solid var(--line-gray);
+  position: relative;
+}
+.history-cell:last-child { border-right: none; }
+.history-cell.era-ban     { background: linear-gradient(to bottom, #FFF6F5, #fff); }
+.history-cell.era-reversal{ background: linear-gradient(to bottom, #F0F7F2, #fff); }
+.history-cell.era-disavow { background: linear-gradient(to bottom, #EEF2F8, #fff); }
+.history-year {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35em; font-weight: 900;
+  color: var(--sepia-warm); margin-bottom: 5px;
+}
+.history-year.yr-ban     { color: var(--ban-red); }
+.history-year.yr-reversal{ color: var(--reversal-green); }
+.history-year.yr-disavow { color: var(--disavow-blue); }
+.history-desc {
+  font-size: 0.78em; line-height: 1.5; color: var(--muted);
+}
+
+/* ── SECTION DIVIDER ── */
+.section-divider {
+  margin: 52px 0 26px;
+  display: flex; align-items: center; gap: 16px;
+}
+.section-divider-line { flex: 1; height: 1px; background: var(--line-gray); }
+.section-divider-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--dark-gold); white-space: nowrap;
+}
+
+/* ── QUOTE BLOCK (main documentation card) ── */
+.quote-block {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-radius: 6px; margin-bottom: 28px;
+  overflow: hidden;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.07);
+  transition: box-shadow 0.2s;
+}
+.quote-block:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.11); }
+
+/* Header variants by era */
+.quote-header {
+  padding: 13px 20px;
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 10px;
+}
+.quote-header.era-ban {
+  background: linear-gradient(135deg, #3C0A0A, var(--ban-red));
+}
+.quote-header.era-justify {
+  background: linear-gradient(135deg, var(--sepia-dark), var(--sepia-mid));
+}
+.quote-header.era-reversal {
+  background: linear-gradient(135deg, #0D2B18, var(--reversal-green));
+}
+.quote-header.era-disavow {
+  background: linear-gradient(135deg, #0E1C30, var(--disavow-blue));
+}
+
+.quote-speaker {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05em; font-weight: 700; color: #F5F0E8;
+}
+.quote-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62em; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(245,240,232,0.6);
+}
+.quote-tags {
+  display: flex; gap: 7px; flex-wrap: wrap;
+}
+.qtag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58em; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 3px 9px; border-radius: 2px;
+  background: rgba(197,165,90,0.18);
+  color: var(--gold);
+  border: 1px solid rgba(197,165,90,0.3);
+}
+.qtag.official { background: rgba(255,200,180,0.18); color: #FFD0B0; border-color: rgba(255,180,130,0.3); }
+.qtag.reversal { background: rgba(180,255,200,0.12); color: #A0E0B0; border-color: rgba(100,200,130,0.3); }
+.qtag.disavow  { background: rgba(180,200,255,0.15); color: #AACCFF; border-color: rgba(130,160,255,0.3); }
+
+/* ── QUOTE BODY ── */
+.quote-body { padding: 26px 28px; }
+.quote-context {
+  font-size: 0.88em; line-height: 1.75; color: var(--muted);
+  margin-bottom: 16px; font-style: italic;
+}
+.primary-quote {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.97em; line-height: 1.9;
+  color: #1A1A1A;
+  background: #FAF6EF;
+  border-left: 4px solid var(--quote-border);
+  padding: 16px 20px; border-radius: 0 4px 4px 0;
+  margin-bottom: 14px; font-style: italic;
+  position: relative;
+}
+.primary-quote.tone-ban     { border-color: var(--ban-red);       background: #FDF5F5; }
+.primary-quote.tone-justify { border-color: var(--sepia-warm);    background: #FAF6EF; }
+.primary-quote.tone-reversal{ border-color: var(--reversal-green);background: #F2FAF4; }
+.primary-quote.tone-disavow { border-color: var(--disavow-blue);  background: #EEF3FA; }
+
+.primary-quote em {
+  font-style: normal;
+  font-weight: 700;
+}
+.primary-quote.tone-ban em     { color: var(--ban-red); }
+.primary-quote.tone-justify em { color: var(--sepia-warm); }
+.primary-quote.tone-reversal em{ color: var(--reversal-green); }
+.primary-quote.tone-disavow em { color: var(--disavow-blue); }
+
+.quote-attribution {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.63em; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--dark-gold); text-align: right;
+  margin-bottom: 16px;
+}
+
+.quote-analysis {
+  font-size: 0.88em; line-height: 1.78; color: var(--text);
+  padding-top: 14px; border-top: 1px solid var(--line-gray);
+}
+.quote-analysis strong { color: var(--sepia-warm); font-weight: 700; }
+.quote-analysis strong.red { color: var(--ban-red); }
+.quote-analysis strong.green { color: var(--reversal-green); }
+.quote-analysis strong.blue { color: var(--disavow-blue); }
+
+/* ── SOURCE STRIP ── */
+.source-strip {
+  padding: 10px 20px; border-top: 1px solid var(--line-gray);
+  background: #FAFAF8;
+}
+.source-strip p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6em; font-weight: 400;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── MULTI-QUOTE BLOCK (two entries side by side) ── */
+.two-col-quotes {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 20px; margin-bottom: 28px;
+}
+
+/* ── SUMMARY PROBLEM CARDS ── */
+.problem-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px; margin-bottom: 16px;
+}
+.problem-card {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-top: 4px solid var(--sepia-warm);
+  border-radius: 4px; padding: 22px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.problem-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,0.09); }
+.problem-card-icon { font-size: 1.4em; margin-bottom: 10px; }
+.problem-card-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700; font-size: 1.02em;
+  color: var(--sepia-warm); margin-bottom: 8px;
+}
+.problem-card-text { font-size: 0.86em; line-height: 1.7; color: var(--muted); }
+
+/* ── RESPONSE / REBUTTAL GRID ── */
+.response-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0; border: 1px solid var(--line-gray);
+  border-radius: 4px; overflow: hidden;
+  margin-top: 16px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.response-card { padding: 22px 24px; }
+.response-card:nth-child(odd) {
+  background: linear-gradient(135deg, #FFFCF0, #FFF8E0);
+  border-right: 1px solid var(--line-gray);
+  border-bottom: 1px solid var(--line-gray);
+}
+.response-card:nth-child(even) {
+  background: linear-gradient(135deg, #FFF5F5, #FFF0F0);
+  border-bottom: 1px solid var(--line-gray);
+}
+.response-card:nth-last-child(-n+2) { border-bottom: none; }
+.response-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 10px; padding-bottom: 6px; border-bottom: 2px solid;
+}
+.label-defense  { color: var(--dark-gold);       border-color: var(--dark-gold); }
+.label-rebuttal { color: var(--ban-red);          border-color: var(--ban-red); }
+.response-text { font-size: 0.9em; line-height: 1.72; color: var(--text); }
+.response-text em { color: var(--dark-gold); font-style: italic; }
+.response-text strong { color: var(--ban-red); font-weight: 700; }
+
+/* ── VERDICT BOX ── */
+.verdict-box {
+  background: linear-gradient(135deg, var(--sepia-dark), var(--sepia-mid));
+  color: #F5F0E8; border-radius: 6px;
+  padding: 44px 40px; margin-top: 56px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.verdict-box::before {
+  content: ''; position: absolute; inset: 8px;
+  border: 1px solid rgba(197,165,90,0.25);
+  border-radius: 4px; pointer-events: none;
+}
+.verdict-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4em; font-weight: 700;
+  color: var(--gold); margin-bottom: 18px;
+  position: relative; z-index: 1;
+}
+.verdict-box p {
+  font-size: 1em; line-height: 1.85;
+  color: rgba(245,240,232,0.9); max-width: 780px;
+  margin: 0 auto; position: relative; z-index: 1;
+}
+.verdict-box p + p { margin-top: 14px; }
+.verdict-box strong { color: var(--gold); }
+
+/* ── SYLLOGISM BOX ── */
+.syllogism-box {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-left: 5px solid var(--sepia-warm);
+  border-radius: 4px; padding: 28px 32px;
+  margin: 32px 0; position: relative;
+}
+.syllogism-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65em; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--sepia-warm); margin-bottom: 18px;
+}
+.syllogism-row {
+  display: flex; gap: 14px;
+  align-items: flex-start; margin-bottom: 12px;
+}
+.syllogism-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75em; font-weight: 600;
+  color: var(--ochre); flex-shrink: 0;
+  width: 24px; margin-top: 1px;
+}
+.syllogism-text {
+  font-size: 0.95em; line-height: 1.75; color: var(--text);
+}
+.syllogism-text strong { color: var(--ban-red); font-weight: 700; }
+.syllogism-text em { color: var(--sepia-warm); font-style: italic; }
+.syllogism-divider {
+  height: 1px; background: var(--line-gray);
+  margin: 16px 0 16px 38px;
+}
+.syllogism-conclusion {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.0em; font-weight: 600; font-style: italic;
+  color: var(--sepia-dark);
+  padding-left: 38px; line-height: 1.75;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #fff; text-align: center; padding: 28px 20px;
+  border-top: 1px solid var(--line-gray);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  .history-bar { grid-template-columns: repeat(3, 1fr); }
+  .history-cell:nth-child(3) { border-right: none; }
+  .two-col-quotes { grid-template-columns: 1fr; }
+  .problem-cards { grid-template-columns: 1fr 1fr; }
+  .response-grid { grid-template-columns: 1fr; }
+  .response-card:nth-child(odd) { border-right: none; }
+}
+@media (max-width: 700px) {
+  .nav-hamburger { display: flex; }
+  .site-nav .nav-links { display: none; }
+  .site-nav .nav-back { display: none; }
+  body { overflow-x: hidden; }
+  .sidebar {
+    display: block !important;
+    transform: translateX(100%) !important; right: 0 !important;
+  }
+  .sidebar.open { transform: translateX(0) !important; }
+  .page-header { padding: 48px 20px 38px; }
+  .page-header h1 { font-size: clamp(1.45rem, 6vw, 2.2rem); }
+  .history-bar { grid-template-columns: 1fr 1fr; }
+  .history-cell:nth-child(3) { border-right: 1px solid var(--line-gray); }
+  .history-cell:nth-child(even) { border-right: none; }
+  main { padding: 28px 14px 60px; }
+  .intro-box { padding: 20px 18px; }
+  .quote-body { padding: 20px 18px; }
+  .problem-cards { grid-template-columns: 1fr; }
+  .verdict-box { padding: 32px 20px; }
+  .syllogism-box { padding: 22px 18px; }
+  .syllogism-conclusion { padding-left: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SITE NAV ═══ -->
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">One Faith Delivered</a>
+  <ul class="nav-links">
+    <li><a href="../articles.html">Articles</a></li>
+    <li><a href="../charts.html">Charts</a></li>
+    <li><a href="../topics.html">Topics</a></li>
+    <li><a href="../resources.html">Resources</a></li>
+  </ul>
+  <a href="../charts.html" class="nav-back">&#8592; All Charts</a>
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <a href="../charts.html" class="back-link">&#8592; All Charts &amp; Visualizations</a>
+  <span class="ornament">✦ ✦ ✦</span>
+  <h1>LDS Prophets on <span>Race</span></h1>
+  <p class="subtitle">A primary-source documentation of the priesthood and temple ban, its official theological justifications, the 1978 reversal, and the 2013 disavowal — and the prophetic authority problem this record presents</p>
+</header>
+
+<!-- ═══ MAIN ═══ -->
+<main>
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <p>From 1852 to 1978, the Church of Jesus Christ of Latter-day Saints formally prohibited men of African descent from holding the priesthood or participating in temple ordinances. This policy was not presented as administrative or uncertain. It was defended by multiple presidents and apostles as a <strong>direct commandment of God</strong>, grounded in theological doctrines about the pre-mortal existence and the curse of Cain. These justifications were published in official church manuals, canonized in teaching materials, and taught to generations of members as revealed truth.</p>
+    <p>In 1978, the ban was reversed by Official Declaration 2. In 2013, the LDS Church's own Gospel Topics Essay <em>"Race and the Priesthood"</em> <strong>formally disavowed the theological justifications</strong> that had been taught as prophetic revelation for over 125 years. This page presents the documented record of what was taught, who taught it, with what claimed authority, and what the Church now says about it — without editorial commentary beyond what the sources themselves require.</p>
+  </div>
+
+  <!-- METHODOLOGY NOTE -->
+  <div class="method-note">
+    <span class="method-icon">📋</span>
+    <div class="method-text">
+      Methodology: All quotations are drawn from primary LDS sources — the Journal of Discourses, official First Presidency statements, LDS Church publications, and the Church's own Gospel Topics Essays. No anti-Mormon secondary sources are cited. The LDS Church's own 2013 Gospel Topics Essay "Race and the Priesthood" confirms the historical accuracy of the record documented here.
+    </div>
+  </div>
+
+  <!-- TIMELINE BAR -->
+  <div class="history-bar">
+    <div class="history-cell era-ban">
+      <div class="history-year yr-ban">1852</div>
+      <div class="history-desc">Brigham Young formally announces the priesthood ban to the Utah Territorial Legislature, invoking "the law of God."</div>
+    </div>
+    <div class="history-cell">
+      <div class="history-year">1880s–1960s</div>
+      <div class="history-desc">Ban systematically defended by successive prophets and apostles as divine commandment based on pre-mortal theology.</div>
+    </div>
+    <div class="history-cell">
+      <div class="history-year">1949 &amp; 1969</div>
+      <div class="history-desc">First Presidency issues formal written statements declaring the ban "a direct commandment from the Lord" — not human policy.</div>
+    </div>
+    <div class="history-cell era-reversal">
+      <div class="history-year yr-reversal">1978</div>
+      <div class="history-desc">Official Declaration 2: President Spencer W. Kimball announces revelation lifting the ban. Sustained by church membership.</div>
+    </div>
+    <div class="history-cell era-disavow">
+      <div class="history-year yr-disavow">2013</div>
+      <div class="history-desc">Gospel Topics Essay "Race and the Priesthood" formally disavows all prior theological justifications for the ban as false theories.</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════
+       SECTION I — THE BAN ESTABLISHED
+       ════════════════════════════════ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">I — The Ban Established: Brigham Young (1852)</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-header era-ban">
+      <div>
+        <div class="quote-speaker">Brigham Young — Address to the Utah Territorial Legislature</div>
+        <div class="quote-meta">January 23, 1852 · Brigham Young Papers, LDS Church History Library</div>
+      </div>
+      <div class="quote-tags">
+        <span class="qtag official">Prophetic Declaration</span>
+        <span class="qtag">Formal Ban</span>
+      </div>
+    </div>
+    <div class="quote-body">
+      <p class="quote-context">On January 23, 1852, Brigham Young addressed the Utah Territorial Legislature to establish the formal policy restricting Black members from holding the priesthood. He framed this explicitly as divine law, not administrative policy. The address was recorded by Thomas Bullock, Young's clerk, and is preserved in the LDS Church History Library. The following are among the most directly documented passages.</p>
+
+      <div class="primary-quote tone-ban">
+        "Shall I tell you the law of God in regard to the African race? <em>If the white man who belongs to the chosen seed mixes his blood with the seed of Cain, the penalty, under the law of God, is death on the spot.</em> This will always be so."
+      </div>
+      <div class="quote-attribution">— Journal of Discourses 10:110 (March 8, 1863) · cf. Legislative Address (1852)</div>
+
+      <div class="primary-quote tone-ban" style="margin-top:16px;">
+        "Any man having one drop of the seed of Cain in him <em>cannot hold the Priesthood</em>, and if no other Prophet ever spake it before, <em>I will say it now in the name of Jesus Christ</em>: I know it is true and others know it."
+      </div>
+      <div class="quote-attribution">— Legislative Address, January 23, 1852 · Recorded by Thomas Bullock · LDS Church History Library</div>
+
+      <div class="quote-analysis">
+        <strong class="red">The prophetic authority claim is explicit:</strong> Young does not hedge this statement as personal opinion, historical custom, or administrative prudence. He invokes the name of Jesus Christ, asserts personal prophetic knowledge ("I know it is true"), and challenges any prior prophet to have said otherwise — framing the proclamation as a direct revelation. This is the linguistic register of authoritative prophecy, not pastoral guidance.
+      </div>
+    </div>
+    <div class="source-strip">
+      <p>Sources: Thomas Bullock Minutes, January 23, 1852 (LDS Church History Library) · Journal of Discourses 10:110 (1863) · LDS Gospel Topics Essay "Race and the Priesthood" (2013), which confirms Young formally announced the restriction in 1852</p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       SECTION II — THE THEOLOGICAL JUSTIFICATIONS
+       ════════════════════════════════════════ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">II — The Theological Justifications: Curse of Cain &amp; Pre-Mortal Valiance</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-header era-justify">
+      <div>
+        <div class="quote-speaker">Joseph Fielding Smith — <em>The Way to Perfection</em> (1931)</div>
+        <div class="quote-meta">Published by the Genealogical Society of Utah · Standard LDS Doctrinal Manual</div>
+      </div>
+      <div class="quote-tags">
+        <span class="qtag">Apostle &amp; Future Prophet</span>
+        <span class="qtag">Pre-Mortal Theory</span>
+      </div>
+    </div>
+    <div class="quote-body">
+      <p class="quote-context">Joseph Fielding Smith served as President of the Quorum of the Twelve and later as the 10th President of the Church (1970–1972). <em>The Way to Perfection</em> was published by the Church's own Genealogical Society and used as a standard doctrinal text. Chapter 7 provides the fullest official articulation of the "pre-mortal fence-sitter" theory used to justify the ban.</p>
+
+      <div class="primary-quote tone-justify">
+        "There is a reason why one man is born black and with other disadvantages, while another is born white with great advantages. The reason is that we once had an estate before we came here, and were more or less valiant in that pre-existence… <em>Those who were faithful in all things there received greater blessings here, and those who were not faithful received less.</em>"
+      </div>
+      <div class="quote-attribution">— Joseph Fielding Smith, <em>The Way to Perfection</em>, pp. 42–43 (1931)</div>
+
+      <div class="primary-quote tone-justify" style="margin-top:16px;">
+        "Not only was Cain called upon to suffer, but because of his wickedness he became the <em>father of an inferior race</em>. A curse was placed upon him and that curse has been continued through his lineage and must do so while time endures. Millions of souls have come into this world cursed with a black skin and have been denied the privilege of Priesthood and the fullness of the blessings of the Gospel."
+      </div>
+      <div class="quote-attribution">— Joseph Fielding Smith, <em>The Way to Perfection</em>, p. 101 (1931)</div>
+
+      <div class="quote-analysis">
+        <strong>The theological architecture is explicit:</strong> Smith presents two interlocking justifications — the pre-mortal "less valiant" theory and the Curse of Cain doctrine — as established LDS doctrine, not speculation. Both are presented as explanatory of a divine and just arrangement. The 2013 Gospel Topics Essay specifically names and <strong class="red">disavows both of these theories</strong> by name. Smith became Church President in 1970 — two years after these same teachings remained standard LDS doctrine.
+      </div>
+    </div>
+    <div class="source-strip">
+      <p>Sources: Joseph Fielding Smith, <em>The Way to Perfection</em> (Salt Lake City: Genealogical Society of Utah, 1931), pp. 42–43, 101–105 · Confirmed as published LDS doctrinal material by the 2013 Gospel Topics Essay</p>
+    </div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-header era-justify">
+      <div>
+        <div class="quote-speaker">First Presidency Statement — George Albert Smith, Presiding</div>
+        <div class="quote-meta">August 17, 1949 · Official First Presidency Statement</div>
+      </div>
+      <div class="quote-tags">
+        <span class="qtag official">First Presidency</span>
+        <span class="qtag">Divine Commandment Claim</span>
+      </div>
+    </div>
+    <div class="quote-body">
+      <p class="quote-context">This formal written statement from the First Presidency — the highest governing body of the LDS Church — was issued in response to civil rights era inquiries about the Church's racial policies. It explicitly frames the ban not as historical custom or human tradition, but as divine commandment. The statement was cited and reproduced by the LDS Church itself in subsequent years.</p>
+
+      <div class="primary-quote tone-ban">
+        "The attitude of the Church with reference to Negroes remains as it has always stood. <em>It is not a matter of the declaration of a policy but of direct commandment from the Lord</em>, on which is founded the doctrine of the Church from the days of its organization, to the effect that Negroes may neither hold the Priesthood nor attend the temple… Faithful members of the Church and honest investigators will accept this teaching, trusting in the justice and wisdom of God, that in his eternal plan, all men shall have opportunity to receive the blessings of the Gospel."
+      </div>
+      <div class="quote-attribution">— First Presidency Statement, August 17, 1949 · Cited in LDS Gospel Topics Essay "Race and the Priesthood" (2013)</div>
+
+      <div class="quote-analysis">
+        <strong class="red">The most consequential phrase in this documentation:</strong> "It is not a matter of the declaration of a policy but of direct commandment from the Lord." This statement removes every available escape from the prophetic authority problem. It is not attributed to culture, prior tradition, human error, or administrative necessity. The First Presidency — speaking in its highest collective capacity — declares this a direct divine commandment. The 2013 essay does not dispute that this statement was made; it cites it directly.
+      </div>
+    </div>
+    <div class="source-strip">
+      <p>Sources: First Presidency Statement, August 17, 1949 · Cited verbatim in LDS Gospel Topics Essay "Race and the Priesthood" (LDS Church, 2013) · Also cited in Lester E. Bush Jr., "Mormonism's Negro Doctrine: An Historical Overview," <em>Dialogue</em> 8:1 (1973)</p>
+    </div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-header era-justify">
+      <div>
+        <div class="quote-speaker">First Presidency Statement — David O. McKay, Presiding</div>
+        <div class="quote-meta">December 15, 1969 · Official First Presidency Statement</div>
+      </div>
+      <div class="quote-tags">
+        <span class="qtag official">First Presidency</span>
+        <span class="qtag">Nine Years Before Reversal</span>
+      </div>
+    </div>
+    <div class="quote-body">
+      <p class="quote-context">Issued just nine years before the 1978 revelation lifting the ban, this First Presidency statement reaffirms the ban's divine origin and explicitly addresses the pre-mortal justification. President McKay was regarded during his tenure (1951–1970) as a progressive and beloved prophet — yet under his presidency, this statement was issued in his name and the names of his counselors.</p>
+
+      <div class="primary-quote tone-ban">
+        "Our living prophet, President David O. McKay, has said, 'The seeming discrimination by the Church toward the Negro is not something which originated with man; <em>but goes back into the beginning with God</em>… Revelation assures us that this plan antedates man's mortal existence, extending back to man's pre-existent state'… President McKay has stated that we must accept the testimony of the prophets… that dark skin is the result of divine decree."
+      </div>
+      <div class="quote-attribution">— First Presidency Statement, December 15, 1969</div>
+
+      <div class="quote-analysis">
+        <strong>The 1969 statement is significant for two reasons.</strong> First, it was issued less than a decade before the 1978 reversal — demonstrating that the ban was not treated as uncertain or under active reconsideration. Second, it explicitly invokes "revelation" as the source of the restriction's rationale, and attributes the theological justification directly to the living prophet. No hedging, no admission of uncertainty. The 2013 essay would later write: "We do not know precisely why, how, or when this restriction began in the Church" — a statement incompatible with 1969's "it goes back into the beginning with God."
+      </div>
+    </div>
+    <div class="source-strip">
+      <p>Sources: First Presidency Statement, December 15, 1969 · Lester E. Bush Jr., <em>Dialogue</em> 8:1 (1973) · LDS Gospel Topics Essay "Race and the Priesthood" (2013)</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       SECTION III — BRUCE R. McCONKIE
+       ══════════════════════════════════════ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">III — Bruce R. McConkie: <em>Mormon Doctrine</em> (1958) and the 1978 Reversal</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-header era-justify">
+      <div>
+        <div class="quote-speaker">Bruce R. McConkie — <em>Mormon Doctrine</em>, First Edition (1958)</div>
+        <div class="quote-meta">Published by Bookcraft · LDS Apostle, Member of the Quorum of the Twelve</div>
+      </div>
+      <div class="quote-tags">
+        <span class="qtag">Apostolic Teaching</span>
+        <span class="qtag">Standard Reference Work</span>
+      </div>
+    </div>
+    <div class="quote-body">
+      <p class="quote-context">Bruce R. McConkie's <em>Mormon Doctrine</em> became one of the most widely distributed doctrinal reference books in LDS history. Though not formally canonized, it was treated by generations of members and missionaries as a reliable guide to LDS theology. Under the entry for "Negroes," McConkie articulated the pre-mortal justification as settled doctrine. The book went through multiple editions and printings through the 1970s.</p>
+
+      <div class="primary-quote tone-justify">
+        "In the pre-existent eternity various degrees of valiance and devotion to the truth were exhibited by different groups of souls. <em>The negroes are not equal with other races where the receipt of certain spiritual blessings are concerned</em>… the negro, as indicated above, was not neutral in heaven, for he has been given a mortal body… but under the established order of things is <em>not entitled to receive the priesthood at the present time</em>."
+      </div>
+      <div class="quote-attribution">— Bruce R. McConkie, <em>Mormon Doctrine</em> (1st ed., 1958), entry: "Negroes"</div>
+
+      <div class="primary-quote tone-justify" style="margin-top: 16px;">
+        "Negroes in this life are denied the priesthood; <em>under no circumstances can they hold this delegation of authority from the Almighty</em>. The gospel message of salvation is not carried affirmatively to them… Ham, through Egyptus, continued the curse which was placed upon the seed of Cain."
+      </div>
+      <div class="quote-attribution">— Bruce R. McConkie, <em>Mormon Doctrine</em> (1st ed., 1958), entry: "Negroes"</div>
+
+      <div class="quote-analysis">
+        <strong>"Under no circumstances"</strong> is among the most absolute formulations available in doctrinal writing. McConkie did not present this as provisional, culturally conditioned, or subject to future reconsideration. The phrase echoes the eternal, unconditional language of doctrinal definition. Nineteen years later — not centuries — <strong class="red">these exact conditions would be reversed</strong> by the same church that published this work as a doctrinal reference.
+      </div>
+    </div>
+    <div class="source-strip">
+      <p>Sources: Bruce R. McConkie, <em>Mormon Doctrine</em> (Salt Lake City: Bookcraft, 1958), pp. 476–477 · 2nd ed. (1966), revised but retaining the restriction as current doctrine · LDS Gospel Topics Essay "Race and the Priesthood" (2013)</p>
+    </div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-header era-reversal">
+      <div>
+        <div class="quote-speaker">Bruce R. McConkie — "All Are Alike Unto God" (1978)</div>
+        <div class="quote-meta">Address to CES Religious Educators, August 18, 1978 · Seven Weeks After Official Declaration 2</div>
+      </div>
+      <div class="quote-tags">
+        <span class="qtag reversal">Post-Reversal</span>
+        <span class="qtag">Self-Correction</span>
+      </div>
+    </div>
+    <div class="quote-body">
+      <p class="quote-context">Seven weeks after Official Declaration 2 was announced, McConkie addressed LDS seminary and institute teachers. His remarks — candid and remarkable in their admission — have become among the most widely cited statements in the entire race-and-priesthood discussion. McConkie directly addresses what should be done with everything he and others had taught for decades.</p>
+
+      <div class="primary-quote tone-reversal">
+        "<em>Forget everything that I have said, or what President Brigham Young or whoever has said in days past that is contrary to the present revelation.</em> We spoke with a limited understanding and without the light and knowledge that now has come into the world. We get our truth and our light line upon line and precept upon precept. We have now had added a new flood of intelligence and light on this particular subject, and it erases all the darkness and all the views and all the thoughts of the past. They don't matter anymore."
+      </div>
+      <div class="quote-attribution">— Bruce R. McConkie, "All Are Alike Unto God," CES Religious Educators Symposium, August 18, 1978</div>
+
+      <div class="quote-analysis">
+        <strong>This statement is the most important single admission in this documentation.</strong> McConkie does not merely acknowledge that the ban is lifted — he acknowledges that <em>everything previously taught to justify the ban was wrong</em>, said with "limited understanding," and should be forgotten. Note what this requires: the First Presidency statements of 1949 and 1969 — which declared the ban "a direct commandment from the Lord" founded on "revelation" — must now also be forgotten. The prophets who spoke those words spoke with "limited understanding." McConkie's candor is admirable. But his words constitute a direct confession that authoritative prophetic teaching on a major doctrinal question was systematically, categorically wrong for over a century.
+      </div>
+    </div>
+    <div class="source-strip">
+      <p>Sources: Bruce R. McConkie, "All Are Alike Unto God," address to CES Religious Educators Symposium, Brigham Young University, August 18, 1978 · Published by the Church Educational System, LDS Church · Widely reproduced in LDS periodicals</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       SECTION IV — THE 1978 REVERSAL
+       ══════════════════════════════════ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">IV — Official Declaration 2: The 1978 Reversal</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-header era-reversal">
+      <div>
+        <div class="quote-speaker">Spencer W. Kimball — Official Declaration 2</div>
+        <div class="quote-meta">June 8, 1978 · Canonized Scripture · D&amp;C Official Declaration 2</div>
+      </div>
+      <div class="quote-tags">
+        <span class="qtag reversal">Canonical Revelation</span>
+        <span class="qtag reversal">Sustained by Membership</span>
+      </div>
+    </div>
+    <div class="quote-body">
+      <p class="quote-context">On June 8, 1978, the First Presidency under Spencer W. Kimball announced a revelation lifting the priesthood and temple ban for Black members. The announcement was canonized as Official Declaration 2 and is now part of the Doctrine and Covenants. It was sustained unanimously by the general conference membership in September 1978. The language of the Declaration is notably brief about reasons — it does not explain why the restriction had existed.</p>
+
+      <div class="primary-quote tone-reversal">
+        "He has heard our prayers, and by revelation has confirmed that the long-promised day has come when <em>every faithful, worthy man in the Church may receive the holy priesthood</em>, with power to exercise its divine authority, and enjoy with his loved ones every blessing that flows therefrom, including the blessings of the temple. Accordingly, all worthy male members of the Church may be ordained to the priesthood without regard for race or color."
+      </div>
+      <div class="quote-attribution">— Official Declaration 2 (June 8, 1978) · Doctrine and Covenants</div>
+
+      <div class="quote-analysis">
+        <strong>What Official Declaration 2 does not say is as significant as what it says.</strong> It does not say the restriction was a human error. It does not say the prior justifications were false. It does not explain why what was a "direct commandment from the Lord" (1949) is now reversed. The declaration announces the change as a new revelation — which raises its own question: if God is now revealing that "every faithful, worthy man" may receive the priesthood, was He previously revealing the opposite? Or was the previous restriction not, in fact, revealed at all? The 2013 essay would eventually grapple with this — and its answer is as consequential as the Declaration itself.
+      </div>
+    </div>
+    <div class="source-strip">
+      <p>Sources: Official Declaration 2, Doctrine and Covenants · First Presidency Letter, June 8, 1978 · Sustained at the 148th Semi-Annual General Conference, October 1978</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION V — THE 2013 DISAVOWAL
+       ═══════════════════════════════════ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">V — The 2013 Gospel Topics Essay: Disavowal of the Justifications</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="quote-block">
+    <div class="quote-header era-disavow">
+      <div>
+        <div class="quote-speaker">LDS Church — Gospel Topics Essay: "Race and the Priesthood"</div>
+        <div class="quote-meta">Published December 2013 · LDS Church Website (Gospel Topics Essays) · Official Church Publication</div>
+      </div>
+      <div class="quote-tags">
+        <span class="qtag disavow">Official Disavowal</span>
+        <span class="qtag disavow">Church Published</span>
+      </div>
+    </div>
+    <div class="quote-body">
+      <p class="quote-context">As part of a broader initiative to address difficult historical questions, the LDS Church published a series of Gospel Topics Essays in 2013–2014. The essay "Race and the Priesthood" is perhaps the most significant. Published on the official LDS Church website and acknowledged by Church leadership as an official document, it directly addresses and repudiates the theological justifications used by prophets and apostles for over 125 years.</p>
+
+      <div class="primary-quote tone-disavow">
+        "<em>The Church disavows the theories advanced in the past that black skin is a sign of divine disfavor or curse, or that it reflects actions in a premortal life; that mixed-race marriages are a sin; or that blacks or people of any other race or ethnicity are inferior in any way to anyone else.</em> Church leaders today unequivocally condemn all racism, past and present, in any form."
+      </div>
+      <div class="quote-attribution">— LDS Gospel Topics Essay, "Race and the Priesthood," LDS.org (December 2013)</div>
+
+      <div class="primary-quote tone-disavow" style="margin-top:16px;">
+        "Today, the Church disavows the theories advanced in the past… <em>We do not know precisely why, how, or when this restriction began in the Church of Jesus Christ of Latter-day Saints.</em> We have little clarity on the issue."
+      </div>
+      <div class="quote-attribution">— LDS Gospel Topics Essay, "Race and the Priesthood" (2013)</div>
+
+      <div class="quote-analysis">
+        <strong class="blue">These two sentences, read together, constitute the decisive evidence in this documentation.</strong> The first disavows the pre-mortal theory and the Curse of Cain doctrine — the precise justifications taught by Joseph Fielding Smith, Bruce R. McConkie, and multiple First Presidency statements as divine revelation. The second admits that the Church does not know how or when the restriction began. Compare this directly with the 1949 First Presidency statement: <strong class="red">"It is not a matter of the declaration of a policy but of direct commandment from the Lord."</strong> The 1949 prophets said they knew exactly: it was a direct commandment from God. The 2013 essay says: "We do not know precisely why, how, or when this restriction began."
+      </div>
+    </div>
+    <div class="source-strip">
+      <p>Sources: "Race and the Priesthood," Gospel Topics Essays, LDS Church (December 2013), available at ChurchofJesusChrist.org · Confirmed as official Church document by the Office of the First Presidency</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION VI — THE PROPHETIC AUTHORITY PROBLEM
+       ═══════════════════════════════════════ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">VI — The Prophetic Authority Problem</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="problem-cards">
+    <div class="problem-card">
+      <div class="problem-card-icon">📜</div>
+      <div class="problem-card-title">The Claim Was Prophetic</div>
+      <div class="problem-card-text">The restriction was not presented as policy, tradition, or pastoral prudence. Multiple prophets, two formal First Presidency statements, and a standard doctrinal reference work all declared it "a direct commandment from the Lord" grounded in revelation about the pre-mortal existence.</div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-card-icon">❌</div>
+      <div class="problem-card-title">The Claim Was Disavowed</div>
+      <div class="problem-card-text">The specific theological doctrines used to justify the ban — pre-mortal fence-sitting, the Curse of Cain, racial inferiority — were formally disavowed by the Church in 2013 as "theories," not revelations. The Church now says it does not know how or when the restriction began.</div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-card-icon">⚖️</div>
+      <div class="problem-card-title">No Escape From the Dilemma</div>
+      <div class="problem-card-text">If the prophets were speaking prophetically, they were wrong. If they were not speaking prophetically, the LDS claim that members have a "living prophet" who speaks for God requires massive qualification. Either conclusion destabilizes the foundational LDS truth claim.</div>
+    </div>
+  </div>
+
+  <!-- SYLLOGISM -->
+  <div class="syllogism-box">
+    <div class="syllogism-label">✦ &nbsp; The Logical Structure of the Problem &nbsp; ✦</div>
+
+    <div class="syllogism-row">
+      <div class="syllogism-num">P1.</div>
+      <div class="syllogism-text">The LDS Church claims that the President of the Church, when speaking on doctrinal matters in his official capacity, <em>speaks as a prophet of God</em> — representing divine will, not merely personal opinion.</div>
+    </div>
+    <div class="syllogism-row">
+      <div class="syllogism-num">P2.</div>
+      <div class="syllogism-text">Multiple Presidents of the Church, and formal First Presidency statements, declared the priesthood and temple ban to be <strong>"a direct commandment from the Lord"</strong> grounded in revealed theology about the pre-mortal existence and the lineage of Cain.</div>
+    </div>
+    <div class="syllogism-row">
+      <div class="syllogism-num">P3.</div>
+      <div class="syllogism-text">The LDS Church's own 2013 Gospel Topics Essay <em>disavows</em> those theological justifications as false theories, and acknowledges it does not know "precisely why, how, or when this restriction began." Bruce R. McConkie, speaking as an apostle seven weeks after the reversal, stated that everything previously taught on this subject was said with "limited understanding" and should be forgotten.</div>
+    </div>
+
+    <div class="syllogism-divider"></div>
+
+    <div class="syllogism-conclusion">
+      Therefore: Either (a) prophets speaking as prophets on doctrinal matters can be systematically, categorically wrong for over a century — in which case the LDS concept of continuous prophetic authority provides no reliable access to divine truth; or (b) those prophets were not speaking prophetically when they made these declarations — in which case LDS members have no reliable way to distinguish when a prophet speaks for God and when he does not, since the prophets themselves claimed divine authority for these teachings.
+    </div>
+  </div>
+
+  <!-- LDS RESPONSES -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">VII — Common LDS Responses &amp; Their Problems</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="response-grid">
+    <div class="response-card">
+      <div class="response-label label-defense">Response 1: Prophets Are Fallible Men</div>
+      <div class="response-text">Prophets are human and can express personal opinions that do not represent divine revelation. The ban may have reflected cultural prejudices of the 19th century rather than revealed doctrine. The Church has always taught that the prophet can be wrong on matters of personal opinion.</div>
+    </div>
+    <div class="response-card">
+      <div class="response-label label-rebuttal">Why This Fails</div>
+      <div class="response-text">The 1949 First Presidency statement — the highest collective governing voice in LDS polity — <strong>explicitly ruled this out</strong>: "It is not a matter of the declaration of a policy but of direct commandment from the Lord." A First Presidency statement does not occupy the same register as personal opinion. Additionally, Joseph Fielding Smith in <em>The Way to Perfection</em> and Bruce R. McConkie in <em>Mormon Doctrine</em> both presented the ban's theological justifications as revealed doctrine, not cultural opinion. If the First Presidency can issue formal statements declaring God's direct commandment — and be wrong — then no First Presidency statement carries reliable doctrinal authority.</div>
+    </div>
+    <div class="response-card">
+      <div class="response-label label-defense">Response 2: Progressive Revelation</div>
+      <div class="response-text">God reveals truth incrementally. The 1978 revelation was an advance, not a correction — God chose that moment to extend the priesthood as He had always planned, in the same way circumcision was fulfilled in baptism and the Mosaic Law was fulfilled in Christ.</div>
+    </div>
+    <div class="response-card">
+      <div class="response-label label-rebuttal">Why This Fails</div>
+      <div class="response-text">Progressive revelation explicates what was implicitly present — it does not reverse prior declarations made in God's name. The New Testament does not declare that Moses spoke with "limited understanding" about circumcision; it reveals its fulfilment in Christ. But McConkie instructed teachers to <em>forget</em> everything previously said on this topic. The 2013 essay does not say God revealed more of what He had always planned; it says the Church does not know "why, how, or when" the restriction began — a direct contradiction of the 1949 statement that it was "a direct commandment from the Lord" going "back into the beginning with God." These are incompatible framings of the same history.</div>
+    </div>
+    <div class="response-card">
+      <div class="response-label label-defense">Response 3: Brigham Young Was Wrong, Not Speaking as Prophet</div>
+      <div class="response-text">Brigham Young's more extreme racial statements were personal views, and the Church has never formally canonized his 1852 address. The restriction may have arisen from his cultural context rather than revelation.</div>
+    </div>
+    <div class="response-card">
+      <div class="response-label label-rebuttal">Why This Fails</div>
+      <div class="response-text">Young explicitly claimed prophetic authority — invoking "the name of Jesus Christ" and his personal prophetic knowledge ("I know it is true"). More critically, Young's position was <em>confirmed</em> by subsequent prophets and First Presidencies, including formal written statements declaring it "a direct commandment from the Lord" in 1949 and 1969. If Young was wrong, every prophet who confirmed his teaching was also wrong — and the LDS Church's claim to continuous living prophetic authority becomes very difficult to distinguish from ordinary institutional fallibility. The problem does not shrink by blaming Brigham Young; it grows.</div>
+    </div>
+  </div>
+
+  <!-- VERDICT -->
+  <div class="verdict-box">
+    <h3>✦ &nbsp; The Catholic Theological Contrast &nbsp; ✦</h3>
+    <p>The Catholic Church's claim to authoritative teaching rests on a carefully articulated epistemology: the ordinary and extraordinary Magisterium, the consensus of the Fathers, the sensus fidelium, and the irreformability of solemn dogmatic definitions. Catholics acknowledge that individual popes can err in their personal theological opinions. What the Church does not claim — and has not done — is issue formal pronouncements from its highest governing body declaring a practice "a direct commandment from the Lord" and then, 29 years later, disavow the theological foundation of that pronouncement while admitting it does not know how the practice began.</p>
+    <p>The LDS race-and-priesthood record does not merely present a church that made mistakes. It presents a church whose most authoritative governing voices — in formal, collective statements, explicitly framed as divine revelation — taught doctrines that the same church now calls false theories. <strong>The Catholic apologist need not argue that LDS prophets are bad men.</strong> The argument is far simpler and more devastating: if the prophets were right in 1949, the 2013 essay is wrong. If the 2013 essay is right, the prophets were wrong in 1949. There is no third option. And a prophetic tradition that can be wrong in this way, on this scale, for this long, while explicitly invoking the name of God, is not the kind of prophetic authority that can sustain the LDS claim to be the restored Church of Jesus Christ.</p>
+  </div>
+
+</main>
+
+<footer>&copy; One Faith Delivered &nbsp;&#8901;&nbsp; All Rights Reserved</footer>
+
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">One Faith Delivered</div>
+    <a href="../index.html">Home</a>
+    <a href="../articles.html">Articles</a>
+    <a href="../charts.html">Charts</a>
+    <a href="../topics.html">Topics</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../charts.html" class="sidebar-back">&#8592; All Charts</a>
+    <div class="sidebar-ornament">✦ ✦ ✦</div>
+  </div>
+</aside>
+
+<script>
+function toggleSidebar() {
+  var btn = document.querySelector('.nav-hamburger');
+  var sidebar = document.querySelector('.sidebar');
+  var overlay = document.querySelector('.sidebar-overlay');
+  var isOpen = sidebar.classList.contains('open');
+  if (isOpen) {
+    sidebar.classList.remove('open'); btn.classList.remove('open');
+    overlay.classList.remove('visible'); document.body.style.overflow = '';
+  } else {
+    sidebar.classList.add('open'); btn.classList.add('open');
+    overlay.classList.add('visible'); document.body.style.overflow = 'hidden';
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar();
+});
+
+/* ── Scroll entrance ── */
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.04 });
+
+document.querySelectorAll('.quote-block, .problem-card, .syllogism-box').forEach(function(el) {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(14px)';
+  el.style.transition = 'opacity 0.4s ease, transform 0.4s ease, box-shadow 0.2s';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>

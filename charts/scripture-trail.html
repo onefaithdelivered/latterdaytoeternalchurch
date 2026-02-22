@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Scripture Trail: Tracing Catholic Doctrine Through Twenty Centuries | One Faith Delivered</title>
+<meta name="description" content="Interactive visual timelines tracing core Catholic doctrines — the Real Presence, the Indefectibility of the Church, Apostolic Succession, Confession, and Mary as Theotokos — from Old Testament types through the Church Fathers to today." />
+<link rel="canonical" href="https://onefaithdelivered.org/charts/scripture-trail.html" />
+<link rel="icon" href="../favicons/favicon.ico" sizes="any" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   SCRIPTURE TRAIL — MULTI-DOCTRINE
+   Design system: matches book-of-abraham-problem.html
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --crimson:       #8B0000;
+  --dark-crimson:  #5C0000;
+  --gold:          #C5A55A;
+  --dark-gold:     #8B7335;
+  --parchment:     #F5F0E8;
+  --dark-bg:       #1A1A1A;
+  --text:          #2A2A2A;
+  --muted:         #666;
+  --line-gray:     #D0C8B8;
+  /* Era palette */
+  --col-ot:        #8B6914;
+  --col-ot-bg:     #FFFCEE;
+  --col-ot-border: #C5A55A;
+  --col-nt:        #8B0000;
+  --col-nt-bg:     #FFF8F8;
+  --col-nt-border: #C05050;
+  --col-pat:       #1A3A5C;
+  --col-pat-bg:    #F3F7FC;
+  --col-pat-border:#3A6A9A;
+  --col-cou:       #4A1A5C;
+  --col-cou-bg:    #F8F4FC;
+  --col-cou-border:#8A50AA;
+  --col-tod:       #1A4A2A;
+  --col-tod-bg:    #F3FAF5;
+  --col-tod-border:#3A8A50;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--parchment);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.6;
+}
+
+/* ── SITE NAV ── */
+.site-nav {
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(245,240,232,0.98), rgba(240,235,225,0.95));
+  border-bottom: 1px solid var(--line-gray);
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.site-nav a.nav-home {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem; font-weight: 700; letter-spacing: 0.05em;
+  color: var(--crimson); text-decoration: none; transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: var(--dark-crimson); }
+.site-nav .nav-back {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--dark-gold); text-decoration: none;
+  border: 1px solid rgba(139,115,53,0.35); padding: 0.4rem 1.1rem; border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
+}
+.site-nav .nav-back:hover { background: rgba(139,115,53,0.08); color: var(--crimson); }
+.nav-hamburger {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  width: 36px; height: 36px; cursor: pointer; background: none;
+  border: 1px solid rgba(139,115,53,0.3); border-radius: 3px; padding: 6px; z-index: 10001;
+}
+.nav-hamburger span {
+  display: block; height: 2px; background: var(--text); border-radius: 2px;
+  transition: all 0.25s; transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@media (max-width: 700px) {
+  .nav-hamburger { display: flex; }
+  .site-nav .nav-back { display: none; }
+}
+
+/* ── SIDEBAR ── */
+.sidebar-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45); z-index: 10000; backdrop-filter: blur(2px);
+}
+.sidebar-overlay.visible { display: block; }
+.sidebar {
+  position: fixed; top: 0; right: -280px; width: 260px; height: 100%;
+  background: linear-gradient(to bottom, #FAF6F0, #F5F0E8);
+  border-left: 1px solid var(--line-gray); z-index: 10002;
+  transition: right 0.3s ease; overflow-y: auto;
+}
+.sidebar.open { right: 0; }
+.sidebar-inner { padding: 5rem 2rem 2rem; display: flex; flex-direction: column; gap: 0; }
+.sidebar-brand {
+  font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: 700;
+  color: var(--crimson); margin-bottom: 2rem; padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line-gray);
+}
+.sidebar-inner a {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); text-decoration: none;
+  padding: 0.85rem 0; border-bottom: 1px solid rgba(208,200,184,0.5); transition: color 0.2s;
+}
+.sidebar-inner a:hover { color: var(--crimson); }
+.sidebar-inner a.sidebar-back {
+  color: var(--dark-gold); margin-top: 1.5rem; border: 1px solid rgba(139,115,53,0.3);
+  padding: 0.7rem 1rem; text-align: center; border-radius: 2px;
+}
+.sidebar-ornament {
+  color: var(--gold); font-size: 11px; letter-spacing: 8px; text-align: center; margin-top: 2rem;
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  background: linear-gradient(135deg, #4A0F1A 0%, #6B1D2A 40%, #3D1520 100%);
+  color: #F5F0E8; padding: 72px 40px 56px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.page-header::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px,
+    rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+  pointer-events: none;
+}
+.back-link {
+  display: inline-block; font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--gold); text-decoration: none; margin-bottom: 1.8rem;
+  opacity: 0.85; transition: opacity 0.2s; position: relative; z-index: 1;
+}
+.back-link:hover { opacity: 1; }
+.ornament {
+  display: block; color: var(--gold); font-size: 1rem; letter-spacing: 12px;
+  margin-bottom: 1.2rem; opacity: 0.7; position: relative; z-index: 1;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif; font-size: clamp(2em, 4vw, 3.2em);
+  font-weight: 900; letter-spacing: -0.5px; color: #F5F0E8; margin-bottom: 14px;
+  line-height: 1.2; position: relative; z-index: 1;
+}
+.page-header h1 span { color: var(--gold); }
+.page-header .subtitle {
+  font-family: 'Source Serif 4', serif; font-size: 1.1em; font-weight: 300;
+  font-style: italic; color: rgba(245,240,232,0.75); max-width: 680px; margin: 0 auto;
+  position: relative; z-index: 1;
+}
+
+/* ── DOCTRINE SELECTOR ── */
+.doctrine-selector {
+  background: #fff;
+  border-bottom: 1px solid var(--line-gray);
+  padding: 20px 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  position: sticky; top: 52px; z-index: 9998;
+}
+.doctrine-selector-inner {
+  max-width: 1000px; margin: 0 auto;
+}
+.doctrine-selector-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.62em; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 12px; text-align: center;
+}
+.doctrine-buttons {
+  display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+}
+.doctrine-btn {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 0.85em; font-weight: 600;
+  padding: 8px 18px; border-radius: 4px;
+  border: 1.5px solid var(--line-gray);
+  background: var(--parchment); color: var(--text);
+  cursor: pointer; transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.doctrine-btn:hover {
+  border-color: var(--gold);
+  background: var(--col-ot-bg);
+  color: var(--crimson);
+  box-shadow: 0 2px 8px rgba(139,115,53,0.15);
+}
+.doctrine-btn.active {
+  background: linear-gradient(135deg, #4A0F1A, #6B1D2A);
+  color: var(--gold);
+  border-color: var(--dark-crimson);
+  box-shadow: 0 3px 12px rgba(74,15,26,0.3);
+  transform: translateY(-1px);
+}
+.doctrine-btn.active:hover {
+  background: linear-gradient(135deg, #5C1322, #7D2535);
+  color: var(--gold);
+}
+
+@media (max-width: 700px) {
+  .doctrine-selector { top: 52px; padding: 14px 12px; }
+  .doctrine-btn { font-size: 0.78em; padding: 7px 12px; }
+}
+
+/* ── MAIN ── */
+main { max-width: 1000px; margin: 0 auto; padding: 50px 24px 80px; }
+
+/* ── INTRO BOX ── */
+.intro-box {
+  background: #fff; border: 1px solid var(--line-gray); border-left: 5px solid var(--crimson);
+  border-radius: 4px; padding: 28px 32px; margin-bottom: 48px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.intro-box p { font-size: 1rem; line-height: 1.85; color: var(--text); }
+.intro-box p + p { margin-top: 0.9rem; }
+.intro-box strong { color: var(--crimson); font-weight: 700; }
+
+/* ── SECTION DIVIDER ── */
+.section-divider {
+  margin: 40px 0 24px; display: flex; align-items: center; gap: 16px;
+}
+.section-divider-line { flex: 1; height: 1px; background: var(--line-gray); }
+.section-divider-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.68em; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--dark-gold); white-space: nowrap;
+}
+
+/* ── HOW TO USE BAR ── */
+.how-to-use {
+  display: flex; align-items: center; gap: 14px;
+  background: #fff; border: 1px solid var(--line-gray); border-radius: 4px;
+  padding: 14px 20px; margin-bottom: 40px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.how-to-use-icon {
+  width: 32px; height: 32px; background: var(--crimson); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  font-size: 0.9rem; color: #fff;
+}
+.how-to-use p {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.72em; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted);
+}
+.how-to-use p span { color: var(--dark-gold); }
+
+/* ════════════════════════════════════════════════════
+   CHAIN LAYOUT
+   ════════════════════════════════════════════════════ */
+
+.chain-outer {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+.chain-spine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    rgba(197,165,90,0) 0%,
+    rgba(197,165,90,0.5) 3%,
+    rgba(197,165,90,0.5) 97%,
+    rgba(197,165,90,0) 100%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── ERA STRIP ── */
+.era-strip {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; gap: 0;
+  margin: 28px 0 0; height: 44px;
+}
+.era-strip-left, .era-strip-right {
+  flex: 1; height: 1px;
+}
+.era-strip-center {
+  width: 60px; display: flex; justify-content: center; align-items: center;
+  position: relative; z-index: 2;
+}
+.era-strip-badge {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.72em; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 16px;
+  border-radius: 20px; white-space: nowrap; border: 1px solid;
+}
+
+/* Era color variants */
+.era-ot  .era-strip-left,
+.era-ot  .era-strip-right  { background: var(--col-ot-border); }
+.era-ot  .era-strip-badge  { background: var(--col-ot-bg); color: var(--col-ot); border-color: var(--col-ot-border); }
+
+.era-nt  .era-strip-left,
+.era-nt  .era-strip-right  { background: var(--col-nt-border); }
+.era-nt  .era-strip-badge  { background: var(--col-nt-bg); color: var(--col-nt); border-color: var(--col-nt-border); }
+
+.era-pat .era-strip-left,
+.era-pat .era-strip-right  { background: var(--col-pat-border); }
+.era-pat .era-strip-badge  { background: var(--col-pat-bg); color: var(--col-pat); border-color: var(--col-pat-border); }
+
+.era-cou .era-strip-left,
+.era-cou .era-strip-right  { background: var(--col-cou-border); }
+.era-cou .era-strip-badge  { background: var(--col-cou-bg); color: var(--col-cou); border-color: var(--col-cou-border); }
+
+.era-tod .era-strip-left,
+.era-tod .era-strip-right  { background: var(--col-tod-border); }
+.era-tod .era-strip-badge  { background: var(--col-tod-bg); color: var(--col-tod); border-color: var(--col-tod-border); }
+
+/* ── NODE ROW ── */
+.chain-row {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  align-items: center;
+  gap: 0;
+  padding: 12px 0;
+}
+
+/* ── CHAIN LINK CENTER ── */
+.chain-link-col {
+  display: flex; flex-direction: column; align-items: center;
+  position: relative; z-index: 2;
+}
+.chain-link-svg {
+  display: block;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.15));
+  transition: transform 0.2s, filter 0.2s;
+}
+.chain-row:hover .chain-link-svg {
+  transform: scale(1.12);
+  filter: drop-shadow(0 2px 6px rgba(197,165,90,0.5));
+}
+
+.chain-row .chain-left-col {
+  display: flex; align-items: center; justify-content: flex-end; padding-right: 0;
+}
+.chain-row .chain-right-col {
+  display: flex; align-items: center; justify-content: flex-start; padding-left: 0;
+}
+
+/* ── CHAIN CARD ── */
+.chain-card {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  overflow: hidden;
+  cursor: pointer;
+  transition: opacity 0.4s, transform 0.4s, box-shadow 0.2s;
+  max-width: 420px;
+  width: 100%;
+}
+.chain-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.chain-left-col  .chain-card { margin-right: 0; }
+.chain-right-col .chain-card { margin-left: 0; }
+
+/* ── CARD TOP BORDER (era-colored) ── */
+.cat-ot  .chain-card { border-top: 4px solid var(--col-ot-border); }
+.cat-nt  .chain-card { border-top: 4px solid var(--col-nt-border); }
+.cat-pat .chain-card { border-top: 4px solid var(--col-pat-border); }
+.cat-cou .chain-card { border-top: 4px solid var(--col-cou-border); }
+.cat-tod .chain-card { border-top: 4px solid var(--col-tod-border); }
+
+/* ── CARD HEAD ── */
+.card-head { padding: 14px 18px 10px; }
+
+.card-era-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.6em; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 2px; margin-bottom: 8px; border: 1px solid;
+}
+.cat-ot  .card-era-badge { background: var(--col-ot-bg);  color: var(--col-ot);  border-color: rgba(197,165,90,0.4); }
+.cat-nt  .card-era-badge { background: var(--col-nt-bg);  color: var(--col-nt);  border-color: rgba(192,80,80,0.3); }
+.cat-pat .card-era-badge { background: var(--col-pat-bg); color: var(--col-pat); border-color: rgba(58,106,154,0.3); }
+.cat-cou .card-era-badge { background: var(--col-cou-bg); color: var(--col-cou); border-color: rgba(138,80,170,0.3); }
+.cat-tod .card-era-badge { background: var(--col-tod-bg); color: var(--col-tod); border-color: rgba(58,138,80,0.3); }
+
+.card-ref {
+  font-family: 'Playfair Display', serif; font-size: 1.02em; font-weight: 700;
+  color: var(--text); line-height: 1.3; margin-bottom: 3px;
+}
+.card-date {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65em; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
+}
+
+.card-teaser {
+  font-size: 0.88em; font-style: italic; color: var(--muted);
+  line-height: 1.6; border-left: 3px solid var(--line-gray); padding-left: 12px;
+  margin-bottom: 0;
+}
+
+/* Toggle footer */
+.card-toggle {
+  padding: 8px 18px;
+  border-top: 1px solid var(--line-gray);
+  background: #FAFAF8;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.card-toggle-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.64em; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s;
+}
+.cat-ot  .card-toggle-label { color: var(--col-ot); }
+.cat-nt  .card-toggle-label { color: var(--col-nt); }
+.cat-pat .card-toggle-label { color: var(--col-pat); }
+.cat-cou .card-toggle-label { color: var(--col-cou); }
+.cat-tod .card-toggle-label { color: var(--col-tod); }
+
+.card-toggle-arrow {
+  font-size: 0.8em; transition: transform 0.35s ease; display: inline-block; color: var(--muted);
+}
+.chain-card.open .card-toggle-arrow { transform: rotate(180deg); }
+
+/* ── EXPANDED CONTENT ── */
+.card-expand {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.42s cubic-bezier(0.4,0,0.2,1);
+}
+.chain-card.open .card-expand { max-height: 800px; }
+
+.card-expand-inner {
+  padding: 18px 18px 14px;
+  border-top: 1px solid var(--line-gray);
+}
+
+.full-quote {
+  border-radius: 3px; padding: 16px 18px; margin-bottom: 14px;
+  border-left: 4px solid;
+}
+.cat-ot  .full-quote { background: var(--col-ot-bg);  border-color: var(--col-ot-border); }
+.cat-nt  .full-quote { background: var(--col-nt-bg);  border-color: var(--col-nt-border); }
+.cat-pat .full-quote { background: var(--col-pat-bg); border-color: var(--col-pat-border); }
+.cat-cou .full-quote { background: var(--col-cou-bg); border-color: var(--col-cou-border); }
+.cat-tod .full-quote { background: var(--col-tod-bg); border-color: var(--col-tod-border); }
+
+.full-quote p {
+  font-size: 0.92em; font-style: italic; line-height: 1.8; color: var(--text);
+}
+.full-quote cite {
+  display: block; margin-top: 8px;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.68em; font-weight: 600;
+  letter-spacing: 0.08em; font-style: normal; color: var(--muted);
+}
+
+.card-commentary {
+  font-size: 0.88em; line-height: 1.78; color: var(--text);
+}
+.card-commentary strong { color: var(--crimson); font-weight: 700; }
+.card-commentary em { color: var(--dark-gold); font-style: italic; }
+
+/* ── VERDICT BOX ── */
+.verdict-box {
+  background: linear-gradient(135deg, #4A0F1A, #6B1D2A);
+  color: #F5F0E8; border-radius: 6px; padding: 44px 40px; margin-top: 48px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.verdict-box::before {
+  content: ''; position: absolute; inset: 8px;
+  border: 1px solid rgba(197,165,90,0.25); border-radius: 4px; pointer-events: none;
+}
+.verdict-box h3 {
+  font-family: 'Playfair Display', serif; font-size: 1.4em; font-weight: 700;
+  color: var(--gold); margin-bottom: 18px; position: relative; z-index: 1;
+}
+.verdict-box p {
+  font-size: 1em; line-height: 1.85; color: rgba(245,240,232,0.9);
+  max-width: 800px; margin: 0 auto; position: relative; z-index: 1;
+}
+.verdict-box p + p { margin-top: 14px; }
+
+/* ── LDS CONTRAST CARD ── */
+.lds-contrast {
+  background: #fff; border: 1px solid var(--line-gray);
+  border-left: 5px solid #4A4A4A; border-radius: 4px; padding: 24px 28px;
+  margin-top: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+.lds-contrast-title {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.68em; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase; color: #4A4A4A;
+  margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid var(--line-gray);
+}
+.lds-contrast p {
+  font-size: 0.9em; line-height: 1.8; color: var(--text); margin-top: 8px;
+}
+.lds-contrast p + p { margin-top: 8px; }
+.lds-contrast strong { color: var(--crimson); }
+
+/* ── SOURCE STRIP ── */
+.source-strip {
+  padding: 14px 20px; border: 1px solid var(--line-gray); border-radius: 4px;
+  background: #FAFAF8; margin-top: 28px;
+}
+.source-strip p {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.62em; font-weight: 400;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); line-height: 1.9;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #fff; text-align: center; padding: 28px 20px;
+  border-top: 1px solid var(--line-gray);
+  font-family: 'JetBrains Mono', monospace; font-size: 0.68em; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
+}
+
+/* ── CONTENT TRANSITION ── */
+.trail-content { transition: opacity 0.3s ease; }
+.trail-content.fading { opacity: 0; }
+
+/* ════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════ */
+@media (max-width: 700px) {
+  .page-header { padding: 48px 20px 36px; }
+  main { padding: 28px 14px 56px; }
+  .verdict-box { padding: 28px 20px; }
+  .chain-spine { display: none; }
+  .chain-row {
+    grid-template-columns: 1fr;
+    padding: 6px 0;
+  }
+  .chain-left-col,
+  .chain-right-col {
+    grid-column: 1;
+    justify-content: flex-start;
+    padding: 0;
+  }
+  .chain-link-col { display: none; }
+  .chain-card { max-width: 100%; border-top-width: 4px; }
+  .era-strip { margin: 18px 0 0; }
+  .era-strip-left { display: none; }
+  .era-strip-right { display: none; }
+  .era-strip-center { width: auto; }
+}
+
+@media (max-width: 900px) and (min-width: 701px) {
+  .chain-row {
+    grid-template-columns: 1fr 50px 1fr;
+  }
+  .chain-card { max-width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── SITE NAV ── -->
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">One Faith Delivered</a>
+  <a href="../charts.html" class="nav-back">← All Charts</a>
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <a href="../charts.html" class="back-link">← Charts &amp; Visual Resources</a>
+  <span class="ornament">✦ ✦ ✦</span>
+  <h1>The Scripture <span>Trail</span></h1>
+  <p class="subtitle" id="headerSubtitle">Tracing core Catholic doctrines from Old Testament types through the New Testament, the Church Fathers, the Councils, and to today. One unbroken chain per doctrine. Click any link to reveal the evidence.</p>
+</header>
+
+<!-- ── DOCTRINE SELECTOR ── -->
+<div class="doctrine-selector">
+  <div class="doctrine-selector-inner">
+    <div class="doctrine-selector-label">Select a Doctrine to Trace</div>
+    <div class="doctrine-buttons" id="doctrineButtons"></div>
+  </div>
+</div>
+
+<!-- ── MAIN ── -->
+<main>
+  <div class="trail-content" id="trailContent">
+    <!-- Dynamically rendered -->
+  </div>
+</main>
+
+<footer>&copy; One Faith Delivered &nbsp;&#8901;&nbsp; All Rights Reserved</footer>
+
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">One Faith Delivered</div>
+    <a href="../index.html">Home</a>
+    <a href="../articles.html">Articles</a>
+    <a href="../charts.html">Charts</a>
+    <a href="../topics.html">Topics</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../charts.html" class="sidebar-back">&#8592; All Charts</a>
+    <div class="sidebar-ornament">✦ ✦ ✦</div>
+  </div>
+</aside>
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   DOCTRINE DATA
+   ═══════════════════════════════════════════════════════════ */
+var DOCTRINES = {
+
+/* ─────────────────────────────────────────────
+   1. REAL PRESENCE
+   ───────────────────────────────────────────── */
+"real-presence": {
+  label: "Real Presence",
+  subtitle: "Tracing the Real Presence of Christ in the Eucharist — from Melchizedek to the Upper Room to the Church Fathers to today. One unbroken chain of twenty centuries. Click any link to reveal the evidence.",
+  intro: '<p>If a doctrine is truly apostolic, it will leave tracks. It will appear in the earliest post-apostolic writers, be assumed as background in theological debates, be defined by councils precisely because it is already believed, and arrive in the modern Church with its lineage intact. <strong>The Real Presence of Christ in the Eucharist is one of the best-documented doctrines in Christian history.</strong></p><p>The chain below runs from the Old Testament types fulfilled in the Last Supper, through the explicit teaching of the New Testament, through eleven witnesses across twenty centuries to the present. At each link, the source speaks in its own words. The question this chain poses to the LDS restoration claim is simple and unavoidable: <strong>if the Church apostatized and the true doctrine was lost, where exactly did this unbroken line of testimony break — and who was teaching the truth during those eighteen silent centuries?</strong></p>',
+  eras: [
+    {
+      name: "Old Testament Types", css: "ot",
+      nodes: [
+        {
+          side: "left",
+          badge: "Old Testament Type · ~2000 BC",
+          ref: "Melchizedek's Offering of Bread &amp; Wine",
+          date: "Genesis 14:18 &nbsp;·&nbsp; ~2000 BC",
+          teaser: '"Melchizedek king of Salem brought out bread and wine; he was priest of God Most High."',
+          quote: '"And Melchizedek king of Salem brought out bread and wine; he was priest of God Most High. And he blessed him and said, \'Blessed be Abram by God Most High, Maker of heaven and earth; and blessed be God Most High, who has delivered your enemies into your hand.\'"',
+          cite: '— Genesis 14:18–20 (RSV)',
+          commentary: 'Melchizedek is the mysterious priest-king of Salem who offers <strong>bread and wine</strong> — the precise Eucharistic elements — to Abraham following his victory. The author of Hebrews identifies Christ explicitly as <em>"a priest forever after the order of Melchizedek"</em> (Heb 7:17), making the typological connection apostolic, not speculative. No animal sacrifice: bread and wine. The offering is priestly, unbloody, and anticipates the Mass by two millennia. This type is so precise that Justin Martyr (c. 155 AD) uses it as his primary Old Testament argument for the Eucharist.'
+        },
+        {
+          side: "right",
+          badge: "Old Testament Type · ~1440 BC",
+          ref: "The Passover Lamb: Sacrifice Completed in Eating",
+          date: "Exodus 12 &nbsp;·&nbsp; ~1440 BC",
+          teaser: '"They shall eat the flesh that night, roasted on fire; with unleavened bread and bitter herbs they shall eat it."',
+          quote: '"They shall eat the flesh that night, roasted on fire; with unleavened bread and bitter herbs they shall eat it... It is the sacrifice of the LORD\'s Passover, for he passed over the houses of the people of Israel in Egypt, when he struck the Egyptians but spared our houses."',
+          cite: '— Exodus 12:8, 27 (RSV) &nbsp;·&nbsp; cf. 1 Corinthians 5:7: "Christ, our Passover lamb, has been sacrificed."',
+          commentary: 'The Passover establishes a non-negotiable structural principle: the sacrifice is completed only when the flesh is <em>consumed</em>. The blood on the doorpost provides protection; the body must be eaten. Paul identifies Christ as <em>"our paschal lamb"</em> (1 Cor 5:7). If the anti-type (the Eucharist) is a bare symbol, then eating is irrelevant — but the type demands eating. <strong>The sacrifice and the meal are one act.</strong> This template is embedded in Jesus\'s institution of the Eucharist at the Passover meal, not incidentally, but structurally: the Lamb is consumed.'
+        },
+        {
+          side: "left",
+          badge: "Old Testament Type · ~1440 BC",
+          ref: "Manna from Heaven: The Figure and Its Reality",
+          date: "Exodus 16 &nbsp;·&nbsp; ~1440 BC",
+          teaser: '"Behold, I am about to rain bread from heaven for you, and the people shall go out and gather a day\'s portion every day."',
+          quote: '"Behold, I am about to rain bread from heaven for you, and the people shall go out and gather a day\'s portion every day... Your fathers ate the manna in the wilderness, and they died. This is the bread that comes down from heaven, so that one may eat of it and not die."',
+          cite: '— Exodus 16:4; John 6:49–50 (ESV)',
+          commentary: 'Jesus interprets the manna in John 6 as a <em>figure pointing to His own body</em> as the true Bread from Heaven: <em>"Your fathers ate the manna... and they died. I am the living bread that came down from heaven — if anyone eats of this bread, he will live forever"</em> (John 6:49–51). The manna is the shadow; the Eucharist is the substance. Both require daily (or regular) consumption. Both are miraculous gifts of God given in the wilderness of earthly life. Jesus explicitly invokes this type to explain what He is about to institute at the Last Supper.'
+        }
+      ]
+    },
+    {
+      name: "New Testament", css: "nt",
+      nodes: [
+        {
+          side: "right",
+          badge: "New Testament · AD 33",
+          ref: 'The Institution: "This IS My Body"',
+          date: "Matthew 26:26–28 &nbsp;·&nbsp; cf. Mark 14, Luke 22 &nbsp;·&nbsp; AD 33",
+          teaser: '"Take, eat; this is my body... this is my blood of the covenant, which is poured out for many."',
+          quote: '"Now as they were eating, Jesus took bread, and after blessing it broke it and gave it to the disciples, and said, \'Take, eat; this is my body.\' And he took a cup, and when he had given thanks he gave it to them, saying, \'Drink of it, all of you, for this is my blood of the covenant, which is poured out for many for the forgiveness of sins.\'"',
+          cite: '— Matthew 26:26–28 (ESV) &nbsp;·&nbsp; cf. Luke 22:19–20: "Do this in remembrance of me."',
+          commentary: 'Jesus says <em>"This IS my body"</em> — not "this represents" or "this signifies." In Aramaic (the language He spoke), the predicate was implicit: <em>dén bisri</em> — literally, "This, my flesh." The formula is ontological. The Greek of Luke 22:19, <em>anamnēsis</em> (often translated "remembrance"), does not mean mental recollection — it is a liturgical, sacrificial term meaning a re-presentation of a completed sacrifice, as in the Passover <em>zikkaron</em>. <strong>The command is not "remember me as an absent friend" but "enact this sacrifice before God."</strong>'
+        },
+        {
+          side: "left",
+          badge: "New Testament · c. AD 90",
+          ref: "The Bread of Life Discourse: Jesus Doubles Down",
+          date: "John 6:51–58 &nbsp;·&nbsp; c. AD 90",
+          teaser: '"My flesh is true food, and my blood is true drink. Whoever feeds on my flesh and drinks my blood abides in me, and I in him."',
+          quote: '"I am the living bread that came down from heaven. If anyone eats of this bread, he will live forever. And the bread that I will give for the life of the world is my flesh... Whoever feeds on my flesh and drinks my blood has eternal life, and I will raise him up on the last day. For my flesh is true food, and my blood is true drink... Many of his disciples, when they heard it, said, \'This is a hard saying; who can listen to it?\'"',
+          cite: '— John 6:51, 54–55, 60 (ESV)',
+          commentary: 'When the crowd objects — <em>"How can this man give us his flesh to eat?"</em> — Jesus does not soften His language. He intensifies it: <em>"Unless you eat the flesh of the Son of Man and drink his blood, you have no life in you"</em> (v.53). When many disciples leave, He lets them go — and does not call them back to explain a misunderstanding. The Greek verb used here is <em>trōgō</em> — to munch, to gnaw, used of animals feeding — a distinctly physical word Jesus chose deliberately. <strong>If this discourse is symbolic, it is the only place in John\'s Gospel where Jesus allows a misunderstanding to drive people permanently away.</strong>'
+        },
+        {
+          side: "right",
+          badge: "New Testament · c. AD 54",
+          ref: "1 Corinthians 11: Guilty of the Body and Blood",
+          date: "1 Corinthians 11:23–29 &nbsp;·&nbsp; c. AD 54–55",
+          teaser: '"Whoever eats the bread or drinks the cup of the Lord in an unworthy manner will be guilty concerning the body and blood of the Lord."',
+          quote: '"For I received from the Lord what I also delivered to you, that the Lord Jesus on the night when he was betrayed took bread... \'This is my body which is for you. Do this in remembrance of me.\'... Whoever, therefore, eats the bread or drinks the cup of the Lord in an unworthy manner will be guilty concerning the body and blood of the Lord... For anyone who eats and drinks without discerning the body eats and drinks judgment on himself."',
+          cite: '— 1 Corinthians 11:23–24, 27, 29 (ESV)',
+          commentary: 'This is the <em>earliest written record of the Last Supper</em> (predating all four Gospels by years). Two phrases are decisive. First: <em>"guilty concerning the body and blood."</em> One cannot be guilty of a symbolized absence — guilt requires a real object. Second: <em>"without discerning the body... eats and drinks judgment on himself."</em> The Greek <em>diakrino</em> means to make a distinction, to recognize something as what it is. <strong>The judgment comes from failing to recognize that this IS the Body — which only makes sense if it actually is the Body.</strong>'
+        }
+      ]
+    },
+    {
+      name: "Ante-Nicene Church Fathers", css: "pat",
+      nodes: [
+        {
+          side: "left",
+          badge: "Church Father · c. AD 107",
+          ref: "Ignatius of Antioch: Student of John, Martyr",
+          date: "Letter to the Smyrnaeans &nbsp;·&nbsp; c. AD 107",
+          teaser: '"They abstain from the Eucharist... because they confess not the Eucharist to be the flesh of our Saviour Jesus Christ."',
+          quote: '"They abstain from the Eucharist and from prayer, because they confess not the Eucharist to be the flesh of our Saviour Jesus Christ, which suffered for our sins, and which the Father, of His goodness, raised up again."',
+          cite: '— Ignatius of Antioch, Letter to the Smyrnaeans, §7 (c. AD 107)',
+          commentary: 'Ignatius was bishop of Antioch, a direct student of the Apostle John, and wrote this letter <em>en route to his own martyrdom in Rome</em>. He is condemning the Docetists — who denied that Christ had a real physical body — and observes that their error logically forces them to reject the Eucharist as Christ\'s flesh. <strong>For Ignatius, writing within living memory of the Apostles and facing death for his faith, the Eucharist IS the flesh of Jesus Christ.</strong> This is AD 107 — fifteen years before Justin Martyr was even born.'
+        },
+        {
+          side: "right",
+          badge: "Church Father · c. AD 155",
+          ref: "Justin Martyr: Not Common Bread or Common Drink",
+          date: "First Apology, Chapter 66 &nbsp;·&nbsp; c. AD 155",
+          teaser: '"Not as common bread or common drink do we receive these; but in like manner as Jesus Christ our Saviour... had both flesh and blood for our salvation."',
+          quote: '"For not as common bread or common drink do we receive these; but in like manner as Jesus Christ our Saviour, having been made flesh by the Word of God, had both flesh and blood for our salvation, so likewise have we been taught that the food which is blessed by the prayer of His word, and from which our blood and flesh by transmutation are nourished, is the flesh and blood of that incarnated Jesus."',
+          cite: '— Justin Martyr, First Apology §66 (c. AD 155). Writing to Emperor Antoninus Pius.',
+          commentary: 'Justin is writing to the <em>Roman Emperor</em> to defend Christian worship from slander. He explains the Eucharist without apology: the blessed bread and wine are <em>not</em> common food — they are the flesh and blood of Christ. He even uses the Incarnation as the analogy: just as the Word became flesh, so the food is transformed into His Body. <strong>Justin uses the word "transmutation" (metabolē in Greek) — a change of substance, not a symbolic presence.</strong> He was martyred c. AD 165 for refusing to sacrifice to pagan gods.'
+        },
+        {
+          side: "left",
+          badge: "Church Father · c. AD 180",
+          ref: "Irenaeus of Lyon: The Eucharist as Theological Proof",
+          date: "Against Heresies, Book V &nbsp;·&nbsp; c. AD 180",
+          teaser: '"He has acknowledged the cup as His own blood, from which He bedews our blood; and the bread as His own body, from which He gives increase to our bodies."',
+          quote: '"He has acknowledged the cup (which is a part of creation) as His own blood, from which He bedews our blood; and the bread (also a part of creation) He has established as His own body, from which He gives increase to our bodies. When, therefore, the mingled cup and the manufactured bread receives the Word of God, and the Eucharist of the blood and the body of Christ is made..."',
+          cite: '— Irenaeus of Lyon, Against Heresies V.2.2–3 (c. AD 180)',
+          commentary: 'Irenaeus was bishop of Lyon and a student of Polycarp, who was himself a student of the Apostle John — making him a spiritual grandchild of an Apostle. He uses the Real Presence as a <em>theological argument against Gnostic dualism</em>: if creation is evil, how can the bread and cup become Christ\'s Body and Blood and sanctify physical bodies? <strong>The argument has zero force if the Eucharist is merely symbolic.</strong> This is the universal assumption — so universal it functions as a logical premise in debates about other topics entirely.'
+        },
+        {
+          side: "right",
+          badge: "Church Father · c. AD 350",
+          ref: 'Cyril of Jerusalem: "Do Not Regard as Ordinary"',
+          date: "Mystagogical Catecheses, V &nbsp;·&nbsp; c. AD 348–350",
+          teaser: '"Do not therefore regard the Eucharistic elements as ordinary bread and cup, but as the Body and Blood of Christ as the Master Himself declared."',
+          quote: '"Do not therefore regard the Eucharistic elements as ordinary bread and cup, but as the Body and Blood of Christ as the Master Himself declared. Even though your senses suggest the contrary, let faith make you firm. He Himself having declared and said of the Bread, \'This is My Body,\' who shall dare to doubt? And when He Himself has said and declared, \'This is My Blood,\' who shall ever hesitate, saying that it is not His Blood?"',
+          cite: '— Cyril of Jerusalem, Mystagogical Catecheses V.20 (c. AD 348–350)',
+          commentary: 'Cyril wrote these catecheses for <em>newly baptized Christians</em> to explain what they had just received for the first time at Easter. This is the basic catechism of the fourth-century Church, not advanced theology. His teaching to new converts is stark: the senses say "bread," but faith — grounded in Christ\'s own words — declares "Body." <strong>This is AD 350 — a full twelve centuries before the Council of Trent that Protestants often blame for "inventing" the doctrine.</strong>'
+        }
+      ]
+    },
+    {
+      name: "Councils &amp; Dogmatic Definition", css: "cou",
+      nodes: [
+        {
+          side: "left",
+          badge: "Ecumenical Council · AD 1215",
+          ref: 'Fourth Lateran Council: The Word "Transubstantiated"',
+          date: "Canon 1 &nbsp;·&nbsp; AD 1215",
+          teaser: '"His body and blood are truly contained in the sacrament of the altar under the forms of bread and wine, the bread and wine having been changed in substance [transubstantiatis]."',
+          quote: '"His body and blood are truly contained in the sacrament of the altar under the forms of bread and wine, the bread and wine having been changed in substance [transubstantiatis] into His body and blood by divine power."',
+          cite: '— Fourth Lateran Council, Canon 1 (AD 1215). Attended by 412 bishops, 900 abbots and priors, representatives of all patriarchates.',
+          commentary: 'The Fourth Lateran Council was the largest ecumenical council in the medieval Church. The term <em>transubstantiatis</em> appears here for the first time in conciliar definition — this is not the introduction of a new doctrine but the provision of precise philosophical vocabulary for what the Church had <em>always believed since the Apostles</em>. The Aristotelian categories of substance and accident provide the terminology; the doctrine itself is apostolic. <strong>The council defines what Ignatius already assumed, what Justin already taught, and what Cyril already catechized.</strong>'
+        },
+        {
+          side: "right",
+          badge: "Ecumenical Council · AD 1551",
+          ref: "Council of Trent: The Formal Dogmatic Definition",
+          date: "Session XIII, Decree on the Eucharist &nbsp;·&nbsp; AD 1551",
+          teaser: '"By the consecration of the bread and wine there takes place a change of the whole substance of the bread into the substance of the body of Christ..."',
+          quote: '"By the consecration of the bread and wine there takes place a change of the whole substance of the bread into the substance of the body of Christ our Lord and of the whole substance of the wine into the substance of his blood. This change the holy Catholic Church has fittingly and properly called transubstantiation."',
+          cite: '— Council of Trent, Session XIII, Chapter 4 (AD 1551)',
+          commentary: 'Trent responds to Protestant reformers who variously taught a bare memorial (Zwingli), a spiritual presence (Calvin), or a consubstantial presence (Luther). Trent insists on the complete change of substance. Note the tense of the verb: the Church "has called" it transubstantiation — not "now calls" or "henceforth calls." <strong>Trent presents itself not as an innovation but as an articulation of the Church\'s consistent teaching.</strong> The doctrine is not created here; the word is clarified. The chain from Ignatius to Trent is unbroken.'
+        }
+      ]
+    },
+    {
+      name: "The Living Church Today", css: "tod",
+      nodes: [
+        {
+          side: "left",
+          badge: "Catechism of the Catholic Church · 1992",
+          ref: "The Catechism: Twenty Centuries, One Teaching",
+          date: "CCC §§ 1373–1374 &nbsp;·&nbsp; AD 1992 / Present",
+          teaser: '"In the most blessed sacrament... the body and blood, together with the soul and divinity, of our Lord Jesus Christ... is truly, really, and substantially contained."',
+          quote: '"The mode of Christ\'s presence under the Eucharistic species is unique. It raises the Eucharist above all the sacraments as \'the perfection of the spiritual life and the end to which all the sacraments tend.\' In the most blessed sacrament of the Eucharist \'the body and blood, together with the soul and divinity, of our Lord Jesus Christ and, therefore, the whole Christ is truly, really, and substantially contained.\'"',
+          cite: '— Catechism of the Catholic Church §1374 (1992), quoting the Council of Trent (1551)',
+          commentary: 'The Catechism quotes Trent, which articulated what Lateran IV defined with precision, which gave theological form to what Cyril catechized new Christians about in 350, which Irenaeus used as a theological premise in 180, which Justin explained to the Emperor in 155, which Ignatius confessed on the way to his execution in 107 — all of which is the plain reading of Christ\'s own words at the Last Supper, prefigured by Melchizedek, the Passover, and the Manna. <strong>This chain is unbroken. The question the LDS "restoration" must answer is: when exactly was it broken — and who was keeping the true faith during those eighteen centuries?</strong>'
+        }
+      ]
+    }
+  ],
+  verdict: {
+    title: "✦ &nbsp; The Weight of the Chain &nbsp; ✦",
+    paragraphs: [
+      'This is not a collection of proof-texts assembled by medieval apologists. This is a forensic timeline: the same doctrine, stated in the same terms, by independent witnesses across every century of Christian history — beginning with men who personally knew the Apostles. The Real Presence is not a doctrine that "developed" in the medieval period and then required a council to define. It was the assumed, universal, never-controversial faith of the earliest Church, and councils only defined it precisely when Protestant reformers denied it for the first time in fifteen centuries.',
+      'The LDS restoration narrative requires the complete rupture of this chain — not just weakening, but total severance — such that no bishop, Father, council, or ordinary Christian between AD 100 and AD 1830 possessed the true gospel. The chain above is the Church\'s answer to that claim. Follow any single link and you find a real person, a real document, and a real consistent testimony. The chain does not invite speculation. It invites examination.'
+    ]
+  },
+  ldsContrast: {
+    title: "The LDS Position in Contrast",
+    paragraphs: [
+      'Latter-day Saint theology has no equivalent of the Eucharist as the Real Presence. The LDS sacrament (bread and water, substituted by Brigham Young for wine) is understood as an ordinance of remembrance and covenant renewal — explicitly symbolic. The official LDS manual states: "The sacrament is not a sacrifice; it is an ordinance of remembrance." This is consistent with the LDS theological framework but represents a decisive break from two thousand years of universal Christian testimony documented above.',
+      '<strong>The critical question is not which position is more convenient or emotionally compelling — it is which position is historically and scripturally warranted.</strong> The chain on this page represents the Catholic answer. The burden of proof for the LDS claim lies with demonstrating where, exactly, thirteen links of primary-source evidence were all simultaneously and universally wrong — and who was faithfully preserving the true symbolic understanding through those centuries undetected.'
+    ]
+  },
+  sources: 'Primary Sources: Genesis 14:18 (RSV) · Exodus 12, 16 · Matthew 26:26–28 (ESV) · John 6:51–58 (ESV) · 1 Corinthians 11:23–29 (ESV) · Ignatius of Antioch, Ad Smyrnaeos §7 (c. AD 107) · Justin Martyr, First Apology §66 (c. AD 155) · Irenaeus of Lyon, Adversus Haereses V.2.2–3 (c. AD 180) · Cyril of Jerusalem, Mystagogical Catecheses V.20 (c. AD 348–350) · Fourth Lateran Council, Canon 1 (AD 1215) · Council of Trent, Session XIII, Chapter 4 (AD 1551) · Catechism of the Catholic Church §§ 1373–1376 (1992) · Patristic texts accessible via New Advent (newadvent.org) · LDS sacrament teaching: Teachings of the Gospel, Chapter 23, LDS.org'
+},
+
+
+/* ─────────────────────────────────────────────
+   2. INDEFECTIBILITY OF THE CHURCH
+   ───────────────────────────────────────────── */
+"indefectibility": {
+  label: "Indefectibility",
+  subtitle: "Tracing Christ’s promise that His Church would never fail — from the everlasting kingdom of Daniel through Christ’s own guarantees to the unbroken witness of every century since Pentecost.",
+  intro: '<p>The doctrine of indefectibility holds that the Church Christ founded will endure until the end of time, never falling into total apostasy or losing the essential truths of the gospel. This is not a claim that every individual Christian or even every leader will remain faithful — it is a claim about the institution Christ established and the promises He made to protect it. <strong>Indefectibility is the single most important doctrine in the Catholic-LDS conversation, because the entire LDS restoration narrative depends on its falsity.</strong></p><p>The chain below traces this doctrine from the Old Testament prophecies of an everlasting kingdom, through Christ\'s explicit promises, through the apostolic teaching, through the Fathers who staked their lives on the Church\'s perpetuity. The question for the LDS "Great Apostasy" claim is devastating in its simplicity: <strong>did Christ fail to keep His promises — or did the apostasy never happen?</strong></p>',
+  eras: [
+    {
+      name: "Old Testament Prophecy", css: "ot",
+      nodes: [
+        {
+          side: "left",
+          badge: "Old Testament Prophecy · ~600 BC",
+          ref: "Daniel: A Kingdom That Shall Never Be Destroyed",
+          date: "Daniel 2:44 &nbsp;·&nbsp; ~600 BC",
+          teaser: '"The God of heaven will set up a kingdom that shall never be destroyed, nor shall the kingdom be left to another people."',
+          quote: '"And in the days of those kings the God of heaven will set up a kingdom that shall never be destroyed, nor shall the kingdom be left to another people. It shall break in pieces all these kingdoms and bring them to an end, and it shall stand forever."',
+          cite: '— Daniel 2:44 (ESV)',
+          commentary: 'Daniel prophesies a kingdom established by God that will <em>never be destroyed</em> and will <em>stand forever</em>. LDS theology actually appeals to this verse — but applies it to the LDS Church established in 1830. The Catholic reading is far more natural: the kingdom was established by Christ at His first coming, during the era of the Roman Empire ("in the days of those kings"), and it has stood without interruption since. <strong>The text says "never destroyed" and "stand forever." A kingdom that was destroyed for 1,700 years and then restored is not a kingdom that was "never destroyed" — it is a kingdom that failed and was replaced.</strong>'
+        },
+        {
+          side: "right",
+          badge: "Old Testament Prophecy · ~735 BC",
+          ref: "Isaiah: Of His Government There Shall Be No End",
+          date: "Isaiah 9:7 &nbsp;·&nbsp; ~735 BC",
+          teaser: '"Of the increase of his government and of peace there shall be no end... from this time forth and forevermore."',
+          quote: '"Of the increase of his government and of peace there shall be no end, upon the throne of David and over his kingdom, to establish it and to uphold it with justice and with righteousness from this time forth and forevermore. The zeal of the LORD of hosts will do this."',
+          cite: '— Isaiah 9:7 (ESV)',
+          commentary: 'Isaiah prophesies a kingdom characterized by perpetual <em>increase</em> — not decrease, not collapse, not apostasy followed by restoration, but continuous growth <em>"from this time forth and forevermore."</em> The agent guaranteeing this perpetuity is not human faithfulness but <em>"the zeal of the LORD of hosts."</em> The kingdom endures because God sustains it. <strong>If the Church fell into total apostasy, it was not God\'s zeal that failed — it was God\'s promise. The Catholic position is that God keeps His promises.</strong>'
+        },
+        {
+          side: "left",
+          badge: "Old Testament Prophecy · ~520 BC",
+          ref: "Haggai: The Latter Glory of This House",
+          date: "Haggai 2:6–9 &nbsp;·&nbsp; ~520 BC",
+          teaser: '"The latter glory of this house shall be greater than the former... and in this place I will give peace."',
+          quote: '"For thus says the LORD of hosts: Yet once more, in a little while, I will shake the heavens and the earth and the sea and the dry land. And I will shake all nations, so that the treasures of all nations shall come in, and I will fill this house with glory, says the LORD of hosts... The latter glory of this house shall be greater than the former, says the LORD of hosts."',
+          cite: '— Haggai 2:6–7, 9 (ESV); cf. Hebrews 12:26–28',
+          commentary: 'Haggai prophesies that the latter glory of God\'s house — the messianic temple, which the Church Fathers universally identify with the Church — will surpass the former. The author of Hebrews quotes this passage and applies it to the New Covenant community: <em>"Let us be grateful for receiving a kingdom that cannot be shaken"</em> (Heb 12:28). <strong>A kingdom "that cannot be shaken" cannot undergo total apostasy. The New Testament itself applies this prophecy to the Church and declares it unshakable.</strong>'
+        }
+      ]
+    },
+    {
+      name: "New Testament", css: "nt",
+      nodes: [
+        {
+          side: "right",
+          badge: "New Testament · AD 33",
+          ref: '"The Gates of Hell Shall Not Prevail Against It"',
+          date: "Matthew 16:18 &nbsp;·&nbsp; AD 33",
+          teaser: '"On this rock I will build my church, and the gates of hell shall not prevail against it."',
+          quote: '"And I tell you, you are Peter, and on this rock I will build my church, and the gates of hell shall not prevail against it."',
+          cite: '— Matthew 16:18 (ESV)',
+          commentary: 'This is the single most devastating verse for the Great Apostasy theory. Jesus does not say "the gates of hell will not prevail for a few centuries" or "will not prevail ultimately, after an 1,800-year intermission." He makes an absolute promise: the gates of hell <em>shall not prevail</em> against His Church. The LDS position requires that the gates of hell <em>did</em> prevail — completely, globally, and for nearly two millennia. <strong>Either Jesus kept this promise and His Church endured, or Jesus failed to keep this promise and the gates of hell won. There is no third option.</strong>'
+        },
+        {
+          side: "left",
+          badge: "New Testament · AD 33",
+          ref: '"I Am with You Always, to the End of the Age"',
+          date: "Matthew 28:20 &nbsp;·&nbsp; AD 33",
+          teaser: '"And behold, I am with you always, to the end of the age."',
+          quote: '"Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, teaching them to observe all that I have commanded you. And behold, I am with you always, to the end of the age."',
+          cite: '— Matthew 28:20 (ESV)',
+          commentary: 'Christ\'s final words in Matthew are a promise of perpetual presence: <em>"I am with you always, to the end of the age."</em> The Greek <em>pasas tas hēmeras</em> means "all the days" — not "most of the days" or "the days before and after the apostasy." This promise is made to the apostolic Church as an institution, not to isolated individuals. <strong>If Christ was "with" His Church "all the days" until the end of the age, then there was never a day when the Church was without Christ\'s presence — which is precisely what a total apostasy would require.</strong>'
+        },
+        {
+          side: "right",
+          badge: "New Testament · AD 33",
+          ref: '"The Spirit of Truth Will Be with You Forever"',
+          date: "John 14:16–17; 16:13 &nbsp;·&nbsp; AD 33",
+          teaser: '"I will ask the Father, and he will give you another Helper, to be with you forever, even the Spirit of truth."',
+          quote: '"And I will ask the Father, and he will give you another Helper, to be with you forever, even the Spirit of truth, whom the world cannot receive, because it neither sees him nor knows him. You know him, for he dwells with you and will be in you."',
+          cite: '— John 14:16–17 (ESV); cf. John 16:13: "He will guide you into all the truth."',
+          commentary: 'Jesus promises the Holy Spirit as a permanent guide — <em>"to be with you forever"</em> (<em>eis ton aiōna</em>, literally "into the age," meaning without end). The Spirit will <em>"guide you into all the truth"</em> (John 16:13). If the Spirit was given to the apostolic Church forever and tasked with guiding it into all truth, then the Church cannot fall into total doctrinal error. <strong>A "Great Apostasy" requires that the Holy Spirit either left the Church (contradicting "forever") or failed to guide it into truth (contradicting "all the truth"). Either way, Christ\'s promise fails.</strong>'
+        },
+        {
+          side: "left",
+          badge: "New Testament · c. AD 60",
+          ref: "Paul: The Church as the Pillar and Ground of Truth",
+          date: "1 Timothy 3:15 &nbsp;·&nbsp; c. AD 62–65",
+          teaser: '"The church of the living God, the pillar and buttress of the truth."',
+          quote: '"I hope to come to you soon, but I am writing these things to you so that, if I delay, you may know how one ought to behave in the household of God, which is the church of the living God, a pillar and buttress of the truth."',
+          cite: '— 1 Timothy 3:15 (ESV)',
+          commentary: 'Paul calls the Church — not the Bible, not private interpretation, not a future restoration — <em>"the pillar and buttress of the truth."</em> A pillar holds something up; a buttress prevents it from falling. If the Church is the structural support of truth, then the collapse of the Church means the collapse of truth itself. <strong>Paul does not say "the Church will be the pillar of truth until the apostasy" — he identifies it as the ongoing, structural foundation of truth. If the pillar fell, what held up the truth for 1,800 years?</strong>'
+        },
+        {
+          side: "right",
+          badge: "New Testament · c. AD 60",
+          ref: "Ephesians: Glory in the Church Throughout All Generations",
+          date: "Ephesians 3:21 &nbsp;·&nbsp; c. AD 60–62",
+          teaser: '"To him be glory in the church and in Christ Jesus throughout all generations, forever and ever."',
+          quote: '"Now to him who is able to do far more abundantly than all that we ask or think, according to the power at work within us, to him be glory in the church and in Christ Jesus throughout all generations, forever and ever. Amen."',
+          cite: '— Ephesians 3:20–21 (ESV)',
+          commentary: 'Paul says God will receive glory <em>in the Church</em> throughout <em>all generations</em>, forever. Not "in the Church until the second century," not "in the Church again after 1830," but <em>throughout all generations</em>. This is a statement of the Church\'s perpetual existence as the locus of God\'s glory. <strong>If the Church ceased to exist or fell into total apostasy for eighteen centuries, God received no glory in the Church during those generations — and Paul\'s inspired doxology was false. The Catholic position is that Paul told the truth.</strong>'
+        }
+      ]
+    },
+    {
+      name: "Ante-Nicene Church Fathers", css: "pat",
+      nodes: [
+        {
+          side: "left",
+          badge: "Church Father · c. AD 107",
+          ref: "Ignatius of Antioch: Where Christ Is, There Is the Church",
+          date: "Letter to the Smyrnaeans &nbsp;·&nbsp; c. AD 107",
+          teaser: '"Where Jesus Christ is, there is the Catholic Church."',
+          quote: '"See that you all follow the bishop, even as Jesus Christ does the Father, and the presbytery as you would the Apostles... Where the bishop appears, there let the people be, just as where Jesus Christ is, there is the Catholic Church."',
+          cite: '— Ignatius of Antioch, Letter to the Smyrnaeans 8 (c. AD 107)',
+          commentary: 'Ignatius makes an identity claim: where Christ is, there is the Catholic Church. The corollary is that where the Catholic Church is, Christ is present. Writing within living memory of the Apostles, Ignatius sees no gap between Christ and the visible, bishop-led Church. <strong>For Ignatius, the Church is not a future hope or a past memory but a present, visible, Christ-inhabited reality. The "Great Apostasy" theory requires that this identification — made by a student of John the Apostle — was already wrong by AD 107.</strong>'
+        },
+        {
+          side: "right",
+          badge: "Church Father · c. AD 180",
+          ref: "Irenaeus: The Church Preserves the Apostolic Faith",
+          date: "Against Heresies III.4.1 &nbsp;·&nbsp; c. AD 180",
+          teaser: '"The Church, having received this preaching and this faith... as if occupying but one house, carefully preserves it."',
+          quote: '"The Church, having received this preaching and this faith, although scattered throughout the whole world, yet, as if occupying but one house, carefully preserves it. She also believes these points of doctrine just as if she had but one soul, and one and the same heart, and she proclaims them, and teaches them, and hands them down, with perfect harmony."',
+          cite: '— Irenaeus of Lyon, Against Heresies I.10.2 (c. AD 180)',
+          commentary: 'Irenaeus describes a Church that is both geographically universal and doctrinally unified — scattered across the world yet believing with "one soul" and "one heart." His argument against the Gnostics depends on this unity: the public, visible Church preserves the apostolic faith; the heretics deviate from it. <strong>Irenaeus\'s entire apologetic method collapses if the Church can fall into total apostasy — because then the heretics could claim that THEY preserved the true faith while the visible Church lost it. This is, in fact, exactly what every sect from the Gnostics to the LDS has claimed.</strong>'
+        },
+        {
+          side: "left",
+          badge: "Church Father · c. AD 251",
+          ref: '"He Cannot Have God for His Father Who Has Not the Church for His Mother"',
+          date: "De Ecclesiae Catholicae Unitate &nbsp;·&nbsp; c. AD 251",
+          teaser: '"He can no longer have God for his Father who has not the Church for his mother."',
+          quote: '"The bride of Christ cannot be adulterated; she is incorrupt and pure. She knows one home; she guards with chaste modesty the sanctity of one couch. She keeps us for God. She appoints the sons whom she has born for the kingdom. Whoever is separated from the Church and is joined to an adulteress, is separated from the promises of the Church; nor can he who forsakes the Church of Christ attain to the rewards of Christ. He is a stranger; he is profane; he is an enemy. He can no longer have God for his Father, who has not the Church for his mother."',
+          cite: '— Cyprian of Carthage, De Ecclesiae Catholicae Unitate 6 (c. AD 251)',
+          commentary: 'Cyprian\'s famous declaration presupposes the Church\'s indefectibility: the Church is the <em>necessary</em> mother of all Christians, and separation from her means separation from God\'s promises. The Church is "incorrupt and pure" — not in the sense that every member is sinless, but in the sense that she preserves the faith and sacraments intact. <strong>Cyprian\'s theology makes no sense if the Church can defect. If the mother can die, the children have no recourse. The Catholic claim is that she cannot die — because Christ promised she would not.</strong>'
+        },
+        {
+          side: "right",
+          badge: "Church Father · c. AD 400",
+          ref: "Augustine: The Church Will Endure to the End of the World",
+          date: "Various works &nbsp;·&nbsp; c. AD 395–430",
+          teaser: '"The Church will totter when her foundation totters. But how shall Christ totter?... As long as Christ does not totter, neither shall the Church."',
+          quote: '"The Church will totter when her foundation totters. But how shall Christ totter? As long as Christ does not totter — and He shall never totter — neither shall the Church totter to the end of time."',
+          cite: '— Augustine of Hippo, Enarrationes in Psalmos, on Psalm 103 (c. AD 400)',
+          commentary: 'Augustine makes the logic explicit: the Church\'s stability depends on Christ\'s stability. If Christ is the foundation (as Paul says in 1 Cor 3:11), then the Church can only fail if Christ fails. Since Christ cannot fail, the Church cannot fail. <strong>Augustine — the most influential theologian in Western Christianity — states flatly that the Church will not totter "to the end of time." The Great Apostasy theory requires that the greatest doctor of the Church was wrong about the Church\'s most basic characteristic.</strong>'
+        }
+      ]
+    },
+    {
+      name: "Councils &amp; Dogmatic Definition", css: "cou",
+      nodes: [
+        {
+          side: "left",
+          badge: "Ecumenical Council · AD 1870",
+          ref: "Vatican I: The Church Can Never Fall Away from the Faith",
+          date: "Pastor Aeternus &nbsp;·&nbsp; AD 1870",
+          teaser: '"That which our Lord Jesus Christ... established in the blessed Apostle Peter... must of necessity remain forever, by Christ\'s authority, in the Church."',
+          quote: '"That which our Lord Jesus Christ, the prince of shepherds and great shepherd of the sheep, established in the blessed Apostle Peter, for the continual salvation and permanent benefit of the Church, must of necessity remain forever, by Christ\'s authority, in the Church; which, founded as it is upon a rock, will stand firm until the end of time."',
+          cite: '— Vatican I, Pastor Aeternus, Chapter 2 (AD 1870)',
+          commentary: 'Vatican I formally defines what every previous generation had assumed: what Christ established in the Church <em>must remain forever</em>. The Church "will stand firm until the end of time." This is not a new claim — it is the dogmatic articulation of Matthew 16:18. <strong>The Council is merely making explicit what Daniel prophesied, what Christ promised, what Paul assumed, what Ignatius identified, what Irenaeus argued from, what Cyprian declared, and what Augustine proved: the Church cannot fail because Christ cannot fail.</strong>'
+        },
+        {
+          side: "right",
+          badge: "Ecumenical Council · AD 1964",
+          ref: "Vatican II: The Church as the Universal Sacrament of Salvation",
+          date: "Lumen Gentium &nbsp;·&nbsp; AD 1964",
+          teaser: '"The Church... will receive its perfection only in the glory of heaven. Until that day... the Church progresses on her pilgrimage."',
+          quote: '"The Church... will receive its perfection only in the glory of heaven, at the time of Christ\'s glorious return. Until that day, \'the Church progresses on her pilgrimage amidst this world\'s persecutions and God\'s consolations.\' Here below she knows that she is in exile far from the Lord, and longs for the full coming of the Kingdom."',
+          cite: '— Vatican II, Lumen Gentium 8–9 (AD 1964), quoting Augustine, De Civitate Dei XVIII.51.2',
+          commentary: 'Vatican II describes the Church as a pilgrim — imperfect, suffering, longing for fulfillment — but emphatically not as an institution that has failed or could fail. The Church "progresses on her pilgrimage" continuously from Pentecost to the Parousia. There is no gap, no interruption, no apostasy in this narrative. <strong>The Catholic understanding of Church history acknowledges profound failures of individual members and leaders — but never the failure of the Church herself to preserve the faith, the sacraments, and the apostolic succession Christ entrusted to her.</strong>'
+        }
+      ]
+    },
+    {
+      name: "The Living Church Today", css: "tod",
+      nodes: [
+        {
+          side: "left",
+          badge: "Catechism of the Catholic Church · 1992",
+          ref: '"The Church Will Not Be Overcome"',
+          date: "CCC §§ 756, 834, 869 &nbsp;·&nbsp; AD 1992 / Present",
+          teaser: '"The Church is the seed and the beginning of the Kingdom. Her origin and growth may be symbolized by the blood and water which flowed from the open side of the crucified Jesus."',
+          quote: '"\'The Church is like a standard lifted high for the nations to see: under her, the scattered children of God can be gathered together, until there is one flock and one shepherd.\' She is \'the visible plan of God\'s love for humanity,\' because God desires \'that the whole human race may become one People of God, form one Body of Christ, and be built up into one Temple of the Holy Spirit.\'"',
+          cite: '— Catechism of the Catholic Church §776 (1992), citing Ad Gentes 7 and Lumen Gentium 17',
+          commentary: 'The Catechism presents the Church as God\'s visible plan for humanity — not a plan that was tried and failed, but a plan that is being executed continuously from Pentecost forward. The Church is the seed and beginning of the Kingdom that Daniel prophesied would never be destroyed, that Isaiah said would increase forever, that Christ promised the gates of hell would not overcome. <strong>Every link in this chain — from Daniel to the Catechism — says the same thing: God\'s Church endures. The LDS "Great Apostasy" requires that every one of these witnesses was wrong. The Catholic claim is simpler: they were all right.</strong>'
+        }
+      ]
+    }
+  ],
+  verdict: {
+    title: "✦ &nbsp; The Weight of the Chain &nbsp; ✦",
+    paragraphs: [
+      'The doctrine of indefectibility is not an incidental feature of Catholic theology — it is the necessary consequence of Christ\'s own promises. He said the gates of hell would not prevail. He said He would be with His Church all days. He said the Spirit would remain forever. Paul called the Church the pillar of truth. Daniel said the kingdom would never be destroyed. Isaiah said it would increase without end. Either these promises were kept, or they were broken.',
+      'The LDS "Great Apostasy" is not merely a historical claim — it is a theological claim about the reliability of Christ\'s promises. If the Church Christ founded fell into total apostasy shortly after the Apostles died, then Christ\'s promise in Matthew 16:18 failed, His promise in Matthew 28:20 was not kept, and the Holy Spirit\'s guidance promised in John 14:16 was withdrawn. The Catholic position requires no such concession. The Church Christ founded is the Church that exists today — battered, pilgrim, imperfect in her members, but unbroken in her faith, her sacraments, and her succession. The chain was never broken because the One who forged it cannot fail.'
+    ]
+  },
+  ldsContrast: {
+    title: "The LDS Position in Contrast",
+    paragraphs: [
+      'The Great Apostasy is the foundational premise of Latter-day Saint theology. LDS doctrine teaches that following the death of the original Apostles, the true Church fell into complete apostasy — losing priesthood authority, corrupting essential ordinances, and adopting false doctrines (including those documented in the other trails on this page). This total apostasy necessitated a complete "restoration" through Joseph Smith beginning in the 1820s.',
+      '<strong>The critical problem with this claim is not historical but scriptural.</strong> The Great Apostasy theory requires that Christ\'s explicit promises — "the gates of hell shall not prevail," "I am with you always," "the Spirit will be with you forever" — all failed. LDS apologists sometimes argue that these promises were conditional on the Church\'s faithfulness, but the texts contain no such condition. Christ does not say "the gates of hell shall not prevail <em>if you remain faithful</em>." He makes an unconditional guarantee. The chain above documents what that guarantee looks like across twenty centuries: an unbroken, visible, Christ-inhabited Church that has never ceased to exist, never ceased to teach, and never ceased to celebrate the sacraments Christ instituted.'
+    ]
+  },
+  sources: 'Primary Sources: Daniel 2:44 (ESV) · Isaiah 9:7 (ESV) · Haggai 2:6–9 (ESV) · Hebrews 12:26–28 (ESV) · Matthew 16:18 (ESV) · Matthew 28:20 (ESV) · John 14:16–17 (ESV) · John 16:13 (ESV) · 1 Timothy 3:15 (ESV) · Ephesians 3:20–21 (ESV) · Ignatius of Antioch, Letter to the Smyrnaeans 8 (c. AD 107) · Irenaeus of Lyon, Against Heresies I.10.2, III.4.1 (c. AD 180) · Cyprian of Carthage, De Ecclesiae Catholicae Unitate 6 (c. AD 251) · Augustine of Hippo, Enarrationes in Psalmos, on Psalm 103 (c. AD 400) · Vatican I, Pastor Aeternus (AD 1870) · Vatican II, Lumen Gentium 8–9 (AD 1964) · Catechism of the Catholic Church §§ 748–780 (1992)'
+},
+
+
+/* ─────────────────────────────────────────────
+   3. APOSTOLIC SUCCESSION
+   ───────────────────────────────────────────── */
+"succession": {
+  label: "Apostolic Succession",
+  subtitle: "Tracing the doctrine that Christ built a visible, hierarchical Church with authority transmitted through apostolic succession — from Moses to Peter to the bishops of the present day.",
+  intro: '<p>The Catholic Church does not claim authority on the basis of superior scholarship or spiritual experience. It claims authority because Christ gave authority to the Apostles, the Apostles transmitted that authority to their successors through the laying on of hands, and that succession continues unbroken to the present day. <strong>Apostolic succession is the structural backbone of the visible Church — and its biblical and historical evidence is formidable.</strong></p><p>The chain below traces this doctrine from the Old Testament pattern of transmitted authority, through Christ\'s institution of the Twelve, through the explicit testimony of men who received their office from the Apostles\' own hands. The question for the LDS "restoration" claim is precise: <strong>if the line of succession was broken, when — and who ordained Joseph Smith in its place?</strong></p>',
+  eras: [
+    {
+      name: "Old Testament Types", css: "ot",
+      nodes: [
+        {
+          side: "left",
+          badge: "Old Testament Type · ~1400 BC",
+          ref: "Moses to Joshua: Authority Transmitted by Laying On of Hands",
+          date: "Numbers 27:18–23; Deuteronomy 34:9 &nbsp;·&nbsp; ~1400 BC",
+          teaser: '"Joshua the son of Nun was full of the spirit of wisdom, for Moses had laid his hands on him."',
+          quote: '"And Joshua the son of Nun was full of the spirit of wisdom, for Moses had laid his hands on him. So the people of Israel obeyed him and did as the LORD had commanded Moses."',
+          cite: '— Deuteronomy 34:9 (ESV); cf. Numbers 27:18–23',
+          commentary: 'The pattern is established in the Pentateuch itself: authority from God is not self-claimed but transmitted through a physical act — the laying on of hands — from one authorized leader to his successor. Moses did not simply appoint Joshua by verbal declaration; he <em>laid hands on him</em>, and through this act the spirit of authority was conferred. <strong>This is the Old Testament template for ordination, and it will reappear in the New Testament as the means of transmitting apostolic authority.</strong>'
+        },
+        {
+          side: "right",
+          badge: "Old Testament Type · ~1000 BC",
+          ref: "The Davidic Succession: An Office That Endures",
+          date: "Isaiah 22:20–22 &nbsp;·&nbsp; cf. Matthew 16:19",
+          teaser: '"I will place on his shoulder the key of the house of David. He shall open, and none shall shut."',
+          quote: '"In that day I will call my servant Eliakim the son of Hilkiah, and I will clothe him with your robe, and will bind your sash on him, and will commit your authority to his hand... And I will place on his shoulder the key of the house of David. He shall open, and none shall shut; and he shall shut, and none shall open."',
+          cite: '— Isaiah 22:20–22 (ESV)',
+          commentary: 'Isaiah describes the transfer of the office of royal steward — the <em>al-bayit</em> — in the Davidic kingdom. The holder of the keys exercises the king\'s authority in the king\'s absence. The imagery is unmistakable: Jesus will use nearly identical language when He gives Peter the "keys of the kingdom" (Matt 16:19). <strong>The key point: the office of steward persists even when individual holders die or are replaced. It is the office that endures — exactly as the Catholic Church claims of the Petrine office.</strong>'
+        }
+      ]
+    },
+    {
+      name: "New Testament", css: "nt",
+      nodes: [
+        {
+          side: "left",
+          badge: "New Testament · AD 33",
+          ref: 'Jesus to Peter: "On This Rock I Will Build My Church"',
+          date: "Matthew 16:18–19 &nbsp;·&nbsp; AD 33",
+          teaser: '"You are Peter, and on this rock I will build my church, and the gates of hell shall not prevail against it."',
+          quote: '"And I tell you, you are Peter, and on this rock I will build my church, and the gates of hell shall not prevail against it. I will give you the keys of the kingdom of heaven, and whatever you bind on earth shall be bound in heaven, and whatever you loose on earth shall be loosed in heaven."',
+          cite: '— Matthew 16:18–19 (ESV)',
+          commentary: 'Jesus gives Peter three things: a new name (Kepha/Rock), a foundation role (upon which the Church is built), and the keys of the kingdom (authority to bind and loose). In Aramaic, the wordplay is perfect: <em>\'attā Kēphā, w-\'al hādē kēphā</em> — "You are Rock, and upon this rock." The keys invoke the Isaianic steward of the Davidic kingdom. <strong>This is not a personal compliment to Peter — it is the institution of an office with authority that, by Old Testament precedent, persists beyond its first holder.</strong>'
+        },
+        {
+          side: "right",
+          badge: "New Testament · c. AD 62–65",
+          ref: "Paul to Timothy: Guard the Deposit Through Succession",
+          date: "1 Timothy 4:14; 2 Timothy 1:6; 2:2 &nbsp;·&nbsp; c. AD 62–65",
+          teaser: '"What you have heard from me... entrust to faithful men, who will be able to teach others also."',
+          quote: '"Do not neglect the gift you have, which was given you by prophecy when the council of elders laid their hands on you... For this reason I remind you to fan into flame the gift of God, which is in you through the laying on of my hands... and what you have heard from me in the presence of many witnesses entrust to faithful men, who will be able to teach others also."',
+          cite: '— 1 Timothy 4:14; 2 Timothy 1:6; 2:2 (ESV)',
+          commentary: 'Paul describes a four-generation chain of succession: Paul → Timothy → "faithful men" → "others also." Authority is conferred through the laying on of hands (the same act as Moses to Joshua). The gift is not self-generated but received. The deposit of faith is not a text to be interpreted privately but a tradition to be <em>entrusted</em> to qualified successors. <strong>This is apostolic succession described in the New Testament itself — a chain of authorized teachers, each commissioned by the one before.</strong>'
+        },
+        {
+          side: "left",
+          badge: "New Testament · c. AD 50",
+          ref: "Acts 1: Replacing Judas — The Office Must Be Filled",
+          date: "Acts 1:20–26 &nbsp;·&nbsp; c. AD 50",
+          teaser: '"Let another take his office... And they cast lots, and the lot fell on Matthias, and he was numbered with the eleven apostles."',
+          quote: '"For it is written in the Book of Psalms, \'May another take his office.\' So one of the men who have accompanied us... must become with us a witness to his resurrection... And they cast lots for them, and the lot fell on Matthias, and he was numbered with the eleven apostles."',
+          cite: '— Acts 1:20, 21, 26 (ESV)',
+          commentary: 'Before Pentecost, before any missionary work begins, the first act of the apostolic community is to <em>fill the office</em> vacated by Judas. Peter quotes Psalm 109:8: "let another take his office" (<em>episkopēn</em> — his episcopate, his overseeing role). The Twelve must be complete because the apostolic office has structural significance. <strong>From the very first chapter of the Church\'s history, the principle is clear: apostolic offices are filled by succession, not left vacant.</strong>'
+        }
+      ]
+    },
+    {
+      name: "Ante-Nicene Church Fathers", css: "pat",
+      nodes: [
+        {
+          side: "right",
+          badge: "Church Father · c. AD 96",
+          ref: "Clement of Rome: The Apostles Appointed Successors",
+          date: "First Letter to the Corinthians &nbsp;·&nbsp; c. AD 96",
+          teaser: '"The Apostles... appointed their first-fruits, testing them by the Spirit, to be bishops and deacons of those who should believe."',
+          quote: '"Our Apostles also knew, through our Lord Jesus Christ, that there would be strife on account of the office of the episcopate. For this reason... they appointed those already mentioned, and afterwards gave instructions that when these should fall asleep, other approved men should succeed them in their ministry."',
+          cite: '— Clement of Rome, First Letter to the Corinthians 44 (c. AD 96)',
+          commentary: 'Clement was the fourth bishop of Rome (after Peter, Linus, and Cletus), writing within the lifetime of men who knew the Apostles. He states plainly that the Apostles appointed bishops and gave instructions for their succession — precisely because they foresaw disputes about authority. <strong>In AD 96, the bishop of Rome is already intervening in a Church dispute in Corinth — exercising precisely the kind of trans-local episcopal authority that apostolic succession implies.</strong>'
+        },
+        {
+          side: "left",
+          badge: "Church Father · c. AD 107",
+          ref: "Ignatius of Antioch: Do Nothing Without the Bishop",
+          date: "Letters to the Churches &nbsp;·&nbsp; c. AD 107",
+          teaser: '"Where the bishop appears, there let the people be, just as where Jesus Christ is, there is the Catholic Church."',
+          quote: '"See that you all follow the bishop, even as Jesus Christ does the Father, and the presbytery as you would the Apostles... Let no man do anything connected with the Church without the bishop... Where the bishop appears, there let the people be, just as where Jesus Christ is, there is the Catholic Church."',
+          cite: '— Ignatius of Antioch, Letter to the Smyrnaeans 8 (c. AD 107)',
+          commentary: 'Ignatius — student of the Apostle John, bishop of Antioch, writing on his way to martyrdom — describes a three-fold hierarchy (bishop, presbyters, deacons) as the visible structure of the Church. His famous phrase "the Catholic Church" (<em>hē katholikē ekklēsia</em>) is the earliest known use of the term. <strong>In AD 107, the man taught by the last living Apostle identifies the visible, bishop-led Church as the Catholic Church. The invisible-church theory has no patristic support this early — or ever.</strong>'
+        },
+        {
+          side: "right",
+          badge: "Church Father · c. AD 180",
+          ref: "Irenaeus: The Public Succession of Bishops Refutes Heresy",
+          date: "Against Heresies III.3 &nbsp;·&nbsp; c. AD 180",
+          teaser: '"We can enumerate those who were appointed bishops in the churches by the Apostles, and their successors down to our own time."',
+          quote: '"It is within the power of all, therefore, in every church, who may wish to see the truth, to contemplate clearly the tradition of the Apostles manifested throughout the whole world; and we are in a position to reckon up those who were by the Apostles instituted bishops in the churches, and the succession of these men to our own times."',
+          cite: '— Irenaeus of Lyon, Against Heresies III.3.1 (c. AD 180)',
+          commentary: 'Irenaeus\'s argument against the Gnostics is devastating in its simplicity: the heretics claim secret knowledge from the Apostles, but the bishops who publicly succeeded the Apostles teach nothing of the kind. The public succession list is the <em>proof</em> of doctrinal authenticity. He then provides the succession list of Rome from Peter to Eleutherius (his contemporary). <strong>In AD 180, the Church\'s defense against false teaching is not "read the Bible" but "trace the succession of bishops." This is the apostolic method.</strong>'
+        }
+      ]
+    },
+    {
+      name: "Councils &amp; Dogmatic Definition", css: "cou",
+      nodes: [
+        {
+          side: "left",
+          badge: "Ecumenical Council · AD 325",
+          ref: "Nicaea I: Bishops Govern the Universal Church",
+          date: "Canons of Nicaea &nbsp;·&nbsp; AD 325",
+          teaser: '"The bishop shall be appointed by all the bishops of the province... ratified by the metropolitan."',
+          quote: '"A bishop shall be appointed by all the bishops in the province; but should this be difficult... at least three should meet together, the absent bishops giving their consent by letter, and then the ordination should take place. But the ratification of what is done in each province belongs to the Metropolitan."',
+          cite: '— Council of Nicaea, Canon 4 (AD 325)',
+          commentary: 'The first ecumenical council legislates the mechanics of episcopal succession: bishops are ordained by other bishops, with metropolitan authority overseeing the process. The entire conciliar structure presupposes apostolic succession — only bishops possess the authority to define doctrine, and their authority comes through ordination in the apostolic line. <strong>Nicaea does not invent this structure; it regulates a structure already two centuries old.</strong>'
+        },
+        {
+          side: "right",
+          badge: "Ecumenical Council · AD 1870",
+          ref: "Vatican I: The Petrine Succession Defined",
+          date: "Pastor Aeternus &nbsp;·&nbsp; AD 1870",
+          teaser: '"That which our Lord Jesus Christ... established in the blessed Apostle Peter... must of necessity remain forever, by Christ\'s authority, in the Church."',
+          quote: '"That which our Lord Jesus Christ, the prince of shepherds and great shepherd of the sheep, established in the blessed Apostle Peter, for the continual salvation and permanent benefit of the Church, must of necessity remain forever, by Christ\'s authority, in the Church."',
+          cite: '— Vatican I, Pastor Aeternus, Chapter 2 (AD 1870)',
+          commentary: 'Vatican I formally defines what the Church had always practiced: the Petrine office established by Christ in Matthew 16 continues in an unbroken line through the bishops of Rome. The argument is structural: if Christ established the office for the Church\'s permanent benefit, it must endure as long as the Church endures. <strong>The papacy is not a medieval invention but the continuation of the office Christ gave to Peter — and the succession list from Peter to the present is the longest documented institutional lineage in Western civilization.</strong>'
+        }
+      ]
+    },
+    {
+      name: "The Living Church Today", css: "tod",
+      nodes: [
+        {
+          side: "left",
+          badge: "Catechism of the Catholic Church · 1992",
+          ref: "The Catechism: An Unbroken Chain of Ordination",
+          date: "CCC §§ 861–862 &nbsp;·&nbsp; AD 1992 / Present",
+          teaser: '"The bishops have by divine institution taken the place of the Apostles as pastors of the Church."',
+          quote: '"In order that the mission entrusted to them might be continued after their death, [the Apostles] consigned, by will and testament, as it were, to their immediate collaborators the duty of completing and consolidating the work they had begun... The bishops have by divine institution taken the place of the Apostles as pastors of the Church, in such wise that whoever listens to them is listening to Christ and whoever despises them despises Christ."',
+          cite: '— Catechism of the Catholic Church §§ 861–862 (1992), citing Lumen Gentium 20',
+          commentary: 'The Catechism articulates what Clement stated in AD 96, what Ignatius assumed in AD 107, what Irenaeus used as his definitive argument in AD 180, and what every ecumenical council has presupposed: the bishops are the successors of the Apostles, and their authority is not human but divine. <strong>The LDS claim of a "Great Apostasy" requires the complete failure of this succession — but the chain of ordination is documented, bishop by bishop, from the Apostles to the present. The question is not whether the chain exists but whether anyone can show where it broke.</strong>'
+        }
+      ]
+    }
+  ],
+  verdict: {
+    title: "✦ &nbsp; The Weight of the Chain &nbsp; ✦",
+    paragraphs: [
+      'Apostolic succession is not a theoretical claim — it is a documented historical fact. The Catholic Church can name its bishops, diocese by diocese, century by century, back to the Apostles. This is not a boast; it is a public record. The earliest Christian writers — men who received their faith from the Apostles\' own hands — describe, presuppose, and defend this structure as the visible guarantee of doctrinal fidelity.',
+      'The LDS restoration narrative requires that this entire visible structure failed — that every bishop in every city across the entire Christian world simultaneously lost the true gospel, and that authority was only restored when angelic beings visited Joseph Smith in the 1820s and 1830s. The chain above is the Church\'s response: trace any link and you find a named individual, a documented ordination, and a consistent faith. The burden of proof lies with those who claim the chain was broken.'
+    ]
+  },
+  ldsContrast: {
+    title: "The LDS Position in Contrast",
+    paragraphs: [
+      'Latter-day Saint theology affirms the necessity of priesthood authority but teaches that all legitimate authority was lost in a "Great Apostasy" following the death of the original Apostles. LDS doctrine claims that the Aaronic priesthood was restored by John the Baptist in 1829 and the Melchizedek priesthood by Peter, James, and John shortly thereafter — both through angelic visitation to Joseph Smith and Oliver Cowdery.',
+      '<strong>The fundamental question is historical: was apostolic authority truly lost?</strong> The chain above documents a continuous, publicly verifiable succession of bishops from the Apostles to the present day. The LDS claim requires that this visible chain carried no actual authority — that ordination from the Apostles through their documented successors conferred nothing. If the chain above is valid, the "restoration" of what was never lost becomes theologically unnecessary.'
+    ]
+  },
+  sources: 'Primary Sources: Numbers 27:18–23 (ESV) · Deuteronomy 34:9 (ESV) · Isaiah 22:20–22 (ESV) · Matthew 16:18–19 (ESV) · 1 Timothy 4:14 (ESV) · 2 Timothy 1:6; 2:2 (ESV) · Acts 1:20–26 (ESV) · Clement of Rome, First Letter to the Corinthians 44 (c. AD 96) · Ignatius of Antioch, Letter to the Smyrnaeans 8 (c. AD 107) · Irenaeus of Lyon, Against Heresies III.3.1 (c. AD 180) · Council of Nicaea, Canon 4 (AD 325) · Vatican I, Pastor Aeternus (AD 1870) · Catechism of the Catholic Church §§ 857–865 (1992)'
+},
+
+/* ─────────────────────────────────────────────
+   4. CONFESSION / SACRAMENT OF RECONCILIATION
+   ───────────────────────────────────────────── */
+"confession": {
+  label: "Confession",
+  subtitle: "Tracing the Sacrament of Reconciliation — the power to forgive sins — from the priesthood of the Old Covenant through Christ's grant of authority to the Apostles and their successors.",
+  intro: '<p>One of the most distinctive Catholic practices — and one most frequently challenged by Protestants and Latter-day Saints alike — is sacramental confession: the practice of confessing sins to a priest and receiving absolution. Critics ask: "Why confess to a man? Why not go directly to God?" <strong>The Catholic answer is that Christ Himself instituted this sacrament by breathing on the Apostles and giving them the power to forgive and retain sins — and that power has been transmitted through apostolic succession ever since.</strong></p><p>The chain below traces this doctrine from the Old Testament priesthood, through Christ\'s explicit grant of authority, through the unbroken patristic witness to the present day. The question for those who reject sacramental confession is simple: <strong>if Christ gave the Apostles the power to forgive sins, what happened to that power?</strong></p>',
+  eras: [
+    {
+      name: "Old Testament Types", css: "ot",
+      nodes: [
+        {
+          side: "left",
+          badge: "Old Testament Type · ~1440 BC",
+          ref: "The Levitical Priest: Mediator of Forgiveness",
+          date: "Leviticus 5:5–6; 19:21–22 &nbsp;·&nbsp; ~1440 BC",
+          teaser: '"He shall confess the sin he has committed... and the priest shall make atonement for him, and he shall be forgiven."',
+          quote: '"When he realizes his guilt in any of these and confesses the sin he has committed, he shall bring to the LORD as his compensation... and the priest shall make atonement for him for his sin."',
+          cite: '— Leviticus 5:5–6 (ESV); cf. Leviticus 19:21–22',
+          commentary: 'The Levitical system establishes the Old Testament principle: forgiveness from God comes through a priestly mediator. The sinner confesses, brings an offering, and the priest makes atonement. God forgives — but He does so through the priest\'s ministry, not apart from it. <strong>The Protestant objection that "only God can forgive sins" is true — but it was equally true in the Old Testament, and God chose to forgive through human priests then. The Catholic claim is that He does the same now, through a greater priesthood.</strong>'
+        },
+        {
+          side: "right",
+          badge: "Old Testament Type · ~1000 BC",
+          ref: "David and Nathan: Confession, Absolution, Consequence",
+          date: "2 Samuel 12:13 &nbsp;·&nbsp; ~1000 BC",
+          teaser: '"David said to Nathan, \'I have sinned against the LORD.\' And Nathan said to David, \'The LORD has put away your sin.\'"',
+          quote: '"David said to Nathan, \'I have sinned against the LORD.\' And Nathan said to David, \'The LORD also has put away your sin; you shall not die. Nevertheless, because by this deed you have utterly scorned the LORD, the child who is born to you shall die.\'"',
+          cite: '— 2 Samuel 12:13–14 (ESV)',
+          commentary: 'David confesses his sin verbally to Nathan the prophet — a human mediator. Nathan declares God\'s forgiveness: <em>"The LORD has put away your sin."</em> David could have confessed directly to God in his heart, but the biblical text presents the exchange with Nathan as the moment of absolution. Note also the distinction between forgiveness of guilt and temporal consequences — a distinction the Catholic Church maintains in her theology of penance. <strong>The structure of confession — verbal admission to a minister, pronouncement of forgiveness, assignment of penance — is already present in the Old Testament.</strong>'
+        }
+      ]
+    },
+    {
+      name: "New Testament", css: "nt",
+      nodes: [
+        {
+          side: "left",
+          badge: "New Testament · AD 33",
+          ref: '"Whose Sins You Forgive Are Forgiven"',
+          date: "John 20:21–23 &nbsp;·&nbsp; AD 33",
+          teaser: '"Receive the Holy Spirit. If you forgive the sins of any, they are forgiven them; if you withhold forgiveness from any, it is withheld."',
+          quote: '"Jesus said to them again, \'Peace be with you. As the Father has sent me, even so I am sending you.\' And when he had said this, he breathed on them and said to them, \'Receive the Holy Spirit. If you forgive the sins of any, they are forgiven them; if you withhold forgiveness from any, it is withheld.\'"',
+          cite: '— John 20:21–23 (ESV)',
+          commentary: 'This is the institution of the sacrament. Jesus breathes on the Apostles — an act recalling Genesis 2:7, where God breathes life into Adam — and gives them the power to forgive <em>and retain</em> sins. The power to retain is critical: it implies judgment, discernment, and knowledge of the sin. You cannot retain what you do not know. <strong>If this power is merely "preaching the gospel," the retention clause is meaningless. The power to forgive AND withhold forgiveness requires the priest to hear, judge, and decide — which is exactly what sacramental confession provides.</strong>'
+        },
+        {
+          side: "right",
+          badge: "New Testament · c. AD 57",
+          ref: "Paul to the Corinthians: Absolution Through the Apostle",
+          date: "2 Corinthians 2:10 &nbsp;·&nbsp; c. AD 55–57",
+          teaser: '"Anyone whom you forgive, I also forgive. Indeed, what I have forgiven... has been for your sake in the presence of Christ."',
+          quote: '"Anyone whom you forgive, I also forgive. Indeed, what I have forgiven, if I have forgiven anything, has been for your sake in the presence of Christ."',
+          cite: '— 2 Corinthians 2:10 (ESV); cf. 2 Corinthians 5:18: "God gave us the ministry of reconciliation."',
+          commentary: 'Paul exercises the power given in John 20:23 — he forgives a man\'s sin <em>in the person of Christ</em> (literally, "in the face of Christ"). This is apostolic absolution in action. Paul also describes the apostolic ministry as "the ministry of reconciliation" (2 Cor 5:18) — not merely the proclamation of reconciliation but the <em>ministry</em> of it, an active mediatorial role. <strong>Paul does not say "tell him God forgives him" — he says "what I have forgiven... in the presence of Christ." The Apostle himself exercises the power of forgiveness.</strong>'
+        },
+        {
+          side: "left",
+          badge: "New Testament · c. AD 60",
+          ref: "James: Confess Your Sins to One Another",
+          date: "James 5:16 &nbsp;·&nbsp; c. AD 60",
+          teaser: '"Therefore, confess your sins to one another and pray for one another, that you may be healed."',
+          quote: '"Is anyone among you sick? Let him call for the elders of the church, and let them pray over him, anointing him with oil in the name of the Lord. And the prayer of faith will save the one who is sick, and the Lord will raise him up. And if he has committed sins, he will be forgiven. Therefore, confess your sins to one another and pray for one another, that you may be healed."',
+          cite: '— James 5:14–16 (ESV)',
+          commentary: 'James links confession of sins to the ministry of the <em>presbyteroi</em> (elders/priests). The context is not vague mutual accountability — it is a specific ministry of the Church\'s ordained leaders involving anointing, prayer, forgiveness, and healing. <strong>The instruction is to call the elders, confess sins, and receive prayer — the basic structure of sacramental confession and anointing of the sick is present in the apostolic Church.</strong>'
+        }
+      ]
+    },
+    {
+      name: "Ante-Nicene Church Fathers", css: "pat",
+      nodes: [
+        {
+          side: "right",
+          badge: "Apostolic Writing · c. AD 70–100",
+          ref: "The Didache: Confess Before the Eucharist",
+          date: "Didache 14 &nbsp;·&nbsp; c. AD 70–100",
+          teaser: '"On the Lord\'s day, come together, break bread, and give thanks, having first confessed your transgressions."',
+          quote: '"On the Lord\'s Day, come together, break bread, and give thanks, having first confessed your transgressions, that your sacrifice may be pure."',
+          cite: '— Didache 14.1 (c. AD 70–100)',
+          commentary: 'The Didache — among the earliest non-canonical Christian texts — instructs the community to confess sins <em>before</em> receiving the Eucharist. The connection between confession and sacrifice echoes Levitical practice and anticipates the Catholic discipline of confession before Communion. <strong>In the very earliest generation of the Church, confession of sin is linked to sacramental worship — not as private meditation but as a communal practice with liturgical significance.</strong>'
+        },
+        {
+          side: "left",
+          badge: "Church Father · c. AD 203",
+          ref: "Tertullian: Exomologesis — Public Confession in the Church",
+          date: "De Paenitentia &nbsp;·&nbsp; c. AD 200–206",
+          teaser: '"Exomologesis... prostrates the man, it humbles him... it commands him to lie in sackcloth and ashes... it requires that you know how to obtain your reconciliation."',
+          quote: '"Of so much worth is it in God\'s estimation to hate the thing we have done, that He Himself, by His own Son, presses us to confession... [Exomologesis] commands a man to lie in sackcloth and ashes, to obscure his body in garments of mourning... to know the presbyter, and to kneel to God\'s beloved ones, enjoining on all the brethren to bear his embassy of prayer."',
+          cite: '— Tertullian, De Paenitentia 9 (c. AD 200–206)',
+          commentary: 'Tertullian describes <em>exomologesis</em> — the formal penitential discipline of the early Church. It involves confession to the presbyter (priest), public acts of penance, and reconciliation with the Church. This is not merely "asking God for forgiveness" — it is a structured sacramental process administered by the Church\'s ministers. <strong>By AD 200, the Church has a developed penitential discipline involving ordained clergy. This is not a medieval invention.</strong>'
+        },
+        {
+          side: "right",
+          badge: "Church Father · c. AD 250",
+          ref: "Origen: The Priest Forgives According to God's Will",
+          date: "Homily on Leviticus 2.4 &nbsp;·&nbsp; c. AD 244–249",
+          teaser: '"The priest... fulfills the office of medicine... he is able to know the infirmity, and to prescribe the remedy."',
+          quote: '"When [the sinner] does not shrink from declaring his sin to a priest of the Lord and from seeking a cure... the priest... who has gained understanding of his infirmity... can prescribe the remedy, and if he sees and judges that the infirmity is of such a nature... he may pour out words of doctrine and of mercy."',
+          cite: '— Origen, Homily on Leviticus 2.4 (c. AD 244–249)',
+          commentary: 'Origen — writing in the mid-third century — describes the priest as a physician of souls who hears confession, diagnoses the spiritual illness, and prescribes the remedy. The imagery is medical, not merely declaratory. The priest exercises judgment about the nature and gravity of the sin. <strong>This is sacramental confession as the Catholic Church practices it — with the priest as physician, confessor, and minister of reconciliation. The practice is documented two centuries before the fall of Rome.</strong>'
+        }
+      ]
+    },
+    {
+      name: "Councils &amp; Dogmatic Definition", css: "cou",
+      nodes: [
+        {
+          side: "left",
+          badge: "Ecumenical Council · AD 1215",
+          ref: "Fourth Lateran Council: Annual Confession Required",
+          date: "Canon 21 &nbsp;·&nbsp; AD 1215",
+          teaser: '"Let everyone of the faithful of both sexes... faithfully confess all their sins at least once a year to their own priest."',
+          quote: '"Let everyone of the faithful of both sexes, after reaching the age of discretion, faithfully confess all their sins at least once a year to their own priest, and let them take care to perform the penance imposed on them to the best of their ability."',
+          cite: '— Fourth Lateran Council, Canon 21 (AD 1215)',
+          commentary: 'Lateran IV establishes the minimum obligation of annual confession — not because the practice is new, but because it is so important that a minimum standard must be set. The council assumes that sacramental confession to a priest is the universal practice and legislates its frequency. <strong>The canon does not introduce confession — it regulates a practice already universal. No one at the council objected that confession was an innovation, because it was already over a thousand years old.</strong>'
+        },
+        {
+          side: "right",
+          badge: "Ecumenical Council · AD 1551",
+          ref: "Council of Trent: The Sacrament of Penance Defined",
+          date: "Session XIV &nbsp;·&nbsp; AD 1551",
+          teaser: '"The Lord... principally instituted the Sacrament of Penance when, being raised from the dead, He breathed upon His disciples."',
+          quote: '"The Lord then principally instituted the Sacrament of Penance, when, being raised from the dead, He breathed upon His disciples saying: \'Receive the Holy Ghost. Whose sins you shall forgive, they are forgiven them; and whose sins you shall retain, they are retained.\'"',
+          cite: '— Council of Trent, Session XIV, Chapter 1 (AD 1551)',
+          commentary: 'Trent explicitly identifies John 20:21–23 as the moment of institution of the Sacrament of Penance. The Council responds to Protestant reformers who rejected sacramental confession in favor of private confession to God alone. Trent\'s argument is that the power to retain sins necessarily implies hearing and judging sins — making private confession to a priest the ordinary means of reconciliation. <strong>Trent does not create this sacrament; it defines what the Didache assumed, Tertullian described, Origen explained, and thirteen centuries of Christians practiced.</strong>'
+        }
+      ]
+    },
+    {
+      name: "The Living Church Today", css: "tod",
+      nodes: [
+        {
+          side: "left",
+          badge: "Catechism of the Catholic Church · 1992",
+          ref: "The Catechism: The Ministry of Reconciliation Continues",
+          date: "CCC §§ 1441, 1461 &nbsp;·&nbsp; AD 1992 / Present",
+          teaser: '"Only God forgives sins. Since He is the Son of God, Jesus says of Himself, \'The Son of Man has authority on earth to forgive sins\' and exercises this divine power."',
+          quote: '"Only God forgives sins. Since He is the Son of God, Jesus says of Himself, \'The Son of Man has authority on earth to forgive sins\' and exercises this divine power: \'Your sins are forgiven.\' Further, by virtue of His divine authority He gives this power to men to exercise in His name."',
+          cite: '— Catechism of the Catholic Church §1441 (1992)',
+          commentary: 'The Catechism answers the central objection with precision: yes, only God forgives sins — and God chose to exercise that forgiveness through men, both in the Old Testament priesthood and in the New. Christ has "authority on earth to forgive sins" and He <em>gives this power to men</em>. <strong>The entire chain — from Leviticus through John 20 through Clement through Trent — is one unbroken testimony: God forgives through His appointed ministers. The question is not whether a man can forgive sins, but whether Christ authorized men to do so in His name. The answer, by twenty centuries of evidence, is yes.</strong>'
+        }
+      ]
+    }
+  ],
+  verdict: {
+    title: "✦ &nbsp; The Weight of the Chain &nbsp; ✦",
+    paragraphs: [
+      'The Sacrament of Confession is not a medieval power-grab by the clergy. It is the exercise of a power Christ explicitly gave to the Apostles on the day of His Resurrection — breathing on them as God breathed on Adam, giving them the Holy Spirit, and commissioning them to forgive and retain sins. The Didache mentions confession in the first century. Tertullian describes a developed penitential discipline by AD 200. Origen depicts the priest as a physician of souls by AD 250. No ancient writer disputes the practice.',
+      'Any theology that rejects sacramental confession must explain what Christ meant when He said "whose sins you forgive, they are forgiven" — and why the entire Church understood Him to mean exactly what He said for fifteen centuries before anyone suggested otherwise.'
+    ]
+  },
+  ldsContrast: {
+    title: "The LDS Position in Contrast",
+    paragraphs: [
+      'Latter-day Saint practice includes a form of confession: members confess serious sins to their bishop, who exercises a judicial role in determining standing and fellowship. However, LDS theology does not attribute sacramental power to this confession — the bishop does not pronounce absolution in the name of Christ, and forgiveness is understood as coming directly from God through repentance, not through priestly absolution.',
+      '<strong>The irony is that LDS practice actually preserves some structure of sacramental confession — confessing to a designated minister who renders judgment — while denying the sacramental theology that gives it meaning.</strong> The Catholic claim is that Christ gave the Apostles real power to forgive sins, and that power continues in their successors. The chain above documents that claim from Scripture through the Fathers to the present. The burden of proof lies with those who claim this power was either never given or was taken away.'
+    ]
+  },
+  sources: 'Primary Sources: Leviticus 5:5–6 (ESV) · Leviticus 19:21–22 (ESV) · 2 Samuel 12:13–14 (ESV) · John 20:21–23 (ESV) · 2 Corinthians 2:10 (ESV) · 2 Corinthians 5:18 (ESV) · James 5:14–16 (ESV) · Didache 14.1 (c. AD 70–100) · Tertullian, De Paenitentia 9 (c. AD 200) · Origen, Homily on Leviticus 2.4 (c. AD 245) · Fourth Lateran Council, Canon 21 (AD 1215) · Council of Trent, Session XIV (AD 1551) · Catechism of the Catholic Church §§ 1440–1470 (1992)'
+},
+
+/* ─────────────────────────────────────────────
+   5. MARY AS THEOTOKOS
+   ───────────────────────────────────────────── */
+"theotokos": {
+  label: "Mary, Theotokos",
+  subtitle: "Tracing the doctrine that Mary is Theotokos — the Mother of God — from the Old Testament Ark of the Covenant through Elizabeth's proclamation to the dogmatic definition at Ephesus.",
+  intro: '<p>The title <em>Theotokos</em> — "God-bearer" or "Mother of God" — is not a statement about Mary\'s nature but about Christ\'s. If Jesus is truly God, and Mary is truly His mother, then Mary is truly the Mother of God. To deny the title is not to demote Mary but to divide Christ — to suggest that the human Jesus she bore is somehow separable from the divine Son of God. <strong>This was precisely the heresy of Nestorius, and the entire early Church rejected it.</strong></p><p>The chain below traces this doctrine from the Old Testament figure of the Ark, through Elizabeth\'s inspired proclamation, through the universal patristic witness to the dogmatic definition at Ephesus in AD 431. The question for traditions that deny this title is direct: <strong>who was right about Christ — the entire Church from Elizabeth to Ephesus, or the innovators who came after?</strong></p>',
+  eras: [
+    {
+      name: "Old Testament Types", css: "ot",
+      nodes: [
+        {
+          side: "left",
+          badge: "Old Testament Type · ~1440 BC",
+          ref: "The Ark of the Covenant: The Dwelling Place of God's Presence",
+          date: "Exodus 25:10–22; 2 Samuel 6 &nbsp;·&nbsp; cf. Luke 1:39–56",
+          teaser: '"There I will meet with you, and from above the mercy seat... I will speak with you."',
+          quote: '"There I will meet with you, and from above the mercy seat, from between the two cherubim that are on the ark of the testimony, I will speak with you about all that I will give you in commandment for the people of Israel."',
+          cite: '— Exodus 25:22 (ESV); cf. 2 Samuel 6:9: "How can the ark of the LORD come to me?"',
+          commentary: 'The Ark of the Covenant contained the tablets of the Law (the Word of God in stone), manna (the Bread from Heaven), and Aaron\'s rod (the sign of priestly authority). Mary contained in her womb the Word of God in flesh, the true Bread from Heaven, and the eternal High Priest. Luke\'s account of Mary\'s visitation to Elizabeth (Luke 1:39–56) deliberately echoes 2 Samuel 6 — David\'s bringing of the Ark to Jerusalem. David cries, <em>"How can the ark of the LORD come to me?"</em> Elizabeth cries, <em>"Why is this granted to me, that the mother of my Lord should come to me?"</em> <strong>Luke is telling his readers: Mary is the New Ark — the dwelling place of God\'s presence.</strong>'
+        },
+        {
+          side: "right",
+          badge: "Old Testament Type · ~735 BC",
+          ref: 'Isaiah: "The Virgin Shall Conceive"',
+          date: "Isaiah 7:14 &nbsp;·&nbsp; cf. Matthew 1:23",
+          teaser: '"Behold, the virgin shall conceive and bear a son, and shall call his name Immanuel — God with us."',
+          quote: '"Therefore the Lord himself will give you a sign. Behold, the virgin shall conceive and bear a son, and shall call his name Immanuel."',
+          cite: '— Isaiah 7:14 (ESV); cf. Matthew 1:23: "which means, God with us."',
+          commentary: 'Isaiah prophesies a virgin birth — and the child\'s name is <em>Immanuel</em>: "God with us." Matthew applies this prophecy directly to Mary and Jesus (Matt 1:23). The logic is simple: if the child is "God with us," then the virgin who bears him is the bearer of God — <em>Theotokos</em>. <strong>The Christological title is embedded in the prophetic name: Mary carries God in her womb. This is not Marian speculation; it is the plain meaning of the Isaianic sign as Matthew himself interprets it.</strong>'
+        }
+      ]
+    },
+    {
+      name: "New Testament", css: "nt",
+      nodes: [
+        {
+          side: "left",
+          badge: "New Testament · c. 5 BC",
+          ref: 'Elizabeth: "The Mother of My Lord"',
+          date: "Luke 1:43 &nbsp;·&nbsp; c. 5 BC",
+          teaser: '"And why is this granted to me that the mother of my Lord should come to me?"',
+          quote: '"And when Elizabeth heard the greeting of Mary, the baby leaped in her womb. And Elizabeth was filled with the Holy Spirit, and she exclaimed with a loud cry, \'Blessed are you among women, and blessed is the fruit of your womb! And why is this granted to me that the mother of my Lord should come to me?\'"',
+          cite: '— Luke 1:41–43 (ESV)',
+          commentary: 'Elizabeth, <em>filled with the Holy Spirit</em>, calls Mary <em>"the mother of my Lord."</em> The Greek <em>ho kyrios mou</em> — "my Lord" — is the same title used for God throughout the Septuagint (the Greek Old Testament that Luke\'s audience knew). Elizabeth does not say "the mother of my teacher" or "the mother of the Messiah\'s human nature." Under the inspiration of the Holy Spirit, she calls Mary the mother of her <em>Lord</em>. <strong>This is the Theotokos title in embryonic form, spoken under divine inspiration in the first chapter of Luke\'s Gospel. Mary is the mother of the Lord — the mother of God.</strong>'
+        },
+        {
+          side: "right",
+          badge: "New Testament · c. AD 50–90",
+          ref: "Galatians 4:4: God Sent His Son, Born of a Woman",
+          date: "Galatians 4:4 &nbsp;·&nbsp; c. AD 49",
+          teaser: '"When the fullness of time had come, God sent forth his Son, born of woman."',
+          quote: '"But when the fullness of time had come, God sent forth his Son, born of woman, born under the law, to redeem those who were under the law, so that we might receive adoption as sons."',
+          cite: '— Galatians 4:4–5 (ESV)',
+          commentary: 'Paul\'s formulation is precise: God sent <em>His Son</em> — not a man who would later become God\'s Son, but the pre-existing Son — and this Son was <em>born of a woman</em>. The one born is the Son of God; the one who bore him is a woman. <strong>If God\'s Son was born of Mary, then Mary bore God\'s Son. She is, by the logic of the Incarnation itself, the Mother of God. To deny the title is to deny that the child she bore was truly God\'s Son — which is to deny the Incarnation.</strong>'
+        }
+      ]
+    },
+    {
+      name: "Ante-Nicene Church Fathers", css: "pat",
+      nodes: [
+        {
+          side: "left",
+          badge: "Church Father · c. AD 180",
+          ref: "Irenaeus: Mary as the New Eve",
+          date: "Against Heresies III.22.4 &nbsp;·&nbsp; c. AD 180",
+          teaser: '"The knot of Eve\'s disobedience was loosed by the obedience of Mary. For what the virgin Eve had bound fast through unbelief, this did the virgin Mary set free through faith."',
+          quote: '"And thus also it was that the knot of Eve\'s disobedience was loosed by the obedience of Mary. For what the virgin Eve had bound fast through unbelief, this did the virgin Mary set free through faith."',
+          cite: '— Irenaeus, Against Heresies III.22.4 (c. AD 180)',
+          commentary: 'Irenaeus — the student of Polycarp, who was the student of John — develops the Mary/Eve parallel that Justin Martyr had introduced (Dialogue with Trypho 100). Just as Eve\'s disobedience brought death, Mary\'s obedience brought salvation. This parallel presupposes Mary\'s unique role in salvation history — she is not merely an incubator but an active participant whose <em>fiat</em> cooperates with grace. <strong>The New Eve theology, present by AD 180, demonstrates that early Christians did not treat Mary as incidental. She is the woman whose obedience reverses Eve\'s — the Mother through whom God enters the world.</strong>'
+        },
+        {
+          side: "right",
+          badge: "Church Father · c. AD 250",
+          ref: 'The Sub Tuum Praesidium: The Oldest Marian Prayer',
+          date: "Papyrus Rylands 470 &nbsp;·&nbsp; c. AD 250",
+          teaser: '"Beneath your compassion we take refuge, Theotokos. Do not despise our petitions in time of trouble."',
+          quote: '"Beneath your compassion we take refuge, O Theotokos [Mother of God]. Do not despise our petitions in time of trouble, but rescue us from danger, only pure, only blessed one."',
+          cite: '— Sub Tuum Praesidium, Papyrus Rylands 470 (c. AD 250, oldest extant Marian prayer)',
+          commentary: 'This papyrus fragment — discovered in Egypt and dated to approximately AD 250 — contains the oldest known Marian prayer. It uses the title <em>Theotokos</em> — "God-bearer" — nearly two centuries before the Council of Ephesus formally defined it. Christians are already praying to Mary as the Mother of God and asking for her intercession. <strong>The title Theotokos is not an invention of the Council of Ephesus in AD 431. It is documented devotional language from at least AD 250 — and almost certainly older than the manuscript itself.</strong>'
+        },
+        {
+          side: "left",
+          badge: "Church Father · c. AD 330",
+          ref: "Athanasius: The Word Took Flesh from Theotokos Mary",
+          date: "Orations Against the Arians &nbsp;·&nbsp; c. AD 320–330",
+          teaser: '"The Word... took flesh from a woman, the God-bearer [Theotokos], Mary."',
+          quote: '"The Word was not degraded by receiving a body... He rather deified that which He put on, and more than that, \'gave\' it graciously to the race of man... The Scriptures... speak of Him as eating, drinking, being born... born of the God-bearer Mary."',
+          cite: '— Athanasius of Alexandria, Orations Against the Arians III.29, 33 (c. AD 320–330)',
+          commentary: 'Athanasius — the great champion of Nicene orthodoxy against Arianism — uses <em>Theotokos</em> as an established title for Mary, not as a point to be argued but as a Christological premise. His defense of Christ\'s full divinity naturally includes the affirmation that Mary bore God in the flesh. <strong>For Athanasius, denying Theotokos would be equivalent to denying the Incarnation — because if the one born of Mary is not God, the Arian heresy is true. The Marian title protects the Christological truth.</strong>'
+        }
+      ]
+    },
+    {
+      name: "Councils &amp; Dogmatic Definition", css: "cou",
+      nodes: [
+        {
+          side: "right",
+          badge: "Ecumenical Council · AD 431",
+          ref: "Council of Ephesus: Theotokos Defined Against Nestorius",
+          date: "Third Ecumenical Council &nbsp;·&nbsp; AD 431",
+          teaser: '"We confess... the holy Virgin is Theotokos, because God the Word took flesh, became man, and... united to Himself the temple He took from her."',
+          quote: '"If anyone does not confess that Emmanuel is God in truth, and therefore that the holy Virgin is Theotokos — for she bore in the flesh the Word of God become flesh — let him be anathema."',
+          cite: '— Council of Ephesus, Anathema 1 of Cyril\'s Twelve Anathemas, ratified AD 431',
+          commentary: 'The Council of Ephesus was convened specifically to address Nestorius, Patriarch of Constantinople, who objected to calling Mary <em>Theotokos</em> and proposed <em>Christotokos</em> ("Christ-bearer") instead. The Council rejected Nestorianism decisively: because Christ is one divine Person with two natures, His mother bore not merely the human nature but the Person — and the Person is God. <strong>Ephesus does not create the title; it defends a title already universally used — documented at least as far back as AD 250 — against one man who attempted to change it. The entire Christian world rose against Nestorius.</strong>'
+        },
+        {
+          side: "left",
+          badge: "Ecumenical Council · AD 451",
+          ref: "Council of Chalcedon: Theotokos Confirmed",
+          date: "Chalcedonian Definition &nbsp;·&nbsp; AD 451",
+          teaser: '"Born of the Virgin Mary, the Theotokos, according to the humanity."',
+          quote: '"...acknowledged in two natures, without confusion, without change, without division, without separation... born of the Virgin Mary, the Theotokos, according to the manhood."',
+          cite: '— Council of Chalcedon, Definition of Faith (AD 451)',
+          commentary: 'Twenty years after Ephesus, the Council of Chalcedon — which defined the two-natures-one-Person Christology that virtually all Christians accept — embeds <em>Theotokos</em> directly into its creedal definition. Mary\'s title is not a devotional footnote but a Christological pillar. <strong>To reject Theotokos is to reject Chalcedonian Christology — which means rejecting the foundational definition of who Christ is that every major Christian tradition claims to uphold.</strong>'
+        }
+      ]
+    },
+    {
+      name: "The Living Church Today", css: "tod",
+      nodes: [
+        {
+          side: "right",
+          badge: "Catechism of the Catholic Church · 1992",
+          ref: "The Catechism: Mother of God, Mother of the Church",
+          date: "CCC §§ 495, 509 &nbsp;·&nbsp; AD 1992 / Present",
+          teaser: '"Called in the Gospels \'the mother of Jesus,\' Mary is acclaimed by Elizabeth, at the prompting of the Spirit, as \'the mother of my Lord.\'"',
+          quote: '"Called in the Gospels \'the mother of Jesus,\' Mary is acclaimed by Elizabeth, at the prompting of the Spirit, as \'the mother of my Lord.\' In fact, the One whom she conceived as man by the Holy Spirit, who truly became her Son according to the flesh, was none other than the Father\'s eternal Son. He is God, and so Mary is rightly called the Mother of God."',
+          cite: '— Catechism of the Catholic Church §495 (1992)',
+          commentary: 'The Catechism states the logic with crystalline clarity: the one conceived is the eternal Son; the one who conceived Him is His mother; therefore she is the Mother of God. This is not Marian maximalism — it is Christological precision. <strong>From Elizabeth\'s Spirit-filled proclamation to Irenaeus\'s New Eve to the papyrus of AD 250 to Ephesus and Chalcedon, the testimony is unanimous: Mary is Theotokos because Jesus is God. Deny one and you deny the other. The chain is unbroken.</strong>'
+        }
+      ]
+    }
+  ],
+  verdict: {
+    title: "✦ &nbsp; The Weight of the Chain &nbsp; ✦",
+    paragraphs: [
+      'The title Theotokos is not a statement about Mary\'s power, dignity, or role in an absolute sense — it is a statement about who Jesus Christ is. If the child born of Mary is God the Son, then Mary is the Mother of God. If she is not the Mother of God, then the child she bore is not God. This is why the Council of Ephesus treated the question with such urgency: it was not a Marian dispute but a Christological crisis.',
+      'Every ancient Christian tradition — Catholic, Eastern Orthodox, Oriental Orthodox, and the Assyrian Church of the East — affirms the title Theotokos. The only Christian traditions that deny it are those that arose after the Reformation. The chain above documents a faith that was universal for fifteen centuries before anyone questioned it. If the Mother of God is a "Catholic invention," then Christianity itself is the invention — because the title is embedded in the same councils that defined the Trinity and the Incarnation.'
+    ]
+  },
+  ldsContrast: {
+    title: "The LDS Position in Contrast",
+    paragraphs: [
+      'Latter-day Saint theology presents a significantly different Mariology. Because LDS doctrine teaches that God the Father has a physical body and that Jesus is the literal offspring of the Father, Mary\'s role is understood differently than in traditional Christology. The LDS tradition generally does not use the title Theotokos and shows minimal Marian devotion compared to Catholic, Orthodox, and even some Protestant traditions.',
+      '<strong>The key question is Christological, not Mariological.</strong> The title Theotokos was defined to protect the unity of Christ\'s Person — that the divine Son and the human son are one and the same. If Christ is truly God and truly man in one Person, then His mother bore God in the flesh. The chain above documents that this was the universal Christian understanding from the Apostles through the great Councils. Any tradition that distances itself from this title must explain what it believes about the Person of Christ — and whether that belief matches the faith of the first five centuries.'
+    ]
+  },
+  sources: 'Primary Sources: Exodus 25:10–22 (ESV) · 2 Samuel 6 (ESV) · Isaiah 7:14 (ESV) · Luke 1:39–56 (ESV) · Galatians 4:4–5 (ESV) · Matthew 1:23 (ESV) · Irenaeus, Against Heresies III.22.4 (c. AD 180) · Sub Tuum Praesidium, Papyrus Rylands 470 (c. AD 250) · Athanasius, Orations Against the Arians III (c. AD 325) · Council of Ephesus (AD 431) · Council of Chalcedon (AD 451) · Catechism of the Catholic Church §§ 484–511 (1992)'
+}
+
+}; /* END DOCTRINES */
+
+
+/* ═══════════════════════════════════════════════════════════
+   RENDERING ENGINE
+   ═══════════════════════════════════════════════════════════ */
+
+var currentDoctrine = null;
+
+var eraStrokeColors = {
+  ot:  '#C5A55A',
+  nt:  '#C05050',
+  pat: '#3A6A9A',
+  cou: '#8A50AA',
+  tod: '#3A8A50'
+};
+
+function buildChainLink(eraCss, side) {
+  var c = eraStrokeColors[eraCss] || '#C5A55A';
+  if (side === 'left') {
+    return '<svg class="chain-link-svg" width="40" height="58" viewBox="0 0 40 58" aria-hidden="true">' +
+      '<ellipse cx="20" cy="42" rx="11" ry="15" fill="none" stroke="' + c + '" stroke-width="2.5"/>' +
+      '<ellipse cx="20" cy="16" rx="16" ry="10" fill="#F5F0E8" stroke="' + c + '" stroke-width="2.5"/>' +
+    '</svg>';
+  } else {
+    return '<svg class="chain-link-svg" width="40" height="58" viewBox="0 0 40 58" aria-hidden="true">' +
+      '<ellipse cx="20" cy="16" rx="11" ry="15" fill="none" stroke="' + c + '" stroke-width="2.5"/>' +
+      '<ellipse cx="20" cy="42" rx="16" ry="10" fill="#F5F0E8" stroke="' + c + '" stroke-width="2.5"/>' +
+    '</svg>';
+  }
+}
+
+function buildCard(node) {
+  return '<div class="chain-card" onclick="toggleCard(this)">' +
+    '<div class="card-head">' +
+      '<span class="card-era-badge">' + node.badge + '</span>' +
+      '<div class="card-ref">' + node.ref + '</div>' +
+      '<div class="card-date">' + node.date + '</div>' +
+      '<div class="card-teaser">' + node.teaser + '</div>' +
+    '</div>' +
+    '<div class="card-toggle">' +
+      '<span class="card-toggle-label">Reveal full evidence ↓</span>' +
+      '<span class="card-toggle-arrow">▼</span>' +
+    '</div>' +
+    '<div class="card-expand">' +
+      '<div class="card-expand-inner">' +
+        '<div class="full-quote">' +
+          '<p>' + node.quote + '</p>' +
+          '<cite>' + node.cite + '</cite>' +
+        '</div>' +
+        '<p class="card-commentary">' + node.commentary + '</p>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
+}
+
+function buildNode(node, eraCss) {
+  var html = '<div class="chain-row">';
+  if (node.side === 'left') {
+    html += '<div class="chain-left-col cat-' + eraCss + '">' + buildCard(node) + '</div>';
+    html += '<div class="chain-link-col">' + buildChainLink(eraCss, 'left') + '</div>';
+    html += '<div class="chain-right-col"></div>';
+  } else {
+    html += '<div class="chain-left-col"></div>';
+    html += '<div class="chain-link-col">' + buildChainLink(eraCss, 'right') + '</div>';
+    html += '<div class="chain-right-col cat-' + eraCss + '">' + buildCard(node) + '</div>';
+  }
+  html += '</div>';
+  return html;
+}
+
+function buildEraStrip(era) {
+  return '<div class="era-strip era-' + era.css + '">' +
+    '<div class="era-strip-left"></div>' +
+    '<div class="era-strip-center">' +
+      '<span class="era-strip-badge">' + era.name + '</span>' +
+    '</div>' +
+    '<div class="era-strip-right"></div>' +
+  '</div>';
+}
+
+function renderDoctrine(key) {
+  var d = DOCTRINES[key];
+  if (!d) return;
+  currentDoctrine = key;
+
+  // Update subtitle
+  document.getElementById('headerSubtitle').textContent = d.subtitle;
+
+  // Update active button
+  var btns = document.querySelectorAll('.doctrine-btn');
+  btns.forEach(function(b) {
+    b.classList.toggle('active', b.dataset.key === key);
+  });
+
+  // Build chain HTML
+  var html = '';
+
+  // Intro box
+  html += '<div class="intro-box">' + d.intro + '</div>';
+
+  // How to use
+  html += '<div class="how-to-use">' +
+    '<div class="how-to-use-icon">↓</div>' +
+    '<p><span>How to read this:</span> Each link in the chain shows the source and a teaser. Click any card to reveal the full primary-source quotation and theological commentary. Colors indicate era.</p>' +
+  '</div>';
+
+  // Chain
+  html += '<div class="chain-outer"><div class="chain-spine"></div>';
+  d.eras.forEach(function(era) {
+    html += buildEraStrip(era);
+    era.nodes.forEach(function(node) {
+      html += buildNode(node, era.css);
+    });
+  });
+  html += '</div>';
+
+  // Verdict
+  html += '<div class="verdict-box"><h3>' + d.verdict.title + '</h3>';
+  d.verdict.paragraphs.forEach(function(p) { html += '<p>' + p + '</p>'; });
+  html += '</div>';
+
+  // LDS Contrast
+  html += '<div class="lds-contrast"><div class="lds-contrast-title">' + d.ldsContrast.title + '</div>';
+  d.ldsContrast.paragraphs.forEach(function(p) { html += '<p>' + p + '</p>'; });
+  html += '</div>';
+
+  // Sources
+  html += '<div class="source-strip"><p>' + d.sources + '</p></div>';
+
+  // Animate transition
+  var container = document.getElementById('trailContent');
+  container.classList.add('fading');
+  setTimeout(function() {
+    container.innerHTML = html;
+    container.classList.remove('fading');
+    // Re-run card animation
+    initCardAnimations();
+    // Scroll to top of content
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, 280);
+
+  // Update URL hash (try/catch for sandboxed environments)
+  try { if (history.replaceState) history.replaceState(null, null, '#' + key); } catch(e) {}
+}
+
+function initCardAnimations() {
+  var cards = document.querySelectorAll('.chain-card');
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  cards.forEach(function(card) {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(16px)';
+    card.style.transition = 'opacity 0.45s ease, transform 0.45s ease, box-shadow 0.2s';
+    io.observe(card);
+  });
+}
+
+
+/* ── CARD TOGGLE ── */
+function toggleCard(card) {
+  var isOpen = card.classList.contains('open');
+  document.querySelectorAll('.chain-card.open').forEach(function(c) {
+    c.classList.remove('open');
+  });
+  if (!isOpen) {
+    card.classList.add('open');
+    setTimeout(function() {
+      var rect = card.getBoundingClientRect();
+      var offset = rect.top + window.scrollY - 140;
+      if (rect.top < 80) {
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
+    }, 50);
+  }
+}
+
+/* ── SIDEBAR ── */
+function toggleSidebar() {
+  var btn     = document.querySelector('.nav-hamburger');
+  var sidebar = document.querySelector('.sidebar');
+  var overlay = document.querySelector('.sidebar-overlay');
+  var isOpen  = sidebar.classList.contains('open');
+  if (isOpen) {
+    sidebar.classList.remove('open');
+    btn.classList.remove('open');
+    overlay.classList.remove('visible');
+    document.body.style.overflow = '';
+  } else {
+    sidebar.classList.add('open');
+    btn.classList.add('open');
+    overlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar();
+});
+
+
+/* ── INIT ── */
+(function() {
+  // Build buttons
+  var btnContainer = document.getElementById('doctrineButtons');
+  var keys = Object.keys(DOCTRINES);
+  keys.forEach(function(key) {
+    var btn = document.createElement('button');
+    btn.className = 'doctrine-btn';
+    btn.dataset.key = key;
+    btn.textContent = DOCTRINES[key].label;
+    btn.onclick = function() { renderDoctrine(key); };
+    btnContainer.appendChild(btn);
+  });
+
+  // Check for hash
+  var hash = '';
+  try { hash = window.location.hash.replace('#', ''); } catch(e) {}
+  if (hash && DOCTRINES[hash]) {
+    renderDoctrine(hash);
+  } else {
+    renderDoctrine(keys[0]);
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Prophetic Criteria Checker | One Faith Delivered</title>
+<meta name="description" content="An interactive tool applying the biblical criteria for a true prophet — from Deuteronomy 18, Deuteronomy 13, and Matthew 7 — to Joseph Smith, with primary source documentation at every step." />
+<link rel="canonical" href="https://onefaithdelivered.org/charts/prophetic-criteria-checker.html" />
+<link rel="icon" href="../favicons/favicon.ico" sizes="any" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   PROPHETIC CRITERIA CHECKER
+   Design system: matches book-of-abraham-problem.html
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --crimson:      #8B0000;
+  --dark-crimson: #5C0000;
+  --gold:         #C5A55A;
+  --dark-gold:    #8B7335;
+  --parchment:    #F5F0E8;
+  --text:         #2A2A2A;
+  --muted:        #666;
+  --line-gray:    #D0C8B8;
+  --fail-red:     #A02020;
+  --fail-bg:      #FFF5F5;
+  --pass-green:   #1A5C2A;
+  --pass-bg:      #F3FAF5;
+  --warn-amber:   #7A5000;
+  --warn-bg:      #FFFBEE;
+
+  /* Criterion color palette */
+  --c1: #8B4000;   --c1-bg: #FFF8F0;   --c1-border: #C58040;
+  --c2: #1A3A5C;   --c2-bg: #F3F7FC;   --c2-border: #3A6A9A;
+  --c3: #4A0F6A;   --c3-bg: #F8F4FC;   --c3-border: #8A50AA;
+  --c4: #1A4A2A;   --c4-bg: #F3FAF5;   --c4-border: #3A8A50;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--parchment);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.6;
+}
+
+/* ── SITE NAV ── */
+.site-nav {
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(245,240,232,0.98), rgba(240,235,225,0.95));
+  border-bottom: 1px solid var(--line-gray);
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.site-nav a.nav-home {
+  font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 700;
+  letter-spacing: 0.05em; color: var(--crimson); text-decoration: none; transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: var(--dark-crimson); }
+.site-nav .nav-back {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--dark-gold);
+  text-decoration: none; border: 1px solid rgba(139,115,53,0.35);
+  padding: 0.4rem 1.1rem; border-radius: 3px; transition: background 0.2s, color 0.2s;
+}
+.site-nav .nav-back:hover { background: rgba(139,115,53,0.08); color: var(--crimson); }
+.nav-hamburger {
+  display: none; flex-direction: column; justify-content: center; gap: 5px;
+  width: 36px; height: 36px; cursor: pointer; background: none;
+  border: 1px solid rgba(139,115,53,0.3); border-radius: 3px; padding: 6px; z-index: 10001;
+}
+.nav-hamburger span { display: block; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.25s; }
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── SIDEBAR ── */
+.sidebar-overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45); z-index: 10000; backdrop-filter: blur(2px);
+}
+.sidebar-overlay.visible { display: block; }
+.sidebar {
+  position: fixed; top: 0; right: -280px; width: 260px; height: 100%;
+  background: linear-gradient(to bottom, #FAF6F0, #F5F0E8);
+  border-left: 1px solid var(--line-gray); z-index: 10002;
+  transition: right 0.3s ease; overflow-y: auto;
+}
+.sidebar.open { right: 0; }
+.sidebar-inner { padding: 5rem 2rem 2rem; display: flex; flex-direction: column; }
+.sidebar-brand {
+  font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: 700;
+  color: var(--crimson); margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line-gray);
+}
+.sidebar-inner a {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--text); text-decoration: none;
+  padding: 0.85rem 0; border-bottom: 1px solid rgba(208,200,184,0.5); transition: color 0.2s;
+}
+.sidebar-inner a:hover { color: var(--crimson); }
+.sidebar-inner a.sidebar-back {
+  color: var(--dark-gold); margin-top: 1.5rem; border: 1px solid rgba(139,115,53,0.3);
+  padding: 0.7rem 1rem; text-align: center; border-radius: 2px;
+}
+.sidebar-ornament { color: var(--gold); font-size: 11px; letter-spacing: 8px; text-align: center; margin-top: 2rem; }
+
+/* ── PAGE HEADER ── */
+.page-header {
+  background: linear-gradient(135deg, #4A0F1A 0%, #6B1D2A 40%, #3D1520 100%);
+  color: #F5F0E8; padding: 72px 40px 56px; text-align: center; position: relative; overflow: hidden;
+}
+.page-header::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+  pointer-events: none;
+}
+.back-link {
+  display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.72em;
+  font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold);
+  text-decoration: none; margin-bottom: 1.8rem; opacity: 0.85; transition: opacity 0.2s; position: relative; z-index: 1;
+}
+.back-link:hover { opacity: 1; }
+.ornament { display: block; color: var(--gold); font-size: 1rem; letter-spacing: 12px; margin-bottom: 1.2rem; opacity: 0.7; position: relative; z-index: 1; }
+.page-header h1 {
+  font-family: 'Playfair Display', serif; font-size: clamp(2em, 4vw, 3.2em); font-weight: 900;
+  letter-spacing: -0.5px; color: #F5F0E8; margin-bottom: 14px; line-height: 1.2; position: relative; z-index: 1;
+}
+.page-header h1 span { color: var(--gold); }
+.page-header .subtitle {
+  font-family: 'Source Serif 4', serif; font-size: 1.1em; font-weight: 300; font-style: italic;
+  color: rgba(245,240,232,0.75); max-width: 680px; margin: 0 auto; position: relative; z-index: 1;
+}
+
+/* ── MAIN ── */
+main { max-width: 980px; margin: 0 auto; padding: 50px 24px 80px; }
+
+/* ── INTRO BOX ── */
+.intro-box {
+  background: #fff; border: 1px solid var(--line-gray); border-left: 5px solid var(--crimson);
+  border-radius: 4px; padding: 28px 32px; margin-bottom: 40px; box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.intro-box p { font-size: 1rem; line-height: 1.85; color: var(--text); }
+.intro-box p + p { margin-top: 0.9rem; }
+.intro-box strong { color: var(--crimson); font-weight: 700; }
+
+/* ── SECTION DIVIDER ── */
+.section-divider {
+  margin: 40px 0 24px; display: flex; align-items: center; gap: 16px;
+}
+.section-divider-line { flex: 1; height: 1px; background: var(--line-gray); }
+.section-divider-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.68em; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--dark-gold); white-space: nowrap;
+}
+
+/* ════════════════════════════════════════
+   BIBLICAL STANDARD BANNER
+   ════════════════════════════════════════ */
+.bible-standard {
+  background: linear-gradient(135deg, #3D1520, #6B1D2A);
+  border-radius: 5px; padding: 28px 32px; margin-bottom: 40px;
+  position: relative; overflow: hidden;
+}
+.bible-standard::before {
+  content: ''; position: absolute; inset: 6px;
+  border: 1px solid rgba(197,165,90,0.2); border-radius: 3px; pointer-events: none;
+}
+.bible-standard-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65em; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px;
+  position: relative; z-index: 1;
+}
+.bible-standard-verse {
+  font-family: 'Playfair Display', serif; font-size: 1.05em; font-style: italic;
+  color: rgba(245,240,232,0.9); line-height: 1.8; margin-bottom: 10px; position: relative; z-index: 1;
+}
+.bible-standard-cite {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.68em; font-weight: 600;
+  letter-spacing: 0.1em; color: var(--gold); position: relative; z-index: 1;
+}
+
+/* ════════════════════════════════════════
+   PROGRESS TRACKER
+   ════════════════════════════════════════ */
+.progress-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--line-gray);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 36px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.progress-step {
+  padding: 0;
+  cursor: pointer;
+  border-right: 1px solid var(--line-gray);
+  transition: background 0.22s;
+  background: #fff;
+  position: relative;
+}
+.progress-step:last-child { border-right: none; }
+.progress-step-inner {
+  padding: 18px 16px 16px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.progress-step:hover { background: var(--parchment); }
+.progress-step.active { background: #fff; }
+
+.step-num-row {
+  display: flex; align-items: center; gap: 10px;
+}
+.step-num {
+  width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--line-gray);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.72em; font-weight: 600;
+  color: var(--muted); flex-shrink: 0; transition: all 0.22s; background: #fff;
+}
+.step-verdict {
+  font-size: 1rem; display: none;
+}
+
+.step-ref {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.62em; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.22s; color: var(--muted);
+}
+.step-title {
+  font-family: 'Playfair Display', serif; font-size: 0.92em; font-weight: 700;
+  line-height: 1.3; color: var(--text); transition: color 0.22s;
+}
+.step-status {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.6em; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);
+  height: 16px; transition: color 0.22s;
+}
+
+/* Active step: colored top border + number highlight */
+.progress-step[data-crit="1"].active { border-top: 3px solid var(--c1); }
+.progress-step[data-crit="2"].active { border-top: 3px solid var(--c2); }
+.progress-step[data-crit="3"].active { border-top: 3px solid var(--c3); }
+.progress-step[data-crit="4"].active { border-top: 3px solid var(--c4); }
+.progress-step[data-crit="1"].active .step-num { border-color: var(--c1); color: var(--c1); background: var(--c1-bg); }
+.progress-step[data-crit="2"].active .step-num { border-color: var(--c2); color: var(--c2); background: var(--c2-bg); }
+.progress-step[data-crit="3"].active .step-num { border-color: var(--c3); color: var(--c3); background: var(--c3-bg); }
+.progress-step[data-crit="4"].active .step-num { border-color: var(--c4); color: var(--c4); background: var(--c4-bg); }
+.progress-step[data-crit="1"].active .step-ref { color: var(--c1); }
+.progress-step[data-crit="2"].active .step-ref { color: var(--c2); }
+.progress-step[data-crit="3"].active .step-ref { color: var(--c3); }
+.progress-step[data-crit="4"].active .step-ref { color: var(--c4); }
+
+/* Completed steps */
+.progress-step.done .step-num { display: none; }
+.progress-step.done .step-verdict { display: block; }
+.progress-step[data-crit="1"].done { border-top: 3px solid var(--fail-red); background: #FFF8F8; }
+.progress-step[data-crit="2"].done { border-top: 3px solid var(--fail-red); background: #FFF8F8; }
+.progress-step[data-crit="3"].done { border-top: 3px solid var(--fail-red); background: #FFF8F8; }
+.progress-step[data-crit="4"].done { border-top: 3px solid var(--fail-red); background: #FFF8F8; }
+.progress-step.done .step-ref { color: var(--fail-red); }
+.progress-step.done .step-status { color: var(--fail-red); }
+
+/* ════════════════════════════════════════
+   CRITERION PANELS
+   ════════════════════════════════════════ */
+.criterion-panel {
+  display: none;
+  animation: fadeIn 0.35s ease;
+}
+.criterion-panel.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── CRITERION HEADER ── */
+.crit-header {
+  border-radius: 5px 5px 0 0; padding: 28px 32px 24px;
+  margin-bottom: 0; border: 1px solid;
+}
+.crit-1 .crit-header { background: var(--c1-bg); border-color: var(--c1-border); }
+.crit-2 .crit-header { background: var(--c2-bg); border-color: var(--c2-border); }
+.crit-3 .crit-header { background: var(--c3-bg); border-color: var(--c3-border); }
+.crit-4 .crit-header { background: var(--c4-bg); border-color: var(--c4-border); }
+
+.crit-tag {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65em; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 10px; display: block;
+}
+.crit-1 .crit-tag { color: var(--c1); }
+.crit-2 .crit-tag { color: var(--c2); }
+.crit-3 .crit-tag { color: var(--c3); }
+.crit-4 .crit-tag { color: var(--c4); }
+
+.crit-title {
+  font-family: 'Playfair Display', serif; font-size: 1.5em; font-weight: 900;
+  line-height: 1.2; margin-bottom: 14px;
+}
+.crit-1 .crit-title { color: var(--c1); }
+.crit-2 .crit-title { color: var(--c2); }
+.crit-3 .crit-title { color: var(--c3); }
+.crit-4 .crit-title { color: var(--c4); }
+
+.crit-verse-block {
+  background: rgba(255,255,255,0.7); border-left: 4px solid; border-radius: 0 3px 3px 0;
+  padding: 14px 18px; margin-bottom: 14px;
+}
+.crit-1 .crit-verse-block { border-color: var(--c1-border); }
+.crit-2 .crit-verse-block { border-color: var(--c2-border); }
+.crit-3 .crit-verse-block { border-color: var(--c3-border); }
+.crit-4 .crit-verse-block { border-color: var(--c4-border); }
+
+.crit-verse { font-size: 0.95em; font-style: italic; line-height: 1.75; color: var(--text); margin-bottom: 6px; }
+.crit-cite {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.66em; font-weight: 600;
+  letter-spacing: 0.08em; color: var(--muted);
+}
+.crit-summary { font-size: 0.9em; line-height: 1.78; color: var(--text); }
+
+/* ── QUESTION PROMPT ── */
+.crit-question {
+  background: #fff; border: 1px solid var(--line-gray); border-top: none;
+  padding: 18px 32px; display: flex; align-items: center; gap: 16px;
+  margin-bottom: 24px;
+}
+.crit-question-icon { font-size: 1.2em; flex-shrink: 0; }
+.crit-question-text {
+  font-family: 'Playfair Display', serif; font-size: 1.05em; font-style: italic; color: var(--text);
+}
+
+/* ── EVIDENCE CARDS GRID ── */
+.evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+@media (max-width: 680px) { .evidence-grid { grid-template-columns: 1fr; } }
+
+/* ── EVIDENCE CARD ── */
+.ev-card {
+  background: #fff; border: 1px solid var(--line-gray); border-radius: 4px;
+  overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.ev-card:hover { transform: translateY(-2px); box-shadow: 0 5px 18px rgba(0,0,0,0.09); }
+
+.ev-card-head {
+  padding: 14px 18px 12px;
+  border-bottom: 1px solid var(--line-gray);
+}
+.ev-source-row {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;
+}
+.ev-source {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.62em; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--dark-gold);
+}
+.ev-verdict-pill {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.6em; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 8px; border-radius: 10px;
+}
+.pill-fail { background: #FFE8E8; color: var(--fail-red); border: 1px solid rgba(160,32,32,0.25); }
+.pill-warn { background: #FFF8E0; color: var(--warn-amber); border: 1px solid rgba(122,80,0,0.25); }
+.pill-note { background: #EEF5FF; color: #1A3A7C; border: 1px solid rgba(26,58,124,0.25); }
+
+.ev-title {
+  font-family: 'Playfair Display', serif; font-size: 1em; font-weight: 700;
+  color: var(--text); line-height: 1.3;
+}
+
+.ev-card-body { padding: 14px 18px 16px; }
+
+.ev-quote {
+  background: var(--fail-bg); border-left: 3px solid var(--fail-red);
+  padding: 11px 14px; margin-bottom: 12px; border-radius: 0 3px 3px 0;
+}
+.ev-quote p { font-size: 0.86em; font-style: italic; line-height: 1.7; color: var(--text); }
+.ev-quote cite {
+  display: block; margin-top: 7px;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.64em; font-weight: 600;
+  letter-spacing: 0.07em; font-style: normal; color: var(--muted);
+}
+
+.ev-analysis {
+  font-size: 0.87em; line-height: 1.76; color: var(--text);
+}
+.ev-analysis strong { color: var(--fail-red); font-weight: 700; }
+.ev-analysis em { color: var(--dark-gold); font-style: italic; }
+
+/* ── CRITERION VERDICT BANNER ── */
+.crit-verdict {
+  border-radius: 4px; padding: 20px 24px; margin-bottom: 28px;
+  display: flex; align-items: flex-start; gap: 16px;
+  border: 1px solid;
+}
+.crit-verdict.fail { background: var(--fail-bg); border-color: rgba(160,32,32,0.3); }
+.crit-verdict.warn { background: var(--warn-bg); border-color: rgba(122,80,0,0.25); }
+
+.crit-verdict-icon { font-size: 1.4em; flex-shrink: 0; margin-top: 2px; }
+.crit-verdict-title {
+  font-family: 'Playfair Display', serif; font-size: 1.05em; font-weight: 700; margin-bottom: 5px;
+}
+.fail .crit-verdict-title { color: var(--fail-red); }
+.warn .crit-verdict-title { color: var(--warn-amber); }
+.crit-verdict-text { font-size: 0.9em; line-height: 1.75; color: var(--text); }
+
+/* ── NAV BUTTONS ── */
+.crit-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 8px; gap: 12px;
+}
+.btn-prev, .btn-next {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.72em; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; padding: 0.65rem 1.4rem;
+  border-radius: 3px; cursor: pointer; border: 1px solid; transition: all 0.2s;
+}
+.btn-prev {
+  background: transparent; color: var(--muted); border-color: var(--line-gray);
+}
+.btn-prev:hover { background: var(--parchment); color: var(--text); }
+.btn-next {
+  background: var(--crimson); color: #fff; border-color: var(--crimson);
+}
+.btn-next:hover { background: var(--dark-crimson); }
+.btn-next:disabled { background: var(--line-gray); border-color: var(--line-gray); cursor: default; }
+
+.crit-nav-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.65em; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-align: center;
+}
+
+/* ════════════════════════════════════════
+   FINAL SUMMARY PANEL
+   ════════════════════════════════════════ */
+.summary-panel {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+.summary-panel.active { display: block; }
+
+.summary-scorecard {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  border: 1px solid var(--line-gray); border-radius: 5px; overflow: hidden;
+  margin-bottom: 28px; box-shadow: 0 3px 14px rgba(0,0,0,0.07);
+}
+.score-cell {
+  padding: 22px 16px; background: var(--fail-bg); text-align: center;
+  border-right: 1px solid var(--line-gray);
+}
+.score-cell:last-child { border-right: none; }
+.score-cell-icon { font-size: 1.6em; margin-bottom: 8px; }
+.score-cell-crit {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.6em; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px;
+}
+.score-cell-title {
+  font-family: 'Playfair Display', serif; font-size: 0.9em; font-weight: 700;
+  color: var(--text); margin-bottom: 8px; line-height: 1.3;
+}
+.score-cell-result {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.66em; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--fail-red);
+  background: #FFE8E8; padding: 3px 8px; border-radius: 10px; display: inline-block;
+}
+
+/* ── RESPONSE GRID (LDS explanations vs rebuttals) ── */
+.response-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  border: 1px solid var(--line-gray); border-radius: 4px;
+  overflow: hidden; margin-bottom: 28px; box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.response-card { padding: 22px 24px; }
+.response-card:nth-child(odd) {
+  background: linear-gradient(135deg, #FFFCF0, #FFF8E0);
+  border-right: 1px solid var(--line-gray); border-bottom: 1px solid var(--line-gray);
+}
+.response-card:nth-child(even) {
+  background: linear-gradient(135deg, #FFF5F5, #FFF0F0);
+  border-bottom: 1px solid var(--line-gray);
+}
+.response-card:nth-last-child(-n+2) { border-bottom: none; }
+.response-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.7em; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px;
+  padding-bottom: 6px; border-bottom: 2px solid;
+}
+.label-theory { color: var(--dark-gold); border-color: var(--dark-gold); }
+.label-rebuttal { color: var(--fail-red); border-color: var(--fail-red); }
+.response-text { font-size: 0.9em; line-height: 1.7; color: var(--text); }
+.response-text em { color: var(--dark-gold); font-style: italic; }
+@media (max-width: 680px) {
+  .response-grid { grid-template-columns: 1fr; }
+  .response-card:nth-child(odd) { border-right: none; }
+}
+
+/* ── VERDICT BOX ── */
+.verdict-box {
+  background: linear-gradient(135deg, #4A0F1A, #6B1D2A);
+  color: #F5F0E8; border-radius: 6px; padding: 44px 40px; margin-top: 40px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.verdict-box::before {
+  content: ''; position: absolute; inset: 8px;
+  border: 1px solid rgba(197,165,90,0.25); border-radius: 4px; pointer-events: none;
+}
+.verdict-box h3 {
+  font-family: 'Playfair Display', serif; font-size: 1.4em; font-weight: 700;
+  color: var(--gold); margin-bottom: 18px; position: relative; z-index: 1;
+}
+.verdict-box p {
+  font-size: 1em; line-height: 1.85; color: rgba(245,240,232,0.9);
+  max-width: 800px; margin: 0 auto; position: relative; z-index: 1;
+}
+.verdict-box p + p { margin-top: 14px; }
+
+.restart-btn {
+  margin-top: 28px; position: relative; z-index: 1; display: inline-block;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.72em; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase; padding: 0.75rem 1.8rem;
+  border-radius: 3px; cursor: pointer; border: 1px solid rgba(197,165,90,0.5);
+  background: rgba(197,165,90,0.12); color: var(--gold); transition: all 0.2s;
+}
+.restart-btn:hover { background: rgba(197,165,90,0.25); }
+
+/* ── SOURCE STRIP ── */
+.source-strip {
+  padding: 14px 20px; border: 1px solid var(--line-gray); border-radius: 4px;
+  background: #FAFAF8; margin-top: 28px;
+}
+.source-strip p {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.62em; font-weight: 400;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); line-height: 1.9;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #fff; text-align: center; padding: 28px 20px;
+  border-top: 1px solid var(--line-gray); font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  main { padding: 32px 16px 60px; }
+  .page-header { padding: 48px 24px 40px; }
+  .verdict-box { padding: 32px 20px; }
+  .summary-scorecard { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 700px) {
+  .nav-hamburger { display: flex; }
+  .site-nav .nav-back { display: none; }
+  .progress-track { grid-template-columns: repeat(2, 1fr); }
+  .progress-step:nth-child(2) { border-right: none; }
+  .progress-step:nth-child(1), .progress-step:nth-child(2) { border-bottom: 1px solid var(--line-gray); }
+  .crit-header { padding: 20px; }
+  .crit-question { padding: 14px 20px; }
+  .summary-scorecard { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .summary-scorecard { grid-template-columns: 1fr; }
+  .progress-track { grid-template-columns: 1fr; }
+  .progress-step { border-right: none !important; border-bottom: 1px solid var(--line-gray); }
+  .progress-step:last-child { border-bottom: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── SITE NAV ── -->
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">One Faith Delivered</a>
+  <a href="../charts.html" class="nav-back">← All Charts</a>
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <a href="../charts.html" class="back-link">← Charts &amp; Visual Resources</a>
+  <span class="ornament">✦ ✦ ✦</span>
+  <h1>The Prophetic <span>Criteria Checker</span></h1>
+  <p class="subtitle">The Bible defines what a true prophet looks like — precisely and testably. Walk through each criterion and examine the primary-source evidence.</p>
+</header>
+
+<!-- ── MAIN ── -->
+<main>
+
+  <div class="intro-box">
+    <p>Before asking whether Joseph Smith <em>is</em> a prophet, Scripture asks a prior question: <strong>what does a true prophet look like, and how would we know one?</strong> The Bible gives surprisingly precise, testable criteria — criteria not invented by Catholic apologists but embedded in the very books the LDS church claims to honor. This tool walks through four of those criteria one at a time, applying each to the documented record of Joseph Smith using primary sources drawn chiefly from LDS scripture, official LDS publications, and the Joseph Smith Papers project.</p>
+    <p>The standard is not Catholic. The evidence is not secondary. The question is whether Joseph Smith meets the test his own canon demands.</p>
+  </div>
+
+  <!-- ── BIBLICAL STANDARD BANNER ── -->
+  <div class="bible-standard">
+    <div class="bible-standard-label">The Standard — Three Texts, One Framework</div>
+    <div class="bible-standard-verse">"But the prophet who presumes to speak a word in my name that I have not commanded him to speak... that same prophet shall die. And if you say in your heart, 'How may we know the word that the LORD has not spoken?' — when a prophet speaks in the name of the LORD, if the word does not come to pass or come true, that is a word that the LORD has not spoken."</div>
+    <div class="bible-standard-cite">— Deuteronomy 18:20–22 (ESV) &nbsp;·&nbsp; cf. Deuteronomy 13:1–5 &nbsp;·&nbsp; Matthew 7:15–20</div>
+  </div>
+
+  <!-- ── SECTION LABEL ── -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">Click Each Criterion to Examine the Evidence</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       PROGRESS TRACKER
+       ════════════════════════════════════════ -->
+  <div class="progress-track" id="progressTrack">
+
+    <div class="progress-step active" data-crit="1" onclick="goTo(1)">
+      <div class="progress-step-inner">
+        <div class="step-num-row">
+          <div class="step-num">1</div>
+          <span class="step-verdict">✕</span>
+          <span class="step-ref">Deut 18:21–22</span>
+        </div>
+        <div class="step-title">The Accuracy Test</div>
+        <div class="step-status">Examining…</div>
+      </div>
+    </div>
+
+    <div class="progress-step" data-crit="2" onclick="goTo(2)">
+      <div class="progress-step-inner">
+        <div class="step-num-row">
+          <div class="step-num">2</div>
+          <span class="step-verdict">✕</span>
+          <span class="step-ref">Deut 13:1–5</span>
+        </div>
+        <div class="step-title">The Theology Test</div>
+        <div class="step-status">Locked</div>
+      </div>
+    </div>
+
+    <div class="progress-step" data-crit="3" onclick="goTo(3)">
+      <div class="progress-step-inner">
+        <div class="step-num-row">
+          <div class="step-num">3</div>
+          <span class="step-verdict">✕</span>
+          <span class="step-ref">Deut 18:20</span>
+        </div>
+        <div class="step-title">The Direction Test</div>
+        <div class="step-status">Locked</div>
+      </div>
+    </div>
+
+    <div class="progress-step" data-crit="4" onclick="goTo(4)">
+      <div class="progress-step-inner">
+        <div class="step-num-row">
+          <div class="step-num">4</div>
+          <span class="step-verdict">✕</span>
+          <span class="step-ref">Matt 7:15–20</span>
+        </div>
+        <div class="step-title">The Fruit Test</div>
+        <div class="step-status">Locked</div>
+      </div>
+    </div>
+
+  </div><!-- /progress-track -->
+
+  <!-- ════════════════════════════════════════
+       CRITERION 1: THE ACCURACY TEST
+       ════════════════════════════════════════ -->
+  <div class="criterion-panel active crit-1" id="panel-1">
+
+    <div class="crit-header">
+      <span class="crit-tag">Criterion I &nbsp;·&nbsp; Deuteronomy 18:21–22</span>
+      <h2 class="crit-title">The Accuracy Test: Do His Prophecies Come True?</h2>
+      <div class="crit-verse-block">
+        <p class="crit-verse">"When a prophet speaks in the name of the LORD, if the word does not come to pass or come true, that is a word that the LORD has not spoken; the prophet has spoken it presumptuously."</p>
+        <div class="crit-cite">— Deuteronomy 18:22 (ESV) &nbsp;·&nbsp; cf. Jeremiah 28:9</div>
+      </div>
+      <p class="crit-summary">This is the simplest and most objective criterion. A prophecy either comes to pass or it does not. The standard in Deuteronomy is binary and uncompromising — <em>one</em> false prophecy, spoken in God's name, is sufficient grounds for rejection. The following evidence comes from LDS scripture and the Joseph Smith Papers.</p>
+    </div>
+
+    <div class="crit-question">
+      <span class="crit-question-icon">⟶</span>
+      <span class="crit-question-text">Did Joseph Smith's specific, dated prophecies come to pass as declared?</span>
+    </div>
+
+    <div class="evidence-grid">
+
+      <!-- EVIDENCE 1a -->
+      <div class="ev-card">
+        <div class="ev-card-head">
+          <div class="ev-source-row">
+            <span class="ev-source">D&amp;C 84:1–5 &nbsp;·&nbsp; AD 1832</span>
+            <span class="ev-verdict-pill pill-fail">Failed</span>
+          </div>
+          <div class="ev-title">The Missouri Temple Prophecy</div>
+        </div>
+        <div class="ev-card-body">
+          <div class="ev-quote">
+            <p>"A temple shall be reared in this generation... yea, the word of the Lord concerning his church, established in the last days for the restoration of his people... shall be built up unto the Lord in this generation, upon the consecrated spot."</p>
+            <cite>— Doctrine &amp; Covenants 84:4–5 (revelation dated September 22–23, 1832)</cite>
+          </div>
+          <p class="ev-analysis">Smith declared that a temple would be built on a specific site — the "consecrated spot" in Independence, Missouri — <em>within "this generation."</em> The generation that heard that prophecy is long dead. No temple was built on the spot in their lifetime. The LDS Church purchased the property in Independence; it remains undeveloped for temple use as of today. <strong>The prophecy named a specific location, a specific type of structure, and a specific time frame — and not one of the three conditions was met.</strong> Note that Smith himself, Joseph Fielding Smith, and other LDS leaders acknowledged the non-fulfillment without retracting the original claim.</p>
+        </div>
+      </div>
+
+      <!-- EVIDENCE 1b -->
+      <div class="ev-card">
+        <div class="ev-card-head">
+          <div class="ev-source-row">
+            <span class="ev-source">D&amp;C 114:1 &nbsp;·&nbsp; AD 1838</span>
+            <span class="ev-verdict-pill pill-fail">Failed</span>
+          </div>
+          <div class="ev-title">The Patten Mission Prophecy</div>
+        </div>
+        <div class="ev-card-body">
+          <div class="ev-quote">
+            <p>"Verily thus saith the Lord: It is wisdom in my servant David W. Patten, that he settle up all his business as soon as he possibly can, and make a disposition of his merchandise, that he may perform a mission unto me next spring."</p>
+            <cite>— Doctrine &amp; Covenants 114:1 (dated April 17, 1838)</cite>
+          </div>
+          <p class="ev-analysis">God, through Smith, commanded David W. Patten to prepare for a spring mission. Patten died on October 25, 1838, at the Battle of Crooked River — six months after this "commandment" and months before the prophesied spring mission. <strong>If the prophecy came from God, why did God commission a man for a mission He knew the man would not live to perform?</strong> LDS apologists respond that Patten's death was not God's will — but this relocates the problem: a true prophet would know the will of God, including Patten's fate.</p>
+        </div>
+      </div>
+
+      <!-- EVIDENCE 1c -->
+      <div class="ev-card">
+        <div class="ev-card-head">
+          <div class="ev-source-row">
+            <span class="ev-source">History of the Church 2:182 &nbsp;·&nbsp; AD 1835</span>
+            <span class="ev-verdict-pill pill-fail">Failed</span>
+          </div>
+          <div class="ev-title">"56 Years Should Wind Up the Scene"</div>
+        </div>
+        <div class="ev-card-body">
+          <div class="ev-quote">
+            <p>"President Smith then stated that the meeting had been called, because God had commanded it... it was the will of God that those who went to Zion, with a determination to lay down their lives, if necessary, should be ordained to the ministry... He said that 56 years should wind up the scene."</p>
+            <cite>— History of the Church 2:182 (February 14, 1835); cf. Documentary History of the Church, Vol. 2</cite>
+          </div>
+          <p class="ev-analysis">In 1835, Smith prophesied that 56 years would "wind up the scene" — a clear reference to the Second Coming, placing it no later than 1891. The year 1891 passed without the Second Coming. <strong>The Joseph Smith Papers project and official LDS history do not contest the quotation — they contest its interpretation.</strong> But the plain reading, received by those present, was eschatological. Lyman Johnson, one of the original Twelve Apostles present, understood it as a prophecy of the imminent millennium.</p>
+        </div>
+      </div>
+
+      <!-- EVIDENCE 1d -->
+      <div class="ev-card">
+        <div class="ev-card-head">
+          <div class="ev-source-row">
+            <span class="ev-source">D&amp;C 124:22–24 &nbsp;·&nbsp; AD 1841</span>
+            <span class="ev-verdict-pill pill-fail">Failed</span>
+          </div>
+          <div class="ev-title">The Nauvoo House Prophecy</div>
+        </div>
+        <div class="ev-card-body">
+          <div class="ev-quote">
+            <p>"Let my servant Joseph and his seed after him have place in that house, from generation to generation, forever and ever... And the name of that house shall be called Nauvoo House; and let it be a delightful habitation for man, and a resting-place for the weary traveler."</p>
+            <cite>— Doctrine &amp; Covenants 124:22–23 (January 19, 1841)</cite>
+          </div>
+          <p class="ev-analysis">God commanded that the Nauvoo House be built and promised that Joseph Smith and <em>"his seed after him"</em> would possess it <em>"forever and ever."</em> Joseph Smith was killed in 1844, three years later. His descendants never possessed the house in any enduring way. The Nauvoo House was sold, changed hands, and passed out of Smith family possession. <strong>A promise of eternal possession "from generation to generation" that lasted less than a decade cannot be attributed to God.</strong></p>
+        </div>
+      </div>
+
+    </div><!-- /evidence-grid -->
+
+    <div class="crit-verdict fail">
+      <div class="crit-verdict-icon">✕</div>
+      <div>
+        <div class="crit-verdict-title">Criterion I — Failed: Demonstrable False Prophecies on Record</div>
+        <div class="crit-verdict-text">Deuteronomy 18:22 requires 100% accuracy. A single false prophecy spoken in God's name disqualifies the prophet. The record contains multiple specific, dated prophecies with named individuals, named locations, and explicit time frames that did not come to pass. These are not matters of interpretation — they are documented in LDS scripture and official church history. Apologetic responses (secondary fulfillment, symbolic reading, or redefining "generation") require overriding the plain meaning of unambiguous declarative statements.</div>
+      </div>
+    </div>
+
+    <div class="crit-nav">
+      <button class="btn-prev" disabled>← Previous</button>
+      <span class="crit-nav-label">Criterion 1 of 4</span>
+      <button class="btn-next" onclick="advance(2)">Next Criterion →</button>
+    </div>
+
+  </div><!-- /panel-1 -->
+
+  <!-- ════════════════════════════════════════
+       CRITERION 2: THE THEOLOGY TEST
+       ════════════════════════════════════════ -->
+  <div class="criterion-panel crit-2" id="panel-2">
+
+    <div class="crit-header">
+      <span class="crit-tag">Criterion II &nbsp;·&nbsp; Deuteronomy 13:1–5</span>
+      <h2 class="crit-title">The Theology Test: Does He Teach a Different God?</h2>
+      <div class="crit-verse-block">
+        <p class="crit-verse">"If a prophet or a dreamer of dreams arises among you and gives you a sign or a wonder, and the sign or wonder that he tells you comes to pass, and if he says, 'Let us go after other gods'... you shall not listen to the words of that prophet or that dreamer of dreams. For the LORD your God is testing you, to know whether you love the LORD your God with all your heart and with all your soul."</p>
+        <div class="crit-cite">— Deuteronomy 13:1–3 (ESV)</div>
+      </div>
+      <p class="crit-summary">Deuteronomy 13 makes a remarkable claim: <em>even if the prophecies come true</em>, a prophet who leads toward a different God is to be rejected. Accurate prediction is a necessary but not sufficient condition. The nature of God proclaimed must match the God of prior revelation. This criterion asks: does Joseph Smith's mature theology describe the same God as Scripture?</p>
+    </div>
+
+    <div class="crit-question">
+      <span class="crit-question-icon">⟶</span>
+      <span class="crit-question-text">Is the God of Joseph Smith's mature theology the same God revealed in Scripture and confessed in the creeds?</span>
+    </div>
+
+    <div class="evidence-grid">
+
+      <!-- EVIDENCE 2a -->
+      <div class="ev-card">
+        <div class="ev-card-head">
+          <div class="ev-source-row">
+            <span class="ev-source">King Follett Discourse &nbsp;·&nbsp; AD 1844</span>
+            <span class="ev-verdict-pill pill-fail">Contradicts Scripture</span>
+          </div>
+          <div class="ev-title">"God Himself Was Once as We Are Now"</div>
+        </div>
+        <div class="ev-card-body">
+          <div class="ev-quote">
+            <p>"God himself was once as we are now, and is an exalted man, and sits enthroned in yonder heavens... I am going to tell you how God came to be God. We have imagined and supposed that God was God from all eternity. I will refute that idea, and take away the veil, so that you may see."</p>
+            <cite>— Joseph Smith, King Follett Funeral Discourse (April 7, 1844); recorded by four scribes; published in Times and Seasons, August 15, 1844</cite>
+          </div>
+          <p class="ev-analysis">This is Joseph Smith's final major theological address, delivered six weeks before his death. He explicitly states that God was once a mortal man who progressed to godhood. <strong>This directly contradicts Psalm 90:2 ("Before the mountains were brought forth... from everlasting to everlasting you are God"), Isaiah 43:10 ("Before me no god was formed, nor shall there be any after me"), Malachi 3:6 ("I the LORD do not change"), and Numbers 23:19 ("God is not man").</strong> The earliest Book of Mormon (Moroni 8:18) itself states: "God... is unchangeable from all eternity to all eternity" — a definition Smith later explicitly reversed.</p>
+        </div>
+      </div>
+
+      <!-- EVIDENCE 2b -->
+      <div class="ev-card">
+        <div class="ev-card-head">
+          <div class="ev-source-row">
+            <span class="ev-source">D&amp;C 130:22 &nbsp;·&nbsp; AD 1843</span>
+            <span class="ev-verdict-pill pill-fail">Contradicts Scripture</span>
+          </div>
+          <div class="ev-title">God Has a Body of Flesh and Bones</div>
+        </div>
+        <div class="ev-card-body">
+          <div class="ev-quote">
+            <p>"The Father has a body of flesh and bones as tangible as man's; the Son also; but the Holy Ghost has not a body of flesh and bones, but is a personage of Spirit."</p>
+            <cite>— Doctrine &amp; Covenants 130:22 (April 2, 1843)</cite>
+          </div>
+          <p class="ev-analysis">Scripture is direct: <em>"God is spirit"</em> (John 4:24). <em>"A spirit does not have flesh and bones"</em> (Luke 24:39 — the risen Christ distinguishing Himself as embodied from His pre-resurrection spiritual mode). <strong>D&amp;C 130:22 defines the Father as a corporeal, spatially located being — a definition incompatible with divine omnipresence, omniscience, and the theology of every Christian writer from the first century through the Reformation.</strong> This is not a doctrinal refinement; it is a fundamental redefinition of the divine nature. Ignatius, Justin, Irenaeus, Augustine, Aquinas, and the entire Catholic, Orthodox, and Protestant tradition agree on divine incorporeality — and agree that it comes from Scripture.</p>
+        </div>
+      </div>
+
+      <!-- EVIDENCE 2c -->
+      <div class="ev-card">
+        <div class="ev-card-head">
+          <div class="ev-source-row">
+            <span class="ev-source">Book of Abraham 4–5 &nbsp;·&nbsp; AD 1842</span>
+            <span class="ev-verdict-pill pill-fail">Contradicts Scripture</span>
+          </div>
+          <div class="ev-title">The Council of Gods — "The Gods"</div>
+        </div>
+        <div class="ev-card-body">
+          <div class="ev-quote">
+            <p>"And then the Lord said: Let us go down. And they went down at the beginning, and they, that is the Gods, organized and formed the heavens and the earth... And the Gods called the light Day, and the darkness they called Night."</p>
+            <cite>— Pearl of Great Price, Book of Abraham 4:1, 5 (published Times and Seasons, March 1, 1842)</cite>
+          </div>
+          <p class="ev-analysis">The Book of Abraham systematically replaces the singular "God" of Genesis 1 with the plural "the Gods" — not as a reflection of the Hebrew <em>Elohim</em> (a plural of majesty used with singular verbs throughout Genesis 1) but as a genuine plurality of separate divine beings. <strong>This is the theological foundation of LDS polytheism: a council of distinct Gods who collaboratively create.</strong> Isaiah is unambiguous: "I am the LORD, and there is no other; besides me there is no God" (Isa 45:5). The LDS canon introduces a competing deity structure that neither the Old Testament nor the New Testament supports when read in their historical context.</p>
+        </div>
+      </div>
+
+      <!-- EVIDENCE 2d -->
+      <div class="ev-card">
+        <div class="ev-card-head">
+          <div class="ev-source-row">
+            <span class="ev-source">BoM vs. Mature LDS Theology &nbsp;·&nbsp; AD 1830–1844</span>
+            <span class="ev-verdict-pill pill-warn">Internal Contradiction</span>
+          </div>
+          <div class="ev-title">The Book of Mormon's Own Trinitarianism</div>
+        </div>
+        <div class="ev-card-body">
+          <div class="ev-quote">
+            <p>"And now, behold, this is the doctrine of Christ, and the only and true doctrine of the Father, and of the Son, and of the Holy Ghost, which is one God, without end."</p>
+            <cite>— 2 Nephi 31:21 (Book of Mormon, 1830 edition) &nbsp;·&nbsp; cf. Mosiah 15:1–4; 3 Nephi 11:27</cite>
+          </div>
+          <p class="ev-analysis">The <em>original</em> Book of Mormon (1830) contains explicit Trinitarian language — "they are one God" and "the Father, Son, and Holy Ghost is one God" — that flatly contradicts Smith's later teaching of three separate beings. Smith himself revised several Book of Mormon passages in the 1837 and 1840 editions to reduce the Trinitarian language. <strong>A prophet who contradicts his own scripture — and then edits that scripture to reduce the contradiction — cannot appeal to consistency as his defense.</strong> The LDS church itself acknowledges the textual changes; the Joseph Smith Papers project has published them in full.</p>
+        </div>
+      </div>
+
+    </div><!-- /evidence-grid -->
+
+    <div class="crit-verdict fail">
+      <div class="crit-verdict-icon">✕</div>
+      <div>
+        <div class="crit-verdict-title">Criterion II — Failed: The God of Joseph Smith Is Not the God of Scripture</div>
+        <div class="crit-verdict-text">Smith's mature theology — an embodied, progressing, formerly-mortal God who is one of many Gods — represents a comprehensive departure from the theology of every biblical text, every creed, every Church Father, and even the theology of Smith's own original scripture. Deuteronomy 13 explicitly states that even a sign-performing prophet who leads toward "other gods" is to be rejected. The criterion applies with full force.</div>
+      </div>
+    </div>
+
+    <div class="crit-nav">
+      <button class="btn-prev" onclick="goTo(1)">← Previous</button>
+      <span class="crit-nav-label">Criterion 2 of 4</span>
+      <button class="btn-next" onclick="advance(3)">Next Criterion →</button>
+    </div>
+
+  </div><!-- /panel-2 -->
+
+  <!-- ════════════════════════════════════════
+       CRITERION 3: THE DIRECTION TEST
+       ════════════════════════════════════════ -->
+  <div class="criterion-panel crit-3" id="panel-3">
+
+    <div class="crit-header">
+      <span class="crit-tag">Criterion III &nbsp;·&nbsp; Deuteronomy 18:20 &nbsp;·&nbsp; Isaiah 8:20</span>
+      <h2 class="crit-title">The Direction Test: Does He Lead Toward or Away from God?</h2>
+      <div class="crit-verse-block">
+        <p class="crit-verse">"But the prophet who presumes to speak a word in my name that I have not commanded him to speak, or who speaks in the name of other gods, that same prophet shall die... To the teaching and to the testimony! If they will not speak according to this word, it is because they have no dawn."</p>
+        <div class="crit-cite">— Deuteronomy 18:20 (ESV) &nbsp;·&nbsp; Isaiah 8:20 (ESV)</div>
+      </div>
+      <p class="crit-summary">Isaiah's standard is direct: prophetic claims must be tested against "the teaching and the testimony" — the prior revelation. This criterion asks not just about the God proclaimed but about the moral and doctrinal direction given to the prophet's followers. Does obedience to this prophet lead people toward the true God — or toward structures, doctrines, and practices He has condemned?</p>
+    </div>
+
+    <div class="crit-question">
+      <span class="crit-question-icon">⟶</span>
+      <span class="crit-question-text">Does following Joseph Smith's commands lead people toward the God of Scripture — or away from Him?</span>
+    </div>
+
+    <div class="evidence-grid">
+
+      <!-- EVIDENCE 3a -->
+      <div class="ev-card">
+        <div class="ev-card-head">
+          <div class="ev-source-row">
+            <span class="ev-source">D&amp;C 132 vs. Matthew 19 &nbsp;·&nbsp; AD 1843</span>
+            <span class="ev-verdict-pill pill-fail">Contradicts Christ</span>
+          </div>
+          <div class="ev-title">D&amp;C 132: Polygamy as Eternal Covenant</div>
+        </div>
+        <div class="ev-card-body">
+          <div class="ev-quote">
+            <p>"Abraham received concubines, and they bore him children; and it was accounted unto him for righteousness... David also received many wives and concubines, and also Solomon and Moses my servants... and in nothing did they sin save in those things which they received not of me."</p>
+            <cite>— Doctrine &amp; Covenants 132:37–38 (July 12, 1843)</cite>
+          </div>
+          <p class="ev-analysis">Christ's teaching on marriage is unambiguous: <em>"From the beginning it was not so"</em> (Matt 19:8) — explicitly overriding the Mosaic accommodation of polygamy and restoring the original one-man, one-woman norm. The Book of Mormon's own Jacob 2:24 calls David's and Solomon's many wives "abominable." <strong>D&amp;C 132 directly reverses the Book of Mormon's own condemnation, rehabilitates what Christ overrode, and presents God commanding a practice that Christ's own words rule out.</strong> This is not progressive revelation — it is retrogression to a framework Christ explicitly closed.</p>
+        </div>
+      </div>
+
+      <!-- EVIDENCE 3b -->
+      <div class="ev-card">
+        <div class="ev-card-head">
+          <div class="ev-source-row">
+            <span class="ev-source">D&amp;C 1:30 &nbsp;·&nbsp; JS–H 1:19 &nbsp;·&nbsp; AD 1820–1831</span>
+            <span class="ev-verdict-pill pill-fail">Exclusive Claim</span>
+          </div>
+          <div class="ev-title">The "Only True Church" — and What God Said About All Others</div>
+        </div>
+        <div class="ev-card-body">
+          <div class="ev-quote">
+            <p>"[God told me] that all their creeds were an abomination in his sight; that those professors were all corrupt... He again forbade me to join with any of them."</p>
+            <cite>— Joseph Smith – History 1:19 (Pearl of Great Price) &nbsp;·&nbsp; cf. D&amp;C 1:30: "the only true and living church upon the face of the whole earth"</cite>
+          </div>
+          <p class="ev-analysis">The First Vision account — in its canonized form — records God the Father calling the creeds of every other Christian church an "abomination" and their ministers "corrupt." D&amp;C 1:30 declares the LDS church uniquely "true and living." The logical consequence: <strong>every person who followed Ignatius, Augustine, Aquinas, or any bishop in the two-millennium apostolic succession was following a corrupt abomination.</strong> This is not a claim requiring nuanced interpretation; it is the plain statement that everyone outside LDS membership was separated from God's true church. The direction given is away from the entire prior Christian witness.</p>
+        </div>
+      </div>
+
+      <!-- EVIDENCE 3c -->
+      <div class="ev-card">
+        <div class="ev-card-head">
+          <div class="ev-source-row">
+            <span class="ev-source">First Vision Accounts &nbsp;·&nbsp; AD 1832–1842</span>
+            <span class="ev-verdict-pill pill-warn">Historical Problem</span>
+          </div>
+          <div class="ev-title">The Contradictory First Vision Accounts</div>
+        </div>
+        <div class="ev-card-body">
+          <div class="ev-quote">
+            <p>"I was filled with the Spirit of God, and the Lord opened the heavens upon me and I saw the Lord and he spake unto me saying Joseph my son thy sins are forgiven thee... I was about 15 years old."</p>
+            <cite>— Joseph Smith's earliest First Vision account (1832 holograph ms., Joseph Smith Papers); notably: only Christ appears, no mention of the Father, no mention of other churches being asked about</cite>
+          </div>
+          <p class="ev-analysis">Smith produced at least four accounts of the First Vision (1832, 1835, 1838, and 1842). They differ on who appeared (Christ alone; Christ and angels; the Father and Christ), Smith's age (15 or 14), his prior spiritual state (forgiven already vs. not), and his motive (personal forgiveness vs. asking which church to join). <strong>The canonized 1838 account — the one in the Pearl of Great Price — is the latest version and the one most favorable to institutional LDS claims.</strong> The LDS Church acknowledged these discrepancies in its 2013 Gospel Topics Essay. A foundational theophany with contradictory accounts raises serious reliability concerns.</p>
+        </div>
+      </div>
+
+      <!-- EVIDENCE 3d -->
+      <div class="ev-card">
+        <div class="ev-card-head">
+          <div class="ev-source-row">
+            <span class="ev-source">D&amp;C 132:51–54 &nbsp;·&nbsp; AD 1843</span>
+            <span class="ev-verdict-pill pill-fail">Coercion on Record</span>
+          </div>
+          <div class="ev-title">God Commands Emma Smith to Accept Plural Wives</div>
+        </div>
+        <div class="ev-card-body">
+          <div class="ev-quote">
+            <p>"And I command mine handmaid, Emma Smith, to abide and cleave unto my servant Joseph, and to none else. But if she will not abide this commandment she shall be destroyed, saith the Lord... I will destroy her if she abide not in my law."</p>
+            <cite>— Doctrine &amp; Covenants 132:54 (July 12, 1843)</cite>
+          </div>
+          <p class="ev-analysis">D&amp;C 132 records God threatening destruction to Joseph Smith's wife if she does not accept his plural marriages — marriages that were being conducted secretly and that Emma was only partially aware of. <strong>The direction being given here is toward an arrangement that involves deception of a spouse, coercion through threatened divine punishment, and the marrying of women already wed to living husbands.</strong> Smith was sealed to at least eleven women who were already married to other living men — documented in the LDS Church's own Gospel Topics Essay on Plural Marriage (2014). A God who threatens a deceived wife for non-compliance raises serious questions about prophetic character.</p>
+        </div>
+      </div>
+
+    </div><!-- /evidence-grid -->
+
+    <div class="crit-verdict fail">
+      <div class="crit-verdict-icon">✕</div>
+      <div>
+        <div class="crit-verdict-title">Criterion III — Failed: The Direction Given Contradicts Prior Revelation at Every Level</div>
+        <div class="crit-verdict-text">The direction provided by Joseph Smith's revelations leads people: away from Christ's explicit teaching on marriage; away from the entire prior Christian tradition (condemned as abomination); into a coercive marriage structure involving secret polyandry; and into dependence on a foundational vision account with mutually contradictory versions. Isaiah's standard — "To the teaching and to the testimony!" — condemns all of this by reference to what God had already revealed.</div>
+      </div>
+    </div>
+
+    <div class="crit-nav">
+      <button class="btn-prev" onclick="goTo(2)">← Previous</button>
+      <span class="crit-nav-label">Criterion 3 of 4</span>
+      <button class="btn-next" onclick="advance(4)">Next Criterion →</button>
+    </div>
+
+  </div><!-- /panel-3 -->
+
+  <!-- ════════════════════════════════════════
+       CRITERION 4: THE FRUIT TEST
+       ════════════════════════════════════════ -->
+  <div class="criterion-panel crit-4" id="panel-4">
+
+    <div class="crit-header">
+      <span class="crit-tag">Criterion IV &nbsp;·&nbsp; Matthew 7:15–20</span>
+      <h2 class="crit-title">The Fruit Test: What Does the Prophet's Life Produce?</h2>
+      <div class="crit-verse-block">
+        <p class="crit-verse">"Beware of false prophets, who come to you in sheep's clothing but inwardly are ravenous wolves. You will recognize them by their fruits... Every healthy tree bears good fruit, but the diseased tree bears bad fruit. A healthy tree cannot bear bad fruit, nor can a diseased tree bear good fruit."</p>
+        <div class="crit-cite">— Matthew 7:15–18 (ESV)</div>
+      </div>
+      <p class="crit-summary">The fruit test is the most personal criterion. It concerns the character, conduct, and consequences of the prophet's life — not merely the content of his teaching. Jesus places this criterion immediately after warning about false prophets and connects the wolf image to deception: the danger comes from a true-seeming exterior concealing a destructive interior. The fruits examined here are drawn from documented primary sources.</p>
+    </div>
+
+    <div class="crit-question">
+      <span class="crit-question-icon">⟶</span>
+      <span class="crit-question-text">What does the pattern of Joseph Smith's personal conduct reveal about the tree that bore it?</span>
+    </div>
+
+    <div class="evidence-grid">
+
+      <!-- EVIDENCE 4a -->
+      <div class="ev-card">
+        <div class="ev-card-head">
+          <div class="ev-source-row">
+            <span class="ev-source">LDS Gospel Topics Essay &nbsp;·&nbsp; AD 2014</span>
+            <span class="ev-verdict-pill pill-fail">Documented Deception</span>
+          </div>
+          <div class="ev-title">Public Denials of Polygamy While Practicing It</div>
+        </div>
+        <div class="ev-card-body">
+          <div class="ev-quote">
+            <p>"During the 1840s, when rumors about plural marriage were spreading, Joseph Smith and other Church leaders made carefully worded denials... At the same time, Smith was privately teaching and practicing plural marriage."</p>
+            <cite>— LDS Church, Gospel Topics Essay: "Plural Marriage in Kirtland and Nauvoo" (LDS.org, 2014)</cite>
+          </div>
+          <p class="ev-analysis">The LDS Church's own 2014 Gospel Topics Essay acknowledges that Smith made "carefully worded denials" of polygamy while practicing it. A public 1844 statement — "What a thing it is for a man to be accused of committing adultery, and having seven wives, when I can only find one" — was made while he had approximately thirty-five. <strong>This is not a matter of privacy or complexity — it is documented public denial of documented private practice.</strong> A prophet claiming to speak for a God who is "the same yesterday, today, and forever" (Hebrews 13:8) built his authority on a foundation of systematic deception about his own conduct.</p>
+        </div>
+      </div>
+
+      <!-- EVIDENCE 4b -->
+      <div class="ev-card">
+        <div class="ev-card-head">
+          <div class="ev-source-row">
+            <span class="ev-source">Kirtland Safety Society &nbsp;·&nbsp; AD 1836–1837</span>
+            <span class="ev-verdict-pill pill-fail">Financial Misconduct</span>
+          </div>
+          <div class="ev-title">The Kirtland Banking Scandal</div>
+        </div>
+        <div class="ev-card-body">
+          <div class="ev-quote">
+            <p>"Thousands of dollars were... lost by confiding members... The Kirtland Safety Society Anti-Banking Company was organized... The institution lasted only a few months, and its failure caused widespread financial ruin."</p>
+            <cite>— B.H. Roberts, Comprehensive History of the Church 1:399–411; cf. Messenger and Advocate, 1837; Joseph Smith Papers, Documents Vol. 5</cite>
+          </div>
+          <p class="ev-analysis">Smith organized the Kirtland Safety Society in 1837 after Ohio refused to grant it a banking charter. He issued promissory notes anyway, reportedly stamped over "anti" and "ing company" on the certificates to make them resemble legal bank notes. The institution collapsed within months, wiping out the savings of many church members who invested on Smith's prophetic credibility. Several early LDS leaders — including Oliver Cowdery and Martin Harris — apostasized or distanced themselves as a result. <strong>A prophet is not immune from financial failure — but systematic misrepresentation of financial instruments to trusting followers is a matter of character, not competence.</strong></p>
+        </div>
+      </div>
+
+      <!-- EVIDENCE 4c -->
+      <div class="ev-card">
+        <div class="ev-card-head">
+          <div class="ev-source-row">
+            <span class="ev-source">Nauvoo Expositor Destruction &nbsp;·&nbsp; AD 1844</span>
+            <span class="ev-verdict-pill pill-fail">Suppression of Dissent</span>
+          </div>
+          <div class="ev-title">The Destruction of the Nauvoo Expositor</div>
+        </div>
+        <div class="ev-card-body">
+          <div class="ev-quote">
+            <p>"The Council passed a resolution that the Nauvoo Expositor was a nuisance and ordered the Mayor to destroy it. Joseph Smith ordered the City Marshal to destroy the press and scatter the type."</p>
+            <cite>— History of the Church 6:432–449 (June 10, 1844); Joseph Smith Papers, Documents Vol. 15</cite>
+          </div>
+          <p class="ev-analysis">The Nauvoo Expositor was a newspaper run by dissident LDS members who intended to publish evidence of Smith's secret polygamy and financial abuses. Smith, acting as both mayor and prophet, convened the city council, declared the paper a "nuisance," and ordered its printing press destroyed and its type scattered — a direct suppression of a free press publishing true information about his conduct. <strong>This act was the legal trigger for his arrest and ultimately his death.</strong> The destruction of a free press to suppress evidence of one's own misconduct is, by any standard, bad fruit — and it resulted directly from Smith's use of prophetic and civic authority in combination.</p>
+        </div>
+      </div>
+
+      <!-- EVIDENCE 4d -->
+      <div class="ev-card">
+        <div class="ev-card-head">
+          <div class="ev-source-row">
+            <span class="ev-source">State of Ohio, 1826 &nbsp;·&nbsp; JS Papers</span>
+            <span class="ev-verdict-pill pill-warn">Pre-Ministry Conduct</span>
+          </div>
+          <div class="ev-title">Glass-Looking and the 1826 Trial</div>
+        </div>
+        <div class="ev-card-body">
+          <div class="ev-quote">
+            <p>"Joseph Smith, the Glass-looker" was brought before Justice Albert Neely on a charge of being a "glass-looker"... The original trial record was discovered in 1971 and confirmed by multiple scholars including the Joseph Smith Papers project.</p>
+            <cite>— Purple, W.D., "A Reminiscence of Joseph Smith" (Chenango Union, May 2, 1877); trial record confirmed in Joseph Smith Papers; see also Bushman, Rough Stone Rolling, pp. 50–52</cite>
+          </div>
+          <p class="ev-analysis">Four years before founding the LDS church, Smith was tried under New York's vagrancy statutes for "glass-looking" — claiming to use a seer stone to find buried treasure for payment. He was found guilty or convicted. This background is significant not for its legal weight but for its pattern: <strong>the same seer stone used to attract paying customers to treasure-seeking was later used to "translate" the Book of Mormon.</strong> Joseph Smith's own mother and multiple early witnesses describe the translation as Smith placing the stone in a hat and reading luminous characters — a continuity of method from the treasure-seeking years that the LDS Church acknowledged in its 2013 Gospel Topics Essay on the Book of Mormon translation.</p>
+        </div>
+      </div>
+
+    </div><!-- /evidence-grid -->
+
+    <div class="crit-verdict fail">
+      <div class="crit-verdict-icon">✕</div>
+      <div>
+        <div class="crit-verdict-title">Criterion IV — Failed: The Pattern of Fruit Is Consistent and Documented</div>
+        <div class="crit-verdict-text">The fruit test does not require that a prophet be sinless — the Catholic tradition does not demand impeccability in its prophets. But it does require a pattern of integrity, truthfulness, and conduct consistent with the God proclaimed. The documented pattern here includes systematic deception about plural marriage, financial misrepresentation affecting trusting followers, violent suppression of truthful reporting, and a pre-ministry background in paid fraudulent divination. This evidence comes not from anti-Mormon sources but from LDS scripture, official LDS essays, and the Joseph Smith Papers project.</div>
+      </div>
+    </div>
+
+    <div class="crit-nav">
+      <button class="btn-prev" onclick="goTo(3)">← Previous</button>
+      <span class="crit-nav-label">Criterion 4 of 4</span>
+      <button class="btn-next" onclick="showSummary()">See Full Verdict →</button>
+    </div>
+
+  </div><!-- /panel-4 -->
+
+  <!-- ════════════════════════════════════════
+       FINAL SUMMARY PANEL
+       ════════════════════════════════════════ -->
+  <div class="summary-panel" id="panel-summary">
+
+    <div class="section-divider">
+      <div class="section-divider-line"></div>
+      <span class="section-divider-label">The Complete Evaluation</span>
+      <div class="section-divider-line"></div>
+    </div>
+
+    <div class="summary-scorecard">
+      <div class="score-cell">
+        <div class="score-cell-icon">✕</div>
+        <div class="score-cell-crit">Deut 18:21–22</div>
+        <div class="score-cell-title">The Accuracy Test</div>
+        <div class="score-cell-result">Failed</div>
+      </div>
+      <div class="score-cell">
+        <div class="score-cell-icon">✕</div>
+        <div class="score-cell-crit">Deut 13:1–5</div>
+        <div class="score-cell-title">The Theology Test</div>
+        <div class="score-cell-result">Failed</div>
+      </div>
+      <div class="score-cell">
+        <div class="score-cell-icon">✕</div>
+        <div class="score-cell-crit">Deut 18:20</div>
+        <div class="score-cell-title">The Direction Test</div>
+        <div class="score-cell-result">Failed</div>
+      </div>
+      <div class="score-cell">
+        <div class="score-cell-icon">✕</div>
+        <div class="score-cell-crit">Matt 7:15–20</div>
+        <div class="score-cell-title">The Fruit Test</div>
+        <div class="score-cell-result">Failed</div>
+      </div>
+    </div>
+
+    <!-- LDS RESPONSES AND REBUTTALS -->
+    <div class="section-divider">
+      <div class="section-divider-line"></div>
+      <span class="section-divider-label">Common LDS Responses &amp; Their Problems</span>
+      <div class="section-divider-line"></div>
+    </div>
+
+    <div class="response-grid">
+      <div class="response-card">
+        <div class="response-label label-theory">Response: "Prophets Are Fallible"</div>
+        <div class="response-text">LDS theology acknowledges that prophets make mistakes. Smith's false prophecies may be attributed to his human weakness rather than divine failure. Even Peter was rebuked by Paul.</div>
+      </div>
+      <div class="response-card">
+        <div class="response-label label-rebuttal">Why This Fails</div>
+        <div class="response-text">The Deuteronomy standard is explicit and unconditional: a false prophecy given <em>in God's name</em> ("Thus saith the Lord") is the disqualifying act — regardless of the prophet's other qualities. Smith's failed prophecies are prefaced with "Thus saith the Lord" or given in canonized scripture. Human fallibility does not excuse falsely attributing one's own failed predictions to God. <em>Personal mistakes</em> are not what Deuteronomy addresses — <em>prophetic claims</em> are.</div>
+      </div>
+      <div class="response-card">
+        <div class="response-label label-theory">Response: "The Biblical Standard Doesn't Apply to a New Dispensation"</div>
+        <div class="response-text">Smith ushered in a new dispensation that supersedes prior scriptural standards. The LDS church has a living prophet whose authority cannot be measured by Old Testament criteria.</div>
+      </div>
+      <div class="response-card">
+        <div class="response-label label-rebuttal">Why This Fails</div>
+        <div class="response-text">This response is circular: it uses Smith's prophetic authority to exempt Smith from the test for prophetic authority. Deuteronomy 13:1–5 explicitly anticipates this move — warning that a sign-worker who claims to supersede prior revelation is to be rejected <em>precisely because</em> the sign or wonder comes to pass. Paul reinforces this: "Even if we or an angel from heaven should preach to you a gospel contrary to the one we preached to you, let him be accursed" (Galatians 1:8). <em>The claim of a new dispensation is not self-validating.</em></div>
+      </div>
+      <div class="response-card">
+        <div class="response-label label-theory">Response: "The Evidence Is From Anti-Mormon Sources"</div>
+        <div class="response-text">Critics cherry-pick hostile accounts. The evidence cited here is biased, out of context, or comes from enemies of Smith with a vested interest in his discreditation.</div>
+      </div>
+      <div class="response-card">
+        <div class="response-label label-rebuttal">Why This Fails</div>
+        <div class="response-text">Every primary source cited in this tool is either LDS scripture (D&amp;C, Pearl of Great Price, Book of Mormon), the Joseph Smith Papers project, or the LDS Church's own official Gospel Topics Essays. The failed Missouri temple prophecy is in the D&amp;C. The King Follett Discourse was published in the <em>Times and Seasons</em>. The Nauvoo Expositor destruction is in the <em>History of the Church</em>. The polygamy acknowledgment is in the LDS Church's own 2014 essay. <em>These are not the accusations of enemies. They are the admissions of the church itself.</em></div>
+      </div>
+    </div>
+
+    <!-- FINAL VERDICT -->
+    <div class="verdict-box">
+      <h3>✦ &nbsp; The Verdict of Scripture on Joseph Smith &nbsp; ✦</h3>
+      <p>The biblical criteria for a true prophet are not harsh or unreasonable. They are specific, objective, and designed to protect the people of God from deception. Applied to Joseph Smith, they do not produce a close call or a mixed result — they produce consistent, documented failure across all four criteria, using evidence drawn primarily from LDS scripture and official LDS sources.</p>
+      <p>The Catholic position is not that Joseph Smith was a villainous fraud — it is that he was a man who sincerely believed things that are demonstrably not true, who constructed a theological system that cannot be reconciled with Scripture, and whose prophetic claims fail the tests Scripture itself requires. The stakes of this conclusion are not academic. They determine whether 17 million people are following God's revealed will or a sincere but unverified human construction. Scripture demands the question be asked. This tool attempts to answer it honestly.</p>
+      <button class="restart-btn" onclick="restart()">↺ &nbsp; Start Over</button>
+    </div>
+
+    <!-- SOURCE STRIP -->
+    <div class="source-strip">
+      <p>Primary Sources Used: Doctrine &amp; Covenants 84, 114, 124, 130, 132 (LDS Scripture) · Pearl of Great Price: Joseph Smith – History; Book of Abraham (LDS Scripture) · King Follett Discourse, Times and Seasons (Aug. 15, 1844) · Joseph Smith Papers Project (josephsmithpapers.org) · LDS Gospel Topics Essays: "Plural Marriage in Kirtland and Nauvoo," "Translation and Historicity of the Book of Abraham," "Book of Mormon Translation," "First Vision Accounts" (LDS.org, 2013–2014) · B.H. Roberts, Comprehensive History of the Church · Richard Bushman, Rough Stone Rolling (2005) · D. Michael Quinn, Early Mormonism and the Magic World View (1987) · History of the Church, Vol. 2, 6 · 1826 Trial Record (confirmed, Joseph Smith Papers) · Galatians 1:8; Matthew 7:15–20; Deuteronomy 13:1–5, 18:20–22; Isaiah 8:20</p>
+    </div>
+
+  </div><!-- /panel-summary -->
+
+</main>
+
+<footer>&copy; One Faith Delivered &nbsp;&#8901;&nbsp; All Rights Reserved</footer>
+
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">One Faith Delivered</div>
+    <a href="../index.html">Home</a>
+    <a href="../articles.html">Articles</a>
+    <a href="../charts.html">Charts</a>
+    <a href="../topics.html">Topics</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../charts.html" class="sidebar-back">&#8592; All Charts</a>
+    <div class="sidebar-ornament">✦ ✦ ✦</div>
+  </div>
+</aside>
+
+<script>
+/* ══════════════════════════════════════════════════
+   STATE
+   ══════════════════════════════════════════════════ */
+var current = 1;
+var reached = [1]; // which steps user has visited
+
+var STEP_STATUS_ACTIVE  = 'Examining…';
+var STEP_STATUS_DONE    = 'Reviewed ✕';
+var STEP_STATUS_LOCKED  = 'Locked';
+
+/* ══════════════════════════════════════════════════
+   NAVIGATE TO A CRITERION (tabs, forward/back)
+   ══════════════════════════════════════════════════ */
+function goTo(n) {
+  // Only allow navigation to visited steps (or next unlocked)
+  if (n > Math.max.apply(null, reached) + 1) return;
+
+  hideSummary();
+
+  // Hide all panels
+  document.querySelectorAll('.criterion-panel').forEach(function(p) {
+    p.classList.remove('active');
+  });
+
+  // Show target panel
+  var panel = document.getElementById('panel-' + n);
+  if (panel) panel.classList.add('active');
+
+  // Update progress track
+  document.querySelectorAll('.progress-step').forEach(function(step) {
+    var sn = parseInt(step.dataset.crit);
+    step.classList.remove('active', 'done');
+
+    if (sn === n) {
+      step.classList.add('active');
+      step.querySelector('.step-status').textContent = STEP_STATUS_ACTIVE;
+    } else if (reached.indexOf(sn) > -1 && sn !== n) {
+      step.classList.add('done');
+      step.querySelector('.step-status').textContent = STEP_STATUS_DONE;
+    } else {
+      step.querySelector('.step-status').textContent =
+        (reached.indexOf(sn) > -1) ? STEP_STATUS_DONE : STEP_STATUS_LOCKED;
+    }
+  });
+
+  current = n;
+  if (reached.indexOf(n) === -1) reached.push(n);
+
+  // Scroll to tracker
+  var track = document.getElementById('progressTrack');
+  if (track) {
+    var y = track.getBoundingClientRect().top + window.scrollY - 90;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+}
+
+/* ══════════════════════════════════════════════════
+   ADVANCE (marks current as done, goes to next)
+   ══════════════════════════════════════════════════ */
+function advance(next) {
+  // Mark current as done in progress bar
+  var curStep = document.querySelector('.progress-step[data-crit="' + current + '"]');
+  if (curStep) {
+    curStep.classList.remove('active');
+    curStep.classList.add('done');
+    curStep.querySelector('.step-status').textContent = STEP_STATUS_DONE;
+  }
+  goTo(next);
+}
+
+/* ══════════════════════════════════════════════════
+   SHOW SUMMARY
+   ══════════════════════════════════════════════════ */
+function showSummary() {
+  // Mark last criterion done
+  var curStep = document.querySelector('.progress-step[data-crit="' + current + '"]');
+  if (curStep) {
+    curStep.classList.remove('active');
+    curStep.classList.add('done');
+    curStep.querySelector('.step-status').textContent = STEP_STATUS_DONE;
+  }
+
+  // Hide all criterion panels
+  document.querySelectorAll('.criterion-panel').forEach(function(p) {
+    p.classList.remove('active');
+  });
+
+  // Show summary
+  document.getElementById('panel-summary').classList.add('active');
+
+  // Scroll to top of summary
+  var summary = document.getElementById('panel-summary');
+  var y = summary.getBoundingClientRect().top + window.scrollY - 90;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+}
+
+function hideSummary() {
+  document.getElementById('panel-summary').classList.remove('active');
+}
+
+/* ══════════════════════════════════════════════════
+   RESTART
+   ══════════════════════════════════════════════════ */
+function restart() {
+  reached = [1];
+  current = 1;
+
+  hideSummary();
+
+  // Reset all progress steps
+  document.querySelectorAll('.progress-step').forEach(function(step) {
+    var sn = parseInt(step.dataset.crit);
+    step.classList.remove('active', 'done');
+    step.style.borderTop = '';
+    step.querySelector('.step-num').style.display = '';
+    step.querySelector('.step-verdict') && (step.querySelector('.step-verdict').style.display = 'none');
+    step.querySelector('.step-status').textContent = sn === 1 ? STEP_STATUS_ACTIVE : STEP_STATUS_LOCKED;
+  });
+
+  // Activate step 1
+  document.querySelector('.progress-step[data-crit="1"]').classList.add('active');
+
+  // Show panel 1
+  document.querySelectorAll('.criterion-panel').forEach(function(p) {
+    p.classList.remove('active');
+  });
+  document.getElementById('panel-1').classList.add('active');
+
+  // Scroll to top
+  var track = document.getElementById('progressTrack');
+  var y = track.getBoundingClientRect().top + window.scrollY - 90;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+}
+
+/* ══════════════════════════════════════════════════
+   SIDEBAR
+   ══════════════════════════════════════════════════ */
+function toggleSidebar() {
+  var btn     = document.querySelector('.nav-hamburger');
+  var sidebar = document.querySelector('.sidebar');
+  var overlay = document.querySelector('.sidebar-overlay');
+  var isOpen  = sidebar.classList.contains('open');
+  if (isOpen) {
+    sidebar.classList.remove('open'); btn.classList.remove('open');
+    overlay.classList.remove('visible'); document.body.style.overflow = '';
+  } else {
+    sidebar.classList.add('open'); btn.classList.add('open');
+    overlay.classList.add('visible'); document.body.style.overflow = 'hidden';
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar();
+});
+
+/* ══════════════════════════════════════════════════
+   SCROLL ANIMATION for evidence cards
+   ══════════════════════════════════════════════════ */
+var io = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.ev-card').forEach(function(card, i) {
+  card.style.opacity = '0';
+  card.style.transform = 'translateY(14px)';
+  card.style.transition = 'opacity 0.4s ease ' + (i % 4 * 0.07) + 's, transform 0.4s ease ' + (i % 4 * 0.07) + 's, box-shadow 0.2s';
+  io.observe(card);
+});
+</script>
+
+</body>
+</html>

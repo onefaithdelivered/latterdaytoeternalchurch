@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internal LDS Contradiction Tracker | One Faith Delivered</title>
+<meta name="description" content="A side-by-side examination of simultaneous contradictions between the LDS Standard Works — Book of Mormon, Doctrine & Covenants, and Pearl of Great Price." />
+<link rel="canonical" href="https://onefaithdelivered.org/charts/lds-contradiction-tracker.html" />
+<link rel="icon" href="../favicons/favicon.ico" sizes="any" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   INTERNAL LDS CONTRADICTION TRACKER
+   Design system: matches book-of-abraham-problem.html
+   Fonts: Playfair Display + Source Serif 4 + JetBrains Mono
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --crimson:      #8B0000;
+  --dark-crimson: #5C0000;
+  --gold:         #C5A55A;
+  --dark-gold:    #8B7335;
+  --parchment:    #F5F0E8;
+  --dark-bg:      #1A1A1A;
+  --text:         #2A2A2A;
+  --muted:        #666;
+  --bom-blue:     #1E3A5F;
+  --bom-light:    #EBF0F7;
+  --dc-rust:      #7A2E10;
+  --dc-light:     #FBF0EB;
+  --line-gray:    #D0C8B8;
+  --category-tag-bg: rgba(139,115,53,0.10);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--parchment);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.6;
+}
+
+/* ── SITE NAV ── */
+.site-nav {
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(245,240,232,0.98), rgba(240,235,225,0.95));
+  border-bottom: 1px solid var(--line-gray);
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  font-family: 'Source Serif 4', serif;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.site-nav a.nav-home {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--crimson);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: var(--dark-crimson); }
+.site-nav .nav-back {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  text-decoration: none;
+  border: 1px solid rgba(139,115,53,0.35);
+  padding: 0.4rem 1.1rem;
+  border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
+}
+.site-nav .nav-back:hover { background: rgba(139,115,53,0.08); color: var(--crimson); }
+.site-nav .nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.site-nav .nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav .nav-links a:hover { color: var(--crimson); }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  cursor: pointer;
+  background: none;
+  border: 1px solid rgba(139,115,53,0.3);
+  border-radius: 3px;
+  padding: 6px;
+  z-index: 10001;
+}
+.nav-hamburger span {
+  display: block; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── SIDEBAR ── */
+.sidebar-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+.sidebar-overlay.visible { display: block; }
+.sidebar {
+  position: fixed;
+  top: 0; right: -280px;
+  width: 260px; height: 100%;
+  background: linear-gradient(to bottom, #FAF6F0, #F5F0E8);
+  border-left: 1px solid var(--line-gray);
+  z-index: 10002;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+.sidebar.open { right: 0; }
+.sidebar-inner {
+  padding: 5rem 2rem 2rem;
+  display: flex; flex-direction: column; gap: 0;
+}
+.sidebar-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--crimson);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line-gray);
+}
+.sidebar-inner a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(208,200,184,0.5);
+  transition: color 0.2s;
+}
+.sidebar-inner a:hover { color: var(--crimson); }
+.sidebar-inner a.sidebar-back {
+  color: var(--dark-gold);
+  margin-top: 1.5rem;
+  border: 1px solid rgba(139,115,53,0.3);
+  padding: 0.7rem 1rem;
+  text-align: center;
+  border-radius: 2px;
+}
+.sidebar-ornament {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 8px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ── HERO / PAGE HEADER ── */
+.page-header {
+  background: linear-gradient(135deg, #1A2A40 0%, #2C3E5C 40%, #162035 100%);
+  color: #F5F0E8;
+  padding: 72px 40px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+  pointer-events: none;
+}
+.back-link {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  margin-bottom: 1.8rem;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+  position: relative;
+  z-index: 1;
+}
+.back-link:hover { opacity: 1; }
+.ornament {
+  display: block;
+  color: var(--gold);
+  font-size: 1rem;
+  letter-spacing: 12px;
+  margin-bottom: 1.2rem;
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2em, 4vw, 3.2em);
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: #F5F0E8;
+  margin-bottom: 14px;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+}
+.page-header h1 span { color: var(--gold); }
+.page-header .subtitle {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(245,240,232,0.75);
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── MAIN CONTENT AREA ── */
+main {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 50px 24px 80px;
+}
+
+/* ── INTRO BOX ── */
+.intro-box {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-left: 5px solid var(--bom-blue);
+  border-radius: 4px;
+  padding: 28px 32px;
+  margin-bottom: 48px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.intro-box p {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--text);
+}
+.intro-box p + p { margin-top: 0.9rem; }
+.intro-box strong { color: var(--bom-blue); font-weight: 700; }
+
+/* ── LEGEND BAR ── */
+.legend-bar {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-radius: 4px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+}
+.legend-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 4px;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.legend-swatch {
+  width: 14px; height: 14px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.swatch-bom { background: var(--bom-blue); }
+.swatch-dc  { background: var(--dc-rust); }
+.swatch-pogp{ background: #3B6B3B; }
+
+/* ── FILTER TABS ── */
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.filter-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border: 1px solid var(--line-gray);
+  border-radius: 3px;
+  background: #fff;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.filter-btn:hover {
+  border-color: var(--dark-gold);
+  color: var(--dark-gold);
+  background: rgba(197,165,90,0.07);
+}
+.filter-btn.active {
+  background: linear-gradient(135deg, #1E3A5F, #2C4F7C);
+  color: #F5F0E8;
+  border-color: transparent;
+  box-shadow: 0 2px 8px rgba(30,58,95,0.25);
+}
+
+/* ── SECTION DIVIDER ── */
+.section-divider {
+  margin: 48px 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.section-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line-gray);
+}
+.section-divider-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  white-space: nowrap;
+}
+
+/* ── CONTRADICTION BLOCK ── */
+.contra-block {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-radius: 6px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.07);
+  transition: box-shadow 0.2s;
+}
+.contra-block:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.11); }
+
+.contra-header {
+  padding: 16px 22px;
+  background: linear-gradient(135deg, #1A2A40, #2C3E5C);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.contra-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15em;
+  font-weight: 700;
+  color: #F5F0E8;
+}
+.contra-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.contra-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 2px;
+  background: rgba(197,165,90,0.18);
+  color: var(--gold);
+  border: 1px solid rgba(197,165,90,0.3);
+}
+.severity-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 2px;
+}
+.severity-critical {
+  background: rgba(139,0,0,0.25);
+  color: #FFAAAA;
+  border: 1px solid rgba(139,0,0,0.4);
+}
+.severity-significant {
+  background: rgba(122,46,16,0.25);
+  color: #FFD0B0;
+  border: 1px solid rgba(122,46,16,0.4);
+}
+
+/* ── TENSION SUMMARY ── */
+.tension-summary {
+  padding: 18px 22px;
+  background: #F8F5EF;
+  border-bottom: 1px solid var(--line-gray);
+  font-size: 0.92em;
+  line-height: 1.75;
+  color: var(--text);
+}
+.tension-summary strong { color: var(--bom-blue); font-weight: 700; }
+
+/* ── SIDE BY SIDE COLUMNS ── */
+.contra-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.contra-col {
+  padding: 26px 26px 20px;
+}
+.contra-col.col-bom {
+  border-right: 1px solid var(--line-gray);
+  background: var(--bom-light);
+}
+.contra-col.col-dc {
+  background: var(--dc-light);
+}
+.contra-col.col-pogp {
+  background: #EEF4EE;
+}
+
+.col-header {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66em;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid;
+}
+.col-header.hdr-bom  { color: var(--bom-blue);  border-color: var(--bom-blue); }
+.col-header.hdr-dc   { color: var(--dc-rust);   border-color: var(--dc-rust); }
+.col-header.hdr-pogp { color: #3B6B3B; border-color: #3B6B3B; }
+
+/* ── SCRIPTURE CITATION ── */
+.scripture-entry {
+  margin-bottom: 22px;
+}
+.scripture-ref {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  margin-bottom: 6px;
+}
+.scripture-text {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.93em;
+  line-height: 1.8;
+  color: var(--text);
+  background: rgba(255,255,255,0.65);
+  border-left: 3px solid;
+  padding: 10px 14px;
+  border-radius: 0 3px 3px 0;
+  font-style: italic;
+}
+.scripture-text.bom-text  { border-color: var(--bom-blue); }
+.scripture-text.dc-text   { border-color: var(--dc-rust); }
+.scripture-text.pogp-text { border-color: #3B6B3B; }
+.scripture-text em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--bom-blue);
+}
+.scripture-text.dc-text em  { color: var(--dc-rust); }
+.scripture-text.pogp-text em{ color: #3B6B3B; }
+
+.scripture-note {
+  font-size: 0.82em;
+  line-height: 1.65;
+  color: var(--muted);
+  margin-top: 8px;
+  font-style: normal;
+}
+
+/* ── TENSION ARROW (center marker) ── */
+.tension-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: var(--parchment);
+  border-top: 1px solid var(--line-gray);
+  border-bottom: 1px solid var(--line-gray);
+  position: relative;
+  overflow: hidden;
+}
+.tension-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 24px;
+  width: 100%;
+  justify-content: center;
+}
+.tension-vs {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 1.1em;
+  color: var(--crimson);
+  padding: 0 8px;
+}
+.tension-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── ANALYSIS STRIP ── */
+.analysis-strip {
+  padding: 20px 26px;
+  border-top: 1px solid var(--line-gray);
+  background: #fff;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: flex-start;
+}
+.analysis-icon {
+  font-size: 1.3em;
+  margin-top: 2px;
+}
+.analysis-text {
+  font-size: 0.88em;
+  line-height: 1.75;
+  color: var(--text);
+}
+.analysis-text strong { color: var(--crimson); font-weight: 700; }
+
+/* ── SOURCE STRIP ── */
+.source-strip {
+  padding: 10px 22px;
+  border-top: 1px solid var(--line-gray);
+  background: #FAFAF8;
+}
+.source-strip p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6em;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── PROBLEM CARDS (summary overview) ── */
+.overview-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+.overview-card {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-top: 4px solid var(--bom-blue);
+  border-radius: 4px;
+  padding: 22px 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.overview-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.09);
+}
+.overview-card-icon { font-size: 1.4em; margin-bottom: 10px; }
+.overview-card-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.0em;
+  color: var(--bom-blue);
+  margin-bottom: 8px;
+}
+.overview-card-text {
+  font-size: 0.85em;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+/* ── VERDICT BOX ── */
+.verdict-box {
+  background: linear-gradient(135deg, #1A2A40, #2C3E5C);
+  color: #F5F0E8;
+  border-radius: 6px;
+  padding: 44px 40px;
+  margin-top: 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.verdict-box::before {
+  content: '';
+  position: absolute; inset: 8px;
+  border: 1px solid rgba(197,165,90,0.25);
+  border-radius: 4px;
+  pointer-events: none;
+}
+.verdict-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4em;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+.verdict-box p {
+  font-size: 1em;
+  line-height: 1.85;
+  color: rgba(245,240,232,0.9);
+  max-width: 780px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.verdict-box p + p { margin-top: 14px; }
+
+/* ── FOOTER ── */
+footer {
+  background: #fff;
+  text-align: center;
+  padding: 28px 20px;
+  border-top: 1px solid var(--line-gray);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── COUNT BADGE ── */
+.count-badge {
+  display: inline-block;
+  background: var(--bom-blue);
+  color: #F5F0E8;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: 10px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .page-header { padding: 48px 24px 40px; }
+  .page-header h1 { font-size: 1.9em; }
+  .contra-compare { grid-template-columns: 1fr; }
+  .contra-col.col-bom { border-right: none; border-bottom: 1px solid var(--line-gray); }
+  .overview-cards { grid-template-columns: 1fr; }
+  .verdict-box { padding: 32px 24px; }
+  main { padding: 32px 16px 60px; }
+  .analysis-strip { grid-template-columns: 1fr; }
+  .analysis-icon { display: none; }
+}
+@media (max-width: 700px) {
+  .nav-hamburger { display: flex; }
+  .site-nav .nav-links { display: none; }
+  .site-nav .nav-back { display: none; }
+  body { overflow-x: hidden; }
+  .sidebar {
+    display: block !important;
+    transform: translateX(100%) !important;
+    right: 0 !important;
+  }
+  .sidebar.open { transform: translateX(0) !important; }
+  .legend-bar { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 500px) {
+  .filter-bar { gap: 6px; }
+  .filter-btn { font-size: 0.6em; padding: 7px 12px; }
+  .contra-header { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ SITE NAV ═══ -->
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">One Faith Delivered</a>
+  <ul class="nav-links">
+    <li><a href="../articles.html">Articles</a></li>
+    <li><a href="../charts.html">Charts</a></li>
+    <li><a href="../topics.html">Topics</a></li>
+    <li><a href="../resources.html">Resources</a></li>
+  </ul>
+  <a href="../charts.html" class="nav-back">&#8592; All Charts</a>
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══ PAGE HEADER ═══ -->
+<header class="page-header">
+  <a href="../charts.html" class="back-link">&#8592; All Charts &amp; Visualizations</a>
+  <span class="ornament">✦ ✦ ✦</span>
+  <h1>Internal LDS <span>Contradiction Tracker</span></h1>
+  <p class="subtitle">Side-by-side comparisons of simultaneous, irreconcilable contradictions within the LDS Standard Works themselves — no external sources required</p>
+</header>
+
+<!-- ═══ MAIN ═══ -->
+<main>
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <p>The following contradictions are not derived from Catholic teaching, Protestant criticism, or secular scholarship. They emerge from within Latter-day Saint scripture itself — placing the Book of Mormon, Doctrine &amp; Covenants, and Pearl of Great Price in direct conflict with one another. <strong>Each pair of texts was canonized as the word of God by the same church.</strong></p>
+    <p>This creates a logical problem independent of any external theological framework. If both scriptures are true, the contradiction must be resolved. If neither proposed resolution is textually defensible, then at least one of the revelations cannot be what it claims to be. A genuine prophetic tradition does not contradict itself in its own foundational documents.</p>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend-bar">
+    <span class="legend-label">Source Key:</span>
+    <span class="legend-item"><span class="legend-swatch swatch-bom"></span> Book of Mormon (BoM)</span>
+    <span class="legend-item"><span class="legend-swatch swatch-dc"></span> Doctrine &amp; Covenants (D&amp;C)</span>
+    <span class="legend-item"><span class="legend-swatch swatch-pogp"></span> Pearl of Great Price (PGP)</span>
+  </div>
+
+  <!-- FILTER TABS -->
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterCards('all', this)">All Contradictions <span class="count-badge" id="count-all">5</span></button>
+    <button class="filter-btn" onclick="filterCards('godhead', this)">Nature of God <span class="count-badge">2</span></button>
+    <button class="filter-btn" onclick="filterCards('marriage', this)">Marriage &amp; Polygamy <span class="count-badge">1</span></button>
+    <button class="filter-btn" onclick="filterCards('priesthood', this)">Priesthood &amp; Authority <span class="count-badge">1</span></button>
+    <button class="filter-btn" onclick="filterCards('salvation', this)">Salvation &amp; Grace <span class="count-badge">1</span></button>
+  </div>
+
+  <!-- OVERVIEW CARDS -->
+  <div class="overview-cards">
+    <div class="overview-card">
+      <div class="overview-card-icon">⚡</div>
+      <div class="overview-card-title">Within the Same Canon</div>
+      <div class="overview-card-text">These are not contradictions between LDS scripture and outside sources. They are internal — one Standard Work against another, both claimed as authoritative divine revelation.</div>
+    </div>
+    <div class="overview-card">
+      <div class="overview-card-icon">📅</div>
+      <div class="overview-card-title">Chronological Problem</div>
+      <div class="overview-card-text">The Book of Mormon predates the Doctrine &amp; Covenants. Its theology was established first, then overwritten — yet both remain canonized as equally binding scripture.</div>
+    </div>
+    <div class="overview-card">
+      <div class="overview-card-icon">⚖️</div>
+      <div class="overview-card-title">No Doctrinal Harmonization</div>
+      <div class="overview-card-text">The LDS Church offers no official resolution to most of these tensions. Members are expected to hold contradictory scriptures as simultaneously authoritative.</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       CONTRADICTION 1: GODHEAD — TRINITY VS. THREE GODS
+       ════════════════════════════════════════════ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">I — The Nature of God: Trinitarian Unity vs. Three Embodied Beings</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="contra-block" data-category="godhead">
+    <div class="contra-header">
+      <span class="contra-title">The Godhead: One God or Three Separate Beings?</span>
+      <div class="contra-tags">
+        <span class="contra-tag">Godhead</span>
+        <span class="contra-tag">BoM vs. D&amp;C</span>
+        <span class="severity-tag severity-critical">Critical</span>
+      </div>
+    </div>
+
+    <div class="tension-summary">
+      The Book of Mormon consistently uses language that is <strong>functionally indistinguishable from classical Christian Trinitarianism</strong>, describing the Father, Son, and Holy Ghost as "one God." Doctrine &amp; Covenants 130 teaches the opposite: the Father and Son are distinct corporeal beings of flesh and bone, entirely separate in substance. These two positions are mutually exclusive — one cannot hold that the three persons are "one God" in the traditional sense while also holding that they are three separate embodied individuals.
+    </div>
+
+    <div class="contra-compare">
+      <div class="contra-col col-bom">
+        <div class="col-header hdr-bom">Book of Mormon — Published 1830</div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">2 Nephi 31:21</div>
+          <div class="scripture-text bom-text">
+            "And now, behold, my beloved brethren, this is the way; and there is <em>none other way</em> nor name given under heaven whereby man can be saved in the kingdom of God. And now, behold, this is the doctrine of Christ, and the only and true doctrine of the Father, and of the Son, and of the Holy Ghost, which is <em>one God</em>, without end."
+          </div>
+          <p class="scripture-note">The phrase "one God, without end" is a direct claim of divine unity — the same formulation as Nicene Trinitarian theology.</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">Mosiah 15:1–4</div>
+          <div class="scripture-text bom-text">
+            "And now Abinadi said unto them: I would that ye should understand that <em>God himself</em> shall come down among the children of men, and shall redeem his people. And because he dwelleth in flesh he shall be called the <em>Son of God</em>, and having subjected the flesh to the will of the Father, being the Father and Son — The Father, because he was conceived by the power of God; and the Son, because of the flesh; thus becoming <em>the Father and Son</em> — And they are <em>one God</em>, yea, the very Eternal Father of heaven and of earth."
+          </div>
+          <p class="scripture-note">This passage teaches a form of divine unity that LDS scholars call "divine investiture" — but the plain text reads as modalistic (one God in two roles), not tritheistic (three Gods).</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">Alma 11:44</div>
+          <div class="scripture-text bom-text">
+            "…to stand before God, to be judged according to their works. Now, this restoration shall come to all, both old and young, both bond and free, both male and female, both the wicked and the righteous; and even there shall not so much as a hair of their heads be lost; but every thing shall be restored to its perfect frame, as it is now, or in the body, and shall be brought and arraigned before the bar of Christ the Son, and God the Father, and the Holy Spirit, which is <em>one Eternal God</em>, to be judged according to their works, whether they be good or whether they be evil."
+          </div>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">Mormon 7:7</div>
+          <div class="scripture-text bom-text">
+            "And he hath brought to pass the redemption of the world, whereby he that is found guiltless before him at the judgment day hath it given unto him to dwell in the presence of God in his kingdom, to sing ceaseless praises with the choirs above, unto the Father, and unto the Son, and unto the Holy Ghost, which are <em>one God</em>, in a state of happiness which hath no end."
+          </div>
+        </div>
+      </div>
+
+      <div class="contra-col col-dc">
+        <div class="col-header hdr-dc">Doctrine &amp; Covenants — Revealed 1843</div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">D&amp;C 130:22–23</div>
+          <div class="scripture-text dc-text">
+            "The Father has a body of <em>flesh and bones as tangible as man's</em>; the Son also; but the Holy Ghost has not a body of flesh and bones, but is a personage of Spirit. Were it not so, the Holy Ghost could not dwell in us. A man may receive the Holy Ghost, and it may descend upon him and not tarry with him."
+          </div>
+          <p class="scripture-note">This verse establishes three entirely distinct, embodied (or spirit-bodied) persons — the direct opposite of the Book of Mormon's "one Eternal God" formulation. If the Father has a tangible body distinct from the Son, they cannot be "one God" in any natural reading of the phrase.</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">Joseph Smith — History 1:17 (PGP)</div>
+          <div class="scripture-text dc-text">
+            "…I saw two Personages, whose brightness and glory defy all description, standing above me in the air. One of them spake unto me, calling me by name and said, pointing to the other — <em>This is My Beloved Son. Hear Him!</em>"
+          </div>
+          <p class="scripture-note">The First Vision establishes two visually separate, physically distinct beings — Father and Son — standing apart from each other. This is the experiential foundation for the tritheistic reading of D&amp;C 130:22, directly contradicting the BoM's unity language.</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">D&amp;C 132:20 (cf. King Follett Discourse, 1844)</div>
+          <div class="scripture-text dc-text">
+            "Then shall they be gods, because they have no end; therefore shall they be from everlasting to everlasting, because they continue; then shall they be above all, because all things are subject unto them. Then shall they be gods, because they have <em>all power</em>, and the angels are subject unto them."
+          </div>
+          <p class="scripture-note">The exaltation theology of D&amp;C 132 presupposes a plurality of gods — humans may <em>become</em> gods — which requires the Father, Son, and Holy Ghost to be separate gods, not one unified divine being.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tension-row">
+      <div class="tension-inner">
+        <span class="tension-label">Book of Mormon (1830)</span>
+        <span class="tension-vs">⟷</span>
+        <span class="tension-label">The Core Tension</span>
+        <span class="tension-vs">⟷</span>
+        <span class="tension-label">D&amp;C 130 (1843)</span>
+      </div>
+    </div>
+
+    <div class="analysis-strip">
+      <div class="analysis-icon">🔍</div>
+      <div class="analysis-text">
+        <strong>Why this cannot be harmonized:</strong> LDS apologists propose that "one God" in the Book of Mormon means "one in purpose" rather than "one in substance." But this reading requires importing a meaning foreign to the text, which never qualifies the phrase. Furthermore, Mosiah 15 explicitly identifies Christ as simultaneously "the Father and Son" — a formulation that makes no grammatical sense if Father and Son are two entirely separate embodied beings. The phrase "one Eternal God" appears four times across different BoM authors, with no qualifier. The most natural reading of the Book of Mormon is Trinitarian or modalist — neither of which is consistent with LDS tritheism.
+      </div>
+    </div>
+
+    <div class="source-strip">
+      <p>Sources: Book of Mormon (2 Nephi 31:21; Mosiah 15:1–4; Alma 11:44; Mormon 7:7) · D&amp;C 130:22–23 (May 17, 1843) · Joseph Smith—History 1:17 · Robert Millet, "The Mormon Concept of God" (2007) · BYU Studies Quarterly on Godhead theology</p>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════
+       CONTRADICTION 2: GOD'S IMMUTABILITY
+       ════════════════════════════════════════════ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">II — The Nature of God: Unchangeable vs. Progressive &amp; Embodied</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="contra-block" data-category="godhead">
+    <div class="contra-header">
+      <span class="contra-title">Is God Immutable, or Did He Once Progress as a Man?</span>
+      <div class="contra-tags">
+        <span class="contra-tag">Divine Nature</span>
+        <span class="contra-tag">BoM vs. PGP / D&amp;C</span>
+        <span class="severity-tag severity-critical">Critical</span>
+      </div>
+    </div>
+
+    <div class="tension-summary">
+      The Book of Mormon and its prophets explicitly teach that <strong>God is unchangeable from eternity to eternity</strong> — He cannot be a God who progressed from mortality. The King Follett Discourse (1844) and Doctrine &amp; Covenants teach the opposite: God the Father was once a mortal man on another world who progressed to Godhood through obedience. These are irreconcilable — an unchangeable God cannot have once been a mortal.
+    </div>
+
+    <div class="contra-compare">
+      <div class="contra-col col-bom">
+        <div class="col-header hdr-bom">Book of Mormon — Unchangeable God</div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">Mormon 9:9–10</div>
+          <div class="scripture-text bom-text">
+            "For do we not read that God is the <em>same yesterday, today, and forever</em>, and in him there is <em>no variableness neither shadow of changing</em>? And now, if ye have imagined up unto yourselves a god who doth vary, and in whom there is shadow of changing, then have ye imagined up unto yourselves a god who is not a God of miracles."
+          </div>
+          <p class="scripture-note">Mormon explicitly warns that imagining a changing God is to imagine a false god — making this a direct doctrinal rebuke of progressive theism.</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">Moroni 8:18</div>
+          <div class="scripture-text bom-text">
+            "For I know that God is not a partial God, neither a changeable being; but he is <em>unchangeable from all eternity to all eternity</em>."
+          </div>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">2 Nephi 27:23</div>
+          <div class="scripture-text bom-text">
+            "For behold, I am God; and I am a God of miracles; and I will show unto the world that I am the <em>same yesterday, today, and forever</em>."
+          </div>
+        </div>
+      </div>
+
+      <div class="contra-col col-dc">
+        <div class="col-header hdr-dc">King Follett Discourse &amp; D&amp;C — Progressive God</div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">King Follett Discourse — Joseph Smith, April 7, 1844</div>
+          <div class="scripture-text dc-text">
+            "God himself was once as we are now, and is an exalted man, and sits enthroned in yonder heavens! That is the great secret… <em>I say, if you were to see him today, you would see him like a man in form</em>—like yourselves in all the person, image, and very form as a man… He was once a man like us; yea, that God himself, the Father of us all, <em>dwelt on an earth, the same as Jesus Christ himself did</em>."
+          </div>
+          <p class="scripture-note">This discourse, delivered by Joseph Smith less than three months before his death, is accepted by the LDS Church as authentic prophetic teaching, captured by multiple scribes and later published in the Times and Seasons.</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">Lorenzo Snow Couplet (canonized in LDS teaching)</div>
+          <div class="scripture-text dc-text">
+            "<em>As man now is, God once was; as God now is, man may be.</em>"
+          </div>
+          <p class="scripture-note">This formulation, revealed to Lorenzo Snow and affirmed by Joseph Smith, has been repeatedly cited by LDS general authorities as binding doctrinal truth. It directly presupposes divine progression — God changed from mortal to divine — making His nature fundamentally mutable.</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">D&amp;C 130:22</div>
+          <div class="scripture-text dc-text">
+            "The Father has a <em>body of flesh and bones</em> as tangible as man's…"
+          </div>
+          <p class="scripture-note">An embodied, material God is necessarily a God who came to have a body — implying a prior state, change of state, and therefore mutability. The Book of Mormon's "unchangeable from all eternity to all eternity" cannot be applied to such a being.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tension-row">
+      <div class="tension-inner">
+        <span class="tension-label">"Unchangeable from all eternity" (Moroni 8:18)</span>
+        <span class="tension-vs">✕</span>
+        <span class="tension-label">"God himself was once as we are now" (King Follett)</span>
+      </div>
+    </div>
+
+    <div class="analysis-strip">
+      <div class="analysis-icon">🔍</div>
+      <div class="analysis-text">
+        <strong>Why this cannot be harmonized:</strong> Mormon 9:9 does not merely affirm constancy of character — it explicitly invokes "no variableness neither shadow of changing," language drawn from James 1:17 describing God's metaphysical immutability. The same passage warns that imagining a changing God is to imagine a false god. The King Follett Discourse teaches exactly this kind of ontological change: God progressed from mortality to divinity. The two teachings occupy the same logical space and produce contradictory answers. No LDS official resolution addresses this passage directly.
+      </div>
+    </div>
+
+    <div class="source-strip">
+      <p>Sources: Mormon 9:9–10; Moroni 8:18; 2 Nephi 27:23 · King Follett Discourse, Times and Seasons, Aug. 15, 1844 · Lorenzo Snow Couplet, confirmed by Joseph F. Smith (1901) · Blake Ostler, "The Mormon Concept of God" (1984)</p>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════
+       CONTRADICTION 3: POLYGAMY
+       ════════════════════════════════════════════ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">III — Marriage: Polygamy as Abomination vs. Celestial Commandment</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="contra-block" data-category="marriage">
+    <div class="contra-header">
+      <span class="contra-title">Plural Marriage: Condemned by God, then Commanded by God</span>
+      <div class="contra-tags">
+        <span class="contra-tag">Marriage</span>
+        <span class="contra-tag">Polygamy</span>
+        <span class="contra-tag">Jacob 2 vs. D&amp;C 132</span>
+        <span class="severity-tag severity-critical">Critical</span>
+      </div>
+    </div>
+
+    <div class="tension-summary">
+      Jacob 2 contains one of the most severe prophetic condemnations in the entire Book of Mormon — God's explicit indictment of plural marriage as an <strong>"abomination"</strong> that causes grief to wives and children and violates His commandment of monogamy. Doctrine &amp; Covenants 132, received approximately 1843, commands plural marriage as a requirement for the highest degree of exaltation and teaches that Abraham, Isaac, and Jacob were <em>justified</em> by practicing it. The same practice is simultaneously an abomination and a divine commandment within the same canon.
+    </div>
+
+    <div class="contra-compare">
+      <div class="contra-col col-bom">
+        <div class="col-header hdr-bom">Book of Mormon — Jacob 2:23–27 (c. 550 B.C.)</div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">Jacob 2:23–24</div>
+          <div class="scripture-text bom-text">
+            "And now I make an end of speaking unto you concerning this pride. And were it not that I must speak unto you concerning a grosser crime, my heart could rejoice exceedingly because of you. But the word of God burdens me because of your grosser crimes. For behold, thus saith the Lord: This people begin to wax in iniquity; they understand not the scriptures, for they seek to excuse themselves in committing <em>whoredoms</em>, because of the things which were written concerning David, and Solomon his son. Behold, David and Solomon truly had many wives and concubines, which thing was <em>abominable</em> before me, saith the Lord."
+          </div>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">Jacob 2:27–29</div>
+          <div class="scripture-text bom-text">
+            "Wherefore, my brethren, hear me, and hearken to the word of the Lord: For there shall <em>not any man among you have save it be one wife</em>; and concubines he shall have none; For I, the Lord God, delight in the chastity of women. And whoredoms are an abomination before me; thus saith the Lord of Hosts. Wherefore, this people shall keep my commandments, saith the Lord of Hosts, or <em>cursed be the land for their sakes</em>."
+          </div>
+          <p class="scripture-note">The command is categorical: one wife. The polygamy of David and Solomon is called "abominable." This is the word of the Lord as recorded in the Book of Mormon.</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">Jacob 2:35</div>
+          <div class="scripture-text bom-text">
+            "Behold, ye have done <em>greater iniquities than the Lamanites</em>, our brethren. Ye have broken the hearts of your tender wives, and lost the confidence of your children, because of your bad examples before them; and the sobbings of their hearts ascend up to God against you."
+          </div>
+        </div>
+      </div>
+
+      <div class="contra-col col-dc">
+        <div class="col-header hdr-dc">Doctrine &amp; Covenants 132 — Revealed c. 1843</div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">D&amp;C 132:1, 4</div>
+          <div class="scripture-text dc-text">
+            "Verily, thus saith the Lord unto you my servant Joseph, that inasmuch as you have inquired of my hand to know and understand wherein I, the Lord, justified my servants Abraham, Isaac, and Jacob, as also Moses, David and Solomon, my servants, <em>as touching the principle and doctrine of their having many wives and concubines</em>… For behold, I reveal unto you a new and an everlasting covenant; and if ye abide not that covenant, then are ye damned; for no one can reject this covenant and be permitted to enter into my glory."
+          </div>
+          <p class="scripture-note">D&amp;C 132 directly revisits David and Solomon — the same figures Jacob 2 condemned — and now describes their polygamy as something God <em>justified</em>. Jacob 2 called it abomination. D&amp;C 132 calls it justification.</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">D&amp;C 132:37–39</div>
+          <div class="scripture-text dc-text">
+            "Abraham received concubines, and they bore him children; and it was accounted unto him for righteousness, because they were given unto him, and he abode in my law… David also received many wives and concubines, and also Solomon and Moses my servants… and in nothing did they sin save in those things which they received not of me."
+          </div>
+          <p class="scripture-note">Here God explicitly exonerates David and Solomon's plural marriages as non-sinful (with a narrow exception). Jacob 2:24 called this "abominable before me, saith the Lord." The same Lord now says they did not sin in taking many wives.</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">D&amp;C 132:61–62</div>
+          <div class="scripture-text dc-text">
+            "And again, as pertaining to the law of the priesthood—if any man espouse a virgin, and desire to espouse another, and the <em>first give her consent</em>, and if he espouse the second, and they are virgins, and have vowed to no other man, then is he justified; he cannot commit adultery for they are given unto him…"
+          </div>
+          <p class="scripture-note">D&amp;C 132 legislates plural marriage in detail, setting its conditions for justified practice. Jacob 2 admits no such conditions: "there shall not any man among you have save it be one wife."</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tension-row">
+      <div class="tension-inner">
+        <span class="tension-label">"Abominable before me" (Jacob 2:24)</span>
+        <span class="tension-vs">✕</span>
+        <span class="tension-label">"Justified… in nothing did they sin" (D&amp;C 132:37)</span>
+      </div>
+    </div>
+
+    <div class="analysis-strip">
+      <div class="analysis-icon">🔍</div>
+      <div class="analysis-text">
+        <strong>Why this cannot be harmonized:</strong> The standard LDS response invokes Jacob 2:30 — "For if I will, saith the Lord of Hosts, raise up seed unto me, I will command my people; otherwise they shall hearken unto these things" — as an escape clause permitting polygamy when God commands it. But this cannot harmonize the texts: Jacob 2 calls the polygamy of David and Solomon specifically "abominable" — without qualification — even though they claimed divine authorization. D&amp;C 132 then retroactively declares the same practice justified. The two revelations give opposing divine verdicts on the same historical cases. Additionally, Jacob's categorical command — "there shall not any man among you have save it be one wife" — leaves no room for an exception clause two verses earlier.
+      </div>
+    </div>
+
+    <div class="source-strip">
+      <p>Sources: Jacob 2:23–35 · D&amp;C 132:1–65 (recorded July 12, 1843) · LDS Gospel Topics Essay: "Plural Marriage and Families in Early Utah" (2014) · Compton, In Sacred Loneliness (1997) · Richard Bushman, Rough Stone Rolling (2005)</p>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════
+       CONTRADICTION 4: PRIESTHOOD STRUCTURE
+       ════════════════════════════════════════════ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">IV — Priesthood: Absence of Aaronic/Melchizedek Distinction in the Book of Mormon</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="contra-block" data-category="priesthood">
+    <div class="contra-header">
+      <span class="contra-title">The Dual Priesthood System — Present in D&amp;C, Absent in the BoM</span>
+      <div class="contra-tags">
+        <span class="contra-tag">Priesthood</span>
+        <span class="contra-tag">BoM vs. D&amp;C</span>
+        <span class="severity-tag severity-significant">Significant</span>
+      </div>
+    </div>
+
+    <div class="tension-summary">
+      Doctrine &amp; Covenants presents a highly elaborate, dual-priesthood theology — the lesser Aaronic Priesthood (restored by John the Baptist, May 15, 1829) and the greater Melchizedek Priesthood (restored by Peter, James, and John, 1829). These two orders are foundational to LDS church structure, sacraments, and authority. <strong>Yet the Book of Mormon — supposedly translated from records of a covenant people spanning 1,000 years — contains no functioning Aaronic/Melchizedek distinction whatsoever.</strong> Nephite priests are appointed by Alma, not ordained by lineage. No angelic restoration of either priesthood order is mentioned.
+    </div>
+
+    <div class="contra-compare">
+      <div class="contra-col col-bom">
+        <div class="col-header hdr-bom">Book of Mormon — Nephite Priesthood Structure</div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">Mosiah 18:17–18 — Alma Ordains Priests</div>
+          <div class="scripture-text bom-text">
+            "And they were called the church of God, or the church of Christ, from that time forward. And it came to pass that whosoever was baptized by the power and authority of God was added to his church. And it came to pass that Alma, having authority from God, <em>ordained priests</em>; even one priest to every fifty of their number did he ordain to preach unto them, and to teach them concerning the things pertaining to the kingdom of God."
+          </div>
+          <p class="scripture-note">Alma ordains priests by his own authority — with no reference to Aaronic or Melchizedek orders, no lineage requirement, and no angelic conferral. The structure is entirely different from D&amp;C's schema.</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">Alma 13:1–2 — "High Priests" in the BoM</div>
+          <div class="scripture-text bom-text">
+            "And again, my brethren, I would cite your minds forward to the time when the Lord God gave these commandments unto his children; and I would that ye should remember that the Lord God ordained priests, after his holy order, which was after the order of his Son, to teach these things unto the people. And those priests were ordained after the order of his Son, in a manner that thereby the people might know in what manner to look forward to his Son for redemption."
+          </div>
+          <p class="scripture-note">"After the order of his Son" is retroactively identified by LDS theology as Melchizedek Priesthood. But Alma 13 does not use the term "Melchizedek" in any functional church-organizational sense, nor does it describe a dual-tier priesthood system.</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">3 Nephi 12:1 — Christ Appoints Twelve</div>
+          <div class="scripture-text bom-text">
+            "And it came to pass that when Jesus had spoken these words unto Nephi, and to those who had been called… he stretched forth his hand unto the multitude, and cried unto them, saying: Blessed are ye if ye shall give heed unto the words of these twelve whom I have chosen from among you to minister unto you, and to be your servants."
+          </div>
+          <p class="scripture-note">The resurrected Christ reorganizes the Nephite church — yet still no mention of conferring Aaronic or Melchizedek Priesthood by the titles, roles, or structure elaborated across dozens of D&amp;C sections.</p>
+        </div>
+      </div>
+
+      <div class="contra-col col-dc">
+        <div class="col-header hdr-dc">Doctrine &amp; Covenants — Elaborate Dual Priesthood</div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">D&amp;C 13:1 — Aaronic Priesthood Restored (1829)</div>
+          <div class="scripture-text dc-text">
+            "Upon you my fellow servants, in the name of Messiah I confer the Priesthood of Aaron, which holds the keys of the ministering of angels, and of the gospel of repentance, and of <em>baptism by immersion for the remission of sins</em>; and this shall never be taken again from the earth, until the sons of Levi do offer again an offering unto the Lord in righteousness."
+          </div>
+          <p class="scripture-note">John the Baptist physically appears to confer a distinct, named priesthood order. This two-tiered system is the formal organizational skeleton of the entire LDS Church — yet it appears nowhere in the millennium of Nephite history recorded in the Book of Mormon.</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">D&amp;C 107:1–5 — Melchizedek Priesthood Defined</div>
+          <div class="scripture-text dc-text">
+            "There are, in the church, <em>two priesthoods</em>, namely, the Melchizedek and Aaronic, including the Levitical Priesthood. Why the first is called the Melchizedek Priesthood is because Melchizedek was such a great high priest. Before his day it was called the Holy Priesthood, after the Order of the Son of God. But out of respect or reverence to the name of the Supreme Being, to avoid the too frequent repetition of his name, they, the church, in ancient days, called that priesthood after Melchizedek…"
+          </div>
+          <p class="scripture-note">D&amp;C 107 elaborates a comprehensive two-tiered system with distinct offices (deacon, teacher, priest under Aaronic; elder, seventy, high priest under Melchizedek), keys, and authorities. None of this organizational detail appears in the Book of Mormon's account of Christ's church among the Nephites.</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">D&amp;C 84:26–27 — Mosaic Law and Aaronic Priesthood</div>
+          <div class="scripture-text dc-text">
+            "And the lesser priesthood continued, which priesthood holdeth the key of the ministering of angels and the preparatory gospel; Which gospel is the gospel of repentance and of baptism, and the remission of sins, and the law of carnal commandments, which the Lord in his wrath caused to continue with the house of Aaron among the children of Israel until John…"
+          </div>
+          <p class="scripture-note">D&amp;C 84 ties Aaronic Priesthood explicitly to the Levitical lineage of Aaron and the house of Israel. Nephites in the Book of Mormon were not Levites — they descended from Joseph through Manasseh — raising further questions about how they exercised functions D&amp;C assigns exclusively to the Aaronic order.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tension-row">
+      <div class="tension-inner">
+        <span class="tension-label">BoM: No Aaronic/Melchizedek distinction across 1,000 years</span>
+        <span class="tension-vs">✕</span>
+        <span class="tension-label">D&amp;C: Two-tiered priesthood is the foundation of the Restoration</span>
+      </div>
+    </div>
+
+    <div class="analysis-strip">
+      <div class="analysis-icon">🔍</div>
+      <div class="analysis-text">
+        <strong>Why this is significant:</strong> If the dual priesthood is so essential that John the Baptist and the apostles Peter, James, and John had to physically return to restore it, one would expect this structure to be clearly present in the 1,000-year record of a covenant people that the Book of Mormon claims to be. Its complete absence is not a minor omission. LDS apologists argue the two orders were present but not named — but D&amp;C 107 explicitly states the importance of the names and their organizational meaning. The "restoration" of something that was never present in the BoM narrative raises the question of what exactly is being restored.
+      </div>
+    </div>
+
+    <div class="source-strip">
+      <p>Sources: D&amp;C 13; D&amp;C 107:1–20; D&amp;C 84:26–27 · Mosiah 18:17–18; Alma 13:1–10; 3 Nephi 12:1 · LDS Church History and the Restoration of the Priesthood (LDS.org) · Kevin Christensen, "Assessing the Assessors" (FARMS Review, 2004)</p>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════
+       CONTRADICTION 5: SALVATION AND GRACE
+       ════════════════════════════════════════════ -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">V — Salvation: Sufficiency of Grace vs. Exaltation Through Ordinances</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="contra-block" data-category="salvation">
+    <div class="contra-header">
+      <span class="contra-title">Is Grace Sufficient, or Is Exaltation Conditional on Temple Ordinances?</span>
+      <div class="contra-tags">
+        <span class="contra-tag">Salvation</span>
+        <span class="contra-tag">Grace &amp; Works</span>
+        <span class="contra-tag">BoM vs. D&amp;C</span>
+        <span class="severity-tag severity-significant">Significant</span>
+      </div>
+    </div>
+
+    <div class="tension-summary">
+      The Book of Mormon's soteriology is markedly Christ-centered and grace-oriented — strikingly Protestant in its framing, with salvation coming through faith in Christ and His atonement. Doctrine &amp; Covenants and later LDS theology introduce a multi-tiered afterlife (celestial, terrestrial, telestial kingdoms) with highest exaltation contingent on temple ordinances, eternal marriage sealing, and continued faithfulness. <strong>The Book of Mormon does not mention temples in a salvific capacity, does not describe tiered heavenly kingdoms, and presents no ordinance beyond baptism as necessary for salvation.</strong>
+    </div>
+
+    <div class="contra-compare">
+      <div class="contra-col col-bom">
+        <div class="col-header hdr-bom">Book of Mormon — Salvation by Grace through Christ</div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">2 Nephi 25:23</div>
+          <div class="scripture-text bom-text">
+            "For we labor diligently to write, to persuade our children, and also our brethren, to believe in Christ, and to be reconciled to God; for we know that it is by grace that we are saved, <em>after all we can do</em>."
+          </div>
+          <p class="scripture-note">Even with its "after all we can do" qualifier, this verse presents salvation as the fruit of grace — not exaltation contingent on temple sealings, eternal marriage covenants, or posthumous ordinance work. No temple ceremony appears in the Book of Mormon's path to salvation.</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">Helaman 14:15–17 — The Universal Atonement</div>
+          <div class="scripture-text bom-text">
+            "And now, my beloved brethren, I have told you these things that ye might know the signs given, that ye might believe; not that ye should be led away by these signs and wonders, but behold, these things which I have told you that ye might know of the coming of Christ, which bringeth to pass <em>the resurrection of the dead</em>, by which man is redeemed from the fall; And the resurrection of Christ redeemeth mankind, yea, even all mankind, and bringeth them back into the presence of the Lord."
+          </div>
+          <p class="scripture-note">The universal resurrection restores all mankind to God's presence — a broadly inclusive soteriology with no mention of temple ordinances as necessary for this restoration.</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">Mosiah 3:17 — Christ the Only Means</div>
+          <div class="scripture-text bom-text">
+            "And moreover, I say unto you, that there shall be <em>no other name given</em> nor any other way nor means whereby salvation can come unto the children of men, only in and through the name of Christ, the Lord Omnipotent."
+          </div>
+        </div>
+      </div>
+
+      <div class="contra-col col-dc">
+        <div class="col-header hdr-dc">Doctrine &amp; Covenants — Exaltation Requires Ordinances</div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">D&amp;C 131:1–3 — Temple Marriage Required for Celestial Kingdom</div>
+          <div class="scripture-text dc-text">
+            "In the celestial glory there are three heavens or degrees; And in order to obtain the highest, a man must enter into this order of the priesthood [meaning the new and everlasting covenant of marriage]; And if he does not, <em>he cannot obtain it</em>. He may enter into the other, but that is the end of his kingdom; he cannot have an increase."
+          </div>
+          <p class="scripture-note">The highest degree of celestial glory — full exaltation and divine status — requires temple marriage. This is an ordinance the Book of Mormon never mentions in any soteriological context. The BoM's Mosiah 3:17 says salvation comes only through Christ's name; D&amp;C 131 adds a required ordinance as the gating condition for full exaltation.</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">D&amp;C 76:50–53, 70 — The Three Kingdoms</div>
+          <div class="scripture-text dc-text">
+            "And again we bear record—for we saw and heard, and this is the testimony of the gospel of Christ concerning them who shall come forth in the resurrection of the just—They are they who received the testimony of Jesus, and believed on his name and were baptized after the manner of his burial, rising from the dead, as he rose from the dead, who overcome by faith, and are sealed by the Holy Spirit of promise, which the Father sheds forth upon all those who are just and true…. These are they who are come unto Mount Zion, and unto the city of the living God, the heavenly place, the holiest of all."
+          </div>
+          <p class="scripture-note">The three-kingdom schema of D&amp;C 76 is entirely absent from the Book of Mormon, which presents a binary (eternal life with God vs. spiritual death) rather than the graduated, merit-differentiated afterlife of D&amp;C theology.</p>
+        </div>
+
+        <div class="scripture-entry">
+          <div class="scripture-ref">D&amp;C 128:15 — Salvation for the Dead by Proxy</div>
+          <div class="scripture-text dc-text">
+            "And now, my dearly beloved brethren and sisters, let me assure you that these are principles in relation to the dead and the living that cannot be lightly passed over, as pertaining to our salvation. For their <em>salvation is necessary and essential</em> to our salvation, as Paul says concerning the fathers—that they without us cannot be made perfect—neither can we without our dead be made perfect."
+          </div>
+          <p class="scripture-note">Proxy temple work for the dead is presented as essential to salvation — a soteriological category that appears nowhere in the Book of Mormon. The BoM's universal atonement in Helaman 14 does not condition anyone's salvation on living relatives performing posthumous ordinances.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tension-row">
+      <div class="tension-inner">
+        <span class="tension-label">"No other name… whereby salvation can come" (Mosiah 3:17)</span>
+        <span class="tension-vs">✕</span>
+        <span class="tension-label">"Cannot obtain it" without temple marriage (D&amp;C 131:3)</span>
+      </div>
+    </div>
+
+    <div class="analysis-strip">
+      <div class="analysis-icon">🔍</div>
+      <div class="analysis-text">
+        <strong>Why this is theologically significant:</strong> LDS theology distinguishes "salvation" (universal resurrection and basic redemption from hell) from "exaltation" (full deification in the celestial kingdom). Under this distinction, D&amp;C 131 and 128 add ordinance requirements for <em>exaltation</em>, not salvation — and thus do not technically contradict Mosiah 3:17. However, this distinction is itself a product of D&amp;C theology and is nowhere found in the Book of Mormon. The BoM presents one unified goal — eternal life with God — through Christ alone. The elaborately differentiated, ordinance-conditional exaltation system of D&amp;C represents a substantive theological development that transforms the Book of Mormon's soteriology into something it never claimed to be.
+      </div>
+    </div>
+
+    <div class="source-strip">
+      <p>Sources: 2 Nephi 25:23; Mosiah 3:17; Helaman 14:15–17 · D&amp;C 76; D&amp;C 128; D&amp;C 131:1–4 · LDS Gospel Topics Essay: "Salvation" · Robert Millet, Grace Works (2003) · Stephen Robinson, Believing Christ (1992)</p>
+    </div>
+  </div>
+
+
+  <!-- VERDICT BOX -->
+  <div class="verdict-box">
+    <h3>✦ &nbsp; The Significance of Internal Contradictions &nbsp; ✦</h3>
+    <p>These contradictions are categorically different from disagreements between LDS scripture and external sources. They arise within the canon the LDS Church itself declares to be the word of God. A Catholic or Protestant critic can be dismissed as arguing from a competing tradition. But when the Book of Mormon and Doctrine &amp; Covenants issue opposite divine verdicts on the same question — when God calls polygamy an abomination and a justified commandment, when the Father is one unchangeable eternal God and a progressed embodied being — no appeal to tradition resolves the tension.</p>
+    <p>The Catholic theological tradition does not face this problem. The Church's doctrinal development across two millennia operates by <em>explicating</em> what was always implicitly contained in the deposit of faith — never by issuing contradictory divine commands on the same subject to the same community. The internal incoherence of the LDS Standard Works is not a peripheral apologetic observation. It is a structural problem at the foundation of the LDS truth claim.</p>
+  </div>
+
+</main>
+
+<footer>&copy; One Faith Delivered &nbsp;&#8901;&nbsp; All Rights Reserved</footer>
+
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">One Faith Delivered</div>
+    <a href="../index.html">Home</a>
+    <a href="../articles.html">Articles</a>
+    <a href="../charts.html">Charts</a>
+    <a href="../topics.html">Topics</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../charts.html" class="sidebar-back">&#8592; All Charts</a>
+    <div class="sidebar-ornament">✦ ✦ ✦</div>
+  </div>
+</aside>
+
+<script>
+/* ── SIDEBAR ── */
+function toggleSidebar() {
+  var btn = document.querySelector('.nav-hamburger');
+  var sidebar = document.querySelector('.sidebar');
+  var overlay = document.querySelector('.sidebar-overlay');
+  var isOpen = sidebar.classList.contains('open');
+  if (isOpen) {
+    sidebar.classList.remove('open');
+    btn.classList.remove('open');
+    overlay.classList.remove('visible');
+    document.body.style.overflow = '';
+  } else {
+    sidebar.classList.add('open');
+    btn.classList.add('open');
+    overlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar();
+});
+
+/* ── FILTER LOGIC ── */
+function filterCards(category, btn) {
+  // Update active button state
+  document.querySelectorAll('.filter-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  btn.classList.add('active');
+
+  // Show/hide blocks
+  var blocks = document.querySelectorAll('.contra-block');
+  blocks.forEach(function(block) {
+    if (category === 'all') {
+      block.style.display = '';
+      block.style.opacity = '1';
+    } else if (block.dataset.category === category) {
+      block.style.display = '';
+      setTimeout(function() { block.style.opacity = '1'; }, 10);
+    } else {
+      block.style.opacity = '0';
+      setTimeout(function() { block.style.display = 'none'; }, 250);
+    }
+  });
+
+  // Show/hide section dividers
+  var dividers = document.querySelectorAll('.section-divider');
+  dividers.forEach(function(div) {
+    if (category === 'all') {
+      div.style.display = '';
+    }
+    // For filtered views, keep dividers visible for simplicity
+  });
+}
+
+/* ── SMOOTH SCROLL ENTRANCE (Intersection Observer) ── */
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.05 });
+
+document.querySelectorAll('.contra-block').forEach(function(el) {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = 'opacity 0.4s ease, transform 0.4s ease, box-shadow 0.2s';
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
