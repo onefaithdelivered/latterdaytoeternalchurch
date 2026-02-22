@@ -561,6 +561,200 @@
       color: rgba(232,217,184,0.3);
     }
 
+    /* ─── DID YOU KNOW COMPONENT ───────────────────────────── */
+    .dyk-section {
+      border-top: 1px solid rgba(201,168,76,0.2);
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+      padding: 4.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(
+        180deg,
+        rgba(13,7,3,0)     0%,
+        rgba(60,20,10,0.18) 50%,
+        rgba(13,7,3,0)     100%
+      );
+    }
+    .dyk-inner {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    /* Heading */
+    .dyk-heading {
+      display: flex; align-items: center; gap: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+    .dyk-heading-rule {
+      flex: 1; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(201,168,76,0.35), transparent);
+    }
+    .dyk-heading-center {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      flex-shrink: 0;
+    }
+    .dyk-heading-star {
+      color: var(--gold-dark); font-size: 0.75rem; letter-spacing: 8px; opacity: 0.7;
+    }
+    .dyk-heading-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--gold); white-space: nowrap;
+    }
+
+    /* Progress bar */
+    .dyk-progress-bar {
+      height: 1px; background: rgba(201,168,76,0.15);
+      margin-bottom: 1.5rem; overflow: hidden;
+    }
+    .dyk-progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--crimson), var(--gold));
+      width: 0%; transition: width 0.1s linear;
+    }
+
+    /* Card stage */
+    .dyk-stage { position: relative; min-height: 220px; margin-bottom: 1.5rem; }
+
+    /* Card */
+    .dyk-card {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      background: linear-gradient(160deg, rgba(201,168,76,0.065) 0%, rgba(26,15,5,0.55) 100%);
+      border: 1px solid rgba(201,168,76,0.22);
+      overflow: hidden;
+      opacity: 0; transform: translateY(10px);
+      transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1),
+                  transform 0.5s cubic-bezier(0.4,0,0.2,1),
+                  border-color 0.25s;
+      pointer-events: none;
+    }
+    .dyk-card:hover { border-color: rgba(201,168,76,0.42); }
+    .dyk-card.active {
+      opacity: 1; transform: translateY(0);
+      pointer-events: auto; position: relative;
+    }
+
+    /* Accent stripe */
+    .dyk-card-accent { height: 3px; width: 100%; flex-shrink: 0; }
+    .dyk-accent-catholic  { background: linear-gradient(90deg, var(--crimson), #B04060); }
+    .dyk-accent-lds       { background: linear-gradient(90deg, #5A5A5A, #909090); }
+    .dyk-accent-patristic { background: linear-gradient(90deg, var(--gold-dark), var(--gold)); }
+    .dyk-accent-scripture { background: linear-gradient(90deg, #1A4A5C, #3A8AAA); }
+    .dyk-accent-history   { background: linear-gradient(90deg, #3A1A5C, #7A50AA); }
+
+    /* Card body */
+    .dyk-card-body { display: flex; flex: 1; }
+    .dyk-card-stripe { width: 4px; flex-shrink: 0; }
+    .dyk-stripe-catholic  { background: var(--crimson); }
+    .dyk-stripe-lds       { background: #6A6A6A; }
+    .dyk-stripe-patristic { background: var(--gold-dark); }
+    .dyk-stripe-scripture { background: #1A4A5C; }
+    .dyk-stripe-history   { background: #4A1A7C; }
+
+    .dyk-card-content {
+      padding: 20px 24px 16px; flex: 1;
+      display: flex; flex-direction: column;
+    }
+
+    /* Category badge */
+    .dyk-cat {
+      font-family: 'Cinzel', serif; font-size: 0.6rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      margin-bottom: 10px; display: inline-flex; align-items: center; gap: 7px;
+    }
+    .dyk-cat::before {
+      content: ''; display: inline-block; width: 5px; height: 5px;
+      border-radius: 50%; flex-shrink: 0;
+    }
+    .dyk-cat-catholic  { color: #C06070; }
+    .dyk-cat-catholic::before  { background: #C06070; }
+    .dyk-cat-lds       { color: #A0A0A0; }
+    .dyk-cat-lds::before       { background: #A0A0A0; }
+    .dyk-cat-patristic { color: var(--gold); }
+    .dyk-cat-patristic::before { background: var(--gold); }
+    .dyk-cat-scripture { color: #5AABBB; }
+    .dyk-cat-scripture::before { background: #5AABBB; }
+    .dyk-cat-history   { color: #9A80CC; }
+    .dyk-cat-history::before   { background: #9A80CC; }
+
+    /* Fact text */
+    .dyk-fact {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: clamp(1rem, 2vw, 1.15rem); font-weight: 500;
+      line-height: 1.65; color: var(--parchment);
+      margin-bottom: 12px; flex: 1;
+    }
+    .dyk-fact em { color: var(--gold-light); font-style: italic; }
+
+    /* Citation */
+    .dyk-cite {
+      font-family: 'EB Garamond', Georgia, serif; font-style: italic;
+      font-size: 0.82rem; color: rgba(232,217,184,0.45); line-height: 1.55;
+    }
+
+    /* Card footer */
+    .dyk-card-footer {
+      padding: 10px 24px 14px;
+      border-top: 1px solid rgba(201,168,76,0.12);
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      background: rgba(0,0,0,0.15);
+    }
+    .dyk-read-more {
+      font-family: 'Cinzel', serif; font-size: 0.62rem;
+      letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: gap 0.2s, color 0.2s;
+    }
+    .dyk-read-more:hover { gap: 10px; }
+    .dyk-link-catholic  { color: #C06070; }
+    .dyk-link-lds       { color: #A0A0A0; }
+    .dyk-link-patristic { color: var(--gold); }
+    .dyk-link-scripture { color: #5AABBB; }
+    .dyk-link-history   { color: #9A80CC; }
+    .dyk-counter {
+      font-family: 'Cinzel', serif; font-size: 0.58rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(201,168,76,0.3); white-space: nowrap;
+    }
+
+    /* Controls */
+    .dyk-controls {
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+    }
+    .dyk-btn {
+      width: 30px; height: 30px; border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.25); background: transparent;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; color: rgba(201,168,76,0.5); transition: all 0.2s; line-height: 1;
+    }
+    .dyk-btn:hover { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.08); }
+    .dyk-dots { display: flex; gap: 7px; align-items: center; }
+    .dyk-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: rgba(201,168,76,0.22); border: none; cursor: pointer; padding: 0;
+      transition: all 0.22s; flex-shrink: 0;
+    }
+    .dyk-dot.active { background: var(--gold); transform: scale(1.5); }
+    .dyk-dot:hover:not(.active) { background: rgba(201,168,76,0.5); }
+
+    /* Pause indicator */
+    .dyk-pause-indicator {
+      position: absolute; top: 14px; right: 18px;
+      font-family: 'Cinzel', serif; font-size: 0.55rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(201,168,76,0.35); opacity: 0; transition: opacity 0.3s; pointer-events: none;
+    }
+    .dyk-section:hover .dyk-pause-indicator { opacity: 1; }
+
+    @media (max-width: 600px) {
+      .dyk-section { padding: 3rem 1rem; }
+      .dyk-card-content { padding: 16px 16px 12px; }
+      .dyk-card-footer { padding: 9px 16px 12px; flex-wrap: wrap; }
+      .dyk-fact { font-size: 0.97rem; }
+    }
+    /* ─── END DID YOU KNOW ──────────────────────────────────── */
+
     /* ─── ANIMATIONS ────────────────────────────────────────── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -954,6 +1148,258 @@
       <a href="topics.html" class="btn-secondary">Browse by Topic</a>
     </div>
   </section>
+
+  <!-- ── DID YOU KNOW ── -->
+  <div class="dyk-section" id="dykSection">
+    <span class="dyk-pause-indicator" id="dykPauseLabel">⏸ paused</span>
+    <div class="dyk-inner">
+
+      <div class="dyk-heading">
+        <div class="dyk-heading-rule"></div>
+        <div class="dyk-heading-center">
+          <span class="dyk-heading-star">✦</span>
+          <span class="dyk-heading-label">Did You Know?</span>
+        </div>
+        <div class="dyk-heading-rule"></div>
+      </div>
+
+      <div class="dyk-progress-bar">
+        <div class="dyk-progress-fill" id="dykProgressFill"></div>
+      </div>
+
+      <div class="dyk-stage" id="dykStage" aria-live="polite" aria-atomic="true"></div>
+
+      <div class="dyk-controls">
+        <button class="dyk-btn" id="dykPrev" aria-label="Previous fact">&#8592;</button>
+        <div class="dyk-dots" id="dykDots"></div>
+        <button class="dyk-btn" id="dykNext" aria-label="Next fact">&#8594;</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+  (function () {
+    var FACTS = [
+      {
+        cat: 'patristic', label: 'Church Fathers',
+        fact: 'The term <em>"Catholic Church"</em> appears in a surviving written document as early as AD 107 — in a letter by Ignatius of Antioch, written while he was being marched to Rome for execution.',
+        cite: 'Ignatius of Antioch, Epistle to the Smyrnaeans §8:2 (c. AD 107): "Wheresoever the bishop shall appear, there let the multitude also be; even as where Jesus may be, there is the Catholic Church."',
+        href: 'articles/ante-nicene-fathers.html', link: 'Read the Patristics Article &rarr;', lnk: 'dyk-link-patristic'
+      },
+      {
+        cat: 'lds', label: 'LDS History',
+        fact: 'Joseph Smith was sealed to <em>eleven women who were already married to living husbands</em> — a practice the LDS Church\'s own 2014 official essay acknowledges by name.',
+        cite: 'LDS Church, Gospel Topics Essay "Plural Marriage in Kirtland and Nauvoo" (LDS.org, 2014). The Joseph Smith Papers project confirms names and sealing dates.',
+        href: 'charts/smith_polygamy_timeline.html', link: 'View the Polygamy Timeline &rarr;', lnk: 'dyk-link-lds'
+      },
+      {
+        cat: 'scripture', label: 'Biblical Argument',
+        fact: 'The Greek verb Jesus chose in John 6 for "eat" — <em>trōgō</em> — means to gnaw or munch, the word used of animals feeding. He chose it deliberately and refused to soften it even when disciples left in protest.',
+        cite: 'John 6:54–60 (Greek text). Cf. B.F. Westcott, The Gospel According to St. John (1882). Jesus let the disciples depart rather than correct a "misunderstanding."',
+        href: 'charts/scripture-trail-real-presence.html', link: 'Trace the Real Presence Evidence &rarr;', lnk: 'dyk-link-scripture'
+      },
+      {
+        cat: 'lds', label: 'LDS History',
+        fact: 'The Book of Mormon was not translated by reading the gold plates. Joseph Smith translated by placing a <em>seer stone inside a hat</em> and burying his face in it — a method acknowledged in the LDS Church\'s own 2013 Gospel Topics Essay.',
+        cite: 'LDS Church, Gospel Topics Essay "Book of Mormon Translation" (LDS.org, 2013). Emma Smith, Martin Harris, and David Whitmer all describe the hat-and-stone method independently.',
+        href: 'charts/historicity-comparison.html', link: 'View the Historicity Comparison &rarr;', lnk: 'dyk-link-lds'
+      },
+      {
+        cat: 'catholic', label: 'Apostolic Succession',
+        fact: 'Irenaeus of Lyon, writing around <em>AD 180</em>, listed the complete succession of popes from Peter to his own day — twelve men in 150 years — as proof that the Church had preserved the apostolic faith intact.',
+        cite: 'Irenaeus, Against Heresies III.3.3 (c. AD 180): "…the successions of the bishops of the greatest and most ancient church…founded and organized at Rome by the two most glorious apostles, Peter and Paul."',
+        href: 'charts/apostolic-succession.html', link: 'View the Apostolic Chain &rarr;', lnk: 'dyk-link-catholic'
+      },
+      {
+        cat: 'lds', label: 'LDS Doctrine',
+        fact: 'In 1844, Joseph Smith declared: <em>"God himself was once as we are now, and is an exalted man."</em> Yet the Book of Mormon (1830) states God is "unchangeable from all eternity to all eternity" — a direct contradiction within LDS canon.',
+        cite: 'King Follett Discourse, Times and Seasons (Aug 15, 1844) vs. Book of Mormon, Moroni 8:18 (1830). Both texts are canonical LDS scripture.',
+        href: 'charts/joseph-smith-evolving-god.html', link: 'View the Evolving God Timeline &rarr;', lnk: 'dyk-link-lds'
+      },
+      {
+        cat: 'patristic', label: 'Church Fathers',
+        fact: 'Justin Martyr, writing to the <em>Roman Emperor</em> around AD 155, described a Sunday Eucharistic liturgy structurally identical to the Catholic Mass — readings, homily, prayers, offertory, consecration, and Communion distributed to the absent.',
+        cite: 'Justin Martyr, First Apology §65–67 (c. AD 155). Written to Emperor Antoninus Pius to refute pagan rumors of Christian cannibalism.',
+        href: 'charts/early-church-believed.html', link: 'See What the Early Church Believed &rarr;', lnk: 'dyk-link-patristic'
+      },
+      {
+        cat: 'lds', label: 'LDS History',
+        fact: 'Joseph Smith publicly declared in 1844: <em>"What a thing it is for a man to be accused of committing adultery, and having seven wives, when I can only find one."</em> At the time, he had approximately thirty-five.',
+        cite: 'Joseph Smith sermon, May 26, 1844 (History of the Church 6:411). The LDS Gospel Topics Essay (2014) acknowledges Smith had "30–40" wives.',
+        href: 'charts/smith_polygamy_timeline.html', link: 'View the Polygamy Timeline &rarr;', lnk: 'dyk-link-lds'
+      },
+      {
+        cat: 'history', label: 'Church History',
+        fact: 'At the Council of Nicaea in <em>AD 325</em>, 318 bishops gathered from across the known world. Not one of them — including those who disagreed sharply on other points — taught that God the Father had once been a mortal man.',
+        cite: 'Eusebius of Caesarea, Life of Constantine III.6–14 (c. AD 337); Athanasius, On the Decrees of the Council of Nicaea (c. AD 350). See Philip Schaff, History of the Christian Church, Vol. 3.',
+        href: 'charts/councils-creeds-timeline.html', link: 'View the Councils Timeline &rarr;', lnk: 'dyk-link-history'
+      },
+      {
+        cat: 'scripture', label: 'Biblical Argument',
+        fact: 'Christ promised that <em>"the gates of Hell will not prevail"</em> against His Church (Matthew 16:18). The LDS Great Apostasy claim requires those gates to have prevailed completely — for eighteen centuries — before God corrected the failure in 1830.',
+        cite: 'Matthew 16:18 (ESV). Cf. LDS Articles of Faith 6; Joseph Smith – History 1:19. The contradiction is internal to LDS theology\'s own use of this verse.',
+        href: 'charts/great-apostasy-claim.html', link: 'Examine the Apostasy Claim &rarr;', lnk: 'dyk-link-scripture'
+      },
+      {
+        cat: 'lds', label: 'LDS History',
+        fact: 'Joseph Smith\'s earliest account of the First Vision (1832) mentions <em>only Jesus Christ</em> appearing to him. The Father\'s presence, and the condemnation of all other churches as an "abomination," appear only in versions written six or more years later.',
+        cite: 'Joseph Smith 1832 holograph ms. (Joseph Smith Papers, Histories Vol. 1, pp. 10–13). Cf. LDS Gospel Topics Essay "First Vision Accounts" (LDS.org, 2013).',
+        href: 'charts/prophetic-criteria-checker.html', link: 'Examine the Prophetic Criteria &rarr;', lnk: 'dyk-link-lds'
+      },
+      {
+        cat: 'patristic', label: 'Church Fathers',
+        fact: 'Polycarp, Bishop of Smyrna, was <em>personally taught by the Apostle John</em>. His student Irenaeus carried that teaching to the West. The Catholic faith is separated from the Apostles by just <em>two people</em>.',
+        cite: 'Irenaeus, Letter to Florinus (quoted in Eusebius, Church History V.20.6): "I remember…Polycarp…relating his intercourse with John and with the rest of those who had seen the Lord."',
+        href: 'articles/ante-nicene-fathers.html', link: 'Read the Patristics Article &rarr;', lnk: 'dyk-link-patristic'
+      },
+      {
+        cat: 'history', label: 'Salvation History',
+        fact: 'The <em>Book of Abraham</em> was "translated" from Egyptian papyri still in existence today. Professional Egyptologists — including a faithful Latter-day Saint scholar at BYU — have translated those same papyri. <em>None of Smith\'s explanations match.</em>',
+        cite: 'LDS Gospel Topics Essay "Translation and Historicity of the Book of Abraham" (LDS.org, 2014); Robert K. Ritner, The Joseph Smith Egyptian Papyri (2011); Michael D. Rhodes, BYU Studies (2002).',
+        href: 'charts/book-of-abraham-problem.html', link: 'View the Book of Abraham Problem &rarr;', lnk: 'dyk-link-history'
+      },
+      {
+        cat: 'lds', label: 'LDS History',
+        fact: 'Brigham Young taught in 1852 that <em>Adam is God the Father</em> — the very being who walked in the Garden of Eden. The current LDS Church explicitly rejects this doctrine, raising an unavoidable question about prophetic infallibility.',
+        cite: 'Brigham Young, Journal of Discourses 1:50 (April 9, 1852): "When our father Adam came into the garden of Eden, he came into it with a celestial body…He is our Father and our God."',
+        href: 'articles/rock-and-the-sand.html', link: 'Read: Doctrinal Continuity vs. Instability &rarr;', lnk: 'dyk-link-lds'
+      },
+      {
+        cat: 'catholic', label: 'Catholic Doctrine',
+        fact: 'The Catholic canon of Scripture — 73 books — was formally defined at the <em>Council of Rome in AD 382</em> under Pope Damasus I. The Protestant 66-book canon is a 16th-century reduction, not an ancient or original standard.',
+        cite: 'Council of Rome (AD 382), Decree of Damasus; cf. Council of Hippo (AD 393), Canon 36; F.F. Bruce, The Canon of Scripture (1988), pp. 230–235.',
+        href: 'articles/fullness-of-time.html', link: 'Read the Progressive Revelation Article &rarr;', lnk: 'dyk-link-catholic'
+      },
+    ];
+
+    var INTERVAL_MS = 7000;
+    var TICK_MS     = 80;
+    var current     = 0;
+    var total       = FACTS.length;
+    var ticker      = null;
+    var elapsed     = 0;
+    var paused      = false;
+
+    var stage   = document.getElementById('dykStage');
+    var dotsEl  = document.getElementById('dykDots');
+    var fillEl  = document.getElementById('dykProgressFill');
+    var section = document.getElementById('dykSection');
+
+    /* Build all cards and insert into DOM */
+    function buildCards() {
+      FACTS.forEach(function (f, i) {
+        var card = document.createElement('div');
+        card.className = 'dyk-card';
+        card.id = 'dyk-card-' + i;
+        card.innerHTML =
+          '<div class="dyk-card-accent dyk-accent-' + f.cat + '"></div>' +
+          '<div class="dyk-card-body">' +
+            '<div class="dyk-card-stripe dyk-stripe-' + f.cat + '"></div>' +
+            '<div class="dyk-card-content">' +
+              '<span class="dyk-cat dyk-cat-' + f.cat + '">' + f.label + '</span>' +
+              '<p class="dyk-fact">' + f.fact + '</p>' +
+              '<p class="dyk-cite">' + f.cite + '</p>' +
+            '</div>' +
+          '</div>' +
+          '<div class="dyk-card-footer">' +
+            '<a href="' + f.href + '" class="dyk-read-more ' + f.lnk + '">' + f.link + '</a>' +
+            '<span class="dyk-counter">' + (i + 1) + ' / ' + total + '</span>' +
+          '</div>';
+        stage.appendChild(card);
+        card.style.position = 'absolute'; /* collapsed until active */
+      });
+    }
+
+    /* Build dot indicators */
+    function buildDots() {
+      for (var i = 0; i < total; i++) {
+        var d = document.createElement('button');
+        d.className = 'dyk-dot';
+        d.setAttribute('aria-label', 'Fact ' + (i + 1));
+        d.dataset.idx = i;
+        d.addEventListener('click', function () { goTo(parseInt(this.dataset.idx)); });
+        dotsEl.appendChild(d);
+      }
+    }
+
+    /* Activate a card by index */
+    function showCard(idx) {
+      /* Deactivate current */
+      var prev = stage.querySelector('.dyk-card.active');
+      if (prev) {
+        prev.classList.remove('active');
+        var _p = prev;
+        setTimeout(function () {
+          if (!_p.classList.contains('active')) _p.style.position = 'absolute';
+        }, 520);
+      }
+
+      current = ((idx % total) + total) % total;
+      var card = document.getElementById('dyk-card-' + current);
+      if (card) {
+        card.style.position = 'relative';
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () { card.classList.add('active'); });
+        });
+      }
+
+      /* Sync dots */
+      dotsEl.querySelectorAll('.dyk-dot').forEach(function (d, i) {
+        d.classList.toggle('active', i === current);
+      });
+
+      /* Reset progress bar */
+      elapsed = 0;
+      fillEl.style.transition = 'none';
+      fillEl.style.width = '0%';
+      requestAnimationFrame(function () { fillEl.style.transition = ''; });
+    }
+
+    /* Navigate to a specific index and restart timer */
+    function goTo(idx) {
+      clearInterval(ticker); ticker = null;
+      showCard(idx);
+      if (!paused) startAuto();
+    }
+
+    /* Start the auto-advance ticker */
+    function startAuto() {
+      clearInterval(ticker);
+      elapsed = 0;
+      ticker = setInterval(function () {
+        elapsed += TICK_MS;
+        fillEl.style.width = Math.min((elapsed / INTERVAL_MS) * 100, 100) + '%';
+        if (elapsed >= INTERVAL_MS) { showCard(current + 1); startAuto(); }
+      }, TICK_MS);
+    }
+
+    /* Pause on hover */
+    section.addEventListener('mouseenter', function () { paused = true; clearInterval(ticker); ticker = null; });
+    section.addEventListener('mouseleave', function () { paused = false; startAuto(); });
+
+    /* Pause on touch */
+    section.addEventListener('touchstart', function () { clearInterval(ticker); ticker = null; }, { passive: true });
+    section.addEventListener('touchend',   function () { if (!paused) startAuto(); }, { passive: true });
+
+    /* Button controls */
+    document.getElementById('dykPrev').addEventListener('click', function () { paused = false; goTo(current - 1); });
+    document.getElementById('dykNext').addEventListener('click', function () { paused = false; goTo(current + 1); });
+
+    /* Keyboard controls (only when hovering the section) */
+    document.addEventListener('keydown', function (e) {
+      if (!section.matches(':hover')) return;
+      if (e.key === 'ArrowLeft')  { paused = false; goTo(current - 1); }
+      if (e.key === 'ArrowRight') { paused = false; goTo(current + 1); }
+    });
+
+    /* Init */
+    buildCards();
+    buildDots();
+    showCard(0);
+    startAuto();
+  }());
+  </script>
 
   <!-- ── FOOTER ── -->
   <footer>
