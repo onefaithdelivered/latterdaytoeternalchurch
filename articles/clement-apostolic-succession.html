@@ -369,6 +369,34 @@
     letter-spacing: 12px;
   }
 
+  .further-reading {
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(197,163,85,0.4);
+  }
+  .further-reading-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 8px;
+  }
+  .further-reading a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--burgundy);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--gold);
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .further-reading a:hover {
+    color: var(--gold-dark);
+    border-color: var(--burgundy);
+  }
+
 /* ─── SITE NAV BAR ─────────────────────────────────────── */
 .site-nav {
   position: sticky; top: 0; z-index: 9999;
@@ -812,6 +840,11 @@
   <div class="closing-verse">
     <p class="closing-verse-text">"And I tell you, you are Peter, and on this rock I will build my church, and the gates of hell shall not prevail against it."</p>
     <p class="closing-verse-ref">— Matthew 16:18</p>
+  </div>
+
+  <div class="further-reading">
+    <div class="further-reading-label">Further Reading</div>
+    <a href="https://www.churchfathers.org/apostolic-succession" target="_blank" rel="noopener">Apostolic Succession — The Church Fathers</a>
   </div>
 
   <div class="footer-ornament">✦ ✦ ✦</div>
