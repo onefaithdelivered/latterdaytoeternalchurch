@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources | One Faith Delivered</title>
+  <meta name="description" content="Curated video resources on LDS truth claims, Church history, Catholic doctrines, the Eucharist, and the papacy for Catholic apologetics and LDS comparative theology." />
+  <link rel="canonical" href="https://onefaithdelivered.org/resources.html" />
+  <meta property="og:title" content="Resources | One Faith Delivered" />
+  <meta property="og:description" content="Curated video resources on LDS truth claims, Church history, Catholic doctrines, the Eucharist, and the papacy." />
+  <meta property="og:url" content="https://onefaithdelivered.org/resources.html" />
+  <meta property="og:image" content="https://onefaithdelivered.org/android-chrome-512x512.png" />
+  <link rel="icon" href="favicons/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="favicons/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="96x96" href="favicons/favicon-96x96.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --gold:       #C9A84C;
+      --gold-light: #E8D08A;
+      --gold-dark:  #8B6914;
+      --crimson:    #7A1C2E;
+      --parchment:  #F5EDD8;
+      --parchment-dk:#E8D9B8;
+      --ink:        #1A0F05;
+      --ink-soft:   #3D2B1A;
+      --ivory:      #FAF6EE;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--ink);
+      color: var(--parchment);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, #3D1A08 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 10% 50%, #5C1A10 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 90% 50%, #3D1A08 0%, transparent 60%),
+        linear-gradient(to bottom, #0D0703, #1A0F05 40%, #0D0703);
+      z-index: -2;
+    }
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: linear-gradient(to bottom, rgba(13,7,3,0.98), rgba(13,7,3,0.92));
+      border-bottom: 1px solid var(--gold-dark);
+      padding: 0.75rem 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      backdrop-filter: blur(6px);
+    }
+    .nav-brand {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .nav-links { list-style: none; display: flex; gap: 2.5rem; }
+    .nav-links a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--parchment-dk);
+      text-decoration: none;
+      transition: color 0.25s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--gold);
+      transform: scaleX(0); transition: transform 0.25s; transform-origin: center;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links .active { color: var(--gold); }
+
+    /* ─── PAGE HERO ─── */
+    .page-hero {
+      text-align: center;
+      padding: 5rem 2rem 3rem;
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse 70% 50% at 50% 30%, rgba(122,28,46,0.15), transparent);
+    }
+    .eyebrow {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .page-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--parchment);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .page-subtitle {
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      color: var(--parchment-dk);
+      font-style: italic;
+    }
+
+    /* ─── ORNAMENTS & DIVIDERS ─── */
+    .ornament {
+      text-align: center;
+      color: var(--gold-dark);
+      font-size: 1.1rem;
+      letter-spacing: 8px;
+      padding: 1rem 0;
+    }
+    .divider {
+      max-width: 200px;
+      margin: 0 auto 2rem;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dark), transparent);
+    }
+
+    /* ─── FILTER BAR ─── */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0 2rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .filter-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.2rem;
+      border: 1px solid rgba(201,168,76,0.25);
+      background: transparent;
+      color: var(--parchment-dk);
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .filter-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+    .filter-btn.active {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(201,168,76,0.18);
+    }
+
+    /* ─── MAIN CONTENT ─── */
+    .resources-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem 6rem;
+    }
+
+    /* ─── TOPIC SECTION ─── */
+    .topic-section {
+      margin-bottom: 4rem;
+    }
+    .topic-header {
+      display: flex; align-items: center; gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .topic-header h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      color: var(--parchment);
+      white-space: nowrap;
+    }
+    .topic-header::after {
+      content: '';
+      flex: 1; height: 1px;
+      background: linear-gradient(to right, var(--gold-dark), transparent);
+    }
+
+    /* ─── RESOURCE CARDS ─── */
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.2rem;
+    }
+    .resource-card {
+      background: linear-gradient(160deg, rgba(201,168,76,0.05), rgba(26,15,5,0.4));
+      border: 1px solid rgba(201,168,76,0.15);
+      padding: 1.5rem 1.6rem;
+      display: flex; flex-direction: column; gap: 0.5rem;
+      transition: transform 0.25s, border-color 0.25s;
+      text-decoration: none;
+    }
+    .resource-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,168,76,0.4);
+    }
+    .resource-type {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border: 1px solid;
+      display: inline-block;
+      width: fit-content;
+    }
+    .resource-type.youtube { color: #E06060; border-color: rgba(224,96,96,0.4); }
+    .resource-type.website { color: #C5BCA0; border-color: rgba(197,188,160,0.4); }
+
+    .resource-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.92rem;
+      color: var(--parchment);
+      line-height: 1.5;
+    }
+    .resource-card p {
+      font-size: 0.9rem;
+      color: var(--parchment-dk);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .resource-link {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 0.3rem;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid rgba(201,168,76,0.2);
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .footer-brand {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .footer-tagline {
+      font-style: italic;
+      font-size: 0.9rem;
+      color: rgba(232,217,184,0.55);
+      margin-bottom: 1.5rem;
+    }
+    .footer-nav { list-style: none; display: flex; gap: 2rem; justify-content: center; margin-bottom: 2rem; }
+    .footer-nav a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--parchment-dk);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: var(--gold); }
+    .footer-copy { font-size: 0.8rem; color: rgba(232,217,184,0.3); }
+
+    /* ─── HAMBURGER BUTTON ─── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      z-index: 201;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--gold-light);
+      border-radius: 1px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .nav-hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+    .sidebar-overlay {
+      display: none;
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(13,7,3,0.6);
+      z-index: 150;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .sidebar-overlay.visible {
+      pointer-events: auto; opacity: 1;
+    }
+    .sidebar {
+      display: none;
+      position: fixed;
+      top: 0; right: 0;
+      width: 280px; max-width: 80vw; height: 100vh;
+      background: linear-gradient(170deg, #0D0703 0%, #1A0F05 100%);
+      border-left: 1px solid var(--gold-dark);
+      z-index: 200;
+      transform: translateX(100%);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow-y: auto;
+    }
+    .sidebar.open { transform: translateX(0); }
+    .sidebar-inner {
+      padding: 5rem 2rem 3rem;
+      display: flex; flex-direction: column; gap: 0.5rem;
+    }
+    .sidebar-brand {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      letter-spacing: 0.1em;
+    }
+    .sidebar a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--parchment-dk);
+      text-decoration: none;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+      transition: color 0.2s, padding-left 0.2s;
+      display: block;
+    }
+    .sidebar a:hover, .sidebar a:active {
+      color: var(--gold-light);
+      padding-left: 0.5rem;
+    }
+    .sidebar a.active { color: var(--gold); }
+    .sidebar-ornament {
+      text-align: center;
+      color: var(--gold-dark);
+      font-size: 1rem;
+      margin-top: 2rem;
+      letter-spacing: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .sidebar { display: block; }
+      .sidebar-overlay { display: block; }
+      .resource-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "url": "https://onefaithdelivered.org/resources.html",
+    "name": "Resources | One Faith Delivered",
+    "description": "Curated video resources on LDS truth claims, Church history, Catholic doctrines, the Eucharist, and the papacy.",
+    "isPartOf": { "@id": "https://onefaithdelivered.org/#website" },
+    "inLanguage": "en-US",
+    "dateModified": "2026-02-23",
+    "publisher": {
+      "@type": "Organization",
+      "name": "One Faith Delivered",
+      "url": "https://onefaithdelivered.org/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://onefaithdelivered.org/android-chrome-512x512.png"
+      }
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a class="nav-brand" href="index.html">One Faith Delivered</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#articles">Articles</a></li>
+      <li><a href="charts.html">Charts</a></li>
+      <li><a href="topics.html">Topics</a></li>
+      <li><a href="resources.html" class="active">Resources</a></li>
+    </ul>
+    <button class="nav-hamburger" aria-label="Open menu" onclick="toggleSidebar()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── PAGE HERO ── -->
+  <header class="page-hero">
+    <p class="eyebrow">Library &amp; Reference</p>
+    <h1 class="page-title">Resources</h1>
+    <p class="page-subtitle">
+      Videos, lectures, and interviews — organized by topic — for exploring
+      LDS truth claims and the case for the Catholic faith.
+    </p>
+  </header>
+
+  <div class="ornament" style="opacity:1;">&#10022;</div>
+  <div class="divider"></div>
+
+  <!-- ── FILTER BAR ── -->
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterTopic('all', this)">All Topics</button>
+    <button class="filter-btn" onclick="filterTopic('lds-truth-claims', this)">LDS Truth Claims</button>
+    <button class="filter-btn" onclick="filterTopic('great-apostasy', this)">Great Apostasy</button>
+    <button class="filter-btn" onclick="filterTopic('peter-papacy', this)">Peter &amp; the Papacy</button>
+    <button class="filter-btn" onclick="filterTopic('catholic-doctrines', this)">Catholic Doctrines</button>
+    <button class="filter-btn" onclick="filterTopic('mass-eucharist', this)">Mass &amp; the Eucharist</button>
+  </div>
+
+  <!-- ── RESOURCES ── -->
+  <div class="resources-wrapper">
+
+    <!-- ═══ LDS TRUTH CLAIMS & HISTORY ═══ -->
+    <div class="topic-section" data-topic="lds-truth-claims">
+      <div class="topic-header">
+        <h2>LDS Truth Claims &amp; History</h2>
+      </div>
+      <div class="resource-grid">
+
+        <div class="resource-card">
+          <span class="resource-type website">Website</span>
+          <h3>LDS Discussions</h3>
+          <p>A comprehensive, heavily sourced examination of LDS truth claims — including annotated versions of the Church's official Gospel Topics Essays.</p>
+          <a class="resource-link" href="https://www.ldsdiscussions.com/" target="_blank" rel="noopener">Visit Site &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>An Insider's View of Mormon Origins</h3>
+          <p>An interview with Grant Palmer exploring the historical origins of Mormonism from the inside. Mormon Stories Ep. 30–33.</p>
+          <a class="resource-link" href="https://www.mormonstories.org/mormon-stories-030-031-032-and-033-an-insiders-view-of-mormon-origins-an-interview-with-grant-palmer/" target="_blank" rel="noopener">Watch &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>An Egyptologist Translates the Book of Abraham</h3>
+          <p>Dr. Robert Ritner, a leading Egyptologist, provides his professional translation and analysis of the Book of Abraham papyri. Ep. 1339.</p>
+          <a class="resource-link" href="https://youtu.be/ORNYUyHg3pY?si=Vlpx2Gll7rwjw-qA" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>An Outsider's View of Book of Mormon Archaeology</h3>
+          <p>Dr. Michael Coe, a preeminent Mesoamerican archaeologist from Yale, evaluates the archaeological claims of the Book of Mormon. Ep. 268–270.</p>
+          <a class="resource-link" href="https://www.mormonstories.org/michael-coe-an-outsiders-view-of-book-of-mormon-archaeology/" target="_blank" rel="noopener">Watch &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>The Genesis of the CES Letter</h3>
+          <p>Jeremy Runnells tells the story behind the landmark document cataloguing historical and doctrinal problems with LDS truth claims. Ep. 480.</p>
+          <a class="resource-link" href="https://youtu.be/_nMadctXvMg?si=CHlYbGpS1ZwTOf_q" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>High-Ranking Leader Leaves Mormon Church</h3>
+          <p>Hans &amp; Birgitta Mattsson discuss the Second Anointing and their departure from a high-ranking position within the LDS Church. Ep. 1919.</p>
+          <a class="resource-link" href="https://youtu.be/Sfwh5gDUTRg?si=m_IJK-AZq702m2Kv" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>How the Book of Mormon Was Created</h3>
+          <p>Dan Vogel presents a detailed historical analysis of the composition process behind the Book of Mormon. Ep. 1056.</p>
+          <a class="resource-link" href="https://youtu.be/t78cXByyfpI?si=cuFnAAzKHKBiSnXp" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Sandra and Jerald Tanner — The Early Years</h3>
+          <p>Part 1 of a 4-part series with the pioneering researchers of LDS historical documents and their decades of scholarship. Ep. 472.</p>
+          <a class="resource-link" href="https://youtu.be/W64Ntsea6uw?si=mc2GpS0Ec_jLxRbL" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>The Making of Mormon Bishop Bill Reel</h3>
+          <p>Bill and Amanda Reel share the story of his journey as a Mormon bishop and the experiences that led to his faith transition. Ep. 1784.</p>
+          <a class="resource-link" href="https://youtu.be/ZQfX0KUh59k?si=zWzlQf7tGPvEjQFw" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>The Second Anointing — Mormonism's Top Secret Ritual</h3>
+          <p>Tom Phillips describes the LDS Second Anointing ceremony — one of the most closely guarded rituals in Mormonism. Ep. 1917.</p>
+          <a class="resource-link" href="https://youtu.be/zdS28ZVAsNM?si=dL34IWXewAm2qJQH" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Why The Book of Mormon Is America's Quran</h3>
+          <p>An examination of the parallels between the Book of Mormon and other 19th-century American religious texts.</p>
+          <a class="resource-link" href="https://youtu.be/LlZBx5y03Iw?si=Y4Y8DBZLsCz5Jyv6" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Freemasonry &amp; Mormonism: The Masonic Origins of the LDS Church</h3>
+          <p>Andrew Soncrant explores the historical connections between Masonic ritual and LDS temple ceremonies.</p>
+          <a class="resource-link" href="https://youtu.be/B8VCEBMo4B4?si=Tm8BKIW_hCxxEZlN" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>What Mormons Believe About the Trinity, the Father… and His Wife?</h3>
+          <p>An examination of LDS theology on the Godhead, including the doctrine of Heavenly Mother and the corporeal nature of God the Father.</p>
+          <a class="resource-link" href="https://youtu.be/Ab-g3WSirFU?si=EO9P7ZbLtLx8svnL" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>What Mormons Believe About Worshiping Jesus, the Spirit… and Adam?</h3>
+          <p>An exploration of LDS Christology, pneumatology, and the now-disavowed Adam-God doctrine.</p>
+          <a class="resource-link" href="https://youtu.be/_glDcrYcXaM?si=1RYQ0_6p6HFSZGDk" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Mormon Founder Joseph Smith Lied About Polygamy</h3>
+          <p>A documented examination of Joseph Smith's public denials of polygamy and the historical evidence to the contrary.</p>
+          <a class="resource-link" href="https://youtu.be/MbALsAN5OoY?si=szdrF3ipcCLmB4pK" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ GREAT APOSTASY & CHURCH HISTORY ═══ -->
+    <div class="topic-section" data-topic="great-apostasy">
+      <div class="topic-header">
+        <h2>Great Apostasy &amp; Church History</h2>
+      </div>
+      <div class="resource-grid">
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Are Mormons (and Protestants) Right About the "Great Apostasy?"</h3>
+          <p>An analysis of whether the early Church experienced a total apostasy as claimed by LDS theology — or whether the historical record shows otherwise.</p>
+          <a class="resource-link" href="https://www.youtube.com/watch?v=t7bfEcsNQig&list=PLQ8HUp4aeUmklW4HATclCuwKAE7HCSeSW&index=169" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Does This Prophecy Prove the Catholic Church's Indestructibility?</h3>
+          <p>A look at biblical prophecy and the historical case for the Church's unbroken continuity from Christ to the present.</p>
+          <a class="resource-link" href="https://www.youtube.com/watch?v=zj4wQQbpbVQ&list=PLQ8HUp4aeUmklW4HATclCuwKAE7HCSeSW&index=81&t=1644s" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>How This Church Father "Red Pilled" Me on the Catholic Church</h3>
+          <p>Part 1 of a personal account of how reading the Church Fathers led to conviction about the Catholic Church's historical claims. Ep. 44.</p>
+          <a class="resource-link" href="https://youtu.be/CK1_22AjdIQ?si=rvPWZm3h-Rx25oEf" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>The Shocking Truth About the Papacy</h3>
+          <p>Steve Ray discusses the historical evidence for the papacy on Pints with Aquinas. Episode #207.</p>
+          <a class="resource-link" href="https://youtu.be/_AcP_XzPopY?si=_9jpqPeI8uklObie" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>More Proof That the Early Church Was Catholic</h3>
+          <p>Additional historical and patristic evidence that the early Christian Church was recognizably Catholic in structure and doctrine.</p>
+          <a class="resource-link" href="https://youtu.be/mMASBV7bNrQ?si=cuoWcXOVTQiwGr3d" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Does the Great Apostasy Disprove Mormonism?</h3>
+          <p>An argument that the LDS doctrine of total apostasy, when examined historically, actually undermines rather than supports Mormon truth claims.</p>
+          <a class="resource-link" href="https://youtu.be/XGMQM3zo6Zc?si=78NE7ZAR8aQ0Z-Zc" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>History Proves Catholicism (Full Documentary)</h3>
+          <p>A full-length documentary tracing the historical evidence for the Catholic Church from the apostolic era through the centuries.</p>
+          <a class="resource-link" href="https://youtu.be/BB4YR9R74eg?si=IxQr_G1EQEUP3pdw" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Christ's Church Is Roman, Part 1</h3>
+          <p>Dr. Alan Fimister presents the case that the Church Christ founded is identifiable with the Roman Catholic Church. Ep. 19.</p>
+          <a class="resource-link" href="https://youtu.be/_fR-Y8wd7O0?si=-O32uGDXNSGa4Zwd" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ PETER & THE PAPACY ═══ -->
+    <div class="topic-section" data-topic="peter-papacy">
+      <div class="topic-header">
+        <h2>Peter &amp; the Papacy</h2>
+      </div>
+      <div class="resource-grid">
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Peter, the Rock, the Keys, and the Chair</h3>
+          <p>Steve Ray discusses the biblical and historical case for Peter's primacy — the Rock of Matthew 16:18, the Keys, and the Chair of Peter.</p>
+          <a class="resource-link" href="https://www.youtube.com/watch?v=faIB-sOBDKk&list=PLQ8HUp4aeUmklW4HATclCuwKAE7HCSeSW&index=92&t=3065s&pp=iAQBsAgC" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>The Jewish Roots of the Papacy</h3>
+          <p>Dr. Brant Pitre explores how the office of the papacy is rooted in Jewish biblical theology and the Davidic kingdom. Deep in History.</p>
+          <a class="resource-link" href="https://youtu.be/xl3pD4l0K5U?si=poKNd8cfRHR2S5h_" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ CATHOLIC DOCTRINES ═══ -->
+    <div class="topic-section" data-topic="catholic-doctrines">
+      <div class="topic-header">
+        <h2>Catholic Doctrines</h2>
+      </div>
+      <div class="resource-grid">
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>This Christian Teaching Sounds Heretical (But It's Why God Made Us…)</h3>
+          <p>An exploration of theosis — the early Church teaching on divinization — and how it differs from the LDS concept of exaltation.</p>
+          <a class="resource-link" href="https://youtu.be/-YdbY9OHdNg?si=X0aJX2bOCvO-7tzU" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Why The Trinity Wasn't Invented By Early Christians</h3>
+          <p>A defense of Trinitarian theology showing that the doctrine of the Trinity was not a post-apostolic invention but a faithful development of the apostolic deposit.</p>
+          <a class="resource-link" href="https://youtu.be/IcbnJyC4pA8?si=WSzulZSRNzd5sOn7" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Purgatory Is Biblical, Common Sense, and in a Parable of Jesus</h3>
+          <p>A biblical and logical case for the doctrine of purgatory, drawing from Scripture and the Church Fathers. Ep. 8.</p>
+          <a class="resource-link" href="https://youtu.be/hCuC1TFvnN8?si=d2u5lcjKnggH6eDA" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>What Jesus' Radical Marriage Teaching Reveals About the Church</h3>
+          <p>How Christ's teaching on the indissolubility of marriage illuminates the nature and authority of the Church.</p>
+          <a class="resource-link" href="https://youtu.be/knpjNwEO5Fk?si=U-o0MtVFZHG9Ujn0" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Celibacy in the Church</h3>
+          <p>An explanation and defense of the Catholic discipline of priestly celibacy — its biblical roots, historical development, and theological significance.</p>
+          <a class="resource-link" href="https://youtu.be/ehcoFOffIP4?si=a1B_d7xL3lOlHixl" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>The Road to Emmaus and the Mass</h3>
+          <p>How the Emmaus narrative in Luke 24 reveals the structure and meaning of the Catholic Mass.</p>
+          <a class="resource-link" href="https://youtu.be/Zh1DWQdC39A?si=GrySr95hMqPS_bgf" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>The Intercession of the Saints</h3>
+          <p>A biblical and historical case for the Catholic practice of asking the saints in heaven to intercede on our behalf.</p>
+          <a class="resource-link" href="https://youtu.be/uDY1h_RBNp0?si=Ql4bIsMpCSXvxBQg" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>The Holy Trinity</h3>
+          <p>An explanation of the central Christian doctrine of the Trinity — one God in three Persons — and how it is grounded in Scripture and Tradition.</p>
+          <a class="resource-link" href="https://youtu.be/XjuFeDa69YQ?si=kFckuhr8z7zWsu5b" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>A Woman Clothed with the Sun</h3>
+          <p>An exploration of the Marian imagery in Revelation 12 and its significance for Catholic Mariology.</p>
+          <a class="resource-link" href="https://youtu.be/I1GdAQ21zzQ?si=CRSZf2gYuT4Ahulu" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>The Immaculate Conception and the New Eve (Part 1 of 5)</h3>
+          <p>The first installment of a series examining the biblical typology behind the doctrine of the Immaculate Conception.</p>
+          <a class="resource-link" href="https://youtu.be/xg8kMPCGhz8?si=qm_4yT23eCwCAVS8" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Why the Bible Is Catholic: How Typology Comes Directly from Christ</h3>
+          <p>How the method of biblical typology — used by Christ and the Apostles themselves — points to distinctively Catholic doctrines. Ep. 60.</p>
+          <a class="resource-link" href="https://youtu.be/AL6J8WfLKrA?si=LObTRMapI9nb4hV5" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>4 Things Catholics Believe About Mary</h3>
+          <p>Tim Staples explains the four Marian dogmas and their biblical and historical foundations. Pints with Aquinas Ep. 211.</p>
+          <a class="resource-link" href="https://youtu.be/8u3bHk_FJmQ?si=bfjMAaGzAJdlPLcV" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ MASS & THE EUCHARIST ═══ -->
+    <div class="topic-section" data-topic="mass-eucharist">
+      <div class="topic-header">
+        <h2>Mass &amp; the Eucharist</h2>
+      </div>
+      <div class="resource-grid">
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>The Eucharist in the Early Church</h3>
+          <p>A look at how the earliest Christians understood and practiced the Eucharist, drawing from the Church Fathers and early liturgical texts.</p>
+          <a class="resource-link" href="https://www.youtube.com/watch?v=3alz3Et1Pv0&list=PLQ8HUp4aeUmklW4HATclCuwKAE7HCSeSW&index=116&pp=iAQBsAgC" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Jesus &amp; the Jewish Roots of the Eucharist</h3>
+          <p>Dr. Brant Pitre reveals how the Jewish Passover, the manna in the desert, and the Bread of the Presence all foreshadow the Eucharist.</p>
+          <a class="resource-link" href="https://www.youtube.com/watch?v=P45BHDRA7pU&list=PLQ8HUp4aeUmklW4HATclCuwKAE7HCSeSW&index=90&pp=iAQBsAgC" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>The Real Presence in Scripture</h3>
+          <p>A scriptural examination of the Real Presence of Christ in the Eucharist — from John 6 to the Last Supper accounts.</p>
+          <a class="resource-link" href="https://youtu.be/oCdLsrCR0Dc?si=ktfgEgYE0eh2J6B-" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>"Is the Mass Really a Sacrifice?"</h3>
+          <p>Steve Ray addresses the Protestant objection to the sacrificial nature of the Mass, drawing from Scripture and the early Church.</p>
+          <a class="resource-link" href="https://youtu.be/2X5U9os5TdI?si=ocEbfZ5R8f0Z8q-d" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Why Catholic Mass Is Essential to Christianity</h3>
+          <p>A comprehensive case that the Mass is not merely tradition but is completely biblical and essential to authentic Christian worship.</p>
+          <a class="resource-link" href="https://youtu.be/3hmbrnutUmY?si=F6XaCKADCEo7zDap" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>The Bible and the Sacrifice of the Mass</h3>
+          <p>Dr. Scott Hahn explores the biblical roots of the Mass at Franciscan University of Steubenville.</p>
+          <a class="resource-link" href="https://youtu.be/0uL_IAJWvX0?si=AqrH8nSidRl1stE7" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>The Catholic Mass and Eucharist: All There in the 2nd Century</h3>
+          <p>How St. Justin Martyr's description of Christian worship around AD 155 matches the structure of the Catholic Mass today. Ep. 40.</p>
+          <a class="resource-link" href="https://youtu.be/BPW8mlOcAuM?si=jNei8pawiS2LlKTK" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>Melchizedek Priesthood</h3>
+          <p>An examination of the Melchizedek priesthood in Scripture and how it relates to Christ's eternal priesthood and the Catholic understanding of Holy Orders.</p>
+          <a class="resource-link" href="https://youtu.be/Zih9pv74hpM?si=GFgXSUUA0RXC5UoL" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+        <div class="resource-card">
+          <span class="resource-type youtube">YouTube</span>
+          <h3>The Real Presence of Jesus in the Eucharist</h3>
+          <p>Bishop Robert Barron presents a compelling case for the Real Presence at the 2020 Religious Education Congress.</p>
+          <a class="resource-link" href="https://youtu.be/UzCPu_lEhe8?si=GrtkuTMOf71FNCfo" target="_blank" rel="noopener">Watch on YouTube &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- end resources-wrapper -->
+
+  <div class="divider"></div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-brand">One Faith Delivered</div>
+    <p class="footer-tagline">"Contend for the faith that was once for all delivered to the saints." &mdash; Jude 1:3</p>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#articles">Articles</a></li>
+      <li><a href="charts.html">Charts</a></li>
+      <li><a href="topics.html">Topics</a></li>
+      <li><a href="resources.html">Resources</a></li>
+    </ul>
+    <p class="footer-copy">&copy; 2026 One Faith Delivered. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function filterTopic(topic, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.topic-section').forEach(section => {
+        if (topic === 'all' || section.dataset.topic === topic) {
+          section.style.display = '';
+        } else {
+          section.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+  <!-- ── MOBILE SIDEBAR ── -->
+  <div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+      <div class="sidebar-brand">One Faith Delivered</div>
+      <a href="index.html">Home</a>
+      <a href="articles.html">Articles</a>
+      <a href="charts.html">Charts</a>
+      <a href="topics.html">Topics</a>
+      <a href="resources.html" class="active">Resources</a>
+      <div class="sidebar-ornament">&#10022; &#10022; &#10022;</div>
+    </div>
+  </aside>
+  <script>
+    function toggleSidebar() {
+      var btn = document.querySelector('.nav-hamburger');
+      var sidebar = document.querySelector('.sidebar');
+      var overlay = document.querySelector('.sidebar-overlay');
+      var isOpen = sidebar.classList.contains('open');
+      if (isOpen) {
+        sidebar.classList.remove('open');
+        btn.classList.remove('open');
+        overlay.classList.remove('visible');
+        document.body.style.overflow = '';
+      } else {
+        sidebar.classList.add('open');
+        btn.classList.add('open');
+        overlay.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar();
+    });
+  </script>
+
+</body>
+</html>
