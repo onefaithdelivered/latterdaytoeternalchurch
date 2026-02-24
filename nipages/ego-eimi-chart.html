@@ -448,9 +448,40 @@ body {
   .iam-theology { padding: 12px 16px; }
   .exodus-box { padding: 14px 16px; }
 }
+
+/* ── Back Button ── */
+.back-bar {
+  padding: 12px clamp(16px, 4vw, 40px);
+}
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream-faint, #8A8070);
+  text-decoration: none;
+  padding: 7px 14px;
+  border: 1px solid rgba(58,53,44,0.8);
+  border-radius: 3px;
+  background: rgba(31,28,24,0.6);
+  transition: all 0.25s ease;
+}
+.back-link:hover {
+  color: #DAA520;
+  border-color: rgba(58,53,44,1);
+  background: rgba(218,165,32,0.05);
+}
+
 </style>
 </head>
 <body>
+<div class="back-bar">
+  <a href="../biblical-reference-charts.html" class="back-link">← Biblical Reference Charts</a>
+</div>
 
 <div class="page-wrapper">
 <div class="outer-border">
