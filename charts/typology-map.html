@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Typology Map — Old Testament Shadows, New Testament Fulfillment</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --crimson: #8B1A1A;
+  --crimson-light: #A52A2A;
+  --dark-gold: #B8860B;
+  --gold: #DAA520;
+  --light-gold: #F0D060;
+  --parchment: #F5F0E8;
+  --parchment-dark: #E8E0D0;
+  --parchment-deep: #D4C9B0;
+  --ink: #2C1810;
+  --ink-light: #4A3728;
+  --ink-faint: #7A6A5A;
+
+  /* Category colors */
+  --cat-persons: #1B5E20;
+  --cat-events: #0D47A1;
+  --cat-objects: #6A1B9A;
+  --cat-institutions: #BF360C;
+  --cat-sacrifices: #8B1A1A;
+  --cat-covenants: #B8860B;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--parchment);
+  background-image:
+    radial-gradient(ellipse at 10% 20%, rgba(139,26,26,0.025) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 80%, rgba(218,165,32,0.03) 0%, transparent 50%);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.65;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+/* ── Outer Border ── */
+.outer-border {
+  border: 2px solid var(--dark-gold);
+  outline: 1px solid rgba(184,134,11,0.3);
+  outline-offset: 4px;
+  padding: 36px clamp(14px, 3.5vw, 44px);
+  background: rgba(255,255,255,0.3);
+  position: relative;
+}
+.outer-border::before, .outer-border::after {
+  content: '✦'; position: absolute; color: var(--dark-gold); font-size: 12px; opacity: 0.5;
+}
+.outer-border::before { top: 8px; left: 12px; }
+.outer-border::after { bottom: 8px; right: 12px; }
+
+/* ── Header ── */
+.header { text-align: center; margin-bottom: 36px; }
+.header-icon {
+  font-size: 36px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: var(--dark-gold);
+}
+.header-icon .cross { color: var(--crimson); font-size: 30px; }
+.header h1 {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  font-size: clamp(1.4rem, 3.6vw, 2.3rem);
+  font-weight: 700;
+  color: var(--crimson);
+  letter-spacing: 0.05em;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+.header .subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.65rem, 1.5vw, 0.82rem);
+  font-weight: 600;
+  color: var(--dark-gold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.header-rule {
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  margin: 12px auto; max-width: 420px;
+}
+.header-rule::before, .header-rule::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(to right, transparent, var(--dark-gold), transparent);
+}
+.header-rule span { color: var(--dark-gold); font-size: 13px; }
+
+.header .intro {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(0.88rem, 1.7vw, 1.02rem);
+  color: var(--ink-light);
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── Epigraph ── */
+.epigraph {
+  text-align: center;
+  margin-bottom: 32px;
+  padding: 16px 20px;
+  background: rgba(139,26,26,0.03);
+  border: 1px solid rgba(139,26,26,0.1);
+  border-radius: 4px;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.epigraph q {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--crimson);
+  line-height: 1.7;
+}
+.epigraph cite {
+  display: block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--dark-gold);
+  margin-top: 8px;
+}
+
+/* ── Filter Tabs ── */
+.filter-bar {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+  margin-bottom: 28px;
+}
+.filter-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.63rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 7px 14px;
+  border: 1.5px solid var(--parchment-deep);
+  border-radius: 3px;
+  background: white;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.filter-btn:hover { border-color: var(--dark-gold); color: var(--ink-light); }
+.filter-btn.active { color: white; border-color: transparent; box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
+.filter-btn[data-cat="all"].active { background: var(--crimson); }
+.filter-btn[data-cat="persons"].active { background: var(--cat-persons); }
+.filter-btn[data-cat="events"].active { background: var(--cat-events); }
+.filter-btn[data-cat="objects"].active { background: var(--cat-objects); }
+.filter-btn[data-cat="institutions"].active { background: var(--cat-institutions); }
+.filter-btn[data-cat="sacrifices"].active { background: var(--cat-sacrifices); }
+.filter-btn[data-cat="covenants"].active { background: var(--cat-covenants); }
+
+/* ── Stats ── */
+.stats-row {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px;
+  margin-bottom: 32px;
+  font-family: 'Cinzel', serif; font-size: 0.76rem;
+  letter-spacing: 0.05em; color: var(--ink-faint);
+}
+.stats-row .stat-num { font-weight: 700; color: var(--crimson); font-size: 0.86rem; }
+
+/* ── Column Headers ── */
+.column-headers {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  gap: 0;
+  margin-bottom: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--parchment);
+  padding: 10px 0 8px;
+  border-bottom: 2px solid var(--dark-gold);
+}
+.col-header {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: center;
+}
+.col-header.ot { color: var(--ink-light); }
+.col-header.nt { color: var(--crimson); }
+.col-header.arrow { color: var(--dark-gold); font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
+
+/* ── Typology Rows ── */
+.typology-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.typology-row {
+  display: grid;
+  grid-template-columns: 1fr 48px 1fr;
+  gap: 0;
+  border-bottom: 1px solid var(--parchment-deep);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  animation: rowFade 0.4s ease forwards;
+  opacity: 0;
+}
+.typology-row:hover {
+  background: rgba(255,255,255,0.5);
+}
+.typology-row.expanded {
+  background: rgba(255,255,255,0.6);
+  border-bottom-color: var(--dark-gold);
+}
+
+@keyframes rowFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── OT and NT cells ── */
+.ot-cell, .nt-cell {
+  padding: 16px 14px;
+}
+
+.cell-cat-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 2px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+.cell-cat-tag.persons { background: rgba(27,94,32,0.1); color: var(--cat-persons); }
+.cell-cat-tag.events { background: rgba(13,71,161,0.1); color: var(--cat-events); }
+.cell-cat-tag.objects { background: rgba(106,27,154,0.1); color: var(--cat-objects); }
+.cell-cat-tag.institutions { background: rgba(191,54,12,0.1); color: var(--cat-institutions); }
+.cell-cat-tag.sacrifices { background: rgba(139,26,26,0.1); color: var(--cat-sacrifices); }
+.cell-cat-tag.covenants { background: rgba(184,134,11,0.1); color: var(--cat-covenants); }
+
+.cell-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 3px;
+  line-height: 1.3;
+}
+.nt-cell .cell-title { color: var(--crimson); }
+
+.cell-ref {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+.cell-brief {
+  font-size: 0.84rem;
+  color: var(--ink-light);
+  margin-top: 4px;
+  line-height: 1.55;
+}
+
+/* ── Arrow Column ── */
+.arrow-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.arrow-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.arrow-line {
+  width: 2px;
+  height: 16px;
+  background: var(--dark-gold);
+  opacity: 0.5;
+}
+.arrow-symbol {
+  font-size: 18px;
+  color: var(--dark-gold);
+  line-height: 1;
+  transition: transform 0.3s ease;
+}
+.typology-row:hover .arrow-symbol {
+  transform: scale(1.3);
+  color: var(--crimson);
+}
+
+/* ── Expanded Detail Panel ── */
+.detail-panel {
+  grid-column: 1 / -1;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
+  padding: 0 14px;
+  background: linear-gradient(135deg, rgba(139,26,26,0.02), rgba(218,165,32,0.03));
+}
+.typology-row.expanded .detail-panel {
+  max-height: 800px;
+  padding: 18px 20px 22px;
+  border-top: 1px dashed var(--parchment-deep);
+}
+
+.detail-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.detail-col h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+}
+.detail-col.ot-detail h4 {
+  color: var(--ink-light);
+  border-bottom: 1.5px solid var(--parchment-deep);
+}
+.detail-col.nt-detail h4 {
+  color: var(--crimson);
+  border-bottom: 1.5px solid rgba(139,26,26,0.2);
+}
+
+.detail-col p {
+  font-size: 0.86rem;
+  color: var(--ink-light);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+.detail-col .detail-refs {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  font-style: italic;
+  margin-top: 4px;
+}
+
+.theology-box {
+  grid-column: 1 / -1;
+  margin-top: 12px;
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.6);
+  border-left: 4px solid var(--dark-gold);
+  border-radius: 0 5px 5px 0;
+}
+.theology-box .theo-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  margin-bottom: 6px;
+}
+.theology-box p {
+  font-size: 0.86rem;
+  color: var(--ink-light);
+  line-height: 1.7;
+}
+.theology-box strong {
+  color: var(--crimson);
+  font-weight: 600;
+}
+
+.apologetic-box {
+  grid-column: 1 / -1;
+  margin-top: 8px;
+  padding: 12px 18px;
+  background: rgba(139,26,26,0.04);
+  border-left: 4px solid var(--crimson);
+  border-radius: 0 5px 5px 0;
+}
+.apologetic-box .apol-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  margin-bottom: 6px;
+}
+.apologetic-box p {
+  font-size: 0.84rem;
+  color: var(--ink-light);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* ── Expand indicator ── */
+.expand-hint {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  text-align: center;
+  margin-top: 4px;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+.typology-row:hover .expand-hint { opacity: 1; }
+.typology-row.expanded .expand-hint-text::after { content: 'Click to collapse'; }
+.typology-row:not(.expanded) .expand-hint-text::after { content: 'Click to explore'; }
+
+/* ── Footer ── */
+.chart-footer {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 2px solid var(--dark-gold);
+  text-align: center;
+}
+.chart-footer p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  line-height: 1.7;
+  max-width: 680px;
+  margin: 0 auto 6px;
+}
+.chart-footer .site-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--dark-gold);
+  text-transform: uppercase;
+  margin-top: 14px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .page-wrapper { padding: 16px 10px 40px; }
+  .outer-border { padding: 20px 10px; }
+  .column-headers { grid-template-columns: 1fr 32px 1fr; }
+  .typology-row { grid-template-columns: 1fr 32px 1fr; }
+  .ot-cell, .nt-cell { padding: 12px 8px; }
+  .cell-title { font-size: 0.88rem; }
+  .cell-brief { font-size: 0.78rem; }
+  .detail-inner { grid-template-columns: 1fr; }
+  .filter-btn { padding: 5px 9px; font-size: 0.56rem; }
+  .arrow-symbol { font-size: 14px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+<div class="outer-border">
+
+  <div class="header">
+    <div class="header-icon">
+      <span>📜</span>
+      <span class="cross">☩</span>
+      <span>✝</span>
+    </div>
+    <h1>The Typology Map</h1>
+    <div class="subtitle">Old Testament Shadows · New Testament Fulfillment</div>
+    <div class="header-rule"><span>✦</span></div>
+    <p class="intro">
+      The New Testament is hidden in the Old; the Old Testament is revealed in the New.
+      Every page of Israel's Scripture casts a shadow that finds its substance in Jesus Christ and His Church.
+    </p>
+  </div>
+
+  <div class="epigraph">
+    <q>Do not think that I have come to abolish the Law or the Prophets; I have not come to abolish them but to fulfill them.</q>
+    <cite>— Matthew 5:17</cite>
+  </div>
+
+  <!-- Filters -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-cat="all">All Types</button>
+    <button class="filter-btn" data-cat="persons">Persons</button>
+    <button class="filter-btn" data-cat="events">Events</button>
+    <button class="filter-btn" data-cat="objects">Objects &amp; Places</button>
+    <button class="filter-btn" data-cat="institutions">Institutions</button>
+    <button class="filter-btn" data-cat="sacrifices">Sacrifices</button>
+    <button class="filter-btn" data-cat="covenants">Covenants</button>
+  </div>
+
+  <div class="stats-row">
+    <span><span class="stat-num" id="count-shown">30</span> typological pairs</span>
+    <span>·</span>
+    <span><span class="stat-num">6</span> categories</span>
+    <span>·</span>
+    <span style="font-style:italic; font-family:'Source Serif 4',serif;">click any row to expand</span>
+  </div>
+
+  <!-- Column Headers -->
+  <div class="column-headers">
+    <div class="col-header ot">☞ The Shadow (Old Testament)</div>
+    <div class="col-header arrow">→</div>
+    <div class="col-header nt">The Substance (New Testament) ☜</div>
+  </div>
+
+  <!-- Typology Rows -->
+  <div class="typology-list" id="typology-list"></div>
+
+  <div class="chart-footer">
+    <p>Typology (Greek: τύπος, "pattern" or "imprint") is the native hermeneutic of the New Testament authors themselves.
+       Paul explicitly calls Adam a τύπος of Christ (Rom 5:14). The Letter to the Hebrews is built entirely on typological argument.
+       This is not eisegesis imposed on the text — it is the interpretive method that Jesus Himself uses on the road to Emmaus
+       when He opens "all the Scriptures" concerning Himself (Lk 24:27).</p>
+    <p style="margin-top:10px">Catholic theology teaches that typology operates on four senses of Scripture:
+       the literal, the allegorical (typological), the moral (tropological), and the anagogical — 
+       a framework articulated by St. John Cassian (c. 360–435) and affirmed by the
+       Catechism of the Catholic Church §115–119.</p>
+    <div class="site-tag">One Faith Delivered — onefaithdelivered.com</div>
+  </div>
+
+</div>
+</div>
+
+<script>
+const types = [
+
+  // ═══════════════════════════════════════════════════
+  // PERSONS
+  // ═══════════════════════════════════════════════════
+  {
+    cat: "persons",
+    ot: {
+      title: "Adam",
+      ref: "Gen 1:26–2:25",
+      brief: "The first man, head of the human race, given dominion over creation.",
+      detail: "Adam was created in God's image as the head and representative of all humanity. His disobedience in the Garden brought sin and death into the world, fracturing the relationship between God and man. He was given Eve as his bride, formed from his side while he slept."
+    },
+    nt: {
+      title: "Christ, the New Adam",
+      ref: "Rom 5:12–21; 1 Cor 15:22, 45–49",
+      brief: "The head of redeemed humanity whose obedience restores what the first Adam lost.",
+      detail: "Paul explicitly calls Adam a \"type of the one who was to come\" (Rom 5:14). Where Adam's disobedience brought condemnation, Christ's obedience brings justification. Where Adam's sin brought death, Christ's sacrifice brings life. The parallelism is deliberate and total."
+    },
+    theology: "The Adam–Christ typology is the <strong>most explicitly stated typology in all of Scripture</strong> (Rom 5:14). It establishes the principle that God works through representative heads — Adam for fallen humanity, Christ for redeemed humanity. This has profound implications: salvation is not merely individual but <strong>corporate and covenantal</strong>, mediated through the New Adam who acts on behalf of His people — exactly as the Church teaches through the sacramental system.",
+    apologetic: "LDS theology holds that Adam's fall was \"a step in the right direction\" (2 Nephi 2:25) and \"not a sin.\" This directly contradicts Paul's typological argument in Romans 5, which depends on Adam's transgression being a real catastrophe that required an equally real redemption. If the Fall was a good thing, the entire Adam/Christ typology — and with it, Paul's soteriology — collapses."
+  },
+  {
+    cat: "persons",
+    ot: {
+      title: "Eve",
+      ref: "Gen 2:21–23; 3:15, 20",
+      brief: "The \"Mother of all the living,\" formed from Adam's side.",
+      detail: "Eve was drawn from Adam's side while he slept, becoming his bride and the mother of all humanity. In the Protoevangelium (Gen 3:15), God declares enmity between the woman's seed and the serpent — the first promise of a Redeemer."
+    },
+    nt: {
+      title: "Mary, the New Eve",
+      ref: "Lk 1:38; Jn 2:4, 19:26; Rev 12:1–6",
+      brief: "The Mother of the Redeemer, whose \"yes\" reverses Eve's \"no.\"",
+      detail: "Where Eve's disobedience at the tree brought death, Mary's obedient fiat at the Annunciation brings the Author of Life into the world. Jesus addresses Mary as \"Woman\" (Jn 2:4, 19:26) — deliberately connecting her to the \"woman\" of Genesis 3:15 and Revelation 12."
+    },
+    theology: "The Eve–Mary typology is <strong>among the earliest in Christian theology</strong>, articulated by St. Justin Martyr (c. 155 AD) and St. Irenaeus (c. 180 AD) — both writing within living memory of the Apostles. Irenaeus writes: \"The knot of Eve's disobedience was loosed by the obedience of Mary. For what the virgin Eve had bound fast through unbelief, this did the Virgin Mary set free through faith\" (Against Heresies III.22.4). This is not a medieval invention — it is <strong>second-century apostolic theology</strong>.",
+    apologetic: "LDS theology has no meaningful Mariology and no Eve–Mary typology. Mary is treated as a historical figure with no ongoing theological significance. Yet this typology is attested in the earliest post-apostolic writings and is woven into the very structure of John's Gospel (\"Woman, behold your son\"). The absence of Marian typology in LDS thought is a significant departure from the faith of the early Church."
+  },
+  {
+    cat: "persons",
+    ot: {
+      title: "Melchizedek",
+      ref: "Gen 14:18–20; Ps 110:4",
+      brief: "King of Salem, priest of God Most High, who offered bread and wine.",
+      detail: "Melchizedek appears without genealogy — no father, mother, beginning, or end recorded. He is both king and priest (unique in the OT). He blesses Abraham and receives tithes from him, and his offering is bread and wine."
+    },
+    nt: {
+      title: "Christ, Priest after the Order of Melchizedek",
+      ref: "Heb 5:5–10; 6:20–7:28",
+      brief: "Jesus holds an eternal, non-Levitical priesthood — offering bread and wine become His Body and Blood.",
+      detail: "The Letter to the Hebrews devotes more space to the Melchizedek typology than to almost any other argument. Christ's priesthood is superior to the Levitical priesthood because it is eternal, unrepeatable, and effective. He offers not animals but Himself — under the signs of bread and wine, the very elements Melchizedek used."
+    },
+    theology: "This typology is the <strong>scriptural foundation of the Catholic priesthood and the Eucharist</strong>. Melchizedek's offering of bread and wine foreshadows the Mass. Christ's priesthood is \"after the order of Melchizedek\" — not Levi — because it is <strong>eternal and universal</strong>, not tied to a single bloodline or temple. The ordained Catholic priest acts \"in the person of Christ\" (in persona Christi) as a minister of this Melchizedekian priesthood, offering bread and wine that become the Body and Blood of the eternal High Priest.",
+    apologetic: "The LDS Church claims to hold both the \"Aaronic\" and \"Melchizedek\" priesthoods, treating them as administrative orders conferred by ordination. But Hebrews argues the entire point is that the Melchizedek priesthood <strong>replaces and supersedes</strong> the Aaronic (Heb 7:11–12). There is one High Priest of this order: Jesus Christ. The Catholic understanding — where ordained priests participate ministerially in Christ's one priesthood — preserves Hebrews' argument. The LDS model of a separately conferred \"Melchizedek Priesthood\" held by millions fundamentally misreads the text."
+  },
+  {
+    cat: "persons",
+    ot: {
+      title: "Moses",
+      ref: "Deut 18:15–19; Ex 3–14",
+      brief: "The great lawgiver and mediator who led Israel out of Egypt through the Red Sea.",
+      detail: "Moses mediated the Old Covenant at Sinai, performed signs and wonders, fed the people with manna, interceded for Israel, and spoke with God face to face. He prophesied: \"The Lord your God will raise up for you a prophet like me from among your own brothers.\""
+    },
+    nt: {
+      title: "Christ, the New Moses",
+      ref: "Mt 5–7; Jn 1:17; Acts 3:22–23; Heb 3:1–6",
+      brief: "The definitive Prophet, Lawgiver, and Mediator of the New Covenant.",
+      detail: "Matthew's Gospel is structured around five great discourses — a deliberate parallel to the five books of Moses. Jesus gives the New Law from a mountain (Mt 5), feeds the multitude in the wilderness (Mt 14), and mediates the New Covenant in His blood. Peter explicitly identifies Jesus as the prophet Moses predicted (Acts 3:22)."
+    },
+    theology: "The Moses–Christ typology establishes the principle of <strong>progressive revelation</strong>: God does not contradict His earlier revelation but <strong>fulfills and surpasses it</strong>. \"The law was given through Moses; grace and truth came through Jesus Christ\" (Jn 1:17). The New Covenant does not abolish but perfects the Old — a Catholic hermeneutical principle with enormous implications for understanding how the Church relates to Israel and how the sacraments relate to Old Testament worship.",
+    apologetic: "LDS dispensationalism claims that the gospel was preached in its fullness to Adam and has been periodically lost and restored in identical form. This flatly contradicts the progressive Moses→Christ typology. If Adam already had the full gospel, then Moses' covenant was redundant, and Christ's \"fulfillment\" of the Law is meaningless. Catholic progressive revelation — where each covenant builds on and surpasses the last — preserves the coherence of both Testaments."
+  },
+  {
+    cat: "persons",
+    ot: {
+      title: "David, the Shepherd-King",
+      ref: "1 Sam 16–2 Sam; Ps 2, 89, 110",
+      brief: "The anointed king after God's own heart, promised an eternal throne.",
+      detail: "David was a shepherd who became king, an unlikely choice anointed by Samuel. God promised his dynasty would endure forever (2 Sam 7:12–16). He conquered Jerusalem, brought the Ark there, and established the liturgical worship of Israel. He was both king and (in a limited sense) priestly — wearing the ephod and eating the showbread."
+    },
+    nt: {
+      title: "Christ, Son of David, Eternal King",
+      ref: "Mt 1:1; Lk 1:32–33; Rev 5:5; 22:16",
+      brief: "The Messiah who inherits David's throne forever — the \"Root and Offspring of David.\"",
+      detail: "Jesus is repeatedly identified as \"Son of David\" in the Gospels. Gabriel tells Mary: \"The Lord God will give to him the throne of his father David, and he will reign over the house of Jacob forever\" (Lk 1:32–33). The Davidic covenant finds its permanent fulfillment not in a political throne but in the eternal reign of Christ and His Church."
+    },
+    theology: "The Davidic typology is critical for understanding <strong>the Church as a kingdom</strong> with visible structure, officers, and authority. David's kingdom had a prime minister who held \"the key of the house of David\" (Is 22:22) — a role Jesus explicitly assigns to Peter (Mt 16:19). The <strong>Davidic queen mother</strong> (the Gebirah) held an official intercessory role — a type of Mary's intercessory role in the Church.",
+    apologetic: "The LDS claim that the Church was wholly lost and had to be \"restored\" in 1830 contradicts God's promise that David's throne would endure \"forever\" (2 Sam 7:16) and that Christ's kingdom would \"never be destroyed\" (Dan 2:44). If the Church — which is Christ's kingdom — ceased to exist, then the Davidic covenant failed, and the angel Gabriel lied to Mary."
+  },
+  {
+    cat: "persons",
+    ot: {
+      title: "Jonah",
+      ref: "Jonah 1:17–2:10",
+      brief: "The reluctant prophet, three days in the belly of the great fish.",
+      detail: "Jonah spent three days and three nights in the belly of the great fish before being brought forth alive — a descent into the depths and emergence that foreshadowed death and resurrection."
+    },
+    nt: {
+      title: "Christ, Three Days in the Tomb",
+      ref: "Mt 12:39–41; Lk 11:29–32",
+      brief: "\"For just as Jonah was three days and three nights in the belly of the great fish, so will the Son of Man be three days and three nights in the heart of the earth.\"",
+      detail: "Jesus Himself explicitly identifies this typology. It is the only \"sign\" He promises to a wicked and adulterous generation — the sign of His death, descent, and Resurrection."
+    },
+    theology: "This is one of the typologies <strong>identified by Jesus Himself</strong>, making it impossible to dismiss typological reading as a later Church invention. Christ teaches us how to read the Old Testament: as a book of patterns that find their resolution in His Paschal Mystery.",
+    apologetic: null
+  },
+  {
+    cat: "persons",
+    ot: {
+      title: "Isaac",
+      ref: "Gen 22:1–19",
+      brief: "The beloved son, offered by his father on Mount Moriah.",
+      detail: "Abraham is commanded to sacrifice his only beloved son on Mount Moriah. Isaac carries the wood of the sacrifice up the mountain himself. Abraham tells him: \"God will provide for himself the lamb for a burnt offering, my son.\" At the last moment, a ram is provided in Isaac's place."
+    },
+    nt: {
+      title: "Christ, the Beloved Son Sacrificed",
+      ref: "Jn 3:16; Heb 11:17–19; Rom 8:32",
+      brief: "The Father's only-begotten Son, offered on the same mountain, carrying the wood of His cross.",
+      detail: "The parallels are extraordinary: a beloved only son, a father's willing offering, the son carrying the wood of sacrifice up a mountain (Moriah — the future Temple Mount and Golgotha's vicinity). But where Isaac was spared, Christ was not — \"He who did not spare his own Son but gave him up for us all\" (Rom 8:32)."
+    },
+    theology: "The Aqedah (Binding of Isaac) is one of the richest typologies in Scripture. The author of Hebrews says Abraham received Isaac back \"as a type\" (ἐν παραβολῇ, Heb 11:19). Every element maps: the beloved son, the obedient willingness, the wood carried to the mountain, the site itself. The ram caught in the thicket foreshadows <strong>substitutionary sacrifice</strong> — which finds its ultimate expression in the Lamb of God who takes away the sins of the world.",
+    apologetic: null
+  },
+  {
+    cat: "persons",
+    ot: {
+      title: "Joseph (Son of Jacob)",
+      ref: "Gen 37–50",
+      brief: "Betrayed by his brothers, exalted to save the nations.",
+      detail: "Joseph was the beloved son, betrayed by his own brothers for silver, left for dead, and descended into a pit/prison — only to be raised to the right hand of Pharaoh, where he saves both the Gentile world and the very brothers who betrayed him. He provides bread during the famine."
+    },
+    nt: {
+      title: "Christ, Betrayed and Exalted Savior",
+      ref: "Mt 26:15; Phil 2:8–11; Acts 7:9–14",
+      brief: "Betrayed by His own, descending to death, raised to God's right hand to save Jew and Gentile alike.",
+      detail: "The parallels are extensive: sold for silver, betrayed by those closest to Him, humiliated before being exalted, providing bread (the Eucharist) for a starving world, forgiving those who betrayed Him, and ultimately reconciling all peoples."
+    },
+    theology: "Joseph's story is the <strong>most extended christological type in Genesis</strong>. The Church Fathers — particularly St. Ambrose and St. Ephrem the Syrian — saw in Joseph a comprehensive preview of Christ's Passion, exaltation, and universal saving mission. Joseph's role as provider of bread to all nations is a powerful Eucharistic type.",
+    apologetic: null
+  },
+
+  // ═══════════════════════════════════════════════════
+  // EVENTS
+  // ═══════════════════════════════════════════════════
+  {
+    cat: "events",
+    ot: {
+      title: "The Exodus and Red Sea Crossing",
+      ref: "Ex 14:15–31",
+      brief: "Israel passes through water from slavery to freedom, led by Moses.",
+      detail: "The Israelites were enslaved to Pharaoh. God sent plagues, slew the firstborn of Egypt, and delivered Israel through the Red Sea — passing through water from death to life, from bondage to freedom, with their enemies destroyed behind them."
+    },
+    nt: {
+      title: "Baptism — Passing from Death to Life",
+      ref: "1 Cor 10:1–4; Rom 6:3–4; 1 Pet 3:20–21",
+      brief: "Christians pass through the waters of baptism from slavery to sin into the freedom of the children of God.",
+      detail: "Paul explicitly identifies the Red Sea crossing as a baptismal type: \"Our fathers were all baptized into Moses in the cloud and in the sea\" (1 Cor 10:2). Peter connects the Flood and baptism as parallel saving events (1 Pet 3:20–21). Baptism is the New Exodus — liberation from the tyranny of sin and Satan."
+    },
+    theology: "This is one of the most important typologies for the Catholic sacramental system. Paul does not say the Red Sea crossing <strong>merely illustrates</strong> baptism — he says they \"were baptized\" through it. The event <strong>really happened</strong>, and it <strong>really prefigured</strong> the sacrament. This establishes that <strong>God works through physical, material signs</strong> — water, bread, oil, the laying on of hands — to accomplish spiritual realities. Sacramental theology is born from typology.",
+    apologetic: "LDS theology affirms baptism by immersion but denies baptismal regeneration — the belief that baptism itself effects a real spiritual change. Yet Paul's typology (1 Cor 10:1–4) and Peter's explicit statement that \"baptism now saves you\" (1 Pet 3:21) demand that the sacrament actually accomplishes what it signifies. The Catholic position takes the typology — and the apostolic teaching — at full strength."
+  },
+  {
+    cat: "events",
+    ot: {
+      title: "The Fall of Adam and Eve",
+      ref: "Gen 3:1–24",
+      brief: "Disobedience at a tree in a garden, bringing death to all.",
+      detail: "In a garden, at a tree, the first couple ate the forbidden fruit, yielding to the serpent's temptation. The result: expulsion from paradise, broken communion with God, and death entering the human race."
+    },
+    nt: {
+      title: "The Crucifixion — Obedience on a Tree in a Garden",
+      ref: "Jn 19:41; Gal 3:13; 1 Pet 2:24; Rev 22:2",
+      brief: "Obedience on the tree of the cross, in a garden, undoing the Fall and restoring life.",
+      detail: "Christ is crucified on a \"tree\" (Acts 5:30, 10:39). John notes the tomb was \"in a garden\" (Jn 19:41). The tree of death becomes the tree of life. Where Adam's disobedience brought condemnation, Christ's obedience on the cross brings justification (Rom 5:18)."
+    },
+    theology: "The ancient hymn <strong>Vexilla Regis</strong> (\"The Royal Banners\") captures this: the cross is the new Tree of Life in the new Garden. Every element is reversed: garden for garden, tree for tree, disobedience for obedience, death for life, the serpent's triumph for the serpent's crushing (Gen 3:15). The <strong>Crucifix</strong> in Catholic churches is not morbid — it is the Tree of Life restored.",
+    apologetic: null
+  },
+  {
+    cat: "events",
+    ot: {
+      title: "Noah's Flood and the Ark",
+      ref: "Gen 6–9",
+      brief: "The world destroyed by water; eight souls saved through the Ark.",
+      detail: "The floodwaters destroyed the corrupt world while Noah and his family were saved by entering the Ark — a vessel of wood, sealed with pitch, containing all the means of new life."
+    },
+    nt: {
+      title: "Baptism and the Church",
+      ref: "1 Pet 3:20–21; Mt 16:18",
+      brief: "Salvation through water in the Ark of the Church.",
+      detail: "Peter draws the explicit parallel: \"Baptism, which corresponds to this, now saves you\" (1 Pet 3:21). The Ark is a type of the Church — the visible vessel of salvation through which believers pass safely through the waters of judgment into the new creation."
+    },
+    theology: "The Fathers universally saw the Ark as a type of the <strong>Church</strong>. Cyprian of Carthage (c. 250 AD) wrote: \"He cannot have God for his Father who does not have the Church for his Mother\" — and the Ark was his primary metaphor. Salvation is not a private, invisible transaction but entrance into a <strong>visible community</strong> (the Ark/Church) through a <strong>visible rite</strong> (the waters/Baptism). The wood of the Ark also foreshadows the wood of the Cross.",
+    apologetic: "If the Church is the Ark of salvation — and Peter explicitly links the Flood to baptism — then a total apostasy (the Church sinking) would mean God broke His promise. The Ark survived the Flood. The Church survives history. \"The gates of hell shall not prevail against it\" (Mt 16:18)."
+  },
+  {
+    cat: "events",
+    ot: {
+      title: "The Tower of Babel",
+      ref: "Gen 11:1–9",
+      brief: "Humanity's languages confused; the peoples scattered.",
+      detail: "At Babel, united humanity attempted to build a tower to heaven by their own effort. God confused their language and scattered them across the earth — a division of tongues resulting from pride."
+    },
+    nt: {
+      title: "Pentecost — The Reversal of Babel",
+      ref: "Acts 2:1–12",
+      brief: "The Holy Spirit reunites the scattered nations through a miracle of tongues.",
+      detail: "At Pentecost, the apostles speak and every nation hears in its own language — the exact reverse of Babel. What pride divided, the Holy Spirit reunites. The Church is born as a universal (\"catholic\") community, gathering all peoples into one Body."
+    },
+    theology: "Pentecost is Babel reversed. The scattering of the nations is healed by the <strong>gathering of the Church</strong>. This typology demonstrates that the Church is not a local or ethnic institution but <strong>inherently universal (catholic)</strong> from its very first day. The miracle of tongues at Pentecost is a sign of the Church's mission to every nation, tribe, and language — a mission that requires a <strong>visible, unified, worldwide</strong> communion.",
+    apologetic: null
+  },
+  {
+    cat: "events",
+    ot: {
+      title: "The Giving of the Law at Sinai",
+      ref: "Ex 19–20",
+      brief: "Fifty days after Passover, God gives the Law on the mountain amid fire and wind.",
+      detail: "Fifty days after the first Passover in Egypt, Israel arrives at Sinai. God descends in fire, wind, and thunder. Moses ascends the mountain and receives the Law — the constitution of the Old Covenant people."
+    },
+    nt: {
+      title: "Pentecost — The New Law Written on Hearts",
+      ref: "Acts 2:1–4; Jer 31:33; 2 Cor 3:3–6",
+      brief: "Fifty days after the true Passover (the Crucifixion), the Holy Spirit descends in fire and wind.",
+      detail: "Pentecost occurs fifty days after Easter — mirroring Sinai's timing exactly. Instead of law on stone tablets, the Spirit writes the New Covenant on human hearts (Jer 31:33). Instead of one mountain, the Spirit fills the whole upper room and goes out to all nations."
+    },
+    theology: "The chronological precision is stunning and deliberate. Jewish tradition already celebrated Pentecost (Shavuot) as the anniversary of the Sinai covenant. The Holy Spirit's descent on <strong>this specific feast day</strong> declares that the New Covenant has arrived — not abolishing Sinai but fulfilling it, replacing the external law of stone with the internal law of the Spirit. This is <strong>progressive revelation</strong> at its most explicit.",
+    apologetic: null
+  },
+
+  // ═══════════════════════════════════════════════════
+  // OBJECTS & PLACES
+  // ═══════════════════════════════════════════════════
+  {
+    cat: "objects",
+    ot: {
+      title: "The Manna in the Wilderness",
+      ref: "Ex 16:4–36; Ps 78:24–25",
+      brief: "Bread from heaven, gathered daily, sustaining Israel in the desert.",
+      detail: "God fed Israel with bread from heaven for forty years. It appeared each morning, was to be gathered daily, could not be hoarded, and was called \"the bread of angels.\" A golden jar of manna was placed in the Ark of the Covenant."
+    },
+    nt: {
+      title: "The Holy Eucharist — The True Bread from Heaven",
+      ref: "Jn 6:31–58; 1 Cor 10:16–17",
+      brief: "\"I am the living bread that came down from heaven. Whoever eats this bread will live forever.\"",
+      detail: "In John 6, Jesus explicitly links the manna to Himself and then surpasses it: \"Your fathers ate the manna in the wilderness, and they died. This is the bread that comes down from heaven, so that one may eat of it and not die. I am the living bread… the bread that I will give for the life of the world is my flesh\" (Jn 6:49–51)."
+    },
+    theology: "The manna typology is the <strong>strongest biblical argument for the Real Presence of Christ in the Eucharist</strong>. Jesus does not say the Eucharist is \"like\" manna — He says it <strong>surpasses</strong> it. The manna was real bread that really sustained life. The fulfillment must be <strong>greater than the type</strong>: if the manna was literal bread, the Eucharist cannot be merely a symbol. It must be the literal Body and Blood of Christ, or the antitype is inferior to the type — which is typologically impossible.",
+    apologetic: "LDS communion uses bread and water (not wine) and is understood as a memorial with no Real Presence. But the typological argument is devastating: the manna was <strong>real food</strong> that <strong>really sustained</strong> Israel. If the Eucharist is merely symbolic, then the fulfillment is <strong>less real</strong> than the shadow. Catholic theology — where the Eucharist truly is Christ's Body and Blood — is the only position that honors the typological principle that the substance always exceeds the shadow."
+  },
+  {
+    cat: "objects",
+    ot: {
+      title: "The Bronze Serpent",
+      ref: "Num 21:4–9",
+      brief: "A serpent lifted up on a pole; all who looked upon it were healed.",
+      detail: "When venomous serpents plagued Israel, God commanded Moses to make a bronze serpent and set it on a pole. Anyone bitten who looked at the serpent would live. The cure came not from the object itself but from the faith it required."
+    },
+    nt: {
+      title: "Christ Lifted Up on the Cross",
+      ref: "Jn 3:14–15; 12:32",
+      brief: "\"As Moses lifted up the serpent in the wilderness, so must the Son of Man be lifted up, that whoever believes in him may have eternal life.\"",
+      detail: "Jesus Himself draws this typology in His conversation with Nicodemus, immediately before the most famous verse in Scripture (Jn 3:16). The bronze serpent is the image of the curse (the serpent = sin) lifted up so that those who gaze upon it in faith are saved."
+    },
+    theology: "Christ, who \"knew no sin,\" was <strong>\"made to be sin\"</strong> on the cross (2 Cor 5:21) — just as the bronze serpent bore the image of the very thing that was killing Israel. Looking upon the Crucified One in faith brings healing and eternal life. This typology also validates the Catholic use of <strong>crucifixes and sacred images</strong>: the bronze serpent was a physical object used by God as an instrument of salvation through faith. Visual, material signs are God's chosen method.",
+    apologetic: "LDS meetinghouses typically have no crosses, crucifixes, or images of the Passion. Yet Jesus' own typological argument in John 3 affirms that a physical sign (the bronze serpent) was God's appointed means of grace — exactly the sacramental principle that underlies Catholic use of crucifixes, icons, and sacred images."
+  },
+  {
+    cat: "objects",
+    ot: {
+      title: "The Ark of the Covenant",
+      ref: "Ex 25:10–22; 2 Sam 6",
+      brief: "The gold-covered chest containing the Law, manna, and Aaron's rod — overshadowed by God's presence.",
+      detail: "The Ark contained three items: the stone tablets of the Law (the Word of God), the golden jar of manna (bread from heaven), and Aaron's budded rod (sign of the true priesthood). The glory of God (the Shekinah) overshadowed it."
+    },
+    nt: {
+      title: "The Blessed Virgin Mary, Ark of the New Covenant",
+      ref: "Lk 1:35, 39–56; Rev 11:19–12:1",
+      brief: "Mary carried within her body the Word made flesh, the Bread of Life, and the eternal High Priest.",
+      detail: "Luke deliberately parallels Mary's visitation to Elizabeth with David's transfer of the Ark (2 Sam 6): both journeys go to the hill country of Judah; David leaps before the Ark as John leaps in Elizabeth's womb; David cries \"How can the Ark come to me?\" as Elizabeth cries \"Why is the Mother of my Lord coming to me?\"; the Ark stays three months — Mary stays three months."
+    },
+    theology: "The parallels are too precise and numerous to be coincidental — Luke is a deliberate literary craftsman. Mary is the <strong>Ark of the New Covenant</strong> because she carries in her womb the fulfillment of everything the old Ark contained: the <strong>Word of God</strong> incarnate (cf. the tablets), the <strong>Bread of Life</strong> (cf. the manna), and the <strong>eternal High Priest</strong> (cf. Aaron's rod). The Holy Spirit \"overshadows\" her (Lk 1:35) — the same Greek word (ἐπισκιάζω) used for the cloud overshadowing the Ark in the Septuagint.",
+    apologetic: "If the original Ark — a wooden box — was treated with extraordinary reverence (Uzzah was struck dead for touching it in 2 Sam 6:7), how much more the living Ark who carried God Himself? Catholic doctrines of Mary's perpetual virginity, sinlessness, and bodily assumption follow logically from her typological identity as the Ark. LDS theology has no framework for these connections because it does not practice typological exegesis."
+  },
+  {
+    cat: "objects",
+    ot: {
+      title: "Jacob's Ladder",
+      ref: "Gen 28:10–17",
+      brief: "A ladder reaching from earth to heaven, with angels ascending and descending.",
+      detail: "Jacob dreams of a ladder (or stairway) set up from earth to heaven, with the angels of God ascending and descending on it. The Lord stands above it and reaffirms the covenant. Jacob names the place Bethel — \"House of God\" — and says, \"This is the gate of heaven.\""
+    },
+    nt: {
+      title: "Christ, the True Ladder; The Church, the House of God",
+      ref: "Jn 1:51; 1 Tim 3:15; Heb 10:19–22",
+      brief: "\"You will see heaven opened, and the angels of God ascending and descending on the Son of Man.\"",
+      detail: "Jesus explicitly claims to be the fulfillment of Jacob's Ladder (Jn 1:51). He is the bridge between heaven and earth, the mediator through whom angels minister. The \"House of God\" and \"gate of heaven\" find their fulfillment in the Church (1 Tim 3:15: \"the church of the living God, the pillar and foundation of the truth\")."
+    },
+    theology: "Christ is the <strong>sole mediator</strong> between God and man (1 Tim 2:5) — He is the Ladder. But the Church is the <strong>\"House of God\"</strong> (Bethel) where this mediation is accessed through the sacraments. The liturgy is the \"gate of heaven\" — the point where the earthly Church participates in heavenly worship (Heb 12:22–24). Every Catholic Mass is a moment where the veil thins and the Ladder is present.",
+    apologetic: null
+  },
+  {
+    cat: "objects",
+    ot: {
+      title: "The Rock that Gave Water",
+      ref: "Ex 17:1–7; Num 20:2–13",
+      brief: "Moses strikes the rock and water flows for Israel in the desert.",
+      detail: "Twice in the wilderness, water flows from rock at Moses' action. The first time, God tells Moses to strike the rock. The second time, God tells Moses to speak to it — but Moses strikes it instead (for which he is barred from the Promised Land)."
+    },
+    nt: {
+      title: "Christ, the Spiritual Rock",
+      ref: "1 Cor 10:4; Jn 7:37–39; 19:34",
+      brief: "\"They drank from the spiritual Rock that followed them, and the Rock was Christ.\"",
+      detail: "Paul explicitly identifies the Rock as Christ. The water flowing from the rock prefigures the living water that Christ gives (Jn 7:37–39) and the water that flows from His pierced side on the cross (Jn 19:34) — traditionally understood as Baptism."
+    },
+    theology: "Paul does not say the rock <strong>symbolized</strong> Christ — he says <strong>\"the Rock was Christ\"</strong> (1 Cor 10:4). This is typological realism: the Old Testament event genuinely participates in the reality it foreshadows. The water from the rock = the living water of baptism flowing from Christ's wounded side. This is the same sacramental realism that the Church applies to the Eucharist: the bread <strong>is</strong> His body, the wine <strong>is</strong> His blood.",
+    apologetic: null
+  },
+
+  // ═══════════════════════════════════════════════════
+  // INSTITUTIONS
+  // ═══════════════════════════════════════════════════
+  {
+    cat: "institutions",
+    ot: {
+      title: "The Temple in Jerusalem",
+      ref: "1 Kgs 6–8; 2 Chr 5–7",
+      brief: "The dwelling place of God's presence among His people, the center of sacrificial worship.",
+      detail: "Solomon's Temple was the place where heaven and earth met — where God's Shekinah glory dwelt, where sacrifices were offered, where the High Priest entered the Holy of Holies once a year. It was the center of Israel's worship and identity."
+    },
+    nt: {
+      title: "The Body of Christ — Temple of the Church",
+      ref: "Jn 2:19–21; 1 Cor 3:16–17; Eph 2:19–22; 1 Pet 2:4–5",
+      brief: "\"Destroy this temple, and in three days I will raise it up.\" He spoke of the temple of His body.",
+      detail: "Jesus replaces the Temple with Himself. His body is the true Temple — the place where God and man meet. By extension, the Church as the Body of Christ becomes the living Temple (1 Cor 3:16), and each baptized Christian is a \"living stone\" in this spiritual house (1 Pet 2:5)."
+    },
+    theology: "The Temple typology is foundational for Catholic ecclesiology. The Church is not merely a voluntary gathering of believers — it is the <strong>living Temple</strong> where God truly dwells. The altar, the tabernacle, the sanctuary architecture of Catholic churches are not nostalgic decoration but <strong>typological continuity</strong>: the same God who dwelt in the Holy of Holies now dwells in the Eucharistic tabernacle. The veil was torn (Mt 27:51) not to abolish sacred space but to <strong>extend it</strong> — every Catholic church is a new Holy of Holies because Christ is sacramentally present there.",
+    apologetic: "LDS theology builds literal temples with elaborate rituals that have no precedent in the New Testament or the early Church. Catholic theology takes the opposite approach: the entire Temple system is <strong>fulfilled in Christ's body and the Church</strong> (Jn 2:19–21). We don't rebuild the shadow — we live in the substance."
+  },
+  {
+    cat: "institutions",
+    ot: {
+      title: "The Levitical Priesthood",
+      ref: "Ex 28–29; Lev 8–10; Num 3–4",
+      brief: "A hereditary priesthood set apart to offer sacrifice and mediate between God and Israel.",
+      detail: "The Levitical priests were consecrated by anointing and investiture, offered animal sacrifices daily, maintained the Temple, and served as mediators. The High Priest alone entered the Holy of Holies once a year on the Day of Atonement."
+    },
+    nt: {
+      title: "The Ordained Christian Priesthood in Christ",
+      ref: "Heb 5:1–10; 7:11–28; Lk 22:19; 2 Tim 1:6; Tit 1:5",
+      brief: "Christ the eternal High Priest; ordained ministers who act in His person to perpetuate His sacrifice.",
+      detail: "Hebrews argues that Christ fulfills and surpasses the Levitical priesthood — He is both Priest and Victim. He commands the Apostles to \"do this\" (Lk 22:19), ordains them by breathing the Spirit (Jn 20:22), and they in turn ordain successors by the laying on of hands (2 Tim 1:6, Tit 1:5). The ministerial priesthood participates in Christ's one priesthood."
+    },
+    theology: "The Catholic priesthood is neither a return to the Levitical system nor an innovation — it is the <strong>typological fulfillment</strong> of the Old Testament priesthood in the person of Christ. Priests do not offer new sacrifices; they make present the one sacrifice of Calvary in the Eucharist. The laying on of hands (ordination) creates an unbroken chain from the Apostles to today — <strong>apostolic succession</strong> is the New Covenant form of priestly lineage.",
+    apologetic: "The LDS priesthood model claims two separate orders (Aaronic and Melchizedek) conferred on all worthy male members. But Hebrews 7:11–12 argues that the Aaronic priesthood was <strong>abolished and replaced</strong>, not continued alongside the Melchizedek order. And there is only <strong>one</strong> Melchizedek priest: Jesus Christ (Heb 7:24 — \"He holds his priesthood permanently, because he continues forever\"). Catholic priests participate in Christ's one priesthood; they do not hold a separate priesthood of their own."
+  },
+  {
+    cat: "institutions",
+    ot: {
+      title: "The Twelve Tribes of Israel",
+      ref: "Gen 49; Ex 24:4; Josh 3–4",
+      brief: "Twelve sons of Jacob forming the twelve-fold structure of God's covenant people.",
+      detail: "Jacob's twelve sons became the twelve tribes — the foundational structure of Israel. Moses set up twelve pillars at Sinai (Ex 24:4). Joshua set up twelve stones crossing the Jordan. The number twelve signifies the fullness of God's people."
+    },
+    nt: {
+      title: "The Twelve Apostles",
+      ref: "Mt 10:1–4; Lk 6:12–16; Rev 21:14",
+      brief: "Twelve Apostles forming the foundation of the New Israel, the Church.",
+      detail: "Jesus deliberately chose twelve — not eleven, not thirteen — to signal that He was reconstituting Israel around Himself. When Judas falls, he must be replaced (Acts 1:15–26) to maintain the twelve-fold structure. The New Jerusalem has twelve foundations bearing the names of the twelve Apostles (Rev 21:14)."
+    },
+    theology: "The number is not accidental — it is <strong>typologically mandatory</strong>. Twelve tribes → twelve Apostles → the Church as the New Israel. The urgency of replacing Judas (Acts 1) shows the early Church understood that the apostolic college must be complete and continuous. This is the seed of <strong>apostolic succession</strong>: the twelve were not a one-generation phenomenon but the foundation of a permanent structure.",
+    apologetic: "If the apostolic structure was meant to continue (as the replacement of Judas demonstrates), then the Catholic claim to unbroken apostolic succession from the Twelve to today's bishops is exactly what the typology demands. A 1,700-year gap with no apostles (as LDS chronology requires) would mean the twelve-fold foundation crumbled — contradicting Revelation 21:14."
+  },
+  {
+    cat: "institutions",
+    ot: {
+      title: "The Prime Minister — Holder of the Key",
+      ref: "Is 22:15–24",
+      brief: "Eliakim receives the \"key of the house of David\" — authority to open and shut.",
+      detail: "In the Davidic kingdom, the prime minister (the al-bayit, \"over the house\") held the key of the house of David on his shoulder. When Shebna is deposed, Eliakim receives the key and the authority: \"He shall open, and none shall shut; and he shall shut, and none shall open.\" The office passes from one holder to the next."
+    },
+    nt: {
+      title: "Peter and the Papacy — The Keys of the Kingdom",
+      ref: "Mt 16:18–19; Jn 21:15–17; Lk 22:31–32",
+      brief: "\"I will give you the keys of the kingdom of heaven; whatever you bind on earth will be bound in heaven.\"",
+      detail: "Jesus uses the exact language of Isaiah 22 — keys, binding, loosing, opening, shutting — to install Peter as the prime minister of the Kingdom. The office is permanent and transferable (as it was in the Davidic kingdom), not limited to Peter personally."
+    },
+    theology: "This is <strong>the most important ecclesiological typology in Scripture</strong>. Jesus is not inventing a new concept — He is drawing on a known Old Testament office: the Davidic prime minister who holds the keys and governs in the king's name. The <strong>key is given to an office, not merely a person</strong>. When Shebna was removed, Eliakim received the same key. When Peter died, his successor received the same authority. The papacy is not a medieval invention — it is the <strong>New Covenant prime ministry</strong>, typologically grounded in the Davidic kingdom.",
+    apologetic: "LDS theology claims Peter held \"keys\" but that these were lost in a great apostasy. But the Davidic typology proves the office is <strong>inherently successive</strong> — keys pass from one holder to the next. An office that ceases to exist contradicts the very nature of the key metaphor. Isaiah 22 and Matthew 16 together establish that Christ's kingdom has a permanent prime minister — and history shows an unbroken line of bishops of Rome from Peter to today."
+  },
+
+  // ═══════════════════════════════════════════════════
+  // SACRIFICES
+  // ═══════════════════════════════════════════════════
+  {
+    cat: "sacrifices",
+    ot: {
+      title: "The Passover Lamb",
+      ref: "Ex 12:1–14, 46; Deut 16:1–8",
+      brief: "An unblemished lamb, slain at twilight; its blood on the doorposts saves Israel from death.",
+      detail: "Each household selects an unblemished male lamb on Nisan 10, keeps it until Nisan 14, slaughters it at twilight, applies its blood to the doorposts and lintel, and eats its flesh with unleavened bread and bitter herbs. No bone of the lamb is broken. The angel of death passes over those marked with the blood."
+    },
+    nt: {
+      title: "Christ, the Lamb of God",
+      ref: "Jn 1:29; 1 Cor 5:7; 1 Pet 1:18–20; Rev 5:6–12",
+      brief: "\"Behold, the Lamb of God, who takes away the sin of the world!\"",
+      detail: "Jesus is crucified on Nisan 14 — at the very hour the Passover lambs are being slaughtered in the Temple. He is sinless (unblemished). None of His bones are broken (Jn 19:36, fulfilling Ex 12:46). Paul writes: \"Christ, our Passover lamb, has been sacrificed\" (1 Cor 5:7). His blood marks the new Israel for salvation."
+    },
+    theology: "The Passover is the <strong>master typology of the entire Bible</strong>. Every detail maps: the lamb is selected on Nisan 10 (Palm Sunday, when Jesus enters Jerusalem to be \"inspected\"), slaughtered on Nisan 14 (Good Friday), its bones unbroken, its blood saving from death, its flesh <strong>eaten</strong> (\"Unless you eat the flesh of the Son of Man and drink his blood, you have no life in you\" — Jn 6:53). The Mass is the New Passover meal: the sacrifice of the Lamb made present so that His people can eat His flesh and be saved.",
+    apologetic: "Exodus 12 commands that the Passover lamb must be <strong>eaten</strong> — applying the blood is not enough. If Christ is our Passover (1 Cor 5:7), then receiving His sacrifice requires not just mental assent but <strong>consuming the Lamb</strong>. This is exactly what the Catholic Eucharist is: eating the flesh of the Passover Lamb. A memorial service with bread and water does not fulfill this typology."
+  },
+  {
+    cat: "sacrifices",
+    ot: {
+      title: "The Day of Atonement (Yom Kippur)",
+      ref: "Lev 16:1–34",
+      brief: "The High Priest enters the Holy of Holies once a year with blood to atone for the sins of all Israel.",
+      detail: "Once a year, the High Priest enters behind the veil into the Most Holy Place, sprinkles the blood of the sacrifice on the mercy seat, and makes atonement for the entire nation. Two goats are used: one is sacrificed, the other (the scapegoat) bears the sins of the people into the wilderness."
+    },
+    nt: {
+      title: "Christ's Ascension — Entering the Heavenly Sanctuary",
+      ref: "Heb 9:1–28; 10:11–14",
+      brief: "Christ enters the true Holy of Holies — heaven itself — with His own blood, securing eternal redemption.",
+      detail: "The author of Hebrews devotes three chapters to this typology. Christ is both the High Priest who enters the sanctuary AND the sacrifice whose blood is offered. He enters not a man-made temple but heaven itself, appearing in the presence of God on our behalf. His offering is once-for-all, never needing repetition."
+    },
+    theology: "Hebrews' Yom Kippur typology establishes two crucial Catholic doctrines: (1) Christ's sacrifice is <strong>once-for-all</strong> — it cannot be repeated, added to, or supplemented (Heb 10:14); (2) it is <strong>made present</strong> in the heavenly sanctuary where Christ perpetually intercedes. The Mass does not re-sacrifice Christ — it participates in the one eternal offering that Christ, as our High Priest, continually presents before the Father in the heavenly Holy of Holies.",
+    apologetic: "LDS temple ceremonies include rituals described as necessary for salvation that have no connection to the Yom Kippur typology or any Old Testament sacrificial system. Hebrews argues that Christ's one sacrifice has <strong>rendered the entire Temple system obsolete</strong> (Heb 8:13). Adding new temple rituals after Christ's definitive sacrifice is moving backward typologically — from substance back to shadow."
+  },
+  {
+    cat: "sacrifices",
+    ot: {
+      title: "The Suffering Servant",
+      ref: "Is 52:13–53:12",
+      brief: "\"He was wounded for our transgressions, crushed for our iniquities.\"",
+      detail: "Isaiah's Fourth Servant Song describes a figure who is despised, rejected, pierced, and crushed — bearing the sins of many in vicarious suffering. He is led like a lamb to slaughter, makes no defense, is buried with the rich, and through his suffering \"makes many to be accounted righteous.\""
+    },
+    nt: {
+      title: "Christ's Passion — The Servant Fulfilled",
+      ref: "Mt 8:17; Acts 8:30–35; 1 Pet 2:22–25",
+      brief: "\"Like a lamb that is led to the slaughter… he was pierced for our transgressions.\"",
+      detail: "The Ethiopian eunuch's question — \"About whom does the prophet say this?\" — receives Philip's definitive answer: Jesus. Every detail of Isaiah 53 maps to the Passion: the silence before accusers, the piercing, the burial with the rich (Joseph of Arimathea), the intercession for transgressors (\"Father, forgive them\"). This chapter is the most quoted Old Testament passage in the New."
+    },
+    theology: "Isaiah 53 is the <strong>clearest Old Testament prophecy of substitutionary atonement</strong>: \"The Lord has laid on him the iniquity of us all\" (53:6). The Servant's suffering is vicarious — He bears what others deserve. This is the theological foundation for the Mass as a <strong>propitiatory sacrifice</strong>: Christ's offering truly atones for sin, and the Mass makes that atonement present and applicable across time and space.",
+    apologetic: null
+  },
+  {
+    cat: "sacrifices",
+    ot: {
+      title: "The Todah (Thanksgiving) Sacrifice",
+      ref: "Lev 7:11–15; Ps 50:14, 23; 116:12–19",
+      brief: "A thanksgiving offering of bread and wine, accompanied by a narrative of deliverance.",
+      detail: "The todah was a peace offering combining animal sacrifice with leavened bread and wine, offered by someone who had been delivered from mortal danger. The offerer would gather witnesses, recount God's saving act, and share the sacrificial meal. Rabbinic tradition held that in the Messianic age, all sacrifices would cease except the todah."
+    },
+    nt: {
+      title: "The Eucharist — The Eternal Todah",
+      ref: "Lk 22:19; 1 Cor 11:23–26",
+      brief: "The great thanksgiving (εὐχαριστία = eucharistia) offering of bread and wine, recounting Christ's saving Passion.",
+      detail: "The word \"Eucharist\" literally means \"thanksgiving\" — it is the todah of the New Covenant. Jesus \"gave thanks\" (εὐχαριστήσας) over the bread and wine. The Mass recounts the narrative of deliverance (the Passion), offers bread and wine, and shares the sacrificial meal. The rabbinic prediction that only the todah would endure in the Messianic age has been fulfilled."
+    },
+    theology: "The todah typology is a <strong>devastating argument for the Catholic Mass</strong>. Even Jewish tradition expected that in the Messianic era, all sacrifices would cease <strong>except the thanksgiving offering</strong>. The Catholic Church is the only communion that claims to offer a true sacrifice under the forms of bread and wine, while simultaneously affirming that all Old Testament animal sacrifices have ceased. The Eucharist is precisely what the rabbis predicted: the <strong>one sacrifice that endures</strong>.",
+    apologetic: "If all sacrifices except the todah were expected to cease in the Messianic age — and the todah was an offering of bread and wine with a thanksgiving narrative — then the Catholic Mass is the only Christian liturgy that fits the prediction. Protestant communion services and LDS sacrament meetings lack the sacrificial dimension. The Mass alone preserves the todah structure: thanksgiving (eucharistia), bread and wine, and the narrative of the Lamb's deliverance."
+  },
+
+  // ═══════════════════════════════════════════════════
+  // COVENANTS
+  // ═══════════════════════════════════════════════════
+  {
+    cat: "covenants",
+    ot: {
+      title: "The Abrahamic Covenant — Blessing All Nations",
+      ref: "Gen 12:1–3; 15:1–21; 17:1–14; 22:15–18",
+      brief: "\"In you all the families of the earth shall be blessed.\" Sealed with circumcision.",
+      detail: "God promises Abraham descendants as numerous as the stars, a land, and that through his seed all nations will be blessed. The covenant is sealed by circumcision and ratified when God alone passes through the cut animals (Gen 15) — taking the curse upon Himself if the covenant is broken."
+    },
+    nt: {
+      title: "The New Covenant — Universal Salvation in Christ",
+      ref: "Gal 3:7–29; Rom 4; Lk 22:20",
+      brief: "\"If you belong to Christ, then you are Abraham's seed, and heirs according to the promise.\"",
+      detail: "Paul argues that the Abrahamic promise to \"all nations\" is fulfilled in the Church, where Jew and Gentile are united in Christ. Baptism replaces circumcision as the covenant sign (Col 2:11–12). The \"cutting\" ritual of the Old Covenant gives way to the bloodless sign of water — because the blood has already been shed by Christ."
+    },
+    theology: "The Abrahamic covenant establishes the <strong>universal scope of salvation</strong>: \"all nations\" were always the goal. The Church is not a replacement for Israel but its <strong>fulfillment and expansion</strong> — the worldwide family Abraham was promised. The Catholic Church, present in every nation on earth, is the visible expression of this promise. Baptism (replacing circumcision) and the Eucharist (the new Passover) are the covenant signs of this universal family.",
+    apologetic: "LDS theology claims that the \"true\" church was limited to a tiny remnant in upstate New York from 1830 onward, with all prior Christians being apostate. But the Abrahamic covenant promises blessing to \"all nations\" — not restoration from a single location. The Catholic Church's presence in every nation since antiquity is far more consistent with God's promise to Abraham than a 19th-century restoration in a single country."
+  },
+  {
+    cat: "covenants",
+    ot: {
+      title: "The Mosaic Covenant — Blood Ratification",
+      ref: "Ex 24:1–8",
+      brief: "\"Behold the blood of the covenant that the LORD has made with you.\"",
+      detail: "Moses reads the Book of the Covenant to the people, they assent, and Moses sprinkles sacrificial blood on the altar and the people, saying: \"Behold the blood of the covenant.\" The covenant is sealed by shared blood and a sacred meal on the mountain (Ex 24:9–11)."
+    },
+    nt: {
+      title: "The New Covenant in Christ's Blood",
+      ref: "Mt 26:28; Mk 14:24; Lk 22:20; Heb 9:15–22",
+      brief: "\"This is my blood of the new covenant, which is poured out for many for the forgiveness of sins.\"",
+      detail: "Jesus' words at the Last Supper deliberately echo Moses' covenant formula. Where Moses said \"Behold the blood of the covenant,\" Jesus says \"This is my blood of the [new] covenant.\" The New Covenant, like the Old, is ratified by blood and sealed with a sacred meal — but the blood is Christ's own, and the meal is His Body and Blood."
+    },
+    theology: "The verbal parallel is <strong>unmistakable and deliberate</strong>. Every Jew at the Last Supper would have recognized the Sinai covenant formula. Jesus is saying: \"What Moses did with animal blood, I am doing with my own blood. A new covenant is being cut — and you are participating in its ratification by eating this meal.\" The Eucharist is not an optional devotion — it is the <strong>covenant meal of the New Israel</strong>, as essential to the New Covenant as the Sinai meal was to the Old.",
+    apologetic: null
+  },
+  {
+    cat: "covenants",
+    ot: {
+      title: "The Davidic Covenant — An Everlasting Kingdom",
+      ref: "2 Sam 7:12–16; Ps 89:3–4, 29, 36–37",
+      brief: "\"Your throne shall be established forever.\"",
+      detail: "God promises David that his son will build a house for God's name, and that David's throne and kingdom will endure forever. Even if David's descendants sin, God will discipline them but never remove His steadfast love. The dynasty is permanent."
+    },
+    nt: {
+      title: "Christ's Eternal Kingdom — The Church",
+      ref: "Lk 1:32–33; Dan 2:44; Mt 16:18; Rev 11:15",
+      brief: "\"He will reign over the house of Jacob forever, and of his kingdom there will be no end.\"",
+      detail: "Gabriel tells Mary that Jesus will receive \"the throne of his father David\" and that \"his kingdom will never end\" (Lk 1:32–33). Daniel prophesied a kingdom that \"shall never be destroyed\" (Dan 2:44). This kingdom is the Church — not a political entity but the visible reign of Christ through His Body on earth, sustained by the sacraments and governed by the apostolic hierarchy."
+    },
+    theology: "The Davidic covenant's promise of permanence is the <strong>strongest biblical argument against the Great Apostasy theory</strong>. God swore an oath — \"I will not violate my covenant or alter the word that went forth from my lips\" (Ps 89:34). If Christ's kingdom (the Church) ceased to exist for 1,700 years, then God broke His oath to David, Gabriel's announcement to Mary was false, and Daniel's prophecy failed. The Catholic Church's unbroken existence since Pentecost is the <strong>historical verification of the Davidic covenant</strong>.",
+    apologetic: "The entire LDS restoration narrative depends on a total apostasy — the complete disappearance of Christ's Church from the earth. But the Davidic covenant, Daniel 2:44, and Matthew 16:18 all promise a kingdom/church that will NEVER end or be destroyed. These are not conditional promises — they are unconditional divine oaths. Either God kept His promise and the Church has endured continuously, or God is unfaithful. The Catholic Church — with documented, unbroken apostolic succession from Peter to the present — is the historical evidence that God keeps His covenants."
+  },
+  {
+    cat: "covenants",
+    ot: {
+      title: "The New Covenant Prophesied",
+      ref: "Jer 31:31–34; Ezek 36:25–27",
+      brief: "\"I will put my law within them and write it on their hearts.\"",
+      detail: "Jeremiah prophesies a new covenant unlike the one at Sinai — one where the law is internalized, where all shall know the Lord, and where sins are forgiven and remembered no more. Ezekiel adds the promise of cleansing water and a new spirit."
+    },
+    nt: {
+      title: "The New Covenant in Christ — Fulfilled at the Last Supper",
+      ref: "Lk 22:20; 1 Cor 11:25; Heb 8:8–13",
+      brief: "\"This cup is the new covenant in my blood.\"",
+      detail: "Jesus explicitly identifies the Eucharistic cup as the ratification of Jeremiah's prophesied New Covenant. The Letter to the Hebrews quotes Jeremiah 31 at length and declares: \"In speaking of a new covenant, he makes the first one obsolete\" (Heb 8:13). Every element of the prophecy is fulfilled: the law of love written on hearts by the Spirit, knowledge of God through Christ, and definitive forgiveness through His blood."
+    },
+    theology: "Jeremiah's New Covenant is the <strong>hinge of all salvation history</strong>. It establishes that God always planned to move beyond the Mosaic system — not because it was bad, but because it was <strong>preparatory</strong>. The New Covenant is qualitatively different: internal rather than external, universal rather than national, effective for forgiveness rather than merely pointing forward to it. The Catholic Church understands itself as the <strong>community of the New Covenant</strong>, gathered around the Eucharistic cup that Jesus identified as \"the new covenant in my blood.\"",
+    apologetic: "LDS dispensationalism claims the same gospel has been given, lost, and restored in identical form throughout history. But Jeremiah explicitly says the New Covenant is \"<strong>not like</strong> the covenant I made with their fathers\" (Jer 31:32). It is qualitatively new — not a restoration of something old. The Catholic model of progressive revelation, where each covenant builds toward the definitive New Covenant in Christ, is exactly what the prophets predicted. The LDS model of cyclical restoration contradicts Jeremiah's explicit statement."
+  }
+];
+
+// ── Rendering ──
+const catLabels = {
+  persons: "Persons",
+  events: "Events",
+  objects: "Objects & Places",
+  institutions: "Institutions",
+  sacrifices: "Sacrifices",
+  covenants: "Covenants"
+};
+
+function renderList(filter) {
+  const list = document.getElementById('typology-list');
+  const filtered = filter === 'all' ? types : types.filter(t => t.cat === filter);
+  
+  list.innerHTML = filtered.map((t, i) => `
+    <div class="typology-row" data-index="${i}" style="animation-delay:${i * 0.04}s" onclick="toggleRow(this)">
+      <div class="ot-cell">
+        <span class="cell-cat-tag ${t.cat}">${catLabels[t.cat]}</span>
+        <div class="cell-title">${t.ot.title}</div>
+        <div class="cell-ref">${t.ot.ref}</div>
+        <div class="cell-brief">${t.ot.brief}</div>
+      </div>
+      <div class="arrow-cell">
+        <div class="arrow-connector">
+          <div class="arrow-line"></div>
+          <div class="arrow-symbol">⟶</div>
+          <div class="arrow-line"></div>
+        </div>
+      </div>
+      <div class="nt-cell">
+        <span class="cell-cat-tag ${t.cat}">${catLabels[t.cat]}</span>
+        <div class="cell-title">${t.nt.title}</div>
+        <div class="cell-ref">${t.nt.ref}</div>
+        <div class="cell-brief">${t.nt.brief}</div>
+      </div>
+      <div class="detail-panel">
+        <div class="detail-inner">
+          <div class="detail-col ot-detail">
+            <h4>The Shadow</h4>
+            <p>${t.ot.detail}</p>
+            <div class="detail-refs">${t.ot.ref}</div>
+          </div>
+          <div class="detail-col nt-detail">
+            <h4>The Substance</h4>
+            <p>${t.nt.detail}</p>
+            <div class="detail-refs">${t.nt.ref}</div>
+          </div>
+          <div class="theology-box">
+            <div class="theo-label">✦ Theological Significance</div>
+            <p>${t.theology}</p>
+          </div>
+          ${t.apologetic ? `
+          <div class="apologetic-box">
+            <div class="apol-label">☩ Apologetic Note</div>
+            <p>${t.apologetic}</p>
+          </div>` : ''}
+        </div>
+      </div>
+      <div style="grid-column:1/-1; text-align:center; padding-bottom:4px;">
+        <div class="expand-hint"><span class="expand-hint-text"></span></div>
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('count-shown').textContent = filtered.length;
+}
+
+function toggleRow(row) {
+  const wasExpanded = row.classList.contains('expanded');
+  // Collapse all first
+  document.querySelectorAll('.typology-row.expanded').forEach(r => r.classList.remove('expanded'));
+  // Toggle clicked
+  if (!wasExpanded) {
+    row.classList.add('expanded');
+    // Scroll into view after animation
+    setTimeout(() => {
+      row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
+  }
+}
+
+// ── Filter buttons ──
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderList(btn.dataset.cat);
+  });
+});
+
+// ── Initial render ──
+renderList('all');
+</script>
+
+</body>
+</html>

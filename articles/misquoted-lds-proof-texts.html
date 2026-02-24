@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Misquoted: LDS Proof-Texts Examined | One Faith Delivered</title>
+<meta name="description" content="A Catholic examination of Bible verses commonly cited by Latter-day Saints to support LDS doctrines. Each proof-text is analyzed in its proper biblical context with responses from Scripture, the original languages, and the Church Fathers." />
+<link rel="canonical" href="https://onefaithdelivered.org/articles/misquoted-lds-proof-texts.html" />
+<link rel="icon" href="../favicons/favicon.ico" sizes="any" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+/* ═══════════════════════════════════════════════════════════
+   MISQUOTED: LDS PROOF-TEXTS EXAMINED
+   Design system: matches celibacy-monasticism-chastity.html
+   Fonts: Playfair Display + Source Serif 4 + JetBrains Mono
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --crimson:      #8B0000;
+  --dark-crimson: #5C0000;
+  --gold:         #C5A55A;
+  --dark-gold:    #8B7335;
+  --parchment:    #F5F0E8;
+  --text:         #2A2A2A;
+  --muted:        #666;
+  --line-gray:    #D0C8B8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--parchment);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.6;
+}
+
+/* ── SITE NAV ── */
+.site-nav {
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(245,240,232,0.98), rgba(240,235,225,0.95));
+  border-bottom: 1px solid var(--line-gray);
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.site-nav a.nav-home {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--crimson);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: var(--dark-crimson); }
+.site-nav .nav-back {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  text-decoration: none;
+  border: 1px solid rgba(139,115,53,0.35);
+  padding: 0.4rem 1.1rem;
+  border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
+}
+.site-nav .nav-back:hover { background: rgba(139,115,53,0.08); color: var(--crimson); }
+.site-nav .nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.site-nav .nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav .nav-links a:hover { color: var(--crimson); }
+
+/* ── Hamburger ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  cursor: pointer;
+  background: none;
+  border: 1px solid rgba(139,115,53,0.3);
+  border-radius: 3px;
+  padding: 6px;
+  z-index: 10001;
+}
+.nav-hamburger span {
+  display: block; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Sidebar ── */
+.sidebar-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+.sidebar-overlay.visible { display: block; }
+.sidebar {
+  position: fixed;
+  top: 0; right: -280px;
+  width: 260px; height: 100%;
+  background: linear-gradient(to bottom, #FAF6F0, #F5F0E8);
+  border-left: 1px solid var(--line-gray);
+  z-index: 10002;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+.sidebar.open { right: 0; }
+.sidebar-inner {
+  padding: 5rem 2rem 2rem;
+  display: flex; flex-direction: column; gap: 0;
+}
+.sidebar-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--crimson);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line-gray);
+}
+.sidebar-inner a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(208,200,184,0.5);
+  transition: color 0.2s;
+}
+.sidebar-inner a:hover { color: var(--crimson); }
+.sidebar-inner a.sidebar-back {
+  color: var(--dark-gold);
+  margin-top: 1.5rem;
+  border: 1px solid rgba(139,115,53,0.3);
+  padding: 0.7rem 1rem;
+  text-align: center;
+  border-radius: 2px;
+}
+.sidebar-ornament {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 8px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  background: linear-gradient(135deg, #1a0a05 0%, #2C1810 40%, #3d2218 100%);
+  color: #F5F0E8;
+  padding: 72px 40px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+  pointer-events: none;
+}
+.back-link {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  margin-bottom: 1.8rem;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+  position: relative;
+  z-index: 1;
+}
+.back-link:hover { opacity: 1; }
+.ornament {
+  display: block;
+  color: var(--gold);
+  font-size: 1rem;
+  letter-spacing: 12px;
+  margin-bottom: 1.2rem;
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2em, 4vw, 3.2em);
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: #F5F0E8;
+  margin-bottom: 14px;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+}
+.page-header h1 span { color: var(--gold); }
+.page-header .subtitle {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(245,240,232,0.75);
+  max-width: 680px;
+  margin: 0 auto 0;
+  position: relative;
+  z-index: 1;
+}
+.page-header .meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(197,165,90,0.65);
+  margin-top: 1.4rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── MAIN CONTENT ── */
+main {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 56px 24px 88px;
+}
+
+/* ── INTRO / ABSTRACT BOX ── */
+.intro-box {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-left: 5px solid var(--crimson);
+  border-radius: 4px;
+  padding: 28px 32px;
+  margin-bottom: 48px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.intro-box p {
+  font-size: 1.02rem;
+  line-height: 1.9;
+  color: var(--text);
+}
+.intro-box p + p { margin-top: 0.9rem; }
+.intro-box strong { color: var(--crimson); font-weight: 600; }
+
+/* ── SECTION DIVIDER ── */
+.section-divider {
+  margin: 52px 0 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.section-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line-gray);
+}
+.section-divider-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  white-space: nowrap;
+}
+
+/* ── ARTICLE SECTION ── */
+.article-section { margin-bottom: 8px; }
+.article-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75em;
+  font-weight: 700;
+  color: var(--crimson);
+  line-height: 1.25;
+  margin-bottom: 22px;
+}
+.article-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15em;
+  font-weight: 700;
+  color: #1E3A5F;
+  margin: 28px 0 12px;
+  letter-spacing: 0.01em;
+}
+.article-section p {
+  font-size: 1.01rem;
+  line-height: 1.9;
+  color: var(--text);
+  margin-bottom: 1.1rem;
+}
+.article-section p:last-child { margin-bottom: 0; }
+
+/* ── DROP CAP ── */
+.drop-cap::first-letter {
+  font-family: 'Playfair Display', serif;
+  float: left;
+  font-size: 4.2em;
+  line-height: 0.8;
+  padding-right: 10px;
+  padding-top: 6px;
+  color: var(--crimson);
+  font-weight: 900;
+}
+
+/* ── SCRIPTURE / BLOCK QUOTE ── */
+.scripture-block {
+  border-left: 4px solid var(--gold);
+  margin: 28px 0;
+  padding: 18px 26px;
+  background: rgba(197,165,90,0.07);
+  border-radius: 0 4px 4px 0;
+}
+.scripture-block p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05em !important;
+  font-style: italic;
+  font-weight: 400;
+  color: #3A1A1A !important;
+  line-height: 1.75 !important;
+  margin-bottom: 0.5rem !important;
+}
+.scripture-block p:last-of-type { margin-bottom: 0 !important; }
+.scripture-ref {
+  display: block;
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--dark-gold);
+  letter-spacing: 0.08em;
+  margin-top: 10px;
+}
+
+/* ── PATRISTIC / FEATURED QUOTE ── */
+.patristic-block {
+  background: #fff;
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+  padding: 32px 36px;
+  margin: 36px 0;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  position: relative;
+}
+.patristic-block::before,
+.patristic-block::after {
+  content: '✦';
+  position: absolute;
+  color: var(--gold);
+  font-size: 14px;
+}
+.patristic-block::before {
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  padding: 0 8px;
+}
+.patristic-block::after {
+  bottom: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--parchment);
+  padding: 0 8px;
+}
+.patristic-block p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.15em;
+  line-height: 1.7;
+  color: #3A1A1A;
+  margin-bottom: 12px;
+}
+.patristic-block .attribution {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--dark-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ── PROOF-TEXT CARD ── */
+.proof-card {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-radius: 5px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  overflow: hidden;
+}
+.proof-card-header {
+  background: linear-gradient(135deg, #2C1810 0%, #3d2218 100%);
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.proof-card-verse {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: #F5F0E8;
+}
+.proof-card-topic {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.8;
+  margin-left: auto;
+}
+.proof-card-body { padding: 28px; }
+
+.proof-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66em;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.proof-label-lds { color: var(--muted); }
+.proof-label-catholic { color: var(--crimson); }
+.proof-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line-gray);
+}
+.proof-text {
+  font-size: 0.98rem;
+  line-height: 1.85;
+  color: var(--text);
+  margin-bottom: 22px;
+}
+.proof-text:last-child { margin-bottom: 0; }
+.proof-text em { font-style: italic; }
+.proof-text strong { color: var(--crimson); font-weight: 600; }
+
+.proof-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--line-gray), transparent);
+  margin: 22px 0;
+}
+
+/* ── REFERENCES / FOOTER CONTENT ── */
+.references-section {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 2px solid var(--line-gray);
+}
+.references-section h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  margin-bottom: 16px;
+  margin-top: 28px;
+}
+.references-section h3:first-child { margin-top: 0; }
+.references-section ul {
+  list-style: none;
+  padding: 0;
+}
+.references-section li {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--muted);
+  padding: 5px 0 5px 20px;
+  position: relative;
+}
+.references-section li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 8px;
+  top: 10px;
+}
+.references-section a {
+  color: var(--crimson);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(139,0,0,0.2);
+  transition: border-color 0.2s;
+}
+.references-section a:hover { border-bottom-color: var(--crimson); }
+.references-section em { font-style: italic; }
+
+/* ── FOOTER ── */
+footer {
+  background: #fff;
+  text-align: center;
+  padding: 28px 20px;
+  border-top: 1px solid var(--line-gray);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .page-header { padding: 48px 24px 40px; }
+  .page-header h1 { font-size: 1.9em; }
+  main { padding: 32px 16px 60px; }
+  .intro-box { padding: 22px 20px; }
+  .patristic-block { padding: 24px 20px; }
+  .scripture-block { padding: 16px 18px; }
+  .proof-card-body { padding: 22px 18px; }
+  .proof-card-header { padding: 14px 18px; }
+}
+@media (max-width: 700px) {
+  .nav-hamburger { display: flex; }
+  .site-nav .nav-links { display: none; }
+  .site-nav .nav-back { display: none; }
+  body { overflow-x: hidden; }
+  .site-nav { padding: 0.55rem 1rem; }
+  .page-header { padding: 44px 18px 32px; }
+  .page-header h1 { font-size: clamp(1.35rem, 5.5vw, 2rem); }
+  .page-header .subtitle { font-size: 0.92rem; }
+  .sidebar {
+    display: block;
+    transform: translateX(100%);
+    right: 0;
+    position: fixed;
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-inner { padding: 4rem 1.5rem 2rem; }
+  .sidebar-overlay.visible { display: block; }
+  .nav-hamburger { display: flex; margin-left: auto; order: 99; flex-shrink: 0; }
+  .drop-cap::first-letter { font-size: 3.4em; }
+  .article-section h2 { font-size: 1.45em; }
+  .proof-card-header { flex-direction: column; gap: 6px; align-items: flex-start; }
+  .proof-card-topic { margin-left: 0; }
+}
+
+/* ── READING PROGRESS BAR ── */
+#reading-progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(to right, #8B0000, #C5A55A);
+  z-index: 99999;
+  transition: width 0.12s linear;
+  pointer-events: none;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── PRINT / PDF BUTTON ── */
+.nav-print-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  background: none;
+  border: 1px solid rgba(139,115,53,0.35);
+  padding: 0.4rem 1.1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+.nav-print-btn:hover { background: rgba(139,115,53,0.08); color: var(--crimson); }
+.nav-print-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+/* ── PRINT COLOPHON ── */
+.print-colophon { display: none; }
+
+/* ── @MEDIA PRINT ── */
+@media print {
+  #reading-progress-bar,
+  .site-nav,
+  .sidebar-overlay,
+  .sidebar,
+  .nav-print-btn,
+  .back-link,
+  footer { display: none !important; }
+
+  .page-header { background: #2C1810 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  main { padding: 32px 0; }
+  .proof-card { break-inside: avoid; }
+  .print-colophon {
+    display: block;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line-gray);
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ── SITE NAV ── -->
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">One Faith Delivered</a>
+  <ul class="nav-links">
+    <li><a href="../articles.html">Articles</a></li>
+    <li><a href="../charts.html">Charts</a></li>
+    <li><a href="../topics.html">Topics</a></li>
+    <li><a href="../resources.html">Resources</a></li>
+  </ul>
+  <a href="../articles.html" class="nav-back">&#8592; All Articles</a>
+  <button class="nav-print-btn" onclick="window.print()" aria-label="Print or save as PDF" title="Print / Save as PDF">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Print
+  </button>
+
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div id="reading-progress-bar" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <a href="../articles.html" class="back-link">&#8592; All Articles</a>
+  <span class="ornament">✦ &nbsp; ✦ &nbsp; ✦</span>
+  <h1><span>Misquoted</span></h1>
+  <p class="subtitle">LDS Proof-Texts Examined in Their Biblical Context</p>
+  <p class="meta">Reference Guide &nbsp;·&nbsp; Great Apostasy &nbsp;·&nbsp; Book of Mormon &nbsp;·&nbsp; Biblical Exegesis</p>
+</header>
+
+<!-- ── MAIN ── -->
+<main>
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <p>Latter-day Saint missionaries and apologists regularly cite a handful of Bible verses to support distinctive LDS doctrines — the Great Apostasy, the Book of Mormon, proxy baptism for the dead, and the Restoration narrative. Presented in isolation, these proof-texts can sound compelling. But <strong>Scripture was never meant to be read in isolation.</strong></p>
+    <p>This reference guide examines each verse in its <strong>original language, historical setting, literary context, and broader scriptural witness</strong> — the same Bible that Latter-day Saints accept as scripture. The consistent pattern is striking: in every case, the LDS interpretation requires removing a passage from the context that gives it meaning. When restored to that context, these verses not only fail to support LDS claims — they often contradict them.</p>
+  </div>
+
+
+  <!-- ═══════════════════ AMOS 8:11-12 ═══════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">I</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="proof-card">
+    <div class="proof-card-header">
+      <span class="proof-card-verse">Amos 8:11–12</span>
+      <span class="proof-card-topic">Great Apostasy</span>
+    </div>
+    <div class="proof-card-body">
+      <div class="scripture-block">
+        <p>Behold, the days come, saith the Lord God, that I will send a famine in the land, not a famine of bread, nor a thirst for water, but of hearing the words of the Lord: And they shall wander from sea to sea, and from the north even to the east, they shall run to and fro to seek the word of the Lord, and shall not find it.</p>
+        <span class="scripture-ref">— Amos 8:11–12 (KJV)</span>
+      </div>
+
+      <div class="proof-label proof-label-lds">LDS Interpretation</div>
+      <p class="proof-text">This prophecy predicts the "Great Apostasy" — a total famine of God's word from the earth after the death of the New Testament apostles, lasting until Joseph Smith's restoration in 1830. LDS Apostle James Talmage called it "a prediction applicable to the period when there should be no Church of Christ." The passage is listed in the LDS Topical Guide under "Apostasy" and is routinely taught to missionaries.</p>
+
+      <div class="proof-divider"></div>
+
+      <div class="proof-label proof-label-catholic">Biblical Context &amp; Catholic Response</div>
+      <p class="proof-text">Amos was an 8th-century B.C. prophet sent specifically to the <strong>northern kingdom of Israel</strong> (Amos 7:10–11). The entire book addresses Israel's idolatry — Bethel, Dan, Samaria, and Beersheba (Amos 8:14). The directional language is critical: "from sea to sea, and from the north even to the east" <em>conspicuously omits the south</em> (Judah, where true worship remained) and <em>the west</em> (the Mediterranean Sea). The apostate northern kingdom was hemmed in geographically while fleeing from Judah's faithful remnant.</p>
+      <p class="proof-text">This prophecy was fulfilled approximately 40 years later in the <strong>Assyrian conquest of 722 B.C.</strong> Even BYU religion professor D. Kelly Ogden concedes: "Amos's mission was to warn Israel of its present disastrous state and forewarn it of impending captivity. Amos's prophecies were fulfilled, soon by the Assyrians and then later by other conquerors."</p>
+      <p class="proof-text">Furthermore, <strong>Amos 9:11–12 prophesies a restoration</strong> — and Acts 15:15–18 identifies this as fulfilled in the Church's inclusion of the Gentiles. As Catholic Answers observes, the apostolic Church considered itself the fulfillment of Amos's prophecy, which means the apostasy of Amos 8 must have occurred <em>before</em> the time of Christ — leaving nothing for Joseph Smith to restore.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════ EZEKIEL 37 ═══════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">II</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="proof-card">
+    <div class="proof-card-header">
+      <span class="proof-card-verse">Ezekiel 37:15–20</span>
+      <span class="proof-card-topic">Book of Mormon</span>
+    </div>
+    <div class="proof-card-body">
+      <div class="scripture-block">
+        <p>Moreover, thou son of man, take thee one stick, and write upon it, For Judah, and for the children of Israel his companions: then take another stick, and write upon it, For Joseph, the stick of Ephraim, and for all the house of Israel his companions: And join them one to another into one stick; and they shall become one in thine hand.</p>
+        <span class="scripture-ref">— Ezekiel 37:16–17 (KJV)</span>
+      </div>
+
+      <div class="proof-label proof-label-lds">LDS Interpretation</div>
+      <p class="proof-text">The "stick of Judah" is the Bible and the "stick of Joseph" is the Book of Mormon. Their joining prophesies Joseph Smith bringing the two scriptures together as one unified body of revelation. LDS Apostle James Talmage wrote: "Ezekiel saw in vision the coming together of the stick of Judah, and the stick of Joseph, signifying the Bible and the Book of Mormon." The LDS edition of the Bible itself includes a chapter heading identifying the sticks this way.</p>
+
+      <div class="proof-divider"></div>
+
+      <div class="proof-label proof-label-catholic">Biblical Context &amp; Catholic Response</div>
+      <p class="proof-text"><strong>Ezekiel himself gives the interpretation in verses 18–22</strong> — the audience even asks, "Wilt thou not show us what thou meanest by these?" God answers directly: the two sticks represent the divided kingdoms of Judah and Israel (Ephraim), and their joining symbolizes <strong>national reunification under one king.</strong> "They shall be no more two nations, neither shall they be divided into two kingdoms any more at all" (v. 22).</p>
+      <p class="proof-text">The Hebrew word <em>ʿēts</em> means "wood," "tree," or "timber" — it is <strong>never used anywhere in the Old Testament</strong> to mean "book," "scroll," or "record." The Book of Mormon was allegedly written on metal plates, not wooden scrolls. Catholic Answers notes: "Only Mormonism can manage to mistake 'timber' for 'scrolls' and 'nations' for 'metal plates.'"</p>
+      <p class="proof-text">Even on LDS terms, the argument fails internally. The stick is identified as belonging to <strong>Ephraim</strong> (vv. 16, 19), but the Book of Mormon's protagonists descend from <strong>Manasseh</strong> (Alma 10:3). The Nephites have no meaningful connection to the tribe of Ephraim — not the man, the tribe, or the land. As one scholar puts it: "No matter how many concessions you make, there is simply no way to read Ezekiel 37 as promising Joseph Smith and the Book of Mormon."</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════ ISAIAH 29 ═══════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">III</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="proof-card">
+    <div class="proof-card-header">
+      <span class="proof-card-verse">Isaiah 29:4, 11–14</span>
+      <span class="proof-card-topic">Book of Mormon</span>
+    </div>
+    <div class="proof-card-body">
+      <div class="scripture-block">
+        <p>And the vision of all is become unto you as the words of a book that is sealed, which men deliver to one that is learned, saying, Read this, I pray thee: and he saith, I cannot; for it is sealed: And the book is delivered to him that is not learned, saying, Read this, I pray thee: and he saith, I am not learned.</p>
+        <span class="scripture-ref">— Isaiah 29:11–12 (KJV)</span>
+      </div>
+
+      <div class="proof-label proof-label-lds">LDS Interpretation</div>
+      <p class="proof-text">Isaiah prophesied the coming forth of the Book of Mormon: the voice "out of the dust" (v. 4) refers to the buried gold plates; the "sealed book" (v. 11) is the Book of Mormon delivered to the "learned" Professor Charles Anthon and then to the "not learned" Joseph Smith (v. 12); and the "marvelous work and a wonder" (v. 14) is the Restoration. LDS seminary manuals teach this interpretation extensively.</p>
+
+      <div class="proof-divider"></div>
+
+      <div class="proof-label proof-label-catholic">Biblical Context &amp; Catholic Response</div>
+      <p class="proof-text">Isaiah 29 is a prophetic oracle against <strong>Jerusalem</strong> — called "Ariel" in verse 1, identified as "the city where David dwelt." The "voice out of the dust" in verse 4 uses the Hebrew idiom for a <em>necromancer's whisper</em>, describing Jerusalem's humiliation — not a buried book. The chapter is about a city brought low by siege, not a 19th-century American text.</p>
+      <p class="proof-text">Critically, verse 11 uses a <strong>simile</strong>, as the KJV renders it: "<em>as</em> the words of a book that is sealed." Isaiah is comparing Judah's spiritual blindness to the inability to read — the learned cannot because it is sealed; the unlearned cannot because he is illiterate. This is a metaphor for the spiritual stupor God has poured over His disobedient people (v. 10), not a prophecy of a literal future book.</p>
+      <p class="proof-text">God's "marvelous work" (v. 14) is His judgment overturning human wisdom — which <strong>Paul identifies in 1 Corinthians 1:19 with the preaching of the Cross.</strong> Jesus Himself quotes Isaiah 29:13 in Matthew 15:8–9 to condemn Israel's hypocrisy, connecting this chapter to Israel's spiritual deafness, not to new scripture. No non-LDS biblical scholar reads this passage as predicting a future book of revelation.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════ 2 THESS 2 ═══════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">IV</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="proof-card">
+    <div class="proof-card-header">
+      <span class="proof-card-verse">2 Thessalonians 2:1–3</span>
+      <span class="proof-card-topic">Great Apostasy</span>
+    </div>
+    <div class="proof-card-body">
+      <div class="scripture-block">
+        <p>Let no man deceive you by any means: for that day shall not come, except there come a falling away first, and that man of sin be revealed, the son of perdition.</p>
+        <span class="scripture-ref">— 2 Thessalonians 2:3 (KJV)</span>
+      </div>
+
+      <div class="proof-label proof-label-lds">LDS Interpretation</div>
+      <p class="proof-text">Paul prophesied that a complete "falling away" (Greek <em>apostasia</em>) would occur before Christ's Second Coming. LDS teaching identifies this as the Great Apostasy — the total dissolution of Christ's Church from the earth. The LDS seminary manual states: "Before the Second Coming of Jesus Christ, an apostasy would occur." This is designated a "scripture mastery" passage for LDS youth.</p>
+
+      <div class="proof-divider"></div>
+
+      <div class="proof-label proof-label-catholic">Biblical Context &amp; Catholic Response</div>
+      <p class="proof-text">Paul's language describes an <strong>eschatological rebellion</strong> linked directly to "the man of lawlessness" — a specific individual (the Antichrist) who "sitteth in the temple of God, showing himself that he is God" (v. 4). This is a dramatic future event paired with the revealing of a specific person, not a centuries-long institutional decay. The definite article (<em>hē apostasia</em> — "<strong>the</strong> apostasy") indicates a specific, identifiable event, not a gradual process.</p>
+      <p class="proof-text">The New Testament consistently warns of <em>partial</em> apostasy, never total. 1 Timothy 4:1 says "<strong>some</strong> shall depart from the faith" — not all. Acts 20:29–30 warns of wolves entering "among you" — a corruption within the flock, not the annihilation of the flock. Meanwhile, Jesus promised in <strong>Matthew 16:18</strong> that "the gates of hell shall not prevail" against His Church, and in <strong>Matthew 28:20</strong> that He would be with His Church "always, even unto the end of the age." A total apostasy would make Christ a liar and a failed prophet.</p>
+      <p class="proof-text">Tertullian, writing around A.D. 200, posed the decisive challenge: <em>"Is it likely that so many and such great churches should have gone astray into a unity of faith?"</em> The Catholic Church's unbroken continuity from Peter to the present is the living refutation of the Great Apostasy doctrine.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════ 1 TIMOTHY 4 ═══════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">V</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="proof-card">
+    <div class="proof-card-header">
+      <span class="proof-card-verse">1 Timothy 4:1–3</span>
+      <span class="proof-card-topic">Great Apostasy</span>
+    </div>
+    <div class="proof-card-body">
+      <div class="scripture-block">
+        <p>Now the Spirit speaketh expressly, that in the latter times some shall depart from the faith, giving heed to seducing spirits, and doctrines of devils; speaking lies in hypocrisy; having their conscience seared with a hot iron; forbidding to marry, and commanding to abstain from meats.</p>
+        <span class="scripture-ref">— 1 Timothy 4:1–3 (KJV)</span>
+      </div>
+
+      <div class="proof-label proof-label-lds">LDS Interpretation</div>
+      <p class="proof-text">Paul prophesied the Great Apostasy. The LDS chapter heading reads: "Paul describes the latter-day apostasy." The phrase "forbidding to marry" is sometimes applied to Catholic priestly celibacy, presented as evidence that the Catholic Church is itself the apostate church Paul warned about.</p>
+
+      <div class="proof-divider"></div>
+
+      <div class="proof-label proof-label-catholic">Biblical Context &amp; Catholic Response</div>
+      <p class="proof-text">The text says "<strong>some</strong> shall depart" — not all, not the Church as a whole. Paul describes specific heretical teachings: forbidding marriage entirely and commanding abstinence from foods. This describes <strong>early Gnostic heresies</strong> (such as those of the Encratites and Marcionites) that rejected the goodness of the material world — heresies the Church Fathers combated and defeated. The very survival of orthodoxy demonstrates that the Church persisted through these challenges.</p>
+      <p class="proof-text">The Catholic Church <strong>does not "forbid" marriage.</strong> She consecrates it as a sacrament. Priestly celibacy is a voluntary discipline embraced by those called to it, not a universal prohibition. Jesus Himself commended voluntary celibacy "for the sake of the kingdom of heaven" (Matthew 19:12), and Paul wrote, "He that giveth her not in marriage doeth better" (1 Corinthians 7:38). If celibacy is "forbidding to marry," then Christ and Paul are guilty of the same charge.</p>
+      <p class="proof-text">Paul instructs Timothy to "put the brethren in remembrance of these things" (v. 6) — a command that makes no sense if the Church were destined for total extinction. Paul is warning of internal dangers to be <em>resisted</em>, not prophesying inevitable institutional death.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════ ACTS 20 ═══════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">VI</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="proof-card">
+    <div class="proof-card-header">
+      <span class="proof-card-verse">Acts 20:29–30</span>
+      <span class="proof-card-topic">Great Apostasy</span>
+    </div>
+    <div class="proof-card-body">
+      <div class="scripture-block">
+        <p>For I know this, that after my departing shall grievous wolves enter in among you, not sparing the flock. Also of your own selves shall men arise, speaking perverse things, to draw away disciples after them.</p>
+        <span class="scripture-ref">— Acts 20:29–30 (KJV)</span>
+      </div>
+
+      <div class="proof-label proof-label-lds">LDS Interpretation</div>
+      <p class="proof-text">Paul foresaw and predicted the total Great Apostasy. LDS manuals cite this as evidence the apostles knew the Church would be completely destroyed after their deaths.</p>
+
+      <div class="proof-divider"></div>
+
+      <div class="proof-label proof-label-catholic">Biblical Context &amp; Catholic Response</div>
+      <p class="proof-text">Paul warns of a <em>partial</em> corruption — wolves entering <strong>among</strong> the flock, not replacing the entire flock. "Of your own selves" men will draw away disciples — meaning some people within the community, not the entire community. A shepherd warning of wolves does not imply the sheep will all be devoured; it implies <strong>vigilance is needed and possible.</strong></p>
+      <p class="proof-text">Critically, in the very next verses (vv. 31–32), Paul commends them <strong>"to God, and to the word of his grace, which is able to build you up, and to give you an inheritance."</strong> He expresses confidence that God's grace will sustain the Church through these trials. The early Church Fathers' writings demonstrate exactly this: wolves came, and the Church fought back with councils, creeds, and the blood of martyrs — and survived.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════ JOHN 10:16 ═══════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">VII</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="proof-card">
+    <div class="proof-card-header">
+      <span class="proof-card-verse">John 10:16</span>
+      <span class="proof-card-topic">Book of Mormon</span>
+    </div>
+    <div class="proof-card-body">
+      <div class="scripture-block">
+        <p>And other sheep I have, which are not of this fold: them also I must bring, and they shall hear my voice; and there shall be one fold, and one shepherd.</p>
+        <span class="scripture-ref">— John 10:16 (KJV)</span>
+      </div>
+
+      <div class="proof-label proof-label-lds">LDS Interpretation</div>
+      <p class="proof-text">The "other sheep" are the Nephites and Lamanites in the Americas. 3 Nephi 15:21–23 has Jesus explicitly telling the Nephites they are the "other sheep" and that the Gentiles are excluded, since the Gentiles would "not at any time hear my voice." LDS Apostle James Talmage identified them as "the separated flock or remnant of the house of Joseph."</p>
+
+      <div class="proof-divider"></div>
+
+      <div class="proof-label proof-label-catholic">Biblical Context &amp; Catholic Response</div>
+      <p class="proof-text">The universal witness of the New Testament identifies the "other sheep" as <strong>the Gentiles.</strong> This is one of Scripture's major themes. Ephesians 2:14–16 and 3:6 describe Gentiles becoming "fellow heirs" with Jews in one body. Romans 11:11–25 describes Gentile branches grafted into the olive tree. The dramatic fulfillment comes in Acts 10–11, where Peter's vision and Cornelius's conversion shatter the Jewish-Gentile barrier.</p>
+      <p class="proof-text">John 10:16 says the other sheep will become <strong>"one flock"</strong> with "one shepherd" — perfectly describing the union of Jew and Gentile in the one Church. The entire discourse uses acknowledged figurative language (John 10:6 calls it a <em>paroimia</em>, a "figure of speech"). "Sheep," "shepherd," "door," and "voice" are all metaphors. To "hear my voice" means to respond to the gospel message, as Luke 10:16 confirms: "He that heareth you heareth me."</p>
+      <p class="proof-text">The Book of Mormon's claim that Gentiles would "not at any time hear" Jesus's voice is flatly contradicted by the Gospels themselves. The Samaritan woman at the well (John 4), the Syrophoenician woman (Mark 7:26–30), and the Roman centurion (Matthew 8:5–13) all heard and responded to Christ personally. Catholic Answers notes that the Gentile interpretation is "the natural understanding of the passage" — and the one held by every Church Father.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════ 1 COR 15:29 ═══════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">VIII</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="proof-card">
+    <div class="proof-card-header">
+      <span class="proof-card-verse">1 Corinthians 15:29</span>
+      <span class="proof-card-topic">Baptism for the Dead</span>
+    </div>
+    <div class="proof-card-body">
+      <div class="scripture-block">
+        <p>Else what shall they do which are baptized for the dead, if the dead rise not at all? why are they then baptized for the dead?</p>
+        <span class="scripture-ref">— 1 Corinthians 15:29 (KJV)</span>
+      </div>
+
+      <div class="proof-label proof-label-lds">LDS Interpretation</div>
+      <p class="proof-text">Paul's mention of those "baptized for the dead" proves that vicarious proxy baptism was practiced in the early Church. This forms the scriptural basis for the LDS temple practice in which living members are baptized on behalf of deceased persons. D&amp;C 128:17 calls it "the most glorious of all subjects belonging to the everlasting gospel."</p>
+
+      <div class="proof-divider"></div>
+
+      <div class="proof-label proof-label-catholic">Biblical Context &amp; Catholic Response</div>
+      <p class="proof-text">Paul uses the <strong>third person pronoun "they"</strong> — not "we" — when referencing this practice, clearly distancing himself and orthodox Christians from it. In verse 30, he immediately switches to "we" when speaking of his own suffering. His argument is <em>ad hominem</em>: he points out the inconsistency of people who deny the resurrection yet baptize for the dead — "If the dead rise not at all, why are <strong>they</strong> then baptized for the dead?" He never commands, endorses, or explains the practice.</p>
+      <p class="proof-text">The broader context of 1 Corinthians 15 is Paul's defense of bodily resurrection against those in Corinth who denied it. Furthermore, the Bible teaches that <strong>personal faith determines eternal destiny</strong> (Hebrews 9:27: "It is appointed unto men once to die, but after this the judgment"; 2 Corinthians 5:10). The repentant thief received paradise without baptism at all (Luke 23:43).</p>
+      <p class="proof-text">Devastatingly, <strong>the Book of Mormon itself contradicts this practice.</strong> Alma 34:34–35 teaches: "Ye cannot say, when ye are brought to that awful crisis [death], that I will repent, that I will return to my God. Nay, ye cannot say this; for that same spirit which doth possess your bodies at the time that ye go out of this life… will have power to possess your body in that eternal world." If the "fullness of the gospel" (D&amp;C 20:9) is contained in the Book of Mormon, why is the "most glorious" doctrine nowhere to be found in it — and in fact contradicted by it?</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════ REV 14:6 ═══════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">IX</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="proof-card">
+    <div class="proof-card-header">
+      <span class="proof-card-verse">Revelation 14:6</span>
+      <span class="proof-card-topic">Restoration</span>
+    </div>
+    <div class="proof-card-body">
+      <div class="scripture-block">
+        <p>And I saw another angel fly in the midst of heaven, having the everlasting gospel to preach unto them that dwell on the earth, and to every nation, and kindred, and tongue, and people.</p>
+        <span class="scripture-ref">— Revelation 14:6 (KJV)</span>
+      </div>
+
+      <div class="proof-label proof-label-lds">LDS Interpretation</div>
+      <p class="proof-text">The angel with "the everlasting gospel" refers to the angel Moroni delivering the gold plates to Joseph Smith. LDS leaders have long identified this angel as Moroni, and a gold statue of Moroni with a trumpet adorns most LDS temples as a visual representation of this verse.</p>
+
+      <div class="proof-divider"></div>
+
+      <div class="proof-label proof-label-catholic">Biblical Context &amp; Catholic Response</div>
+      <p class="proof-text">Revelation 14 is an <strong>apocalyptic vision of the end times</strong>, with three angels making proclamations during the Great Tribulation. The angel's message in verse 7 is explicitly stated: "Fear God, and give glory to him; for the hour of his judgment is come: and worship him that made heaven, and earth." This is a call to repentance during the final judgment — not the delivery of new scripture in upstate New York.</p>
+      <p class="proof-text">The gospel is called <strong>"everlasting" precisely because it is unchanging and eternal</strong>, not because it was lost and needed restoring. If the gospel can be lost from the earth, it is not everlasting. The very adjective refutes the LDS claim.</p>
+      <p class="proof-text">Most devastating is <strong>Galatians 1:8</strong>: "But though we, or <em>an angel from heaven</em>, preach any other gospel unto you than that which we have preached unto you, let him be accursed." Paul explicitly warns that an angel bringing a different gospel is a sign not of divine restoration but of divine condemnation. The irony of the LDS interpretation is fatal to their own position.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════ JAMES 1:5 ═══════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">X</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="proof-card">
+    <div class="proof-card-header">
+      <span class="proof-card-verse">James 1:5</span>
+      <span class="proof-card-topic">Restoration</span>
+    </div>
+    <div class="proof-card-body">
+      <div class="scripture-block">
+        <p>If any of you lack wisdom, let him ask of God, that giveth to all men liberally, and upbraideth not; and it shall be given him.</p>
+        <span class="scripture-ref">— James 1:5 (KJV)</span>
+      </div>
+
+      <div class="proof-label proof-label-lds">LDS Interpretation</div>
+      <p class="proof-text">This verse prompted Joseph Smith's First Vision in the Sacred Grove in 1820. Missionaries use it to encourage investigators to "pray about" the Book of Mormon, asserting that personal revelation through prayer is the ultimate test of truth. Moroni 10:4 builds on this approach: "Ask God… if these things are not true."</p>
+
+      <div class="proof-divider"></div>
+
+      <div class="proof-label proof-label-catholic">Biblical Context &amp; Catholic Response</div>
+      <p class="proof-text">James is writing to Christians facing trials (1:2–4) and encourages them to ask God for <strong>wisdom in enduring those trials</strong> — practical, moral wisdom for daily life. The Greek <em>sophia</em> refers to moral and practical understanding, not epistemological certainty about new revelations or new scripture. The verse does not say "ask God which church to join" or "ask God if a book is true."</p>
+      <p class="proof-text">Scripture's own test for new revelation is <strong>comparison with established truth</strong>, not subjective feeling. Acts 17:11 praises the Bereans for "searching the scriptures daily" to verify Paul's teaching. Deuteronomy 13:1–5 commands testing prophetic claims against the existing Word of God. Isaiah 8:20: "To the law and to the testimony: if they speak not according to this word, it is because there is no light in them."</p>
+      <p class="proof-text">Proverbs 28:26 warns, <strong>"He that trusteth in his own heart is a fool."</strong> Jeremiah 17:9: "The heart is deceitful above all things." The LDS epistemological method — "pray and trust the feeling you get" — inverts the biblical standard. Feelings are not the measure of Scripture; Scripture is the measure of feelings.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════ MATTHEW 16:18 ═══════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">XI</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="proof-card">
+    <div class="proof-card-header">
+      <span class="proof-card-verse">Matthew 16:18–19</span>
+      <span class="proof-card-topic">The Church</span>
+    </div>
+    <div class="proof-card-body">
+      <div class="scripture-block">
+        <p>And I say also unto thee, That thou art Peter, and upon this rock I will build my church; and the gates of hell shall not prevail against it.</p>
+        <span class="scripture-ref">— Matthew 16:18 (KJV)</span>
+      </div>
+
+      <div class="proof-label proof-label-lds">LDS Interpretation</div>
+      <p class="proof-text">LDS apologists reinterpret "the gates of hell" as referring narrowly to the realm of the dead and the power of the priesthood to perform ordinances for the dead — not as a promise that the Church would survive. The FAIR LDS website argues this reading supports temple work rather than ecclesial indefectibility.</p>
+
+      <div class="proof-divider"></div>
+
+      <div class="proof-label proof-label-catholic">Biblical Context &amp; Catholic Response</div>
+      <p class="proof-text">"The gates of Hades" (<em>pylai hadou</em>) in biblical idiom means <strong>the power of death itself</strong> (cf. Job 38:17, Psalm 9:13, Isaiah 38:10). Jesus is declaring that death will never overcome His Church — the Church will never die. This interpretation is confirmed by the early Church Fathers and by nearly two thousand years of unbroken Church history.</p>
+      <p class="proof-text">Jesus further promises in <strong>Matthew 28:20</strong>: "Lo, I am with you always, even unto the end of the age." He did not say "until the apostles die" or "until the 2nd century." He said <strong>always — until the end.</strong> If the Church totally fell into apostasy and ceased to exist for seventeen centuries, Christ's explicit promise was broken. Either Jesus told the truth, or the Great Apostasy happened. Both cannot be true.</p>
+      <p class="proof-text">The Catholic Church's <strong>unbroken apostolic succession</strong> from Peter through every Bishop of Rome to the present day is the visible, historical fulfillment of this promise. The gates of Hades have not prevailed. The Church Christ built still stands.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════ CONCLUSION ═══════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">Conclusion</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="article-section">
+    <h2>A Note on Method</h2>
+
+    <p class="drop-cap">Every rebuttal in this guide relies on the same Bible that Latter-day Saints accept as scripture. We have prioritized the plain meaning of the text, the original Hebrew and Greek, the immediate literary context, and the broader witness of Scripture. Where relevant, we have cited LDS-friendly scholars who concede the contextual problems with traditional LDS interpretations.</p>
+
+    <p>The consistent pattern is clear: the LDS Church lifts individual verses out of context, assigns them meanings foreign to the original authors' intent, and builds foundational doctrines on these misreadings. An Old Testament judgment on ancient Israel becomes a prediction of the Great Apostasy. A prophetic sign-act about national reunification becomes a proof of the Book of Mormon. A metaphor for spiritual blindness becomes a prophecy of gold plates. An eschatological rebellion becomes an institutional collapse. And Jesus's promise that His Church would endure forever is reinterpreted as a promise about temple rituals for the dead.</p>
+
+    <p>The Catholic Church, by contrast, reads Scripture as a unified whole — guided by Sacred Tradition and the Magisterium — and finds in it the same faith taught by the Apostles and preserved without interruption for two thousand years. We do not need to rip verses from their context to find our doctrines in the Bible, because our doctrines grew from the Bible in the community that wrote it, compiled it, and has faithfully transmitted it across every century since.</p>
+
+    <div class="patristic-block">
+      <p>"Grant that all have erred… that the Church itself has erred, that no Apostle knew what to teach. Is it likely that so many and such great churches should have gone astray into a unity of faith?"</p>
+      <div class="attribution">Tertullian, De Praescriptione Haereticorum, XXVIII (c. A.D. 200)</div>
+    </div>
+
+    <div class="further-reading" style="margin: 2.5rem auto 0; max-width: 680px; text-align: center; font-family: 'Source Serif 4', Georgia, serif; font-size: 1.05rem;">
+      <p style="margin-bottom: 0.4rem; font-variant: small-caps; letter-spacing: 0.08em; color: var(--dark-gold); font-weight: 600;">Further Reading</p>
+      <a href="https://onefaithdelivered.org/articles/celibacy-monasticism-chastity.html" style="color: var(--crimson); text-decoration: underline; text-underline-offset: 3px;">The Church, Chastity, &amp; Celibacy: A Defense of the Consecrated Life</a>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════ REFERENCES ═══════════════════ -->
+  <div class="references-section">
+    <h3>Key Scripture References</h3>
+    <ul>
+      <li>Amos 8:11–12 — Famine of the word directed at the northern kingdom of Israel</li>
+      <li>Amos 9:11–12 / Acts 15:15–18 — Restoration fulfilled in the Church's Gentile mission</li>
+      <li>Ezekiel 37:15–22 — Two sticks representing national reunification of Judah and Israel</li>
+      <li>Isaiah 29:1–14 — Oracle against Jerusalem ("Ariel"), spiritual blindness metaphor</li>
+      <li>2 Thessalonians 2:1–4 — Eschatological rebellion and the man of lawlessness</li>
+      <li>1 Timothy 4:1–3 — Warning that "some" will depart; Gnostic heresies in view</li>
+      <li>Acts 20:29–32 — Wolves among the flock; commended to God's sustaining grace</li>
+      <li>John 10:16 — "Other sheep" = the Gentiles (cf. Eph 2:14–16, Rom 11:11–25)</li>
+      <li>1 Corinthians 15:29 — Third-person reference to non-Pauline practice</li>
+      <li>Revelation 14:6–7 — Apocalyptic angel during the Tribulation, not Moroni</li>
+      <li>James 1:5 — Practical wisdom in trials, not epistemological test for new revelation</li>
+      <li>Matthew 16:18 / 28:20 — Christ's promise the Church will endure to the end</li>
+      <li>Galatians 1:8 — Condemnation of any angel preaching a different gospel</li>
+    </ul>
+
+    <h3>Catholic Sources</h3>
+    <ul>
+      <li>Catholic Answers — <a href="https://www.catholic.com/qa/what-are-mormons-referring-to-when-they-talk-about-the-stick-of-joseph" target="_blank">"The Stick of Joseph"</a></li>
+      <li>Catholic Answers — <a href="https://www.catholic.com/qa/when-jesus-talks-about-other-sheep-is-he-referring-to-the-mormons" target="_blank">"Other Sheep" in John 10:16</a></li>
+      <li>Catholic Answers Magazine — <a href="https://www.catholic.com/magazine/online-edition/does-the-bible-prove-a-mormon-doctrine" target="_blank">"Does the Bible Prove a Mormon Doctrine?"</a></li>
+      <li>Tertullian, <em>De Praescriptione Haereticorum</em>, XXVIII — <a href="https://www.newadvent.org/fathers/0311.htm" target="_blank">New Advent</a></li>
+    </ul>
+
+    <h3>LDS Sources Referenced</h3>
+    <ul>
+      <li>James E. Talmage, <em>The Articles of Faith</em> &amp; <em>The Great Apostasy</em></li>
+      <li>LeGrand Richards, <em>A Marvelous Work and a Wonder</em></li>
+      <li>LDS Seminary Manual — <a href="https://www.churchofjesuschrist.org/study/manual/new-testament-study-guide-for-home-study-seminary-students/introduction-to-2-thessalonians/unit-26-day-3-2-thessalonians?lang=eng" target="_blank">2 Thessalonians Unit</a></li>
+      <li>LDS Topical Guide — <a href="https://www.churchofjesuschrist.org/study/scriptures/tg/apostasy-of-the-early-christian-church?lang=eng" target="_blank">Apostasy of the Early Christian Church</a></li>
+      <li>D. Kelly Ogden (BYU) — Concession on Amos 8 context</li>
+      <li>Brian E. Keck, "Ezekiel 37, Sticks and Babylonian Writing Boards" — <a href="https://www.dialoguejournal.com/articles/ezekiel-37-sticks-and-babylonian-writing-boards-a-critical-reappraisal/" target="_blank"><em>Dialogue: A Journal of Mormon Thought</em></a></li>
+    </ul>
+  </div>
+
+<div class="print-colophon">One Faith Delivered &nbsp;&middot;&nbsp; <span id="print-url-text">onefaithdelivered.org</span></div>
+</main>
+
+<footer>&copy; One Faith Delivered &nbsp;&#8901;&nbsp; All Rights Reserved</footer>
+
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">One Faith Delivered</div>
+    <a href="../index.html">Home</a>
+    <a href="../articles.html">Articles</a>
+    <a href="../charts.html">Charts</a>
+    <a href="../topics.html">Topics</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../articles.html" class="sidebar-back">&#8592; All Articles</a>
+    <div class="sidebar-ornament">✦ ✦ ✦</div>
+  </div>
+</aside>
+
+<script>
+function toggleSidebar() {
+  var btn = document.querySelector('.nav-hamburger'),
+      sidebar = document.querySelector('.sidebar'),
+      overlay = document.querySelector('.sidebar-overlay');
+  var isOpen = sidebar.classList.contains('open');
+  if (isOpen) {
+    sidebar.classList.remove('open');
+    btn.classList.remove('open');
+    overlay.classList.remove('visible');
+    document.body.style.overflow = '';
+  } else {
+    sidebar.classList.add('open');
+    btn.classList.add('open');
+    overlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar();
+});
+</script>
+
+
+<script>
+/* Reading Progress Bar + Print URL */
+(function () {
+  var bar = document.getElementById('reading-progress-bar');
+  function updateProgress() {
+    if (!bar) return;
+    var scrollTop  = window.scrollY || document.documentElement.scrollTop;
+    var docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+    bar.style.width = pct + '%';
+    bar.setAttribute('aria-valuenow', Math.round(pct));
+  }
+  if (bar) {
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
+  /* Populate print URL */
+  var urlEl = document.getElementById('print-url-text');
+  if (urlEl) {
+    var href = window.location.href;
+    urlEl.textContent = href && href !== 'about:blank' ? href : 'onefaithdelivered.org';
+  }
+})();
+</script>
+
+</body>
+</html>

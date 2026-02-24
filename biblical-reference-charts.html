@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblical Reference Charts — One Faith Delivered</title>
+<meta name="description" content="Interactive biblical reference charts covering the miracles, parables, and 'I AM' statements of Jesus Christ, plus a complete Holy Week timeline.">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #0F0E0C;
+  --deep-warm: #1A1714;
+  --panel: #1F1C18;
+  --panel-light: #2A2620;
+  --border: #3A352C;
+  --border-light: #4A4438;
+  --gold: #DAA520;
+  --gold-dim: #B8960B;
+  --gold-glow: rgba(218,165,32,0.15);
+  --gold-bright: #F0D060;
+  --cream: #F5F0E8;
+  --cream-dim: #C4BAA8;
+  --cream-faint: #8A8070;
+  --crimson: #C0392B;
+  --crimson-soft: #A93226;
+  --blue-ancient: #5B8FB9;
+  --green-olive: #7A9A5A;
+  --purple-royal: #8E6CB8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--deep);
+  background-image:
+    radial-gradient(ellipse at 30% 20%, rgba(218,165,32,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(192,57,43,0.03) 0%, transparent 50%);
+  color: var(--cream);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.65;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Site Navigation ── */
+.site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px clamp(16px, 4vw, 40px);
+  background: rgba(15,14,12,0.95);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.nav-brand {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.nav-brand:hover { color: var(--gold-bright); }
+.nav-links { display: flex; gap: 6px; align-items: center; }
+.nav-links a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream-faint);
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  transition: all 0.25s ease;
+}
+.nav-links a:hover {
+  color: var(--gold);
+  border-color: var(--border);
+  background: rgba(218,165,32,0.05);
+}
+.nav-links a.active {
+  color: var(--gold);
+  border-color: var(--gold-dim);
+  background: rgba(218,165,32,0.08);
+}
+
+/* ── Hamburger ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+.hamburger:hover { border-color: var(--gold-dim); }
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: var(--gold);
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── Sidebar ── */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 200;
+}
+.sidebar-overlay.open { display: block; }
+.sidebar {
+  position: fixed;
+  top: 0; right: 0;
+  width: 270px;
+  height: 100%;
+  background: var(--deep-warm);
+  border-left: 1px solid var(--border);
+  z-index: 300;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 24px 24px;
+}
+.sidebar.open { transform: translateX(0); }
+.sidebar a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  text-decoration: none;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.25s;
+}
+.sidebar a:hover { color: var(--gold); }
+.sidebar a.active { color: var(--gold); }
+.sidebar .sidebar-ornament {
+  margin-top: auto;
+  text-align: center;
+  font-size: 11px;
+  color: var(--gold-dim);
+  opacity: 0.3;
+  letter-spacing: 0.3em;
+}
+
+/* ── Page Layout ── */
+.page-wrapper {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 50px 20px 60px;
+}
+.outer-border {
+  border: 1.5px solid var(--gold-dim);
+  outline: 1px solid rgba(218,165,32,0.15);
+  outline-offset: 5px;
+  padding: 48px clamp(20px, 5vw, 56px);
+  background: rgba(15,14,12,0.5);
+  position: relative;
+}
+.outer-border::before, .outer-border::after {
+  content: '✦'; position: absolute; color: var(--gold-dim); font-size: 11px; opacity: 0.4;
+}
+.outer-border::before { top: 10px; left: 14px; }
+.outer-border::after { bottom: 10px; right: 14px; }
+
+/* ── Header ── */
+.page-header { text-align: center; margin-bottom: 48px; }
+.header-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  display: block;
+  opacity: 0.7;
+}
+.page-header h1 {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  font-size: clamp(1.3rem, 3.6vw, 2.1rem);
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  margin-bottom: 6px;
+  text-shadow: 0 0 30px rgba(218,165,32,0.15);
+}
+.page-header .subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.58rem, 1.3vw, 0.72rem);
+  font-weight: 600;
+  color: var(--cream-faint);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.header-rule {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  margin: 18px auto; max-width: 350px;
+}
+.header-rule::before, .header-rule::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+}
+.header-rule span { color: var(--gold-dim); font-size: 12px; }
+
+.page-header .intro {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(0.88rem, 1.6vw, 1rem);
+  color: var(--cream-dim);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* ── Chart Cards ── */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 10px;
+}
+
+.chart-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 32px clamp(20px, 4vw, 36px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+.chart-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px; height: 100%;
+  transition: width 0.3s ease;
+}
+.chart-card:nth-child(1)::before { background: var(--crimson); }
+.chart-card:nth-child(2)::before { background: var(--gold); }
+.chart-card:nth-child(3)::before { background: var(--blue-ancient); }
+.chart-card:nth-child(4)::before { background: var(--green-olive); }
+
+.chart-card:hover {
+  border-color: var(--border-light);
+  background: var(--panel-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.chart-card:hover::before { width: 6px; }
+
+.card-number {
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.chart-card:nth-child(1) .card-number { color: var(--crimson); }
+.chart-card:nth-child(2) .card-number { color: var(--gold-dim); }
+.chart-card:nth-child(3) .card-number { color: var(--blue-ancient); }
+.chart-card:nth-child(4) .card-number { color: var(--green-olive); }
+
+.card-number::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.card-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  font-weight: 700;
+  color: var(--cream);
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  margin-bottom: 10px;
+  transition: color 0.25s;
+}
+.chart-card:hover .card-title { color: var(--gold); }
+
+.card-desc {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+  color: var(--cream-dim);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.card-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream-faint);
+  padding: 4px 10px;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: rgba(255,255,255,0.02);
+}
+
+.card-arrow {
+  position: absolute;
+  right: clamp(16px, 3vw, 28px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: var(--border-light);
+  transition: all 0.3s ease;
+}
+.chart-card:hover .card-arrow {
+  color: var(--gold);
+  transform: translateY(-50%) translateX(4px);
+}
+
+/* ── Footer ── */
+.page-footer {
+  text-align: center;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.page-footer .site-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cream-faint);
+  opacity: 0.5;
+}
+
+/* ── Responsive ── */
+@media (max-width: 700px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  .page-wrapper { padding: 30px 12px 40px; }
+  .outer-border { padding: 28px clamp(14px, 4vw, 24px); outline-offset: 3px; }
+  .page-header { margin-bottom: 32px; }
+
+  .card-arrow { display: none; }
+  .chart-card { padding: 24px 18px; }
+}
+
+@media (min-width: 701px) {
+  .chart-card {
+    padding-right: 60px;
+  }
+}
+
+/* ── Fade-in animation ── */
+.chart-card {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: cardFadeIn 0.5s ease forwards;
+}
+.chart-card:nth-child(1) { animation-delay: 0.1s; }
+.chart-card:nth-child(2) { animation-delay: 0.2s; }
+.chart-card:nth-child(3) { animation-delay: 0.3s; }
+.chart-card:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes cardFadeIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="site-nav">
+  <a href="index.html" class="nav-brand">One Faith Delivered</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="articles.html">Articles</a>
+    <a href="charts.html">Charts</a>
+    <a href="biblical-reference-charts.html" class="active">Biblical Reference</a>
+    <a href="topics.html">Topics</a>
+    <a href="resources.html">Resources</a>
+  </div>
+  <button class="hamburger" onclick="toggleSidebar()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Sidebar -->
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<div class="sidebar">
+  <a href="index.html">Home</a>
+  <a href="articles.html">Articles</a>
+  <a href="charts.html">Charts</a>
+  <a href="biblical-reference-charts.html" class="active">Biblical Reference</a>
+  <a href="topics.html">Topics</a>
+  <a href="resources.html">Resources</a>
+  <div class="sidebar-ornament">✦ ✦ ✦</div>
+</div>
+
+<!-- Page Content -->
+<div class="page-wrapper">
+<div class="outer-border">
+
+  <div class="page-header">
+    <span class="header-icon">✟</span>
+    <h1>Biblical Reference Charts</h1>
+    <div class="subtitle">Interactive Guides to the Life &amp; Teachings of Christ</div>
+    <div class="header-rule"><span>☩</span></div>
+    <p class="intro">
+      A collection of comprehensive reference charts exploring the words, works, and final days 
+      of Our Lord Jesus Christ as recorded across the four Gospels and the New Testament.
+    </p>
+  </div>
+
+  <div class="charts-grid">
+
+    <!-- 1. Holy Week Timeline -->
+    <a href="nipages/holy-week-timeline.html" class="chart-card">
+      <div class="card-number">I</div>
+      <div class="card-title">The Sacred Triduum &amp; Holy Week</div>
+      <div class="card-desc">
+        A four-Gospel harmony tracing every event of Holy Week from Palm Sunday through the Resurrection, 
+        harmonized across Matthew, Mark, Luke, and John with precise chronological placement.
+      </div>
+      <div class="card-tags">
+        <span class="card-tag">Gospel Harmony</span>
+        <span class="card-tag">Passion Narrative</span>
+        <span class="card-tag">Timeline</span>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <!-- 2. Ego Eimi -->
+    <a href="nipages/ego-eimi-chart.html" class="chart-card">
+      <div class="card-number">II</div>
+      <div class="card-title">The Seven "I AM" Statements</div>
+      <div class="card-desc">
+        An exploration of the seven Ego Eimi declarations in the Gospel of John — 
+        Christ's self-revelation as the Bread of Life, Light of the World, the Good Shepherd, 
+        and more, with their Old Testament roots and theological significance.
+      </div>
+      <div class="card-tags">
+        <span class="card-tag">Gospel of John</span>
+        <span class="card-tag">Christology</span>
+        <span class="card-tag">Ego Eimi</span>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <!-- 3. Miracles -->
+    <a href="nipages/miracles-chart.html" class="chart-card">
+      <div class="card-number">III</div>
+      <div class="card-title">The Miracles of Jesus Christ</div>
+      <div class="card-desc">
+        A complete New Testament reference cataloging every miracle performed by Christ, 
+        organized by category — healings, nature miracles, exorcisms, and raisings from the dead — 
+        with cross-references across all four Gospels.
+      </div>
+      <div class="card-tags">
+        <span class="card-tag">Complete Reference</span>
+        <span class="card-tag">All Four Gospels</span>
+        <span class="card-tag">Miracles</span>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+    <!-- 4. Parables -->
+    <a href="nipages/parables-chart.html" class="chart-card">
+      <div class="card-number">IV</div>
+      <div class="card-title">The Parables of Jesus</div>
+      <div class="card-desc">
+        A comprehensive reference organizing every parable by theme — the Kingdom of God, 
+        mercy and forgiveness, faithfulness and stewardship, prayer, and judgment — with 
+        Scripture citations and Gospel source identification.
+      </div>
+      <div class="card-tags">
+        <span class="card-tag">By Theme</span>
+        <span class="card-tag">Complete Reference</span>
+        <span class="card-tag">Parables</span>
+      </div>
+      <div class="card-arrow">→</div>
+    </a>
+
+  </div>
+
+  <div class="page-footer">
+    <div class="site-tag">One Faith Delivered — onefaithdelivered.com</div>
+  </div>
+
+</div>
+</div>
+
+<script>
+function toggleSidebar() {
+  document.querySelector('.hamburger').classList.toggle('open');
+  document.querySelector('.sidebar').classList.toggle('open');
+  document.querySelector('.sidebar-overlay').classList.toggle('open');
+  document.body.style.overflow = document.querySelector('.sidebar').classList.contains('open') ? 'hidden' : '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { const s = document.querySelector('.sidebar'); if (s.classList.contains('open')) toggleSidebar(); }});
+document.querySelector('.sidebar-overlay').addEventListener('touchstart', e => { e.preventDefault(); toggleSidebar(); });
+</script>
+</body>
+</html>
