@@ -134,6 +134,20 @@ body {
   justify-content: center;
   gap: 6px;
   margin-bottom: 36px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--parchment);
+  padding: 12px 0;
+  margin-left: -12px;
+  margin-right: -12px;
+  padding-left: 12px;
+  padding-right: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0);
+  transition: box-shadow 0.3s ease;
+}
+.day-nav.stuck {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 .day-tab {
@@ -1151,8 +1165,11 @@ function setActiveDay(dayKey) {
   // Update nav arrows
   updateNavArrows(dayKey);
 
-  // Scroll to top of content
-  container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Scroll to top of content (skip on initial load)
+  if (!window._initialLoad) {
+    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  window._initialLoad = false;
 }
 
 function updateNavArrows(dayKey) {
@@ -1202,7 +1219,19 @@ document.getElementById('next-btn').addEventListener('click', () => {
 });
 
 // ── Initial render ──
+window._initialLoad = true;
 setActiveDay('all');
+
+// ── Sticky shadow on day-nav ──
+const dayNav = document.getElementById('day-nav');
+const sentinel = document.createElement('div');
+sentinel.style.height = '1px';
+sentinel.style.marginBottom = '-1px';
+dayNav.parentNode.insertBefore(sentinel, dayNav);
+const stickyObs = new IntersectionObserver(([e]) => {
+  dayNav.classList.toggle('stuck', !e.isIntersecting);
+}, { threshold: [1] });
+stickyObs.observe(sentinel);
 </script>
 
 </body>
