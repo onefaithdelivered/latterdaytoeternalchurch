@@ -68,6 +68,16 @@ body {
   color: var(--crimson); text-decoration: none; transition: color 0.2s;
 }
 .site-nav a.nav-home:hover { color: var(--dark-crimson); }
+.site-nav .nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.site-nav .nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text); text-decoration: none; transition: color 0.2s;
+}
+.site-nav .nav-links a:hover { color: var(--crimson); }
 .site-nav .nav-back {
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
@@ -90,6 +100,7 @@ body {
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 @media (max-width: 700px) {
   .nav-hamburger { display: flex; }
+  .site-nav .nav-links { display: none; }
   .site-nav .nav-back { display: none; }
 }
 
@@ -566,7 +577,14 @@ footer {
 <!-- ── SITE NAV ── -->
 <nav class="site-nav">
   <a href="../index.html" class="nav-home">One Faith Delivered</a>
-  <a href="../charts.html" class="nav-back">← All Charts</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../articles.html">Articles</a></li>
+    <li><a href="../charts.html">Charts</a></li>
+    <li><a href="../topics.html">Topics</a></li>
+    <li><a href="../resources.html">Resources</a></li>
+  </ul>
+  <a href="../charts.html" class="nav-back">&#8592; All Charts</a>
   <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
