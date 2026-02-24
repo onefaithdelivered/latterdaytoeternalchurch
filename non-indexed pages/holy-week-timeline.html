@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Sacred Triduum &amp; Holy Week — A Four-Gospel Harmony</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --crimson: #8B1A1A;
+  --crimson-light: #A52A2A;
+  --dark-gold: #B8860B;
+  --gold: #DAA520;
+  --light-gold: #F0D060;
+  --parchment: #F5F0E8;
+  --parchment-dark: #E8E0D0;
+  --parchment-deep: #D4C9B0;
+  --ink: #2C1810;
+  --ink-light: #4A3728;
+  --ink-faint: #7A6A5A;
+  --white-alpha: rgba(255,255,255,0.6);
+
+  /* Day accent colors */
+  --palm: #2E7D32;
+  --monday: #1565C0;
+  --tuesday: #4527A0;
+  --wednesday: #6A1B9A;
+  --thursday: #B8860B;
+  --friday: #8B1A1A;
+  --saturday: #37474F;
+  --sunday: #DAA520;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--parchment);
+  background-image:
+    radial-gradient(ellipse at 15% 30%, rgba(139,26,26,0.03) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 70%, rgba(218,165,32,0.04) 0%, transparent 55%);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.65;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+/* ── Outer Border ── */
+.outer-border {
+  border: 2px solid var(--dark-gold);
+  outline: 1px solid rgba(184,134,11,0.3);
+  outline-offset: 4px;
+  padding: 36px clamp(16px, 4vw, 44px);
+  background: rgba(255,255,255,0.3);
+  position: relative;
+}
+.outer-border::before,
+.outer-border::after {
+  content: '✦';
+  position: absolute;
+  color: var(--dark-gold);
+  font-size: 12px;
+  opacity: 0.5;
+}
+.outer-border::before { top: 8px; left: 12px; }
+.outer-border::after { bottom: 8px; right: 12px; }
+
+/* ── Header ── */
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.header-cross {
+  font-size: 32px;
+  color: var(--crimson);
+  margin-bottom: 6px;
+  text-shadow: 0 1px 3px rgba(139,26,26,0.2);
+}
+.header h1 {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  font-size: clamp(1.5rem, 3.8vw, 2.4rem);
+  font-weight: 700;
+  color: var(--crimson);
+  letter-spacing: 0.05em;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+.header .subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.7rem, 1.6vw, 0.88rem);
+  font-weight: 600;
+  color: var(--dark-gold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.header-rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 14px auto;
+  max-width: 420px;
+}
+.header-rule::before,
+.header-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--dark-gold), transparent);
+}
+.header-rule span { color: var(--dark-gold); font-size: 13px; }
+
+.header .intro {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+  color: var(--ink-light);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── Day Navigation Tabs ── */
+.day-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 36px;
+}
+
+.day-tab {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  border: 1.5px solid var(--parchment-deep);
+  border-radius: 3px;
+  background: white;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  white-space: nowrap;
+}
+.day-tab:hover {
+  border-color: var(--dark-gold);
+  color: var(--ink-light);
+}
+.day-tab.active {
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.day-tab[data-day="palm"].active { background: var(--palm); }
+.day-tab[data-day="monday"].active { background: var(--monday); }
+.day-tab[data-day="tuesday"].active { background: var(--tuesday); }
+.day-tab[data-day="wednesday"].active { background: var(--wednesday); }
+.day-tab[data-day="thursday"].active { background: var(--thursday); }
+.day-tab[data-day="friday"].active { background: var(--friday); }
+.day-tab[data-day="saturday"].active { background: var(--saturday); }
+.day-tab[data-day="sunday"].active { background: var(--sunday); color: var(--ink); }
+.day-tab[data-day="all"].active { background: var(--crimson); }
+
+/* ── Progress Bar ── */
+.progress-track {
+  position: relative;
+  height: 6px;
+  background: var(--parchment-dark);
+  border-radius: 3px;
+  margin-bottom: 36px;
+  overflow: visible;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--palm), var(--monday), var(--tuesday), var(--wednesday), var(--thursday), var(--friday), var(--saturday), var(--sunday));
+  transition: width 0.5s ease;
+  position: relative;
+}
+.progress-markers {
+  position: absolute;
+  top: -4px;
+  left: 0;
+  right: 0;
+  height: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+.progress-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+.progress-dot:hover {
+  transform: scale(1.3);
+}
+.progress-dot.active {
+  transform: scale(1.4);
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.6), 0 2px 8px rgba(0,0,0,0.25);
+}
+
+/* ── Day Content ── */
+.day-content {
+  animation: fadeIn 0.4s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.day-banner {
+  text-align: center;
+  margin-bottom: 28px;
+  padding: 20px;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.day-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.06;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 20px,
+    currentColor 20px,
+    currentColor 21px
+  );
+}
+
+.day-banner .day-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  margin-bottom: 4px;
+}
+.day-banner h2 {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+.day-banner .day-date {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  opacity: 0.75;
+}
+.day-banner .day-theme {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.88rem;
+  margin-top: 10px;
+  line-height: 1.6;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Banner color themes */
+.day-banner.palm { background: rgba(46,125,50,0.08); color: var(--palm); border: 1px solid rgba(46,125,50,0.2); }
+.day-banner.monday { background: rgba(21,101,192,0.08); color: var(--monday); border: 1px solid rgba(21,101,192,0.2); }
+.day-banner.tuesday { background: rgba(69,39,160,0.08); color: var(--tuesday); border: 1px solid rgba(69,39,160,0.2); }
+.day-banner.wednesday { background: rgba(106,27,154,0.08); color: var(--wednesday); border: 1px solid rgba(106,27,154,0.2); }
+.day-banner.thursday { background: rgba(184,134,11,0.08); color: var(--thursday); border: 1px solid rgba(184,134,11,0.2); }
+.day-banner.friday { background: rgba(139,26,26,0.08); color: var(--friday); border: 1px solid rgba(139,26,26,0.2); }
+.day-banner.saturday { background: rgba(55,71,79,0.08); color: var(--saturday); border: 1px solid rgba(55,71,79,0.2); }
+.day-banner.sunday { background: rgba(218,165,32,0.1); color: var(--dark-gold); border: 1px solid rgba(218,165,32,0.3); }
+
+/* ── Event Cards ── */
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  padding-left: 32px;
+}
+.events-list::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--parchment-deep), var(--dark-gold) 20%, var(--dark-gold) 80%, var(--parchment-deep));
+}
+
+.event-card {
+  background: white;
+  border: 1px solid var(--parchment-deep);
+  border-radius: 5px;
+  padding: 18px 22px;
+  position: relative;
+  transition: all 0.3s ease;
+  animation: cardSlide 0.4s ease forwards;
+  opacity: 0;
+}
+.event-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  border-color: var(--dark-gold);
+}
+@keyframes cardSlide {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.event-card::before {
+  content: '';
+  position: absolute;
+  left: -27px;
+  top: 22px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--dark-gold);
+  background: var(--parchment);
+}
+.event-card.sacramental::before {
+  background: var(--dark-gold);
+  box-shadow: 0 0 0 3px rgba(218,165,32,0.25);
+}
+.event-card.major::before {
+  background: var(--crimson);
+  border-color: var(--crimson);
+  box-shadow: 0 0 0 3px rgba(139,26,26,0.2);
+}
+
+.event-time {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  margin-bottom: 4px;
+}
+
+.event-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.event-refs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+.ref-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.ref-tag.mt { background: #E8F5E9; color: #2E7D32; }
+.ref-tag.mk { background: #E3F2FD; color: #1565C0; }
+.ref-tag.lk { background: #FFF3E0; color: #E65100; }
+.ref-tag.jn { background: #F3E5F5; color: #6A1B9A; }
+
+.event-desc {
+  font-size: 0.9rem;
+  color: var(--ink-light);
+  line-height: 1.7;
+}
+
+.event-theology {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: linear-gradient(135deg, rgba(139,26,26,0.04), rgba(218,165,32,0.04));
+  border-left: 3px solid var(--dark-gold);
+  border-radius: 0 4px 4px 0;
+  font-size: 0.84rem;
+  color: var(--ink-light);
+  font-style: italic;
+  line-height: 1.65;
+}
+.event-theology strong {
+  color: var(--crimson);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* ── Separator between days in "All" view ── */
+.day-separator {
+  height: 32px;
+}
+
+/* ── Gospel Key ── */
+.gospel-key {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 28px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 4px;
+  border: 1px solid var(--parchment-deep);
+}
+.gospel-key-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--ink-light);
+}
+.gospel-key-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+/* ── Footer ── */
+.chart-footer {
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 2px solid var(--dark-gold);
+  text-align: center;
+}
+.chart-footer p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  line-height: 1.7;
+  max-width: 660px;
+  margin: 0 auto 6px;
+}
+.chart-footer .site-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--dark-gold);
+  text-transform: uppercase;
+  margin-top: 14px;
+}
+
+/* ── Nav arrows ── */
+.day-nav-arrows {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 28px;
+}
+.nav-arrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--dark-gold);
+  background: none;
+  border: 1.5px solid var(--dark-gold);
+  border-radius: 3px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.nav-arrow:hover {
+  background: var(--dark-gold);
+  color: white;
+}
+.nav-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ── Legend markers ── */
+.marker-key {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+.marker-key span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.mk-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid;
+  display: inline-block;
+}
+.mk-dot.normal { border-color: var(--dark-gold); background: var(--parchment); }
+.mk-dot.sacr { background: var(--dark-gold); border-color: var(--dark-gold); }
+.mk-dot.major { background: var(--crimson); border-color: var(--crimson); }
+
+@media (max-width: 600px) {
+  .page-wrapper { padding: 16px 10px 40px; }
+  .outer-border { padding: 20px 12px; }
+  .events-list { padding-left: 26px; }
+  .event-card { padding: 14px 14px; }
+  .event-card::before { left: -22px; width: 10px; height: 10px; }
+  .events-list::before { left: 7px; }
+  .day-tab { padding: 6px 8px; font-size: 0.56rem; }
+  .progress-track { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+<div class="outer-border">
+
+  <div class="header">
+    <div class="header-cross">☩</div>
+    <h1>Holy Week</h1>
+    <div class="subtitle">A Four-Gospel Harmony · Day by Day</div>
+    <div class="header-rule"><span>✦</span></div>
+    <p class="intro">
+      From the triumphal entry into Jerusalem through the silence of the tomb to the glory of the Resurrection — the eight days that redeemed the world, harmonized from Matthew, Mark, Luke, and John.
+    </p>
+  </div>
+
+  <!-- Day Navigation -->
+  <div class="day-nav" id="day-nav">
+    <button class="day-tab active" data-day="all">All Days</button>
+    <button class="day-tab" data-day="palm">Palm Sunday</button>
+    <button class="day-tab" data-day="monday">Monday</button>
+    <button class="day-tab" data-day="tuesday">Tuesday</button>
+    <button class="day-tab" data-day="wednesday">Wednesday</button>
+    <button class="day-tab" data-day="thursday">Thursday</button>
+    <button class="day-tab" data-day="friday">Friday</button>
+    <button class="day-tab" data-day="saturday">Saturday</button>
+    <button class="day-tab" data-day="sunday">Easter Sunday</button>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-track">
+    <div class="progress-fill" id="progress-fill" style="width:100%"></div>
+    <div class="progress-markers" id="progress-markers"></div>
+  </div>
+
+  <!-- Gospel color key -->
+  <div class="gospel-key">
+    <div class="gospel-key-item"><div class="gospel-key-dot" style="background:#E8F5E9; border:1px solid #2E7D32"></div> Matthew</div>
+    <div class="gospel-key-item"><div class="gospel-key-dot" style="background:#E3F2FD; border:1px solid #1565C0"></div> Mark</div>
+    <div class="gospel-key-item"><div class="gospel-key-dot" style="background:#FFF3E0; border:1px solid #E65100"></div> Luke</div>
+    <div class="gospel-key-item"><div class="gospel-key-dot" style="background:#F3E5F5; border:1px solid #6A1B9A"></div> John</div>
+  </div>
+
+  <div class="marker-key">
+    <span><span class="mk-dot normal"></span> Event</span>
+    <span><span class="mk-dot sacr"></span> Sacramental</span>
+    <span><span class="mk-dot major"></span> Salvific Climax</span>
+  </div>
+
+  <!-- Dynamic Content -->
+  <div id="timeline-content"></div>
+
+  <!-- Day nav arrows -->
+  <div class="day-nav-arrows">
+    <button class="nav-arrow" id="prev-btn">← Previous Day</button>
+    <button class="nav-arrow" id="next-btn">Next Day →</button>
+  </div>
+
+  <div class="chart-footer">
+    <p>Chronological placement follows the most widely accepted harmonization in Catholic biblical scholarship. 
+       The exact sequence of certain events (particularly Tuesday's discourses) admits of scholarly variation. 
+       Hours are approximate, following the ancient Jewish reckoning where the day begins at sundown.</p>
+    <div class="site-tag">One Faith Delivered — onefaithdelivered.com</div>
+  </div>
+
+</div>
+</div>
+
+<script>
+const dayOrder = ["palm","monday","tuesday","wednesday","thursday","friday","saturday","sunday"];
+
+const dayColors = {
+  palm: "#2E7D32", monday: "#1565C0", tuesday: "#4527A0", wednesday: "#6A1B9A",
+  thursday: "#B8860B", friday: "#8B1A1A", saturday: "#37474F", sunday: "#DAA520"
+};
+
+const days = {
+  palm: {
+    label: "Palm Sunday",
+    title: "The Triumphal Entry",
+    date: "Nisan 9 · Sunday",
+    theme: "Jesus enters Jerusalem as the Messianic King, fulfilling Zechariah 9:9. The crowds hail Him with Psalm 118 — the great Hallel — not knowing that the stone the builders reject is about to become the cornerstone.",
+    events: [
+      {
+        time: "Morning",
+        title: "Jesus Sends for the Donkey",
+        refs: [{g:"mt",c:"Mt 21:1–7"},{g:"mk",c:"Mk 11:1–7"},{g:"lk",c:"Lk 19:28–35"},{g:"jn",c:"Jn 12:12–15"}],
+        desc: "From Bethphage on the Mount of Olives, Jesus sends two disciples to find a colt — fulfilling Zechariah's prophecy of the humble King.",
+        type: "normal"
+      },
+      {
+        time: "Morning",
+        title: "The Triumphal Procession into Jerusalem",
+        refs: [{g:"mt",c:"Mt 21:8–11"},{g:"mk",c:"Mk 11:8–10"},{g:"lk",c:"Lk 19:36–40"},{g:"jn",c:"Jn 12:12–19"}],
+        desc: "The multitudes spread cloaks and palm branches, crying \"Hosanna to the Son of David! Blessed is He who comes in the name of the Lord!\"",
+        theology: "The acclamation is drawn from <strong>Psalm 118:25–26</strong>, a Messianic enthronement psalm. The Catholic liturgy preserves this moment in every Mass: the <strong>Sanctus</strong> (\"Blessed is He who comes…\") is prayed at the threshold of the Eucharistic Prayer, uniting the Church's worship with this same cry.",
+        type: "normal"
+      },
+      {
+        time: "Afternoon",
+        title: "Jesus Weeps over Jerusalem",
+        refs: [{g:"lk",c:"Lk 19:41–44"}],
+        desc: "Approaching the city, Jesus weeps and prophesies its destruction: \"If you had known the things that make for peace… but now they are hidden from your eyes.\"",
+        type: "normal"
+      },
+      {
+        time: "Afternoon",
+        title: "Jesus Surveys the Temple, Returns to Bethany",
+        refs: [{g:"mk",c:"Mk 11:11"}],
+        desc: "In Mark's account, Jesus enters the Temple, looks around at everything, and — since it is already late — departs with the Twelve to Bethany for the night.",
+        type: "normal"
+      }
+    ]
+  },
+
+  monday: {
+    label: "Holy Monday",
+    title: "Authority and Judgment",
+    date: "Nisan 10 · Monday",
+    theme: "Jesus cleanses the Temple and curses the barren fig tree — two prophetic sign-acts declaring judgment on fruitless, corrupt worship. Nisan 10 is also when Passover lambs were selected and inspected for blemish.",
+    events: [
+      {
+        time: "Morning",
+        title: "Cursing of the Fig Tree",
+        refs: [{g:"mt",c:"Mt 21:18–19"},{g:"mk",c:"Mk 11:12–14"}],
+        desc: "Finding a fig tree in leaf but bearing no fruit, Jesus says: \"May no one ever eat fruit from you again.\" A living parable of Israel's outward religiosity without interior conversion.",
+        type: "normal"
+      },
+      {
+        time: "Mid-Morning",
+        title: "The Cleansing of the Temple",
+        refs: [{g:"mt",c:"Mt 21:12–13"},{g:"mk",c:"Mk 11:15–18"},{g:"lk",c:"Lk 19:45–48"}],
+        desc: "Jesus overturns the tables of the money-changers and drives out those selling animals, declaring: \"My house shall be called a house of prayer, but you have made it a den of robbers.\"",
+        theology: "This is a <strong>priestly</strong> act. Jesus exercises authority over the Temple cult itself, purifying the place of sacrifice. The Catholic understanding is that Christ — the eternal High Priest — replaces the Temple system with His own Body (Jn 2:19–21), the <strong>true Temple</strong> from which all sacraments flow.",
+        type: "sacramental"
+      },
+      {
+        time: "Afternoon",
+        title: "The Blind and Lame Healed in the Temple",
+        refs: [{g:"mt",c:"Mt 21:14"}],
+        desc: "After cleansing the Temple, Jesus heals the blind and the lame who come to Him there — those previously excluded are now welcomed by the true High Priest.",
+        type: "normal"
+      },
+      {
+        time: "Evening",
+        title: "Return to Bethany",
+        refs: [{g:"mt",c:"Mt 21:17"},{g:"mk",c:"Mk 11:19"}],
+        desc: "Jesus leaves the city and spends the night in Bethany, likely at the home of Lazarus, Martha, and Mary.",
+        type: "normal"
+      }
+    ]
+  },
+
+  tuesday: {
+    label: "Holy Tuesday",
+    title: "Teaching and Controversy",
+    date: "Nisan 11 · Tuesday",
+    theme: "The longest recorded day of Jesus' public ministry. He teaches in the Temple with a series of parables and confrontations, delivers the Olivet Discourse on the end times, and silences every challenger with divine wisdom.",
+    events: [
+      {
+        time: "Morning",
+        title: "The Withered Fig Tree — Lesson on Faith",
+        refs: [{g:"mt",c:"Mt 21:20–22"},{g:"mk",c:"Mk 11:20–26"}],
+        desc: "The disciples find the fig tree withered from the roots. Jesus teaches on faith and the power of prayer.",
+        type: "normal"
+      },
+      {
+        time: "Morning",
+        title: "The Authority of Jesus Challenged",
+        refs: [{g:"mt",c:"Mt 21:23–27"},{g:"mk",c:"Mk 11:27–33"},{g:"lk",c:"Lk 20:1–8"}],
+        desc: "The chief priests demand: \"By what authority do you do these things?\" Jesus answers with a counter-question about John's baptism that silences them.",
+        type: "normal"
+      },
+      {
+        time: "Morning–Midday",
+        title: "Parables of Judgment: Two Sons, Wicked Tenants, Wedding Feast",
+        refs: [{g:"mt",c:"Mt 21:28–22:14"},{g:"mk",c:"Mk 12:1–12"},{g:"lk",c:"Lk 20:9–19"}],
+        desc: "Three devastating parables aimed at the religious leadership, culminating in the Parable of the Wicked Tenants — where the vineyard owner's son is killed by those entrusted with the vineyard.",
+        theology: "The Parable of the Wicked Tenants is a <strong>compressed salvation history</strong>: God sends prophets (servants), they are rejected, and finally He sends His Son. The \"stone the builders rejected\" (Ps 118:22) becomes the keystone of the Church. This parable is a powerful argument for the <strong>continuity of the covenant</strong> — the vineyard is not destroyed but given to new tenants (the Church).",
+        type: "normal"
+      },
+      {
+        time: "Midday",
+        title: "Three Test Questions: Taxes, Resurrection, Greatest Commandment",
+        refs: [{g:"mt",c:"Mt 22:15–40"},{g:"mk",c:"Mk 12:13–34"},{g:"lk",c:"Lk 20:20–40"}],
+        desc: "Pharisees, Herodians, and Sadducees each try to trap Jesus. He answers each definitively — rendering unto Caesar, affirming the resurrection of the dead, and summarizing the Law in love of God and neighbor.",
+        type: "normal"
+      },
+      {
+        time: "Midday",
+        title: "Jesus' Counter-Question: \"Whose Son Is the Christ?\"",
+        refs: [{g:"mt",c:"Mt 22:41–46"},{g:"mk",c:"Mk 12:35–37"},{g:"lk",c:"Lk 20:41–44"}],
+        desc: "Jesus silences all challengers with Psalm 110:1 — if David calls the Messiah \"Lord,\" how is He merely David's son? After this, no one dares ask Him another question.",
+        theology: "This is a <strong>direct assertion of divinity</strong>. Jesus identifies Himself with the figure at God's right hand in <strong>Psalm 110</strong> — the same psalm the Letter to the Hebrews uses to establish Christ's eternal priesthood \"after the order of Melchizedek.\"",
+        type: "normal"
+      },
+      {
+        time: "Afternoon",
+        title: "Denunciation of the Scribes and Pharisees",
+        refs: [{g:"mt",c:"Mt 23:1–39"},{g:"mk",c:"Mk 12:38–40"},{g:"lk",c:"Lk 20:45–47"}],
+        desc: "The seven \"Woes\" — Jesus' most severe public rebuke of religious hypocrisy, concluding with the lament: \"Jerusalem, Jerusalem… how often I would have gathered your children together as a hen gathers her brood under her wings, and you were not willing!\"",
+        type: "normal"
+      },
+      {
+        time: "Afternoon",
+        title: "The Widow's Offering",
+        refs: [{g:"mk",c:"Mk 12:41–44"},{g:"lk",c:"Lk 21:1–4"}],
+        desc: "Jesus observes a poor widow casting two small coins into the Temple treasury and declares she has given more than all the wealthy donors — \"she out of her poverty has put in everything she had, all she had to live on.\"",
+        type: "normal"
+      },
+      {
+        time: "Late Afternoon",
+        title: "The Olivet Discourse — Signs of the End",
+        refs: [{g:"mt",c:"Mt 24–25"},{g:"mk",c:"Mk 13"},{g:"lk",c:"Lk 21:5–36"}],
+        desc: "Seated on the Mount of Olives overlooking the Temple, Jesus delivers His great eschatological discourse: the destruction of Jerusalem, the tribulations to come, and the final coming of the Son of Man. Includes the parables of the Ten Virgins, the Talents, and the Sheep and Goats.",
+        theology: "Catholic interpretation distinguishes between the <strong>destruction of Jerusalem in AD 70</strong> (the near fulfillment) and the <strong>Second Coming</strong> (the ultimate fulfillment) — a both/and hermeneutic that preserves prophetic layering, in contrast to approaches that collapse all prophecy into a single future event.",
+        type: "normal"
+      },
+      {
+        time: "Evening",
+        title: "Greeks Seek Jesus; The Father's Voice",
+        refs: [{g:"jn",c:"Jn 12:20–36"}],
+        desc: "Greek proselytes ask to see Jesus. He responds with the grain of wheat saying — \"unless a grain of wheat falls into the earth and dies, it remains alone\" — and the Father's voice thunders from heaven.",
+        type: "normal"
+      }
+    ]
+  },
+
+  wednesday: {
+    label: "Holy Wednesday",
+    title: "Betrayal and Anointing",
+    date: "Nisan 12 · Wednesday",
+    theme: "A day of sharp contrasts: Judas secretly negotiates the price of betrayal while, at Bethany, a woman anoints Jesus with costly perfume — an act He declares is a preparation for His burial. Love and treachery converge.",
+    events: [
+      {
+        time: "Daytime",
+        title: "Judas Agrees to Betray Jesus",
+        refs: [{g:"mt",c:"Mt 26:14–16"},{g:"mk",c:"Mk 14:10–11"},{g:"lk",c:"Lk 22:3–6"}],
+        desc: "Judas Iscariot goes to the chief priests and agrees to hand Jesus over for thirty pieces of silver — the price of a slave (Exodus 21:32), fulfilling Zechariah 11:12–13.",
+        theology: "Luke specifies that <strong>\"Satan entered into Judas\"</strong> (Lk 22:3). The betrayal is both a free human act and a spiritual reality — the battle between the Kingdom of God and the powers of darkness reaches its climax in Holy Week.",
+        type: "normal"
+      },
+      {
+        time: "Evening",
+        title: "The Anointing at Bethany",
+        refs: [{g:"mt",c:"Mt 26:6–13"},{g:"mk",c:"Mk 14:3–9"},{g:"jn",c:"Jn 12:1–8"}],
+        desc: "At the house of Simon the Leper, a woman (identified as Mary of Bethany in John) breaks open an alabaster jar of pure nard worth a year's wages and anoints Jesus. When the disciples object to the waste, Jesus says: \"She has done a beautiful thing to me… she has anointed my body beforehand for burial.\"",
+        theology: "The word <strong>\"Christ\"</strong> (Christos) means \"the Anointed One.\" In this intimate moment, Mary performs a prophetic, even <strong>priestly</strong> act — anointing the true King and Sacrifice. Jesus promises this act will be proclaimed \"wherever the gospel is preached in the whole world\" (Mt 26:13).",
+        type: "sacramental"
+      }
+    ]
+  },
+
+  thursday: {
+    label: "Holy Thursday",
+    title: "The Institution of the Eucharist and the Priesthood",
+    date: "Nisan 13–14 · Thursday Evening into Friday",
+    theme: "The night on which He was betrayed. Jesus transforms the Passover meal into the New Covenant sacrifice, washes the Apostles' feet, institutes the ministerial priesthood, and enters the agony of Gethsemane. The longest and most theologically dense night in human history.",
+    events: [
+      {
+        time: "Afternoon",
+        title: "Preparation of the Passover",
+        refs: [{g:"mt",c:"Mt 26:17–19"},{g:"mk",c:"Mk 14:12–16"},{g:"lk",c:"Lk 22:7–13"}],
+        desc: "Jesus sends Peter and John to prepare the Passover in a furnished upper room in Jerusalem. The details are precise — they will find a man carrying a water jar — emphasizing divine foreknowledge and providential arrangement.",
+        type: "normal"
+      },
+      {
+        time: "Evening",
+        title: "The Washing of the Feet",
+        refs: [{g:"jn",c:"Jn 13:1–17"}],
+        desc: "Jesus rises from supper, girds Himself with a towel, and washes the disciples' feet. Peter protests until Jesus says: \"If I do not wash you, you have no share with me.\" Then Peter asks to be washed entirely.",
+        theology: "This is a <strong>sacramental sign</strong> of servant-leadership that defines the ordained priesthood. \"If I then, your Lord and Teacher, have washed your feet, you also ought to wash one another's feet\" (Jn 13:14). The Catholic Church preserves this literally in the <strong>Mandatum</strong> rite on Holy Thursday, when bishops and priests wash feet.",
+        type: "sacramental"
+      },
+      {
+        time: "Evening",
+        title: "Identification of the Betrayer",
+        refs: [{g:"mt",c:"Mt 26:20–25"},{g:"mk",c:"Mk 14:17–21"},{g:"lk",c:"Lk 22:21–23"},{g:"jn",c:"Jn 13:21–30"}],
+        desc: "\"One of you will betray me.\" The disciples are sorrowful. Jesus dips the morsel and gives it to Judas. John alone records: \"After the morsel, Satan entered into him. Jesus said to him, 'What you are going to do, do quickly.'\" Judas goes out into the night.",
+        type: "normal"
+      },
+      {
+        time: "Evening",
+        title: "The Institution of the Holy Eucharist",
+        refs: [{g:"mt",c:"Mt 26:26–29"},{g:"mk",c:"Mk 14:22–25"},{g:"lk",c:"Lk 22:19–20"}],
+        desc: "Jesus takes bread, gives thanks, breaks it, and says: \"This is my body, which is given for you. Do this in remembrance of me.\" Then the cup: \"This cup is the new covenant in my blood, which is poured out for you.\"",
+        theology: "This is the <strong>central moment of all Scripture</strong>. Christ does not say \"this represents\" or \"this symbolizes\" — He says <strong>\"This IS my body… this IS my blood.\"</strong> He transforms the Passover into the New Covenant sacrifice, fulfilling the entire sacrificial system of the Old Testament. The command <strong>\"Do this\"</strong> (τοῦτο ποιεῖτε) institutes the ordained priesthood — only the Apostles are commissioned to perpetuate this sacrifice. <strong>Every Catholic Mass since Pentecost is an obedient response to this command.</strong>",
+        type: "major"
+      },
+      {
+        time: "Evening",
+        title: "The Farewell Discourse",
+        refs: [{g:"jn",c:"Jn 14–16"}],
+        desc: "Jesus' extended teaching to the Apostles: \"I am the Way, the Truth, and the Life.\" He promises the Holy Spirit (the Paraclete), teaches the Vine and Branches, predicts persecution, and reveals the inner life of the Trinity.",
+        theology: "The <strong>Vine and Branches</strong> discourse (Jn 15) is the foundation of Catholic ecclesiology — believers are organically united to Christ and must \"abide\" in Him to bear fruit. Those who are severed from the Vine wither. This is the theological basis for the visible, sacramental Church rather than a purely invisible assembly of believers.",
+        type: "sacramental"
+      },
+      {
+        time: "Late Evening",
+        title: "The High Priestly Prayer",
+        refs: [{g:"jn",c:"Jn 17:1–26"}],
+        desc: "Jesus prays for Himself, for His Apostles, and for all who will believe through their word — \"that they may all be one, even as you, Father, are in me, and I in you.\"",
+        theology: "This prayer is the <strong>scriptural foundation for Christian unity</strong> and the Catholic claim that Christ wills a visible, organic oneness — not merely spiritual agreement. The prayer \"that they may be one\" (ut unum sint) is the title of St. John Paul II's encyclical on ecumenism.",
+        type: "sacramental"
+      },
+      {
+        time: "Night — Approx. 10–11 PM",
+        title: "The Agony in the Garden of Gethsemane",
+        refs: [{g:"mt",c:"Mt 26:36–46"},{g:"mk",c:"Mk 14:32–42"},{g:"lk",c:"Lk 22:39–46"},{g:"jn",c:"Jn 18:1"}],
+        desc: "Jesus takes Peter, James, and John deeper into the garden. \"My soul is very sorrowful, even to death.\" He prays three times: \"Father, if it is possible, let this cup pass from me; nevertheless, not as I will, but as you will.\" Luke records that His sweat became like drops of blood.",
+        theology: "The Agony reveals the <strong>full humanity of Christ</strong> — a true human will that freely submits to the Father's plan. This is not weakness but the supreme act of obedient love. The Church sees Gethsemane as the counterpart to Eden: where Adam's \"not thy will but mine\" brought death, Christ's <strong>\"not my will but thine\"</strong> brings life.",
+        type: "major"
+      },
+      {
+        time: "Night — Approx. Midnight",
+        title: "The Arrest of Jesus",
+        refs: [{g:"mt",c:"Mt 26:47–56"},{g:"mk",c:"Mk 14:43–52"},{g:"lk",c:"Lk 22:47–53"},{g:"jn",c:"Jn 18:2–12"}],
+        desc: "Judas arrives with a crowd armed with swords and clubs. He identifies Jesus with a kiss. Peter strikes the high priest's servant, cutting off his ear. Jesus heals the wound and submits to arrest. \"All the disciples forsook him and fled.\"",
+        theology: "John's account includes the <strong>theophanic \"I AM\"</strong> (Ego Eimi) — when Jesus says \"I am he,\" the soldiers fall to the ground (Jn 18:6). Even at His most vulnerable, Christ's divine identity breaks through.",
+        type: "major"
+      }
+    ]
+  },
+
+  friday: {
+    label: "Good Friday",
+    title: "The Passion and Death of the Lord",
+    date: "Nisan 14 · Friday",
+    theme: "The Lamb of God is tried, condemned, scourged, crucified, and buried. The veil of the Temple is torn. The one perfect sacrifice — prefigured by every Old Testament offering — is completed on Calvary. \"It is finished.\"",
+    events: [
+      {
+        time: "Pre-Dawn — Approx. 1–5 AM",
+        title: "The Jewish Trials: Annas, Caiaphas, and the Sanhedrin",
+        refs: [{g:"mt",c:"Mt 26:57–68"},{g:"mk",c:"Mk 14:53–65"},{g:"lk",c:"Lk 22:54, 63–71"},{g:"jn",c:"Jn 18:13–14, 19–24"}],
+        desc: "Jesus is taken first to Annas (former high priest), then to Caiaphas. False witnesses are brought. Caiaphas asks directly: \"Are you the Christ, the Son of the Blessed?\" Jesus answers: \"I am, and you will see the Son of Man seated at the right hand of Power.\" They condemn Him for blasphemy.",
+        type: "normal"
+      },
+      {
+        time: "Pre-Dawn",
+        title: "Peter's Triple Denial",
+        refs: [{g:"mt",c:"Mt 26:69–75"},{g:"mk",c:"Mk 14:66–72"},{g:"lk",c:"Lk 22:55–62"},{g:"jn",c:"Jn 18:15–18, 25–27"}],
+        desc: "In the courtyard, Peter denies Jesus three times. The rooster crows. Luke alone records: \"The Lord turned and looked at Peter.\" Peter goes out and weeps bitterly.",
+        theology: "Peter's denial — and his later <strong>triple restoration</strong> (Jn 21:15–17) — reveals that the Petrine office rests not on Peter's personal virtue but on Christ's choice and prayer. \"I have prayed for you that your faith may not fail; and when you have turned again, strengthen your brethren\" (Lk 22:32). The papacy endures despite human weakness because it rests on <strong>Christ's promise</strong>, not human merit.",
+        type: "normal"
+      },
+      {
+        time: "Early Morning — Approx. 6 AM",
+        title: "Jesus before Pilate (First Appearance)",
+        refs: [{g:"mt",c:"Mt 27:1–2, 11–14"},{g:"mk",c:"Mk 15:1–5"},{g:"lk",c:"Lk 23:1–5"},{g:"jn",c:"Jn 18:28–38"}],
+        desc: "The Sanhedrin delivers Jesus to Pontius Pilate. John records the extended dialogue: \"My kingdom is not of this world.\" Pilate finds no fault in Him and declares: \"I find no guilt in this man.\"",
+        type: "normal"
+      },
+      {
+        time: "Morning",
+        title: "Jesus before Herod Antipas",
+        refs: [{g:"lk",c:"Lk 23:6–12"}],
+        desc: "Pilate sends Jesus to Herod, who has jurisdiction over Galilee. Herod interrogates Him, hoping for a miracle. Jesus answers nothing. Herod mocks Him, dresses Him in a royal robe, and sends Him back.",
+        type: "normal"
+      },
+      {
+        time: "Morning — Approx. 7–8 AM",
+        title: "Scourging, Crown of Thorns, and Ecce Homo",
+        refs: [{g:"mt",c:"Mt 27:26–31"},{g:"mk",c:"Mk 15:15–20"},{g:"jn",c:"Jn 19:1–5"}],
+        desc: "Pilate has Jesus scourged — the Roman flagellum tearing flesh to the bone. The soldiers crown Him with thorns, robe Him in purple, and mock: \"Hail, King of the Jews!\" Pilate presents Him: \"Ecce Homo\" — \"Behold the Man.\"",
+        theology: "\"<strong>Ecce Homo</strong>\" is deeper than Pilate knew. This broken, bleeding figure is the <strong>truest revelation of God's love</strong>. The Catholic devotion to the Sacred Heart and the Stations of the Cross flow from sustained meditation on precisely this reality — that the Son of God <strong>chose</strong> to undergo this for the redemption of the world.",
+        type: "major"
+      },
+      {
+        time: "Morning — Approx. 8–9 AM",
+        title: "Pilate's Final Judgment; Barabbas Released",
+        refs: [{g:"mt",c:"Mt 27:15–26"},{g:"mk",c:"Mk 15:6–15"},{g:"lk",c:"Lk 23:13–25"},{g:"jn",c:"Jn 19:6–16"}],
+        desc: "The crowd demands Barabbas. \"Crucify Him!\" Pilate washes his hands. John records Pilate's unwitting theological declaration: \"Behold your King!\" and the crowd's chilling response: \"We have no king but Caesar.\"",
+        type: "normal"
+      },
+      {
+        time: "Morning — Approx. 9 AM (Third Hour)",
+        title: "The Way of the Cross (Via Dolorosa)",
+        refs: [{g:"mt",c:"Mt 27:31–33"},{g:"mk",c:"Mk 15:20–22"},{g:"lk",c:"Lk 23:26–32"},{g:"jn",c:"Jn 19:17"}],
+        desc: "Jesus carries His cross through Jerusalem to Golgotha. Simon of Cyrene is compelled to help. Jesus addresses the weeping women of Jerusalem: \"Do not weep for me, weep for yourselves and for your children.\"",
+        theology: "The Catholic <strong>Stations of the Cross</strong> devotion preserves this journey as a meditative pilgrimage, walked in every parish church worldwide during Lent — a living liturgical memory of the Via Dolorosa.",
+        type: "normal"
+      },
+      {
+        time: "9 AM — Noon (Third to Sixth Hour)",
+        title: "The Crucifixion",
+        refs: [{g:"mt",c:"Mt 27:34–44"},{g:"mk",c:"Mk 15:23–32"},{g:"lk",c:"Lk 23:33–43"},{g:"jn",c:"Jn 19:18–27"}],
+        desc: "Jesus is nailed to the cross between two criminals. The inscription reads \"Jesus of Nazareth, King of the Jews\" in Hebrew, Latin, and Greek. They cast lots for His garments (Ps 22:18). He speaks from the cross: \"Father, forgive them, for they know not what they do.\"",
+        theology: "The Cross is the <strong>altar of the New Covenant</strong>. Every element fulfills the Old Testament sacrificial system: Jesus is simultaneously the <strong>Priest</strong> who offers, the <strong>Victim</strong> who is offered, and the <strong>Altar</strong> upon which the offering is made. The Mass does not \"re-sacrifice\" Christ but makes this one perfect sacrifice <strong>sacramentally present</strong> across time (Heb 7:27, 9:12).",
+        type: "major"
+      },
+      {
+        time: "Noon",
+        title: "Jesus Entrusts Mary to John",
+        refs: [{g:"jn",c:"Jn 19:25–27"}],
+        desc: "\"Woman, behold your son.\" \"Behold your mother.\" From the cross, Jesus gives His Mother to the Beloved Disciple — and through him, to the whole Church.",
+        theology: "This is the scriptural foundation of <strong>Marian theology</strong>. Mary is given not merely to John personally but to the disciple Jesus loved — a representative figure. She becomes the <strong>Mother of the Church</strong>, the New Eve standing at the foot of the tree where the New Adam redeems what the first Adam lost.",
+        type: "sacramental"
+      },
+      {
+        time: "Noon — 3 PM (Sixth to Ninth Hour)",
+        title: "Darkness over the Land; The Seven Last Words",
+        refs: [{g:"mt",c:"Mt 27:45–49"},{g:"mk",c:"Mk 15:33–36"},{g:"lk",c:"Lk 23:44–45"}],
+        desc: "Darkness covers the whole land for three hours. Jesus cries out: \"Eloi, Eloi, lema sabachthani?\" — \"My God, my God, why have you forsaken me?\" (Psalm 22:1) — entering the full experience of human desolation while praying the Psalm that ends in triumph.",
+        type: "major"
+      },
+      {
+        time: "3 PM (The Ninth Hour)",
+        title: "The Death of Jesus",
+        refs: [{g:"mt",c:"Mt 27:50–54"},{g:"mk",c:"Mk 15:37–39"},{g:"lk",c:"Lk 23:44–47"},{g:"jn",c:"Jn 19:28–30"}],
+        desc: "\"It is finished\" (Τετέλεσται). Jesus bows His head and gives up His spirit. The veil of the Temple is torn in two from top to bottom. The earth quakes. The centurion declares: \"Truly this was the Son of God.\"",
+        theology: "The <strong>tearing of the Temple veil</strong> signifies that the old sacrificial system is fulfilled and superseded. Access to God is now through Christ's body (Heb 10:19–20). John's \"It is finished\" (tetelestai) is a word of <strong>completion, not defeat</strong> — the sacrificial work of redemption is accomplished. The Catholic Mass participates in this finished work sacramentally.",
+        type: "major"
+      },
+      {
+        time: "3 PM",
+        title: "The Piercing of Jesus' Side",
+        refs: [{g:"jn",c:"Jn 19:31–37"}],
+        desc: "A soldier pierces Jesus' side with a lance, and immediately blood and water flow out. John emphasizes he is an eyewitness: \"He who saw it has borne witness — his testimony is true.\"",
+        theology: "The Fathers of the Church universally see <strong>blood and water</strong> as signifying the <strong>Eucharist and Baptism</strong> — the two foundational sacraments flowing from Christ's wounded side. As Eve was formed from Adam's side in sleep, so the <strong>Church (the Bride) is born from the side of the New Adam</strong> in the sleep of death (St. Augustine, Tractates on John 120.2).",
+        type: "sacramental"
+      },
+      {
+        time: "Late Afternoon",
+        title: "The Burial of Jesus",
+        refs: [{g:"mt",c:"Mt 27:57–61"},{g:"mk",c:"Mk 15:42–47"},{g:"lk",c:"Lk 23:50–56"},{g:"jn",c:"Jn 19:38–42"}],
+        desc: "Joseph of Arimathea, a secret disciple and member of the Sanhedrin, asks Pilate for the body. He and Nicodemus wrap Jesus in linen with 75 pounds of myrrh and aloes, and place Him in a new tomb cut from rock. The women observe where He is laid.",
+        type: "normal"
+      }
+    ]
+  },
+
+  saturday: {
+    label: "Holy Saturday",
+    title: "The Great Silence",
+    date: "Nisan 15 · Saturday (Sabbath)",
+    theme: "The body of Christ lies in the tomb. The Sabbath rest of God after the work of new creation is complete. The disciples are scattered in grief and bewilderment. Yet beneath the silence, Christ descends to the realm of the dead to proclaim victory.",
+    events: [
+      {
+        time: "All Day",
+        title: "The Sabbath Rest in the Tomb",
+        refs: [{g:"mt",c:"Mt 27:62–66"},{g:"lk",c:"Lk 23:56"}],
+        desc: "The women rest on the Sabbath \"according to the commandment.\" The chief priests and Pharisees go to Pilate and request a guard for the tomb, saying: \"Sir, we remember how that impostor said, 'After three days I will rise.'\" Pilate grants the guard and the tomb is sealed.",
+        theology: "The Church's liturgy honors this day as a day of <strong>profound silence</strong>. There is no Mass on Holy Saturday — the tabernacle is empty, the altar stripped bare. This liturgical void is the most powerful argument for the <strong>Real Presence</strong>: the Church mourns the absence of the Eucharistic Lord precisely because He is normally, truly present.",
+        type: "sacramental"
+      },
+      {
+        time: "The Realm of the Dead",
+        title: "The Harrowing of Hell (The Descent)",
+        refs: [{g:"mt",c:"1 Pet 3:18–20"},{g:"lk",c:"1 Pet 4:6"}],
+        desc: "While His body lies in the tomb, Christ in His human soul descends to the abode of the dead (Sheol/Hades). He proclaims liberty to the righteous who died before His coming — Adam, Eve, Abraham, Moses, David — opening the gates of Paradise.",
+        theology: "The <strong>Apostles' Creed</strong> affirms: \"He descended into hell\" (descendit ad inferos). This is not the hell of the damned but the place of the righteous dead. Christ <strong>retroactively applies His redemption</strong> to all who lived in faith before the Cross — proving that salvation has always been through Christ alone, even for those who preceded His earthly ministry. The Eastern Church's most ancient Resurrection icon shows Christ pulling Adam and Eve from their tombs.",
+        type: "major"
+      }
+    ]
+  },
+
+  sunday: {
+    label: "Easter Sunday",
+    title: "The Resurrection of the Lord",
+    date: "Nisan 16 · Sunday — The First Day of the New Creation",
+    theme: "\"He is not here; He is risen!\" The empty tomb, the angelic proclamation, the appearances to Mary Magdalene and the disciples. The foundation of the Christian faith. Death is conquered. The new creation has begun.",
+    events: [
+      {
+        time: "Before Dawn",
+        title: "The Earthquake and the Angel",
+        refs: [{g:"mt",c:"Mt 28:2–4"}],
+        desc: "A great earthquake. An angel of the Lord descends, rolls back the stone, and sits upon it. His appearance is like lightning, his clothing white as snow. The guards tremble and become like dead men.",
+        type: "major"
+      },
+      {
+        time: "Dawn",
+        title: "The Women Discover the Empty Tomb",
+        refs: [{g:"mt",c:"Mt 28:1–8"},{g:"mk",c:"Mk 16:1–8"},{g:"lk",c:"Lk 24:1–8"},{g:"jn",c:"Jn 20:1–2"}],
+        desc: "Mary Magdalene, Mary the mother of James, Salome, and others come to anoint the body. They find the stone rolled away, the tomb empty, and angels who declare: \"He is not here; He is risen, as He said. Come, see the place where He lay.\"",
+        theology: "The Resurrection occurs on <strong>the first day of the week</strong> — which is why the Church gathers for the Eucharist on Sunday rather than the Jewish Sabbath. Every Sunday Mass is a <strong>\"little Easter,\"</strong> celebrating the same event. This practice is attested as early as <strong>Acts 20:7</strong> and <strong>the Didache</strong> (ca. AD 70–100).",
+        type: "major"
+      },
+      {
+        time: "Early Morning",
+        title: "Peter and John Run to the Tomb",
+        refs: [{g:"lk",c:"Lk 24:12"},{g:"jn",c:"Jn 20:3–10"}],
+        desc: "Peter and the Beloved Disciple run to the tomb. John arrives first but waits; Peter enters first. They see the linen wrappings lying flat and the face cloth folded separately. John sees and believes.",
+        theology: "The <strong>linen wrappings lying undisturbed</strong> but empty — as if the body had simply passed through them — is a detail that rules out grave robbery. A thief would have either taken the wrappings or left them in disarray. The careful folding of the face cloth suggests deliberate, unhurried departure by One who has all the time in eternity.",
+        type: "normal"
+      },
+      {
+        time: "Early Morning",
+        title: "Jesus Appears to Mary Magdalene",
+        refs: [{g:"mk",c:"Mk 16:9–11"},{g:"jn",c:"Jn 20:11–18"}],
+        desc: "Mary stands weeping outside the tomb. Jesus appears but she mistakes Him for the gardener. He speaks her name: \"Mary.\" She recognizes Him: \"Rabboni!\" He says: \"Do not cling to me, for I have not yet ascended to the Father. But go to my brothers and say to them, 'I am ascending to my Father and your Father.'\"",
+        theology: "Mary Magdalene is the <strong>first witness to the Resurrection</strong> — a detail no first-century fabricator would invent, since women's testimony was inadmissible in Jewish courts. The Church honors her as the <strong>\"Apostle to the Apostles\"</strong> (apostola apostolorum), a title affirmed by St. Thomas Aquinas.",
+        type: "normal"
+      },
+      {
+        time: "Morning",
+        title: "Jesus Appears to the Other Women",
+        refs: [{g:"mt",c:"Mt 28:9–10"}],
+        desc: "The other women encounter Jesus on the road from the tomb. They take hold of His feet and worship Him. He tells them: \"Do not be afraid. Go and tell my brothers to go to Galilee; there they will see me.\"",
+        type: "normal"
+      },
+      {
+        time: "Afternoon",
+        title: "The Road to Emmaus",
+        refs: [{g:"mk",c:"Mk 16:12–13"},{g:"lk",c:"Lk 24:13–35"}],
+        desc: "Two disciples walk to Emmaus, grieving. A stranger joins them and opens all the Scriptures concerning the Messiah, beginning with Moses. At table, He takes bread, blesses it, breaks it, and gives it to them — \"and their eyes were opened, and they recognized Him.\" He vanishes from their sight.",
+        theology: "The Emmaus narrative is the <strong>blueprint for the Mass</strong>: first the <strong>Liturgy of the Word</strong> (\"He opened the Scriptures\"), then the <strong>Liturgy of the Eucharist</strong> (\"He was known to them in the breaking of the bread\"). Every Mass follows this exact pattern — the same risen Christ, teaching through Scripture and making Himself present in the Eucharist.",
+        type: "sacramental"
+      },
+      {
+        time: "Evening",
+        title: "Jesus Appears to the Apostles; Institutes Confession",
+        refs: [{g:"mk",c:"Mk 16:14"},{g:"lk",c:"Lk 24:36–43"},{g:"jn",c:"Jn 20:19–23"}],
+        desc: "Jesus appears in the locked Upper Room: \"Peace be with you.\" He shows His hands and side, eats fish to prove He is not a ghost, and then breathes on them: \"Receive the Holy Spirit. If you forgive the sins of any, they are forgiven them; if you retain the sins of any, they are retained.\"",
+        theology: "This is the <strong>institution of the Sacrament of Reconciliation</strong> (Confession). Jesus gives the Apostles — and through them, their successors — the authority to <strong>forgive or retain sins</strong>. This power is meaningless unless sins are actually <strong>spoken</strong> to the one who holds the authority, which is why the Catholic Church practices auricular confession. The breathing of the Holy Spirit deliberately echoes <strong>Genesis 2:7</strong> — a new creation is underway.",
+        type: "sacramental"
+      }
+    ]
+  }
+};
+
+// ── Rendering Functions ──
+function renderDay(dayKey) {
+  const day = days[dayKey];
+  return `
+    <div class="day-content">
+      <div class="day-banner ${dayKey}">
+        <div class="day-label">${day.label}</div>
+        <h2>${day.title}</h2>
+        <div class="day-date">${day.date}</div>
+        <div class="day-theme">${day.theme}</div>
+      </div>
+      <div class="events-list">
+        ${day.events.map((ev, i) => `
+          <div class="event-card ${ev.type}" style="animation-delay: ${i * 0.06}s">
+            <div class="event-time">${ev.time}</div>
+            <div class="event-title">${ev.title}</div>
+            <div class="event-refs">
+              ${ev.refs.map(r => `<span class="ref-tag ${r.g}">${r.c}</span>`).join('')}
+            </div>
+            <div class="event-desc">${ev.desc}</div>
+            ${ev.theology ? `<div class="event-theology">${ev.theology}</div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderAll() {
+  return dayOrder.map((key, i) =>
+    renderDay(key) + (i < dayOrder.length - 1 ? '<div class="day-separator"></div>' : '')
+  ).join('');
+}
+
+function updateProgress(dayKey) {
+  const fill = document.getElementById('progress-fill');
+  if (dayKey === 'all') {
+    fill.style.width = '100%';
+  } else {
+    const idx = dayOrder.indexOf(dayKey);
+    const pct = ((idx + 1) / dayOrder.length) * 100;
+    fill.style.width = pct + '%';
+  }
+  // Update dot active states
+  document.querySelectorAll('.progress-dot').forEach(dot => {
+    dot.classList.toggle('active', dot.dataset.day === dayKey);
+  });
+}
+
+function setActiveDay(dayKey) {
+  // Update tabs
+  document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+  const tab = document.querySelector(`.day-tab[data-day="${dayKey}"]`);
+  if (tab) tab.classList.add('active');
+
+  // Update content
+  const container = document.getElementById('timeline-content');
+  if (dayKey === 'all') {
+    container.innerHTML = renderAll();
+  } else {
+    container.innerHTML = renderDay(dayKey);
+  }
+
+  // Update progress
+  updateProgress(dayKey);
+
+  // Update nav arrows
+  updateNavArrows(dayKey);
+
+  // Scroll to top of content
+  container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function updateNavArrows(dayKey) {
+  const prev = document.getElementById('prev-btn');
+  const next = document.getElementById('next-btn');
+  if (dayKey === 'all') {
+    prev.disabled = true;
+    next.disabled = true;
+    prev.textContent = '← Previous Day';
+    next.textContent = 'Next Day →';
+    return;
+  }
+  const idx = dayOrder.indexOf(dayKey);
+  prev.disabled = idx <= 0;
+  next.disabled = idx >= dayOrder.length - 1;
+  prev.textContent = idx > 0 ? `← ${days[dayOrder[idx-1]].label}` : '← Previous Day';
+  next.textContent = idx < dayOrder.length - 1 ? `${days[dayOrder[idx+1]].label} →` : 'Next Day →';
+}
+
+// ── Build progress dots ──
+const markersEl = document.getElementById('progress-markers');
+dayOrder.forEach(key => {
+  const dot = document.createElement('div');
+  dot.className = 'progress-dot';
+  dot.dataset.day = key;
+  dot.style.background = dayColors[key];
+  dot.title = days[key].label;
+  dot.addEventListener('click', () => setActiveDay(key));
+  markersEl.appendChild(dot);
+});
+
+// ── Tab clicks ──
+document.querySelectorAll('.day-tab').forEach(tab => {
+  tab.addEventListener('click', () => setActiveDay(tab.dataset.day));
+});
+
+// ── Arrow clicks ──
+document.getElementById('prev-btn').addEventListener('click', () => {
+  const current = document.querySelector('.day-tab.active')?.dataset.day;
+  const idx = dayOrder.indexOf(current);
+  if (idx > 0) setActiveDay(dayOrder[idx - 1]);
+});
+document.getElementById('next-btn').addEventListener('click', () => {
+  const current = document.querySelector('.day-tab.active')?.dataset.day;
+  const idx = dayOrder.indexOf(current);
+  if (idx < dayOrder.length - 1) setActiveDay(dayOrder[idx + 1]);
+});
+
+// ── Initial render ──
+setActiveDay('all');
+</script>
+
+</body>
+</html>
