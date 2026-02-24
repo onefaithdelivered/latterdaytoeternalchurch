@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Parables of Jesus — A Complete Reference by Theme</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --crimson: #8B1A1A;
+  --crimson-light: #A52A2A;
+  --dark-gold: #B8860B;
+  --gold: #DAA520;
+  --light-gold: #F0D060;
+  --parchment: #F5F0E8;
+  --parchment-dark: #E8E0D0;
+  --parchment-deep: #D4C9B0;
+  --ink: #2C1810;
+  --ink-light: #4A3728;
+  --ink-faint: #7A6A5A;
+
+  /* Theme colors */
+  --kingdom: #1B5E20;
+  --mercy: #0D47A1;
+  --judgment: #8B1A1A;
+  --stewardship: #BF360C;
+  --prayer: #4A148C;
+  --discipleship: #00695C;
+
+  /* Gospel colors */
+  --mt-color: #2E7D32;
+  --mk-color: #1565C0;
+  --lk-color: #E65100;
+  --jn-color: #6A1B9A; /* not used for parables but kept for consistency */
+
+  --mt-bg: #E8F5E9;
+  --mk-bg: #E3F2FD;
+  --lk-bg: #FFF3E0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--parchment);
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(218,165,32,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(139,26,26,0.03) 0%, transparent 60%);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.65;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+/* ── Outer Border ── */
+.outer-border {
+  border: 2px solid var(--dark-gold);
+  outline: 1px solid rgba(184,134,11,0.3);
+  outline-offset: 4px;
+  padding: 36px clamp(14px, 3.5vw, 44px);
+  background: rgba(255,255,255,0.3);
+  position: relative;
+}
+.outer-border::before, .outer-border::after {
+  content: '✦'; position: absolute; color: var(--dark-gold); font-size: 12px; opacity: 0.5;
+}
+.outer-border::before { top: 8px; left: 12px; }
+.outer-border::after { bottom: 8px; right: 12px; }
+
+/* ── Header ── */
+.header { text-align: center; margin-bottom: 40px; }
+.header-cross {
+  font-size: 28px; color: var(--dark-gold); margin-bottom: 8px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+.header h1 {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  font-size: clamp(1.5rem, 3.8vw, 2.5rem);
+  font-weight: 700; color: var(--crimson);
+  letter-spacing: 0.06em; line-height: 1.25; margin-bottom: 6px;
+}
+.header .subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.68rem, 1.6vw, 0.88rem);
+  font-weight: 600; color: var(--dark-gold);
+  letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px;
+}
+.header-rule {
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  margin: 14px auto; max-width: 460px;
+}
+.header-rule::before, .header-rule::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(to right, transparent, var(--dark-gold), transparent);
+}
+.header-rule span { color: var(--dark-gold); font-size: 13px; }
+.header .intro {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+  color: var(--ink-light);
+  max-width: 660px; margin: 0 auto; line-height: 1.7;
+}
+
+/* ── Filter Bar ── */
+.filter-bar {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+  margin-bottom: 20px;
+}
+.filter-btn {
+  font-family: 'Cinzel', serif;
+  font-size: 0.64rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 7px 15px; border: 1.5px solid var(--parchment-deep);
+  border-radius: 3px; background: white; color: var(--ink-faint);
+  cursor: pointer; transition: all 0.3s ease;
+}
+.filter-btn:hover { border-color: var(--dark-gold); color: var(--ink-light); }
+.filter-btn.active { color: white; border-color: transparent; box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
+.filter-btn[data-cat="all"].active { background: var(--crimson); }
+.filter-btn[data-cat="kingdom"].active { background: var(--kingdom); }
+.filter-btn[data-cat="mercy"].active { background: var(--mercy); }
+.filter-btn[data-cat="judgment"].active { background: var(--judgment); }
+.filter-btn[data-cat="stewardship"].active { background: var(--stewardship); }
+.filter-btn[data-cat="prayer"].active { background: var(--prayer); }
+.filter-btn[data-cat="discipleship"].active { background: var(--discipleship); }
+
+/* ── Dual Visual: Pie + Gospel Bar ── */
+.visuals-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(20px, 4vw, 48px);
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+
+/* Pie chart */
+.pie-wrap {
+  display: flex; align-items: center; gap: clamp(16px, 3vw, 32px);
+  flex-wrap: wrap; justify-content: center;
+}
+.pie-chart-box {
+  position: relative; width: 200px; height: 200px; flex-shrink: 0;
+}
+.pie-chart-box svg {
+  width: 100%; height: 100%;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.08));
+}
+.pie-slice {
+  transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), opacity 0.4s ease;
+  cursor: pointer; transform-origin: 100px 100px;
+}
+.pie-slice.highlighted { transform: scale(1.06); filter: brightness(1.08) drop-shadow(0 2px 6px rgba(0,0,0,0.2)); }
+.pie-slice.dimmed { opacity: 0.25; }
+.pie-center {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  text-align: center; pointer-events: none;
+  background: rgba(255,255,255,0.88); border-radius: 50%;
+  width: 78px; height: 78px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  box-shadow: inset 0 0 6px rgba(0,0,0,0.05);
+}
+.pie-center-num {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.4rem; font-weight: 700; color: var(--crimson); line-height: 1.1;
+  transition: color 0.3s;
+}
+.pie-center-word {
+  font-family: 'Cinzel', serif; font-size: 0.48rem;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);
+}
+
+.pie-legend {
+  display: flex; flex-direction: column; gap: 7px;
+}
+.legend-row {
+  display: flex; align-items: center; gap: 8px; cursor: pointer;
+  padding: 4px 10px 4px 6px; border-radius: 3px; transition: all 0.3s;
+  border: 1.5px solid transparent;
+}
+.legend-row:hover { background: rgba(0,0,0,0.03); }
+.legend-row.active { background: rgba(255,255,255,0.7); border-color: var(--parchment-deep); }
+.legend-swatch {
+  width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0;
+  transition: transform 0.3s;
+}
+.legend-row.active .legend-swatch { transform: scale(1.2); }
+.legend-label {
+  font-family: 'Cinzel', serif; font-size: 0.68rem; font-weight: 600;
+  color: var(--ink-light); letter-spacing: 0.03em;
+}
+.legend-count {
+  font-family: 'Source Serif 4', serif; font-size: 0.72rem; color: var(--ink-faint);
+  margin-left: auto; padding-left: 8px;
+}
+.legend-pct {
+  font-family: 'Cinzel', serif; font-size: 0.62rem; font-weight: 700;
+  color: var(--ink-faint); min-width: 30px; text-align: right;
+}
+
+/* ── Gospel Distribution Bar ── */
+.gospel-dist {
+  display: flex; flex-direction: column; gap: 12px;
+  min-width: 220px;
+}
+.gospel-dist-title {
+  font-family: 'Cinzel', serif; font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint);
+  text-align: center; margin-bottom: 2px;
+}
+.dist-bar-row {
+  display: flex; align-items: center; gap: 8px;
+}
+.dist-bar-label {
+  font-family: 'Cinzel', serif; font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.06em; min-width: 60px; text-align: right;
+}
+.dist-bar-label.mt { color: var(--mt-color); }
+.dist-bar-label.mk { color: var(--mk-color); }
+.dist-bar-label.lk { color: var(--lk-color); }
+.dist-bar-track {
+  flex: 1; height: 18px; background: var(--parchment-dark); border-radius: 3px;
+  overflow: hidden; position: relative;
+}
+.dist-bar-fill {
+  height: 100%; border-radius: 3px; transition: width 0.6s ease;
+  display: flex; align-items: center; justify-content: flex-end; padding-right: 6px;
+}
+.dist-bar-fill.mt { background: linear-gradient(90deg, rgba(46,125,50,0.2), rgba(46,125,50,0.5)); }
+.dist-bar-fill.mk { background: linear-gradient(90deg, rgba(21,101,192,0.2), rgba(21,101,192,0.5)); }
+.dist-bar-fill.lk { background: linear-gradient(90deg, rgba(230,81,0,0.2), rgba(230,81,0,0.5)); }
+.dist-bar-num {
+  font-family: 'Cinzel', serif; font-size: 0.56rem; font-weight: 700;
+}
+.dist-bar-num.mt { color: var(--mt-color); }
+.dist-bar-num.mk { color: var(--mk-color); }
+.dist-bar-num.lk { color: var(--lk-color); }
+
+/* Uniqueness badges */
+.dist-unique {
+  display: flex; justify-content: center; gap: 14px; margin-top: 8px; flex-wrap: wrap;
+}
+.unique-badge {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  padding: 6px 12px; border-radius: 4px;
+  background: rgba(255,255,255,0.5); border: 1px solid var(--parchment-deep);
+}
+.unique-badge .ub-num {
+  font-family: 'Cinzel Decorative', serif; font-size: 1.1rem; font-weight: 700;
+}
+.unique-badge .ub-num.mt { color: var(--mt-color); }
+.unique-badge .ub-num.mk { color: var(--mk-color); }
+.unique-badge .ub-num.lk { color: var(--lk-color); }
+.unique-badge .ub-label {
+  font-family: 'Cinzel', serif; font-size: 0.48rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint);
+}
+
+/* ── Stats Row ── */
+.stats-row {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 20px;
+  margin-bottom: 28px;
+  font-family: 'Cinzel', serif; font-size: 0.76rem;
+  letter-spacing: 0.05em; color: var(--ink-faint);
+}
+.stats-row .stat-num { font-weight: 700; color: var(--crimson); font-size: 0.86rem; }
+
+/* ── Category Sections ── */
+.category-section { margin-bottom: 36px; }
+.category-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid;
+}
+.category-header.kingdom { border-color: var(--kingdom); }
+.category-header.mercy { border-color: var(--mercy); }
+.category-header.judgment { border-color: var(--judgment); }
+.category-header.stewardship { border-color: var(--stewardship); }
+.category-header.prayer { border-color: var(--prayer); }
+.category-header.discipleship { border-color: var(--discipleship); }
+
+.cat-icon {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.cat-icon.kingdom { background: rgba(27,94,32,0.08); border: 1.5px solid rgba(27,94,32,0.25); }
+.cat-icon.mercy { background: rgba(13,71,161,0.08); border: 1.5px solid rgba(13,71,161,0.25); }
+.cat-icon.judgment { background: rgba(139,26,26,0.08); border: 1.5px solid rgba(139,26,26,0.25); }
+.cat-icon.stewardship { background: rgba(191,54,12,0.08); border: 1.5px solid rgba(191,54,12,0.25); }
+.cat-icon.prayer { background: rgba(74,20,140,0.08); border: 1.5px solid rgba(74,20,140,0.25); }
+.cat-icon.discipleship { background: rgba(0,105,92,0.08); border: 1.5px solid rgba(0,105,92,0.25); }
+
+.cat-title-block h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.95rem, 2.4vw, 1.25rem);
+  font-weight: 700; letter-spacing: 0.04em;
+}
+.cat-title-block h2.kingdom { color: var(--kingdom); }
+.cat-title-block h2.mercy { color: var(--mercy); }
+.cat-title-block h2.judgment { color: var(--judgment); }
+.cat-title-block h2.stewardship { color: var(--stewardship); }
+.cat-title-block h2.prayer { color: var(--prayer); }
+.cat-title-block h2.discipleship { color: var(--discipleship); }
+
+.cat-title-block .cat-count {
+  font-family: 'Source Serif 4', serif; font-size: 0.8rem;
+  color: var(--ink-faint); font-style: italic;
+}
+
+/* ── Parable Cards ── */
+.parables-grid { display: flex; flex-direction: column; gap: 12px; }
+
+.parable-card {
+  background: white;
+  border: 1px solid var(--parchment-deep);
+  border-left: 4px solid;
+  border-radius: 4px;
+  padding: 16px 20px;
+  transition: all 0.3s ease;
+  animation: cardSlide 0.4s ease forwards;
+  opacity: 0;
+}
+.parable-card:hover {
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  transform: translateX(3px);
+}
+.parable-card.kingdom { border-left-color: var(--kingdom); }
+.parable-card.mercy { border-left-color: var(--mercy); }
+.parable-card.judgment { border-left-color: var(--judgment); }
+.parable-card.stewardship { border-left-color: var(--stewardship); }
+.parable-card.prayer { border-left-color: var(--prayer); }
+.parable-card.discipleship { border-left-color: var(--discipleship); }
+
+@keyframes cardSlide {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.parable-top {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 10px; flex-wrap: wrap;
+}
+.parable-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; font-weight: 600; color: var(--ink);
+  line-height: 1.3;
+}
+.parable-badges {
+  display: flex; gap: 4px; flex-shrink: 0; flex-wrap: wrap;
+}
+.source-badge {
+  font-family: 'Cinzel', serif; font-size: 0.5rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 2px 6px; border-radius: 2px;
+}
+.source-badge.unique {
+  border: 1.5px dashed;
+}
+.source-badge.mt { background: var(--mt-bg); color: var(--mt-color); }
+.source-badge.mk { background: var(--mk-bg); color: var(--mk-color); }
+.source-badge.lk { background: var(--lk-bg); color: var(--lk-color); }
+.source-badge.mt.unique { border-color: var(--mt-color); }
+.source-badge.mk.unique { border-color: var(--mk-color); }
+.source-badge.lk.unique { border-color: var(--lk-color); }
+
+.parable-refs {
+  font-family: 'Source Serif 4', serif; font-size: 0.8rem;
+  color: var(--ink-faint); margin-top: 4px; line-height: 1.5;
+}
+.parable-refs .gospel-tag {
+  display: inline-block;
+  font-family: 'Cinzel', serif; font-size: 0.56rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 1px 6px; border-radius: 2px; margin-right: 2px;
+  vertical-align: middle;
+}
+.gospel-tag.mt { background: var(--mt-bg); color: var(--mt-color); }
+.gospel-tag.mk { background: var(--mk-bg); color: var(--mk-color); }
+.gospel-tag.lk { background: var(--lk-bg); color: var(--lk-color); }
+
+.parable-desc {
+  font-size: 0.86rem; color: var(--ink-light); margin-top: 6px; line-height: 1.65;
+}
+
+.parable-note {
+  font-size: 0.82rem; font-style: italic; color: var(--ink-light);
+  margin-top: 8px; padding: 8px 12px;
+  background: linear-gradient(135deg, rgba(139,26,26,0.03), rgba(218,165,32,0.03));
+  border-left: 3px solid var(--dark-gold);
+  border-radius: 0 4px 4px 0;
+  line-height: 1.6;
+}
+.parable-note strong {
+  color: var(--crimson); font-style: normal; font-weight: 600;
+}
+
+/* ── Footer ── */
+.chart-footer {
+  margin-top: 48px; padding-top: 20px;
+  border-top: 2px solid var(--dark-gold); text-align: center;
+}
+.chart-footer p {
+  font-family: 'Source Serif 4', serif; font-size: 0.82rem;
+  color: var(--ink-faint); line-height: 1.7;
+  max-width: 680px; margin: 0 auto 6px;
+}
+.chart-footer .site-tag {
+  font-family: 'Cinzel', serif; font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.15em; color: var(--dark-gold);
+  text-transform: uppercase; margin-top: 14px;
+}
+
+@media (max-width: 600px) {
+  .page-wrapper { padding: 16px 10px 40px; }
+  .outer-border { padding: 20px 10px; }
+  .pie-chart-box { width: 170px; height: 170px; }
+  .pie-center { width: 66px; height: 66px; }
+  .pie-center-num { font-size: 1.2rem; }
+  .filter-btn { padding: 5px 10px; font-size: 0.56rem; }
+  .parable-card { padding: 12px 14px; }
+  .cat-icon { width: 36px; height: 36px; font-size: 16px; }
+  .gospel-dist { min-width: 180px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+<div class="outer-border">
+
+  <div class="header">
+    <div class="header-cross">☩</div>
+    <h1>The Parables of Jesus</h1>
+    <div class="subtitle">A Complete Reference · Organized by Theme</div>
+    <div class="header-rule"><span>✦</span></div>
+    <p class="intro">
+      "He told them many things in parables… 'I will open my mouth in parables; I will utter what has been hidden since the foundation of the world.'"
+      — Matthew 13:3, 35
+    </p>
+  </div>
+
+  <!-- Filters -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-cat="all">All Parables</button>
+    <button class="filter-btn" data-cat="kingdom">Kingdom of God</button>
+    <button class="filter-btn" data-cat="mercy">Mercy &amp; Forgiveness</button>
+    <button class="filter-btn" data-cat="judgment">Judgment &amp; Readiness</button>
+    <button class="filter-btn" data-cat="stewardship">Stewardship</button>
+    <button class="filter-btn" data-cat="prayer">Prayer &amp; Persistence</button>
+    <button class="filter-btn" data-cat="discipleship">Discipleship &amp; Cost</button>
+  </div>
+
+  <!-- Dual visuals: Theme Pie + Gospel Distribution -->
+  <div class="visuals-section">
+    <div class="pie-wrap">
+      <div class="pie-chart-box">
+        <svg id="pie-svg" viewBox="0 0 200 200"></svg>
+        <div class="pie-center">
+          <div class="pie-center-num" id="pie-num">46</div>
+          <div class="pie-center-word">Parables</div>
+        </div>
+      </div>
+      <div class="pie-legend" id="pie-legend"></div>
+    </div>
+
+    <div class="gospel-dist" id="gospel-dist">
+      <div class="gospel-dist-title">Gospel Distribution</div>
+      <div class="dist-bar-row">
+        <div class="dist-bar-label mt">Matthew</div>
+        <div class="dist-bar-track"><div class="dist-bar-fill mt" id="bar-mt"><span class="dist-bar-num mt" id="bar-mt-num"></span></div></div>
+      </div>
+      <div class="dist-bar-row">
+        <div class="dist-bar-label mk">Mark</div>
+        <div class="dist-bar-track"><div class="dist-bar-fill mk" id="bar-mk"><span class="dist-bar-num mk" id="bar-mk-num"></span></div></div>
+      </div>
+      <div class="dist-bar-row">
+        <div class="dist-bar-label lk">Luke</div>
+        <div class="dist-bar-track"><div class="dist-bar-fill lk" id="bar-lk"><span class="dist-bar-num lk" id="bar-lk-num"></span></div></div>
+      </div>
+      <div class="dist-unique" id="unique-badges"></div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <span><span class="stat-num" id="total-count">46</span> recorded parables</span>
+    <span>·</span>
+    <span><span class="stat-num">3</span> Synoptic Gospels</span>
+    <span>·</span>
+    <span><span class="stat-num">6</span> themes</span>
+  </div>
+
+  <!-- Parable content -->
+  <div id="parables-container"></div>
+
+  <div class="chart-footer">
+    <p>This chart catalogues the parables of Jesus as distinct narrative illustrations or 
+       extended metaphors. Brief similes ("You are the salt of the earth") and figurative 
+       statements are not included. Scholars count differently depending on classification; 
+       this reference follows a broadly accepted enumeration in Catholic scholarship.
+       Luke's Gospel contains the most parables — and the most unique ones — reflecting 
+       Luke's particular emphasis on God's mercy toward the lost, the poor, and the marginalized.</p>
+    <p style="margin-top:8px;">Catholic interpretive notes draw on patristic sources, the 
+       Catechism of the Catholic Church, and the theological tradition. The parables are not 
+       mere moral lessons — they are <em>revelations of the Kingdom</em>, disclosing the 
+       inner logic of God's saving action in Christ and His Church.</p>
+    <div class="site-tag">One Faith Delivered — onefaithdelivered.com</div>
+  </div>
+
+</div>
+</div>
+
+<script>
+const parables = [
+
+  // ═══════════════ KINGDOM OF GOD (13) ═══════════════
+  {
+    cat: "kingdom", name: "The Sower and the Soils",
+    refs: [{g:"mt",c:"Mt 13:1–23"},{g:"mk",c:"Mk 4:1–20"},{g:"lk",c:"Lk 8:4–15"}],
+    desc: "A sower scatters seed on four types of soil — the path, rocky ground, thorns, and good earth. Only the good soil produces a harvest.",
+    note: "The foundational parable — Jesus explains it Himself. The seed is the Word of God; the soils are the conditions of the human heart. The Catholic tradition links the \"good soil\" to the <strong>disposition required for fruitful reception of the sacraments</strong>: grace is offered universally, but its fruitfulness depends on the receptivity of the recipient."
+  },
+  {
+    cat: "kingdom", name: "The Wheat and the Tares",
+    refs: [{g:"mt",c:"Mt 13:24–30, 36–43"}],
+    desc: "An enemy sows weeds among the wheat. The master forbids pulling them up lest the wheat be uprooted — both grow together until the harvest.",
+    note: "A critical ecclesiological parable. The Church on earth is a <strong>mixed body</strong> containing both saints and sinners — not a community of the already-perfected. This directly addresses why the visible Church contains imperfect members: the separation happens at the <strong>final judgment</strong>, not before. St. Augustine used this parable extensively against the Donatist heresy, which demanded a \"pure\" church."
+  },
+  {
+    cat: "kingdom", name: "The Mustard Seed",
+    refs: [{g:"mt",c:"Mt 13:31–32"},{g:"mk",c:"Mk 4:30–32"},{g:"lk",c:"Lk 13:18–19"}],
+    desc: "The kingdom of heaven is like a mustard seed — the smallest of seeds, yet it grows into a great tree where birds nest in its branches.",
+    note: "The Kingdom begins small and becomes a <strong>visible, worldwide reality</strong> — not an invisible, private arrangement. The birds of the air nesting in the branches echo Daniel 4:12 and Ezekiel 17:23, where great trees sheltering birds represent <strong>universal empires</strong>. The Church is the mustard tree — visibly, publicly, globally present."
+  },
+  {
+    cat: "kingdom", name: "The Leaven",
+    refs: [{g:"mt",c:"Mt 13:33"},{g:"lk",c:"Lk 13:20–21"}],
+    desc: "A woman hides leaven in three measures of flour until the whole batch is leavened.",
+    note: "The Kingdom transforms from within — invisibly, gradually, but totally. Three measures of flour is an enormous quantity (enough for over 100 people), echoing the meal Sarah prepared for the three angelic visitors (Gen 18:6). The leaven works <strong>hidden but real</strong> — like grace in the sacraments."
+  },
+  {
+    cat: "kingdom", name: "The Hidden Treasure",
+    refs: [{g:"mt",c:"Mt 13:44"}],
+    desc: "A man finds treasure hidden in a field. In his joy, he sells everything he has and buys that field.",
+    note: "The Kingdom is worth <strong>total sacrifice</strong>. The man's joy is not reluctant — it is the overwhelming gladness of one who has found something infinitely more valuable than everything else combined."
+  },
+  {
+    cat: "kingdom", name: "The Pearl of Great Price",
+    refs: [{g:"mt",c:"Mt 13:45–46"}],
+    desc: "A merchant searching for fine pearls finds one of surpassing value. He sells everything to possess it.",
+    note: "Paired with the Hidden Treasure but subtly different: here the man is <strong>already seeking</strong>. The Kingdom rewards both those who stumble upon it unexpectedly and those who have been searching deliberately."
+  },
+  {
+    cat: "kingdom", name: "The Dragnet",
+    refs: [{g:"mt",c:"Mt 13:47–50"}],
+    desc: "A net is cast into the sea, gathering fish of every kind. The good are sorted into baskets; the bad are thrown away.",
+    note: "Another parable of the <strong>mixed Church</strong>. Like the Wheat and Tares, the net gathers both good and bad. Sorting happens at the close of the age — not during the Church's earthly pilgrimage."
+  },
+  {
+    cat: "kingdom", name: "The Seed Growing Secretly",
+    refs: [{g:"mk",c:"Mk 4:26–29"}],
+    desc: "A man scatters seed on the ground, then sleeps and rises — and the seed sprouts and grows, \"he knows not how.\"",
+    note: "Unique to Mark. The Kingdom grows by <strong>divine power, not human effort</strong>. The farmer does not make the seed grow — he participates in the process, but the life is in the seed itself. A profound image of how <strong>grace operates through the sacraments</strong>: the minister acts, but the power is God's."
+  },
+  {
+    cat: "kingdom", name: "The Great Banquet",
+    refs: [{g:"lk",c:"Lk 14:15–24"}],
+    desc: "A man prepares a great feast. The invited guests make excuses, so the host sends servants to bring in the poor, crippled, blind, and lame from the streets and country lanes.",
+    note: "A Lukan parable of <strong>the universal call to salvation</strong>. The original invited guests (Israel's leadership) refuse; the outcasts are welcomed in. The banquet is the <strong>Eucharistic feast</strong> — the Messianic banquet to which all are invited, and which the Church celebrates in every Mass."
+  },
+  {
+    cat: "kingdom", name: "The Wedding Feast",
+    refs: [{g:"mt",c:"Mt 22:1–14"}],
+    desc: "A king gives a wedding feast for his son. Invited guests refuse; outsiders are brought in. But one guest without a wedding garment is cast out.",
+    note: "Matthew's version adds the crucial detail of the <strong>wedding garment</strong>. Entry to the banquet (the Church/Kingdom) is open to all, but remaining there requires putting on the garment of grace — <strong>sanctifying grace received through the sacraments</strong>. Mere membership is not enough; interior transformation is required."
+  },
+  {
+    cat: "kingdom", name: "The Laborers in the Vineyard",
+    refs: [{g:"mt",c:"Mt 20:1–16"}],
+    desc: "A landowner hires workers at different hours. At day's end, he pays all the same wage — one denarius. Those hired first complain.",
+    note: "The denarius is <strong>eternal life</strong> — which cannot be portioned out by degrees. God's generosity is not constrained by human calculations of merit. The parable reveals the <strong>gratuitous nature of grace</strong>: salvation is a gift, not a wage earned by cumulative effort."
+  },
+  {
+    cat: "kingdom", name: "The Wicked Tenants",
+    refs: [{g:"mt",c:"Mt 21:33–46"},{g:"mk",c:"Mk 12:1–12"},{g:"lk",c:"Lk 20:9–19"}],
+    desc: "A landowner plants a vineyard and leases it to tenants. They beat, kill, and stone the servants he sends. Finally he sends his son, and they kill him too.",
+    note: "A compressed <strong>salvation history</strong>: God sends prophets (servants) to Israel (the vineyard); they are rejected. He sends His Son, who is killed. The vineyard is transferred to \"other tenants\" — the Church. The stone rejected by the builders becomes the cornerstone (Ps 118:22). This parable is a devastating argument against any theology that sees the Church as an afterthought rather than God's plan."
+  },
+  {
+    cat: "kingdom", name: "The Two Sons",
+    refs: [{g:"mt",c:"Mt 21:28–32"}],
+    desc: "A father tells two sons to work in his vineyard. One says no but later goes; the other says yes but never goes.",
+    note: "Actions reveal the heart, not words. Tax collectors and sinners who repent enter the Kingdom before the outwardly religious who refuse interior conversion — a consistent theme in Jesus' teaching."
+  },
+
+  // ═══════════════ MERCY & FORGIVENESS (7) ═══════════════
+  {
+    cat: "mercy", name: "The Prodigal Son",
+    refs: [{g:"lk",c:"Lk 15:11–32"}],
+    desc: "A younger son demands his inheritance, squanders it in dissolute living, and returns in shame. His father sees him from afar, runs to him, and throws a lavish feast. The elder son resents the celebration.",
+    note: "Perhaps the greatest parable ever told — unique to Luke. The father's response is not grudging acceptance but <strong>ecstatic, extravagant mercy</strong>. The robe, ring, and sandals signify full restoration of sonship. The fatted calf is a <strong>sacrificial feast</strong>. This is the parable of the <strong>Sacrament of Reconciliation</strong>: the sinner returns, confesses (\"Father, I have sinned against heaven and before you\"), and is restored not to servanthood but to <strong>full communion</strong>. The elder brother represents those who resent God's mercy toward others — a perennial temptation."
+  },
+  {
+    cat: "mercy", name: "The Lost Sheep",
+    refs: [{g:"mt",c:"Mt 18:12–14"},{g:"lk",c:"Lk 15:1–7"}],
+    desc: "A shepherd with a hundred sheep loses one. He leaves the ninety-nine and searches until he finds it, then rejoices more over the one than the ninety-nine who never strayed.",
+    note: "God does not passively wait for sinners to return — He <strong>actively seeks</strong> the lost. This is the heart of the Catholic understanding of grace: God takes the initiative. The shepherd carries the sheep on his shoulders — the image is <strong>eucharistic and cruciform</strong>, as Christ carries the lost on the wood of the Cross."
+  },
+  {
+    cat: "mercy", name: "The Lost Coin",
+    refs: [{g:"lk",c:"Lk 15:8–10"}],
+    desc: "A woman with ten silver coins loses one. She lights a lamp, sweeps the house, and searches carefully until she finds it, then calls her friends to rejoice.",
+    note: "Unique to Luke. The third of the \"Lost\" trilogy (sheep, coin, son). The woman's persistence mirrors the <strong>relentless nature of divine grace</strong>. Patristic interpretation sees the lamp as the light of Christ and the sweeping as the Church's evangelistic mission."
+  },
+  {
+    cat: "mercy", name: "The Unforgiving Servant",
+    refs: [{g:"mt",c:"Mt 18:21–35"}],
+    desc: "A king forgives a servant an astronomical debt (10,000 talents). That servant then refuses to forgive a fellow servant a trivial debt (100 denarii). The king revokes his mercy.",
+    note: "10,000 talents is an <strong>unpayable sum</strong> — roughly 200,000 years' wages. It represents the infinite debt of sin before God. The 100 denarii (about 3 months' wages) represents the finite offenses others commit against us. The parable teaches that <strong>receiving God's mercy obligates us to extend it</strong>: \"Forgive us our trespasses, as we forgive those who trespass against us.\""
+  },
+  {
+    cat: "mercy", name: "The Two Debtors",
+    refs: [{g:"lk",c:"Lk 7:41–43"}],
+    desc: "Two debtors owe a creditor — one 500 denarii, the other 50. Both are forgiven. Jesus asks: who will love more?",
+    note: "Unique to Luke, told in the context of the sinful woman who anoints Jesus' feet. The greater the forgiveness experienced, the greater the love in response. This is the logic behind Catholic devotion to the saints who were great sinners before conversion — <strong>Augustine, Mary Magdalene, the Good Thief</strong> — their love is proportional to the mercy they received."
+  },
+  {
+    cat: "mercy", name: "The Pharisee and the Tax Collector",
+    refs: [{g:"lk",c:"Lk 18:9–14"}],
+    desc: "Two men go to the Temple to pray. The Pharisee thanks God for his own righteousness. The tax collector beats his breast: \"God, be merciful to me, a sinner!\" Jesus says the tax collector went home justified.",
+    note: "Unique to Luke. The tax collector's prayer — \"God, be merciful to me, a sinner\" — is the basis of the <strong>Jesus Prayer</strong> in the Eastern Catholic and Orthodox tradition, and echoes through the Mass in the <strong>Confiteor</strong> and <strong>Kyrie</strong>. Self-righteousness is more dangerous than acknowledged sin."
+  },
+  {
+    cat: "mercy", name: "The Good Samaritan",
+    refs: [{g:"lk",c:"Lk 10:25–37"}],
+    desc: "A man is beaten and left for dead. A priest and a Levite pass by. A Samaritan — an ethnic and religious outsider — stops, tends his wounds, brings him to an inn, and pays for his care.",
+    note: "Unique to Luke. The patristic reading (especially St. Augustine and Origen) identifies the Samaritan as <strong>Christ Himself</strong> — the one despised by the religious establishment who alone rescues fallen humanity. The inn is the <strong>Church</strong>; the oil and wine are the <strong>sacraments</strong>; the innkeeper is the <strong>priest</strong> entrusted with the wounded man's care until the Samaritan returns. \"Go and do likewise\" is not merely an ethical command — it is an invitation to participate in Christ's own saving work."
+  },
+
+  // ═══════════════ JUDGMENT & READINESS (9) ═══════════════
+  {
+    cat: "judgment", name: "The Ten Virgins",
+    refs: [{g:"mt",c:"Mt 25:1–13"}],
+    desc: "Ten virgins await the bridegroom. Five bring extra oil; five do not. When the bridegroom is delayed and arrives at midnight, the foolish virgins' lamps have gone out. The door is shut against them.",
+    note: "Unique to Matthew. The oil represents the <strong>state of grace</strong> — personal, non-transferable, and requiring constant maintenance. The parable teaches that there is a point beyond which preparation is no longer possible. The Catholic emphasis on <strong>dying in a state of grace</strong> and the urgency of the sacraments — particularly Confession — flows directly from this teaching."
+  },
+  {
+    cat: "judgment", name: "The Talents",
+    refs: [{g:"mt",c:"Mt 25:14–30"}],
+    desc: "A master entrusts talents to three servants: five, two, and one. The first two invest and double their talents. The third buries his. The master rewards the faithful and condemns the one who acted out of fear.",
+    note: "Gifts must be <strong>actively invested</strong>, not merely preserved. The buried-talent servant is condemned not for doing evil but for <strong>doing nothing</strong>. Catholic moral theology distinguishes between sins of commission and <strong>sins of omission</strong> — the failure to do the good one could and should have done. Grace is given to be multiplied, not hoarded."
+  },
+  {
+    cat: "judgment", name: "The Minas (Ten Pounds)",
+    refs: [{g:"lk",c:"Lk 19:11–27"}],
+    desc: "A nobleman going to receive a kingdom gives ten servants one mina each. On his return, servants who multiplied their minas are given authority over cities. The one who wrapped his mina in a cloth loses even that.",
+    note: "Luke's parallel to the Talents, but with a political dimension: some citizens send a delegation saying \"We do not want this man to reign over us\" — a clear allusion to Israel's rejection of Christ's kingship and anticipating the Church's mission to all nations."
+  },
+  {
+    cat: "judgment", name: "The Sheep and the Goats",
+    refs: [{g:"mt",c:"Mt 25:31–46"}],
+    desc: "The Son of Man separates the nations as a shepherd separates sheep from goats. The righteous fed, clothed, and visited \"the least of these.\" The cursed did not. \"Whatever you did for one of the least of these brothers of mine, you did for me.\"",
+    note: "The definitive parable of the <strong>Last Judgment</strong>. Christ identifies Himself with the hungry, the prisoner, the stranger. Catholic social teaching — care for the poor, corporal works of mercy, the preferential option for the poor — is rooted directly in this text. The criterion of judgment is not merely doctrinal orthodoxy but <strong>lived charity</strong>. Faith without works is dead (Jas 2:26)."
+  },
+  {
+    cat: "judgment", name: "The Rich Man and Lazarus",
+    refs: [{g:"lk",c:"Lk 16:19–31"}],
+    desc: "A rich man feasts daily while the beggar Lazarus lies at his gate. Both die. Lazarus is carried to Abraham's bosom; the rich man is in torment. He begs Abraham to send Lazarus to warn his brothers, but Abraham says: \"They have Moses and the prophets; let them hear them.\"",
+    note: "Unique to Luke. This parable affirms the <strong>reality of the particular judgment after death</strong>, the existence of a blessed afterlife (\"Abraham's bosom\"), and the finality of death as the end of opportunity for repentance. Abraham's words — \"They have Moses and the Prophets\" — establish that <strong>Scripture is sufficient warning</strong>; additional private revelations or angelic visitations are not necessary for salvation."
+  },
+  {
+    cat: "judgment", name: "The Faithful and Wicked Servants",
+    refs: [{g:"mt",c:"Mt 24:45–51"},{g:"lk",c:"Lk 12:42–48"}],
+    desc: "A master puts a servant in charge of his household. If the servant is faithful, he is rewarded. If he abuses his authority while the master is delayed, he is punished severely.",
+    note: "A parable directly applicable to <strong>Church leadership</strong>. Those entrusted with authority in Christ's household (the Church) will be held to a <strong>higher standard</strong>. The Catholic tradition takes this seriously: \"To whom much is given, much will be required\" (Lk 12:48) applies especially to bishops and priests."
+  },
+  {
+    cat: "judgment", name: "The Budding Fig Tree",
+    refs: [{g:"mt",c:"Mt 24:32–35"},{g:"mk",c:"Mk 13:28–31"},{g:"lk",c:"Lk 21:29–33"}],
+    desc: "\"When its branch becomes tender and puts out leaves, you know that summer is near. So also, when you see all these things, you know that he is near, at the very gates.\"",
+    note: "A parable of <strong>eschatological discernment</strong> — the signs of the times can be read, and believers must remain watchful. Jesus is not setting a date but teaching His disciples to recognize the unfolding of God's plan in history."
+  },
+  {
+    cat: "judgment", name: "The Barren Fig Tree",
+    refs: [{g:"lk",c:"Lk 13:6–9"}],
+    desc: "A man finds no fruit on his fig tree for three years and orders it cut down. The gardener pleads: \"Lord, let it alone this year also, until I dig around it and put on manure. If it bears fruit next year, well and good; but if not, you can cut it down.\"",
+    note: "Unique to Luke. A parable of <strong>divine patience with a limit</strong>. God gives time for repentance, but that time is not infinite. The gardener who intercedes for the tree is a <strong>priestly</strong> figure — interceding before the master on behalf of the fruitless. Catholic theology sees here both God's mercy (the extra year) and His justice (the eventual reckoning)."
+  },
+  {
+    cat: "judgment", name: "The Watchful Servants",
+    refs: [{g:"mk",c:"Mk 13:33–37"},{g:"lk",c:"Lk 12:35–40"}],
+    desc: "\"Be like men who are waiting for their master to come home from the wedding feast, so that they may open the door to him at once when he comes and knocks.\"",
+    note: "Constant readiness, not panic at the end. The Catholic liturgical year — with its rhythm of Advent, Lent, feasting and fasting — is designed to keep the faithful in this posture of <strong>watchful expectation</strong>."
+  },
+
+  // ═══════════════ STEWARDSHIP (6) ═══════════════
+  {
+    cat: "stewardship", name: "The Shrewd Manager (Unjust Steward)",
+    refs: [{g:"lk",c:"Lk 16:1–13"}],
+    desc: "A dishonest manager, about to be fired, reduces the debts owed to his master to win friends for himself. The master commends his shrewdness. Jesus says: \"Make friends for yourselves by means of unrighteous wealth.\"",
+    note: "Unique to Luke. The most notoriously difficult parable. Jesus does not commend the dishonesty but the <strong>shrewdness</strong> — the strategic use of present resources for future security. If worldly people are this clever with money, how much more should the \"children of light\" be strategic with their spiritual resources? The Catholic tradition of <strong>almsgiving as preparation for eternal life</strong> draws on this teaching."
+  },
+  {
+    cat: "stewardship", name: "The Rich Fool",
+    refs: [{g:"lk",c:"Lk 12:13–21"}],
+    desc: "A rich man's land produces abundantly. He plans to build bigger barns, retire, and enjoy life. God says: \"Fool! This night your soul is required of you; and the things you have prepared, whose will they be?\"",
+    note: "Unique to Luke. Material security is <strong>no security at all</strong> against death. \"So is the one who lays up treasure for himself and is not rich toward God.\" Catholic social teaching roots the universal destination of goods — the principle that the earth's resources are meant for all — in texts like this."
+  },
+  {
+    cat: "stewardship", name: "The Treasure — New and Old",
+    refs: [{g:"mt",c:"Mt 13:52"}],
+    desc: "\"Every scribe trained for the kingdom of heaven is like a master of a house who brings out of his treasure what is new and what is old.\"",
+    note: "A brief but profound parable about <strong>tradition and development</strong>. The faithful teacher draws on both old revelation and new insight — not discarding the old for the new, nor clinging to the old while refusing the new. This is the Catholic principle of <strong>Sacred Tradition</strong>: the deposit of faith is ancient, but its expression develops under the guidance of the Holy Spirit."
+  },
+  {
+    cat: "stewardship", name: "The Counting the Cost: Tower Builder",
+    refs: [{g:"lk",c:"Lk 14:28–30"}],
+    desc: "\"Which of you, desiring to build a tower, does not first sit down and count the cost, whether he has enough to complete it?\"",
+    note: "Unique to Luke. Discipleship requires <strong>deliberate commitment</strong>, not impulsive enthusiasm. The Catholic catechumenate — the extended period of preparation before Baptism or Reception — embodies this principle: count the cost before entering."
+  },
+  {
+    cat: "stewardship", name: "The Counting the Cost: King Going to War",
+    refs: [{g:"lk",c:"Lk 14:31–33"}],
+    desc: "\"What king, going out to encounter another king in war, will not first sit down and deliberate whether he is able with ten thousand to meet him who comes against him with twenty thousand?\"",
+    note: "Paired with the Tower Builder — both emphasize the <strong>total cost of discipleship</strong>. Jesus concludes: \"Any one of you who does not renounce all that he has cannot be my disciple\" (Lk 14:33)."
+  },
+  {
+    cat: "stewardship", name: "The Unfruitful Salt",
+    refs: [{g:"mt",c:"Mt 5:13"},{g:"mk",c:"Mk 9:50"},{g:"lk",c:"Lk 14:34–35"}],
+    desc: "\"Salt is good, but if salt has lost its taste, how shall its saltiness be restored? It is of no use either for the soil or for the manure pile. It is thrown away.\"",
+    note: "Disciples who lose their distinctive character become useless. The Catholic understanding of <strong>vocation</strong> — each person called to a specific form of faithful witness — gives this parable its force: to abandon one's calling is to become salt that has lost its savor."
+  },
+
+  // ═══════════════ PRAYER & PERSISTENCE (4) ═══════════════
+  {
+    cat: "prayer", name: "The Persistent Widow and the Unjust Judge",
+    refs: [{g:"lk",c:"Lk 18:1–8"}],
+    desc: "A widow keeps coming to an unjust judge demanding justice. He finally relents — not because he cares but because she won't stop. Jesus says: \"Will not God give justice to his elect, who cry to him day and night?\"",
+    note: "Unique to Luke. An <strong>a fortiori</strong> argument: if even a corrupt judge yields to persistence, how much more will the perfectly just God respond to His children's prayers? The Catholic tradition of <strong>persevering prayer</strong> — novenas, the Rosary, the Liturgy of the Hours — embodies this parable's teaching that faithful prayer is never wasted."
+  },
+  {
+    cat: "prayer", name: "The Friend at Midnight",
+    refs: [{g:"lk",c:"Lk 11:5–8"}],
+    desc: "A man goes to his friend at midnight asking for three loaves of bread for an unexpected guest. The friend refuses at first but gives in because of the man's persistence.",
+    note: "Unique to Luke. Like the Persistent Widow, this teaches <strong>boldness in prayer</strong>. The Greek word ἀναίδεια (anaideia) means \"shameless audacity\" — we are to approach God with confident, even brazen, persistence, trusting in His goodness."
+  },
+  {
+    cat: "prayer", name: "The Asking Father",
+    refs: [{g:"mt",c:"Mt 7:9–11"},{g:"lk",c:"Lk 11:11–13"}],
+    desc: "\"What father among you, if his son asks for a fish, will instead of a fish give him a serpent? If you then, who are evil, know how to give good gifts to your children, how much more will your Father who is in heaven give good things to those who ask him!\"",
+    note: "Another a fortiori argument. God's fatherhood is not distant or indifferent. Luke's version specifies that the Father gives <strong>the Holy Spirit</strong> to those who ask — linking prayer directly to the gift of divine life."
+  },
+  {
+    cat: "prayer", name: "The Closed Door",
+    refs: [{g:"lk",c:"Lk 13:22–30"}],
+    desc: "\"Strive to enter through the narrow door. For many, I tell you, will seek to enter and will not be able. When once the master of the house has risen and shut the door… he will say, 'I do not know where you come from.'\"",
+    note: "Unique to Luke. The narrow door is <strong>open now but will not remain open indefinitely</strong>. This parable undercuts any presumption of automatic salvation — knowing about Jesus is not the same as knowing Jesus. The urgency of conversion and the necessity of persevering in grace are central Catholic themes."
+  },
+
+  // ═══════════════ DISCIPLESHIP & COST (7) ═══════════════
+  {
+    cat: "discipleship", name: "The Good Shepherd",
+    refs: [{g:"lk",c:"Lk 15:1–7"},{g:"mt",c:"Mt 18:12–14"}],
+    desc: "The shepherd leaves the ninety-nine to seek the one lost sheep and carries it home on his shoulders, rejoicing.",
+    note: "John 10 expands this image: \"I am the good shepherd. The good shepherd lays down his life for the sheep.\" The Catholic bishop carries a <strong>pastoral staff (crosier)</strong> precisely because he exercises the shepherding ministry of Christ. The image of carrying the sheep on the shoulders is one of the <strong>earliest Christian artistic motifs</strong>, found in the Roman catacombs."
+  },
+  {
+    cat: "discipleship", name: "The Vine and the Branches",
+    refs: [{g:"mt",c:"—"},{g:"lk",c:"—"}],
+    refsRaw: [{g:"jn-special",c:"Jn 15:1–8"}],
+    desc: "\"I am the vine; you are the branches. Whoever abides in me and I in him, he it is that bears much fruit, for apart from me you can do nothing.\"",
+    note: "Though technically an \"I AM\" saying rather than a narrative parable, it functions as an extended metaphor with parabolic force. This is the <strong>foundational text for Catholic ecclesiology</strong>: believers are organically united to Christ (the vine) and to one another (fellow branches). Those who are severed from the vine — through mortal sin or schism — wither and die. The sacraments are the <strong>channels of sap</strong> that maintain this vital connection. \"Apart from me you can do nothing\" is the definitive statement of the necessity of grace.",
+    special: true
+  },
+  {
+    cat: "discipleship", name: "The Wise and Foolish Builders",
+    refs: [{g:"mt",c:"Mt 7:24–27"},{g:"lk",c:"Lk 6:47–49"}],
+    desc: "A wise man builds on rock; a fool builds on sand. When the storm comes, the house on rock stands; the house on sand collapses.",
+    note: "The concluding parable of the Sermon on the Mount. The \"rock\" is <strong>obedience to Christ's words</strong> — hearing and doing. Jesus uses the same word (πέτρα, petra) that He later uses for Peter (Mt 16:18). Building on rock = building on Christ's teaching as mediated through His Church."
+  },
+  {
+    cat: "discipleship", name: "The New Cloth on an Old Garment",
+    refs: [{g:"mt",c:"Mt 9:16"},{g:"mk",c:"Mk 2:21"},{g:"lk",c:"Lk 5:36"}],
+    desc: "\"No one puts a piece of unshrunk cloth on an old garment, for the patch tears away from the garment, and a worse tear is made.\"",
+    note: "The New Covenant is not a patch on the Old — it is a <strong>new garment entirely</strong>. But Luke adds the telling detail: \"No one after drinking old wine desires new, for he says, 'The old is good'\" (Lk 5:39) — acknowledging that the transition from Old to New Covenant involves real loss and requires trust."
+  },
+  {
+    cat: "discipleship", name: "New Wine in Old Wineskins",
+    refs: [{g:"mt",c:"Mt 9:17"},{g:"mk",c:"Mk 2:22"},{g:"lk",c:"Lk 5:37–39"}],
+    desc: "\"No one puts new wine into old wineskins. If he does, the wine will burst the skins — and the wine is destroyed, and so are the skins. But new wine is for fresh wineskins.\"",
+    note: "Paired with the New Cloth. The gospel cannot be contained within the structures of the Old Covenant. New structures — the <strong>Church, the sacraments, the ordained ministry</strong> — are the \"new wineskins\" that Christ provides for the new wine of the Kingdom."
+  },
+  {
+    cat: "discipleship", name: "The Lamp under a Bushel",
+    refs: [{g:"mt",c:"Mt 5:14–16"},{g:"mk",c:"Mk 4:21–22"},{g:"lk",c:"Lk 8:16–17"}],
+    desc: "\"No one after lighting a lamp puts it under a bushel basket, but on a stand, and it gives light to all in the house. Let your light so shine before men.\"",
+    note: "The faith is not a <strong>private, hidden</strong> matter — it is meant to be <strong>visible and public</strong>. The Catholic understanding of the Church as a visible society (not an invisible spiritual association) is rooted in images like this: light on a stand, a city on a hill, salt of the earth — all <strong>publicly perceptible</strong> realities."
+  },
+  {
+    cat: "discipleship", name: "The Doorkeeper",
+    refs: [{g:"mk",c:"Mk 13:34–37"}],
+    desc: "\"It is like a man going on a journey, when he leaves home and puts his servants in charge, each with his work, and commands the doorkeeper to stay awake.\"",
+    note: "Unique to Mark's version of the Olivet Discourse. Each servant has assigned work — the Catholic understanding of <strong>vocation and charism</strong>. The doorkeeper has a special responsibility: vigilance. Church leadership is called to a particular watchfulness over the flock."
+  }
+];
+
+// ── Configuration ──
+const catOrder = ["kingdom","mercy","judgment","stewardship","prayer","discipleship"];
+const catMeta = {
+  kingdom:      { icon: "👑", label: "Kingdom of God", desc: "Parables revealing the nature and growth of God's reign", color: "#1B5E20" },
+  mercy:        { icon: "💧", label: "Mercy & Forgiveness", desc: "God's extravagant grace toward sinners", color: "#0D47A1" },
+  judgment:     { icon: "⚖", label: "Judgment & Readiness", desc: "The final reckoning and the urgency of preparation", color: "#8B1A1A" },
+  stewardship:  { icon: "🌾", label: "Stewardship", desc: "Faithfulness with God's gifts — material and spiritual", color: "#BF360C" },
+  prayer:       { icon: "🕯", label: "Prayer & Persistence", desc: "The nature and power of faithful prayer", color: "#4A148C" },
+  discipleship: { icon: "🚶", label: "Discipleship & Cost", desc: "What it means to follow Christ", color: "#00695C" }
+};
+
+const total = parables.length;
+const catCounts = {};
+catOrder.forEach(c => { catCounts[c] = parables.filter(p => p.cat === c).length; });
+
+// ── Gospel counting ──
+function getGospelCounts(list) {
+  let mt = 0, mk = 0, lk = 0;
+  let mtOnly = 0, mkOnly = 0, lkOnly = 0;
+  list.forEach(p => {
+    const refs = p.refsRaw || p.refs;
+    const gospels = refs.map(r => r.g).filter(g => g !== '—' && !g.includes('special'));
+    const hasMt = gospels.includes('mt');
+    const hasMk = gospels.includes('mk');
+    const hasLk = gospels.includes('lk');
+    if (hasMt) mt++;
+    if (hasMk) mk++;
+    if (hasLk) lk++;
+    if (hasMt && !hasMk && !hasLk) mtOnly++;
+    if (hasMk && !hasMt && !hasLk) mkOnly++;
+    if (hasLk && !hasMt && !hasMk) lkOnly++;
+  });
+  return { mt, mk, lk, mtOnly, mkOnly, lkOnly };
+}
+
+function updateGospelBars(list) {
+  const g = getGospelCounts(list);
+  const max = Math.max(g.mt, g.mk, g.lk, 1);
+  document.getElementById('bar-mt').style.width = ((g.mt / max) * 100) + '%';
+  document.getElementById('bar-mk').style.width = ((g.mk / max) * 100) + '%';
+  document.getElementById('bar-lk').style.width = ((g.lk / max) * 100) + '%';
+  document.getElementById('bar-mt-num').textContent = g.mt;
+  document.getElementById('bar-mk-num').textContent = g.mk;
+  document.getElementById('bar-lk-num').textContent = g.lk;
+
+  document.getElementById('unique-badges').innerHTML = `
+    <div class="unique-badge"><div class="ub-num mt">${g.mtOnly}</div><div class="ub-label">Only in Mt</div></div>
+    <div class="unique-badge"><div class="ub-num mk">${g.mkOnly}</div><div class="ub-label">Only in Mk</div></div>
+    <div class="unique-badge"><div class="ub-num lk">${g.lkOnly}</div><div class="ub-label">Only in Lk</div></div>
+  `;
+}
+
+// ── Pie Chart ──
+function polarToCart(cx, cy, r, deg) {
+  const rad = (deg - 90) * Math.PI / 180;
+  return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+}
+
+function drawPie(activeCat) {
+  const svg = document.getElementById('pie-svg');
+  const cx = 100, cy = 100, r = 88;
+  let start = 0;
+  let paths = '';
+
+  catOrder.forEach(cat => {
+    const slice = (catCounts[cat] / total) * 360;
+    const end = start + slice;
+    const large = slice > 180 ? 1 : 0;
+    const s = polarToCart(cx, cy, r, start);
+    const e = polarToCart(cx, cy, r, end);
+    const hl = activeCat === cat;
+    const dm = activeCat !== 'all' && activeCat !== cat;
+    paths += `<path class="pie-slice ${hl?'highlighted':''} ${dm?'dimmed':''}" data-cat="${cat}"
+      d="M ${cx} ${cy} L ${s.x} ${s.y} A ${r} ${r} 0 ${large} 1 ${e.x} ${e.y} Z"
+      fill="${catMeta[cat].color}" stroke="rgba(245,240,232,0.9)" stroke-width="1.5" />`;
+    start = end;
+  });
+  svg.innerHTML = paths;
+
+  svg.querySelectorAll('.pie-slice').forEach(sl => {
+    sl.addEventListener('click', () => {
+      const c = sl.dataset.cat;
+      const cur = document.querySelector('.filter-btn.active')?.dataset.cat;
+      setFilter(cur === c ? 'all' : c);
+    });
+  });
+
+  const pn = document.getElementById('pie-num');
+  if (activeCat === 'all') { pn.textContent = total; pn.style.color = 'var(--crimson)'; }
+  else { pn.textContent = catCounts[activeCat]; pn.style.color = catMeta[activeCat].color; }
+}
+
+function buildLegend(activeCat) {
+  const el = document.getElementById('pie-legend');
+  el.innerHTML = catOrder.map(cat => {
+    const pct = Math.round((catCounts[cat]/total)*100);
+    return `<div class="legend-row ${activeCat===cat?'active':''}" data-cat="${cat}">
+      <div class="legend-swatch" style="background:${catMeta[cat].color}"></div>
+      <span class="legend-label">${catMeta[cat].label}</span>
+      <span class="legend-count">${catCounts[cat]}</span>
+      <span class="legend-pct">${pct}%</span>
+    </div>`;
+  }).join('');
+  el.querySelectorAll('.legend-row').forEach(r => {
+    r.addEventListener('click', () => {
+      const c = r.dataset.cat;
+      const cur = document.querySelector('.filter-btn.active')?.dataset.cat;
+      setFilter(cur === c ? 'all' : c);
+    });
+  });
+}
+
+// ── Render parables ──
+function renderParables(filter) {
+  const container = document.getElementById('parables-container');
+  container.innerHTML = '';
+  const cats = filter === 'all' ? catOrder : [filter];
+  let shown = 0;
+
+  cats.forEach(cat => {
+    const items = parables.filter(p => p.cat === cat);
+    if (!items.length) return;
+    shown += items.length;
+
+    const section = document.createElement('div');
+    section.className = 'category-section';
+    section.innerHTML = `
+      <div class="category-header ${cat}">
+        <div class="cat-icon ${cat}">${catMeta[cat].icon}</div>
+        <div class="cat-title-block">
+          <h2 class="${cat}">${catMeta[cat].label}</h2>
+          <span class="cat-count">${items.length} parable${items.length>1?'s':''} — ${catMeta[cat].desc}</span>
+        </div>
+      </div>
+      <div class="parables-grid">
+        ${items.map((p, i) => {
+          // Build refs display
+          const displayRefs = p.refsRaw || p.refs;
+          const refHtml = displayRefs
+            .filter(r => r.c !== '—')
+            .map(r => {
+              const gClass = r.g.includes('jn') ? 'jn' : r.g;
+              const label = r.g === 'jn-special' ? 'Jn' : r.g.charAt(0).toUpperCase() + r.g.slice(1);
+              return `<span class="gospel-tag ${gClass}">${label}</span>${r.c}`;
+            }).join(' &ensp;');
+
+          // Gospel presence for badges
+          const allRefs = p.refsRaw || p.refs;
+          const gospels = allRefs.map(r => r.g).filter(g => g !== '—');
+          const hasMt = gospels.includes('mt');
+          const hasMk = gospels.includes('mk');
+          const hasLk = gospels.includes('lk');
+          const synopticCount = (hasMt?1:0)+(hasMk?1:0)+(hasLk?1:0);
+          const isUnique = synopticCount === 1;
+
+          let badges = '';
+          if (isUnique && hasMt) badges = '<span class="source-badge mt unique">Mt Only</span>';
+          else if (isUnique && hasMk) badges = '<span class="source-badge mk unique">Mk Only</span>';
+          else if (isUnique && hasLk) badges = '<span class="source-badge lk unique">Lk Only</span>';
+          else if (gospels.includes('jn-special')) badges = '<span class="source-badge" style="background:#F3E5F5;color:#6A1B9A;border:1.5px dashed #6A1B9A">Jn Only</span>';
+
+          return `
+          <div class="parable-card ${p.cat}" style="animation-delay:${i*0.04}s">
+            <div class="parable-top">
+              <div class="parable-name">${p.name}</div>
+              <div class="parable-badges">${badges}</div>
+            </div>
+            <div class="parable-refs">${refHtml}</div>
+            <div class="parable-desc">${p.desc}</div>
+            ${p.note ? `<div class="parable-note">${p.note}</div>` : ''}
+          </div>`;
+        }).join('')}
+      </div>
+    `;
+    container.appendChild(section);
+  });
+
+  document.getElementById('total-count').textContent = shown;
+}
+
+// ── Unified filter ──
+function setFilter(cat) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.filter-btn[data-cat="${cat}"]`)?.classList.add('active');
+  drawPie(cat);
+  buildLegend(cat);
+  const filtered = cat === 'all' ? parables : parables.filter(p => p.cat === cat);
+  updateGospelBars(filtered);
+  renderParables(cat);
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => setFilter(btn.dataset.cat));
+});
+
+// ── Init ──
+setFilter('all');
+</script>
+
+</body>
+</html>
