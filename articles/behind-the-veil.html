@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Behind the Veil | One Faith Delivered</title>
+<meta name="description" content="An examination of the LDS temple endowment ceremony, its documented Masonic origins, the secret second anointing, and how these practices clash with biblical Christianity." />
+<link rel="canonical" href="https://onefaithdelivered.org/articles/behind-the-veil.html" />
+<link rel="icon" href="../favicons/favicon.ico" sizes="any" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+
+/* ═══════════════════════════════════════════════════════════
+   BEHIND THE VEIL
+   Design system: matches from-temple-to-cathedral.html
+   Fonts: Playfair Display + Source Serif 4 + JetBrains Mono
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --crimson:      #8B0000;
+  --dark-crimson: #5C0000;
+  --gold:         #C5A55A;
+  --dark-gold:    #8B7335;
+  --parchment:    #F5F0E8;
+  --dark-bg:      #1A1A1A;
+  --text:         #2A2A2A;
+  --muted:        #666;
+  --line-gray:    #D0C8B8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--parchment);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.6;
+}
+
+/* ── SITE NAV ── */
+.site-nav {
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(245,240,232,0.98), rgba(240,235,225,0.95));
+  border-bottom: 1px solid var(--line-gray);
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  font-family: 'Source Serif 4', serif;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.site-nav a.nav-home {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--crimson);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: var(--dark-crimson); }
+.site-nav .nav-back {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  text-decoration: none;
+  border: 1px solid rgba(139,115,53,0.35);
+  padding: 0.4rem 1.1rem;
+  border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
+}
+.site-nav .nav-back:hover {
+  background: rgba(139,115,53,0.08);
+  color: var(--crimson);
+}
+.site-nav .nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.site-nav .nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav .nav-links a:hover { color: var(--crimson); }
+
+/* ── Hamburger ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  cursor: pointer;
+  background: none;
+  border: 1px solid rgba(139,115,53,0.3);
+  border-radius: 3px;
+  padding: 6px;
+  z-index: 10001;
+}
+.nav-hamburger span {
+  display: block; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Sidebar ── */
+.sidebar-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+.sidebar-overlay.visible { display: block; }
+.sidebar {
+  position: fixed;
+  top: 0; right: -280px;
+  width: 260px; height: 100%;
+  background: linear-gradient(to bottom, #FAF6F0, #F5F0E8);
+  border-left: 1px solid var(--line-gray);
+  z-index: 10002;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+.sidebar.open { right: 0; }
+.sidebar-inner {
+  padding: 5rem 2rem 2rem;
+  display: flex; flex-direction: column; gap: 0;
+}
+.sidebar-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--crimson);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line-gray);
+}
+.sidebar-inner a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(208,200,184,0.5);
+  transition: color 0.2s;
+}
+.sidebar-inner a:hover { color: var(--crimson); }
+.sidebar-inner a.sidebar-back {
+  color: var(--dark-gold);
+  margin-top: 1.5rem;
+  border: 1px solid rgba(139,115,53,0.3);
+  padding: 0.7rem 1rem;
+  text-align: center;
+  border-radius: 2px;
+}
+.sidebar-ornament {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 8px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ── HERO / PAGE HEADER ── */
+.page-header {
+  background: linear-gradient(135deg, #4A0F1A 0%, #6B1D2A 40%, #3D1520 100%);
+  color: #F5F0E8;
+  padding: 72px 40px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+  pointer-events: none;
+}
+.back-link {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  margin-bottom: 1.8rem;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+  position: relative;
+  z-index: 1;
+}
+.back-link:hover { opacity: 1; }
+.ornament {
+  display: block;
+  color: var(--gold);
+  font-size: 1rem;
+  letter-spacing: 12px;
+  margin-bottom: 1.2rem;
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2em, 4vw, 3.2em);
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: #F5F0E8;
+  margin-bottom: 14px;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+}
+.page-header h1 span { color: var(--gold); }
+.page-header .subtitle {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(245,240,232,0.75);
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.page-header .meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(197,165,90,0.65);
+  margin-top: 1.4rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── MAIN CONTENT ── */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 56px 24px 88px;
+}
+
+/* ── INTRO BOX ── */
+.intro-box {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-left: 5px solid var(--crimson);
+  border-radius: 4px;
+  padding: 28px 32px;
+  margin-bottom: 48px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.intro-box p {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--text);
+}
+.intro-box p + p { margin-top: 0.9rem; }
+.intro-box strong { color: var(--crimson); font-weight: 600; }
+
+/* ── SECTION DIVIDER ── */
+.section-divider {
+  margin: 48px 0 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.section-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line-gray);
+}
+.section-divider-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  white-space: nowrap;
+}
+
+/* ── ARTICLE SECTION ── */
+.article-section {
+  margin-bottom: 16px;
+}
+.article-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7em;
+  font-weight: 700;
+  color: var(--crimson);
+  line-height: 1.25;
+  margin-bottom: 18px;
+}
+.article-section p {
+  font-size: 1.02rem;
+  line-height: 1.9;
+  color: var(--text);
+  margin-bottom: 1.1rem;
+}
+.article-section p:last-child { margin-bottom: 0; }
+
+/* ── PULL QUOTE ── */
+.pull-quote {
+  border-left: 4px solid var(--gold);
+  margin: 32px 0;
+  padding: 18px 28px;
+  background: rgba(197,165,90,0.07);
+  border-radius: 0 4px 4px 0;
+}
+.pull-quote p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15em !important;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--dark-crimson) !important;
+  line-height: 1.65 !important;
+  margin: 0 !important;
+}
+.pull-quote .quote-source {
+  display: block;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.65em !important;
+  font-style: normal !important;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-gold) !important;
+  margin-top: 10px;
+}
+
+/* ── COMPARISON CALLOUT (3-col) ── */
+.callout-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  border: 1px solid var(--line-gray);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 32px 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.callout-col {
+  padding: 22px 20px;
+  background: #fff;
+}
+.callout-col:nth-child(2) {
+  background: #F8F4F0;
+  border-left: 1px solid var(--line-gray);
+  border-right: 1px solid var(--line-gray);
+}
+.callout-col-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--line-gray);
+}
+.callout-col-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05em;
+  font-weight: 700;
+  color: var(--crimson);
+  margin-bottom: 8px;
+}
+.callout-col p {
+  font-size: 0.87em;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ── TIMELINE CHART ── */
+.timeline-chart {
+  margin: 40px 0;
+  border: 1px solid var(--line-gray);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.timeline-chart-header {
+  background: linear-gradient(135deg, #4A0F1A, #6B1D2A);
+  padding: 18px 24px;
+  text-align: center;
+}
+.timeline-chart-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15em;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 0;
+}
+.timeline-chart-header p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85em;
+  color: rgba(245,240,232,0.7);
+  margin-top: 4px;
+}
+.timeline-body {
+  background: #fff;
+  padding: 0;
+}
+.timeline-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  border-bottom: 1px solid var(--line-gray);
+  transition: background 0.15s;
+}
+.timeline-row:last-child { border-bottom: none; }
+.timeline-row:hover { background: rgba(197,165,90,0.04); }
+.timeline-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--crimson);
+  padding: 14px 16px;
+  border-right: 3px solid var(--crimson);
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  text-align: right;
+}
+.timeline-event {
+  padding: 14px 20px;
+  font-size: 0.88em;
+  line-height: 1.65;
+  color: var(--text);
+}
+.timeline-event strong {
+  color: var(--crimson);
+  font-weight: 600;
+}
+
+/* ── SIDE-BY-SIDE COMPARISON TABLE ── */
+.compare-table {
+  margin: 36px 0;
+  border: 1px solid var(--line-gray);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.compare-table-header {
+  background: linear-gradient(135deg, #4A0F1A, #6B1D2A);
+  padding: 16px 24px;
+  text-align: center;
+}
+.compare-table-header h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 0;
+}
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #fff;
+}
+.compare-col {
+  padding: 20px 22px;
+}
+.compare-col + .compare-col {
+  border-left: 1px solid var(--line-gray);
+}
+.compare-col-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--line-gray);
+}
+.compare-item {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(208,200,184,0.4);
+  font-size: 0.87em;
+  line-height: 1.65;
+  color: var(--text);
+}
+.compare-item:last-child { border-bottom: none; }
+.compare-item strong {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--crimson);
+  font-size: 0.95em;
+  margin-bottom: 3px;
+}
+
+/* ── SCRIPTURE BOX ── */
+.scripture-box {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-left: 4px solid var(--crimson);
+  border-radius: 4px;
+  padding: 22px 26px;
+  margin: 28px 0;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+}
+.scripture-box p {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.95em;
+  line-height: 1.8;
+  color: var(--text);
+  font-style: italic;
+  margin: 0;
+}
+.scripture-box .scripture-ref {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65em;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  margin-top: 10px;
+}
+
+/* ── VERDICT / CONCLUSION BOX ── */
+.verdict-box {
+  background: linear-gradient(135deg, #4A0F1A, #6B1D2A);
+  color: #F5F0E8;
+  border-radius: 6px;
+  padding: 48px 44px;
+  margin-top: 56px;
+  position: relative;
+  overflow: hidden;
+}
+.verdict-box::before {
+  content: '';
+  position: absolute; inset: 8px;
+  border: 1px solid rgba(197,165,90,0.25);
+  border-radius: 4px;
+  pointer-events: none;
+}
+.verdict-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.verdict-box p {
+  font-size: 1em;
+  line-height: 1.9;
+  color: rgba(245,240,232,0.9);
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.verdict-box p + p { margin-top: 14px; }
+.verdict-box .closing-line {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.1em;
+  color: var(--gold);
+  text-align: center;
+  margin-top: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: #fff;
+  text-align: center;
+  padding: 28px 20px;
+  border-top: 1px solid var(--line-gray);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── READING PROGRESS BAR ── */
+#reading-progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(to right, #8B0000, #C5A55A);
+  z-index: 99999;
+  transition: width 0.12s linear;
+  pointer-events: none;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── PRINT / PDF BUTTON ── */
+.nav-print-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  background: none;
+  border: 1px solid rgba(139,115,53,0.35);
+  padding: 0.4rem 1.1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+.nav-print-btn:hover { background: rgba(139,115,53,0.08); color: var(--crimson); }
+.nav-print-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+/* ── PRINT COLOPHON ── */
+.print-colophon { display: none; }
+
+/* ── VIDEO / RESOURCE LINK ── */
+.resource-box {
+  margin: 48px 0 0;
+  border: 1px solid var(--line-gray);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.resource-box-header {
+  background: linear-gradient(135deg, #2A2A2A, #3A3A3A);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.resource-box-header svg {
+  width: 20px; height: 20px;
+  flex-shrink: 0;
+}
+.resource-box-header span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.resource-box-body {
+  background: #fff;
+  padding: 22px 26px;
+}
+.resource-box-body h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: var(--crimson);
+  margin-bottom: 8px;
+}
+.resource-box-body p {
+  font-size: 0.9em;
+  line-height: 1.75;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+.resource-box-body a.resource-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  text-decoration: none;
+  border: 1px solid rgba(139,0,0,0.25);
+  padding: 10px 18px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.resource-box-body a.resource-link:hover {
+  background: rgba(139,0,0,0.06);
+  border-color: rgba(139,0,0,0.45);
+}
+.resource-box-body a.resource-link svg {
+  width: 16px; height: 16px;
+  flex-shrink: 0;
+}
+
+/* ── NEXT ARTICLE NAV ── */
+.next-article-nav {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line-gray);
+  text-align: center;
+}
+.next-article-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66em;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  margin-bottom: 14px;
+}
+.next-article-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2em;
+  font-weight: 700;
+  color: var(--crimson);
+  text-decoration: none;
+  padding: 16px 28px;
+  border: 1px solid rgba(139,0,0,0.2);
+  border-radius: 4px;
+  background: rgba(139,0,0,0.03);
+  transition: all 0.25s ease;
+  max-width: 100%;
+}
+.next-article-link:hover {
+  background: rgba(139,0,0,0.08);
+  border-color: rgba(139,0,0,0.4);
+}
+.next-article-title { line-height: 1.3; }
+.next-article-arrow {
+  font-size: 1.3em;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+.next-article-link:hover .next-article-arrow { transform: translateX(4px); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .page-header { padding: 48px 24px 40px; }
+  .page-header h1 { font-size: 1.9em; }
+  .callout-grid { grid-template-columns: 1fr; }
+  .callout-col:nth-child(2) { border-left: none; border-right: none; border-top: 1px solid var(--line-gray); border-bottom: 1px solid var(--line-gray); }
+  .compare-grid { grid-template-columns: 1fr; }
+  .compare-col + .compare-col { border-left: none; border-top: 1px solid var(--line-gray); }
+  .verdict-box { padding: 32px 24px; }
+  main { padding: 32px 16px 60px; }
+  .intro-box { padding: 22px 20px; }
+  .timeline-row { grid-template-columns: 90px 1fr; }
+  .next-article-link { font-size: 1em; padding: 14px 20px; gap: 10px; }
+}
+@media (max-width: 700px) {
+  .nav-hamburger { display: flex; }
+  .site-nav .nav-links { display: none; }
+  .site-nav .nav-back { display: none; }
+  body { overflow-x: hidden; }
+  .site-nav { padding: 0.55rem 1rem; }
+  .page-header { padding: 44px 18px 32px; }
+  .page-header h1 { font-size: clamp(1.35rem, 5.5vw, 2rem); }
+  .page-header .subtitle { font-size: 0.92rem; }
+  .sidebar { display: block; transform: translateX(100%); right: 0; position: fixed; }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-inner { padding: 4rem 1.5rem 2rem; }
+  .sidebar-overlay.visible { display: block; }
+  .nav-hamburger { display: flex; margin-left: auto; order: 99; flex-shrink: 0; }
+}
+
+/* ── @MEDIA PRINT ── */
+@media print {
+  #reading-progress-bar, .site-nav, .sidebar-overlay, .sidebar, .nav-print-btn, .back-link, footer, .next-article-nav { display: none !important; }
+  body { background: #fff !important; color: #000 !important; font-size: 11pt; line-height: 1.65; }
+  .page-header { background: none !important; color: #000 !important; border-bottom: 2pt solid #8B0000; padding: 0.4cm 0 0.5cm !important; margin-bottom: 1cm; page-break-after: avoid; }
+  .page-header h1, .page-header h1 span, .page-header .ornament { color: #8B0000 !important; text-shadow: none !important; }
+  .page-header .subtitle, .page-header .meta { color: #333 !important; background: none !important; border: none !important; }
+  main { max-width: 100% !important; padding: 0 !important; margin: 0 !important; }
+  .article-section { page-break-inside: avoid; }
+  .verdict-box { page-break-inside: avoid; border-color: #8B0000 !important; background: #fff !important; }
+  a { color: #000; text-decoration: none; }
+  a[href]:after { content: none !important; }
+  .print-colophon { display: block !important; margin-top: 2cm; padding-top: 0.5cm; border-top: 1pt solid #ccc; font-family: 'JetBrains Mono', monospace, sans-serif; font-size: 8pt; color: #666; text-align: center; page-break-inside: avoid; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── SITE NAV ── -->
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">One Faith Delivered</a>
+  <ul class="nav-links">
+    <li><a href="../articles.html">Articles</a></li>
+    <li><a href="../charts.html">Charts</a></li>
+    <li><a href="../topics.html">Topics</a></li>
+    <li><a href="../resources.html">Resources</a></li>
+  </ul>
+  <a href="../articles.html" class="nav-back">&#8592; All Articles</a>
+  <button class="nav-print-btn" onclick="window.print()" aria-label="Print or save as PDF" title="Print / Save as PDF">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Print
+  </button>
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div id="reading-progress-bar" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <a href="../articles.html" class="back-link">&#8592; All Articles</a>
+  <span class="ornament">✦ &nbsp; ✦ &nbsp; ✦</span>
+  <h1>Behind <span>the Veil</span></h1>
+  <p class="subtitle">The Masonic Origins of the LDS Temple Ceremony, the Secret Second Anointing, and Why None of It Is Biblical</p>
+  <p class="meta">Long-Form Essay &nbsp;·&nbsp; Temple &amp; Ritual &nbsp;·&nbsp; Historical Analysis</p>
+</header>
+
+<!-- ── MAIN ── -->
+<main>
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <p>The LDS temple is presented to Latter-day Saints as the most sacred space on earth — the place where heaven meets mortality, where eternal families are sealed, and where ordinances "kept hid from before the foundation of the world" (<a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/124?lang=eng&id=41#p41" target="_blank" rel="noopener">D&C 124:41</a>) are administered to the faithful. For millions of members, the temple endowment represents the pinnacle of their spiritual lives.</p>
+    <p>But the documented history of the LDS temple ceremony tells a very different story — one that begins not in ancient Jerusalem but in a Masonic lodge in Nauvoo, Illinois, in the spring of 1842. The ceremony Joseph Smith introduced bears the unmistakable fingerprints of <strong>Freemasonry</strong>, a fraternal organization that itself has no connection to Solomon's Temple or to biblical worship. And the ceremony's most closely guarded secret — the <strong>second anointing</strong> — contradicts foundational principles of the Christian gospel as taught in Sacred Scripture.</p>
+    <p>This article examines the historical evidence, traces the documented evolution of the temple ceremonies, and measures the entire system against the standard of <strong>biblical Christianity as preserved in the Catholic tradition</strong>.</p>
+  </div>
+
+  <!-- COMPARISON CALLOUT -->
+  <div class="callout-grid">
+    <div class="callout-col">
+      <div class="callout-col-label">LDS Claim</div>
+      <div class="callout-col-title">Restored Ancient Ordinance</div>
+      <p>The endowment was "kept hid from before the foundation of the world" and restored through Joseph Smith — the same ceremony practiced in Solomon's Temple.</p>
+    </div>
+    <div class="callout-col">
+      <div class="callout-col-label">Historical Record</div>
+      <div class="callout-col-title">Created Seven Weeks After Masonic Initiation</div>
+      <p>Joseph Smith became a Master Mason on March 15–16, 1842. He introduced the endowment on May 4, 1842 — with nearly identical tokens, signs, penalties, and clothing.</p>
+    </div>
+    <div class="callout-col">
+      <div class="callout-col-label">Biblical Reality</div>
+      <div class="callout-col-title">No Precedent in Scripture</div>
+      <p>Neither the Old nor New Testament contains any ceremony resembling the endowment. Solomon's Temple was a place of animal sacrifice, not secret handshakes and passwords.</p>
+    </div>
+  </div>
+
+
+  <!-- ── SECTION 1 ── -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">I — The Masonic Connection</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="article-section">
+    <h2>Seven Weeks: From Lodge to Endowment</h2>
+    <p>The timeline is not in dispute — not even by the LDS Church itself. On its own official <a href="https://www.churchofjesuschrist.org/study/history/topics/masonry?lang=eng" target="_blank" rel="noopener">Gospel Topics page on Masonry</a>, the Church acknowledges that Joseph Smith was initiated as an Entered Apprentice Mason on March 15, 1842, and raised to Master Mason the following day, in the upper room above his Red Brick Store in Nauvoo, Illinois. The ceremony was presided over by Abraham Jonas, Grand Master of the Illinois Grand Lodge.</p>
+    <p>Exactly seven weeks later, on May 4, 1842, in that same upper room of the Red Brick Store, Joseph Smith introduced the temple endowment ceremony to nine men — every single one of whom was a Freemason. The nine included James Adams (who had served as Deputy Grand Master of the Illinois Grand Lodge), Hyrum Smith (a Mason since 1827), Brigham Young, Heber C. Kimball, and Willard Richards, among others. As historian Richard Lyman Bushman has observed, portions of the new temple ritual closely resembled the Masonic rites that Joseph had just observed.</p>
+    <p>The LDS Church's own essay on Masonry concedes the similarities but frames them carefully. It states that "the endowment did not simply imitate the rituals of Freemasonry" and suggests that Joseph's "encounter with Masonry evidently served as a catalyst for revelation." But a "catalyst" that produces virtually identical tokens, signs, penalties, clothing, and dramatic structure is, by any reasonable standard, a source — not merely an inspiration.</p>
+
+    <div class="pull-quote">
+      <p>Thare is a similarity of preast Hood in masonary. Br Joseph ses masonry was taken from preasthood but has become degenerated, but menny things are perfect.</p>
+      <span class="quote-source">Heber C. Kimball, letter to Parley P. Pratt, June 1842</span>
+    </div>
+
+    <p>Kimball's letter reveals the apologetic framework Joseph Smith constructed to explain the obvious borrowing: Freemasonry, Smith claimed, was a corrupted remnant of an ancient priesthood ceremony that he was now restoring to its original form. This narrative — that the Masons possessed a degraded version of the true endowment — became a founding assumption of LDS temple theology. But as we shall see, it rests on a historical claim about the origins of Freemasonry that is demonstrably false.</p>
+  </div>
+
+
+  <!-- ── SECTION 2 ── -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">II — The Origins of Freemasonry</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="article-section">
+    <h2>Freemasonry Has Zero Links to Solomon's Temple</h2>
+    <p>The claim that Freemasonry preserves ancient temple rites — even in "corrupted" form — is the linchpin of the entire LDS apologetic for the endowment. If Masonry does descend from Solomon's Temple, then perhaps Joseph Smith really was restoring something ancient. But if Masonry is a medieval European invention with no connection to biblical worship, then the endowment's Masonic elements cannot be explained as restorations of anything.</p>
+    <p>The historical consensus is overwhelming and unambiguous. The Encyclopædia Britannica states that Freemasonry "evolved from the guilds of stonemasons and cathedral builders of the Middle Ages" and that national organized Freemasonry began in 1717 with the founding of the Grand Lodge in England. The fraternity's own historians acknowledge that while Masonic legend places the first lodge at Solomon's Temple, this is allegory and symbolism, not historical fact.</p>
+    <p>Even LDS-friendly scholar Greg Kearney has conceded the point plainly: "Unfortunately there is no historical evidence to support a continuous functioning line from Solomon's Temple to the present. We know what went on in Solomon's Temple; it's the ritualistic slaughter of animals. Masonry, while claiming a root in antiquity, can only be reliably traced to medieval stone tradesmen."</p>
+    <p>The actual history of Freemasonry runs roughly as follows. Medieval stonemasons who built the great cathedrals of Europe organized themselves into guilds and lodges to regulate their trade, with simple initiation ceremonies for new apprentices. As cathedral building declined, some lodges began admitting "speculative" members — gentlemen who were not working stonemasons but were drawn to the fraternity's social and intellectual life. By the seventeenth and eighteenth centuries, these speculative lodges had developed elaborate ritual dramas centered on the allegorical figure of Hiram Abiff, a fictional architect of Solomon's Temple whose story is not found in the Bible. The Masonic historian's own website at the United Grand Lodge acknowledges that Freemasonry "neither originated nor existed in Solomon's time."</p>
+    <p>This is devastating to the LDS position. If Freemasonry was invented by medieval and early modern Europeans — not preserved from Solomon's era — then the tokens, signs, penalties, and handshakes that Joseph Smith borrowed in 1842 are not remnants of ancient temple worship. They are the products of seventeenth- and eighteenth-century fraternal culture. To claim that God "restored" them through Joseph Smith is to claim that God restored something that never existed in the first place.</p>
+  </div>
+
+
+  <!-- ── SECTION 3: PARALLEL CHART ── -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">III — Shared Elements</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="article-section">
+    <h2>The Endowment and the Lodge: A Comparison</h2>
+    <p>The similarities between the Masonic initiation and the LDS endowment are not vague parallels — they are precise, structural, and in many cases identical. LDS historian Reed C. Durham, Jr. stated it directly: "There is absolutely no question in my mind that the Mormon ceremony which came to be known as the Endowment, introduced by Joseph Smith to Mormon Masons initially, just a little over one month after he became a Mason, had an immediate inspiration from Masonry." The following comparison illustrates the documented overlap.</p>
+  </div>
+
+  <!-- SIDE-BY-SIDE COMPARISON -->
+  <div class="compare-table">
+    <div class="compare-table-header">
+      <h3>Masonic Rite vs. LDS Temple Endowment</h3>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-col">
+        <div class="compare-col-label">Freemasonry</div>
+        <div class="compare-item"><strong>Ritual Clothing</strong>Ceremonial robes, aprons, and caps worn during initiation degrees — visible in photographs from the Royal Arch Masons of Illinois.</div>
+        <div class="compare-item"><strong>Tokens &amp; Grips</strong>Secret handshakes (grips) exchanged at each degree of initiation, used to identify fellow Masons.</div>
+        <div class="compare-item"><strong>Signs</strong>Symbolic hand and arm gestures associated with each degree.</div>
+        <div class="compare-item"><strong>Penalties</strong>Oaths describing throat-slitting, heart removal, and disembowelment as punishments for revealing secrets.</div>
+        <div class="compare-item"><strong>Five Points of Fellowship</strong>"Foot to foot, knee to knee, breast to breast, hand to back, and mouth to ear" — a physical embrace at the veil between candidate and Worshipful Master.</div>
+        <div class="compare-item"><strong>New Name</strong>A secret word given at initiation, not to be revealed outside the lodge.</div>
+        <div class="compare-item"><strong>Compass &amp; Square</strong>Central Masonic symbols displayed on buildings, regalia, and ritual objects.</div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-col-label">LDS Endowment</div>
+        <div class="compare-item"><strong>Ritual Clothing</strong>Ceremonial robes, aprons, and caps worn during the endowment — nearly identical in design to Masonic regalia.</div>
+        <div class="compare-item"><strong>Tokens &amp; Grips</strong>Secret handshakes taught during the endowment, presented as necessary for passage into God's presence.</div>
+        <div class="compare-item"><strong>Signs</strong>Symbolic hand and arm gestures associated with each token of the priesthood.</div>
+        <div class="compare-item"><strong>Penalties (removed 1990)</strong>Identical oaths with identical gestures — throat-slitting, heart removal, disembowelment — removed in 1990 after member surveys.</div>
+        <div class="compare-item"><strong>Five Points of Fellowship (removed 1990)</strong>Identical physical embrace performed at the veil between patron and temple worker — removed in 1990.</div>
+        <div class="compare-item"><strong>New Name</strong>A secret name given during the initiatory, required for passage through the veil.</div>
+        <div class="compare-item"><strong>Compass &amp; Square</strong>Symbols sewn into temple garments worn daily — also displayed on the Nauvoo Temple and early Angel Moroni statues.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── SECTION 4: TIMELINE ── -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">IV — The Evolving Ceremony</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="article-section">
+    <h2>A Ceremony That Will "Never Be Taken from the Earth" — Except When It Is</h2>
+    <p>If the LDS endowment was truly "restored" by divine revelation — an eternal ordinance "kept hid from before the foundation of the world" — one would expect it to remain essentially unchanged. A ceremony given by God should not need to be revised by committee. Yet the documented history shows a pattern of continuous, sometimes dramatic, alteration driven not by revelation but by cultural discomfort, member surveys, and institutional pragmatism.</p>
+  </div>
+
+  <!-- TIMELINE CHART -->
+  <div class="timeline-chart">
+    <div class="timeline-chart-header">
+      <h3>Timeline of Major Changes to the LDS Temple Endowment</h3>
+      <p>From Joseph Smith's Nauvoo ceremony to the present day</p>
+    </div>
+    <div class="timeline-body">
+      <div class="timeline-row">
+        <div class="timeline-date">1842</div>
+        <div class="timeline-event"><strong>Endowment introduced</strong> by Joseph Smith to nine men in the upper room of the Red Brick Store — seven weeks after his Masonic initiation. All nine recipients are Freemasons.</div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-date">1845–46</div>
+        <div class="timeline-event"><strong>Brigham Young systematizes the ceremony</strong> for general church use in the Nauvoo Temple. Smith had told Young the ceremony was "not arranged perfectly" and instructed him to organize it.</div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-date">1877</div>
+        <div class="timeline-event"><strong>Ceremony standardized in writing</strong> for the first time at the St. George Temple under Brigham Young's direction. Prior to this, the endowment varied from temple to temple.</div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-date">1919–27</div>
+        <div class="timeline-event"><strong>Oath of vengeance removed.</strong> The covenant to pray for God's vengeance against the murderers of Joseph and Hyrum Smith is eliminated. Penalty wording softened from explicit descriptions to "rather than do so, I would suffer my life to be taken."</div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-date">1960s</div>
+        <div class="timeline-event"><strong>Live drama replaced by film.</strong> Beginning with the Swiss Temple, the endowment drama shifts from live actors to a pre-recorded film presentation to accommodate multiple languages.</div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-date">1990</div>
+        <div class="timeline-event"><strong>Largest single revision.</strong> Blood oath penalties (throat-slitting, heart removal, disembowelment gestures) <strong>eliminated</strong>. Five Points of Fellowship at the veil <strong>removed</strong>. Protestant minister character paid by Lucifer <strong>eliminated</strong>. Women no longer covenant to <strong>obey their husbands</strong>. "Pay Lay Ale" Adamic language phrase <strong>removed</strong>. Lecture at the veil <strong>discontinued</strong>.</div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-date">2005</div>
+        <div class="timeline-event"><strong>Washing and anointing radically altered.</strong> Participants no longer partially nude under a poncho-like "shield." Water and oil now applied only to the head rather than various body parts.</div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-date">2019</div>
+        <div class="timeline-event">Women no longer covenanted to be priestesses "unto their husbands." Language changed to be priestesses "unto God." Additional patriarchal language softened.</div>
+      </div>
+      <div class="timeline-row">
+        <div class="timeline-date">2023</div>
+        <div class="timeline-event"><strong>Further significant changes.</strong> Most handshake/token exchanges during the ceremony removed. A dramatization of the War in Heaven added. The warning against "loud laughter and light-mindedness" eliminated. Clothing changes and standing/sitting reduced. Live witness couple at altar eliminated.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-section">
+    <p>The pattern is unmistakable. The elements most obviously derived from Freemasonry — the penalties, the Five Points of Fellowship, the Masonic embrace at the veil — were the first to be removed. The elements most offensive to modern sensibilities — women covenanting to obey their husbands, partial nudity during washings — were the next to go. What remains is a ceremony that Joseph Smith himself would barely recognize, raising an obvious question: if God revealed this ceremony, why has His Church spent nearly two centuries revising it to conform to changing cultural expectations?</p>
+  </div>
+
+
+  <!-- ── SECTION 5 ── -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">V — The Second Anointing</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="article-section">
+    <h2>The Secret Ceremony That Guarantees Exaltation</h2>
+    <p>Beyond the endowment lies an even more closely guarded ceremony: the second anointing, also referred to as "having one's calling and election made sure" or receiving "the fullness of the priesthood." Most rank-and-file members of the LDS Church have never heard of it. The Church's official teacher manual instructs instructors to "not attempt in any way to discuss or answer questions about the second anointing" (emphasis in the original). Yet this ceremony exists, is still performed, and makes claims about salvation that stand in direct contradiction to the gospel of Jesus Christ.</p>
+    <p>In the second anointing — administered privately in the temple, typically by an apostle — a married couple is anointed as "king and priest" and "queen and priestess." According to LDS Apostle Bruce R. McConkie, those who receive this ordinance have their "exaltation sealed upon them while they are yet in this life." Their place in the highest degree of the celestial kingdom is, in effect, guaranteed. Joseph Smith taught that the only sin that could nullify this guarantee was the "unpardonable sin" of denying the Holy Ghost — which LDS theology typically interprets as shedding innocent blood or having a personal encounter with Christ and then rejecting Him.</p>
+    <p>The ceremony was performed regularly from the 1840s through the early twentieth century. By 1941, approximately 15,000 second anointings had been performed for the living. The practice became less common under David O. McKay's presidency but has continued into the modern era. Recipients are personally selected by top Church leaders — typically stake presidents, temple presidents, mission presidents, general authorities, and their spouses.</p>
+
+    <div class="pull-quote">
+      <p>He told me very few people receive this blessing and it must be kept secret. He said if the general membership knew about it there would be problems. More would want to receive the ordinance than the apostles have time to accommodate, and members would wonder why 'so and so' had received it but they had not.</p>
+      <span class="quote-source">Tom Phillips, former stake president, describing his invitation to receive the second anointing</span>
+    </div>
+
+    <p>The theological implications are staggering. The second anointing creates a two-tier system of salvation within Mormonism: the vast majority of faithful members who hope for exaltation through lifelong obedience, and a small elite who have already been guaranteed it by private ceremony. This is not merely an organizational curiosity — it is a claim that human beings can grant unconditional assurance of salvation through a secret ritual, administered to a select few, hidden from the broader membership, and insulated from all scrutiny.</p>
+  </div>
+
+
+  <!-- ── SECTION 6 ── -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">VI — The Biblical Verdict</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="article-section">
+    <h2>What Does Scripture Actually Say?</h2>
+    <p>The LDS temple system rests on several foundational assumptions: that secret ceremonies are required for salvation, that handshakes and passwords grant access to God's presence, that human intermediaries can guarantee exaltation, and that all of this was practiced in Solomon's Temple and the early Church. Every one of these assumptions collapses under biblical scrutiny.</p>
+
+    <h2 style="font-size:1.3em; margin-top: 32px;">Secret Signs and Tokens</h2>
+    <p>The endowment teaches that specific handshakes (tokens) and passwords (names) are necessary to pass through the veil into God's presence. But Scripture teaches that access to God comes through one mediator alone:</p>
+
+    <div class="scripture-box">
+      <p>"For there is one God, and there is one mediator between God and men, the man Christ Jesus, who gave himself as a ransom for all."</p>
+      <span class="scripture-ref">1 Timothy 2:5–6</span>
+    </div>
+
+    <p>The idea that God would require handshakes and passwords — borrowed from a fraternal organization invented in seventeenth-century Europe — to determine who may enter His presence is foreign to every page of Scripture. Christ told His disciples plainly: "I am the way, and the truth, and the life. No one comes to the Father except through me" (John 14:6). He did not say, "No one comes to the Father except through the correct grip of the Melchizedek Priesthood."</p>
+
+    <h2 style="font-size:1.3em; margin-top: 32px;">Nothing Hidden That Will Not Be Revealed</h2>
+    <p>The LDS temple system depends on secrecy. Members are instructed never to discuss the specifics of what occurs inside, and the second anointing is so secret that Church instructors are told not even to acknowledge it exists. Yet Christ Himself was unambiguous about the nature of His ministry:</p>
+
+    <div class="scripture-box">
+      <p>"I have spoken openly to the world. I have always taught in synagogues and in the temple, where all Jews come together. I have said nothing in secret."</p>
+      <span class="scripture-ref">John 18:20</span>
+    </div>
+
+    <p>And again: "Nothing is covered up that will not be revealed, or hidden that will not be known. Therefore whatever you have said in the dark shall be heard in the light, and what you have whispered in private rooms shall be proclaimed on the housetops" (Luke 12:2–3). The God of the Bible does not operate through secret ceremonies hidden from the majority of His own people. His saving work is proclaimed publicly, received through the sacraments of His Church, and available to every baptized believer — not reserved for a select few summoned by apostles to a private room.</p>
+
+    <h2 style="font-size:1.3em; margin-top: 32px;">Solomon's Temple: Blood and Smoke, Not Tokens and Veils</h2>
+    <p>The claim that the endowment restores the worship of Solomon's Temple is perhaps the easiest to refute, because the Bible describes in considerable detail what actually happened in that Temple — and none of it resembles the LDS ceremony in any respect whatsoever. The ancient Israelite temple was, from beginning to end, a place of <em>ritual animal slaughter</em>. That is not a peripheral detail. It was the entire point.</p>
+    <p>The First Book of Kings describes the dedication of Solomon's Temple: Solomon offered to the LORD "twenty-two thousand oxen and a hundred and twenty thousand sheep" (1 Kings 8:63). The blood ran so freely that the bronze altar could not contain all the offerings, and Solomon had to consecrate the middle of the courtyard to accommodate the sheer volume of burnt offerings, grain offerings, and fat (1 Kings 8:64). This was not a ceremony of whispered passwords and secret handshakes. It was a massive public act of worship drenched in blood, smoke, and fire.</p>
+    <p>The daily operation of the Temple was equally straightforward. The Levitical priests — and only the Levitical priests, drawn exclusively from the tribe of Levi — performed a rigidly prescribed cycle of animal sacrifice. Every morning and evening, a lamb was slaughtered as a perpetual burnt offering (<em>tamid</em>) on behalf of the nation (Exodus 29:38–42). On the Sabbath, the offering was doubled (Numbers 28:9–10). On feast days, the number of animals increased dramatically. The priest would lay his hands on the animal's head, symbolically transferring the sins of the people onto the victim, then slaughter it and sprinkle or dash its blood against the altar (Leviticus 1:3–9; 4:27–35). Incense was burned, the showbread was maintained, and the golden lampstand was kept burning — but the central, defining act was always the blood sacrifice.</p>
+    <p>The Holy of Holies — the innermost chamber containing the Ark of the Covenant — was entered by only one person: the High Priest, and only once a year, on the Day of Atonement (Yom Kippur). When he entered, he did not present a secret handshake or recite a password. He carried the blood of a slaughtered bull and a slaughtered goat, which he sprinkled on and before the mercy seat to atone for the sins of the people (Leviticus 16:14–16). The entrance requirement was not a token or a grip but sacrificial blood.</p>
+
+    <div class="scripture-box">
+      <p>"Indeed, under the law almost everything is purified with blood, and without the shedding of blood there is no forgiveness of sins."</p>
+      <span class="scripture-ref">Hebrews 9:22</span>
+    </div>
+
+    <p>There are no secret handshakes anywhere in the descriptions of Solomonic worship. No passwords. No ceremonial aprons. No dramatic reenactments of the creation. No penalty oaths. No Five Points of Fellowship. No eternal marriage sealings. No baptisms for the dead. No "new names." The Tabernacle of Moses and the Temple of Solomon had exactly one purpose: to offer bloody sacrifice to atone for sin and to maintain the covenant relationship between God and Israel. Everything else the LDS temple claims to restore — the endowment drama, the sealing ordinances, the celestial marriage ceremonies, the work for the dead — is simply absent from the biblical text. It is not hinted at, foreshadowed, or alluded to. It does not exist.</p>
+    <p>And this is precisely the point that Christian theology, properly understood, would lead us to expect. The entire sacrificial system of the Old Testament was not an end in itself. It was a <em>type</em> — a foreshadowing that pointed forward to its fulfillment in the one, perfect, unrepeatable sacrifice of Christ on the Cross. The Epistle to the Hebrews makes this argument at length and with devastating clarity:</p>
+
+    <div class="scripture-box">
+      <p>"But when Christ appeared as a high priest of the good things that have come, then through the greater and more perfect tent (not made with hands, that is, not of this creation) he entered once for all into the holy places, not by means of the blood of goats and calves but by means of his own blood, thus securing an eternal redemption."</p>
+      <span class="scripture-ref">Hebrews 9:11–12</span>
+    </div>
+
+    <p>The old temple, with all its blood and smoke, was a shadow. Christ is the substance. When He cried "It is finished" on the Cross (John 19:30), the veil of the Temple was torn in two from top to bottom (Matthew 27:51) — a divine declaration that the old system was complete, its purpose fulfilled. Access to the Father was now open, not through the blood of animals or the rituals of Levitical priests, but through the blood of the Lamb of God, shed once for all.</p>
+    <p>The Catholic Mass participates in this one eternal sacrifice sacramentally — making Christ's offering present on the altar without repeating it (CCC 1366–1367). The LDS endowment, by contrast, ignores the entire sacrificial theology of the biblical temple and replaces it with rituals borrowed from a fraternal lodge. It claims to restore what happened in Solomon's Temple while bearing absolutely no resemblance to what Scripture says happened there. The ancient temple was about blood, death, and atonement pointing to Christ. The LDS temple is about handshakes, passwords, and clothing pointing to Freemasonry.</p>
+
+    <h2 style="font-size:1.3em; margin-top: 32px;">The Second Anointing vs. the Epistle to the Hebrews</h2>
+    <p>The second anointing's claim to guarantee exaltation through a human ceremony administered by human hands contradicts the entire argument of the Epistle to the Hebrews, which insists that the old priestly system has been replaced by the eternal priesthood of Christ — the only priest whose intercession is sufficient:</p>
+
+    <div class="scripture-box">
+      <p>"He holds his priesthood permanently, because he continues forever. Consequently, he is able to save to the uttermost those who draw near to God through him, since he always lives to make intercession for them."</p>
+      <span class="scripture-ref">Hebrews 7:24–25</span>
+    </div>
+
+    <p>If Christ saves "to the uttermost" all who come to God through Him, what need is there for an additional secret ceremony performed by an apostle in a private room? The second anointing implies that Christ's saving work is insufficient on its own — that something more is needed, something only a small elite may receive. This is not Christianity. It is a man-made system of spiritual privilege that inverts the gospel, where "the last shall be first" (Matthew 20:16), into a hierarchy where those closest to institutional power receive the greatest spiritual guarantees.</p>
+    <p>The Apostle Paul warned against precisely this kind of system: "See to it that no one takes you captive by philosophy and empty deceit, according to human tradition, according to the elemental spirits of the world, and not according to Christ" (Colossians 2:8). The LDS temple system — with its Masonic tokens, its secret passwords, its hidden ceremonies, and its guaranteed exaltation for the select — is a "human tradition" dressed in the language of divinity.</p>
+  </div>
+
+
+  <!-- ── SECTION 7 ── -->
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <span class="section-divider-label">VII — The Catholic Alternative</span>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <div class="article-section">
+    <h2>What the Sacraments Offer That the Endowment Cannot</h2>
+    <p>The Catholic Church has no secret ceremonies. The seven sacraments — Baptism, Confirmation, Eucharist, Penance, Anointing of the Sick, Holy Orders, and Matrimony — are publicly administered, theologically explained, and available to every member of the faithful. The Mass, the Church's central act of worship, is open to all. The Catechism of the Catholic Church, which describes every doctrine and practice of the faith, is published, translated into dozens of languages, and freely available to anyone who wishes to read it.</p>
+    <p>The Catholic priesthood does not depend on secret handshakes or Masonic lineage. It depends on apostolic succession — a publicly documented, historically traceable chain of ordination extending from the bishops of today back through the centuries to the apostles themselves. When a Catholic priest celebrates the Mass, he does not offer a new sacrifice; he participates sacramentally in the one eternal sacrifice of Christ on Calvary, made present again on the altar through the power of the Holy Spirit.</p>
+    <p>And the Catholic Church makes no guarantee of exaltation to a select few. Instead, she teaches — as Christ taught — that salvation is a gift of grace received through faith, nourished by the sacraments, and requiring perseverance to the end. "He who endures to the end will be saved" (Matthew 10:22). No pope, no bishop, no apostle can seal anyone's exaltation by private ceremony. That authority belongs to God alone.</p>
+
+    <div class="pull-quote">
+      <p>For by grace you have been saved through faith. And this is not your own doing; it is the gift of God, not a result of works, so that no one may boast.</p>
+      <span class="quote-source">Ephesians 2:8–9</span>
+    </div>
+
+    <p>The former Latter-day Saint who comes to the Catholic Church will find something startling: a faith that hides nothing. The deepest mysteries of the Church — the Real Presence of Christ in the Eucharist, the Trinity, the Incarnation — are not concealed behind temple recommend interviews and sworn oaths of secrecy. They are proclaimed from every pulpit, defended by every apologist, and offered freely to every soul who hungers for truth. The Catholic temple is not a locked building with a secret ceremony inside. It is the Body of Christ Himself — broken, shared, and given for the life of the world.</p>
+  </div>
+
+
+  <!-- ── CONCLUSION ── -->
+  <div class="verdict-box">
+    <h3>✦ &nbsp; A House Built on Sand &nbsp; ✦</h3>
+    <p>The LDS temple endowment was not restored from antiquity. It was assembled in the spring of 1842 from the rituals of a fraternal organization that has no connection to Solomon, no connection to the apostles, and no connection to the God of the Bible. Its most distinctive elements — the penalties, the Five Points of Fellowship, the Masonic handshakes — have already been removed by the LDS Church itself, a tacit admission that they were never divine in the first place.</p>
+    <p>The second anointing compounds the problem by creating a secret guarantee of salvation for a chosen few — administered by human hands, hidden from the broader membership, and directly contradicting the scriptural teaching that salvation belongs to God alone and is offered freely to all who come to Him through Christ.</p>
+    <p>For the Latter-day Saint who senses that something is wrong — who felt the dissonance the first time they went through the temple, who wondered why an eternal ceremony keeps changing, who never understood why God would require Masonic handshakes for admission to His presence — the historical record offers both clarity and an invitation. The God of the Bible does not hide behind veils and passwords. He became flesh, dwelt among us, and gave Himself for us on a public Cross for the entire world to see.</p>
+    <p class="closing-line">His temple is not a locked building. His sacrifice is not a secret. And His salvation is not for sale.</p>
+  </div>
+
+
+<!-- ── VIDEO RESOURCE ── -->
+<div class="resource-box">
+  <div class="resource-box-header">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#C5A55A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    <span>Further Viewing</span>
+  </div>
+  <div class="resource-box-body">
+    <h4>The Second Anointing: A First-Hand Account</h4>
+    <p>Former LDS Stake President Tom Phillips describes his personal experience receiving the second anointing — the secret ceremony discussed in Section V of this article — including how he was invited, what occurred during the ordinance, and the questions it ultimately raised for him about the nature of LDS priesthood authority and guaranteed salvation.</p>
+    <a href="https://youtu.be/zdS28ZVAsNM?si=pgtLqpFLJ-JiRnnC" target="_blank" rel="noopener" class="resource-link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Watch on YouTube
+    </a>
+  </div>
+</div>
+
+<!-- ── NEXT ARTICLE NAV ── -->
+<div class="next-article-nav">
+  <div class="next-article-label">Next Article</div>
+  <a href="from-temple-to-cathedral.html" class="next-article-link">
+    <span class="next-article-title">From the Temple to the Cathedral</span>
+    <span class="next-article-arrow">&#8594;</span>
+  </a>
+</div>
+
+<div class="print-colophon">One Faith Delivered &nbsp;&middot;&nbsp; <span id="print-url-text">onefaithdelivered.org</span></div>
+</main>
+
+<footer>&copy; One Faith Delivered &nbsp;&#8901;&nbsp; All Rights Reserved</footer>
+
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">One Faith Delivered</div>
+    <a href="../index.html">Home</a>
+    <a href="../articles.html">Articles</a>
+    <a href="../charts.html">Charts</a>
+    <a href="../topics.html">Topics</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../articles.html" class="sidebar-back">&#8592; All Articles</a>
+    <div class="sidebar-ornament">✦ ✦ ✦</div>
+  </div>
+</aside>
+
+<script>
+function toggleSidebar() {
+  var btn = document.querySelector('.nav-hamburger'),
+      sidebar = document.querySelector('.sidebar'),
+      overlay = document.querySelector('.sidebar-overlay');
+  var isOpen = sidebar.classList.contains('open');
+  if (isOpen) {
+    sidebar.classList.remove('open');
+    btn.classList.remove('open');
+    overlay.classList.remove('visible');
+    document.body.style.overflow = '';
+  } else {
+    sidebar.classList.add('open');
+    btn.classList.add('open');
+    overlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar();
+});
+</script>
+
+<script>
+(function () {
+  var bar = document.getElementById('reading-progress-bar');
+  function updateProgress() {
+    if (!bar) return;
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+    bar.style.width = pct + '%';
+    bar.setAttribute('aria-valuenow', Math.round(pct));
+  }
+  if (bar) {
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
+  var urlEl = document.getElementById('print-url-text');
+  if (urlEl) {
+    var href = window.location.href;
+    urlEl.textContent = href && href !== 'about:blank' ? href : 'onefaithdelivered.org';
+  }
+})();
+</script>
+
+</body>
+</html>
