@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Seven "I AM" Statements — Ego Eimi in the Gospel of John</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --deep: #0F0E0C;
+  --deep-warm: #1A1714;
+  --panel: #1F1C18;
+  --panel-light: #2A2620;
+  --border: #3A352C;
+  --border-light: #4A4438;
+  --gold: #DAA520;
+  --gold-dim: #B8960B;
+  --gold-glow: rgba(218,165,32,0.15);
+  --gold-bright: #F0D060;
+  --cream: #F5F0E8;
+  --cream-dim: #C4BAA8;
+  --cream-faint: #8A8070;
+  --crimson: #C0392B;
+  --crimson-soft: #A93226;
+  --blue-ancient: #5B8FB9;
+  --green-olive: #7A9A5A;
+  --purple-royal: #8E6CB8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--deep);
+  background-image:
+    radial-gradient(ellipse at 30% 20%, rgba(218,165,32,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(192,57,43,0.03) 0%, transparent 50%);
+  color: var(--cream);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.65;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page-wrapper {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px 60px;
+}
+
+/* ── Outer Border ── */
+.outer-border {
+  border: 1.5px solid var(--gold-dim);
+  outline: 1px solid rgba(218,165,32,0.15);
+  outline-offset: 5px;
+  padding: 40px clamp(16px, 4vw, 48px);
+  background: rgba(15,14,12,0.5);
+  position: relative;
+}
+.outer-border::before, .outer-border::after {
+  content: '✦'; position: absolute; color: var(--gold-dim); font-size: 11px; opacity: 0.4;
+}
+.outer-border::before { top: 10px; left: 14px; }
+.outer-border::after { bottom: 10px; right: 14px; }
+
+/* ── Header ── */
+.header { text-align: center; margin-bottom: 40px; }
+.header-greek {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--gold);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  opacity: 0.7;
+}
+.header h1 {
+  font-family: 'Cinzel Decorative', 'Cinzel', serif;
+  font-size: clamp(1.4rem, 3.8vw, 2.4rem);
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  line-height: 1.3;
+  margin-bottom: 4px;
+  text-shadow: 0 0 30px rgba(218,165,32,0.15);
+}
+.header .subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.62rem, 1.4vw, 0.78rem);
+  font-weight: 600;
+  color: var(--cream-faint);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.header-rule {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  margin: 16px auto; max-width: 400px;
+}
+.header-rule::before, .header-rule::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-dim), transparent);
+}
+.header-rule span { color: var(--gold-dim); font-size: 12px; }
+
+.header .intro {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(0.88rem, 1.7vw, 1rem);
+  color: var(--cream-dim);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* ── Exodus Link ── */
+.exodus-box {
+  max-width: 620px;
+  margin: 0 auto 36px;
+  padding: 18px 24px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--crimson);
+  border-radius: 4px;
+  text-align: center;
+}
+.exodus-box .ex-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  margin-bottom: 8px;
+}
+.exodus-box .ex-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--cream-dim);
+  line-height: 1.7;
+}
+.exodus-box .ex-quote em {
+  color: var(--gold);
+  font-style: normal;
+  font-weight: 600;
+}
+.exodus-box .ex-ref {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--cream-faint);
+  margin-top: 8px;
+}
+
+/* ── Column Key ── */
+.col-key {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 10px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.col-key-item {
+  display: flex; align-items: center; gap: 6px;
+}
+.col-key-dot {
+  width: 10px; height: 10px; border-radius: 2px;
+}
+
+/* ── I AM Statements ── */
+.statements-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.iam-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  animation: cardReveal 0.5s ease forwards;
+  opacity: 0;
+}
+.iam-card:hover {
+  border-color: var(--gold-dim);
+  box-shadow: 0 4px 24px rgba(218,165,32,0.08);
+}
+
+@keyframes cardReveal {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Card header */
+.iam-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(135deg, var(--panel-light), var(--panel));
+  position: relative;
+  overflow: hidden;
+}
+.iam-header::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold), var(--gold-dim));
+}
+
+.iam-number {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--gold-dim);
+  letter-spacing: 0.2em;
+  margin-bottom: 4px;
+}
+
+.iam-greek {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 0.82rem;
+  color: var(--cream-faint);
+  margin-bottom: 4px;
+  letter-spacing: 0.04em;
+}
+
+.iam-statement {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  text-shadow: 0 0 20px rgba(218,165,32,0.1);
+}
+
+.iam-ref {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.78rem;
+  color: var(--cream-faint);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.iam-context {
+  font-size: 0.86rem;
+  color: var(--cream-dim);
+  margin-top: 8px;
+  line-height: 1.65;
+}
+
+/* Three column grid */
+.iam-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+}
+
+.iam-col {
+  padding: 18px 20px;
+  border-right: 1px solid var(--border);
+  position: relative;
+}
+.iam-col:last-child { border-right: none; }
+
+.iam-col-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.iam-col-label .col-dot {
+  width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0;
+}
+.col-ot .iam-col-label { color: var(--blue-ancient); }
+.col-ot .col-dot { background: var(--blue-ancient); }
+.col-sign .iam-col-label { color: var(--green-olive); }
+.col-sign .col-dot { background: var(--green-olive); }
+.col-sacr .iam-col-label { color: var(--gold); }
+.col-sacr .col-dot { background: var(--gold); }
+
+.iam-col h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+.col-ot h4 { color: var(--blue-ancient); }
+.col-sign h4 { color: var(--green-olive); }
+.col-sacr h4 { color: var(--gold); }
+
+.iam-col .col-ref {
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--cream-faint);
+  margin-bottom: 6px;
+}
+.iam-col .col-text {
+  font-size: 0.84rem;
+  color: var(--cream-dim);
+  line-height: 1.65;
+}
+.iam-col .col-text strong {
+  font-weight: 600;
+}
+.col-ot .col-text strong { color: var(--blue-ancient); }
+.col-sign .col-text strong { color: var(--green-olive); }
+.col-sacr .col-text strong { color: var(--gold); }
+
+/* Theology strip */
+.iam-theology {
+  padding: 14px 24px;
+  background: linear-gradient(90deg, rgba(218,165,32,0.04), rgba(192,57,43,0.03));
+  border-top: 1px solid var(--border);
+  font-size: 0.84rem;
+  color: var(--cream-dim);
+  line-height: 1.7;
+  font-style: italic;
+}
+.iam-theology strong {
+  color: var(--gold);
+  font-style: normal;
+  font-weight: 600;
+}
+
+/* ── Absolute Ego Eimi Section ── */
+.absolute-section {
+  margin-bottom: 36px;
+  padding: 28px 24px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  border-left: 4px solid var(--crimson);
+}
+.absolute-section h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--crimson);
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+.absolute-section .abs-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--cream-faint);
+  margin-bottom: 14px;
+}
+.absolute-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.abs-item {
+  padding: 12px 16px;
+  background: var(--panel-light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+.abs-item .abs-ref {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--crimson);
+  margin-bottom: 4px;
+}
+.abs-item .abs-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--cream-dim);
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+.abs-item .abs-quote em {
+  color: var(--gold);
+  font-style: normal;
+  font-weight: 600;
+}
+.abs-item .abs-note {
+  font-size: 0.78rem;
+  color: var(--cream-faint);
+  line-height: 1.55;
+}
+.absolute-section .abs-theology {
+  font-size: 0.86rem;
+  color: var(--cream-dim);
+  line-height: 1.7;
+  padding: 12px 16px;
+  background: rgba(192,57,43,0.06);
+  border-left: 3px solid var(--crimson);
+  border-radius: 0 4px 4px 0;
+  margin-top: 4px;
+}
+.absolute-section .abs-theology strong {
+  color: var(--crimson);
+  font-weight: 600;
+}
+
+/* ── Footer ── */
+.chart-footer {
+  margin-top: 40px; padding-top: 20px;
+  border-top: 1.5px solid var(--gold-dim); text-align: center;
+}
+.chart-footer p {
+  font-family: 'Source Serif 4', serif; font-size: 0.82rem;
+  color: var(--cream-faint); line-height: 1.7;
+  max-width: 660px; margin: 0 auto 6px;
+}
+.chart-footer .site-tag {
+  font-family: 'Cinzel', serif; font-size: 0.66rem; font-weight: 600;
+  letter-spacing: 0.16em; color: var(--gold-dim);
+  text-transform: uppercase; margin-top: 16px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 760px) {
+  .iam-columns {
+    grid-template-columns: 1fr;
+  }
+  .iam-col { border-right: none; border-bottom: 1px solid var(--border); }
+  .iam-col:last-child { border-bottom: none; }
+  .page-wrapper { padding: 16px 10px 40px; }
+  .outer-border { padding: 24px 12px; }
+  .iam-header { padding: 16px 16px 12px; }
+  .iam-col { padding: 14px 16px; }
+  .iam-theology { padding: 12px 16px; }
+  .exodus-box { padding: 14px 16px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+<div class="outer-border">
+
+  <div class="header">
+    <div class="header-greek">ἐγώ εἰμι</div>
+    <h1>The Seven "I AM" Statements</h1>
+    <div class="subtitle">Ego Eimi in the Gospel of John</div>
+    <div class="header-rule"><span>✦</span></div>
+    <p class="intro">
+      Seven times in the Fourth Gospel, Jesus reveals His identity through solemn declarations 
+      beginning with "I AM" (ἐγώ εἰμι) — the divine Name revealed at the Burning Bush. 
+      Each statement is anchored in the Old Testament, illuminated by a miraculous sign, 
+      and fulfilled in the sacramental life of the Church.
+    </p>
+  </div>
+
+  <!-- Exodus Foundation -->
+  <div class="exodus-box">
+    <div class="ex-label">☩ The Foundation — The Divine Name</div>
+    <div class="ex-quote">
+      God said to Moses, <em>"I AM WHO I AM."</em> And he said, 
+      "Say this to the people of Israel: <em>'I AM</em> has sent me to you.'"
+    </div>
+    <div class="ex-ref">Exodus 3:14 (LXX: ἐγώ εἰμι ὁ ὤν)</div>
+  </div>
+
+  <!-- Column Key -->
+  <div class="col-key">
+    <div class="col-key-item"><div class="col-key-dot" style="background:var(--blue-ancient)"></div> Old Testament Root</div>
+    <div class="col-key-item"><div class="col-key-dot" style="background:var(--green-olive)"></div> Johannine Sign</div>
+    <div class="col-key-item"><div class="col-key-dot" style="background:var(--gold)"></div> Sacramental Fulfillment</div>
+  </div>
+
+  <!-- Seven Statements -->
+  <div class="statements-container" id="statements"></div>
+
+  <!-- Absolute Ego Eimi Section -->
+  <div class="absolute-section">
+    <h3>The Absolute "I AM" — Without Predicate</h3>
+    <div class="abs-subtitle">Beyond the seven predicated statements, Jesus uses the bare "I AM" (ἐγώ εἰμι) — claiming the divine Name itself</div>
+
+    <div class="absolute-grid">
+      <div class="abs-item">
+        <div class="abs-ref">John 8:24</div>
+        <div class="abs-quote">"Unless you believe that <em>I AM</em>, you will die in your sins."</div>
+        <div class="abs-note">Salvation depends on recognizing Jesus' divine identity — not merely His role as teacher or prophet.</div>
+      </div>
+      <div class="abs-item">
+        <div class="abs-ref">John 8:28</div>
+        <div class="abs-quote">"When you have lifted up the Son of Man, then you will know that <em>I AM</em>."</div>
+        <div class="abs-note">The Crucifixion ("lifting up") is the definitive revelation of the divine Name — the Cross discloses God's identity.</div>
+      </div>
+      <div class="abs-item">
+        <div class="abs-ref">John 8:58</div>
+        <div class="abs-quote">"Before Abraham was, <em>I AM</em>."</div>
+        <div class="abs-note">Not "I was" but "I AM" — a present tense claiming eternal existence. The Jews understood perfectly: they took up stones to kill Him for blasphemy.</div>
+      </div>
+      <div class="abs-item">
+        <div class="abs-ref">John 13:19</div>
+        <div class="abs-quote">"I tell you this now, before it takes place, that when it does take place you may believe that <em>I AM</em>."</div>
+        <div class="abs-note">Echoing Isaiah 43:10 — "that you may know and believe me and understand that I AM he." Jesus claims the very words YHWH spoke through the prophet.</div>
+      </div>
+      <div class="abs-item">
+        <div class="abs-ref">John 18:5–6</div>
+        <div class="abs-quote">"Jesus said to them, <em>'I AM.'</em> … When Jesus said 'I AM,' they drew back and fell to the ground."</div>
+        <div class="abs-note">At His arrest, the divine Name spoken aloud physically overwhelms the soldiers — a theophany in the Garden, even as the Passion begins.</div>
+      </div>
+    </div>
+
+    <div class="abs-theology">
+      The absolute Ego Eimi statements are <strong>the strongest claims to divinity anywhere in Scripture</strong>. 
+      Jesus does not merely compare Himself to God — He <strong>claims God's own Name</strong>. 
+      The Jewish audience understood this immediately (Jn 8:59, 10:31). 
+      Any Christology that reduces Jesus to a created being, an exalted man, or "a god" among many 
+      cannot account for these texts. The Nicene Creed's declaration — <strong>"God from God, 
+      Light from Light, true God from true God, begotten not made, consubstantial with the Father"</strong> 
+      — is not a philosophical overlay but a faithful articulation of what John's Gospel reveals.
+    </div>
+  </div>
+
+  <div class="chart-footer">
+    <p>The number seven is not accidental. In Jewish symbolic thought, seven signifies completeness and divine perfection. 
+       The seven "I AM" statements form a complete self-revelation of the incarnate Word — 
+       the same Word who in Genesis spoke seven times to create the world now speaks seven times to reveal 
+       Himself as the meaning of all creation. The seven signs of John's Gospel correspond to these seven 
+       declarations, together forming the theological architecture of the Fourth Gospel.</p>
+    <div class="site-tag">One Faith Delivered — onefaithdelivered.com</div>
+  </div>
+
+</div>
+</div>
+
+<script>
+const statements = [
+  {
+    num: "I",
+    greek: "Ἐγώ εἰμι ὁ ἄρτος τῆς ζωῆς",
+    statement: "\"I AM the Bread of Life\"",
+    ref: "John 6:35, 48, 51",
+    context: "Spoken in the Capernaum synagogue the day after the feeding of the five thousand. The crowd followed Jesus seeking more bread; He redirects them from perishable food to the bread that gives eternal life — His own flesh.",
+    ot: {
+      title: "The Manna in the Wilderness",
+      ref: "Ex 16:4–35; Ps 78:24–25",
+      text: "God fed Israel with \"bread from heaven\" for forty years. It appeared daily, sustained life in the desert, and was called the \"bread of angels.\" A golden jar of manna was kept in the Ark of the Covenant — the holiest object in Israel."
+    },
+    sign: {
+      title: "Feeding of the Five Thousand",
+      ref: "Jn 6:1–14 (Sign 4)",
+      text: "Jesus multiplies five loaves and two fish to feed over 5,000. John notes it was near Passover — connecting the sign to the Exodus. The fragments are gathered (nothing is lost), and the crowd declares: <strong>\"This is the Prophet who is to come\"</strong> (Deut 18:15)."
+    },
+    sacr: {
+      title: "The Holy Eucharist",
+      ref: "Jn 6:51–58; 1 Cor 10:16–17",
+      text: "\"The bread that I will give for the life of the world is <strong>my flesh</strong>.\" Jesus intensifies: \"Unless you eat the flesh of the Son of Man and drink his blood, you have no life in you.\" The Greek verb shifts from φαγεῖν to <strong>τρώγειν</strong> — meaning to gnaw or munch — eliminating any purely metaphorical reading. Many disciples leave (Jn 6:66). The Eucharist is the fulfillment."
+    },
+    theology: "The manna was real bread that really sustained Israel — the Eucharist must be <strong>at least as real</strong>. If the type (manna) was literal, the antitype (Eucharist) cannot be merely symbolic — or the fulfillment would be inferior to the shadow. This is the <strong>strongest biblical argument for the Real Presence</strong>. The Catholic Mass is the daily manna of the New Covenant: bread from heaven, given daily, sustaining the pilgrim Church in the wilderness of this life."
+  },
+  {
+    num: "II",
+    greek: "Ἐγώ εἰμι τὸ φῶς τοῦ κόσμου",
+    statement: "\"I AM the Light of the World\"",
+    ref: "John 8:12; 9:5",
+    context: "First declared during the Feast of Tabernacles, when four massive golden menorahs illuminated the Temple's Court of the Women. Jesus stands in their glow and claims to be the reality they signify.",
+    ot: {
+      title: "The Pillar of Fire; God as Light",
+      ref: "Ex 13:21–22; Ps 27:1; Is 60:19–20",
+      text: "God led Israel through the desert as a <strong>pillar of fire by night</strong>. The Psalms declare: \"The Lord is my light and my salvation.\" Isaiah prophesies a day when \"the Lord will be your everlasting light.\" Light is the first thing God creates (Gen 1:3) and a consistent metaphor for His presence."
+    },
+    sign: {
+      title: "Healing of the Man Born Blind",
+      ref: "Jn 9:1–41 (Sign 6)",
+      text: "Jesus gives sight to a man blind from birth — using <strong>clay and saliva</strong> (evoking creation from the dust of the earth, Gen 2:7) and sending him to wash in the Pool of <strong>Siloam</strong> (\"Sent\"). The Pharisees interrogate the healed man repeatedly; he grows bolder in faith while they grow blinder. The physical healing signifies <strong>spiritual illumination</strong>."
+    },
+    sacr: {
+      title: "Baptism — The Sacrament of Illumination",
+      ref: "Eph 5:8–14; Heb 6:4; CCC §1216",
+      text: "The early Church called Baptism <strong>\"illumination\" (φωτισμός)</strong>. The baptized are \"enlightened\" — brought from darkness to light, from blindness to sight. The baptismal candle lit from the Paschal Candle symbolizes this. The blind man washes in the pool of \"the Sent One\" — a <strong>baptismal image</strong>: we are healed by the waters of the one God has sent."
+    },
+    theology: "Jesus claims to be what <strong>only God is</strong> in the Old Testament: the light of the world, the pillar of fire, the everlasting light. The Feast of Tabernacles context is crucial — Jesus stands amid the Temple lampstands and declares Himself the <strong>reality behind the ritual</strong>. Every Catholic church contains a sanctuary lamp burning before the tabernacle — a perpetual witness that the true Light is sacramentally present."
+  },
+  {
+    num: "III",
+    greek: "Ἐγώ εἰμι ἡ θύρα",
+    statement: "\"I AM the Gate\"",
+    ref: "John 10:7, 9",
+    context: "Part of the Good Shepherd discourse. Jesus declares Himself the only legitimate entrance to the sheepfold — all who entered before Him \"by another way\" were thieves and robbers.",
+    ot: {
+      title: "The Gate of the Temple; The Door of the Tabernacle",
+      ref: "Ps 118:19–20; Ex 27:16; Ezek 44:1–3",
+      text: "\"Open to me the gates of righteousness, that I may enter through them and give thanks to the Lord. This is the gate of the Lord; the righteous shall enter through it\" (Ps 118:19–20). Access to God's presence was through a <strong>single, designated entrance</strong> — guarded and controlled."
+    },
+    sign: {
+      title: "Healing at the Pool of Bethesda",
+      ref: "Jn 5:1–15 (Sign 3)",
+      text: "A paralyzed man waits by the pool with five porticoes (representing the five books of the Law). The Law could <strong>diagnose the problem</strong> (paralysis/sin) but could not heal it. Jesus bypasses the pool entirely: \"Rise, take up your bed and walk.\" He is the <strong>true gate</strong> to healing — not the old system."
+    },
+    sacr: {
+      title: "Baptism — The Door of the Church; Christ the Sole Mediator",
+      ref: "1 Tim 2:5; Acts 4:12; CCC §1213",
+      text: "Baptism is the <strong>\"door of the Church\"</strong> (ianua Ecclesiae) — the sacrament through which one enters the Body of Christ. There is no other entrance. Christ as the Gate establishes that <strong>salvation is mediated through His person</strong> and, by extension, through the visible, sacramental Church He established. \"No one comes to the Father except through me\" (Jn 14:6)."
+    },
+    theology: "The Gate image cuts two ways: it <strong>opens</strong> to those who enter through Christ, and it <strong>excludes</strong> those who try to climb in another way. This is not narrow-mindedness but the logic of the Incarnation: if God has provided a specific means of salvation — His Son, and the Church and sacraments His Son established — then alternatives are not equally valid paths but <strong>attempts to bypass the Gate</strong>."
+  },
+  {
+    num: "IV",
+    greek: "Ἐγώ εἰμι ὁ ποιμὴν ὁ καλός",
+    statement: "\"I AM the Good Shepherd\"",
+    ref: "John 10:11, 14",
+    context: "Immediately following the Gate declaration. Jesus contrasts Himself with hired hands who flee when the wolf comes. The Good Shepherd \"lays down his life for the sheep\" — voluntarily, not by compulsion.",
+    ot: {
+      title: "YHWH, the Shepherd of Israel",
+      ref: "Ps 23:1; Is 40:11; Ezek 34:11–16, 23",
+      text: "\"The Lord is my shepherd\" (Ps 23:1). In Ezekiel 34, God rebukes Israel's false shepherds and declares: <strong>\"I myself will search for my sheep… I will set up over them one shepherd, my servant David\"</strong> (Ezek 34:11, 23). YHWH claims He will personally shepherd His flock — and then says He will do it through a Davidic figure. Jesus' \"I AM the Good Shepherd\" fulfills both: <strong>He is YHWH and the Davidic King simultaneously</strong>."
+    },
+    sign: {
+      title: "Healing of the Man Born Blind (continued)",
+      ref: "Jn 9–10",
+      text: "The Good Shepherd discourse follows directly from the blind man's expulsion from the synagogue (Jn 9:34). The religious leaders cast the healed man out; <strong>Jesus finds him</strong> (Jn 9:35). The Shepherd seeks the lost sheep that the false shepherds have rejected. The sign and the teaching form a seamless unit."
+    },
+    sacr: {
+      title: "The Ordained Pastorate; The Bishop's Crosier",
+      ref: "Jn 21:15–17; 1 Pet 5:1–4; Acts 20:28",
+      text: "\"Feed my lambs… Tend my sheep… Feed my sheep\" — the risen Christ commissions Peter as under-shepherd. The word <strong>\"pastor\"</strong> (Latin: pastor) means shepherd. Catholic bishops carry the <strong>crosier</strong> (shepherd's crook) as the visible sign that they exercise Christ's shepherding ministry. The ordained pastorate is not a human invention but Christ's own provision for the ongoing care of His flock."
+    },
+    theology: "By claiming to be the Good Shepherd, Jesus claims to be <strong>YHWH Himself</strong> — the one Ezekiel said would personally shepherd Israel. Yet He simultaneously identifies Himself as the promised Davidic shepherd-king. This is the mystery of the Incarnation in a single image: true God and true man, divine Shepherd and human King, in one Person. The Catholic hierarchy of pope, bishops, and priests extends this shepherding ministry across time — always as <strong>under-shepherds</strong> of the one Good Shepherd."
+  },
+  {
+    num: "V",
+    greek: "Ἐγώ εἰμι ἡ ἀνάστασις καὶ ἡ ζωή",
+    statement: "\"I AM the Resurrection and the Life\"",
+    ref: "John 11:25–26",
+    context: "Spoken to Martha outside the tomb of her brother Lazarus, four days dead. Martha has confessed her belief in the resurrection \"at the last day.\" Jesus redirects her from a future event to a present Person: the resurrection is not merely something that will happen — it is Someone standing before her.",
+    ot: {
+      title: "God, the Lord of Life and Death",
+      ref: "Deut 32:39; 1 Sam 2:6; Ezek 37:1–14; Dan 12:2",
+      text: "\"I kill and I make alive\" (Deut 32:39). Only God has sovereign power over death. Ezekiel's valley of <strong>dry bones</strong> — where God's breath (ruach) reassembles and revivifies the dead — is the great Old Testament vision of resurrection. Daniel 12:2 provides the clearest OT prophecy: \"Many of those who sleep in the dust of the earth shall awake.\""
+    },
+    sign: {
+      title: "The Raising of Lazarus",
+      ref: "Jn 11:1–44 (Sign 7)",
+      text: "The <strong>seventh and climactic sign</strong> of John's Gospel. Lazarus has been dead four days — beyond any possibility of resuscitation by Jewish reckoning. Jesus weeps (Jn 11:35), then commands: <strong>\"Lazarus, come out!\"</strong> The dead man emerges, bound in grave cloths. Jesus tells them: \"Unbind him and let him go.\" This sign directly triggers the decision to kill Jesus (Jn 11:53) — His gift of life leads to His own death."
+    },
+    sacr: {
+      title: "Baptism as Death and Resurrection; The Anointing of the Sick",
+      ref: "Rom 6:3–5; Jas 5:14–15; CCC §1002–1004",
+      text: "Baptism is a sacramental <strong>death and resurrection</strong>: \"We were buried with him by baptism into death, so that… we too might walk in newness of life\" (Rom 6:4). The Anointing of the Sick prepares the Christian for the final passage from death to life. At every Catholic funeral, the priest prays the <strong>In Paradisum</strong>: \"May the angels lead you into paradise\" — confident that the Resurrection and the Life has conquered the grave."
+    },
+    theology: "Martha believed in a future resurrection. Jesus says: <strong>I AM the resurrection</strong> — present tense, personal, immediate. The resurrection is not an abstract doctrine or distant event but a <strong>Person</strong> who can be encountered now. This is the deepest logic of the Catholic sacramental system: in every Eucharist, in every Baptism, in every Anointing, the Resurrection and the Life is <strong>personally present and active</strong>. The sacraments are encounters with the risen Christ — not mere rituals about a past event."
+  },
+  {
+    num: "VI",
+    greek: "Ἐγώ εἰμι ἡ ὁδὸς καὶ ἡ ἀλήθεια καὶ ἡ ζωή",
+    statement: "\"I AM the Way, the Truth, and the Life\"",
+    ref: "John 14:6",
+    context: "Spoken at the Last Supper, in the Farewell Discourse. Thomas asks: \"Lord, we do not know where you are going. How can we know the way?\" Jesus' answer transcends the question: He is not merely showing a way — He IS the Way.",
+    ot: {
+      title: "The Way of the Lord; Torah as Path of Life",
+      ref: "Is 35:8–10; Ps 16:11; Ps 119:105; Prov 3:5–6",
+      text: "\"A highway shall be there, and it shall be called the Way of Holiness\" (Is 35:8). The Torah was understood as God's <strong>path of life</strong> — \"Your word is a lamp to my feet and a light to my path\" (Ps 119:105). The earliest Christians were called followers of <strong>\"the Way\"</strong> (Acts 9:2, 19:9, 22:4, 24:14) — not followers of a doctrine or idea, but of a Person who IS the Way."
+    },
+    sign: {
+      title: "No Single Sign — The Whole Gospel Is the Sign",
+      ref: "Jn 1:1–14; 20:30–31",
+      text: "The sixth \"I AM\" has no single corresponding miracle because it <strong>encompasses all of them</strong>. Jesus is the Way (His entire earthly journey from Incarnation to Ascension), the Truth (He is the Logos, the divine Word, the fullness of revelation), and the Life (the source of all biological, spiritual, and eternal life). <strong>The entire Fourth Gospel is the sign.</strong>"
+    },
+    sacr: {
+      title: "The Church as the Pilgrim Way; The Sacraments as Truth and Life",
+      ref: "CCC §2030; Eph 4:4–6; 1 Tim 3:15",
+      text: "Christ is the Way — and the Church is <strong>the Way made accessible through history</strong>. The sacraments are the Truth (the Word of God made tangible in matter) and the Life (the grace of God communicated through physical signs). \"No one comes to the Father except through me\" is not a threat but an <strong>invitation into the fullest possible relationship with God</strong> — mediated through Christ's Body, the Church."
+    },
+    theology: "This is the most comprehensive of the seven statements. <strong>Way</strong> addresses how we reach God. <strong>Truth</strong> addresses what we can know of God. <strong>Life</strong> addresses what God gives us. Jesus is not pointing to a path, a philosophy, or an energy — He is claiming to be, in His own Person, the <strong>exhaustive answer</strong> to humanity's search for meaning, knowledge, and life. Every other \"way\" is either a partial participation in this Way or a departure from it."
+  },
+  {
+    num: "VII",
+    greek: "Ἐγώ εἰμι ἡ ἄμπελος ἡ ἀληθινή",
+    statement: "\"I AM the True Vine\"",
+    ref: "John 15:1, 5",
+    context: "The final \"I AM\" statement, spoken at the Last Supper. Jesus may be looking at the great golden vine carved over the Temple entrance, or holding the Eucharistic cup of wine. He declares Himself the True Vine — the reality that Israel's vine imagery always pointed toward.",
+    ot: {
+      title: "Israel as God's Vine",
+      ref: "Is 5:1–7; Ps 80:8–16; Jer 2:21; Ezek 15, 19:10–14",
+      text: "Israel is consistently portrayed as God's <strong>vineyard or vine</strong> — planted, tended, and cultivated by the Lord. But this vine consistently fails: \"He looked for it to yield grapes, but it yielded wild grapes\" (Is 5:2). Jeremiah laments: \"I planted you a choice vine… How then have you turned degenerate?\" (Jer 2:21). Israel is the <strong>failed vine</strong>. Jesus is the <strong>True Vine</strong> — the faithful Israel who produces the fruit God always desired."
+    },
+    sign: {
+      title: "The Wedding at Cana — Water into Wine",
+      ref: "Jn 2:1–11 (Sign 1)",
+      text: "The <strong>first sign</strong> of John's Gospel: Jesus transforms water (six stone jars used for Jewish purification rites) into <strong>abundant, superior wine</strong>. The old covenant purification system is replaced by the wine of the New Covenant — the blood of the True Vine. The steward's remark — \"You have kept the good wine until now\" — is John's theological thesis: <strong>the best has been saved for last</strong>."
+    },
+    sacr: {
+      title: "The Eucharistic Wine; The Church as the Vine's Branches",
+      ref: "Jn 15:1–8; 1 Cor 12:12–27; CCC §787–789",
+      text: "\"I am the vine; you are the branches.\" Believers are <strong>organically united</strong> to Christ and to each other. Separation from the vine = death. This is the foundation of Catholic <strong>ecclesiology</strong>: the Church is not a voluntary association but a <strong>living organism</strong>. The Eucharistic wine — the fruit of the vine become the Blood of Christ — is the sacramental expression of this organic union. To receive the Eucharist is to deepen one's union with the Vine."
+    },
+    theology: "The True Vine declaration is <strong>the ecclesiological I AM</strong>. It defines the relationship between Christ and His Church: not employer and employees, not teacher and students, but <strong>vine and branches — a single living organism</strong>. The branches cannot live apart from the vine. The vine does not exist without its branches. \"Apart from me you can do nothing\" (Jn 15:5) is the most absolute statement of the <strong>necessity of grace</strong> in all of Scripture. The Catholic sacramental system exists precisely to maintain this vital, organic connection between the Vine and His branches."
+  }
+];
+
+// ── Render ──
+const container = document.getElementById('statements');
+statements.forEach((s, i) => {
+  const card = document.createElement('div');
+  card.className = 'iam-card';
+  card.style.animationDelay = (i * 0.08) + 's';
+  card.innerHTML = `
+    <div class="iam-header">
+      <div class="iam-number">${s.num} of VII</div>
+      <div class="iam-greek">${s.greek}</div>
+      <div class="iam-statement">${s.statement}</div>
+      <div class="iam-ref">${s.ref}</div>
+      <div class="iam-context">${s.context}</div>
+    </div>
+    <div class="iam-columns">
+      <div class="iam-col col-ot">
+        <div class="iam-col-label"><span class="col-dot"></span> Old Testament Root</div>
+        <h4>${s.ot.title}</h4>
+        <div class="col-ref">${s.ot.ref}</div>
+        <div class="col-text">${s.ot.text}</div>
+      </div>
+      <div class="iam-col col-sign">
+        <div class="iam-col-label"><span class="col-dot"></span> Johannine Sign</div>
+        <h4>${s.sign.title}</h4>
+        <div class="col-ref">${s.sign.ref}</div>
+        <div class="col-text">${s.sign.text}</div>
+      </div>
+      <div class="iam-col col-sacr">
+        <div class="iam-col-label"><span class="col-dot"></span> Sacramental Fulfillment</div>
+        <h4>${s.sacr.title}</h4>
+        <div class="col-ref">${s.sacr.ref}</div>
+        <div class="col-text">${s.sacr.text}</div>
+      </div>
+    </div>
+    <div class="iam-theology">${s.theology}</div>
+  `;
+  container.appendChild(card);
+});
+</script>
+
+</body>
+</html>
