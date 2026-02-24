@@ -470,9 +470,182 @@ body {
   .filter-btn { padding: 5px 9px; font-size: 0.56rem; }
   .arrow-symbol { font-size: 14px; }
 }
+
+/* ─── SITE NAV BAR ─────────────────────────────────────── */
+.site-nav {
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(13,7,3,0.98), rgba(13,7,3,0.93));
+  border-bottom: 1px solid #8B6914;
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  font-family: 'Cinzel', serif;
+}
+.site-nav a.nav-home {
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #E8D08A;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: #C9A84C; }
+.site-nav .nav-back {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #C9A84C;
+  text-decoration: none;
+  border: 1px solid rgba(201,168,76,0.35);
+  padding: 0.4rem 1.1rem;
+  transition: background 0.2s, color 0.2s;
+}
+.site-nav .nav-back:hover {
+  background: rgba(201,168,76,0.12);
+  color: #E8D08A;
+}
+
+.site-nav .nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.site-nav .nav-links a {
+  font-size: 0.72rem; letter-spacing: 0.13em; text-transform: uppercase;
+  color: #C5B07A; text-decoration: none; transition: color 0.2s;
+}
+.site-nav .nav-links a:hover { color: #E8D08A; }
+
+/* ── Hamburger Button ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  background: none;
+  border: 1px solid rgba(201,168,76,0.35);
+  border-radius: 3px;
+  padding: 6px;
+  z-index: 10001;
+}
+.nav-hamburger span {
+  display: block;
+  height: 2px;
+  background: #C9A84C;
+  border-radius: 2px;
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Sidebar Drawer ── */
+.sidebar-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+.sidebar-overlay.visible { display: block; }
+.sidebar {
+  position: fixed;
+  top: 0; right: -280px;
+  width: 260px;
+  height: 100%;
+  background: linear-gradient(to bottom, #1a0d05, #120800);
+  border-left: 1px solid rgba(201,168,76,0.3);
+  z-index: 10002;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+.sidebar.open { right: 0; }
+.sidebar-inner {
+  padding: 5rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.sidebar-brand {
+  font-family: 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #C9A84C;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+}
+.sidebar-inner a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #C5B07A;
+  text-decoration: none;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+  transition: color 0.2s;
+}
+.sidebar-inner a:hover { color: #E8D08A; }
+.sidebar-inner a.sidebar-back {
+  color: #C9A84C;
+  margin-top: 1.5rem;
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 0.7rem 1rem;
+  text-align: center;
+  border-radius: 2px;
+}
+.sidebar-ornament {
+  color: #8B6914;
+  font-size: 11px;
+  letter-spacing: 8px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+@media (max-width: 700px) {
+  .nav-hamburger { display: flex; }
+  .site-nav .nav-links { display: none; }
+  .site-nav .nav-back { display: none; }
+}
+
+@media (max-width: 480px) {
+  .site-nav { padding: 0.55rem 1rem; }
+  .site-nav .nav-links { display: none !important; }
+  .site-nav .nav-back { display: none !important; }
+  .nav-hamburger {
+    display: flex !important;
+    margin-left: auto;
+  }
+  .sidebar {
+    display: block !important;
+    transform: translateX(100%) !important;
+    right: 0 !important;
+    position: fixed !important;
+  }
+  .sidebar.open { transform: translateX(0) !important; right: 0 !important; }
+  .sidebar-inner { padding: 4rem 1.5rem 2rem !important; }
+  .sidebar-overlay.visible { display: block !important; }
+}
 </style>
 </head>
 <body>
+
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">One Faith Delivered</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../articles.html">Articles</a></li>
+    <li><a href="../charts.html">Charts</a></li>
+    <li><a href="../topics.html">Topics</a></li>
+    <li><a href="../resources.html">Resources</a></li>
+  </ul>
+  <a href="../charts.html" class="nav-back">&#8592; All Charts</a>
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
 
 <div class="page-wrapper">
 <div class="outer-border">
@@ -1171,6 +1344,43 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 
 // ── Initial render ──
 renderList('all');
+</script>
+
+<!-- ── MOBILE SIDEBAR ── -->
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">One Faith Delivered</div>
+    <a href="../index.html">Home</a>
+    <a href="../articles.html">Articles</a>
+    <a href="../charts.html">Charts</a>
+    <a href="../topics.html">Topics</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../charts.html" class="sidebar-back">&#8592; All Charts</a>
+    <div class="sidebar-ornament">✦ ✦ ✦</div>
+  </div>
+</aside>
+<script>
+  function toggleSidebar() {
+    var btn = document.querySelector('.nav-hamburger');
+    var sidebar = document.querySelector('.sidebar');
+    var overlay = document.querySelector('.sidebar-overlay');
+    var isOpen = sidebar.classList.contains('open');
+    if (isOpen) {
+      sidebar.classList.remove('open');
+      btn.classList.remove('open');
+      overlay.classList.remove('visible');
+      document.body.style.overflow = '';
+    } else {
+      sidebar.classList.add('open');
+      btn.classList.add('open');
+      overlay.classList.add('visible');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar();
+  });
 </script>
 
 </body>
