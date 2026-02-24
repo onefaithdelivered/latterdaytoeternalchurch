@@ -563,7 +563,12 @@
   .filter-bar {
     max-width: 1200px;
     margin: 2rem auto 0;
-    padding: 0 1.5rem 1.5rem;
+    padding: 1rem 1.5rem 2rem;
+    position: sticky;
+    top: 52px;
+    z-index: 90;
+    background: linear-gradient(to bottom, rgba(13,7,3,0.97) 80%, rgba(13,7,3,0));
+    backdrop-filter: blur(6px);
   }
   .filter-group {
     margin-bottom: 1.5rem;
@@ -607,6 +612,13 @@
     color: var(--bg);
     border-color: var(--gold);
     font-weight: 600;
+  }
+  .filter-btn.disabled {
+    opacity: 0.28;
+    cursor: default;
+    pointer-events: none;
+    border-color: rgba(201,168,76,0.15);
+    color: rgba(232,208,138,0.35);
   }
   @media (max-width: 768px) {
     .filter-bar { padding: 0 1rem 1.5rem; }
@@ -1487,24 +1499,86 @@
     let currentTypeFilter = 'all';
     let currentTopicFilter = 'all';
 
+    // Build a lookup of which type+topic combos exist
+    function buildComboMap() {
+      const cards = document.querySelectorAll('.chart-card');
+      const combos = new Set();
+      const types = new Set();
+      const topics = new Set();
+      cards.forEach(card => {
+        const t = card.getAttribute('data-type');
+        const p = card.getAttribute('data-topic');
+        combos.add(t + '|' + p);
+        types.add(t);
+        topics.add(p);
+      });
+      return { combos, types, topics };
+    }
+
     function initializeFilterButtons() {
       const typeButtons = document.querySelectorAll('.filter-type-btn');
       const topicButtons = document.querySelectorAll('.filter-topic-btn');
 
       typeButtons.forEach(btn => {
         btn.addEventListener('click', function() {
+          if (this.classList.contains('disabled')) return;
           currentTypeFilter = this.getAttribute('data-type');
           updateTypeButtonStates(typeButtons);
           applyFilters();
+          updateDisabledStates(typeButtons, topicButtons);
         });
       });
 
       topicButtons.forEach(btn => {
         btn.addEventListener('click', function() {
+          if (this.classList.contains('disabled')) return;
           currentTopicFilter = this.getAttribute('data-topic');
           updateTopicButtonStates(topicButtons);
           applyFilters();
+          updateDisabledStates(typeButtons, topicButtons);
         });
+      });
+
+      // Initial disabled state
+      updateDisabledStates(typeButtons, topicButtons);
+    }
+
+    function updateDisabledStates(typeButtons, topicButtons) {
+      const { combos, types, topics } = buildComboMap();
+
+      // For each type button: would selecting it (with current topic) yield results?
+      typeButtons.forEach(btn => {
+        const t = btn.getAttribute('data-type');
+        if (t === 'all') { btn.classList.remove('disabled'); return; }
+        let hasResults = false;
+        if (currentTopicFilter === 'all') {
+          // Type "all topics" — just check if any card has this type
+          hasResults = types.has(t);
+        } else {
+          hasResults = combos.has(t + '|' + currentTopicFilter);
+        }
+        if (hasResults) {
+          btn.classList.remove('disabled');
+        } else {
+          btn.classList.add('disabled');
+        }
+      });
+
+      // For each topic button: would selecting it (with current type) yield results?
+      topicButtons.forEach(btn => {
+        const p = btn.getAttribute('data-topic');
+        if (p === 'all') { btn.classList.remove('disabled'); return; }
+        let hasResults = false;
+        if (currentTypeFilter === 'all') {
+          hasResults = topics.has(p);
+        } else {
+          hasResults = combos.has(currentTypeFilter + '|' + p);
+        }
+        if (hasResults) {
+          btn.classList.remove('disabled');
+        } else {
+          btn.classList.add('disabled');
+        }
       });
     }
 
