@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Miracles of Jesus Christ — A Complete New Testament Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --crimson: #8B1A1A;
+    --crimson-light: #A52A2A;
+    --dark-gold: #B8860B;
+    --gold: #DAA520;
+    --light-gold: #F0D060;
+    --parchment: #F5F0E8;
+    --parchment-dark: #E8E0D0;
+    --parchment-deep: #D4C9B0;
+    --ink: #2C1810;
+    --ink-light: #4A3728;
+    --ink-faint: #7A6A5A;
+
+    /* Category Colors */
+    --healing: #1B5E20;
+    --healing-bg: rgba(27, 94, 32, 0.08);
+    --healing-border: rgba(27, 94, 32, 0.25);
+    --nature: #0D47A1;
+    --nature-bg: rgba(13, 71, 161, 0.08);
+    --nature-border: rgba(13, 71, 161, 0.25);
+    --exorcism: #4A148C;
+    --exorcism-bg: rgba(74, 20, 140, 0.08);
+    --exorcism-border: rgba(74, 20, 140, 0.25);
+    --resurrection: #8B1A1A;
+    --resurrection-bg: rgba(139, 26, 26, 0.08);
+    --resurrection-border: rgba(139, 26, 26, 0.25);
+    --provision: #BF360C;
+    --provision-bg: rgba(191, 54, 12, 0.08);
+    --provision-border: rgba(191, 54, 12, 0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--parchment);
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(218,165,32,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 50%, rgba(139,26,26,0.03) 0%, transparent 60%);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .page-wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .header-cross {
+    font-size: 28px;
+    color: var(--dark-gold);
+    margin-bottom: 8px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  }
+
+  .header h1 {
+    font-family: 'Cinzel Decorative', 'Cinzel', serif;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    font-weight: 700;
+    color: var(--crimson);
+    letter-spacing: 0.06em;
+    line-height: 1.25;
+    margin-bottom: 6px;
+  }
+
+  .header .subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+    font-weight: 600;
+    color: var(--dark-gold);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .header-rule {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 16px auto;
+    max-width: 500px;
+  }
+  .header-rule::before,
+  .header-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--dark-gold), transparent);
+  }
+  .header-rule span {
+    color: var(--dark-gold);
+    font-size: 14px;
+  }
+
+  .header .intro {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    color: var(--ink-light);
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── Filter Bar ── */
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+
+  .filter-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border: 1.5px solid var(--parchment-deep);
+    border-radius: 3px;
+    background: white;
+    color: var(--ink-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .filter-btn:hover {
+    border-color: var(--dark-gold);
+    color: var(--dark-gold);
+  }
+  .filter-btn.active {
+    background: var(--crimson);
+    border-color: var(--crimson);
+    color: white;
+  }
+  .filter-btn[data-cat="healing"].active { background: var(--healing); border-color: var(--healing); }
+  .filter-btn[data-cat="nature"].active { background: var(--nature); border-color: var(--nature); }
+  .filter-btn[data-cat="exorcism"].active { background: var(--exorcism); border-color: var(--exorcism); }
+  .filter-btn[data-cat="resurrection"].active { background: var(--resurrection); border-color: var(--resurrection); }
+  .filter-btn[data-cat="provision"].active { background: var(--provision); border-color: var(--provision); }
+
+  /* ── Summary Stats ── */
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 24px;
+    margin-bottom: 32px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    color: var(--ink-faint);
+  }
+  .stats-row .stat-num {
+    font-weight: 700;
+    color: var(--crimson);
+    font-size: 0.88rem;
+  }
+
+  /* ── Category Sections ── */
+  .category-section {
+    margin-bottom: 40px;
+    transition: opacity 0.4s ease, max-height 0.5s ease;
+  }
+  .category-section.hidden {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid;
+  }
+  .category-header.healing { border-color: var(--healing); }
+  .category-header.nature { border-color: var(--nature); }
+  .category-header.exorcism { border-color: var(--exorcism); }
+  .category-header.resurrection { border-color: var(--resurrection); }
+  .category-header.provision { border-color: var(--provision); }
+
+  .cat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .cat-icon.healing { background: var(--healing-bg); border: 1.5px solid var(--healing-border); }
+  .cat-icon.nature { background: var(--nature-bg); border: 1.5px solid var(--nature-border); }
+  .cat-icon.exorcism { background: var(--exorcism-bg); border: 1.5px solid var(--exorcism-border); }
+  .cat-icon.resurrection { background: var(--resurrection-bg); border: 1.5px solid var(--resurrection-border); }
+  .cat-icon.provision { background: var(--provision-bg); border: 1.5px solid var(--provision-border); }
+
+  .cat-title-block h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .cat-title-block h2.healing { color: var(--healing); }
+  .cat-title-block h2.nature { color: var(--nature); }
+  .cat-title-block h2.exorcism { color: var(--exorcism); }
+  .cat-title-block h2.resurrection { color: var(--resurrection); }
+  .cat-title-block h2.provision { color: var(--provision); }
+
+  .cat-title-block .cat-count {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  /* ── Miracle Cards ── */
+  .miracles-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .miracle-card {
+    background: white;
+    border: 1px solid var(--parchment-deep);
+    border-left: 4px solid;
+    border-radius: 4px;
+    padding: 16px 20px;
+    transition: all 0.3s ease;
+    cursor: default;
+    animation: fadeSlide 0.4s ease forwards;
+    opacity: 0;
+  }
+  .miracle-card:hover {
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    transform: translateX(3px);
+  }
+  .miracle-card.healing { border-left-color: var(--healing); }
+  .miracle-card.nature { border-left-color: var(--nature); }
+  .miracle-card.exorcism { border-left-color: var(--exorcism); }
+  .miracle-card.resurrection { border-left-color: var(--resurrection); }
+  .miracle-card.provision { border-left-color: var(--provision); }
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .miracle-card .miracle-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .miracle-card .miracle-refs {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+  }
+  .miracle-card .miracle-refs .gospel-tag {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 1px 6px;
+    border-radius: 2px;
+    margin-right: 3px;
+    vertical-align: middle;
+  }
+  .gospel-tag.mt { background: #E8F5E9; color: #2E7D32; }
+  .gospel-tag.mk { background: #E3F2FD; color: #1565C0; }
+  .gospel-tag.lk { background: #FFF3E0; color: #E65100; }
+  .gospel-tag.jn { background: #F3E5F5; color: #6A1B9A; }
+  .gospel-tag.acts { background: #FAFAFA; color: #424242; }
+
+  .miracle-card .miracle-note {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--ink-faint);
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px dashed var(--parchment-deep);
+  }
+
+  /* ── Footer ── */
+  .chart-footer {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 2px solid var(--dark-gold);
+    text-align: center;
+  }
+  .chart-footer p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto 8px;
+  }
+  .chart-footer .site-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--dark-gold);
+    text-transform: uppercase;
+    margin-top: 16px;
+  }
+
+  /* ── Outer border decoration ── */
+  .outer-border {
+    border: 2px solid var(--dark-gold);
+    outline: 1px solid rgba(184,134,11,0.3);
+    outline-offset: 4px;
+    padding: 32px clamp(16px, 3vw, 40px);
+    background: rgba(255,255,255,0.35);
+    position: relative;
+  }
+  .outer-border::before,
+  .outer-border::after {
+    content: '✦';
+    position: absolute;
+    color: var(--dark-gold);
+    font-size: 12px;
+    opacity: 0.6;
+  }
+  .outer-border::before { top: 8px; left: 12px; }
+  .outer-border::after { bottom: 8px; right: 12px; }
+
+  /* ── Pie Chart ── */
+  .pie-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(24px, 4vw, 48px);
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .pie-chart-wrap {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    flex-shrink: 0;
+  }
+
+  .pie-chart-wrap svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+  }
+
+  .pie-slice {
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+    cursor: pointer;
+    transform-origin: 150px 150px;
+  }
+  .pie-slice:hover {
+    filter: brightness(1.1);
+  }
+  .pie-slice.highlighted {
+    transform: scale(1.06);
+    filter: brightness(1.08) drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+  }
+  .pie-slice.dimmed {
+    opacity: 0.3;
+  }
+
+  .pie-center-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+    background: rgba(255,255,255,0.88);
+    border-radius: 50%;
+    width: 96px;
+    height: 96px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.06);
+  }
+  .pie-center-num {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--crimson);
+    line-height: 1.1;
+    transition: color 0.3s ease;
+  }
+  .pie-center-word {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .pie-legend {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 6px 14px 6px 10px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    border: 1.5px solid transparent;
+  }
+  .legend-item:hover {
+    background: rgba(0,0,0,0.03);
+  }
+  .legend-item.active {
+    background: rgba(255,255,255,0.7);
+    border-color: var(--parchment-deep);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+  .legend-item.active .legend-swatch {
+    transform: scale(1.2);
+  }
+
+  .legend-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.76rem;
+    font-weight: 600;
+    color: var(--ink-light);
+    letter-spacing: 0.03em;
+    line-height: 1.2;
+  }
+  .legend-count {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+    margin-left: auto;
+    padding-left: 12px;
+  }
+  .legend-pct {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--ink-faint);
+    min-width: 36px;
+    text-align: right;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .page-wrapper { padding: 20px 12px 40px; }
+    .outer-border { padding: 20px 14px; }
+    .miracle-card { padding: 12px 14px; }
+    .cat-icon { width: 36px; height: 36px; font-size: 16px; }
+    .filter-btn { padding: 6px 12px; font-size: 0.65rem; }
+    .pie-chart-wrap { width: 200px; height: 200px; }
+    .pie-center-label { width: 80px; height: 80px; }
+    .pie-center-num { font-size: 1.3rem; }
+    .pie-section { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrapper">
+<div class="outer-border">
+
+  <div class="header">
+    <div class="header-cross">☩</div>
+    <h1>The Miracles of Jesus Christ</h1>
+    <div class="subtitle">A Complete New Testament Reference</div>
+    <div class="header-rule"><span>✦</span></div>
+    <p class="intro">
+      "And there are also many other things which Jesus did, the which, if they should be written every one, I suppose that even the world itself could not contain the books that should be written."
+      — John 21:25
+    </p>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-btn active" data-cat="all">All Miracles</button>
+    <button class="filter-btn" data-cat="healing">Healings</button>
+    <button class="filter-btn" data-cat="nature">Nature</button>
+    <button class="filter-btn" data-cat="exorcism">Exorcisms</button>
+    <button class="filter-btn" data-cat="resurrection">Raising the Dead</button>
+    <button class="filter-btn" data-cat="provision">Provision</button>
+  </div>
+
+  <div class="pie-section">
+    <div class="pie-chart-wrap">
+      <svg id="pie-svg" viewBox="0 0 300 300"></svg>
+      <div class="pie-center-label">
+        <div class="pie-center-num" id="pie-center-num">37</div>
+        <div class="pie-center-word">Miracles</div>
+      </div>
+    </div>
+    <div class="pie-legend" id="pie-legend"></div>
+  </div>
+
+  <div class="stats-row">
+    <span><span class="stat-num" id="total-count">37</span> recorded miracles</span>
+    <span>·</span>
+    <span><span class="stat-num">4</span> Gospels</span>
+    <span>·</span>
+    <span><span class="stat-num">5</span> categories</span>
+  </div>
+
+  <div id="miracles-container"></div>
+
+  <div class="chart-footer">
+    <p>This chart catalogues the individually narrated miracles of Jesus in the four Gospels. 
+       Summary statements (e.g., Mt 4:24, Mk 1:34, Lk 6:18–19) indicate Jesus performed 
+       many additional healings and exorcisms beyond those listed here. 
+       Christ's own Resurrection — the supreme miracle — stands in a category of its own 
+       as the foundation of the Christian faith (1 Cor 15:14).</p>
+    <div class="site-tag">One Faith Delivered — onefaithdelivered.com</div>
+  </div>
+
+</div>
+</div>
+
+<script>
+const miracles = [
+  // ═══════════════════════════════════════════
+  // HEALINGS (17)
+  // ═══════════════════════════════════════════
+  {
+    cat: "healing",
+    name: "Healing of the Leper",
+    refs: [
+      { gospel: "mt", cite: "Mt 8:1–4" },
+      { gospel: "mk", cite: "Mk 1:40–45" },
+      { gospel: "lk", cite: "Lk 5:12–16" }
+    ]
+  },
+  {
+    cat: "healing",
+    name: "Healing of the Centurion's Servant",
+    refs: [
+      { gospel: "mt", cite: "Mt 8:5–13" },
+      { gospel: "lk", cite: "Lk 7:1–10" }
+    ],
+    note: "Healed at a distance — prefiguring the universality of Christ's saving power"
+  },
+  {
+    cat: "healing",
+    name: "Healing of Peter's Mother-in-Law",
+    refs: [
+      { gospel: "mt", cite: "Mt 8:14–15" },
+      { gospel: "mk", cite: "Mk 1:29–31" },
+      { gospel: "lk", cite: "Lk 4:38–39" }
+    ]
+  },
+  {
+    cat: "healing",
+    name: "Healing of the Paralytic at Capernaum",
+    refs: [
+      { gospel: "mt", cite: "Mt 9:1–8" },
+      { gospel: "mk", cite: "Mk 2:1–12" },
+      { gospel: "lk", cite: "Lk 5:17–26" }
+    ],
+    note: "\"That you may know the Son of Man has authority on earth to forgive sins\" — linking miraculous healing to sacramental absolution"
+  },
+  {
+    cat: "healing",
+    name: "Healing of the Woman with a Hemorrhage",
+    refs: [
+      { gospel: "mt", cite: "Mt 9:20–22" },
+      { gospel: "mk", cite: "Mk 5:25–34" },
+      { gospel: "lk", cite: "Lk 8:43–48" }
+    ]
+  },
+  {
+    cat: "healing",
+    name: "Healing of Two Blind Men",
+    refs: [
+      { gospel: "mt", cite: "Mt 9:27–31" }
+    ]
+  },
+  {
+    cat: "healing",
+    name: "Healing of the Man with a Withered Hand",
+    refs: [
+      { gospel: "mt", cite: "Mt 12:9–14" },
+      { gospel: "mk", cite: "Mk 3:1–6" },
+      { gospel: "lk", cite: "Lk 6:6–11" }
+    ]
+  },
+  {
+    cat: "healing",
+    name: "Healing of the Canaanite Woman's Daughter",
+    refs: [
+      { gospel: "mt", cite: "Mt 15:21–28" },
+      { gospel: "mk", cite: "Mk 7:24–30" }
+    ]
+  },
+  {
+    cat: "healing",
+    name: "Healing of the Deaf-Mute",
+    refs: [
+      { gospel: "mk", cite: "Mk 7:31–37" }
+    ],
+    note: "\"Ephphatha\" — Jesus uses physical touch and spoken word, a sacramental pattern"
+  },
+  {
+    cat: "healing",
+    name: "Healing of the Blind Man at Bethsaida",
+    refs: [
+      { gospel: "mk", cite: "Mk 8:22–26" }
+    ],
+    note: "A progressive, two-stage healing — unique in the Gospels"
+  },
+  {
+    cat: "healing",
+    name: "Healing of Blind Bartimaeus",
+    refs: [
+      { gospel: "mt", cite: "Mt 20:29–34" },
+      { gospel: "mk", cite: "Mk 10:46–52" },
+      { gospel: "lk", cite: "Lk 18:35–43" }
+    ]
+  },
+  {
+    cat: "healing",
+    name: "Healing of the Man Born Blind",
+    refs: [
+      { gospel: "jn", cite: "Jn 9:1–41" }
+    ],
+    note: "A Johannine sign — uses clay and water, evoking both creation and baptism"
+  },
+  {
+    cat: "healing",
+    name: "Healing of the Infirm Man at Bethesda",
+    refs: [
+      { gospel: "jn", cite: "Jn 5:1–15" }
+    ]
+  },
+  {
+    cat: "healing",
+    name: "Healing of the Ten Lepers",
+    refs: [
+      { gospel: "lk", cite: "Lk 17:11–19" }
+    ],
+    note: "Only the Samaritan returned to give thanks — foreshadowing the Gentile Church"
+  },
+  {
+    cat: "healing",
+    name: "Healing of the Crippled Woman on the Sabbath",
+    refs: [
+      { gospel: "lk", cite: "Lk 13:10–17" }
+    ]
+  },
+  {
+    cat: "healing",
+    name: "Healing of the Man with Dropsy",
+    refs: [
+      { gospel: "lk", cite: "Lk 14:1–6" }
+    ]
+  },
+  {
+    cat: "healing",
+    name: "Restoration of Malchus's Ear",
+    refs: [
+      { gospel: "lk", cite: "Lk 22:50–51" },
+      { gospel: "jn", cite: "Jn 18:10" }
+    ],
+    note: "Christ's final healing miracle — performed on an enemy during His arrest"
+  },
+  {
+    cat: "healing",
+    name: "Healing of the Official's Son at Capernaum",
+    refs: [
+      { gospel: "jn", cite: "Jn 4:46–54" }
+    ],
+    note: "The second Johannine sign — healed at a distance by the power of Christ's word alone"
+  },
+
+  // ═══════════════════════════════════════════
+  // NATURE MIRACLES (9)
+  // ═══════════════════════════════════════════
+  {
+    cat: "nature",
+    name: "Calming of the Storm",
+    refs: [
+      { gospel: "mt", cite: "Mt 8:23–27" },
+      { gospel: "mk", cite: "Mk 4:35–41" },
+      { gospel: "lk", cite: "Lk 8:22–25" }
+    ],
+    note: "\"What manner of man is this?\" — divine authority over creation itself"
+  },
+  {
+    cat: "nature",
+    name: "Walking on Water",
+    refs: [
+      { gospel: "mt", cite: "Mt 14:22–33" },
+      { gospel: "mk", cite: "Mk 6:45–52" },
+      { gospel: "jn", cite: "Jn 6:16–21" }
+    ],
+    note: "An Ego Eimi (\"I AM\") theophany — Jesus exercises the divine prerogative over the deep"
+  },
+  {
+    cat: "nature",
+    name: "The Transfiguration",
+    refs: [
+      { gospel: "mt", cite: "Mt 17:1–8" },
+      { gospel: "mk", cite: "Mk 9:2–8" },
+      { gospel: "lk", cite: "Lk 9:28–36" }
+    ],
+    note: "The unveiled glory of the Second Person — witnessed by Peter, James, and John"
+  },
+  {
+    cat: "nature",
+    name: "Cursing of the Fig Tree",
+    refs: [
+      { gospel: "mt", cite: "Mt 21:18–22" },
+      { gospel: "mk", cite: "Mk 11:12–14, 20–25" }
+    ],
+    note: "A prophetic sign-act against fruitless Israel; the only miracle of judgment"
+  },
+  {
+    cat: "nature",
+    name: "Water Changed to Wine at Cana",
+    refs: [
+      { gospel: "jn", cite: "Jn 2:1–11" }
+    ],
+    note: "The first Johannine sign — manifesting Christ's glory and prefiguring the Eucharist"
+  },
+  {
+    cat: "nature",
+    name: "First Miraculous Catch of Fish",
+    refs: [
+      { gospel: "lk", cite: "Lk 5:1–11" }
+    ],
+    note: "Peter's call — \"Depart from me, for I am a sinful man, O Lord\""
+  },
+  {
+    cat: "nature",
+    name: "Second Miraculous Catch of Fish",
+    refs: [
+      { gospel: "jn", cite: "Jn 21:1–14" }
+    ],
+    note: "Post-Resurrection; 153 fish — traditionally interpreted as the universality of the Church"
+  },
+  {
+    cat: "nature",
+    name: "Coin in the Fish's Mouth",
+    refs: [
+      { gospel: "mt", cite: "Mt 17:24–27" }
+    ],
+    note: "Temple tax miracle — Christ freely submits to the order He transcends"
+  },
+  {
+    cat: "nature",
+    name: "Withering of the Fig Tree (Immediate)",
+    refs: [
+      { gospel: "mt", cite: "Mt 21:19–20" }
+    ],
+    note: "Matthew's account emphasizes the immediate withering; teaching on faith and prayer"
+  },
+
+  // ═══════════════════════════════════════════
+  // EXORCISMS (6)
+  // ═══════════════════════════════════════════
+  {
+    cat: "exorcism",
+    name: "The Gerasene Demoniac(s)",
+    refs: [
+      { gospel: "mt", cite: "Mt 8:28–34" },
+      { gospel: "mk", cite: "Mk 5:1–20" },
+      { gospel: "lk", cite: "Lk 8:26–39" }
+    ],
+    note: "\"Legion\" — Christ's absolute authority over the demonic realm"
+  },
+  {
+    cat: "exorcism",
+    name: "The Mute Demoniac",
+    refs: [
+      { gospel: "mt", cite: "Mt 9:32–34" }
+    ]
+  },
+  {
+    cat: "exorcism",
+    name: "The Blind and Mute Demoniac",
+    refs: [
+      { gospel: "mt", cite: "Mt 12:22–23" },
+      { gospel: "lk", cite: "Lk 11:14" }
+    ],
+    note: "Provoked the Beelzebul controversy — \"If I by the Spirit of God cast out demons…\""
+  },
+  {
+    cat: "exorcism",
+    name: "The Demoniac in the Synagogue at Capernaum",
+    refs: [
+      { gospel: "mk", cite: "Mk 1:23–28" },
+      { gospel: "lk", cite: "Lk 4:33–37" }
+    ],
+    note: "\"I know who you are — the Holy One of God!\" — even demons confess Christ's identity"
+  },
+  {
+    cat: "exorcism",
+    name: "The Epileptic/Demoniac Boy",
+    refs: [
+      { gospel: "mt", cite: "Mt 17:14–21" },
+      { gospel: "mk", cite: "Mk 9:14–29" },
+      { gospel: "lk", cite: "Lk 9:37–43" }
+    ],
+    note: "\"This kind comes out only by prayer and fasting\" — a foundation for ascetical theology"
+  },
+  {
+    cat: "exorcism",
+    name: "The Syrophoenician Woman's Daughter",
+    refs: [
+      { gospel: "mk", cite: "Mk 7:25–30" }
+    ],
+    note: "Exorcism at a distance; the Gentile woman's extraordinary faith"
+  },
+
+  // ═══════════════════════════════════════════
+  // RAISING THE DEAD (3)
+  // ═══════════════════════════════════════════
+  {
+    cat: "resurrection",
+    name: "Raising of Jairus's Daughter",
+    refs: [
+      { gospel: "mt", cite: "Mt 9:18–26" },
+      { gospel: "mk", cite: "Mk 5:21–43" },
+      { gospel: "lk", cite: "Lk 8:40–56" }
+    ],
+    note: "\"Talitha koum\" — she had just died; the first of three raisings"
+  },
+  {
+    cat: "resurrection",
+    name: "Raising of the Widow's Son at Nain",
+    refs: [
+      { gospel: "lk", cite: "Lk 7:11–17" }
+    ],
+    note: "Being carried to burial — echoing Elijah's raising of the widow's son (1 Kgs 17)"
+  },
+  {
+    cat: "resurrection",
+    name: "Raising of Lazarus",
+    refs: [
+      { gospel: "jn", cite: "Jn 11:1–44" }
+    ],
+    note: "Four days dead — \"I am the Resurrection and the Life.\" The climactic sign of John's Gospel"
+  },
+
+  // ═══════════════════════════════════════════
+  // PROVISION MIRACLES (2)
+  // ═══════════════════════════════════════════
+  {
+    cat: "provision",
+    name: "Feeding of the Five Thousand",
+    refs: [
+      { gospel: "mt", cite: "Mt 14:13–21" },
+      { gospel: "mk", cite: "Mk 6:30–44" },
+      { gospel: "lk", cite: "Lk 9:10–17" },
+      { gospel: "jn", cite: "Jn 6:1–15" }
+    ],
+    note: "The only miracle in all four Gospels — directly prefiguring the Eucharist; 12 baskets remain, one for each Apostle"
+  },
+  {
+    cat: "provision",
+    name: "Feeding of the Four Thousand",
+    refs: [
+      { gospel: "mt", cite: "Mt 15:32–39" },
+      { gospel: "mk", cite: "Mk 8:1–10" }
+    ],
+    note: "7 baskets remain — traditionally linked to the 7 Gentile nations and the universality of God's provision"
+  }
+];
+
+const catMeta = {
+  healing: { icon: "✙", label: "Physical Healings", desc: "Restorations of bodily health", color: "#1B5E20" },
+  nature: { icon: "☀", label: "Authority over Nature", desc: "Sovereign command over the created order", color: "#0D47A1" },
+  exorcism: { icon: "⚔", label: "Exorcisms", desc: "Victories over the demonic realm", color: "#4A148C" },
+  resurrection: { icon: "☧", label: "Raising the Dead", desc: "Foreshadowing the general Resurrection", color: "#8B1A1A" },
+  provision: { icon: "🍞", label: "Miraculous Provision", desc: "Feeding the multitudes — Eucharistic signs", color: "#BF360C" }
+};
+
+const catOrder = ["healing", "nature", "exorcism", "resurrection", "provision"];
+
+// Count miracles per category
+const catCounts = {};
+const total = miracles.length;
+catOrder.forEach(cat => {
+  catCounts[cat] = miracles.filter(m => m.cat === cat).length;
+});
+
+// ── Pie Chart ──
+function polarToCart(cx, cy, r, angleDeg) {
+  const rad = (angleDeg - 90) * Math.PI / 180;
+  return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+}
+
+function drawPie(activeCat) {
+  const svg = document.getElementById('pie-svg');
+  const cx = 150, cy = 150, r = 130;
+  let startAngle = 0;
+  let paths = '';
+
+  catOrder.forEach(cat => {
+    const count = catCounts[cat];
+    const slice = (count / total) * 360;
+    const endAngle = startAngle + slice;
+    const largeArc = slice > 180 ? 1 : 0;
+
+    const s = polarToCart(cx, cy, r, startAngle);
+    const e = polarToCart(cx, cy, r, endAngle);
+
+    const isHighlighted = activeCat === cat;
+    const isDimmed = activeCat !== 'all' && activeCat !== cat;
+
+    const cls = isHighlighted ? 'highlighted' : (isDimmed ? 'dimmed' : '');
+
+    paths += `<path class="pie-slice ${cls}" data-cat="${cat}"
+      d="M ${cx} ${cy} L ${s.x} ${s.y} A ${r} ${r} 0 ${largeArc} 1 ${e.x} ${e.y} Z"
+      fill="${catMeta[cat].color}"
+      stroke="rgba(245,240,232,0.9)" stroke-width="2" />`;
+
+    startAngle = endAngle;
+  });
+
+  svg.innerHTML = paths;
+
+  // Attach click handlers to slices
+  svg.querySelectorAll('.pie-slice').forEach(slice => {
+    slice.addEventListener('click', () => {
+      const cat = slice.dataset.cat;
+      const currentActive = document.querySelector('.filter-btn.active')?.dataset.cat;
+      const newCat = currentActive === cat ? 'all' : cat;
+      setActiveFilter(newCat);
+    });
+  });
+
+  // Update center label
+  const centerNum = document.getElementById('pie-center-num');
+  if (activeCat === 'all') {
+    centerNum.textContent = total;
+    centerNum.style.color = 'var(--crimson)';
+  } else {
+    centerNum.textContent = catCounts[activeCat];
+    centerNum.style.color = catMeta[activeCat].color;
+  }
+}
+
+function buildLegend(activeCat) {
+  const legend = document.getElementById('pie-legend');
+  legend.innerHTML = catOrder.map(cat => {
+    const count = catCounts[cat];
+    const pct = Math.round((count / total) * 100);
+    const isActive = activeCat === cat;
+    return `
+      <div class="legend-item ${isActive ? 'active' : ''}" data-cat="${cat}">
+        <div class="legend-swatch" style="background:${catMeta[cat].color}"></div>
+        <span class="legend-label">${catMeta[cat].label}</span>
+        <span class="legend-count">${count}</span>
+        <span class="legend-pct">${pct}%</span>
+      </div>
+    `;
+  }).join('');
+
+  legend.querySelectorAll('.legend-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const cat = item.dataset.cat;
+      const currentActive = document.querySelector('.filter-btn.active')?.dataset.cat;
+      const newCat = currentActive === cat ? 'all' : cat;
+      setActiveFilter(newCat);
+    });
+  });
+}
+
+// ── Unified filter control ──
+function setActiveFilter(cat) {
+  // Update buttons
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.querySelector(`.filter-btn[data-cat="${cat}"]`);
+  if (btn) btn.classList.add('active');
+
+  // Update pie + legend + list
+  drawPie(cat);
+  buildLegend(cat);
+  renderMiracles(cat);
+}
+
+function renderMiracles(filter) {
+  const container = document.getElementById('miracles-container');
+  container.innerHTML = '';
+
+  const cats = filter === 'all' ? catOrder : [filter];
+  let totalShown = 0;
+
+  cats.forEach(cat => {
+    const items = miracles.filter(m => m.cat === cat);
+    if (items.length === 0) return;
+    totalShown += items.length;
+
+    const section = document.createElement('div');
+    section.className = 'category-section';
+    section.innerHTML = `
+      <div class="category-header ${cat}">
+        <div class="cat-icon ${cat}">${catMeta[cat].icon}</div>
+        <div class="cat-title-block">
+          <h2 class="${cat}">${catMeta[cat].label}</h2>
+          <span class="cat-count">${items.length} miracle${items.length > 1 ? 's' : ''} — ${catMeta[cat].desc}</span>
+        </div>
+      </div>
+      <div class="miracles-grid">
+        ${items.map((m, i) => `
+          <div class="miracle-card ${m.cat}" style="animation-delay: ${i * 0.05}s">
+            <div class="miracle-name">${m.name}</div>
+            <div class="miracle-refs">
+              ${m.refs.map(r => `<span class="gospel-tag ${r.gospel}">${r.gospel === 'acts' ? 'Acts' : r.gospel.charAt(0).toUpperCase() + r.gospel.slice(1)}</span>${r.cite}`).join(' &ensp;')}
+            </div>
+            ${m.note ? `<div class="miracle-note">${m.note}</div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    `;
+    container.appendChild(section);
+  });
+
+  document.getElementById('total-count').textContent = totalShown;
+}
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    setActiveFilter(btn.dataset.cat);
+  });
+});
+
+// Initial render
+setActiveFilter('all');
+</script>
+
+</body>
+</html>
