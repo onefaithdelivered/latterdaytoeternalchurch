@@ -3,508 +3,247 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Miracles of Jesus Christ — A Complete New Testament Reference</title>
+<title>The Miracles of Scripture — Prophets, Christ, and Apostles</title>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --crimson: #8B1A1A;
-    --crimson-light: #A52A2A;
-    --dark-gold: #B8860B;
-    --gold: #DAA520;
-    --light-gold: #F0D060;
-    --parchment: #F5F0E8;
-    --parchment-dark: #E8E0D0;
-    --parchment-deep: #D4C9B0;
-    --ink: #2C1810;
-    --ink-light: #4A3728;
-    --ink-faint: #7A6A5A;
+:root {
+  --crimson: #8B1A1A;
+  --dark-gold: #B8860B;
+  --gold: #DAA520;
+  --parchment: #F5F0E8;
+  --parchment-dark: #E8E0D0;
+  --parchment-deep: #D4C9B0;
+  --ink: #2C1810;
+  --ink-light: #4A3728;
+  --ink-faint: #7A6A5A;
 
-    /* Category Colors */
-    --healing: #1B5E20;
-    --healing-bg: rgba(27, 94, 32, 0.08);
-    --healing-border: rgba(27, 94, 32, 0.25);
-    --nature: #0D47A1;
-    --nature-bg: rgba(13, 71, 161, 0.08);
-    --nature-border: rgba(13, 71, 161, 0.25);
-    --exorcism: #4A148C;
-    --exorcism-bg: rgba(74, 20, 140, 0.08);
-    --exorcism-border: rgba(74, 20, 140, 0.25);
-    --resurrection: #8B1A1A;
-    --resurrection-bg: rgba(139, 26, 26, 0.08);
-    --resurrection-border: rgba(139, 26, 26, 0.25);
-    --provision: #BF360C;
-    --provision-bg: rgba(191, 54, 12, 0.08);
-    --provision-border: rgba(191, 54, 12, 0.25);
-  }
+  /* Era colors */
+  --era-ot: #1B5E20;
+  --era-ot-bg: rgba(27,94,32,0.07);
+  --era-jesus: #8B1A1A;
+  --era-jesus-bg: rgba(139,26,26,0.07);
+  --era-apostles: #0D47A1;
+  --era-apostles-bg: rgba(13,71,161,0.07);
+  --era-connect: #B8860B;
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: var(--parchment);
-    background-image:
-      radial-gradient(ellipse at 20% 50%, rgba(218,165,32,0.04) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 50%, rgba(139,26,26,0.03) 0%, transparent 60%);
-    color: var(--ink);
-    font-family: 'Source Serif 4', Georgia, serif;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
-
-  .page-wrapper {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 40px 24px 60px;
-  }
-
-  /* ── Header ── */
-  .header {
-    text-align: center;
-    margin-bottom: 48px;
-    position: relative;
-  }
-
-  .header-cross {
-    font-size: 28px;
-    color: var(--dark-gold);
-    margin-bottom: 8px;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.15);
-  }
-
-  .header h1 {
-    font-family: 'Cinzel Decorative', 'Cinzel', serif;
-    font-size: clamp(1.6rem, 4vw, 2.6rem);
-    font-weight: 700;
-    color: var(--crimson);
-    letter-spacing: 0.06em;
-    line-height: 1.25;
-    margin-bottom: 6px;
-  }
-
-  .header .subtitle {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(0.75rem, 1.8vw, 0.95rem);
-    font-weight: 600;
-    color: var(--dark-gold);
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .header-rule {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    margin: 16px auto;
-    max-width: 500px;
-  }
-  .header-rule::before,
-  .header-rule::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, transparent, var(--dark-gold), transparent);
-  }
-  .header-rule span {
-    color: var(--dark-gold);
-    font-size: 14px;
-  }
-
-  .header .intro {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: clamp(0.95rem, 2vw, 1.1rem);
-    color: var(--ink-light);
-    max-width: 680px;
-    margin: 0 auto;
-    line-height: 1.7;
-  }
-
-  /* ── Filter Bar ── */
-  .filter-bar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 36px;
-  }
-
-  .filter-btn {
-    font-family: 'Cinzel', serif;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 8px 18px;
-    border: 1.5px solid var(--parchment-deep);
-    border-radius: 3px;
-    background: white;
-    color: var(--ink-light);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  .filter-btn:hover {
-    border-color: var(--dark-gold);
-    color: var(--dark-gold);
-  }
-  .filter-btn.active {
-    background: var(--crimson);
-    border-color: var(--crimson);
-    color: white;
-  }
-  .filter-btn[data-cat="healing"].active { background: var(--healing); border-color: var(--healing); }
-  .filter-btn[data-cat="nature"].active { background: var(--nature); border-color: var(--nature); }
-  .filter-btn[data-cat="exorcism"].active { background: var(--exorcism); border-color: var(--exorcism); }
-  .filter-btn[data-cat="resurrection"].active { background: var(--resurrection); border-color: var(--resurrection); }
-  .filter-btn[data-cat="provision"].active { background: var(--provision); border-color: var(--provision); }
-
-  /* ── Summary Stats ── */
-  .stats-row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 6px 24px;
-    margin-bottom: 32px;
-    font-family: 'Cinzel', serif;
-    font-size: 0.78rem;
-    letter-spacing: 0.05em;
-    color: var(--ink-faint);
-  }
-  .stats-row .stat-num {
-    font-weight: 700;
-    color: var(--crimson);
-    font-size: 0.88rem;
-  }
-
-  /* ── Category Sections ── */
-  .category-section {
-    margin-bottom: 40px;
-    transition: opacity 0.4s ease, max-height 0.5s ease;
-  }
-  .category-section.hidden {
-    opacity: 0;
-    max-height: 0;
-    overflow: hidden;
-    margin: 0;
-  }
-
-  .category-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    margin-bottom: 18px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid;
-  }
-  .category-header.healing { border-color: var(--healing); }
-  .category-header.nature { border-color: var(--nature); }
-  .category-header.exorcism { border-color: var(--exorcism); }
-  .category-header.resurrection { border-color: var(--resurrection); }
-  .category-header.provision { border-color: var(--provision); }
-
-  .cat-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
-  }
-  .cat-icon.healing { background: var(--healing-bg); border: 1.5px solid var(--healing-border); }
-  .cat-icon.nature { background: var(--nature-bg); border: 1.5px solid var(--nature-border); }
-  .cat-icon.exorcism { background: var(--exorcism-bg); border: 1.5px solid var(--exorcism-border); }
-  .cat-icon.resurrection { background: var(--resurrection-bg); border: 1.5px solid var(--resurrection-border); }
-  .cat-icon.provision { background: var(--provision-bg); border: 1.5px solid var(--provision-border); }
-
-  .cat-title-block h2 {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(1rem, 2.5vw, 1.3rem);
-    font-weight: 700;
-    letter-spacing: 0.04em;
-  }
-  .cat-title-block h2.healing { color: var(--healing); }
-  .cat-title-block h2.nature { color: var(--nature); }
-  .cat-title-block h2.exorcism { color: var(--exorcism); }
-  .cat-title-block h2.resurrection { color: var(--resurrection); }
-  .cat-title-block h2.provision { color: var(--provision); }
-
-  .cat-title-block .cat-count {
-    font-family: 'Source Serif 4', serif;
-    font-size: 0.82rem;
-    color: var(--ink-faint);
-    font-style: italic;
-  }
-
-  /* ── Miracle Cards ── */
-  .miracles-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .miracle-card {
-    background: white;
-    border: 1px solid var(--parchment-deep);
-    border-left: 4px solid;
-    border-radius: 4px;
-    padding: 16px 20px;
-    transition: all 0.3s ease;
-    cursor: default;
-    animation: fadeSlide 0.4s ease forwards;
-    opacity: 0;
-  }
-  .miracle-card:hover {
-    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    transform: translateX(3px);
-  }
-  .miracle-card.healing { border-left-color: var(--healing); }
-  .miracle-card.nature { border-left-color: var(--nature); }
-  .miracle-card.exorcism { border-left-color: var(--exorcism); }
-  .miracle-card.resurrection { border-left-color: var(--resurrection); }
-  .miracle-card.provision { border-left-color: var(--provision); }
-
-  @keyframes fadeSlide {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .miracle-card .miracle-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-
-  .miracle-card .miracle-refs {
-    font-family: 'Source Serif 4', serif;
-    font-size: 0.82rem;
-    color: var(--ink-faint);
-    line-height: 1.5;
-  }
-  .miracle-card .miracle-refs .gospel-tag {
-    display: inline-block;
-    font-family: 'Cinzel', serif;
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 1px 6px;
-    border-radius: 2px;
-    margin-right: 3px;
-    vertical-align: middle;
-  }
-  .gospel-tag.mt { background: #E8F5E9; color: #2E7D32; }
-  .gospel-tag.mk { background: #E3F2FD; color: #1565C0; }
-  .gospel-tag.lk { background: #FFF3E0; color: #E65100; }
-  .gospel-tag.jn { background: #F3E5F5; color: #6A1B9A; }
-  .gospel-tag.acts { background: #FAFAFA; color: #424242; }
-
-  .miracle-card .miracle-note {
-    font-size: 0.8rem;
-    font-style: italic;
-    color: var(--ink-faint);
-    margin-top: 6px;
-    padding-top: 6px;
-    border-top: 1px dashed var(--parchment-deep);
-  }
-
-  /* ── Footer ── */
-  .chart-footer {
-    margin-top: 48px;
-    padding-top: 24px;
-    border-top: 2px solid var(--dark-gold);
-    text-align: center;
-  }
-  .chart-footer p {
-    font-family: 'Source Serif 4', serif;
-    font-size: 0.85rem;
-    color: var(--ink-faint);
-    line-height: 1.7;
-    max-width: 700px;
-    margin: 0 auto 8px;
-  }
-  .chart-footer .site-tag {
-    font-family: 'Cinzel', serif;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    color: var(--dark-gold);
-    text-transform: uppercase;
-    margin-top: 16px;
-  }
-
-  /* ── Outer border decoration ── */
-  .outer-border {
-    border: 2px solid var(--dark-gold);
-    outline: 1px solid rgba(184,134,11,0.3);
-    outline-offset: 4px;
-    padding: 32px clamp(16px, 3vw, 40px);
-    background: rgba(255,255,255,0.35);
-    position: relative;
-  }
-  .outer-border::before,
-  .outer-border::after {
-    content: '✦';
-    position: absolute;
-    color: var(--dark-gold);
-    font-size: 12px;
-    opacity: 0.6;
-  }
-  .outer-border::before { top: 8px; left: 12px; }
-  .outer-border::after { bottom: 8px; right: 12px; }
-
-  /* ── Pie Chart ── */
-  .pie-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(24px, 4vw, 48px);
-    margin-bottom: 32px;
-    flex-wrap: wrap;
-  }
-
-  .pie-chart-wrap {
-    position: relative;
-    width: 240px;
-    height: 240px;
-    flex-shrink: 0;
-  }
-
-  .pie-chart-wrap svg {
-    width: 100%;
-    height: 100%;
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
-  }
-
-  .pie-slice {
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
-    cursor: pointer;
-    transform-origin: 150px 150px;
-  }
-  .pie-slice:hover {
-    filter: brightness(1.1);
-  }
-  .pie-slice.highlighted {
-    transform: scale(1.06);
-    filter: brightness(1.08) drop-shadow(0 2px 6px rgba(0,0,0,0.2));
-  }
-  .pie-slice.dimmed {
-    opacity: 0.3;
-  }
-
-  .pie-center-label {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    pointer-events: none;
-    background: rgba(255,255,255,0.88);
-    border-radius: 50%;
-    width: 96px;
-    height: 96px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: inset 0 0 8px rgba(0,0,0,0.06);
-  }
-  .pie-center-num {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--crimson);
-    line-height: 1.1;
-    transition: color 0.3s ease;
-  }
-  .pie-center-word {
-    font-family: 'Cinzel', serif;
-    font-size: 0.55rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-  }
-
-  .pie-legend {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    padding: 6px 14px 6px 10px;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    border: 1.5px solid transparent;
-  }
-  .legend-item:hover {
-    background: rgba(0,0,0,0.03);
-  }
-  .legend-item.active {
-    background: rgba(255,255,255,0.7);
-    border-color: var(--parchment-deep);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-  }
-
-  .legend-swatch {
-    width: 14px;
-    height: 14px;
-    border-radius: 3px;
-    flex-shrink: 0;
-    transition: transform 0.3s ease;
-  }
-  .legend-item.active .legend-swatch {
-    transform: scale(1.2);
-  }
-
-  .legend-label {
-    font-family: 'Cinzel', serif;
-    font-size: 0.76rem;
-    font-weight: 600;
-    color: var(--ink-light);
-    letter-spacing: 0.03em;
-    line-height: 1.2;
-  }
-  .legend-count {
-    font-family: 'Source Serif 4', serif;
-    font-size: 0.78rem;
-    color: var(--ink-faint);
-    margin-left: auto;
-    padding-left: 12px;
-  }
-  .legend-pct {
-    font-family: 'Cinzel', serif;
-    font-size: 0.68rem;
-    font-weight: 700;
-    color: var(--ink-faint);
-    min-width: 36px;
-    text-align: right;
-  }
-
-  /* ── Responsive ── */
-  @media (max-width: 600px) {
-    .page-wrapper { padding: 20px 12px 40px; }
-    .outer-border { padding: 20px 14px; }
-    .miracle-card { padding: 12px 14px; }
-    .cat-icon { width: 36px; height: 36px; font-size: 16px; }
-    .filter-btn { padding: 6px 12px; font-size: 0.65rem; }
-    .pie-chart-wrap { width: 200px; height: 200px; }
-    .pie-center-label { width: 80px; height: 80px; }
-    .pie-center-num { font-size: 1.3rem; }
-    .pie-section { gap: 16px; }
-  }
-
-/* ── Back Button ── */
-.back-bar {
-  padding: 12px clamp(16px, 4vw, 40px);
+  /* Type colors */
+  --type-healing: #2E7D32;
+  --type-nature: #1565C0;
+  --type-provision: #E65100;
+  --type-judgment: #8B1A1A;
+  --type-deliverance: #4A148C;
+  --type-raising: #AD1457;
+  --type-exorcism: #6A1B9A;
 }
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--parchment);
+  background-image: radial-gradient(ellipse at 20% 40%, rgba(218,165,32,0.03) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 60%, rgba(139,26,26,0.02) 0%, transparent 55%);
+  color: var(--ink); font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.65; min-height: 100vh; -webkit-font-smoothing: antialiased;
+}
+.page-wrapper { max-width: 1100px; margin: 0 auto; padding: 36px 18px 56px; }
+
+.outer-border {
+  border: 2px solid var(--dark-gold);
+  outline: 1px solid rgba(184,134,11,0.3); outline-offset: 4px;
+  padding: 32px clamp(12px, 3vw, 40px);
+  background: rgba(255,255,255,0.3); position: relative;
+}
+.outer-border::before, .outer-border::after { content:'✦'; position:absolute; color:var(--dark-gold); font-size:11px; opacity:.5; }
+.outer-border::before { top:8px; left:12px; }
+.outer-border::after { bottom:8px; right:12px; }
+
+/* Header */
+.header { text-align: center; margin-bottom: 32px; }
+.header-cross { font-size: 28px; color: var(--dark-gold); margin-bottom: 6px; }
+.header h1 {
+  font-family: 'Cinzel Decorative','Cinzel',serif;
+  font-size: clamp(1.3rem,3.5vw,2.2rem); font-weight:700;
+  color: var(--crimson); letter-spacing:.05em; line-height:1.25; margin-bottom:4px;
+}
+.header .subtitle {
+  font-family:'Cinzel',serif; font-size: clamp(.62rem,1.4vw,.82rem);
+  font-weight:600; color:var(--dark-gold); letter-spacing:.18em; text-transform:uppercase; margin-bottom:14px;
+}
+.header-rule { display:flex; align-items:center; justify-content:center; gap:14px; margin:12px auto; max-width:420px; }
+.header-rule::before,.header-rule::after { content:''; flex:1; height:1px; background:linear-gradient(to right,transparent,var(--dark-gold),transparent); }
+.header-rule span { color:var(--dark-gold); font-size:12px; }
+.header .intro {
+  font-family:'Playfair Display',serif; font-style:italic;
+  font-size: clamp(.88rem,1.7vw,1.02rem); color:var(--ink-light);
+  max-width:660px; margin:0 auto; line-height:1.7;
+}
+
+/* Era Tabs */
+.era-tabs {
+  display:flex; flex-wrap:wrap; justify-content:center; gap:6px; margin-bottom:8px;
+}
+.era-tab {
+  font-family:'Cinzel',serif; font-size:.64rem; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase;
+  padding:9px 18px; border:2px solid var(--parchment-deep); border-radius:3px;
+  background:white; color:var(--ink-faint); cursor:pointer; transition:all .3s;
+}
+.era-tab:hover { border-color:var(--dark-gold); }
+.era-tab.active { color:white; border-color:transparent; box-shadow:0 2px 8px rgba(0,0,0,.15); }
+.era-tab[data-era="ot"].active { background:var(--era-ot); }
+.era-tab[data-era="jesus"].active { background:var(--era-jesus); }
+.era-tab[data-era="apostles"].active { background:var(--era-apostles); }
+.era-tab[data-era="connections"].active { background:var(--era-connect); }
+
+/* Summary strip */
+.era-summary {
+  display:flex; justify-content:center; gap:24px; flex-wrap:wrap;
+  margin:12px 0 20px; font-family:'Cinzel',serif; font-size:.72rem;
+  letter-spacing:.04em; color:var(--ink-faint);
+}
+.era-summary .es-num { font-weight:700; font-size:.84rem; }
+.era-summary .es-num.ot { color:var(--era-ot); }
+.era-summary .es-num.jesus { color:var(--era-jesus); }
+.era-summary .es-num.apostles { color:var(--era-apostles); }
+
+/* Content container */
+#era-content { min-height: 200px; }
+
+/* Shared: type filter bar */
+.type-filter-bar {
+  display:flex; flex-wrap:wrap; justify-content:center; gap:6px; margin-bottom:20px;
+}
+.type-btn {
+  font-family:'Cinzel',serif; font-size:.56rem; font-weight:700;
+  letter-spacing:.07em; text-transform:uppercase;
+  padding:5px 12px; border:1.5px solid var(--parchment-deep); border-radius:2px;
+  background:white; color:var(--ink-faint); cursor:pointer; transition:all .3s;
+}
+.type-btn:hover { border-color:var(--dark-gold); }
+.type-btn.active { color:white; border-color:transparent; }
+
+/* Shared: pie + legend row */
+.viz-row {
+  display:flex; align-items:center; justify-content:center;
+  gap: clamp(16px,3vw,36px); flex-wrap:wrap; margin-bottom:24px;
+}
+.pie-box { position:relative; width:190px; height:190px; flex-shrink:0; }
+.pie-box svg { width:100%; height:100%; filter:drop-shadow(0 2px 6px rgba(0,0,0,.08)); }
+.pie-slice { transition: transform .4s cubic-bezier(.34,1.56,.64,1), opacity .4s; cursor:pointer; transform-origin:95px 95px; }
+.pie-slice.highlighted { transform:scale(1.06); filter:brightness(1.08) drop-shadow(0 2px 6px rgba(0,0,0,.2)); }
+.pie-slice.dimmed { opacity:.25; }
+.pie-center {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  text-align:center; pointer-events:none;
+  background:rgba(255,255,255,.88); border-radius:50%;
+  width:74px; height:74px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  box-shadow:inset 0 0 6px rgba(0,0,0,.05);
+}
+.pie-center-num { font-family:'Cinzel Decorative',serif; font-size:1.3rem; font-weight:700; color:var(--crimson); line-height:1.1; transition:color .3s; }
+.pie-center-word { font-family:'Cinzel',serif; font-size:.44rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-faint); }
+
+.pie-legend { display:flex; flex-direction:column; gap:6px; }
+.leg-row { display:flex; align-items:center; gap:7px; cursor:pointer; padding:3px 10px 3px 6px; border-radius:3px; transition:all .3s; border:1.5px solid transparent; }
+.leg-row:hover { background:rgba(0,0,0,.03); }
+.leg-row.active { background:rgba(255,255,255,.7); border-color:var(--parchment-deep); }
+.leg-sw { width:11px; height:11px; border-radius:2px; flex-shrink:0; }
+.leg-label { font-family:'Cinzel',serif; font-size:.64rem; font-weight:600; color:var(--ink-light); }
+.leg-count { font-family:'Source Serif 4',serif; font-size:.7rem; color:var(--ink-faint); margin-left:auto; padding-left:8px; }
+.leg-pct { font-family:'Cinzel',serif; font-size:.58rem; font-weight:700; color:var(--ink-faint); min-width:28px; text-align:right; }
+
+/* Worker section headers */
+.worker-section { margin-bottom:28px; }
+.worker-header {
+  display:flex; align-items:center; gap:10px;
+  margin-bottom:12px; padding-bottom:8px; border-bottom:2px solid var(--parchment-deep);
+}
+.worker-icon {
+  width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-size:16px; flex-shrink:0; background:rgba(0,0,0,.04); border:1.5px solid var(--parchment-deep);
+}
+.worker-name {
+  font-family:'Cinzel',serif; font-size: clamp(.9rem,2.2vw,1.15rem);
+  font-weight:700; letter-spacing:.03em;
+}
+.worker-count { font-family:'Source Serif 4',serif; font-size:.78rem; color:var(--ink-faint); font-style:italic; }
+
+/* Miracle cards */
+.miracles-grid { display:flex; flex-direction:column; gap:10px; }
+.m-card {
+  background:white; border:1px solid var(--parchment-deep); border-left:4px solid var(--dark-gold);
+  border-radius:4px; padding:14px 18px; transition:all .3s;
+  animation: cardSlide .4s ease forwards; opacity:0;
+}
+.m-card:hover { box-shadow:0 3px 12px rgba(0,0,0,.07); transform:translateX(3px); }
+@keyframes cardSlide { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+
+.m-card .m-name { font-family:'Playfair Display',serif; font-size:.95rem; font-weight:600; color:var(--ink); margin-bottom:3px; }
+.m-card .m-ref { font-family:'Source Serif 4',serif; font-size:.78rem; color:var(--ink-faint); font-style:italic; }
+.m-card .m-type-tag {
+  display:inline-block; font-family:'Cinzel',serif; font-size:.48rem; font-weight:700;
+  letter-spacing:.08em; text-transform:uppercase; padding:1px 6px; border-radius:2px;
+  margin-left:6px; vertical-align:middle;
+}
+.m-card .m-note {
+  font-size:.82rem; font-style:italic; color:var(--ink-light); margin-top:6px;
+  padding:7px 11px; background:linear-gradient(135deg,rgba(139,26,26,.03),rgba(218,165,32,.03));
+  border-left:3px solid var(--dark-gold); border-radius:0 4px 4px 0; line-height:1.6;
+}
+.m-card .m-note strong { color:var(--crimson); font-style:normal; font-weight:600; }
+
+/* Connection cards */
+.conn-card {
+  background:white; border:1px solid var(--parchment-deep); border-radius:6px;
+  margin-bottom:20px; overflow:hidden;
+  animation: cardSlide .4s ease forwards; opacity:0;
+}
+.conn-header {
+  padding:14px 20px; background:linear-gradient(135deg,rgba(184,134,11,.06),rgba(139,26,26,.04));
+  border-bottom:1px solid var(--parchment-deep);
+}
+.conn-theme {
+  font-family:'Cinzel',serif; font-size: clamp(.88rem,2.2vw,1.1rem);
+  font-weight:700; color:var(--dark-gold); letter-spacing:.03em; margin-bottom:2px;
+}
+.conn-subtitle { font-family:'Source Serif 4',serif; font-size:.82rem; color:var(--ink-faint); font-style:italic; }
+.conn-grid { display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:0; }
+.conn-cell { padding:14px 16px; }
+.conn-cell.ot-cell { background:rgba(27,94,32,.03); }
+.conn-cell.jesus-cell { background:rgba(139,26,26,.03); }
+.conn-cell.apost-cell { background:rgba(13,71,161,.03); }
+.conn-arrow {
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; color:var(--dark-gold); padding:0 4px;
+}
+.conn-cell .cc-era {
+  font-family:'Cinzel',serif; font-size:.5rem; font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase; margin-bottom:4px;
+}
+.conn-cell.ot-cell .cc-era { color:var(--era-ot); }
+.conn-cell.jesus-cell .cc-era { color:var(--era-jesus); }
+.conn-cell.apost-cell .cc-era { color:var(--era-apostles); }
+.conn-cell .cc-title { font-family:'Playfair Display',serif; font-size:.9rem; font-weight:600; color:var(--ink); margin-bottom:2px; line-height:1.3; }
+.conn-cell .cc-ref { font-size:.74rem; color:var(--ink-faint); font-style:italic; margin-bottom:4px; }
+.conn-cell .cc-text { font-size:.82rem; color:var(--ink-light); line-height:1.6; }
+.conn-theology {
+  padding:12px 20px; border-top:1px solid var(--parchment-deep);
+  background:linear-gradient(90deg,rgba(184,134,11,.04),rgba(139,26,26,.03));
+  font-size:.84rem; color:var(--ink-light); line-height:1.7; font-style:italic;
+}
+.conn-theology strong { color:var(--crimson); font-style:normal; font-weight:600; }
+.conn-escalation {
+  display:flex; align-items:center; justify-content:center; gap:6px;
+  padding:8px 20px; border-top:1px dashed var(--parchment-deep);
+  font-family:'Cinzel',serif; font-size:.54rem; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--dark-gold);
+}
+
+/* Footer */
+.chart-footer {
+  margin-top:40px; padding-top:18px; border-top:2px solid var(--dark-gold); text-align:center;
+}
+.chart-footer p { font-family:'Source Serif 4',serif; font-size:.8rem; color:var(--ink-faint); line-height:1.7; max-width:660px; margin:0 auto 6px; }
+.chart-footer .site-tag { font-family:'Cinzel',serif; font-size:.66rem; font-weight:600; letter-spacing:.15em; color:var(--dark-gold); text-transform:uppercase; margin-top:12px; }
+
 .back-link {
   display: inline-flex;
   align-items: center;
@@ -521,6 +260,7 @@
   border-radius: 3px;
   background: rgba(228,220,205,0.7);
   transition: all 0.25s ease;
+  margin-bottom: 16px;
 }
 .back-link:hover {
   color: #8B1A1A;
@@ -528,581 +268,492 @@
   background: rgba(228,220,205,0.95);
 }
 
+@media(max-width:700px){
+  .page-wrapper{padding:14px 8px 36px}
+  .outer-border{padding:18px 10px}
+  .era-tab{padding:6px 10px;font-size:.56rem}
+  .conn-grid{grid-template-columns:1fr;gap:0}
+  .conn-arrow{transform:rotate(90deg);padding:4px 0}
+  .pie-box{width:160px;height:160px}
+  .pie-center{width:62px;height:62px}
+  .pie-center-num{font-size:1.1rem}
+}
 </style>
 </head>
 <body>
-<div class="back-bar">
-  <a href="../biblical-reference-charts.html" class="back-link">← Biblical Reference Charts</a>
-</div>
-
 <div class="page-wrapper">
 <div class="outer-border">
 
-  <div class="header">
-    <div class="header-cross">☩</div>
-    <h1>The Miracles of Jesus Christ</h1>
-    <div class="subtitle">A Complete New Testament Reference</div>
-    <div class="header-rule"><span>✦</span></div>
-    <p class="intro">
-      "And there are also many other things which Jesus did, the which, if they should be written every one, I suppose that even the world itself could not contain the books that should be written."
-      — John 21:25
-    </p>
-  </div>
+<a href="../biblical-reference-charts.html" class="back-link">← Biblical Reference Charts</a>
 
-  <div class="filter-bar">
-    <button class="filter-btn active" data-cat="all">All Miracles</button>
-    <button class="filter-btn" data-cat="healing">Healings</button>
-    <button class="filter-btn" data-cat="nature">Nature</button>
-    <button class="filter-btn" data-cat="exorcism">Exorcisms</button>
-    <button class="filter-btn" data-cat="resurrection">Raising the Dead</button>
-    <button class="filter-btn" data-cat="provision">Provision</button>
-  </div>
+<div class="header">
+  <div class="header-cross">☩</div>
+  <h1>The Miracles of Scripture</h1>
+  <div class="subtitle">Prophets · Christ · Apostles — One God at Work</div>
+  <div class="header-rule"><span>✦</span></div>
+  <p class="intro">
+    The same God who parted the Red Sea through Moses walks on water in the person of Jesus 
+    and heals the lame through Peter's shadow. From Genesis to Acts, miracles reveal a 
+    single divine Author whose power escalates from servants to the Son to those who act in the Son's Name.
+  </p>
+</div>
 
-  <div class="pie-section">
-    <div class="pie-chart-wrap">
-      <svg id="pie-svg" viewBox="0 0 300 300"></svg>
-      <div class="pie-center-label">
-        <div class="pie-center-num" id="pie-center-num">37</div>
-        <div class="pie-center-word">Miracles</div>
-      </div>
-    </div>
-    <div class="pie-legend" id="pie-legend"></div>
-  </div>
+<div class="era-tabs">
+  <button class="era-tab active" data-era="ot">☞ Old Testament Prophets</button>
+  <button class="era-tab" data-era="jesus">✝ Jesus Christ</button>
+  <button class="era-tab" data-era="apostles">⚿ The Apostles</button>
+  <button class="era-tab" data-era="connections">⟷ Typological Connections</button>
+</div>
 
-  <div class="stats-row">
-    <span><span class="stat-num" id="total-count">37</span> recorded miracles</span>
-    <span>·</span>
-    <span><span class="stat-num">4</span> Gospels</span>
-    <span>·</span>
-    <span><span class="stat-num">5</span> categories</span>
-  </div>
+<div class="era-summary">
+  <span><span class="es-num ot" id="ot-total">0</span> OT Miracles</span>
+  <span>·</span>
+  <span><span class="es-num jesus" id="jesus-total">0</span> Christ's Miracles</span>
+  <span>·</span>
+  <span><span class="es-num apostles" id="apost-total">0</span> Apostolic Miracles</span>
+</div>
 
-  <div id="miracles-container"></div>
+<div id="era-content"></div>
 
-  <div class="chart-footer">
-    <p>This chart catalogues the individually narrated miracles of Jesus in the four Gospels. 
-       Summary statements (e.g., Mt 4:24, Mk 1:34, Lk 6:18–19) indicate Jesus performed 
-       many additional healings and exorcisms beyond those listed here. 
-       Christ's own Resurrection — the supreme miracle — stands in a category of its own 
-       as the foundation of the Christian faith (1 Cor 15:14).</p>
-  </div>
+<div class="chart-footer">
+  <p>This chart catalogues individually narrated miracles in Scripture, excluding summary 
+     statements. The pattern of escalation — prophets performing signs through God's power, 
+     Christ performing them by His own divine authority, and Apostles performing them "in the 
+     name of Jesus Christ" — demonstrates both the continuity of God's action and the unique 
+     supremacy of Christ. The Apostles' miracles authenticate their teaching authority and 
+     validate the Church they founded.</p>
 
 </div>
-</div>
+
+</div></div>
 
 <script>
-const miracles = [
-  // ═══════════════════════════════════════════
-  // HEALINGS (17)
-  // ═══════════════════════════════════════════
-  {
-    cat: "healing",
-    name: "Healing of the Leper",
-    refs: [
-      { gospel: "mt", cite: "Mt 8:1–4" },
-      { gospel: "mk", cite: "Mk 1:40–45" },
-      { gospel: "lk", cite: "Lk 5:12–16" }
-    ]
-  },
-  {
-    cat: "healing",
-    name: "Healing of the Centurion's Servant",
-    refs: [
-      { gospel: "mt", cite: "Mt 8:5–13" },
-      { gospel: "lk", cite: "Lk 7:1–10" }
-    ],
-    note: "Healed at a distance — prefiguring the universality of Christ's saving power"
-  },
-  {
-    cat: "healing",
-    name: "Healing of Peter's Mother-in-Law",
-    refs: [
-      { gospel: "mt", cite: "Mt 8:14–15" },
-      { gospel: "mk", cite: "Mk 1:29–31" },
-      { gospel: "lk", cite: "Lk 4:38–39" }
-    ]
-  },
-  {
-    cat: "healing",
-    name: "Healing of the Paralytic at Capernaum",
-    refs: [
-      { gospel: "mt", cite: "Mt 9:1–8" },
-      { gospel: "mk", cite: "Mk 2:1–12" },
-      { gospel: "lk", cite: "Lk 5:17–26" }
-    ],
-    note: "\"That you may know the Son of Man has authority on earth to forgive sins\" — linking miraculous healing to sacramental absolution"
-  },
-  {
-    cat: "healing",
-    name: "Healing of the Woman with a Hemorrhage",
-    refs: [
-      { gospel: "mt", cite: "Mt 9:20–22" },
-      { gospel: "mk", cite: "Mk 5:25–34" },
-      { gospel: "lk", cite: "Lk 8:43–48" }
-    ]
-  },
-  {
-    cat: "healing",
-    name: "Healing of Two Blind Men",
-    refs: [
-      { gospel: "mt", cite: "Mt 9:27–31" }
-    ]
-  },
-  {
-    cat: "healing",
-    name: "Healing of the Man with a Withered Hand",
-    refs: [
-      { gospel: "mt", cite: "Mt 12:9–14" },
-      { gospel: "mk", cite: "Mk 3:1–6" },
-      { gospel: "lk", cite: "Lk 6:6–11" }
-    ]
-  },
-  {
-    cat: "healing",
-    name: "Healing of the Canaanite Woman's Daughter",
-    refs: [
-      { gospel: "mt", cite: "Mt 15:21–28" },
-      { gospel: "mk", cite: "Mk 7:24–30" }
-    ]
-  },
-  {
-    cat: "healing",
-    name: "Healing of the Deaf-Mute",
-    refs: [
-      { gospel: "mk", cite: "Mk 7:31–37" }
-    ],
-    note: "\"Ephphatha\" — Jesus uses physical touch and spoken word, a sacramental pattern"
-  },
-  {
-    cat: "healing",
-    name: "Healing of the Blind Man at Bethsaida",
-    refs: [
-      { gospel: "mk", cite: "Mk 8:22–26" }
-    ],
-    note: "A progressive, two-stage healing — unique in the Gospels"
-  },
-  {
-    cat: "healing",
-    name: "Healing of Blind Bartimaeus",
-    refs: [
-      { gospel: "mt", cite: "Mt 20:29–34" },
-      { gospel: "mk", cite: "Mk 10:46–52" },
-      { gospel: "lk", cite: "Lk 18:35–43" }
-    ]
-  },
-  {
-    cat: "healing",
-    name: "Healing of the Man Born Blind",
-    refs: [
-      { gospel: "jn", cite: "Jn 9:1–41" }
-    ],
-    note: "A Johannine sign — uses clay and water, evoking both creation and baptism"
-  },
-  {
-    cat: "healing",
-    name: "Healing of the Infirm Man at Bethesda",
-    refs: [
-      { gospel: "jn", cite: "Jn 5:1–15" }
-    ]
-  },
-  {
-    cat: "healing",
-    name: "Healing of the Ten Lepers",
-    refs: [
-      { gospel: "lk", cite: "Lk 17:11–19" }
-    ],
-    note: "Only the Samaritan returned to give thanks — foreshadowing the Gentile Church"
-  },
-  {
-    cat: "healing",
-    name: "Healing of the Crippled Woman on the Sabbath",
-    refs: [
-      { gospel: "lk", cite: "Lk 13:10–17" }
-    ]
-  },
-  {
-    cat: "healing",
-    name: "Healing of the Man with Dropsy",
-    refs: [
-      { gospel: "lk", cite: "Lk 14:1–6" }
-    ]
-  },
-  {
-    cat: "healing",
-    name: "Restoration of Malchus's Ear",
-    refs: [
-      { gospel: "lk", cite: "Lk 22:50–51" },
-      { gospel: "jn", cite: "Jn 18:10" }
-    ],
-    note: "Christ's final healing miracle — performed on an enemy during His arrest"
-  },
-  {
-    cat: "healing",
-    name: "Healing of the Official's Son at Capernaum",
-    refs: [
-      { gospel: "jn", cite: "Jn 4:46–54" }
-    ],
-    note: "The second Johannine sign — healed at a distance by the power of Christ's word alone"
-  },
+// ═══════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════
 
-  // ═══════════════════════════════════════════
-  // NATURE MIRACLES (9)
-  // ═══════════════════════════════════════════
-  {
-    cat: "nature",
-    name: "Calming of the Storm",
-    refs: [
-      { gospel: "mt", cite: "Mt 8:23–27" },
-      { gospel: "mk", cite: "Mk 4:35–41" },
-      { gospel: "lk", cite: "Lk 8:22–25" }
-    ],
-    note: "\"What manner of man is this?\" — divine authority over creation itself"
-  },
-  {
-    cat: "nature",
-    name: "Walking on Water",
-    refs: [
-      { gospel: "mt", cite: "Mt 14:22–33" },
-      { gospel: "mk", cite: "Mk 6:45–52" },
-      { gospel: "jn", cite: "Jn 6:16–21" }
-    ],
-    note: "An Ego Eimi (\"I AM\") theophany — Jesus exercises the divine prerogative over the deep"
-  },
-  {
-    cat: "nature",
-    name: "The Transfiguration",
-    refs: [
-      { gospel: "mt", cite: "Mt 17:1–8" },
-      { gospel: "mk", cite: "Mk 9:2–8" },
-      { gospel: "lk", cite: "Lk 9:28–36" }
-    ],
-    note: "The unveiled glory of the Second Person — witnessed by Peter, James, and John"
-  },
-  {
-    cat: "nature",
-    name: "Cursing of the Fig Tree",
-    refs: [
-      { gospel: "mt", cite: "Mt 21:18–22" },
-      { gospel: "mk", cite: "Mk 11:12–14, 20–25" }
-    ],
-    note: "A prophetic sign-act against fruitless Israel; the only miracle of judgment"
-  },
-  {
-    cat: "nature",
-    name: "Water Changed to Wine at Cana",
-    refs: [
-      { gospel: "jn", cite: "Jn 2:1–11" }
-    ],
-    note: "The first Johannine sign — manifesting Christ's glory and prefiguring the Eucharist"
-  },
-  {
-    cat: "nature",
-    name: "First Miraculous Catch of Fish",
-    refs: [
-      { gospel: "lk", cite: "Lk 5:1–11" }
-    ],
-    note: "Peter's call — \"Depart from me, for I am a sinful man, O Lord\""
-  },
-  {
-    cat: "nature",
-    name: "Second Miraculous Catch of Fish",
-    refs: [
-      { gospel: "jn", cite: "Jn 21:1–14" }
-    ],
-    note: "Post-Resurrection; 153 fish — traditionally interpreted as the universality of the Church"
-  },
-  {
-    cat: "nature",
-    name: "Coin in the Fish's Mouth",
-    refs: [
-      { gospel: "mt", cite: "Mt 17:24–27" }
-    ],
-    note: "Temple tax miracle — Christ freely submits to the order He transcends"
-  },
-  {
-    cat: "nature",
-    name: "Withering of the Fig Tree (Immediate)",
-    refs: [
-      { gospel: "mt", cite: "Mt 21:19–20" }
-    ],
-    note: "Matthew's account emphasizes the immediate withering; teaching on faith and prayer"
-  },
+const typeColors = {
+  healing:"#2E7D32", nature:"#1565C0", provision:"#E65100",
+  judgment:"#8B1A1A", deliverance:"#4A148C", raising:"#AD1457", exorcism:"#6A1B9A"
+};
+const typeLabels = {
+  healing:"Healing", nature:"Nature/Power", provision:"Provision",
+  judgment:"Judgment", deliverance:"Deliverance", raising:"Raising the Dead", exorcism:"Exorcism"
+};
 
-  // ═══════════════════════════════════════════
-  // EXORCISMS (6)
-  // ═══════════════════════════════════════════
-  {
-    cat: "exorcism",
-    name: "The Gerasene Demoniac(s)",
-    refs: [
-      { gospel: "mt", cite: "Mt 8:28–34" },
-      { gospel: "mk", cite: "Mk 5:1–20" },
-      { gospel: "lk", cite: "Lk 8:26–39" }
-    ],
-    note: "\"Legion\" — Christ's absolute authority over the demonic realm"
-  },
-  {
-    cat: "exorcism",
-    name: "The Mute Demoniac",
-    refs: [
-      { gospel: "mt", cite: "Mt 9:32–34" }
-    ]
-  },
-  {
-    cat: "exorcism",
-    name: "The Blind and Mute Demoniac",
-    refs: [
-      { gospel: "mt", cite: "Mt 12:22–23" },
-      { gospel: "lk", cite: "Lk 11:14" }
-    ],
-    note: "Provoked the Beelzebul controversy — \"If I by the Spirit of God cast out demons…\""
-  },
-  {
-    cat: "exorcism",
-    name: "The Demoniac in the Synagogue at Capernaum",
-    refs: [
-      { gospel: "mk", cite: "Mk 1:23–28" },
-      { gospel: "lk", cite: "Lk 4:33–37" }
-    ],
-    note: "\"I know who you are — the Holy One of God!\" — even demons confess Christ's identity"
-  },
-  {
-    cat: "exorcism",
-    name: "The Epileptic/Demoniac Boy",
-    refs: [
-      { gospel: "mt", cite: "Mt 17:14–21" },
-      { gospel: "mk", cite: "Mk 9:14–29" },
-      { gospel: "lk", cite: "Lk 9:37–43" }
-    ],
-    note: "\"This kind comes out only by prayer and fasting\" — a foundation for ascetical theology"
-  },
-  {
-    cat: "exorcism",
-    name: "The Syrophoenician Woman's Daughter",
-    refs: [
-      { gospel: "mk", cite: "Mk 7:25–30" }
-    ],
-    note: "Exorcism at a distance; the Gentile woman's extraordinary faith"
-  },
+// OT MIRACLES
+const otMiracles = [
+  // MOSES
+  {w:"Moses",type:"nature",name:"The Burning Bush",ref:"Ex 3:1–6",note:"God's presence in fire — a theophany that prefigures Pentecost's tongues of flame"},
+  {w:"Moses",type:"nature",name:"Rod Turned to Serpent",ref:"Ex 4:1–5; 7:8–12"},
+  {w:"Moses",type:"judgment",name:"The Ten Plagues of Egypt",ref:"Ex 7:14–12:30",note:"Ten acts of divine judgment against the gods of Egypt, culminating in the death of the firstborn — a type of the <strong>Paschal sacrifice</strong>"},
+  {w:"Moses",type:"nature",name:"Parting of the Red Sea",ref:"Ex 14:15–31",note:"The foundational OT miracle — Israel passes through water from slavery to freedom. Paul calls this a <strong>baptism</strong> (1 Cor 10:2)"},
+  {w:"Moses",type:"healing",name:"Bitter Waters Made Sweet at Marah",ref:"Ex 15:22–25",note:"Moses casts a tree into bitter waters to heal them — the Fathers saw the <strong>wood of the Cross</strong> sweetening the bitterness of death"},
+  {w:"Moses",type:"provision",name:"Manna from Heaven",ref:"Ex 16:4–36",note:"Bread from heaven sustaining Israel for forty years — the primary <strong>Eucharistic type</strong> in Scripture (Jn 6:31–58)"},
+  {w:"Moses",type:"provision",name:"Quail Provided",ref:"Ex 16:13; Num 11:31–32"},
+  {w:"Moses",type:"provision",name:"Water from the Rock at Horeb",ref:"Ex 17:1–7",note:"Paul: \"The Rock was Christ\" (1 Cor 10:4) — water of <strong>baptism</strong> flowing from Christ's side"},
+  {w:"Moses",type:"nature",name:"Victory over Amalek (Arms Raised)",ref:"Ex 17:8–16",note:"Moses' outstretched arms forming a cross on the hilltop — one of the earliest typological images recognized by the Fathers"},
+  {w:"Moses",type:"nature",name:"The Theophany at Sinai",ref:"Ex 19:16–25",note:"Fire, thunder, the divine voice — <strong>Pentecost</strong> occurs on the anniversary of Sinai, fulfilling it"},
+  {w:"Moses",type:"judgment",name:"The Earth Swallows Korah's Rebellion",ref:"Num 16:28–35"},
+  {w:"Moses",type:"nature",name:"Aaron's Rod Buds",ref:"Num 17:1–11",note:"The dead wood that blooms — a sign of the <strong>true priesthood</strong>, kept in the Ark alongside the manna and the tablets"},
+  {w:"Moses",type:"healing",name:"The Bronze Serpent",ref:"Num 21:4–9",note:"Jesus explicitly identifies this as a type of His Crucifixion: \"As Moses lifted up the serpent…\" (Jn 3:14)"},
+  // JOSHUA
+  {w:"Joshua",type:"nature",name:"Parting of the Jordan",ref:"Josh 3:14–17",note:"Israel crosses the Jordan into the Promised Land — a <strong>baptismal</strong> image: passing through water into the inheritance of God's people"},
+  {w:"Joshua",type:"judgment",name:"The Walls of Jericho Fall",ref:"Josh 6:1–21"},
+  {w:"Joshua",type:"nature",name:"The Sun Stands Still at Gibeon",ref:"Josh 10:12–14",note:"\"There has been no day like it before or since\" — God commands creation itself on behalf of His people"},
+  {w:"Joshua",type:"judgment",name:"Hailstones from Heaven",ref:"Josh 10:11"},
+  // ELIJAH
+  {w:"Elijah",type:"provision",name:"Fed by Ravens at Cherith",ref:"1 Kgs 17:1–6"},
+  {w:"Elijah",type:"provision",name:"The Widow's Oil and Flour Never Fail",ref:"1 Kgs 17:7–16",note:"A Gentile widow sustained by miraculous provision — foreshadowing the <strong>universal reach</strong> of God's grace (Lk 4:25–26)"},
+  {w:"Elijah",type:"raising",name:"Raising the Widow's Son at Zarephath",ref:"1 Kgs 17:17–24",note:"The first raising of the dead in Scripture — Jesus echoes this at <strong>Nain</strong> (Lk 7:11–17), with Luke drawing deliberate parallels"},
+  {w:"Elijah",type:"nature",name:"Fire from Heaven on Mount Carmel",ref:"1 Kgs 18:30–39",note:"\"The Lord, He is God!\" — the contest with the prophets of Baal; the sacrificial fire consuming the offering prefigures the <strong>fire of the Holy Spirit</strong> descending upon the sacrifice of the Mass"},
+  {w:"Elijah",type:"provision",name:"Fed by the Angel in the Wilderness",ref:"1 Kgs 19:4–8",note:"Bread and water sustaining a forty-day journey — a direct type of the <strong>Eucharistic viaticum</strong>, the food for the journey toward God"},
+  {w:"Elijah",type:"judgment",name:"Fire Consumes the Soldiers",ref:"2 Kgs 1:9–14"},
+  {w:"Elijah",type:"nature",name:"Parting the Jordan",ref:"2 Kgs 2:8"},
+  {w:"Elijah",type:"nature",name:"Taken Up in the Chariot of Fire",ref:"2 Kgs 2:11",note:"Elijah does not die — he is taken bodily into heaven. A type of the <strong>Ascension</strong> and of the <strong>Assumption of Mary</strong>"},
+  // ELISHA
+  {w:"Elisha",type:"nature",name:"Parting the Jordan (Inherited Mantle)",ref:"2 Kgs 2:13–14",note:"Elisha inherits Elijah's authority — a type of <strong>apostolic succession</strong>: the mantle (charism) passes from one to the next"},
+  {w:"Elisha",type:"healing",name:"Purifying the Waters at Jericho",ref:"2 Kgs 2:19–22"},
+  {w:"Elisha",type:"judgment",name:"The Bears and the Mocking Youths",ref:"2 Kgs 2:23–25"},
+  {w:"Elisha",type:"provision",name:"Multiplying the Widow's Oil",ref:"2 Kgs 4:1–7"},
+  {w:"Elisha",type:"raising",name:"Raising the Shunammite's Son",ref:"2 Kgs 4:18–37",note:"Elisha lays upon the child, mouth to mouth, eyes to eyes — intimate, personal contact. Jesus raises the dead by <strong>a word alone</strong>: the escalation from prophet to God"},
+  {w:"Elisha",type:"healing",name:"Purifying the Poisoned Stew",ref:"2 Kgs 4:38–41"},
+  {w:"Elisha",type:"provision",name:"Multiplying Loaves for 100 Men",ref:"2 Kgs 4:42–44",note:"Twenty loaves feed a hundred with leftovers. Jesus feeds <strong>5,000 with five loaves</strong> — the escalation is staggering"},
+  {w:"Elisha",type:"healing",name:"Healing Naaman's Leprosy",ref:"2 Kgs 5:1–19",note:"A Gentile military commander healed by washing in the Jordan — a <strong>baptismal type</strong> (Lk 4:27). The Church Fathers universally see Naaman as a prefigurement of Gentile baptism"},
+  {w:"Elisha",type:"nature",name:"The Floating Axe Head",ref:"2 Kgs 6:1–7"},
+  {w:"Elisha",type:"nature",name:"Revealing the Chariots of Fire",ref:"2 Kgs 6:15–17"},
+  {w:"Elisha",type:"judgment",name:"Striking the Arameans with Blindness",ref:"2 Kgs 6:18–20"},
+  {w:"Elisha",type:"raising",name:"Dead Man Revived by Elisha's Bones",ref:"2 Kgs 13:20–21",note:"A posthumous miracle — the <strong>first-class relic</strong> of a holy man transmits God's power even after death. The theological basis for the Catholic veneration of relics"},
+  // DANIEL & COMPANIONS
+  {w:"Daniel",type:"deliverance",name:"The Three Young Men in the Fiery Furnace",ref:"Dan 3:19–27",note:"A fourth figure appears \"like a son of the gods\" — a Christophany. They emerge without even the smell of smoke"},
+  {w:"Daniel",type:"deliverance",name:"Daniel in the Lions' Den",ref:"Dan 6:16–23"},
+  {w:"Daniel",type:"nature",name:"The Handwriting on the Wall",ref:"Dan 5:1–30"},
+  // SAMSON
+  {w:"Samson",type:"nature",name:"Spirit-Empowered Feats of Strength",ref:"Judg 14–16",note:"Samson's strength comes from the Spirit of the Lord, not from himself — paralleling how the Apostles' miracles are performed \"in the name of Jesus,\" not by their own power"},
+  // SAMUEL / OTHERS
+  {w:"Samuel",type:"nature",name:"Thunder and Rain at Samuel's Word",ref:"1 Sam 12:16–18"},
+  {w:"Isaiah",type:"nature",name:"The Sundial of Ahaz Moves Backward",ref:"2 Kgs 20:8–11; Is 38:7–8"},
+  {w:"God directly",type:"judgment",name:"Destruction of 185,000 Assyrians",ref:"2 Kgs 19:35; Is 37:36"},
+  {w:"God directly",type:"nature",name:"Balaam's Donkey Speaks",ref:"Num 22:21–33"},
+  {w:"Jonah",type:"deliverance",name:"Jonah and the Great Fish",ref:"Jonah 1:17–2:10",note:"Jesus' only self-identified type of His death and Resurrection: \"As Jonah was three days… so will the Son of Man be\" (Mt 12:40)"}
+];
 
-  // ═══════════════════════════════════════════
-  // RAISING THE DEAD (3)
-  // ═══════════════════════════════════════════
-  {
-    cat: "resurrection",
-    name: "Raising of Jairus's Daughter",
-    refs: [
-      { gospel: "mt", cite: "Mt 9:18–26" },
-      { gospel: "mk", cite: "Mk 5:21–43" },
-      { gospel: "lk", cite: "Lk 8:40–56" }
-    ],
-    note: "\"Talitha koum\" — she had just died; the first of three raisings"
-  },
-  {
-    cat: "resurrection",
-    name: "Raising of the Widow's Son at Nain",
-    refs: [
-      { gospel: "lk", cite: "Lk 7:11–17" }
-    ],
-    note: "Being carried to burial — echoing Elijah's raising of the widow's son (1 Kgs 17)"
-  },
-  {
-    cat: "resurrection",
-    name: "Raising of Lazarus",
-    refs: [
-      { gospel: "jn", cite: "Jn 11:1–44" }
-    ],
-    note: "Four days dead — \"I am the Resurrection and the Life.\" The climactic sign of John's Gospel"
-  },
+// JESUS' MIRACLES
+const jesusMiracles = [
+  {w:"Jesus",type:"healing",name:"Healing of the Leper",ref:"Mt 8:1–4; Mk 1:40–45; Lk 5:12–16"},
+  {w:"Jesus",type:"healing",name:"Healing of the Centurion's Servant",ref:"Mt 8:5–13; Lk 7:1–10",note:"Healed at a distance — the centurion's words enter the Mass: <strong>\"Lord, I am not worthy…\"</strong>"},
+  {w:"Jesus",type:"healing",name:"Healing of Peter's Mother-in-Law",ref:"Mt 8:14–15; Mk 1:29–31; Lk 4:38–39"},
+  {w:"Jesus",type:"healing",name:"Healing of the Paralytic at Capernaum",ref:"Mt 9:1–8; Mk 2:1–12; Lk 5:17–26",note:"\"That you may know the Son of Man has <strong>authority to forgive sins</strong>\" — linking healing to sacramental absolution"},
+  {w:"Jesus",type:"healing",name:"Healing of the Woman with a Hemorrhage",ref:"Mt 9:20–22; Mk 5:25–34; Lk 8:43–48"},
+  {w:"Jesus",type:"healing",name:"Healing of Two Blind Men",ref:"Mt 9:27–31"},
+  {w:"Jesus",type:"healing",name:"Healing of the Man with a Withered Hand",ref:"Mt 12:9–14; Mk 3:1–6; Lk 6:6–11"},
+  {w:"Jesus",type:"healing",name:"Healing of the Canaanite Woman's Daughter",ref:"Mt 15:21–28; Mk 7:24–30"},
+  {w:"Jesus",type:"healing",name:"Healing of the Deaf-Mute",ref:"Mk 7:31–37"},
+  {w:"Jesus",type:"healing",name:"Healing of the Blind Man at Bethsaida",ref:"Mk 8:22–26"},
+  {w:"Jesus",type:"healing",name:"Healing of Blind Bartimaeus",ref:"Mt 20:29–34; Mk 10:46–52; Lk 18:35–43"},
+  {w:"Jesus",type:"healing",name:"Healing of the Man Born Blind",ref:"Jn 9:1–41",note:"Clay and water — evoking creation and <strong>Baptism</strong>"},
+  {w:"Jesus",type:"healing",name:"Healing of the Infirm Man at Bethesda",ref:"Jn 5:1–15"},
+  {w:"Jesus",type:"healing",name:"Healing of the Ten Lepers",ref:"Lk 17:11–19"},
+  {w:"Jesus",type:"healing",name:"Healing of the Crippled Woman",ref:"Lk 13:10–17"},
+  {w:"Jesus",type:"healing",name:"Healing of the Man with Dropsy",ref:"Lk 14:1–6"},
+  {w:"Jesus",type:"healing",name:"Restoration of Malchus's Ear",ref:"Lk 22:50–51"},
+  {w:"Jesus",type:"healing",name:"Healing of the Official's Son",ref:"Jn 4:46–54"},
+  {w:"Jesus",type:"nature",name:"Calming of the Storm",ref:"Mt 8:23–27; Mk 4:35–41; Lk 8:22–25",note:"\"What manner of man is this?\" — authority over creation reserved to <strong>God alone</strong>"},
+  {w:"Jesus",type:"nature",name:"Walking on Water",ref:"Mt 14:22–33; Mk 6:45–52; Jn 6:16–21",note:"An <strong>Ego Eimi theophany</strong> — \"I AM; do not be afraid\""},
+  {w:"Jesus",type:"nature",name:"The Transfiguration",ref:"Mt 17:1–8; Mk 9:2–8; Lk 9:28–36"},
+  {w:"Jesus",type:"nature",name:"Cursing of the Fig Tree",ref:"Mt 21:18–22; Mk 11:12–14, 20–25"},
+  {w:"Jesus",type:"nature",name:"Water Changed to Wine at Cana",ref:"Jn 2:1–11",note:"The first sign — <strong>Eucharistic</strong> prefigurement: water of purification becomes the wine of the New Covenant"},
+  {w:"Jesus",type:"nature",name:"First Miraculous Catch of Fish",ref:"Lk 5:1–11"},
+  {w:"Jesus",type:"nature",name:"Second Miraculous Catch of Fish",ref:"Jn 21:1–14",note:"Post-Resurrection; <strong>153 fish</strong> — the universality of the Church"},
+  {w:"Jesus",type:"nature",name:"Coin in the Fish's Mouth",ref:"Mt 17:24–27"},
+  {w:"Jesus",type:"exorcism",name:"The Gerasene Demoniac(s)",ref:"Mt 8:28–34; Mk 5:1–20; Lk 8:26–39"},
+  {w:"Jesus",type:"exorcism",name:"The Mute Demoniac",ref:"Mt 9:32–34"},
+  {w:"Jesus",type:"exorcism",name:"The Blind and Mute Demoniac",ref:"Mt 12:22–23; Lk 11:14"},
+  {w:"Jesus",type:"exorcism",name:"The Demoniac in the Synagogue",ref:"Mk 1:23–28; Lk 4:33–37"},
+  {w:"Jesus",type:"exorcism",name:"The Epileptic/Demoniac Boy",ref:"Mt 17:14–21; Mk 9:14–29; Lk 9:37–43"},
+  {w:"Jesus",type:"exorcism",name:"The Syrophoenician Woman's Daughter",ref:"Mk 7:25–30"},
+  {w:"Jesus",type:"raising",name:"Raising of Jairus's Daughter",ref:"Mt 9:18–26; Mk 5:21–43; Lk 8:40–56"},
+  {w:"Jesus",type:"raising",name:"Raising of the Widow's Son at Nain",ref:"Lk 7:11–17",note:"Deliberately echoing <strong>Elijah at Zarephath</strong> — but Jesus raises by a word, not by physical contact"},
+  {w:"Jesus",type:"raising",name:"Raising of Lazarus",ref:"Jn 11:1–44",note:"Four days dead — <strong>\"I AM the Resurrection and the Life\"</strong>"},
+  {w:"Jesus",type:"provision",name:"Feeding of the Five Thousand",ref:"Mt 14:13–21; Mk 6:30–44; Lk 9:10–17; Jn 6:1–15",note:"The only miracle in all four Gospels — direct <strong>Eucharistic</strong> prefigurement. Elisha fed 100; Jesus feeds 5,000"},
+  {w:"Jesus",type:"provision",name:"Feeding of the Four Thousand",ref:"Mt 15:32–39; Mk 8:1–10"}
+];
 
-  // ═══════════════════════════════════════════
-  // PROVISION MIRACLES (2)
-  // ═══════════════════════════════════════════
+// APOSTOLIC MIRACLES
+const apostolicMiracles = [
+  {w:"Peter",type:"healing",name:"Healing of the Lame Man at the Beautiful Gate",ref:"Acts 3:1–10",note:"\"In the <strong>name of Jesus Christ</strong> of Nazareth, rise up and walk\" — Peter heals not by his own power but by invoking Christ's authority. The pattern for all sacramental ministry"},
+  {w:"Peter",type:"judgment",name:"Death of Ananias and Sapphira",ref:"Acts 5:1–11",note:"Lying to the Holy Spirit brings death — the <strong>holiness of the Church</strong> is not merely aspirational but carries real consequences"},
+  {w:"Peter",type:"healing",name:"Shadow Healings",ref:"Acts 5:15–16",note:"Peter's very <strong>shadow</strong> heals the sick — paralleling the woman healed by touching Jesus' garment. Physical proximity to apostolic authority transmits grace, the logic behind <strong>sacramentals and relics</strong>"},
+  {w:"Peter",type:"healing",name:"Healing of Aeneas the Paralytic",ref:"Acts 9:32–35",note:"\"Jesus Christ heals you\" — Peter explicitly attributes the power to Christ, acting <strong>in persona Christi</strong>"},
+  {w:"Peter",type:"raising",name:"Raising of Tabitha (Dorcas)",ref:"Acts 9:36–42",note:"Peter kneels, prays, then commands: \"Tabitha, arise\" — echoing Jesus' \"Talitha koum.\" The parallel is unmistakable and deliberate"},
+  {w:"Peter",type:"deliverance",name:"Angel Frees Peter from Prison",ref:"Acts 12:6–11"},
+  {w:"Paul",type:"judgment",name:"Blinding of Elymas the Sorcerer",ref:"Acts 13:8–12",note:"Paul exercises authority over demonic opposition — the proconsul believes when he sees the sign"},
+  {w:"Paul",type:"healing",name:"Healing of the Cripple at Lystra",ref:"Acts 14:8–10",note:"The crowd tries to worship Paul as Hermes — he tears his garments and redirects glory to God"},
+  {w:"Paul",type:"exorcism",name:"Exorcism of the Slave Girl at Philippi",ref:"Acts 16:16–18",note:"\"I command you <strong>in the name of Jesus Christ</strong> to come out of her\" — the apostolic formula that the Church preserves in the Rite of Exorcism to this day"},
+  {w:"Paul & Silas",type:"deliverance",name:"Earthquake Opens the Prison at Philippi",ref:"Acts 16:25–26",note:"While Paul and Silas <strong>pray and sing hymns</strong> at midnight — worship precedes deliverance, the pattern of the liturgy"},
+  {w:"Paul",type:"healing",name:"Extraordinary Miracles at Ephesus (Handkerchiefs)",ref:"Acts 19:11–12",note:"Handkerchiefs and aprons from Paul's body heal the sick — the <strong>theological basis for second-class relics</strong> in Catholic practice. God works through physical objects connected to His saints"},
+  {w:"Paul",type:"raising",name:"Raising of Eutychus",ref:"Acts 20:7–12",note:"Eutychus falls during Paul's long sermon and dies. Paul embraces him and he lives — occurring during the <strong>\"breaking of bread\" on the first day of the week</strong> (Sunday Eucharist)"},
+  {w:"Paul",type:"deliverance",name:"Unharmed by the Viper on Malta",ref:"Acts 28:1–6",note:"Fulfilling Jesus' promise: \"They will pick up serpents… and it will not hurt them\" (Mk 16:18)"},
+  {w:"Paul",type:"healing",name:"Healing of Publius's Father on Malta",ref:"Acts 28:7–9"},
+  {w:"Philip",type:"exorcism",name:"Exorcisms and Healings in Samaria",ref:"Acts 8:6–7",note:"Philip — a deacon, not an Apostle — performs miracles, demonstrating that <strong>ordained ministers beyond the Twelve</strong> share in the Church's charismatic power"},
+  {w:"Stephen",type:"nature",name:"Signs and Wonders Performed by Stephen",ref:"Acts 6:8",note:"Stephen — also a deacon — performs great signs. Luke records this as summary rather than individual events, but the pattern is clear: the Spirit works through the <strong>ordained ministry at every level</strong>"},
+  {w:"The Apostles",type:"healing",name:"Signs and Wonders by the Apostles (collective)",ref:"Acts 2:43; 5:12",note:"\"Many signs and wonders were regularly done among the people <strong>by the hands of the apostles</strong>\" — Luke emphasizes that miraculous power is concentrated in the apostolic office"}
+];
+
+const allData = {ot:otMiracles, jesus:jesusMiracles, apostles:apostolicMiracles};
+
+// Update totals
+document.getElementById('ot-total').textContent = otMiracles.length;
+document.getElementById('jesus-total').textContent = jesusMiracles.length;
+document.getElementById('apost-total').textContent = apostolicMiracles.length;
+
+// ── CONNECTIONS DATA ──
+const connections = [
   {
-    cat: "provision",
-    name: "Feeding of the Five Thousand",
-    refs: [
-      { gospel: "mt", cite: "Mt 14:13–21" },
-      { gospel: "mk", cite: "Mk 6:30–44" },
-      { gospel: "lk", cite: "Lk 9:10–17" },
-      { gospel: "jn", cite: "Jn 6:1–15" }
-    ],
-    note: "The only miracle in all four Gospels — directly prefiguring the Eucharist; 12 baskets remain, one for each Apostle"
+    theme: "Raising the Dead",
+    subtitle: "From prophetic contact to a sovereign word to delegated authority",
+    ot: {title:"Elijah Raises the Widow's Son",ref:"1 Kgs 17:17–24",text:"Elijah stretches himself on the child three times and cries out to the Lord. The life returns — but only after prolonged physical contact and desperate prayer."},
+    jesus: {title:"Jesus Raises the Widow's Son at Nain",ref:"Lk 7:11–17",text:"Jesus touches the bier and says: <strong>\"Young man, I say to you, arise.\"</strong> No prayer. No physical process. A single word of command. Luke deliberately parallels the Elijah scene to highlight the difference."},
+    apost: {title:"Peter Raises Tabitha (Dorcas)",ref:"Acts 9:36–42",text:"Peter kneels and prays (like Elijah), then commands: \"Tabitha, arise\" (echoing Jesus). He <strong>combines prophetic dependence on God with dominical authority</strong> — the apostolic pattern."},
+    theology: "The escalation pattern is precise: Elijah <strong>begs God</strong> to raise the dead. Jesus <strong>commands death by His own authority</strong>. Peter <strong>prays to God, then commands in Jesus' name</strong>. This three-stage pattern reveals the relationship between prophetic, divine, and apostolic authority — and it is the exact structure of the Catholic sacramental system, where ordained ministers act <strong>in persona Christi</strong> by power received from Christ.",
+    escalation: "Prophet asks God → Christ commands as God → Apostle commands in Christ's name"
   },
   {
-    cat: "provision",
-    name: "Feeding of the Four Thousand",
-    refs: [
-      { gospel: "mt", cite: "Mt 15:32–39" },
-      { gospel: "mk", cite: "Mk 8:1–10" }
-    ],
-    note: "7 baskets remain — traditionally linked to the 7 Gentile nations and the universality of God's provision"
+    theme: "Multiplying Food for the Hungry",
+    subtitle: "From loaves for a hundred to bread for thousands to the Eucharistic feast",
+    ot: {title:"Elisha Feeds 100 with 20 Loaves",ref:"2 Kgs 4:42–44",text:"A man brings twenty barley loaves. Elisha says: \"Give to the people and let them eat, for the Lord says they shall eat and have some left.\" They eat, and there are leftovers."},
+    jesus: {title:"Jesus Feeds 5,000 with 5 Loaves",ref:"Jn 6:1–14",text:"Five loaves and two fish feed over 5,000 — <strong>fifty times</strong> the scale of Elisha's miracle, with far less to start. Twelve baskets remain. This leads directly to the Bread of Life discourse and the institution of the Eucharist."},
+    apost: {title:"The Breaking of Bread (The Eucharist)",ref:"Acts 2:42, 46; 20:7",text:"The Apostles perpetuate Christ's miraculous provision in the <strong>\"breaking of bread\"</strong> — the Eucharist celebrated in homes and on the first day of the week. The food that feeds the Church across all time and space."},
+    theology: "Elisha multiplies bread for 100. Jesus multiplies bread for 5,000 and then reveals it was a sign pointing to <strong>His own flesh as the true bread</strong> (Jn 6:51). The Apostles then distribute this bread sacramentally to the whole world. The Catholic Mass is the continuation of this miracle: Christ's body, broken and distributed, feeding every generation. The <strong>Eucharist is the multiplication of loaves made permanent</strong>.",
+    escalation: "20 loaves → 100 fed → 5 loaves → 5,000 fed → 1 Bread → the world fed"
+  },
+  {
+    theme: "Healing Paralytics and the Lame",
+    subtitle: "The same mercy, the same power, the same authority transmitted",
+    ot: {title:"Elisha Heals Naaman's Leprosy",ref:"2 Kgs 5:1–19",text:"Naaman must wash seven times in the Jordan — a physical, material act of obedience. He resists at first (\"Are not the rivers of Damascus better?\") but submits and is healed. His flesh becomes \"like the flesh of a little child.\""},
+    jesus: {title:"Jesus Heals the Paralytic at Capernaum",ref:"Mk 2:1–12",text:"Jesus first <strong>forgives the man's sins</strong>, then heals his paralysis as proof that He has authority to forgive. The miracle authenticates the invisible spiritual reality. \"Which is easier — to say 'Your sins are forgiven' or 'Rise and walk'?\""},
+    apost: {title:"Peter Heals the Lame Man at the Beautiful Gate",ref:"Acts 3:1–10",text:"Peter has no silver or gold but gives what he has: <strong>\"In the name of Jesus Christ of Nazareth, rise up and walk.\"</strong> The man leaps, walks, and enters the Temple praising God. The healing occurs at the Temple gate — the <strong>threshold of worship</strong>."},
+    theology: "Naaman is healed through <strong>material obedience</strong> (washing in water). Jesus heals by <strong>His own divine authority</strong>, linking physical healing to spiritual forgiveness. Peter heals by <strong>invoking Jesus' name</strong>. The pattern establishes the logic of the sacraments: God works through <strong>physical signs, authorized ministers, and the name/power of Christ</strong>. Catholic Confession follows this exact pattern — the priest acts in Christ's name to pronounce what Christ alone can accomplish: the forgiveness of sins.",
+    escalation: "Material obedience heals → Christ's word heals and forgives → Christ's name through the Apostle heals"
+  },
+  {
+    theme: "Mastery over Water",
+    subtitle: "The waters obey God through His servants, then obey God in person",
+    ot: {title:"Moses Parts the Red Sea",ref:"Ex 14:15–31",text:"Moses stretches his hand over the sea at God's command. The waters divide, Israel passes through, and the waters return to destroy Pharaoh's army. Moses is the <strong>instrument</strong>; God is the power."},
+    jesus: {title:"Jesus Walks on Water",ref:"Mt 14:22–33; Jn 6:16–21",text:"Jesus does not part the water — He <strong>walks on top of it</strong>. He does not stretch a hand at God's command — He acts by His own authority. He says: <strong>\"I AM; do not be afraid\"</strong> — the divine Name spoken over the deep, echoing Genesis 1."},
+    apost: {title:"Paul Survives the Shipwreck",ref:"Acts 27:21–44",text:"Paul does not command the sea, but God preserves him and all 276 passengers through the storm. Paul confidently declares: <strong>\"Not a hair is to perish from the head of any of you\"</strong> — apostolic assurance of God's providential protection."},
+    theology: "Moses <strong>divides</strong> the water by God's command. Jesus <strong>transcends</strong> the water by His own divine nature. Paul is <strong>preserved through</strong> the water by God's promise. The escalation reveals Christ's unique status: the prophets work under God's authority; Jesus <strong>exercises</strong> God's authority; the Apostles are protected by that same authority as they carry the gospel to the nations.",
+    escalation: "Moses divides by command → Jesus walks by His own authority → Paul is preserved by promise"
+  },
+  {
+    theme: "Casting Out Evil / Spiritual Authority",
+    subtitle: "From prophetic confrontation to divine command to delegated exorcism",
+    ot: {title:"Elijah Defeats the Prophets of Baal",ref:"1 Kgs 18:20–40",text:"Elijah confronts false worship on Mount Carmel. He prays, and fire falls from heaven consuming the sacrifice. The false prophets are defeated, but the contest is long, dramatic, and requires <strong>earnest prayer</strong>."},
+    jesus: {title:"Jesus Casts Out Legion",ref:"Mk 5:1–20",text:"A word is enough. The demons do not contest Jesus — they <strong>beg</strong> Him. \"What have you to do with me, Jesus, Son of the Most High God? I adjure you by God, do not torment me.\" The demons recognize His absolute authority before He speaks."},
+    apost: {title:"Paul Exorcises the Slave Girl at Philippi",ref:"Acts 16:16–18",text:"Paul, \"having become greatly annoyed,\" turns and says: <strong>\"I command you in the name of Jesus Christ to come out of her.\"</strong> The spirit departs immediately. The authority is Christ's; Paul is the instrument."},
+    theology: "Elijah confronts false spiritual power through prayer and dependence on God. Jesus exercises <strong>absolute sovereignty</strong> over the demonic realm — demons obey Him instantly. Paul exercises this same authority <strong>derivatively</strong>, \"in the name of Jesus Christ.\" The Catholic Rite of Exorcism preserves this exact pattern: the exorcist acts <strong>in persona Christi</strong>, commanding evil spirits by the authority of Christ transmitted through apostolic ordination.",
+    escalation: "Elijah prays and God acts → Jesus commands and demons obey → The Apostle commands in Jesus' name"
+  },
+  {
+    theme: "Relics and Physical Objects as Vehicles of Grace",
+    subtitle: "God's power transmitted through material things connected to His servants",
+    ot: {title:"Elisha's Bones Raise the Dead",ref:"2 Kgs 13:20–21",text:"A dead man's body touches Elisha's bones in the tomb and <strong>is revived</strong>. Even in death, the prophet's physical remains transmit God's power — the earliest biblical example of a <strong>first-class relic</strong>."},
+    jesus: {title:"The Woman Healed by Touching Jesus' Garment",ref:"Mk 5:25–34",text:"A woman suffering twelve years touches the hem of Jesus' cloak and is <strong>instantly healed</strong>. Jesus feels \"power go out from him.\" His physical body and even His clothing are <strong>vehicles of divine power</strong>."},
+    apost: {title:"Paul's Handkerchiefs and Aprons Heal",ref:"Acts 19:11–12",text:"Cloths that had touched Paul's skin are carried to the sick, and <strong>diseases and evil spirits depart</strong>. God works through physical objects connected to His apostle — <strong>second-class relics</strong> in apostolic practice."},
+    theology: "God works through <strong>matter</strong>. This principle — scandalous to any purely spiritual religion — runs from Elisha's bones through Jesus' garment to Paul's handkerchiefs. It is the deepest logic of the <strong>Incarnation</strong>: if God became flesh, then physical things can carry divine power. The Catholic sacramental system — water, oil, bread, wine, the laying on of hands — rests on this <strong>biblical materialism</strong>. Relics, sacramentals, holy water, blessed objects are not superstition — they are the continuation of a pattern established in Scripture itself.",
+    escalation: "Prophet's bones → Christ's garment → Apostle's cloths → Sacramental matter (water, oil, bread, wine)"
+  },
+  {
+    theme: "Authority Passed from Master to Successor",
+    subtitle: "The charism does not die with the man",
+    ot: {title:"Elijah's Mantle Passes to Elisha",ref:"2 Kgs 2:9–14",text:"Elisha asks for a \"double portion\" of Elijah's spirit. He receives Elijah's mantle and immediately parts the Jordan — <strong>proving the authority has transferred</strong>. The other prophets declare: \"The spirit of Elijah rests on Elisha.\""},
+    jesus: {title:"Jesus Commissions the Twelve",ref:"Mt 28:18–20; Jn 20:21–23",text:"\"As the Father has sent me, even so I am sending you.\" Jesus breathes the Holy Spirit upon them and gives them authority to <strong>forgive sins, baptize, and teach</strong>. The commissioning is sacramental — breath, words, and empowerment."},
+    apost: {title:"The Apostles Ordain Successors",ref:"Acts 6:6; 14:23; 2 Tim 1:6; Tit 1:5",text:"The Apostles lay hands on deacons, elders, and bishops. Paul tells Timothy: \"Fan into flame the gift of God that is in you <strong>through the laying on of my hands</strong>.\" The authority is transmitted physically, sacramentally, through an <strong>unbroken chain</strong>."},
+    theology: "The mantle of Elijah passed to Elisha. Christ's authority passed to the Apostles. The Apostles' authority passed to their successors by the laying on of hands. This is <strong>apostolic succession</strong> — not a Catholic invention but a biblical pattern established in the Old Testament and continued through the Church. The charism of authority does not die with the original holder; it is <strong>transmitted to the next generation</strong>. If this pattern is valid (and Scripture establishes it repeatedly), then an 1,800-year gap with no legitimate authority holders is typologically impossible.",
+    escalation: "Elijah's mantle → Elisha → Christ's commission → the Twelve → their successors → bishops today"
   }
 ];
 
-const catMeta = {
-  healing: { icon: "✙", label: "Physical Healings", desc: "Restorations of bodily health", color: "#1B5E20" },
-  nature: { icon: "☀", label: "Authority over Nature", desc: "Sovereign command over the created order", color: "#0D47A1" },
-  exorcism: { icon: "⚔", label: "Exorcisms", desc: "Victories over the demonic realm", color: "#4A148C" },
-  resurrection: { icon: "☧", label: "Raising the Dead", desc: "Foreshadowing the general Resurrection", color: "#8B1A1A" },
-  provision: { icon: "🍞", label: "Miraculous Provision", desc: "Feeding the multitudes — Eucharistic signs", color: "#BF360C" }
-};
+// ═══════════════════════════════════════════
+// RENDERING
+// ═══════════════════════════════════════════
 
-const catOrder = ["healing", "nature", "exorcism", "resurrection", "provision"];
-
-// Count miracles per category
-const catCounts = {};
-const total = miracles.length;
-catOrder.forEach(cat => {
-  catCounts[cat] = miracles.filter(m => m.cat === cat).length;
-});
-
-// ── Pie Chart ──
-function polarToCart(cx, cy, r, angleDeg) {
-  const rad = (angleDeg - 90) * Math.PI / 180;
-  return { x: cx + r * Math.cos(rad), y: cy + r * Math.sin(rad) };
+function getTypeCounts(list) {
+  const c = {};
+  list.forEach(m => { c[m.type] = (c[m.type]||0) + 1; });
+  return c;
+}
+function getWorkerCounts(list) {
+  const c = {};
+  list.forEach(m => { c[m.w] = (c[m.w]||0) + 1; });
+  return c;
 }
 
-function drawPie(activeCat) {
-  const svg = document.getElementById('pie-svg');
-  const cx = 150, cy = 150, r = 130;
-  let startAngle = 0;
-  let paths = '';
+function polarToCart(cx,cy,r,deg) {
+  const rad=(deg-90)*Math.PI/180;
+  return {x:cx+r*Math.cos(rad), y:cy+r*Math.sin(rad)};
+}
 
-  catOrder.forEach(cat => {
-    const count = catCounts[cat];
-    const slice = (count / total) * 360;
-    const endAngle = startAngle + slice;
-    const largeArc = slice > 180 ? 1 : 0;
-
-    const s = polarToCart(cx, cy, r, startAngle);
-    const e = polarToCart(cx, cy, r, endAngle);
-
-    const isHighlighted = activeCat === cat;
-    const isDimmed = activeCat !== 'all' && activeCat !== cat;
-
-    const cls = isHighlighted ? 'highlighted' : (isDimmed ? 'dimmed' : '');
-
-    paths += `<path class="pie-slice ${cls}" data-cat="${cat}"
-      d="M ${cx} ${cy} L ${s.x} ${s.y} A ${r} ${r} 0 ${largeArc} 1 ${e.x} ${e.y} Z"
-      fill="${catMeta[cat].color}"
-      stroke="rgba(245,240,232,0.9)" stroke-width="2" />`;
-
-    startAngle = endAngle;
+function buildPie(svgId, counts, total, activeType, eraColor) {
+  const svg = document.getElementById(svgId);
+  if(!svg) return;
+  const cx=95,cy=95,r=85;
+  let start=0; let paths='';
+  const types = Object.keys(counts).sort((a,b)=>counts[b]-counts[a]);
+  types.forEach(t => {
+    const slice = (counts[t]/total)*360;
+    const end = start+slice;
+    const large = slice>180?1:0;
+    const s = polarToCart(cx,cy,r,start);
+    const e = polarToCart(cx,cy,r,end);
+    const hl = activeType===t;
+    const dm = activeType!=='all' && activeType!==t;
+    paths += `<path class="pie-slice ${hl?'highlighted':''} ${dm?'dimmed':''}" data-type="${t}"
+      d="M ${cx} ${cy} L ${s.x} ${s.y} A ${r} ${r} 0 ${large} 1 ${e.x} ${e.y} Z"
+      fill="${typeColors[t]||'#999'}" stroke="rgba(245,240,232,.9)" stroke-width="1.5"/>`;
+    start=end;
   });
-
   svg.innerHTML = paths;
-
-  // Attach click handlers to slices
-  svg.querySelectorAll('.pie-slice').forEach(slice => {
-    slice.addEventListener('click', () => {
-      const cat = slice.dataset.cat;
-      const currentActive = document.querySelector('.filter-btn.active')?.dataset.cat;
-      const newCat = currentActive === cat ? 'all' : cat;
-      setActiveFilter(newCat);
-    });
-  });
-
-  // Update center label
-  const centerNum = document.getElementById('pie-center-num');
-  if (activeCat === 'all') {
-    centerNum.textContent = total;
-    centerNum.style.color = 'var(--crimson)';
-  } else {
-    centerNum.textContent = catCounts[activeCat];
-    centerNum.style.color = catMeta[activeCat].color;
-  }
 }
 
-function buildLegend(activeCat) {
-  const legend = document.getElementById('pie-legend');
-  legend.innerHTML = catOrder.map(cat => {
-    const count = catCounts[cat];
-    const pct = Math.round((count / total) * 100);
-    const isActive = activeCat === cat;
-    return `
-      <div class="legend-item ${isActive ? 'active' : ''}" data-cat="${cat}">
-        <div class="legend-swatch" style="background:${catMeta[cat].color}"></div>
-        <span class="legend-label">${catMeta[cat].label}</span>
-        <span class="legend-count">${count}</span>
-        <span class="legend-pct">${pct}%</span>
-      </div>
-    `;
-  }).join('');
+function renderEraView(era) {
+  const list = allData[era];
+  const total = list.length;
+  const typeCounts = getTypeCounts(list);
+  const workers = [...new Set(list.map(m=>m.w))];
+  const eraColors = {ot:typeColors, jesus:typeColors, apostles:typeColors};
+  const eraLabel = {ot:"Old Testament",jesus:"Christ's",apostles:"Apostolic"}[era];
+  const eraC = {ot:'var(--era-ot)',jesus:'var(--era-jesus)',apostles:'var(--era-apostles)'}[era];
 
-  legend.querySelectorAll('.legend-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const cat = item.dataset.cat;
-      const currentActive = document.querySelector('.filter-btn.active')?.dataset.cat;
-      const newCat = currentActive === cat ? 'all' : cat;
-      setActiveFilter(newCat);
-    });
-  });
-}
+  const typesPresent = Object.keys(typeCounts).sort((a,b)=>typeCounts[b]-typeCounts[a]);
 
-// ── Unified filter control ──
-function setActiveFilter(cat) {
-  // Update buttons
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  const btn = document.querySelector(`.filter-btn[data-cat="${cat}"]`);
-  if (btn) btn.classList.add('active');
-
-  // Update pie + legend + list
-  drawPie(cat);
-  buildLegend(cat);
-  renderMiracles(cat);
-}
-
-function renderMiracles(filter) {
-  const container = document.getElementById('miracles-container');
-  container.innerHTML = '';
-
-  const cats = filter === 'all' ? catOrder : [filter];
-  let totalShown = 0;
-
-  cats.forEach(cat => {
-    const items = miracles.filter(m => m.cat === cat);
-    if (items.length === 0) return;
-    totalShown += items.length;
-
-    const section = document.createElement('div');
-    section.className = 'category-section';
-    section.innerHTML = `
-      <div class="category-header ${cat}">
-        <div class="cat-icon ${cat}">${catMeta[cat].icon}</div>
-        <div class="cat-title-block">
-          <h2 class="${cat}">${catMeta[cat].label}</h2>
-          <span class="cat-count">${items.length} miracle${items.length > 1 ? 's' : ''} — ${catMeta[cat].desc}</span>
+  let html = `
+    <div class="type-filter-bar" id="type-filter-${era}">
+      <button class="type-btn active" data-type="all" style="--ac:${eraC}">All Types</button>
+      ${typesPresent.map(t=>`<button class="type-btn" data-type="${t}">${typeLabels[t]||t}</button>`).join('')}
+    </div>
+    <div class="viz-row">
+      <div class="pie-box">
+        <svg id="pie-${era}" viewBox="0 0 190 190"></svg>
+        <div class="pie-center">
+          <div class="pie-center-num" id="pie-num-${era}">${total}</div>
+          <div class="pie-center-word">Miracles</div>
         </div>
       </div>
-      <div class="miracles-grid">
-        ${items.map((m, i) => `
-          <div class="miracle-card ${m.cat}" style="animation-delay: ${i * 0.05}s">
-            <div class="miracle-name">${m.name}</div>
-            <div class="miracle-refs">
-              ${m.refs.map(r => `<span class="gospel-tag ${r.gospel}">${r.gospel === 'acts' ? 'Acts' : r.gospel.charAt(0).toUpperCase() + r.gospel.slice(1)}</span>${r.cite}`).join(' &ensp;')}
-            </div>
-            ${m.note ? `<div class="miracle-note">${m.note}</div>` : ''}
+      <div class="pie-legend" id="legend-${era}"></div>
+    </div>
+    <div id="cards-${era}"></div>
+  `;
+
+  document.getElementById('era-content').innerHTML = html;
+
+  // Wire up
+  function render(typeFilter) {
+    buildPie('pie-'+era, typeCounts, total, typeFilter, eraC);
+
+    // Legend
+    const legEl = document.getElementById('legend-'+era);
+    legEl.innerHTML = typesPresent.map(t=>{
+      const pct = Math.round((typeCounts[t]/total)*100);
+      return `<div class="leg-row ${typeFilter===t?'active':''}" data-type="${t}">
+        <div class="leg-sw" style="background:${typeColors[t]}"></div>
+        <span class="leg-label">${typeLabels[t]||t}</span>
+        <span class="leg-count">${typeCounts[t]}</span>
+        <span class="leg-pct">${pct}%</span>
+      </div>`;
+    }).join('');
+    legEl.querySelectorAll('.leg-row').forEach(r=>{
+      r.addEventListener('click',()=>{
+        const cur = document.querySelector(`#type-filter-${era} .type-btn.active`)?.dataset.type;
+        setType(cur===r.dataset.type?'all':r.dataset.type);
+      });
+    });
+
+    // Center num
+    const pn = document.getElementById('pie-num-'+era);
+    if(typeFilter==='all'){pn.textContent=total;pn.style.color='var(--crimson)';}
+    else{pn.textContent=typeCounts[typeFilter]||0;pn.style.color=typeColors[typeFilter];}
+
+    // Cards
+    const cardsEl = document.getElementById('cards-'+era);
+    cardsEl.innerHTML = '';
+    workers.forEach(w=>{
+      const items = list.filter(m=>m.w===w && (typeFilter==='all'||m.type===typeFilter));
+      if(!items.length) return;
+      const sec = document.createElement('div');
+      sec.className='worker-section';
+      sec.innerHTML = `
+        <div class="worker-header">
+          <div class="worker-icon">☩</div>
+          <div>
+            <div class="worker-name" style="color:${eraC}">${w}</div>
+            <div class="worker-count">${items.length} miracle${items.length>1?'s':''}</div>
           </div>
-        `).join('')}
-      </div>
-    `;
-    container.appendChild(section);
+        </div>
+        <div class="miracles-grid">
+          ${items.map((m,i)=>`
+            <div class="m-card" style="border-left-color:${typeColors[m.type]};animation-delay:${i*.04}s">
+              <div class="m-name">${m.name}
+                <span class="m-type-tag" style="background:${typeColors[m.type]}20;color:${typeColors[m.type]}">${typeLabels[m.type]||m.type}</span>
+              </div>
+              <div class="m-ref">${m.ref}</div>
+              ${m.note?`<div class="m-note">${m.note}</div>`:''}
+            </div>
+          `).join('')}
+        </div>
+      `;
+      cardsEl.appendChild(sec);
+    });
+  }
+
+  function setType(t) {
+    document.querySelectorAll(`#type-filter-${era} .type-btn`).forEach(b=>b.classList.remove('active'));
+    const btn = document.querySelector(`#type-filter-${era} .type-btn[data-type="${t}"]`);
+    if(btn) btn.classList.add('active');
+    render(t);
+  }
+
+  document.querySelectorAll(`#type-filter-${era} .type-btn`).forEach(btn=>{
+    btn.addEventListener('click',()=>setType(btn.dataset.type));
   });
 
-  document.getElementById('total-count').textContent = totalShown;
+  // Style active type buttons
+  typesPresent.forEach(t=>{
+    const btn = document.querySelector(`#type-filter-${era} .type-btn[data-type="${t}"]`);
+    if(btn) btn.style.setProperty('--type-c', typeColors[t]);
+  });
+  const style = document.createElement('style');
+  style.textContent = `#type-filter-${era} .type-btn.active[data-type="all"]{background:${eraC}} ` +
+    typesPresent.map(t=>`#type-filter-${era} .type-btn.active[data-type="${t}"]{background:${typeColors[t]}}`).join(' ');
+  document.head.appendChild(style);
+
+  render('all');
 }
 
-// Filter buttons
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    setActiveFilter(btn.dataset.cat);
+function renderConnections() {
+  let html = `<div style="text-align:center;margin-bottom:20px;">
+    <div style="font-family:'Cinzel',serif;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dark-gold);margin-bottom:4px;">
+      ☩ Typological Pattern of Escalation
+    </div>
+    <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:.9rem;color:var(--ink-faint);max-width:520px;margin:0 auto;">
+      Seven parallel miracles revealing how God's power works through prophets, 
+      is exercised by Christ in His own authority, and is transmitted to the Apostles 
+      who act in His name.
+    </div>
+  </div>`;
+
+  connections.forEach((c,i) => {
+    html += `
+    <div class="conn-card" style="animation-delay:${i*.06}s">
+      <div class="conn-header">
+        <div class="conn-theme">${c.theme}</div>
+        <div class="conn-subtitle">${c.subtitle}</div>
+      </div>
+      <div class="conn-grid">
+        <div class="conn-cell ot-cell">
+          <div class="cc-era">☞ Old Testament</div>
+          <div class="cc-title">${c.ot.title}</div>
+          <div class="cc-ref">${c.ot.ref}</div>
+          <div class="cc-text">${c.ot.text}</div>
+        </div>
+        <div class="conn-arrow">⟶</div>
+        <div class="conn-cell jesus-cell">
+          <div class="cc-era">✝ Jesus Christ</div>
+          <div class="cc-title">${c.jesus.title}</div>
+          <div class="cc-ref">${c.jesus.ref}</div>
+          <div class="cc-text">${c.jesus.text}</div>
+        </div>
+        <div class="conn-arrow">⟶</div>
+        <div class="conn-cell apost-cell">
+          <div class="cc-era">⚿ The Apostles</div>
+          <div class="cc-title">${c.apost.title}</div>
+          <div class="cc-ref">${c.apost.ref}</div>
+          <div class="cc-text">${c.apost.text}</div>
+        </div>
+      </div>
+      <div class="conn-theology">${c.theology}</div>
+      <div class="conn-escalation">
+        <span>Pattern of Escalation:</span> ${c.escalation}
+      </div>
+    </div>`;
   });
+
+  document.getElementById('era-content').innerHTML = html;
+}
+
+// ── TAB LOGIC ──
+function setEra(era) {
+  document.querySelectorAll('.era-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelector(`.era-tab[data-era="${era}"]`)?.classList.add('active');
+  if(era==='connections') renderConnections();
+  else renderEraView(era);
+}
+
+document.querySelectorAll('.era-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>setEra(tab.dataset.era));
 });
 
-// Initial render
-setActiveFilter('all');
+setEra('ot');
 </script>
-
 </body>
 </html>
