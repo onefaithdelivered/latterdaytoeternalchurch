@@ -385,13 +385,14 @@ body {
 }
 .depth-bar-fill {
   height: 100%; border-radius: 3px;
-  transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
+  transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: absolute; right: 0; top: 0;
+  left: 100%; /* start collapsed for animation */
 }
 .depth-bar-fill::after {
   content: '';
   position: absolute; inset: 0;
-  background: linear-gradient(to right, rgba(255,255,255,0) 60%, rgba(255,255,255,0.2));
+  background: linear-gradient(to right, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 40%);
 }
 .depth-ticks {
   position: relative; height: 12px;
@@ -1447,7 +1448,7 @@ function renderTracer(claim) {
           '<span class="depth-axis-label">Modern Only</span>' +
         '</div>' +
         '<div class="depth-bar-track">' +
-          '<div class="depth-bar-fill" id="depth-bar" style="width:0%;background:' + verdictBg + '"></div>' +
+          '<div class="depth-bar-fill" id="depth-bar" style="left:100%;background:' + verdictBg + '"></div>' +
         '</div>' +
         '<div class="depth-ticks">' +
           '<span class="depth-tick" style="left:0%">AD 33</span>' +
@@ -1477,10 +1478,35 @@ function renderTracer(claim) {
       (claim.articleLink ? '<a class="verdict-box-link" href="' + claim.articleLink + '">' + claim.articleLabel + '</a>' : '') +
     '</div>';
 
-  /* Animate depth bar */
+  /* Convert a year to a position % on the non-linear depth timeline */
+  function yearToTimelinePct(year) {
+    /* Tick-mark waypoints (same as the visual ticks on the bar) */
+    var pts = [
+      { year: 33,   pct: 0 },
+      { year: 325,  pct: 20 },
+      { year: 600,  pct: 40 },
+      { year: 1500, pct: 65 },
+      { year: 1820, pct: 87 },
+      { year: 2025, pct: 100 }
+    ];
+    if (year <= pts[0].year) return pts[0].pct;
+    if (year >= pts[pts.length - 1].year) return pts[pts.length - 1].pct;
+    for (var i = 1; i < pts.length; i++) {
+      if (year <= pts[i].year) {
+        var ratio = (year - pts[i - 1].year) / (pts[i].year - pts[i - 1].year);
+        return pts[i - 1].pct + ratio * (pts[i].pct - pts[i - 1].pct);
+      }
+    }
+    return 100;
+  }
+
+  /* Animate depth bar — fills from depthYear position to the right edge */
   setTimeout(function() {
     var bar = document.getElementById('depth-bar');
-    if (bar) bar.style.width = claim.depthPct + '%';
+    if (bar) {
+      var leftPct = yearToTimelinePct(claim.depthYear);
+      bar.style.left = leftPct + '%';
+    }
   }, 80);
 
   /* Stagger animate citation nodes */
