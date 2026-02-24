@@ -8,34 +8,34 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --deep: #0F0E0C;
-  --deep-warm: #1A1714;
-  --panel: #1F1C18;
-  --panel-light: #2A2620;
-  --border: #3A352C;
-  --border-light: #4A4438;
-  --gold: #DAA520;
-  --gold-dim: #B8960B;
-  --gold-glow: rgba(218,165,32,0.15);
-  --gold-bright: #F0D060;
-  --cream: #F5F0E8;
-  --cream-dim: #C4BAA8;
-  --cream-faint: #8A8070;
-  --crimson: #C0392B;
-  --crimson-soft: #A93226;
-  --blue-ancient: #5B8FB9;
-  --green-olive: #7A9A5A;
-  --purple-royal: #8E6CB8;
+  --parchment: #F5F0E8;
+  --parchment-dark: #E8E0D0;
+  --parchment-deep: #D4C9B0;
+  --panel: #FFFFFF;
+  --panel-light: #FAF7F2;
+  --border: #D4C9B0;
+  --border-light: #C4B9A8;
+  --gold: #B8860B;
+  --gold-dim: #9A7209;
+  --gold-bright: #DAA520;
+  --ink: #2C1810;
+  --ink-light: #4A3728;
+  --ink-faint: #7A6A5A;
+  --crimson: #8B1A1A;
+  --crimson-soft: #A52A2A;
+  --blue-ancient: #1A5276;
+  --green-olive: #2E7D32;
+  --purple-royal: #6A1B9A;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-  background: var(--deep);
+  background: var(--parchment);
   background-image:
-    radial-gradient(ellipse at 30% 20%, rgba(218,165,32,0.04) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 80%, rgba(192,57,43,0.03) 0%, transparent 50%);
-  color: var(--cream);
+    radial-gradient(ellipse at 30% 20%, rgba(184,134,11,0.04) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(139,26,26,0.03) 0%, transparent 50%);
+  color: var(--ink);
   font-family: 'Source Serif 4', Georgia, serif;
   line-height: 1.65;
   min-height: 100vh;
@@ -52,10 +52,10 @@ body {
 }
 .outer-border {
   border: 1.5px solid var(--gold-dim);
-  outline: 1px solid rgba(218,165,32,0.15);
+  outline: 1px solid rgba(184,134,11,0.2);
   outline-offset: 5px;
   padding: 48px clamp(20px, 5vw, 56px);
-  background: rgba(15,14,12,0.5);
+  background: rgba(255,255,255,0.4);
   position: relative;
 }
 .outer-border::before, .outer-border::after {
@@ -80,13 +80,13 @@ body {
   letter-spacing: 0.06em;
   line-height: 1.3;
   margin-bottom: 6px;
-  text-shadow: 0 0 30px rgba(218,165,32,0.15);
+  text-shadow: none;
 }
 .page-header .subtitle {
   font-family: 'Cinzel', serif;
   font-size: clamp(0.58rem, 1.3vw, 0.72rem);
   font-weight: 600;
-  color: var(--cream-faint);
+  color: var(--ink-faint);
   letter-spacing: 0.22em;
   text-transform: uppercase;
   margin-bottom: 20px;
@@ -105,7 +105,7 @@ body {
   font-family: 'Playfair Display', serif;
   font-style: italic;
   font-size: clamp(0.88rem, 1.6vw, 1rem);
-  color: var(--cream-dim);
+  color: var(--ink-light);
   max-width: 600px;
   margin: 0 auto;
   line-height: 1.75;
@@ -147,7 +147,7 @@ body {
   border-color: var(--border-light);
   background: var(--panel-light);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
 }
 .chart-card:hover::before { width: 6px; }
 
@@ -178,7 +178,7 @@ body {
   font-family: 'Cinzel', serif;
   font-size: clamp(1rem, 2.2vw, 1.3rem);
   font-weight: 700;
-  color: var(--cream);
+  color: var(--ink);
   letter-spacing: 0.04em;
   line-height: 1.35;
   margin-bottom: 10px;
@@ -189,7 +189,7 @@ body {
 .card-desc {
   font-family: 'Source Serif 4', Georgia, serif;
   font-size: clamp(0.85rem, 1.4vw, 0.95rem);
-  color: var(--cream-dim);
+  color: var(--ink-light);
   line-height: 1.7;
   margin-bottom: 16px;
 }
@@ -205,11 +205,11 @@ body {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--cream-faint);
+  color: var(--ink-faint);
   padding: 4px 10px;
   border: 1px solid var(--border);
   border-radius: 2px;
-  background: rgba(255,255,255,0.02);
+  background: rgba(0,0,0,0.03);
 }
 
 .card-arrow {
@@ -239,7 +239,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--cream-faint);
+  color: var(--ink-faint);
   opacity: 0.5;
 }
 
