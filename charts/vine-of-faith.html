@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Vine of Faith — Ante-Nicene Witnesses to Catholic Doctrine | One Faith Delivered</title>
+<meta name="description" content="An interactive timeline of ante-Nicene Church Fathers witnessing to Catholic doctrine — trace the Eucharist, Apostolic Succession, Petrine Primacy, Baptism, and the Trinity from the Apostles through three centuries of unbroken testimony." />
+<link rel="canonical" href="https://onefaithdelivered.org/charts/vine-of-faith.html" />
+<link rel="icon" href="../favicons/favicon.ico" sizes="any" />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C5A355;
+    --gold-light: #D4B96E;
+    --gold-dark: #8B7332;
+    --burgundy: #6B1D2A;
+    --burgundy-deep: #4A0E1A;
+    --parchment: #F5ECD7;
+    --parchment-dark: #E8DBBF;
+    --ink: #2C1810;
+    --ink-light: #5C3D2E;
+    --vine-green: #3D5C3A;
+    --vine-light: #5A7A56;
+    --vine-dark: #2A3F28;
+    --leaf-green: #4A7A3D;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* ── SITE NAV ── */
+  .site-nav {
+    position: sticky; top: 0; z-index: 9999;
+    background: linear-gradient(to bottom, rgba(245,236,215,0.98), rgba(232,219,191,0.95));
+    border-bottom: 1px solid rgba(197,163,85,0.3);
+    padding: 0.75rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .site-nav a.nav-home {
+    font-family: 'Cinzel', serif; font-size: 0.95rem; font-weight: 700;
+    letter-spacing: 0.05em; color: var(--burgundy); text-decoration: none; transition: color 0.2s;
+  }
+  .site-nav a.nav-home:hover { color: var(--burgundy-deep); }
+  .site-nav .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .site-nav .nav-links a {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink); text-decoration: none; transition: color 0.2s;
+  }
+  .site-nav .nav-links a:hover { color: var(--burgundy); }
+  .nav-print-btn {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gold-dark); background: none;
+    border: 1px solid rgba(139,115,53,0.35); padding: 0.4rem 1.1rem;
+    border-radius: 3px; cursor: pointer; transition: background 0.2s, color 0.2s;
+    display: inline-flex; align-items: center; gap: 0.4rem; white-space: nowrap;
+  }
+  .nav-print-btn:hover { background: rgba(139,115,53,0.08); color: var(--burgundy); }
+
+  /* ── HAMBURGER ── */
+  .nav-hamburger {
+    display: none; flex-direction: column; justify-content: center;
+    gap: 5px; width: 36px; height: 36px; cursor: pointer;
+    background: none; border: 1px solid rgba(139,115,53,0.3);
+    border-radius: 3px; padding: 6px; z-index: 10001;
+  }
+  .nav-hamburger span {
+    display: block; height: 2px; background: var(--ink);
+    border-radius: 2px; transition: all 0.25s; transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── SIDEBAR ── */
+  .sidebar-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.45); z-index: 10000; backdrop-filter: blur(2px);
+  }
+  .sidebar-overlay.visible { display: block; }
+  .sidebar-menu {
+    position: fixed; top: 0; right: -280px; width: 260px; height: 100%;
+    background: linear-gradient(to bottom, #FAF6EE, var(--parchment));
+    border-left: 1px solid rgba(197,163,85,0.3);
+    z-index: 10002; transition: right 0.3s ease; overflow-y: auto;
+  }
+  .sidebar-menu.open { right: 0; }
+  .sidebar-inner { padding: 5rem 2rem 2rem; display: flex; flex-direction: column; gap: 0; }
+  .sidebar-brand {
+    font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: 700;
+    color: var(--burgundy); margin-bottom: 2rem; padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(197,163,85,0.3);
+  }
+  .sidebar-inner a {
+    font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink);
+    text-decoration: none; padding: 0.85rem 0; border-bottom: 1px solid rgba(197,163,85,0.2);
+    transition: color 0.2s;
+  }
+  .sidebar-inner a:hover { color: var(--burgundy); }
+  .sidebar-inner a.sidebar-back {
+    color: var(--gold-dark); margin-top: 1.5rem;
+    border: 1px solid rgba(139,115,53,0.3); padding: 0.7rem 1rem;
+    text-align: center; border-radius: 2px;
+  }
+  .sidebar-ornament { color: var(--gold); font-size: 11px; letter-spacing: 8px; text-align: center; margin-top: 2rem; }
+
+  /* ── READING PROGRESS BAR ── */
+  #reading-progress-bar {
+    position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+    background: linear-gradient(to right, var(--burgundy), var(--gold));
+    z-index: 99999; transition: width 0.12s linear;
+    pointer-events: none; border-radius: 0 2px 2px 0;
+  }
+
+  body {
+    background: var(--parchment);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Parchment texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(139, 115, 50, 0.015) 2px,
+        rgba(139, 115, 50, 0.015) 4px
+      ),
+      radial-gradient(ellipse at 20% 50%, rgba(139, 115, 50, 0.06) 0%, transparent 70%),
+      radial-gradient(ellipse at 80% 30%, rgba(107, 29, 42, 0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ========== HEADER ========== */
+  .header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    position: relative;
+    background: linear-gradient(180deg, rgba(74, 14, 26, 0.08) 0%, transparent 100%);
+  }
+
+  .header-cross {
+    font-size: 2rem;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: block;
+    opacity: 0.8;
+  }
+
+  .header h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 700;
+    color: var(--burgundy);
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .header .subtitle {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.75rem, 2vw, 1rem);
+    font-weight: 400;
+    color: var(--gold-dark);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .header .epigraph {
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink-light);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .header .epigraph cite {
+    display: block;
+    font-style: normal;
+    font-size: 0.9rem;
+    color: var(--gold-dark);
+    margin-top: 6px;
+  }
+
+  /* ========== TOPIC FILTERS ========== */
+  .filter-bar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: linear-gradient(180deg, var(--parchment) 60%, transparent);
+    padding-bottom: 30px;
+  }
+
+  .filter-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    padding: 8px 18px;
+    border: 1.5px solid var(--gold);
+    background: transparent;
+    color: var(--gold-dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+  }
+
+  .filter-btn:hover {
+    background: rgba(197, 163, 85, 0.1);
+  }
+
+  .filter-btn.active {
+    background: var(--burgundy);
+    color: var(--parchment);
+    border-color: var(--burgundy);
+  }
+
+  /* ========== TIMELINE CONTAINER ========== */
+  .timeline-container {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* The vine stem */
+  .vine-stem {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    transform: translateX(-50%);
+    background: linear-gradient(180deg,
+      var(--vine-green) 0%,
+      var(--vine-dark) 40%,
+      var(--vine-green) 70%,
+      var(--vine-light) 100%
+    );
+    border-radius: 3px;
+    z-index: 2;
+  }
+
+  /* Vine tendrils via SVG-like decorations */
+  .vine-stem::before,
+  .vine-stem::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--vine-light);
+    border-radius: 0 50% 50% 0;
+    border-left: none;
+    opacity: 0.4;
+  }
+
+  .vine-stem::before {
+    top: 15%;
+    left: 6px;
+    transform: rotate(-20deg);
+  }
+
+  .vine-stem::after {
+    top: 55%;
+    right: 6px;
+    left: auto;
+    border-radius: 50% 0 0 50%;
+    border-right: none;
+    border-left: 2px solid var(--vine-light);
+    transform: rotate(20deg);
+  }
+
+  /* ========== DIRECTION INDICATOR ========== */
+  .direction-note {
+    text-align: center;
+    padding: 10px 20px 30px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    color: var(--gold-dark);
+    letter-spacing: 0.15em;
+    opacity: 0.7;
+  }
+
+  .direction-note .arrow {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+    animation: pulseDown 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseDown {
+    0%, 100% { transform: translateY(0); opacity: 0.5; }
+    50% { transform: translateY(5px); opacity: 1; }
+  }
+
+  /* ========== FATHER CARDS ========== */
+  .father-entry {
+    position: relative;
+    z-index: 5;
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  .father-entry:nth-child(1) { animation-delay: 0.1s; }
+  .father-entry:nth-child(2) { animation-delay: 0.15s; }
+  .father-entry:nth-child(3) { animation-delay: 0.2s; }
+  .father-entry:nth-child(4) { animation-delay: 0.25s; }
+  .father-entry:nth-child(5) { animation-delay: 0.3s; }
+  .father-entry:nth-child(6) { animation-delay: 0.35s; }
+  .father-entry:nth-child(7) { animation-delay: 0.4s; }
+  .father-entry:nth-child(8) { animation-delay: 0.45s; }
+  .father-entry:nth-child(9) { animation-delay: 0.5s; }
+  .father-entry:nth-child(10) { animation-delay: 0.55s; }
+  .father-entry:nth-child(11) { animation-delay: 0.6s; }
+
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Vine node/fruit */
+  .vine-node {
+    position: absolute;
+    left: 50%;
+    top: 24px;
+    width: 18px;
+    height: 18px;
+    background: radial-gradient(circle at 40% 40%, var(--gold-light), var(--gold-dark));
+    border: 2px solid var(--vine-dark);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    box-shadow: 0 0 8px rgba(197, 163, 85, 0.4);
+  }
+
+  .father-card {
+    width: 42%;
+    min-width: 280px;
+    max-width: 400px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .father-entry:nth-child(odd) .father-card {
+    margin-right: calc(50% + 30px);
+  }
+
+  .father-entry:nth-child(even) .father-card {
+    margin-left: calc(50% + 30px);
+  }
+
+  .card-inner {
+    background: linear-gradient(135deg, rgba(255,252,240,0.95), rgba(245,236,215,0.98));
+    border: 1px solid var(--gold);
+    padding: 20px 22px;
+    position: relative;
+    box-shadow:
+      0 2px 10px rgba(44, 24, 16, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+  }
+
+  .card-inner:hover {
+    box-shadow:
+      0 4px 20px rgba(44, 24, 16, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border-color: var(--burgundy);
+  }
+
+  /* Corner ornaments */
+  .card-inner::before,
+  .card-inner::after {
+    content: '✦';
+    position: absolute;
+    font-size: 0.6rem;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+
+  .card-inner::before { top: 6px; left: 8px; }
+  .card-inner::after { bottom: 6px; right: 8px; }
+
+  .father-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--burgundy);
+    margin-bottom: 2px;
+  }
+
+  .father-dates {
+    font-size: 0.85rem;
+    color: var(--gold-dark);
+    font-style: italic;
+    margin-bottom: 4px;
+  }
+
+  .father-role {
+    font-size: 0.88rem;
+    color: var(--ink-light);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .topic-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 8px;
+  }
+
+  .topic-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border: 1px solid var(--gold);
+    color: var(--gold-dark);
+    text-transform: uppercase;
+  }
+
+  .click-hint {
+    font-size: 0.78rem;
+    color: var(--gold-dark);
+    font-style: italic;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+  }
+
+  .card-inner:hover .click-hint {
+    opacity: 1;
+  }
+
+  /* Expanded quotes panel */
+  .quotes-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.3s ease;
+    background: rgba(74, 14, 26, 0.03);
+    border-top: none;
+  }
+
+  .quotes-panel.open {
+    max-height: 2000px;
+    border-top: 1px solid rgba(197, 163, 85, 0.3);
+  }
+
+  .quotes-inner {
+    padding: 0;
+    transition: padding 0.3s ease;
+  }
+
+  .quotes-panel.open .quotes-inner {
+    padding: 16px 22px 20px;
+  }
+
+  .quote-topic-heading {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--burgundy);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 14px 0 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid rgba(197, 163, 85, 0.3);
+  }
+
+  .quote-topic-heading:first-child {
+    margin-top: 0;
+  }
+
+  .quote-block {
+    margin-bottom: 12px;
+    padding-left: 14px;
+    border-left: 2px solid var(--gold);
+  }
+
+  .quote-text {
+    font-style: italic;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .quote-source {
+    font-size: 0.8rem;
+    color: var(--gold-dark);
+    font-style: normal;
+  }
+
+  /* ========== SECTION DIVIDERS ========== */
+  .era-divider {
+    text-align: center;
+    padding: 30px 20px;
+    position: relative;
+    z-index: 5;
+  }
+
+  .era-divider .era-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    background: var(--parchment);
+    padding: 4px 20px;
+    display: inline-block;
+    position: relative;
+  }
+
+  .era-divider .era-label::before,
+  .era-divider .era-label::after {
+    content: '—';
+    color: var(--gold);
+    margin: 0 8px;
+  }
+
+  /* ========== BIBLICAL FOUNDATION ========== */
+  .foundation {
+    position: relative;
+    z-index: 5;
+    max-width: 700px;
+    margin: 40px auto 0;
+    padding: 0 20px;
+  }
+
+  .foundation-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .foundation-header h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    font-weight: 700;
+    color: var(--burgundy-deep);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+
+  .foundation-header .ornament {
+    color: var(--gold);
+    font-size: 1.2rem;
+    letter-spacing: 0.3em;
+  }
+
+  .foundation-category {
+    margin-bottom: 30px;
+  }
+
+  .foundation-topic {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--burgundy);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .scripture-card {
+    background: linear-gradient(135deg, rgba(74, 14, 26, 0.06), rgba(74, 14, 26, 0.02));
+    border: 1px solid rgba(197, 163, 85, 0.5);
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  .scripture-card::before {
+    content: '✝';
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    color: var(--gold);
+    opacity: 0.3;
+    font-size: 0.8rem;
+  }
+
+  .scripture-text {
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .scripture-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    color: var(--burgundy);
+    font-weight: 600;
+  }
+
+  /* ========== FOOTER ========== */
+  .footer {
+    text-align: center;
+    padding: 50px 20px 40px;
+    margin-top: 20px;
+    border-top: 1px solid rgba(197, 163, 85, 0.3);
+  }
+
+  .footer p {
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    font-style: italic;
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .footer .site-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    margin-top: 14px;
+    display: block;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 700px) {
+    .nav-hamburger { display: flex; margin-left: auto; order: 99; flex-shrink: 0; }
+    .site-nav .nav-links { display: none; }
+    .nav-print-btn { display: none; }
+    .site-nav { padding: 0.55rem 1rem; }
+    .sidebar-menu { display: block; transform: translateX(100%); right: 0; position: fixed; }
+    .sidebar-menu.open { transform: translateX(0); }
+    .header { padding: 48px 20px 32px; }
+  }
+
+  @media (max-width: 768px) {
+    .vine-stem { left: 24px; }
+    .vine-node { left: 24px; top: 16px; width: 14px; height: 14px; }
+
+    .father-card {
+      width: calc(100% - 60px);
+      min-width: unset;
+      max-width: unset;
+    }
+
+    .father-entry:nth-child(odd) .father-card,
+    .father-entry:nth-child(even) .father-card {
+      margin-left: 50px;
+      margin-right: 0;
+    }
+
+    .card-inner { padding: 14px 16px; }
+    .quotes-panel.open .quotes-inner { padding: 12px 16px 16px; }
+  }
+
+  /* Hidden by filter */
+  .father-entry.hidden {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── READING PROGRESS BAR ── -->
+<div id="reading-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+
+<!-- ── SITE NAV ── -->
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">One Faith Delivered</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../articles.html">Articles</a></li>
+    <li><a href="../charts.html">Charts</a></li>
+    <li><a href="../topics.html">Topics</a></li>
+    <li><a href="../resources.html">Resources</a></li>
+  </ul>
+  <button class="nav-print-btn" onclick="window.print()">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px">
+      <polyline points="6 9 6 2 18 2 18 9"/>
+      <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+      <rect x="6" y="14" width="12" height="8"/>
+    </svg>
+    Print
+  </button>
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ========== HEADER ========== -->
+<header class="header">
+  <span class="header-cross">☧</span>
+  <h1>The Vine of Faith</h1>
+  <p class="subtitle">Ante-Nicene Witnesses to Catholic Doctrine</p>
+  <p class="epigraph">
+    "I am the vine; you are the branches. Whoever remains in me and I in him will bear much fruit, for without me you can do nothing."
+    <cite>— John 15:5</cite>
+  </p>
+</header>
+
+<!-- ========== FILTER BAR ========== -->
+<div class="filter-bar">
+  <button class="filter-btn active" data-topic="all">All Topics</button>
+  <button class="filter-btn" data-topic="eucharist">Eucharist</button>
+  <button class="filter-btn" data-topic="succession">Apostolic Succession</button>
+  <button class="filter-btn" data-topic="papacy">Petrine Primacy</button>
+  <button class="filter-btn" data-topic="baptism">Baptism</button>
+  <button class="filter-btn" data-topic="trinity">Trinity &amp; God</button>
+</div>
+
+<div class="direction-note">
+  <span class="arrow">↓</span>
+  Scroll down through the centuries toward the Apostolic foundation
+</div>
+
+<!-- ========== TIMELINE ========== -->
+<div class="timeline-container" id="timeline">
+  <div class="vine-stem"></div>
+
+  <!-- Entries will be injected by JS -->
+</div>
+
+<!-- ========== BIBLICAL FOUNDATION ========== -->
+<div class="foundation" id="foundation">
+  <div class="foundation-header">
+    <p class="ornament">✦ ✦ ✦</p>
+    <h2>The Biblical Foundation</h2>
+    <p class="ornament">✦ ✦ ✦</p>
+  </div>
+
+  <!-- Eucharist -->
+  <div class="foundation-category" data-topic="eucharist">
+    <div class="foundation-topic">The Eucharist</div>
+    <div class="scripture-card">
+      <p class="scripture-text">"This is my body, which will be given for you; do this in remembrance of me… This cup is the new covenant in my blood, which will be shed for you."</p>
+      <p class="scripture-ref">— Luke 22:19–20</p>
+    </div>
+    <div class="scripture-card">
+      <p class="scripture-text">"Amen, amen, I say to you, unless you eat the flesh of the Son of Man and drink his blood, you do not have life within you."</p>
+      <p class="scripture-ref">— John 6:53</p>
+    </div>
+    <div class="scripture-card">
+      <p class="scripture-text">"The cup of blessing that we bless, is it not a participation in the blood of Christ? The bread that we break, is it not a participation in the body of Christ?"</p>
+      <p class="scripture-ref">— 1 Corinthians 10:16</p>
+    </div>
+  </div>
+
+  <!-- Apostolic Succession -->
+  <div class="foundation-category" data-topic="succession">
+    <div class="foundation-topic">Apostolic Succession</div>
+    <div class="scripture-card">
+      <p class="scripture-text">"As the Father has sent me, so I send you."</p>
+      <p class="scripture-ref">— John 20:21</p>
+    </div>
+    <div class="scripture-card">
+      <p class="scripture-text">"And what you heard from me through many witnesses entrust to faithful people who will have the ability to teach others as well."</p>
+      <p class="scripture-ref">— 2 Timothy 2:2</p>
+    </div>
+    <div class="scripture-card">
+      <p class="scripture-text">"They appointed presbyters for them in each church and, with prayer and fasting, commended them to the Lord in whom they had put their faith."</p>
+      <p class="scripture-ref">— Acts 14:23</p>
+    </div>
+  </div>
+
+  <!-- Petrine Primacy -->
+  <div class="foundation-category" data-topic="papacy">
+    <div class="foundation-topic">Petrine Primacy</div>
+    <div class="scripture-card">
+      <p class="scripture-text">"And so I say to you, you are Peter, and upon this rock I will build my Church, and the gates of the netherworld shall not prevail against it. I will give you the keys to the Kingdom of heaven."</p>
+      <p class="scripture-ref">— Matthew 16:18–19</p>
+    </div>
+    <div class="scripture-card">
+      <p class="scripture-text">"Simon, Simon, behold Satan has demanded to sift all of you like wheat, but I have prayed that your own faith may not fail; and once you have turned back, you must strengthen your brothers."</p>
+      <p class="scripture-ref">— Luke 22:31–32</p>
+    </div>
+    <div class="scripture-card">
+      <p class="scripture-text">"Feed my lambs… Tend my sheep… Feed my sheep."</p>
+      <p class="scripture-ref">— John 21:15–17</p>
+    </div>
+  </div>
+
+  <!-- Baptism -->
+  <div class="foundation-category" data-topic="baptism">
+    <div class="foundation-topic">Baptism</div>
+    <div class="scripture-card">
+      <p class="scripture-text">"Amen, amen, I say to you, no one can enter the Kingdom of God without being born of water and Spirit."</p>
+      <p class="scripture-ref">— John 3:5</p>
+    </div>
+    <div class="scripture-card">
+      <p class="scripture-text">"Repent and be baptized, every one of you, in the name of Jesus Christ for the forgiveness of your sins; and you will receive the gift of the Holy Spirit."</p>
+      <p class="scripture-ref">— Acts 2:38</p>
+    </div>
+  </div>
+
+  <!-- Trinity -->
+  <div class="foundation-category" data-topic="trinity">
+    <div class="foundation-topic">The Trinity &amp; Nature of God</div>
+    <div class="scripture-card">
+      <p class="scripture-text">"Go, therefore, and make disciples of all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Spirit."</p>
+      <p class="scripture-ref">— Matthew 28:19</p>
+    </div>
+    <div class="scripture-card">
+      <p class="scripture-text">"In the beginning was the Word, and the Word was with God, and the Word was God."</p>
+      <p class="scripture-ref">— John 1:1</p>
+    </div>
+  </div>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <p>"Therefore, since we are surrounded by so great a cloud of witnesses, let us rid ourselves of every burden and sin that clings to us and persevere in running the race that lies before us." — Hebrews 12:1</p>
+  <span class="site-tag">One Faith Delivered</span>
+  <span class="site-tag" style="margin-top:6px;font-size:0.6rem;opacity:0.5">&copy; 2026 One Faith Delivered &middot; All Rights Reserved</span>
+</footer>
+
+<!-- ── SIDEBAR ── -->
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar-menu">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">One Faith Delivered</div>
+    <a href="../index.html">Home</a>
+    <a href="../articles.html">Articles</a>
+    <a href="../charts.html">Charts</a>
+    <a href="../topics.html">Topics</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../charts.html" class="sidebar-back">&#8592; All Charts</a>
+    <div class="sidebar-ornament">✦ ✦ ✦</div>
+  </div>
+</aside>
+
+<script>
+// ========== DATA ==========
+const fathers = [
+  {
+    name: "Origen of Alexandria",
+    dates: "c. 185–254 AD",
+    role: "Theologian, head of the Catechetical School of Alexandria; one of the most prolific writers of the early Church.",
+    topics: ["eucharist", "baptism", "trinity"],
+    quotes: {
+      eucharist: [
+        {
+          text: "We give thanks to the Creator of all, and, along with thanksgiving and prayer for the blessings we have received, we also eat the bread presented to us; and this bread becomes by prayer a sacred body, which sanctifies those who sincerely partake of it.",
+          source: "Contra Celsum, VIII.33 (c. 248 AD)"
+        }
+      ],
+      baptism: [
+        {
+          text: "The Church received from the Apostles the tradition of giving baptism even to infants. For the Apostles, to whom were committed the secrets of divine mysteries, knew that there is in everyone the innate stains of sin, which must be washed away through water and the Spirit.",
+          source: "Commentary on Romans, V.9 (c. 244 AD)"
+        }
+      ],
+      trinity: [
+        {
+          text: "Nothing in the Trinity can be called greater or less, since the fountain of divinity alone contains all things by His word and reason, and by the Spirit of His mouth sanctifies all things.",
+          source: "De Principiis, I.3.7 (c. 220 AD)"
+        }
+      ]
+    }
+  },
+  {
+    name: "St. Cyprian of Carthage",
+    dates: "c. 210–258 AD",
+    role: "Bishop of Carthage and martyr; champion of Church unity centered on the episcopate.",
+    topics: ["succession", "papacy", "baptism", "eucharist"],
+    quotes: {
+      succession: [
+        {
+          text: "Our Lord, whose precepts and admonitions we ought to observe, describing the honour of a bishop and the order of His Church, speaks in the Gospel, and says to Peter: 'I say unto thee, That thou art Peter'… Thence, through the changes of times and successions, the ordering of bishops and the plan of the Church flow onwards; so that the Church is founded upon the bishops, and every act of the Church is controlled by these same rulers.",
+          source: "Epistle 26 (c. 250 AD)"
+        }
+      ],
+      papacy: [
+        {
+          text: "Would heretics dare to come to the very seat of Peter whence apostolic faith is derived and whither no errors can come?",
+          source: "Epistle 59 (c. 252 AD)"
+        }
+      ],
+      baptism: [
+        {
+          text: "In respect of the case of infants, which you say ought not to be baptized within the second or third day after birth… in our council it seemed to us far otherwise. No one agreed to the course which you thought should be taken.",
+          source: "Epistle 58, to Fidus (c. 253 AD)"
+        }
+      ],
+      eucharist: [
+        {
+          text: "If Christ Jesus, our Lord and God, is Himself the chief priest of God the Father, and has first offered Himself a sacrifice to the Father, and has commanded this to be done in commemoration of Himself, certainly that priest truly discharges the office of Christ, who imitates that which Christ did; and he then offers a true and full sacrifice in the Church to God the Father.",
+          source: "Epistle 62.14 (c. 253 AD)"
+        }
+      ]
+    }
+  },
+  {
+    name: "St. Hippolytus of Rome",
+    dates: "c. 170–235 AD",
+    role: "Presbyter and theologian in Rome; author of the Apostolic Tradition preserving early liturgical practice.",
+    topics: ["eucharist", "succession", "baptism", "trinity"],
+    quotes: {
+      eucharist: [
+        {
+          text: "The bishop shall give thanks according to what we said above. It is not at all necessary for him to utter the same words as we said above, as though reciting them from memory… but let each one pray according to his ability. But above all let him take care that his prayer is sound and orthodox.",
+          source: "Apostolic Tradition, 9 (c. 215 AD)"
+        }
+      ],
+      succession: [
+        {
+          text: "Let the bishop be ordained after he has been chosen by all the people. When he has been named and shall please all, let him, with the presbytery and such bishops as may be present, assemble with the people on a Sunday. While all give their consent, the bishops shall lay their hands upon him.",
+          source: "Apostolic Tradition, 2 (c. 215 AD)"
+        }
+      ],
+      baptism: [
+        {
+          text: "At the hour in which the cock crows, they shall first pray over the water… They shall put off their clothes. Baptize the little children first. And if they can answer for themselves, let them answer. But if they cannot, let their parents answer or someone from their family.",
+          source: "Apostolic Tradition, 21 (c. 215 AD)"
+        }
+      ],
+      trinity: [
+        {
+          text: "God, subsisting alone, and having nothing contemporaneous with Himself, determined to create the world… Beside Him there was nothing; but He, while existing alone, yet existed in plurality.",
+          source: "Against Noetus, 10 (c. 220 AD)"
+        }
+      ]
+    }
+  },
+  {
+    name: "Tertullian",
+    dates: "c. 155–220 AD",
+    role: "Apologist and theologian of Carthage; first to use the Latin term 'Trinitas' for the Godhead.",
+    topics: ["trinity", "eucharist", "baptism", "succession"],
+    quotes: {
+      trinity: [
+        {
+          text: "All are of One, by unity of substance; while the mystery of the dispensation is still guarded, which distributes the Unity into a Trinity, placing in their order the three Persons — the Father, the Son, and the Holy Ghost: three, however, not in condition, but in degree; not in substance, but in form; not in power, but in aspect; yet of one substance, and of one condition, and of one power.",
+          source: "Against Praxeas, 2 (c. 213 AD)"
+        }
+      ],
+      eucharist: [
+        {
+          text: "Having taken the bread and given it to His disciples, He made it His own body, by saying, 'This is my body,' that is, the figure of my body. A figure, however, there could not have been, unless there were first a veritable body.",
+          source: "Against Marcion, IV.40 (c. 208 AD)"
+        }
+      ],
+      baptism: [
+        {
+          text: "Happy is our sacrament of water, in that, by washing away the sins of our early blindness, we are set free and admitted into eternal life.",
+          source: "On Baptism, 1 (c. 203 AD)"
+        }
+      ],
+      succession: [
+        {
+          text: "Let them produce the original records of their churches; let them unfold the roll of their bishops, running down in due succession from the beginning in such a manner that that first bishop of theirs shall be able to show for his ordainer and predecessor some one of the apostles or of apostolic men.",
+          source: "The Prescription Against Heretics, 32 (c. 200 AD)"
+        }
+      ]
+    }
+  },
+  {
+    name: "St. Irenaeus of Lyon",
+    dates: "c. 130–202 AD",
+    role: "Bishop of Lyon; student of Polycarp (who knew the Apostle John). Chief opponent of Gnosticism.",
+    topics: ["eucharist", "succession", "papacy", "trinity"],
+    quotes: {
+      eucharist: [
+        {
+          text: "He has declared the cup, a part of creation, to be His own Blood, from which He causes our blood to flow; and the bread, a part of creation, He has established as His own Body, from which He gives increase to our bodies.",
+          source: "Against Heresies, V.2.2 (c. 180 AD)"
+        }
+      ],
+      succession: [
+        {
+          text: "It is within the power of all, therefore, in every Church, who may wish to see the truth, to contemplate clearly the tradition of the apostles manifested throughout the whole world; and we are in a position to reckon up those who were by the apostles instituted bishops in the Churches, and the succession of these men to our own times.",
+          source: "Against Heresies, III.3.1 (c. 180 AD)"
+        }
+      ],
+      papacy: [
+        {
+          text: "For it is a matter of necessity that every Church should agree with this Church, on account of its preeminent authority — that is, the faithful everywhere — inasmuch as the Apostolic Tradition has been preserved continuously by those who are everywhere.",
+          source: "Against Heresies, III.3.2 — on the Church of Rome (c. 180 AD)"
+        }
+      ],
+      trinity: [
+        {
+          text: "The Church, though dispersed throughout the whole world, even to the ends of the earth, has received from the apostles and their disciples this faith: in one God, the Father Almighty… and in one Christ Jesus, the Son of God… and in the Holy Spirit.",
+          source: "Against Heresies, I.10.1 (c. 180 AD)"
+        }
+      ]
+    }
+  },
+  {
+    name: "St. Justin Martyr",
+    dates: "c. 100–165 AD",
+    role: "Philosopher and apologist; martyred in Rome. Provides the earliest detailed description of the liturgy.",
+    topics: ["eucharist", "baptism", "trinity"],
+    quotes: {
+      eucharist: [
+        {
+          text: "Not as common bread and common drink do we receive these; but… as we have been taught, the food which is blessed by the prayer of His word, and from which our blood and flesh by transmutation are nourished, is the flesh and blood of that Jesus who was made flesh.",
+          source: "First Apology, 66 (c. 155 AD)"
+        }
+      ],
+      baptism: [
+        {
+          text: "Then they are brought by us where there is water, and are regenerated in the same manner in which we were ourselves regenerated. For, in the name of God, the Father and Lord of the universe, and of our Savior Jesus Christ, and of the Holy Spirit, they then receive the washing with water.",
+          source: "First Apology, 61 (c. 155 AD)"
+        }
+      ],
+      trinity: [
+        {
+          text: "We worship and adore the Father, and the Son who came forth from Him and taught us these things, and the host of the other good angels… and the prophetic Spirit — venerating them in reason and truth.",
+          source: "First Apology, 6 (c. 155 AD)"
+        }
+      ]
+    }
+  },
+  {
+    name: "The Didache",
+    dates: "c. 50–120 AD",
+    role: "\"The Teaching of the Twelve Apostles\" — one of the earliest non-canonical Christian documents, likely from Syria.",
+    topics: ["eucharist", "baptism"],
+    quotes: {
+      eucharist: [
+        {
+          text: "But every Lord's day gather yourselves together, and break bread, and give thanksgiving after having confessed your transgressions, that your sacrifice may be pure. But let no one who is at odds with his fellow come together with you, until they be reconciled, that your sacrifice may not be profaned.",
+          source: "Didache, 14 (c. 50–120 AD)"
+        },
+        {
+          text: "But let no one eat or drink of your Thanksgiving [Eucharist], but they who have been baptized into the name of the Lord.",
+          source: "Didache, 9 (c. 50–120 AD)"
+        }
+      ],
+      baptism: [
+        {
+          text: "And concerning baptism, baptize this way: Having first said all these things, baptize into the name of the Father, and of the Son, and of the Holy Spirit, in living water.",
+          source: "Didache, 7 (c. 50–120 AD)"
+        }
+      ]
+    }
+  },
+  {
+    name: "St. Polycarp of Smyrna",
+    dates: "c. 69–155 AD",
+    role: "Bishop of Smyrna and martyr; direct disciple of the Apostle John. Link between the apostles and later Fathers.",
+    topics: ["succession", "eucharist"],
+    quotes: {
+      succession: [
+        {
+          text: "Polycarp also was not only instructed by apostles, and conversed with many who had seen Christ, but was also, by apostles in Asia, appointed bishop of the Church in Smyrna.",
+          source: "Recorded by Irenaeus, Against Heresies, III.3.4 (c. 180 AD)"
+        }
+      ],
+      eucharist: [
+        {
+          text: "I exhort you all, therefore, to yield obedience to the word of righteousness, and to exercise all patience, such as ye have seen set before your eyes, not only in the case of the blessed Ignatius, and Zosimus, and Rufus… They are in their due place in the presence of the Lord.",
+          source: "Epistle to the Philippians, 9 (c. 120 AD)"
+        }
+      ]
+    }
+  },
+  {
+    name: "St. Ignatius of Antioch",
+    dates: "c. 35–108 AD",
+    role: "Bishop of Antioch and martyr; third bishop after Peter himself. Student of the Apostle John. His seven letters are among the most important early Christian documents.",
+    topics: ["eucharist", "succession", "papacy"],
+    quotes: {
+      eucharist: [
+        {
+          text: "They abstain from the Eucharist and from prayer, because they confess not the Eucharist to be the flesh of our Saviour Jesus Christ, which suffered for our sins, and which the Father, of His goodness, raised up again.",
+          source: "Epistle to the Smyrnaeans, 7 (c. 107 AD)"
+        },
+        {
+          text: "Take heed, then, to have but one Eucharist. For there is one flesh of our Lord Jesus Christ, and one cup to show forth the unity of His blood; one altar; as there is one bishop, along with the presbytery and deacons.",
+          source: "Epistle to the Philadelphians, 4 (c. 107 AD)"
+        }
+      ],
+      succession: [
+        {
+          text: "See that ye all follow the bishop, even as Jesus Christ does the Father, and the presbytery as ye would the apostles; and reverence the deacons, as being the institution of God. Let no man do anything connected with the Church without the bishop.",
+          source: "Epistle to the Smyrnaeans, 8 (c. 107 AD)"
+        }
+      ],
+      papacy: [
+        {
+          text: "Ignatius, who is also called Theophorus, to the Church which has obtained mercy… which also presides in the place of the region of the Romans, worthy of God, worthy of honour, worthy of the highest happiness… and which presides over love.",
+          source: "Epistle to the Romans, salutation (c. 107 AD)"
+        }
+      ]
+    }
+  },
+  {
+    name: "St. Clement of Rome",
+    dates: "fl. c. 96 AD",
+    role: "Fourth Bishop of Rome (Pope). His letter to Corinth is the earliest extant document of Roman ecclesiastical authority exercised over another church.",
+    topics: ["succession", "papacy", "eucharist"],
+    quotes: {
+      succession: [
+        {
+          text: "Our apostles also knew, through our Lord Jesus Christ, that there would be strife on account of the office of the episcopate. For this reason, therefore, inasmuch as they had obtained a perfect fore-knowledge of this, they appointed those already mentioned, and afterwards gave instructions, that when these should fall asleep, other approved men should succeed them in their ministry.",
+          source: "First Epistle to the Corinthians, 44 (c. 96 AD)"
+        }
+      ],
+      papacy: [
+        {
+          text: "If, however, any shall disobey the words spoken by Him through us, let them know that they will involve themselves in transgression and serious danger.",
+          source: "First Epistle to the Corinthians, 59 — writing from Rome to Corinth (c. 96 AD)"
+        }
+      ],
+      eucharist: [
+        {
+          text: "Unto the chief priest his proper ministrations are allotted, and to the priests the proper place has been appointed, and on Levites their proper services have been imposed. The layman is bound by the ordinances for the laity.",
+          source: "First Epistle to the Corinthians, 40 (c. 96 AD)"
+        }
+      ]
+    }
+  }
+];
+
+// ========== RENDER TIMELINE ==========
+const timeline = document.getElementById('timeline');
+
+// Add era dividers at key points
+function renderTimeline(filter = 'all') {
+  // Keep the vine stem
+  const vineStem = timeline.querySelector('.vine-stem');
+  timeline.innerHTML = '';
+  timeline.appendChild(vineStem);
+
+  // Era labels
+  const eras = {
+    0: "Third Century",
+    3: "Late Second / Early Third Century",
+    5: "Mid-Second Century",
+    6: "Late First / Early Second Century",
+    8: "The Apostolic Generation"
+  };
+
+  fathers.forEach((father, index) => {
+    // Check filter
+    const matchesFilter = filter === 'all' || father.topics.includes(filter);
+
+    // Add era divider if applicable
+    if (eras[index]) {
+      const divider = document.createElement('div');
+      divider.className = 'era-divider';
+      divider.innerHTML = `<span class="era-label">${eras[index]}</span>`;
+      if (!matchesFilter && filter !== 'all') {
+        // Check if any father in this era matches
+        // We'll still show it for flow
+      }
+      timeline.appendChild(divider);
+    }
+
+    const entry = document.createElement('div');
+    entry.className = `father-entry${matchesFilter ? '' : ' hidden'}`;
+    entry.style.animationDelay = `${0.1 + index * 0.05}s`;
+
+    // Build topic tags
+    const tagHTML = father.topics
+      .map(t => {
+        const labels = {
+          eucharist: 'Eucharist',
+          succession: 'Succession',
+          papacy: 'Petrine Primacy',
+          baptism: 'Baptism',
+          trinity: 'Trinity'
+        };
+        return `<span class="topic-tag">${labels[t]}</span>`;
+      })
+      .join('');
+
+    // Build quotes HTML
+    let quotesHTML = '';
+    const topicLabels = {
+      eucharist: 'On the Eucharist',
+      succession: 'On Apostolic Succession',
+      papacy: 'On Petrine Primacy',
+      baptism: 'On Baptism',
+      trinity: 'On the Trinity & Nature of God'
+    };
+
+    const topicsToShow = filter === 'all' ? Object.keys(father.quotes) : [filter];
+    topicsToShow.forEach(topic => {
+      if (father.quotes[topic]) {
+        quotesHTML += `<div class="quote-topic-heading">${topicLabels[topic]}</div>`;
+        father.quotes[topic].forEach(q => {
+          quotesHTML += `
+            <div class="quote-block">
+              <p class="quote-text">"${q.text}"</p>
+              <p class="quote-source">— ${q.source}</p>
+            </div>`;
+        });
+      }
+    });
+
+    entry.innerHTML = `
+      <div class="vine-node"></div>
+      <div class="father-card" onclick="toggleQuotes(this)">
+        <div class="card-inner">
+          <div class="father-name">${father.name}</div>
+          <div class="father-dates">${father.dates}</div>
+          <div class="father-role">${father.role}</div>
+          <div class="topic-tags">${tagHTML}</div>
+          <div class="click-hint">Click to expand quotes ▾</div>
+        </div>
+        <div class="quotes-panel">
+          <div class="quotes-inner">${quotesHTML}</div>
+        </div>
+      </div>
+    `;
+
+    timeline.appendChild(entry);
+  });
+
+  // Also filter the biblical foundation
+  const categories = document.querySelectorAll('.foundation-category');
+  categories.forEach(cat => {
+    if (filter === 'all' || cat.dataset.topic === filter) {
+      cat.style.display = 'block';
+    } else {
+      cat.style.display = 'none';
+    }
+  });
+}
+
+// ========== TOGGLE QUOTES ==========
+function toggleQuotes(card) {
+  const panel = card.querySelector('.quotes-panel');
+  const hint = card.querySelector('.click-hint');
+  panel.classList.toggle('open');
+  if (panel.classList.contains('open')) {
+    hint.textContent = 'Click to collapse ▴';
+  } else {
+    hint.textContent = 'Click to expand quotes ▾';
+  }
+}
+
+// ========== FILTER BUTTONS ==========
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderTimeline(btn.dataset.topic);
+  });
+});
+
+// Initial render
+renderTimeline();
+
+// ========== SIDEBAR TOGGLE ==========
+function toggleSidebar() {
+  var btn = document.querySelector('.nav-hamburger'),
+      sb  = document.querySelector('.sidebar-menu'),
+      ov  = document.querySelector('.sidebar-overlay');
+  var open = sb.classList.contains('open');
+  if (open) {
+    sb.classList.remove('open'); btn.classList.remove('open');
+    ov.classList.remove('visible'); document.body.style.overflow = '';
+  } else {
+    sb.classList.add('open'); btn.classList.add('open');
+    ov.classList.add('visible'); document.body.style.overflow = 'hidden';
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.querySelector('.sidebar-menu.open')) toggleSidebar();
+});
+
+// ========== READING PROGRESS BAR ==========
+(function() {
+  var bar = document.getElementById('reading-progress-bar');
+  function upd() {
+    if (!bar) return;
+    var s = window.scrollY || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var p = h > 0 ? Math.min(100, (s / h) * 100) : 0;
+    bar.style.width = p + '%'; bar.setAttribute('aria-valuenow', Math.round(p));
+  }
+  if (bar) { window.addEventListener('scroll', upd, { passive: true }); upd(); }
+})();
+</script>
+</body>
+</html>
