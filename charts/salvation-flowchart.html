@@ -742,8 +742,9 @@ main {
     .node-note  { font-size: 0.72rem; }
 
     /* ARROWS */
-    .flow-arrow { padding: 0.3rem 0; }
+    .flow-arrow { padding: 0.3rem 0; flex: 0 0 auto !important; min-height: auto !important; }
     .arrow-line { height: 20px; }
+    .flow-col:first-child .flow-arrow .arrow-line { flex: none; min-height: auto; height: 20px; }
 
     /* BRANCH ROW (LDS degrees of glory): single column */
     .branch-row {
@@ -788,9 +789,15 @@ main {
 /* FLOWCHART LAYOUT */
 .flow-wrapper {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 3rem; align-items: start;
+  gap: 3rem; align-items: stretch;
 }
-.flow-col { }
+.flow-col {
+  display: flex; flex-direction: column;
+}
+/* Catholic column: spread nodes evenly so final block aligns with LDS final block */
+.flow-col:first-child .flow-node { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; }
+.flow-col:first-child .flow-arrow { flex: 1 1 auto; min-height: 40px; }
+.flow-col:first-child .flow-arrow .arrow-line { flex: 1; min-height: 30px; height: auto; }
 .flow-header {
   text-align: center; padding: 1.2rem 1rem;
   border: 1px solid; margin-bottom: 1.5rem;
@@ -813,7 +820,7 @@ main {
 .node-box {
   width: 100%; padding: 1rem 1.3rem;
   border: 1px solid; position: relative;
-  text-align: center;
+  text-align: center; flex: 0 0 auto;
 }
 .node-box.cath { background: rgba(197,163,85,0.07); border-color: rgba(166,138,62,0.3); }
 .node-box.lds { background: rgba(107,29,42,0.05); border-color: rgba(107,29,42,0.18); }
@@ -845,6 +852,7 @@ main {
 .flow-arrow {
   display: flex; align-items: center; justify-content: center;
   padding: 0.5rem 0; position: relative;
+  flex-direction: column;
 }
 .arrow-line { width: 2px; height: 30px; }
 .flow-arrow.cath .arrow-line { background: linear-gradient(to bottom, rgba(201,168,76,0.4), rgba(201,168,76,0.6)); }
@@ -852,7 +860,8 @@ main {
 .arrow-head { width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; }
 .flow-arrow.cath .arrow-head { border-top: 8px solid rgba(201,168,76,0.6); }
 .flow-arrow.lds .arrow-head { border-top: 8px solid rgba(139,45,60,0.5); }
-.arrow-wrapper { display: flex; flex-direction: column; align-items: center; }
+.arrow-wrapper { display: flex; flex-direction: column; align-items: center; height: 100%; }
+.flow-col:first-child .flow-arrow .arrow-wrapper { flex: 1; }
 
 /* BRANCH (for LDS degrees of glory) */
 .branch-container { width: 100%; margin-top: 0.5rem; }
