@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Timeline of Christianity</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C5A55A;
+    --gold-light: #D4BC7C;
+    --gold-glow: rgba(197, 165, 90, 0.25);
+    --burgundy: #722F37;
+    --burgundy-dark: #501E24;
+    --parchment: #F5ECD7;
+    --parchment-dark: #E8DCC4;
+    --ink: #2C1810;
+    --ink-light: #5C4033;
+    --cream: #FDF8EF;
+    --orthodox-blue: #1B3A5C;
+    --protestant-green: #4A6741;
+    --restorationist-purple: #5A3068;
+    --yes: #3D7A3D;
+    --no: #A04040;
+    --partial: #B8860B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--parchment);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page { position: relative; z-index: 1; }
+
+  /* ── HEADER ── */
+  header {
+    text-align: center;
+    padding: 44px 24px 32px;
+  }
+
+  header h1 {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    color: var(--burgundy);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+
+  header .sub {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.72rem, 1.6vw, 0.92rem);
+    color: var(--gold);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .verse {
+    font-style: italic;
+    color: var(--ink-light);
+    max-width: 580px;
+    margin: 16px auto 0;
+    line-height: 1.55;
+    font-size: 1rem;
+  }
+
+  .ornament {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    margin: 14px 0;
+    color: var(--gold);
+    font-size: 0.9rem;
+  }
+  .ornament::before, .ornament::after {
+    content: ''; width: 60px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  /* ── LEGEND ── */
+  .legend {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 18px;
+    max-width: 800px; margin: 0 auto 12px;
+    padding: 12px 20px;
+    background: rgba(253,248,239,0.7);
+    border: 1px solid var(--parchment-dark);
+    border-radius: 5px;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; }
+  .legend-dot { width: 9px; height: 9px; border-radius: 50%; }
+
+  .how-to {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    margin-bottom: 28px;
+    opacity: 0.7;
+  }
+
+  /* ── TIMELINE CONTAINER ── */
+  .timeline-wrap {
+    position: relative;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+  }
+
+  /* The golden Catholic line */
+  .catholic-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--gold) 0%, var(--gold-light) 100%);
+    transform: translateX(-50%);
+    box-shadow: 0 0 12px var(--gold-glow), 0 0 24px rgba(197,165,90,0.1);
+    z-index: 1;
+  }
+
+  /* Year markers on the line */
+  .year-marker {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+
+  .year-dot {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--parchment);
+    border: 3px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 0.62rem;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+    box-shadow: 0 0 16px var(--gold-glow);
+    z-index: 3;
+  }
+
+  .year-dot.catholic-dot {
+    background: var(--burgundy);
+    border-color: var(--gold);
+    color: var(--gold);
+    width: 52px; height: 52px;
+    font-size: 0.68rem;
+  }
+
+  .year-dot.present-dot {
+    background: var(--gold);
+    border-color: var(--burgundy);
+    color: var(--burgundy);
+    width: 52px; height: 52px;
+    font-size: 0.6rem;
+    animation: pulse 2.5s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 16px var(--gold-glow); }
+    50% { box-shadow: 0 0 28px rgba(197,165,90,0.45); }
+  }
+
+  /* Branch cards that appear on left or right of the line */
+  .branch {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .branch.left { flex-direction: row-reverse; }
+  .branch.right { flex-direction: row; }
+
+  .branch-connector {
+    flex-shrink: 0;
+    width: calc(50% - 26px);
+    display: flex;
+    align-items: flex-start;
+    padding-top: 22px;
+  }
+
+  .branch.left .branch-connector { justify-content: flex-start; }
+  .branch.right .branch-connector { justify-content: flex-end; }
+
+  .connector-line {
+    height: 2px;
+    flex: 1;
+    max-width: 60px;
+    position: relative;
+  }
+
+  .connector-line::after {
+    content: '';
+    position: absolute;
+    top: 50%; right: 0;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    transform: translate(50%, -50%);
+  }
+
+  .branch.right .connector-line::after { right: auto; left: 0; transform: translate(-50%, -50%); }
+
+  .branch-card-wrap {
+    width: calc(50% - 26px);
+    flex-shrink: 0;
+  }
+
+  .branch-card {
+    background: var(--cream);
+    border: 1px solid var(--parchment-dark);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(44,24,16,0.06);
+    cursor: pointer;
+  }
+
+  .branch-card:hover {
+    box-shadow: 0 4px 16px rgba(44,24,16,0.12);
+    border-color: var(--gold-light);
+  }
+
+  .card-head {
+    padding: 12px 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .card-icon {
+    width: 32px; height: 32px; min-width: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.92rem;
+    color: white;
+    font-weight: 700;
+  }
+
+  .card-head-info { flex: 1; min-width: 0; }
+
+  .card-name {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: clamp(0.82rem, 1.6vw, 0.95rem);
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .card-year {
+    font-size: 0.78rem;
+    color: var(--ink-light);
+    margin-top: 1px;
+  }
+
+  .card-members-sm {
+    font-size: 0.7rem;
+    color: var(--gold);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .card-chevron {
+    font-size: 1.1rem;
+    color: var(--gold);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .branch-card.open .card-chevron { transform: rotate(45deg); }
+
+  /* Expanded content */
+  .card-expand {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s ease;
+  }
+
+  .branch-card.open .card-expand {
+    max-height: 1000px;
+  }
+
+  .card-inner {
+    padding: 0 14px 14px;
+  }
+
+  .card-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--ink-light);
+    margin-bottom: 12px;
+  }
+
+  /* Quick-facts grid */
+  .facts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .fact-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.8rem;
+    padding: 5px 8px;
+    background: var(--parchment);
+    border-radius: 4px;
+    line-height: 1.3;
+  }
+
+  .fact-icon {
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    width: 18px;
+    text-align: center;
+  }
+
+  .fact-label {
+    color: var(--ink-light);
+  }
+
+  .fact-label strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* Color variants */
+  .c-catholic .card-icon { background: var(--burgundy); }
+  .c-catholic { border-left: 3px solid var(--burgundy); }
+  .c-orthodox .card-icon { background: var(--orthodox-blue); }
+  .c-orthodox { border-left: 3px solid var(--orthodox-blue); }
+  .c-protestant .card-icon { background: var(--protestant-green); }
+  .c-protestant { border-left: 3px solid var(--protestant-green); }
+  .c-restorationist .card-icon { background: var(--restorationist-purple); }
+  .c-restorationist { border-left: 3px solid var(--restorationist-purple); }
+
+  .conn-orthodox .connector-line { background: var(--orthodox-blue); }
+  .conn-orthodox .connector-line::after { background: var(--orthodox-blue); }
+  .conn-protestant .connector-line { background: var(--protestant-green); }
+  .conn-protestant .connector-line::after { background: var(--protestant-green); }
+  .conn-restorationist .connector-line { background: var(--restorationist-purple); }
+  .conn-restorationist .connector-line::after { background: var(--restorationist-purple); }
+
+  /* ── CATHOLIC CONTINUOUS CARD (special) ── */
+  .catholic-card-wrap {
+    position: relative;
+    z-index: 2;
+    max-width: 520px;
+    margin: 0 auto 16px;
+  }
+
+  .catholic-card-wrap .branch-card {
+    border-left: 4px solid var(--burgundy);
+    border-color: var(--gold-light);
+    background: linear-gradient(135deg, var(--cream) 0%, rgba(197,165,90,0.06) 100%);
+  }
+
+  /* ── BOTTOM STATS ── */
+  .bottom-stats {
+    max-width: 700px;
+    margin: 20px auto 0;
+    padding: 0 24px;
+  }
+
+  .stat-box {
+    text-align: center;
+    padding: 20px;
+    background: rgba(114,47,55,0.04);
+    border: 1px solid rgba(114,47,55,0.12);
+    border-radius: 6px;
+    margin-bottom: 16px;
+  }
+
+  .stat-big {
+    font-family: 'Cinzel', serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--burgundy);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.92rem;
+    color: var(--ink-light);
+    margin-top: 4px;
+  }
+
+  .stat-sub {
+    font-size: 0.82rem;
+    color: var(--gold);
+    font-style: italic;
+    margin-top: 6px;
+  }
+
+  .closing-verse {
+    text-align: center;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink-light);
+    max-width: 560px;
+    margin: 28px auto 40px;
+    line-height: 1.6;
+    padding: 0 24px;
+  }
+
+  .closing-verse strong {
+    color: var(--burgundy);
+    font-style: normal;
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 720px) {
+    .catholic-line { left: 24px; }
+    .year-marker { justify-content: flex-start; padding-left: 2px; }
+    .year-dot { width: 38px; height: 38px; font-size: 0.56rem; }
+    .year-dot.catholic-dot, .year-dot.present-dot { width: 44px; height: 44px; font-size: 0.58rem; }
+
+    .branch { flex-direction: row !important; }
+    .branch-connector { width: auto; min-width: 32px; max-width: 32px; padding-top: 18px; }
+    .branch-connector { justify-content: flex-end !important; }
+    .connector-line { max-width: 30px; }
+    .connector-line::after { right: auto !important; left: 0 !important; transform: translate(-50%, -50%) !important; }
+    .branch-card-wrap { width: auto; flex: 1; }
+
+    .catholic-card-wrap { margin-left: 44px; margin-right: 12px; }
+
+    .facts-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── ANIMATIONS ── */
+  .branch-card, .catholic-card-wrap .branch-card {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .branch-card.visible, .catholic-card-wrap .branch-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  /* ── SITE NAV ── */
+  .site-nav {
+    position: sticky; top: 0; z-index: 9999;
+    background: linear-gradient(to bottom, rgba(13,7,3,0.98), rgba(13,7,3,0.93));
+    border-bottom: 1px solid #8B6914;
+    padding: 0.75rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    backdrop-filter: blur(6px);
+    font-family: 'Cinzel', serif;
+  }
+  .site-nav a.nav-home {
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #E8D08A;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .site-nav a.nav-home:hover { color: #C9A84C; }
+  .site-nav .nav-back {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #C9A84C;
+    text-decoration: none;
+    border: 1px solid rgba(201,168,76,0.35);
+    padding: 0.4rem 1.1rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .site-nav .nav-back:hover {
+    background: rgba(201,168,76,0.12);
+    color: #E8D08A;
+  }
+  .site-nav .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .site-nav .nav-links a {
+    font-size: 0.72rem; letter-spacing: 0.13em; text-transform: uppercase;
+    color: #C5B07A; text-decoration: none; transition: color 0.2s;
+  }
+  .site-nav .nav-links a:hover { color: #E8D08A; }
+
+  /* ── Hamburger ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px; height: 36px;
+    cursor: pointer;
+    background: none;
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 3px;
+    padding: 6px;
+    z-index: 10001;
+  }
+  .nav-hamburger span {
+    display: block; height: 2px;
+    background: #C9A84C;
+    border-radius: 2px;
+    transition: all 0.25s;
+    transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── Sidebar ── */
+  .sidebar-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 10000;
+    backdrop-filter: blur(2px);
+  }
+  .sidebar-overlay.visible { display: block; }
+  .sidebar {
+    position: fixed;
+    top: 0; right: -280px;
+    width: 260px; height: 100%;
+    background: linear-gradient(to bottom, #1a0d05, #120800);
+    border-left: 1px solid rgba(201,168,76,0.3);
+    z-index: 10002;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+  }
+  .sidebar.open { right: 0; }
+  .sidebar-inner {
+    padding: 5rem 2rem 2rem;
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .sidebar-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #C9A84C;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .sidebar-inner a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #C5B07A;
+    text-decoration: none;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    transition: color 0.2s;
+  }
+  .sidebar-inner a:hover { color: #E8D08A; }
+  .sidebar-inner a.sidebar-back {
+    color: #C9A84C;
+    margin-top: 1.5rem;
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 0.7rem 1rem;
+    text-align: center;
+    border-radius: 2px;
+  }
+  .sidebar-ornament {
+    color: #8B6914;
+    font-size: 11px;
+    letter-spacing: 8px;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  /* ── Mobile nav overrides ── */
+  @media (max-width: 720px) {
+    .site-nav { padding: 0.55rem 1rem !important; }
+    .site-nav .nav-links { display: none !important; }
+    .site-nav .nav-back { display: none !important; }
+    .nav-hamburger {
+      display: flex !important;
+      margin-left: auto !important;
+      order: 99 !important;
+      flex-shrink: 0 !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">One Faith Delivered</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../articles.html">Articles</a></li>
+    <li><a href="../charts.html">Charts</a></li>
+    <li><a href="../topics.html">Topics</a></li>
+    <li><a href="../resources.html">Resources</a></li>
+  </ul>
+  <a href="../charts.html" class="nav-back">&#8592; All Charts</a>
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page">
+
+  <header>
+    <h1>The Timeline of Christianity</h1>
+    <div class="sub">One Church — Two Thousand Years of Division Around It</div>
+    <div class="ornament">✝</div>
+    <p class="verse">"You are Peter, and on this rock I will build my Church, and the gates of hell shall not prevail against it." — Matthew 16:18</p>
+  </header>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--burgundy)"></div> Catholic (Original)</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--orthodox-blue)"></div> Orthodox</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--protestant-green)"></div> Protestant</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--restorationist-purple)"></div> Restorationist</div>
+  </div>
+  <div class="how-to">Tap any card to expand details</div>
+
+  <div class="timeline-wrap">
+    <div class="catholic-line"></div>
+
+    <!-- ═══════════ AD 33 ═══════════ -->
+    <div class="year-marker">
+      <div class="year-dot catholic-dot">AD 33</div>
+    </div>
+
+    <div class="catholic-card-wrap">
+      <div class="branch-card c-catholic" onclick="this.classList.toggle('open')">
+        <div class="card-head">
+          <div class="card-icon" style="background:var(--burgundy)">☧</div>
+          <div class="card-head-info">
+            <div class="card-name">The Catholic Church</div>
+            <div class="card-year">Founded by Jesus Christ upon St. Peter · AD 33</div>
+          </div>
+          <div class="card-members-sm">~1.4 billion</div>
+          <div class="card-chevron">+</div>
+        </div>
+        <div class="card-expand"><div class="card-inner">
+          <div class="card-desc">
+            The original Christian Church, founded by Jesus Himself on the Apostle Peter (Matthew 16:18). It has had an unbroken chain of leadership from Peter all the way to Pope Leo today — that's nearly 2,000 years with no gaps. Every other group on this timeline <em>left</em> this Church. The Catholic Church has never left anyone.
+          </div>
+          <div class="facts-grid">
+            <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>7 Sacraments</strong> — all seven</span></div>
+            <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>Real Presence</strong> — yes, the bread & wine truly become Jesus</span></div>
+            <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>Baptism necessary</strong> — yes, for salvation</span></div>
+            <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>Communion</strong> — every single Mass (daily)</span></div>
+            <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>Liturgical</strong> — fully liturgical; the Mass follows a structured, ancient rite</span></div>
+            <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>Tradition</strong> — Scripture + Sacred Tradition + Magisterium; 2,000 years of unbroken teaching</span></div>
+          </div>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- ═══════════ FIRST 1,000 YEARS ═══════════ -->
+    <div class="year-marker">
+      <div class="year-dot">~1000 YRS</div>
+    </div>
+
+    <div style="text-align:center;font-style:italic;color:var(--ink-light);font-size:0.88rem;margin:4px 0 16px;position:relative;z-index:2;">
+      One united Church for the first millennium of Christianity
+    </div>
+
+    <!-- ═══════════ 1054 ═══════════ -->
+    <div class="year-marker">
+      <div class="year-dot">1054</div>
+    </div>
+
+    <div class="branch right">
+      <div class="branch-connector conn-orthodox"><div class="connector-line"></div></div>
+      <div class="branch-card-wrap">
+        <div class="branch-card c-orthodox" onclick="this.classList.toggle('open')">
+          <div class="card-head">
+            <div class="card-icon">☦</div>
+            <div class="card-head-info">
+              <div class="card-name">Eastern Orthodox</div>
+              <div class="card-year">Split from Rome over papal authority · 1054</div>
+            </div>
+            <div class="card-members-sm">~220M</div>
+            <div class="card-chevron">+</div>
+          </div>
+          <div class="card-expand"><div class="card-inner">
+            <div class="card-desc">
+              The Eastern churches (Greek, Russian, Serbian, etc.) broke from Rome mainly because they didn't want to accept the Pope's authority over all Christians. They kept almost everything else — they're the closest thing to Catholicism out there. But without a single leader, they've broken into separate national churches that sometimes disagree with each other.
+            </div>
+            <div class="facts-grid">
+              <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>7 Sacraments</strong> — all seven</span></div>
+              <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>Real Presence</strong> — yes, same belief as Catholics</span></div>
+              <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>Baptism necessary</strong> — yes</span></div>
+              <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>Communion</strong> — every liturgy (at least weekly)</span></div>
+              <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>Liturgical</strong> — fully liturgical; the Divine Liturgy is ancient and highly structured</span></div>
+              <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>Tradition</strong> — Scripture + Holy Tradition; strong emphasis on the Church Fathers and early councils</span></div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 1517 ═══════════ -->
+    <div class="year-marker">
+      <div class="year-dot">1517</div>
+    </div>
+
+    <div class="branch left">
+      <div class="branch-connector conn-protestant"><div class="connector-line"></div></div>
+      <div class="branch-card-wrap">
+        <div class="branch-card c-protestant" onclick="this.classList.toggle('open')">
+          <div class="card-head">
+            <div class="card-icon">L</div>
+            <div class="card-head-info">
+              <div class="card-name">Lutheranism</div>
+              <div class="card-year">Martin Luther leaves the Church · 1517</div>
+            </div>
+            <div class="card-members-sm">~80M</div>
+            <div class="card-chevron">+</div>
+          </div>
+          <div class="card-expand"><div class="card-inner">
+            <div class="card-desc">
+              Martin Luther was a Catholic monk who had real concerns about corruption, but instead of reforming from within, he ended up rejecting the Pope, most of the sacraments, and the authority of Church tradition. He kept some structure and some belief in communion being special, but opened the door to the idea that anyone can interpret the Bible for themselves — which is why the splits never stopped.
+            </div>
+            <div class="facts-grid">
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>2 Sacraments</strong> — baptism & communion only</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Real Presence</strong> — sort of; Jesus is "in & with" the bread, but the bread stays bread</span></div>
+              <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>Baptism necessary</strong> — yes, including infants</span></div>
+              <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>Communion</strong> — regularly (most Sundays)</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Liturgical</strong> — moderately liturgical; retains structured worship with hymns, readings, and creeds</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Tradition</strong> — Scripture alone (Sola Scriptura), but retains Lutheran confessions and catechisms</span></div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 1525 ═══════════ -->
+
+    <div class="branch right">
+      <div class="branch-connector conn-protestant"><div class="connector-line"></div></div>
+      <div class="branch-card-wrap">
+        <div class="branch-card c-protestant" onclick="this.classList.toggle('open')">
+          <div class="card-head">
+            <div class="card-icon">A</div>
+            <div class="card-head-info">
+              <div class="card-name">Anabaptists / Mennonites / Amish</div>
+              <div class="card-year">Radical Reformation · 1525</div>
+            </div>
+            <div class="card-members-sm">~2M</div>
+            <div class="card-chevron">+</div>
+          </div>
+          <div class="card-expand"><div class="card-inner">
+            <div class="card-desc">
+              These groups thought Luther and Calvin didn't go far enough. They rejected infant baptism (which Christians had practiced since the Apostles), demanded total separation from government, and formed tight-knit communities. This is the first clear example of "reforming the reformers" — a pattern that never stops once you remove a central authority.
+            </div>
+            <div class="facts-grid">
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>0 Sacraments</strong> — they call them "ordinances," not sacraments</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Real Presence</strong> — no, communion is just a symbol</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Baptism necessary</strong> — no; adults only, as a public statement of faith</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Communion</strong> — varies, some do it a few times a year</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Liturgical</strong> — non-liturgical; simple, plain worship with no formal rite</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Tradition</strong> — Bible only; actively rejects all post-apostolic tradition</span></div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 1534 ═══════════ -->
+    <div class="year-marker">
+      <div class="year-dot">1534</div>
+    </div>
+
+    <div class="branch left">
+      <div class="branch-connector conn-protestant"><div class="connector-line"></div></div>
+      <div class="branch-card-wrap">
+        <div class="branch-card c-protestant" onclick="this.classList.toggle('open')">
+          <div class="card-head">
+            <div class="card-icon">⚜</div>
+            <div class="card-head-info">
+              <div class="card-name">Anglicanism</div>
+              <div class="card-year">Henry VIII breaks from Rome · 1534</div>
+            </div>
+            <div class="card-members-sm">~85M</div>
+            <div class="card-chevron">+</div>
+          </div>
+          <div class="card-expand"><div class="card-inner">
+            <div class="card-desc">
+              This didn't start over theology at all — King Henry VIII wanted to divorce his wife, and the Pope said no. So Henry made himself the head of the English church. Anglicanism kept a lot of Catholic-looking things (robes, liturgy, bishops), but without the Pope, it has steadily drifted. Today, Anglican churches around the world can't agree on basic moral issues.
+            </div>
+            <div class="facts-grid">
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>2 Sacraments</strong> — recognizes baptism & communion; calls other 5 "rites"</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Real Presence</strong> — they can't agree; ranges from yes to no depending on the parish</span></div>
+              <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>Baptism necessary</strong> — yes, including infants</span></div>
+              <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>Communion</strong> — weekly in most parishes</span></div>
+              <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>Liturgical</strong> — highly liturgical; follows the Book of Common Prayer</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Tradition</strong> — Scripture, tradition, and reason ("three-legged stool"); but tradition is optional in practice</span></div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 1536 ═══════════ -->
+
+    <div class="branch right">
+      <div class="branch-connector conn-protestant"><div class="connector-line"></div></div>
+      <div class="branch-card-wrap">
+        <div class="branch-card c-protestant" onclick="this.classList.toggle('open')">
+          <div class="card-head">
+            <div class="card-icon">C</div>
+            <div class="card-head-info">
+              <div class="card-name">Calvinism / Reformed / Presbyterian</div>
+              <div class="card-year">John Calvin · 1536</div>
+            </div>
+            <div class="card-members-sm">~85M</div>
+            <div class="card-chevron">+</div>
+          </div>
+          <div class="card-expand"><div class="card-inner">
+            <div class="card-desc">
+              Calvin took Luther's ideas and pushed them further. His big thing: God has already decided before you're born whether you're going to heaven or hell, and there's nothing you can do about it. This is called "predestination." Most Presbyterians come from this tradition. Communion is seen as spiritual but not physically real — Jesus is present "in spirit" but the bread is still just bread.
+            </div>
+            <div class="facts-grid">
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>2 Sacraments</strong> — baptism & communion only</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Real Presence</strong> — no; "spiritual presence" only</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Baptism necessary</strong> — important but not strictly required for salvation</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Communion</strong> — monthly or quarterly in most churches</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Liturgical</strong> — semi-liturgical; structured worship but less formal than Lutherans or Anglicans</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Tradition</strong> — Scripture alone; Reformed confessions exist but Bible is the only final authority</span></div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 1609 ═══════════ -->
+    <div class="year-marker">
+      <div class="year-dot">1609</div>
+    </div>
+
+    <div class="branch left">
+      <div class="branch-connector conn-protestant"><div class="connector-line"></div></div>
+      <div class="branch-card-wrap">
+        <div class="branch-card c-protestant" onclick="this.classList.toggle('open')">
+          <div class="card-head">
+            <div class="card-icon">B</div>
+            <div class="card-head-info">
+              <div class="card-name">Baptists</div>
+              <div class="card-year">John Smyth · 1609</div>
+            </div>
+            <div class="card-members-sm">~100M</div>
+            <div class="card-chevron">+</div>
+          </div>
+          <div class="card-expand"><div class="card-inner">
+            <div class="card-desc">
+              Baptists reject infant baptism and say only adults who choose to believe should be baptized — by full dunking, not sprinkling. Every Baptist church is completely independent, which means Baptist churches in the same town can teach completely different things. Communion is purely symbolic — just crackers and grape juice to remember Jesus, with no special spiritual power at all.
+            </div>
+            <div class="facts-grid">
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>0 Sacraments</strong> — they call them "ordinances," not sacraments</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Real Presence</strong> — no, strictly symbolic</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Baptism necessary</strong> — no; it's an outward sign, not required for salvation</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Communion</strong> — monthly or quarterly, some less</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Liturgical</strong> — non-liturgical; no set order of worship, pastor-driven format</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Tradition</strong> — Bible alone; explicitly rejects all creeds and tradition as authoritative</span></div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 1738 ═══════════ -->
+    <div class="year-marker">
+      <div class="year-dot">1738</div>
+    </div>
+
+    <div class="branch right">
+      <div class="branch-connector conn-protestant"><div class="connector-line"></div></div>
+      <div class="branch-card-wrap">
+        <div class="branch-card c-protestant" onclick="this.classList.toggle('open')">
+          <div class="card-head">
+            <div class="card-icon">M</div>
+            <div class="card-head-info">
+              <div class="card-name">Methodism</div>
+              <div class="card-year">John Wesley · 1738 (from Anglicanism)</div>
+            </div>
+            <div class="card-members-sm">~80M</div>
+            <div class="card-chevron">+</div>
+          </div>
+          <div class="card-expand"><div class="card-inner">
+            <div class="card-desc">
+              John Wesley was an Anglican priest who never wanted to start a new church — he just wanted to revive personal holiness within the Church of England. But after he died, his followers split off anyway. Sound familiar? This keeps happening: someone starts a "movement," and it becomes another denomination. Methodists put more emphasis on doing good works than most Protestants, but still reject the authority that could make those teachings stick.
+            </div>
+            <div class="facts-grid">
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>2 Sacraments</strong> — baptism & communion</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Real Presence</strong> — no; a "spiritual mystery" but not literally Jesus</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Baptism necessary</strong> — yes to infants, but not strictly required for salvation</span></div>
+              <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>Communion</strong> — encouraged monthly; Wesley wanted weekly</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Liturgical</strong> — semi-liturgical; has a worship order, hymns, and lectionary but less formal</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Tradition</strong> — Wesley's Quadrilateral: Scripture, tradition, reason, and experience — but Scripture is primary</span></div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 1830 ═══════════ -->
+    <div class="year-marker">
+      <div class="year-dot">1830</div>
+    </div>
+
+    <div class="branch left">
+      <div class="branch-connector conn-restorationist"><div class="connector-line"></div></div>
+      <div class="branch-card-wrap">
+        <div class="branch-card c-restorationist" onclick="this.classList.toggle('open')">
+          <div class="card-head">
+            <div class="card-icon">⬡</div>
+            <div class="card-head-info">
+              <div class="card-name">Latter-day Saints (Mormons)</div>
+              <div class="card-year">Joseph Smith · 1830</div>
+            </div>
+            <div class="card-members-sm">~17M</div>
+            <div class="card-chevron">+</div>
+          </div>
+          <div class="card-expand"><div class="card-inner">
+            <div class="card-desc">
+              Mormonism claims that every Christian church on earth went completely wrong after the Apostles died — a "total apostasy" — and that God needed Joseph Smith to start over from scratch in 1830. This means Jesus' promise that "the gates of hell shall not prevail" against His Church (Matt 16:18) somehow failed for 1,800 years. LDS beliefs include: God was once a human man, you can become a god yourself, there are many gods, and new scriptures (Book of Mormon, etc.) override the Bible. This isn't a different denomination — it's a fundamentally different religion using Christian words.
+            </div>
+            <div class="facts-grid">
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>0 Sacraments</strong> — they call them "ordinances" with very different meanings</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Real Presence</strong> — no; they use bread & water as symbols only</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Baptism necessary</strong> — yes, but only LDS baptism counts (including for the dead)</span></div>
+              <div class="fact-item"><span class="fact-icon">🟢</span><span class="fact-label"><strong>Communion</strong> — weekly (bread & water, not wine)</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Liturgical</strong> — semi-structured; temple ordinances are highly ritualized, but regular meetings are not</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Tradition</strong> — rejects all Christian tradition; claims a "total apostasy" required a complete restart</span></div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 1870s ═══════════ -->
+
+    <div class="branch right">
+      <div class="branch-connector conn-restorationist"><div class="connector-line"></div></div>
+      <div class="branch-card-wrap">
+        <div class="branch-card c-restorationist" onclick="this.classList.toggle('open')">
+          <div class="card-head">
+            <div class="card-icon">⬢</div>
+            <div class="card-head-info">
+              <div class="card-name">Jehovah's Witnesses</div>
+              <div class="card-year">Charles Taze Russell · 1870s</div>
+            </div>
+            <div class="card-members-sm">~8.7M</div>
+            <div class="card-chevron">+</div>
+          </div>
+          <div class="card-expand"><div class="card-inner">
+            <div class="card-desc">
+              JWs deny the Trinity — the belief that God is Father, Son, and Holy Spirit — which every Christian group affirmed for over 1,500 years. They say Jesus is not God but a created being (the angel Michael). They rewrote the Bible (their "New World Translation") to support their views, have predicted the end of the world multiple times and been wrong every time, and members who leave are shunned by their families.
+            </div>
+            <div class="facts-grid">
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>0 Sacraments</strong> — no sacramental theology at all</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Real Presence</strong> — no; "Memorial" once a year, most don't partake</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Baptism necessary</strong> — yes, but it's a dedication to the organization</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Communion</strong> — once a year; only ~20,000 partake (the "anointed")</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Liturgical</strong> — non-liturgical; meetings follow a study format, not a worship service</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Tradition</strong> — rejects all Christian tradition; Watchtower publications override all historical teaching</span></div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 1901 ═══════════ -->
+    <div class="year-marker">
+      <div class="year-dot">1901</div>
+    </div>
+
+    <div class="branch left">
+      <div class="branch-connector conn-protestant"><div class="connector-line"></div></div>
+      <div class="branch-card-wrap">
+        <div class="branch-card c-protestant" onclick="this.classList.toggle('open')">
+          <div class="card-head">
+            <div class="card-icon">🔥</div>
+            <div class="card-head-info">
+              <div class="card-name">Pentecostalism</div>
+              <div class="card-year">Azusa Street Revival · 1901</div>
+            </div>
+            <div class="card-members-sm">~280M</div>
+            <div class="card-chevron">+</div>
+          </div>
+          <div class="card-expand"><div class="card-inner">
+            <div class="card-desc">
+              One of the newest major movements, focused on speaking in tongues, faith healing, and dramatic emotional experiences as proof that you really have the Holy Spirit. There's almost no connection to the historical Church at all — no bishops, no creeds, no tradition. It's incredibly fragmented into thousands of independent groups. The emphasis on personal experience over any kind of doctrine means there's no way to settle disagreements, so they just keep splitting.
+            </div>
+            <div class="facts-grid">
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>0 Sacraments</strong> — ordinances only</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Real Presence</strong> — no, symbolic only</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Baptism necessary</strong> — no, it's an act of obedience, not required</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Communion</strong> — varies wildly; some monthly, some rarely</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Liturgical</strong> — non-liturgical; worship is spontaneous, emotion-driven, no fixed order</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Tradition</strong> — Bible plus personal revelation; rejects tradition entirely in favor of direct Holy Spirit guidance</span></div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ 20th–21st Century ═══════════ -->
+    <div class="year-marker">
+      <div class="year-dot">2000s</div>
+    </div>
+
+    <div class="branch right">
+      <div class="branch-connector conn-protestant"><div class="connector-line"></div></div>
+      <div class="branch-card-wrap">
+        <div class="branch-card c-protestant" onclick="this.classList.toggle('open')">
+          <div class="card-head">
+            <div class="card-icon">?</div>
+            <div class="card-head-info">
+              <div class="card-name">Non-Denominational / Evangelical</div>
+              <div class="card-year">20th–21st Century · mostly U.S.</div>
+            </div>
+            <div class="card-members-sm">~60M+ (US)</div>
+            <div class="card-chevron">+</div>
+          </div>
+          <div class="card-expand"><div class="card-inner">
+            <div class="card-desc">
+              This is where the "just me and my Bible" idea ends up. Each pastor is basically his own pope, each church makes up its own rules. They say they're not a denomination — but that's basically just another denomination without the label. Non-denom churches disagree with each other on baptism, communion, salvation, predestination, and most moral questions. The fact that there are over 30,000 of these churches — all reading the same Bible and coming to different conclusions — is the strongest argument against the idea that you don't need a teaching authority.
+            </div>
+            <div class="facts-grid">
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>0 Sacraments</strong> — ordinances at best, many skip them</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Real Presence</strong> — no, almost always symbolic</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Baptism necessary</strong> — no; usually seen as optional public declaration</span></div>
+              <div class="fact-item"><span class="fact-icon">🟡</span><span class="fact-label"><strong>Communion</strong> — once a month or less; some churches barely do it</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Liturgical</strong> — non-liturgical; contemporary worship band format, no set rite or order</span></div>
+              <div class="fact-item"><span class="fact-icon">🔴</span><span class="fact-label"><strong>Tradition</strong> — "no creed but the Bible" — rejects all tradition, creeds, and confessions</span></div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════ TODAY ═══════════ -->
+    <div class="year-marker">
+      <div class="year-dot present-dot">TODAY</div>
+    </div>
+
+    <div style="text-align:center;position:relative;z-index:2;margin-top:8px;">
+      <span style="font-family:'Cinzel',serif;font-size:0.8rem;color:var(--burgundy);letter-spacing:0.08em;text-transform:uppercase;font-weight:700;">The Catholic Church is still here.</span>
+    </div>
+
+  </div><!-- end timeline-wrap -->
+
+  <!-- BOTTOM STATS -->
+  <div class="bottom-stats">
+    <div class="stat-box">
+      <div class="stat-big">45,000+</div>
+      <div class="stat-label">Protestant & independent Christian denominations worldwide</div>
+      <div class="stat-sub">All reading the same Bible. All reaching different conclusions.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+      <div class="stat-box">
+        <div class="stat-big" style="font-size:1.6rem">1</div>
+        <div class="stat-label">Catholic Church</div>
+        <div class="stat-sub">Same faith since AD 33</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-big" style="font-size:1.6rem">267</div>
+        <div class="stat-label">Popes in unbroken succession</div>
+        <div class="stat-sub">Peter → Leo</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="closing-verse">
+    <strong>"Every kingdom divided against itself is laid waste, and no city or house divided against itself will stand."</strong><br>— Matthew 12:25
+    <br><br>
+    Christ didn't found 45,000 churches. He founded one.
+  </div>
+
+</div>
+
+<script>
+  // Scroll-reveal animation
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.branch-card').forEach(card => io.observe(card));
+</script>
+
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">One Faith Delivered</div>
+    <a href="../index.html">Home</a>
+    <a href="../articles.html">Articles</a>
+    <a href="../charts.html">Charts</a>
+    <a href="../topics.html">Topics</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../charts.html" class="sidebar-back">&#8592; All Charts</a>
+    <div class="sidebar-ornament">✦ ✦ ✦</div>
+  </div>
+</aside>
+
+<script>
+function toggleSidebar() {
+  var btn = document.querySelector('.nav-hamburger'), sidebar = document.querySelector('.sidebar'), overlay = document.querySelector('.sidebar-overlay');
+  var isOpen = sidebar.classList.contains('open');
+  if (isOpen) { sidebar.classList.remove('open'); btn.classList.remove('open'); overlay.classList.remove('visible'); document.body.style.overflow = ''; }
+  else { sidebar.classList.add('open'); btn.classList.add('open'); overlay.classList.add('visible'); document.body.style.overflow = 'hidden'; }
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar(); });
+</script>
+</body>
+</html>
