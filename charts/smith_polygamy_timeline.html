@@ -281,6 +281,31 @@ blockquote {
 .source a { color: var(--crimson); text-decoration: none; border-bottom: 1px dotted var(--crimson); }
 .source a:hover { color: var(--dark-crimson); border-bottom-style: solid; }
 
+/* Expandable detail sections */
+.expandable { margin-top: 10px; }
+.expandable summary {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--crimson);
+  cursor: pointer;
+  padding: 6px 0;
+  list-style: none;
+  transition: color 0.2s;
+}
+.expandable summary::-webkit-details-marker { display: none; }
+.expandable summary::marker { display: none; content: ''; }
+.expandable summary:hover { color: var(--dark-crimson); }
+.expandable[open] summary { margin-bottom: 8px; border-bottom: 1px solid rgba(139, 0, 0, 0.15); padding-bottom: 6px; }
+.expand-content {
+  padding: 10px 0 0;
+  border-left: 2px solid var(--gold);
+  padding-left: 14px;
+  margin-left: 2px;
+}
+.expand-content p { margin-bottom: 10px; }
+
 /* Conclusion */
 .conclusion {
   background: linear-gradient(135deg, #fff 0%, var(--parchment) 100%);
@@ -482,12 +507,17 @@ blockquote {
   <div class="entry-date">October 27, 1841</div>
   <div class="entry-type">Plural Marriage #3 — Polyandrous</div>
   <div class="entry-title">Zina Diantha Huntington Jacobs (age 20) <span class="wife-count">Wife #4</span></div>
-  <div class="entry-body"><p>Zina and Henry Bailey Jacobs were a young couple very much in love. Henry had courted Zina while she was living with the Smiths; they married on March 7, 1841, and their first son Zebulon was born January 2, 1842. On his later missions, Henry would speak of Zina constantly — his companion John D. Lee recorded that Henry would <em>"almost worship her."</em> Despite later LDS biographers characterizing the marriage as unhappy (to justify what followed), evidence from Zina's own diaries suggests this portrayal is unfounded; Zina continued recording Henry's birthday for years after they were separated.</p>
-  <p>Joseph Smith had first proposed to Zina in 1840, before her marriage to Henry — Zina refused. After Zina married Henry, Smith told them <em>"the Lord had made it known to him she was to be his celestial wife."</em> On October 27, 1841, Zina — now <em>seven months pregnant</em> with Henry's child — was sealed to Smith. Her brother Dimick performed the ceremony. Smith claimed an angel with a drawn sword compelled him. Zina later testified: <em>"I made a greater sacrifice than to give my life for I never anticipated again to be looked upon as an honorable woman."</em></p>
-  <p>A pattern of convenient mission calls followed. Two weeks after Zebulon was born, Henry was sent on a mission to Chicago — sent personally by Joseph. A year later (1843), another mission. His companion John D. Lee recorded Henry bragging about Zina. Later that year, another mission to western New York. Early 1844, another to Tennessee — <em>at least five missions total</em> during the Nauvoo period, keeping Henry conveniently away.</p>
-  <p>After Smith's death, Brigham Young claimed the right to Zina as Joseph's "proxy." On February 2, 1846, at the Nauvoo Temple, Henry Jacobs stood as witness while his own wife was sealed to Brigham Young "for time." Henry and Zina left Nauvoo together just five days later, Henry caring for Zina as she delivered their second son at the Chariton River crossing. Then, at Mt. Pisgah, Iowa, Brigham called Henry on yet another mission — this time to England — apparently informing him that Zina was no longer his wife. William Hall reported that Brigham declared publicly: <em>"Brother Jacobs, the woman you claim for a wife does not belong to you. She is the spiritual wife of brother Joseph, sealed up to him. I am his proxy, and she, in this behalf, with her children, are my property."</em></p>
-  <p>Henry wrote heartbroken letters to Zina from England — letters she preserved but never answered. Henry eventually remarried three times, each marriage ending in divorce. Years later, broken and elderly, Henry returned to Utah and reportedly spent his final days in a bedroom of Zina's house, cared for by a hired woman. The whole episode — from first proposal to final separation — stands as one of the most complete and devastating case studies of the human cost of Joseph Smith's polygamy.</p></div>
-  <div class="source">Compton, <em>In Sacred Loneliness</em>, 74–112. Wikipedia, "Zina D. H. Young" (citing primary sources). <a href="https://www.analyzingmormonism.com/zina-huntington/">AnalyzingMormonism: Zina Huntington</a>. John D. Lee, <em>Mormonism Unveiled</em>. William Hall, <em>The Abominations of Mormonism Exposed</em> (1852).</div>
+  <div class="entry-body"><p>Zina and Henry Bailey Jacobs were a young couple deeply in love. She was <em>seven months pregnant</em> with Henry's child when sealed to Smith. Smith had first proposed in 1840 — Zina refused. After she married Henry, Smith came back, claiming an angel with a drawn sword compelled him. Zina testified: <em>"I made a greater sacrifice than to give my life for I never anticipated again to be looked upon as an honorable woman."</em></p>
+  <details class="expandable">
+    <summary>Read the full story of Zina and Henry ▾</summary>
+    <div class="expand-content">
+      <p>Henry had courted Zina while she was living with the Smiths; they married on March 7, 1841, and their first son Zebulon was born January 2, 1842. On later missions, Henry spoke of Zina constantly — his companion John D. Lee recorded that Henry would <em>"almost worship her."</em> Despite later LDS biographers characterizing the marriage as unhappy (to justify what followed), evidence from Zina's own diaries contradicts this — she continued recording Henry's birthday for years after they were separated.</p>
+      <p>After the sealing, a pattern of convenient mission calls followed. Two weeks after Zebulon was born, Henry was sent to Chicago — sent personally by Joseph. A year later (1843), another mission. Later that year, another to western New York. Early 1844, yet another to Tennessee — <em>at least five missions total</em> during the Nauvoo period, keeping Henry conveniently absent.</p>
+      <p>After Smith's death, Brigham Young claimed the right to Zina as Joseph's "proxy." On February 2, 1846, at the Nauvoo Temple, Henry Jacobs stood as witness while his own wife was sealed to Brigham Young "for time." Henry and Zina left Nauvoo together just five days later, Henry caring for Zina as she delivered their second son at the Chariton River crossing. Then, at Mt. Pisgah, Iowa, Brigham called Henry on yet another mission — this time to England — apparently informing him that Zina was no longer his wife. William Hall reported that Brigham declared publicly: <em>"Brother Jacobs, the woman you claim for a wife does not belong to you. She is the spiritual wife of brother Joseph, sealed up to him. I am his proxy, and she, in this behalf, with her children, are my property."</em></p>
+      <p>Henry wrote heartbroken letters to Zina from England — letters she preserved but never answered. He eventually remarried three times, each marriage ending in divorce. Years later, broken and elderly, Henry returned to Utah and reportedly spent his final days in a bedroom of Zina's house, cared for by a hired woman. The whole episode — from first proposal to final separation — stands as one of the most complete and devastating case studies of the human cost of Joseph Smith's polygamy.</p>
+    </div>
+  </details></div>
+  <div class="source">Compton, <em>In Sacred Loneliness</em>, 74–112. <a href="https://www.analyzingmormonism.com/zina-huntington/">AnalyzingMormonism: Zina Huntington</a>. John D. Lee, <em>Mormonism Unveiled</em>. William Hall, <em>The Abominations of Mormonism Exposed</em> (1852).</div>
 </div>
 
 <div class="entry marriage">
