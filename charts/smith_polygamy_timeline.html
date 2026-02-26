@@ -328,6 +328,134 @@ blockquote {
 .sources-section p { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
 .sources-section a { color: var(--crimson); text-decoration: none; }
 
+/* ── Visual Timeline Navigator ── */
+.timeline-nav {
+  background: white;
+  border: 1px solid var(--border-ornate);
+  border-radius: 4px;
+  padding: 20px 24px 16px;
+  margin-bottom: 35px;
+  position: relative;
+  overflow: hidden;
+}
+.timeline-nav-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 2px; color: var(--crimson);
+  text-transform: uppercase; margin-bottom: 14px;
+}
+.timeline-nav-scroll {
+  overflow-x: auto;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+.timeline-nav-track {
+  position: relative;
+  height: 60px;
+  min-width: 100%;
+}
+.timeline-nav-line {
+  position: absolute;
+  top: 20px; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--line-gray), var(--crimson) 15%, var(--crimson) 85%, var(--line-gray));
+}
+.tn-year {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; font-weight: 600;
+  color: var(--ink-light); letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.tn-year::after {
+  content: '';
+  position: absolute;
+  left: 50%; top: 14px;
+  transform: translateX(-50%);
+  width: 1px; height: 10px;
+  background: var(--line-gray);
+}
+.tn-dot {
+  position: absolute;
+  top: 15px;
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  z-index: 2;
+  border: 2px solid white;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+}
+.tn-dot:hover {
+  transform: translateX(-50%) scale(1.6);
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.15), 0 2px 8px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+.tn-dot.t-marriage { background: var(--marriage-border); }
+.tn-dot.t-denial { background: var(--denial-border); }
+.tn-dot.t-rejection { background: var(--rejection-border); }
+.tn-dot.t-emma { background: var(--emma-border); }
+.tn-dot.t-document { background: var(--document-border); }
+.tn-dot.t-event { background: var(--event-border); }
+
+.tn-tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  padding: 5px 10px;
+  border-radius: 3px;
+  white-space: nowrap;
+  max-width: 260px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+.tn-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%; left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid transparent;
+  border-top-color: var(--ink);
+}
+.tn-dot:hover .tn-tooltip { display: block; }
+
+.tn-counts {
+  display: flex;
+  gap: 14px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.tn-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; font-weight: 600;
+  color: var(--muted); letter-spacing: 0.5px;
+}
+.tn-count span { font-weight: 700; }
+.tn-count.c-marriage span { color: var(--marriage-border); }
+.tn-count.c-denial span { color: var(--denial-border); }
+.tn-count.c-rejection span { color: var(--rejection-border); }
+.tn-count.c-emma span { color: var(--emma-border); }
+.tn-count.c-document span { color: var(--document-border); }
+.tn-count.c-event span { color: var(--event-border); }
+
+@media (max-width: 700px) {
+  .timeline-nav-track { min-width: 700px; }
+  .tn-tooltip { max-width: 180px; font-size: 0.65rem; }
+}
+
 /* Footer */
 .footer {
   text-align: center; padding: 30px 20px;
@@ -401,6 +529,16 @@ blockquote {
   <div class="legend-item"><div class="legend-dot emma"></div> Emma's Knowledge / Reaction</div>
   <div class="legend-item"><div class="legend-dot document"></div> Letter / Document / Revelation</div>
   <div class="legend-item"><div class="legend-dot event"></div> Key Event</div>
+</div>
+
+<div class="timeline-nav" id="timeline-nav">
+  <div class="timeline-nav-title">Visual Overview — Click Any Event to Jump</div>
+  <div class="timeline-nav-scroll">
+    <div class="timeline-nav-track" id="tn-track">
+      <div class="timeline-nav-line"></div>
+    </div>
+  </div>
+  <div class="tn-counts" id="tn-counts"></div>
 </div>
 
 <!-- ═══════ 1827 ═══════ -->
@@ -884,6 +1022,130 @@ blockquote {
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar();
   });
+</script>
+
+<script>
+(function() {
+  // Timeline navigator: reads all .entry elements and builds clickable dots
+  var entries = document.querySelectorAll('.entry');
+  var track = document.getElementById('tn-track');
+  var countsEl = document.getElementById('tn-counts');
+  if (!entries.length || !track) return;
+
+  // Parse year from entry-date text
+  function parseYear(dateText) {
+    var m = dateText.match(/(\d{4})/);
+    return m ? parseInt(m[1]) : null;
+  }
+  // Parse month for sub-year positioning
+  function parseMonth(dateText) {
+    var months = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
+    var lower = dateText.toLowerCase();
+    for (var k in months) { if (lower.indexOf(k) !== -1) return months[k]; }
+    if (lower.indexOf('early') !== -1 || lower.indexOf('spring') !== -1) return 3;
+    if (lower.indexOf('late') !== -1) return 10;
+    if (lower.indexOf('summer') !== -1) return 7;
+    return 6; // default mid-year
+  }
+  // Get entry type
+  function getType(el) {
+    var cls = el.className;
+    if (cls.indexOf('marriage') !== -1) return 'marriage';
+    if (cls.indexOf('denial') !== -1) return 'denial';
+    if (cls.indexOf('rejection') !== -1) return 'rejection';
+    if (cls.indexOf('emma') !== -1) return 'emma';
+    if (cls.indexOf('document') !== -1) return 'document';
+    if (cls.indexOf('event') !== -1) return 'event';
+    return 'event';
+  }
+
+  var data = [];
+  var counts = {marriage:0, denial:0, rejection:0, emma:0, document:0, event:0};
+
+  entries.forEach(function(el, i) {
+    var dateEl = el.querySelector('.entry-date');
+    var titleEl = el.querySelector('.entry-title');
+    if (!dateEl) return;
+    var dateText = dateEl.textContent.trim();
+    var year = parseYear(dateText);
+    if (!year) return;
+    var month = parseMonth(dateText);
+    var type = getType(el);
+    var title = titleEl ? titleEl.textContent.trim() : dateText;
+    // Truncate title for tooltip
+    if (title.length > 55) title = title.substring(0, 52) + '…';
+    // Give entry an ID
+    var id = 'evt-' + i;
+    el.id = id;
+    counts[type]++;
+    data.push({year: year, month: month, type: type, title: title, id: id, dateText: dateText});
+  });
+
+  if (!data.length) return;
+
+  var minYear = 1827;
+  var maxYear = 1880; // include aftermath
+  var range = maxYear - minYear;
+
+  // Add year labels
+  var yearLabels = [1827, 1831, 1835, 1838, 1841, 1842, 1843, 1844, 1852, 1879];
+  yearLabels.forEach(function(y) {
+    var pct = ((y - minYear) / range) * 100;
+    var label = document.createElement('div');
+    label.className = 'tn-year';
+    label.style.left = pct + '%';
+    label.textContent = y;
+    track.appendChild(label);
+  });
+
+  // Stagger dots at same position
+  var posMap = {};
+  data.forEach(function(d) {
+    var basePct = ((d.year - minYear + (d.month - 1) / 12) / range) * 100;
+    basePct = Math.max(0.5, Math.min(99.5, basePct));
+    var key = Math.round(basePct * 2); // bucket nearby dots
+    if (!posMap[key]) posMap[key] = 0;
+    var offset = posMap[key] * 0.5;
+    posMap[key]++;
+    d.pct = basePct + offset;
+  });
+
+  // Build dots
+  data.forEach(function(d) {
+    var dot = document.createElement('div');
+    dot.className = 'tn-dot t-' + d.type;
+    dot.style.left = d.pct + '%';
+    dot.onclick = function() {
+      var target = document.getElementById(d.id);
+      if (target) {
+        target.scrollIntoView({behavior: 'smooth', block: 'center'});
+        // Flash highlight
+        target.style.transition = 'box-shadow 0.3s';
+        target.style.boxShadow = '0 0 0 3px ' + getComputedStyle(document.documentElement).getPropertyValue('--gold') + ', 0 4px 20px rgba(0,0,0,0.15)';
+        setTimeout(function() { target.style.boxShadow = ''; }, 2000);
+      }
+    };
+    var tooltip = document.createElement('div');
+    tooltip.className = 'tn-tooltip';
+    tooltip.textContent = d.dateText + ' — ' + d.title;
+    dot.appendChild(tooltip);
+    track.appendChild(dot);
+  });
+
+  // Build counts summary
+  var labels = {
+    marriage: 'Marriages', denial: 'Denials', rejection: 'Rejections',
+    emma: 'Emma Events', document: 'Documents', event: 'Events'
+  };
+  for (var type in counts) {
+    if (counts[type] > 0) {
+      var span = document.createElement('div');
+      span.className = 'tn-count c-' + type;
+      span.innerHTML = '<span>' + counts[type] + '</span> ' + labels[type];
+      countsEl.appendChild(span);
+    }
+  }
+})();
 </script>
 
 </body>
