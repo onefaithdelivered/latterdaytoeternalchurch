@@ -336,7 +336,6 @@ blockquote {
   padding: 20px 24px 16px;
   margin-bottom: 35px;
   position: relative;
-  overflow: hidden;
 }
 .timeline-nav-title {
   font-family: 'JetBrains Mono', monospace;
@@ -346,12 +345,13 @@ blockquote {
 }
 .timeline-nav-scroll {
   overflow-x: auto;
+  overflow-y: visible;
   padding-bottom: 8px;
   -webkit-overflow-scrolling: touch;
 }
 .timeline-nav-track {
   position: relative;
-  height: 60px;
+  height: 80px;
   min-width: 100%;
 }
 .timeline-nav-line {
@@ -404,7 +404,7 @@ blockquote {
 .tn-tooltip {
   display: none;
   position: absolute;
-  bottom: calc(100% + 8px);
+  top: calc(100% + 8px);
   left: 50%;
   transform: translateX(-50%);
   background: var(--ink);
@@ -425,10 +425,10 @@ blockquote {
 .tn-tooltip::after {
   content: '';
   position: absolute;
-  top: 100%; left: 50%;
+  bottom: 100%; left: 50%;
   transform: translateX(-50%);
   border: 4px solid transparent;
-  border-top-color: var(--ink);
+  border-bottom-color: var(--ink);
 }
 .tn-dot:hover .tn-tooltip { display: block; }
 
