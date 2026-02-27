@@ -212,6 +212,325 @@ main {
   padding: 50px 24px 80px;
 }
 
+/* ── SNIPPET BOXES ── */
+.snippet-box {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.07);
+  margin-bottom: 36px;
+  transition: box-shadow 0.2s;
+}
+.snippet-box:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.11); }
+
+.snippet-header {
+  padding: 14px 24px;
+  background: linear-gradient(135deg, #3D1520, #6B1D2A);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.snippet-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  background: var(--gold);
+  padding: 3px 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.snippet-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #F5F0E8;
+}
+
+.snippet-body {
+  padding: 0;
+}
+
+/* ── Contradiction-style snippet (two-column quote compare) ── */
+.snippet-quotes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.snippet-quote {
+  padding: 28px 28px 20px;
+  position: relative;
+}
+.snippet-quote:first-child {
+  border-right: 1px solid var(--line-gray);
+}
+
+.snippet-quote-source {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid;
+}
+.source-condemns {
+  color: var(--crimson);
+  border-color: var(--crimson);
+}
+.source-permits {
+  color: #1A5C38;
+  border-color: #1A5C38;
+}
+
+.snippet-quote blockquote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05em;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0;
+  quotes: "\2018" "\2019";
+}
+.snippet-quote blockquote::before {
+  content: open-quote;
+  font-size: 2.4em;
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  line-height: 0;
+  vertical-align: -0.35em;
+  margin-right: 4px;
+}
+.snippet-quote blockquote .highlight-condemn {
+  color: var(--crimson);
+  font-weight: 700;
+  font-style: normal;
+}
+.snippet-quote blockquote .highlight-permit {
+  color: #1A5C38;
+  font-weight: 700;
+  font-style: normal;
+}
+.snippet-quote blockquote .highlight-name {
+  color: var(--gold);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.snippet-quote-ref {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 16px;
+  display: block;
+}
+
+/* ── Single-quote snippet (full-width quote block) ── */
+.snippet-single-quote {
+  padding: 32px 32px 24px;
+}
+.snippet-single-quote blockquote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1em;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.75;
+  color: var(--text);
+  margin: 0;
+  max-width: 720px;
+}
+.snippet-single-quote blockquote::before {
+  content: '\201C';
+  font-size: 2.8em;
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  line-height: 0;
+  vertical-align: -0.35em;
+  margin-right: 4px;
+}
+.snippet-single-quote .highlight-key {
+  color: var(--crimson);
+  font-weight: 700;
+  font-style: normal;
+}
+.snippet-single-quote .snippet-quote-ref {
+  margin-top: 18px;
+}
+.snippet-single-quote .quote-author {
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.85em;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 4px;
+  display: block;
+}
+
+/* ── Stacked quotes snippet (multiple quotes vertically) ── */
+.snippet-stacked-quotes {
+  padding: 0;
+}
+.snippet-stacked-quote {
+  padding: 28px 32px 24px;
+  border-bottom: 1px solid var(--line-gray);
+}
+.snippet-stacked-quote:last-child {
+  border-bottom: none;
+}
+.snippet-stacked-quote blockquote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05em;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0;
+}
+.snippet-stacked-quote blockquote::before {
+  content: '\201C';
+  font-size: 2.4em;
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  line-height: 0;
+  vertical-align: -0.35em;
+  margin-right: 4px;
+}
+.snippet-stacked-quote .highlight-key {
+  color: var(--crimson);
+  font-weight: 700;
+  font-style: normal;
+}
+.snippet-stacked-quote .snippet-quote-ref {
+  margin-top: 14px;
+}
+
+/* ── Snippet tag color variants ── */
+.snippet-tag.tag-archaeology {
+  background: #1E3A5F;
+  color: #F5F0E8;
+}
+.snippet-tag.tag-quote {
+  background: var(--dark-gold);
+  color: #F5F0E8;
+}
+.snippet-tag.tag-contrast {
+  background: #2E1A47;
+  color: #F5F0E8;
+}
+.snippet-tag.tag-record {
+  background: #3D1520;
+  color: var(--gold);
+}
+
+/* ── Header scripture banner (for stacked-quote with intro verse) ── */
+.snippet-scripture-banner {
+  padding: 22px 32px;
+  background: linear-gradient(135deg, #1A1A1A, #2A2A2A);
+  border-bottom: 1px solid rgba(197,165,90,0.25);
+}
+.snippet-scripture-banner blockquote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1em;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.7;
+  color: #F5F0E8;
+  margin: 0;
+  text-align: center;
+}
+.snippet-scripture-banner blockquote .highlight-gold {
+  color: var(--gold);
+  font-weight: 700;
+  font-style: normal;
+}
+.snippet-scripture-banner .snippet-quote-ref {
+  text-align: center;
+  color: rgba(245,240,232,0.5);
+  margin-top: 10px;
+}
+
+@media (max-width: 700px) {
+  .snippet-scripture-banner { padding: 18px 18px !important; }
+  .snippet-scripture-banner blockquote { font-size: 0.95em !important; }
+}
+
+@media (max-width: 700px) {
+  .snippet-single-quote { padding: 20px 18px 16px !important; }
+  .snippet-single-quote blockquote { font-size: 0.95em !important; }
+  .snippet-stacked-quote { padding: 20px 18px 16px !important; }
+  .snippet-stacked-quote blockquote { font-size: 0.95em !important; }
+}
+
+.snippet-verdict {
+  border-top: 1px solid var(--line-gray);
+  background: #FAFAF8;
+}
+.snippet-verdict-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 14px 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.snippet-verdict-toggle:hover {
+  background: rgba(197,165,90,0.08);
+}
+.snippet-verdict-toggle .verdict-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+}
+.snippet-verdict-toggle .verdict-chevron {
+  font-size: 0.75em;
+  color: var(--dark-gold);
+  transition: transform 0.3s ease;
+}
+.snippet-verdict.open .verdict-chevron {
+  transform: rotate(180deg);
+}
+.snippet-verdict-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 28px;
+}
+.snippet-verdict.open .snippet-verdict-content {
+  max-height: 300px;
+  padding: 0 28px 18px;
+}
+.snippet-verdict p {
+  font-size: 0.92em;
+  line-height: 1.75;
+  color: var(--text);
+}
+.snippet-verdict strong {
+  color: var(--crimson);
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .snippet-quotes { grid-template-columns: 1fr !important; }
+  .snippet-quote:first-child { border-right: none !important; border-bottom: 1px solid var(--line-gray) !important; }
+  .snippet-quote { padding: 20px 18px 16px !important; }
+  .snippet-quote blockquote { font-size: 0.95em !important; }
+  .snippet-verdict-toggle { padding: 12px 18px !important; }
+  .snippet-verdict-content { padding-left: 18px !important; padding-right: 18px !important; }
+  .snippet-verdict.open .snippet-verdict-content { padding: 0 18px 14px !important; }
+}
+
 /* ── FOOTER ── */
 footer {
   text-align: center;
@@ -289,7 +608,502 @@ footer {
 </header>
 
 <main>
-  <!-- Snippet content will go here -->
+
+  <!-- ═══ SNIPPET: Jacob vs D&C on Polygamy ═══ -->
+  <div class="snippet-box">
+    <div class="snippet-header">
+      <span class="snippet-tag">Contradiction</span>
+      <span class="snippet-title">Polygamy: Condemned &amp; Commanded in the Same Canon</span>
+    </div>
+    <div class="snippet-body">
+      <div class="snippet-quotes">
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-condemns">The Book of Mormon Condemns It</div>
+          <blockquote>Behold, <span class="highlight-name">David</span> and <span class="highlight-name">Solomon</span> truly had many wives and concubines, <span class="highlight-condemn">which thing was abominable</span> before me, saith the Lord.</blockquote>
+          <span class="snippet-quote-ref">Jacob 2:24</span>
+        </div>
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-permits">The Doctrine &amp; Covenants Permits It</div>
+          <blockquote><span class="highlight-name">David</span> also received many wives and concubines, and also <span class="highlight-name">Solomon</span>&hellip; from the beginning of creation until this time; and <span class="highlight-permit">in nothing did they sin</span> save in those things which they received not of me.</blockquote>
+          <span class="snippet-quote-ref">Doctrine &amp; Covenants 132:38</span>
+        </div>
+      </div>
+      <div class="snippet-verdict" id="verdict-polygamy">
+        <button class="snippet-verdict-toggle" onclick="toggleVerdict('verdict-polygamy')">
+          <span class="verdict-label">✦ &nbsp;Why This Matters</span>
+          <span class="verdict-chevron">&#9660;</span>
+        </button>
+        <div class="snippet-verdict-content">
+          <p>These are both canonized LDS scripture, both presented as the direct words of God, both addressing the same historical figures and the same practice. In one, David and Solomon's polygamy is called <strong>"abominable."</strong> In the other, they are said to have sinned <strong>"in nothing"</strong> regarding their wives. A canon that contradicts itself on a matter this explicit cannot both be the inerrant word of God. One of these revelations is wrong — which means at least one was not a revelation at all.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SNIPPET: 2 Nephi Exclusivity vs Gospel Topics Essay ═══ -->
+  <div class="snippet-box">
+    <div class="snippet-header">
+      <span class="snippet-tag">Contradiction</span>
+      <span class="snippet-title">An Exclusive Promised Land — Until DNA Said Otherwise</span>
+    </div>
+    <div class="snippet-body">
+      <div class="snippet-quotes">
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-condemns">The Book of Mormon Claims Exclusivity</div>
+          <blockquote>&hellip;that <span class="highlight-condemn">there shall none come into this land</span> save they shall be brought by the hand of the Lord. And behold, it is wisdom that <span class="highlight-condemn">this land should be kept as yet from the knowledge of other nations</span>; &hellip;and <span class="highlight-condemn">they shall be kept from all other nations,</span> that they may possess this land unto themselves.</blockquote>
+          <span class="snippet-quote-ref">2 Nephi 1:6, 8, 9</span>
+        </div>
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-permits">The LDS Church Now Retreats</div>
+          <blockquote>The Book of Mormon itself, however, does not claim that the peoples it describes were either <span class="highlight-permit">the predominant or the exclusive inhabitants</span> of the lands they occupied.</blockquote>
+          <span class="snippet-quote-ref">LDS Gospel Topics Essay — Book of Mormon and DNA Studies</span>
+        </div>
+      </div>
+      <div class="snippet-verdict" id="verdict-dna">
+        <button class="snippet-verdict-toggle" onclick="toggleVerdict('verdict-dna')">
+          <span class="verdict-label">✦ &nbsp;Why This Matters</span>
+          <span class="verdict-chevron">&#9660;</span>
+        </button>
+        <div class="snippet-verdict-content">
+          <p>For over 170 years, the Book of Mormon was understood by prophets, apostles, and members alike to describe the principal ancestors of all Native Americans. When DNA evidence conclusively linked indigenous populations to Asia rather than the Middle East, the Church quietly revised its introduction from "principal ancestors" to "among the ancestors" and published this essay retreating to a "limited geography" model. But the text of 2 Nephi is unambiguous: <strong>no one</strong> comes to this land unless brought by God, and the land is kept <strong>from all other nations.</strong> The modern retreat contradicts the plain reading of the Church's own scripture.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SNIPPET: Temple Rites & Freemasonry ═══ -->
+  <div class="snippet-box">
+    <div class="snippet-header">
+      <span class="snippet-tag">Contradiction</span>
+      <span class="snippet-title">Temple Rites &amp; Freemasonry: The Claim vs. the Evidence</span>
+    </div>
+    <div class="snippet-body">
+      <div class="snippet-quotes">
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-condemns">Early LDS Leadership Claimed a Link</div>
+          <blockquote>The Masonry of today is received from the apostasy which took place in the days of Solomon, and David. They have now and then a thing that is correct, but <span class="highlight-condemn">we have the real thing.</span></blockquote>
+          <span class="snippet-quote-ref">Heber C. Kimball — Manuscript History of Brigham Young, November 13, 1858</span>
+        </div>
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-permits">LDS Apologetics Concedes It's False</div>
+          <blockquote>Unfortunately, <span class="highlight-permit">there is no historical evidence to support a continuous functioning line from Solomon's Temple to the present.</span> We know what went on in Solomon's Temple; it's the ritualistic slaughter of animals.</blockquote>
+          <span class="snippet-quote-ref">Greg Kearney, Master Mason &amp; FAIR Mormon Author — "Latter-day Saints and Freemasonry," 2005 FAIR Conference</span>
+        </div>
+      </div>
+      <div class="snippet-verdict" id="verdict-masonry">
+        <button class="snippet-verdict-toggle" onclick="toggleVerdict('verdict-masonry')">
+          <span class="verdict-label">✦ &nbsp;Why This Matters</span>
+          <span class="verdict-chevron">&#9660;</span>
+        </button>
+        <div class="snippet-verdict-content">
+          <p>Joseph Smith became a Master Mason on March 16, 1842 — just seven weeks before introducing the Nauvoo temple endowment on May 4, 1842. The endowment ceremony contained grips, tokens, penalties, and dramatic structure borrowed directly from Masonic ritual. Early leaders like Kimball justified this by claiming Masonry was a corrupted version of the original temple rites. But as FAIR Mormon's own expert concedes, <strong>that historical claim is simply false.</strong> Freemasonry originated in medieval European stonemason guilds, not in Solomon's Temple. The LDS temple ceremony borrowed from an 18th-century fraternal organization, not from ancient Israelite worship.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SNIPPET: Smithsonian + National Geographic ═══ -->
+  <div class="snippet-box">
+    <div class="snippet-header">
+      <span class="snippet-tag tag-archaeology">Archaeology</span>
+      <span class="snippet-title">Two Institutions, One Verdict: No Evidence</span>
+    </div>
+    <div class="snippet-body">
+      <div class="snippet-stacked-quotes">
+        <div class="snippet-stacked-quote">
+          <blockquote>Smithsonian archeologists see <span class="highlight-key">no direct connection</span> between the archeology of the New World and the subject matter of the book.</blockquote>
+          <span class="snippet-quote-ref">The Smithsonian Institution — Statement Regarding the Book of Mormon</span>
+        </div>
+        <div class="snippet-stacked-quote">
+          <blockquote>Archaeologists and other scholars have long probed the hemisphere's past, and the Society <span class="highlight-key">does not know of anything found so far that has substantiated</span> the Book of Mormon.</blockquote>
+          <span class="snippet-quote-ref">National Geographic Society — Institute for Religious Research</span>
+        </div>
+      </div>
+      <div class="snippet-verdict" id="verdict-archaeology">
+        <button class="snippet-verdict-toggle" onclick="toggleVerdict('verdict-archaeology')">
+          <span class="verdict-label">✦ &nbsp;Why This Matters</span>
+          <span class="verdict-chevron">&#9660;</span>
+        </button>
+        <div class="snippet-verdict-content">
+          <p>The Book of Mormon describes massive civilizations — cities, temples, fortifications, coinage, steel weapons, chariots, horses, wheat, barley, elephants, and literacy in Hebrew and "reformed Egyptian." After nearly two centuries of professional archaeology across the Americas, <strong>not a single artifact, inscription, settlement, or genetic trace</strong> has been found to corroborate any of these claims. Both the Smithsonian and National Geographic have issued formal statements to this effect. By contrast, biblical archaeology has confirmed hundreds of places, persons, and events described in Scripture.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SNIPPET: Dr. Michael Coe ═══ -->
+  <div class="snippet-box">
+    <div class="snippet-header">
+      <span class="snippet-tag tag-quote">Expert</span>
+      <span class="snippet-title">Yale's Verdict on Book of Mormon Historicity</span>
+    </div>
+    <div class="snippet-body">
+      <div class="snippet-single-quote">
+        <blockquote>The bare facts of the matter are that <span class="highlight-key">nothing, absolutely nothing,</span> has ever shown up in any New World excavation which would suggest to a dispassionate observer that the <span class="highlight-key">Book of Mormon,</span> as claimed by Joseph Smith, <span class="highlight-key">is a historical document</span> relating to the history of early migrants to our hemisphere.</blockquote>
+        <span class="snippet-quote-ref">Dr. Michael Coe — Professor Emeritus of Anthropology, Yale University</span>
+        <span class="snippet-quote-ref" style="margin-top:2px; opacity:0.7;">"Mormons and Archaeology: An Outside View," Dialogue, Summer 1973</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SNIPPET: "Own Planet" Denial vs Uchtdorf ═══ -->
+  <div class="snippet-box">
+    <div class="snippet-header">
+      <span class="snippet-tag">Contradiction</span>
+      <span class="snippet-title">Do Latter-day Saints Believe They&rsquo;ll Get Their Own Planet?</span>
+    </div>
+    <div class="snippet-body">
+      <div class="snippet-quotes">
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-permits">The Church&rsquo;s PR Website Says No</div>
+          <blockquote>Do Latter-day Saints believe they will get their own planet? <span class="highlight-permit">No.</span> This idea is not taught in Latter-day Saint scripture, nor is it a doctrine&hellip;</blockquote>
+          <span class="snippet-quote-ref">LDS Frequently Asked Questions — September 16, 2010</span>
+        </div>
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-condemns">An Apostle Says Yes</div>
+          <blockquote>We have the incomprehensible promise of exaltation — <span class="highlight-condemn">worlds without end — within our grasp.</span></blockquote>
+          <span class="snippet-quote-ref">Dieter F. Uchtdorf — Ensign, November 2011</span>
+        </div>
+      </div>
+      <div class="snippet-verdict" id="verdict-planets">
+        <button class="snippet-verdict-toggle" onclick="toggleVerdict('verdict-planets')">
+          <span class="verdict-label">✦ &nbsp;Why This Matters</span>
+          <span class="verdict-chevron">&#9660;</span>
+        </button>
+        <div class="snippet-verdict-content">
+          <p>The Church's FAQ page flatly denies a teaching that its own apostles actively proclaim. D&amp;C 132:20 promises the faithful they will have "all power" and that "then shall they be gods." Lorenzo Snow's couplet — "As man now is, God once was; as God now is, man may be" — was taught openly for over a century. The FAQ denial is a PR strategy aimed at outside observers, while the doctrine of exaltation to godhood with "worlds without end" continues to be taught from the pulpit. <strong>A church that denies its own doctrines to the public while teaching them internally has a credibility problem.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SNIPPET: Joseph Smith Boast ═══ -->
+  <div class="snippet-box">
+    <div class="snippet-header">
+      <span class="snippet-tag tag-quote">Quote</span>
+      <span class="snippet-title">Joseph Smith&rsquo;s Boast Over Christ</span>
+    </div>
+    <div class="snippet-body">
+      <div class="snippet-single-quote">
+        <blockquote>I have more to boast of than ever any man had. I am the only man that has ever been able to keep a whole church together since the days of Adam&hellip; Neither Paul, John, Peter, <span class="highlight-key">nor Jesus ever did it.</span> I boast that no man ever did such a work as I. <span class="highlight-key">The followers of Jesus ran away from Him; but the Latter-day Saints never ran away from me yet.</span></blockquote>
+        <span class="snippet-quote-ref">Joseph Smith Jr. — History of the Church, Vol. 6, p. 408–409</span>
+      </div>
+      <div class="snippet-verdict" id="verdict-boast">
+        <button class="snippet-verdict-toggle" onclick="toggleVerdict('verdict-boast')">
+          <span class="verdict-label">✦ &nbsp;Why This Matters</span>
+          <span class="verdict-chevron">&#9660;</span>
+        </button>
+        <div class="snippet-verdict-content">
+          <p>A man who claims to be a prophet of God and then boasts that he surpassed Jesus Christ at holding a church together has revealed something essential about his character. Scripture warns repeatedly against this kind of pride: <em>"God opposes the proud but gives grace to the humble"</em> (James 4:6). Christ Himself said, <em>"Learn from me, for I am gentle and humble in heart"</em> (Matthew 11:29). <strong>No genuine prophet — not Moses, not Elijah, not any of the apostles — ever placed himself above the Son of God.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SNIPPET: Woodruff Polygamy Reversal ═══ -->
+  <div class="snippet-box">
+    <div class="snippet-header">
+      <span class="snippet-tag">Contradiction</span>
+      <span class="snippet-title">Woodruff on Polygamy: Eternal Mandate to Political Surrender</span>
+    </div>
+    <div class="snippet-body">
+      <div class="snippet-quotes">
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-condemns">1888 — Until the Second Coming</div>
+          <blockquote>We are <span class="highlight-condemn">not going to stop the practice of plural marriage</span> until the Coming of the Son of Man.</blockquote>
+          <span class="snippet-quote-ref">Wilford Woodruff — Manti Temple Dedication, May 17, 1888</span>
+        </div>
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-permits">1890 — Never Mind</div>
+          <blockquote>And I now publicly declare that my advice to the Latter-day Saints is to <span class="highlight-permit">refrain from contracting any marriage forbidden by the law of the land.</span></blockquote>
+          <span class="snippet-quote-ref">Wilford Woodruff — Official Declaration 1, October 6, 1890</span>
+        </div>
+      </div>
+      <div class="snippet-verdict" id="verdict-woodruff">
+        <button class="snippet-verdict-toggle" onclick="toggleVerdict('verdict-woodruff')">
+          <span class="verdict-label">✦ &nbsp;Why This Matters</span>
+          <span class="verdict-chevron">&#9660;</span>
+        </button>
+        <div class="snippet-verdict-content">
+          <p>In 1888, Woodruff declared — at a temple dedication, no less — that plural marriage would continue until Christ's return. Two years later, facing the Edmunds-Tucker Act, federal seizure of Church property, and the threat of disincorporation, he issued the Manifesto ending the practice. The Son of Man had not come. <strong>What changed was not theology but politics.</strong> If polygamy was an eternal covenant revealed by God (D&amp;C 132), then no prophet has the authority to revoke it under political pressure. If Woodruff could revoke it, then it was never eternal in the first place.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SNIPPET: Prophet's Role — Andersen vs Brigham Young ═══ -->
+  <div class="snippet-box">
+    <div class="snippet-header">
+      <span class="snippet-tag">Contradiction</span>
+      <span class="snippet-title">The Prophet&rsquo;s Role: Beside You or Above You?</span>
+    </div>
+    <div class="snippet-body">
+      <div class="snippet-quotes">
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-permits">Modern PR: A Humble Guide</div>
+          <blockquote>A <span class="highlight-permit">prophet does not stand between you and the Savior.</span> Rather, he stands beside you and points the way to the Savior.</blockquote>
+          <span class="snippet-quote-ref">Neil L. Andersen — General Conference, April 2018</span>
+        </div>
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-condemns">The Original Claim: A Gatekeeper</div>
+          <blockquote>&hellip;no man or woman in this dispensation will ever enter into the celestial kingdom of God <span class="highlight-condemn">without the consent of Joseph Smith.</span></blockquote>
+          <span class="snippet-quote-ref">Brigham Young — October 9, 1859 · JoD 7:289 · Reprinted June 1994 Ensign</span>
+        </div>
+      </div>
+      <div class="snippet-verdict" id="verdict-prophet-role">
+        <button class="snippet-verdict-toggle" onclick="toggleVerdict('verdict-prophet-role')">
+          <span class="verdict-label">✦ &nbsp;Why This Matters</span>
+          <span class="verdict-chevron">&#9660;</span>
+        </button>
+        <div class="snippet-verdict-content">
+          <p>Elder Andersen's 2018 framing presents the prophet as a humble fellow-traveler. But Brigham Young — speaking as President of the Church — taught that Joseph Smith holds veto power over who enters heaven. This wasn't a one-off remark: it was reprinted in the official Church magazine as recently as 1994. <strong>One of these positions makes Joseph Smith a helpful signpost; the other makes him a rival mediator to Christ Himself.</strong> Scripture is clear: <em>"There is one mediator between God and men, the man Christ Jesus"</em> (1 Timothy 2:5).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SNIPPET: Pope Francis vs Dallin Oaks on Criticism ═══ -->
+  <div class="snippet-box">
+    <div class="snippet-header">
+      <span class="snippet-tag tag-contrast">Contrast</span>
+      <span class="snippet-title">On Criticizing Church Leaders: Two Very Different Answers</span>
+    </div>
+    <div class="snippet-body">
+      <div class="snippet-quotes">
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-permits">The Catholic Position</div>
+          <blockquote>&hellip;all the words, your concerns, criticisms — <span class="highlight-permit">it is not a sin to criticise the Pope here, yes, not a sin</span> — and inspirations that you carry in your hearts.</blockquote>
+          <span class="snippet-quote-ref">Pope Francis — Catholic Herald, May 22, 2018</span>
+        </div>
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-condemns">The LDS Position</div>
+          <blockquote><span class="highlight-condemn">It&rsquo;s wrong to criticize leaders of the church,</span> even if the criticism is true.</blockquote>
+          <span class="snippet-quote-ref">Dallin H. Oaks — 2007 PBS Documentary</span>
+        </div>
+      </div>
+      <div class="snippet-verdict" id="verdict-criticism">
+        <button class="snippet-verdict-toggle" onclick="toggleVerdict('verdict-criticism')">
+          <span class="verdict-label">✦ &nbsp;Why This Matters</span>
+          <span class="verdict-chevron">&#9660;</span>
+        </button>
+        <div class="snippet-verdict-content">
+          <p>The Catholic Church has a centuries-long tradition of loyal dissent — saints like Catherine of Siena wrote blistering letters to the Pope; Thomas Aquinas refined doctrines by rigorous argument. Pope Francis stands squarely in this tradition. The LDS position, expressed by a man who would later become Church President, forbids even <em>true</em> criticism. <strong>An institution that forbids truthful criticism of its leaders has placed institutional authority above truth itself.</strong> That is not the mark of a church confident in the strength of its claims.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SNIPPET: Kinderhook Plates ═══ -->
+  <div class="snippet-box">
+    <div class="snippet-header">
+      <span class="snippet-tag">Contradiction</span>
+      <span class="snippet-title">The Kinderhook Plates: A Prophet Translates a Known Hoax</span>
+    </div>
+    <div class="snippet-body">
+      <div class="snippet-quotes">
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-condemns">Joseph Smith Claimed to Translate Them</div>
+          <blockquote>I have translated a portion of them [Kinderhook Plates], and <span class="highlight-condemn">find they contain the history of the person with whom they were found.</span> He was a descendant of Ham, through the loins of Pharaoh, king of Egypt.</blockquote>
+          <span class="snippet-quote-ref">Joseph Smith — Recorded by William Clayton · History of the Church, Vol. 5, p. 372</span>
+        </div>
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-permits">The LDS Church Admits They Were Fake</div>
+          <blockquote>Kinderhook Plates brought to Joseph Smith <span class="highlight-permit">appear to be a nineteenth-century hoax.</span></blockquote>
+          <span class="snippet-quote-ref">Ensign, August 1981</span>
+        </div>
+      </div>
+      <div class="snippet-verdict" id="verdict-kinderhook">
+        <button class="snippet-verdict-toggle" onclick="toggleVerdict('verdict-kinderhook')">
+          <span class="verdict-label">✦ &nbsp;Why This Matters</span>
+          <span class="verdict-chevron">&#9660;</span>
+        </button>
+        <div class="snippet-verdict-content">
+          <p>In 1843, local pranksters fabricated six small bell-shaped plates, etched them with nonsensical characters, and presented them to Joseph Smith to test his prophetic claims. Smith examined them and produced a "translation" — claiming they recorded the history of a descendant of Ham. In 1980, metallurgical testing by the Chicago Historical Society confirmed the plates were 19th-century forgeries. The LDS Church's own Ensign magazine acknowledged this. <strong>A prophet with a genuine gift of translation would have detected the fraud. Instead, Smith produced a detailed, confident "translation" of fabricated gibberish</strong> — precisely as he had done with the Egyptian papyri.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SNIPPET: Doctrine Cannot Be Changed + Racial Ban ═══ -->
+  <div class="snippet-box">
+    <div class="snippet-header">
+      <span class="snippet-tag">Contradiction</span>
+      <span class="snippet-title">&ldquo;Doctrine Cannot Be Changed&rdquo; — Until It Was</span>
+    </div>
+    <div class="snippet-body">
+      <div class="snippet-quotes">
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-condemns">The Rule</div>
+          <blockquote><span class="highlight-condemn">Doctrine cannot be changed.</span></blockquote>
+          <span class="snippet-quote-ref">Boyd K. Packer — October 1993 General Conference</span>
+        </div>
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-permits">The &ldquo;Doctrine&rdquo; That Was Changed</div>
+          <blockquote>The attitude of the Church with reference to the Negroes remains as it has always stood. It is not a matter of the declaration of a policy but of <span class="highlight-permit">direct commandment from the Lord,</span> on which is <span class="highlight-permit">founded the doctrine of the Church</span> from the days of its organization.</blockquote>
+          <span class="snippet-quote-ref">The First Presidency — Official Statement, August 17, 1949</span>
+        </div>
+      </div>
+      <div class="snippet-verdict" id="verdict-doctrine-change">
+        <button class="snippet-verdict-toggle" onclick="toggleVerdict('verdict-doctrine-change')">
+          <span class="verdict-label">✦ &nbsp;Why This Matters</span>
+          <span class="verdict-chevron">&#9660;</span>
+        </button>
+        <div class="snippet-verdict-content">
+          <p>The First Presidency explicitly called the priesthood and temple ban on Black members a <strong>"direct commandment from the Lord"</strong> and the <strong>"doctrine of the Church."</strong> In 1978, that "commandment" was reversed. In 2013, the Church's own Gospel Topics Essay on "Race and the Priesthood" disavowed the racial theories that had supported it. If Elder Packer is right that doctrine cannot be changed, then the ban was never doctrine — and the First Presidency lied in 1949. If the First Presidency was right that it was doctrine, then Packer is wrong and doctrine <em>can</em> be changed. Either way, something the prophets said was false.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SNIPPET: D&C 1:39 + Prophets on Race/Slavery ═══ -->
+  <div class="snippet-box">
+    <div class="snippet-header">
+      <span class="snippet-tag tag-record">Prophetic Record</span>
+      <span class="snippet-title">The Voice of the Lord&rsquo;s Servants on Race</span>
+    </div>
+    <div class="snippet-body">
+      <div class="snippet-scripture-banner">
+        <blockquote>&hellip;whether by mine own voice or by the voice of my servants, <span class="highlight-gold">it is the same.</span></blockquote>
+        <span class="snippet-quote-ref">Doctrine &amp; Covenants 1:39</span>
+      </div>
+      <div class="snippet-stacked-quotes">
+        <div class="snippet-stacked-quote">
+          <blockquote>&hellip;the first mention we have of <span class="highlight-key">slavery</span> is found in the holy bible, pronounced by a man who was perfect in his generation and walked with God.</blockquote>
+          <span class="snippet-quote-ref">Joseph Smith — Letter to Oliver Cowdery on Abolitionism · Latter Day Saints' Messenger and Advocate, April 1836</span>
+        </div>
+        <div class="snippet-stacked-quote">
+          <blockquote>&hellip;inasmuch as we believe in the Bible, inasmuch as we believe in the ordinances of God, in the Priesthood and order and decrees of God, <span class="highlight-key">we must believe in slavery.</span></blockquote>
+          <span class="snippet-quote-ref">Brigham Young — Speech to the Joint Session of the Legislature, January 23, 1852</span>
+        </div>
+        <div class="snippet-stacked-quote">
+          <blockquote>&hellip;the seeming discrimination by the Church toward the Negro is not something which originated with man, but goes back into the <span class="highlight-key">beginning with God.</span></blockquote>
+          <span class="snippet-quote-ref">David O. McKay — Home Memories of President David O. McKay (1956), p. 231</span>
+        </div>
+        <div class="snippet-stacked-quote">
+          <blockquote>From the days of the Prophet Joseph even until now, it has been the doctrine of the Church, never questioned by any of the Church leaders, <span class="highlight-key">that the Negroes are not entitled to the full blessings of the Gospel.</span></blockquote>
+          <span class="snippet-quote-ref">George Albert Smith — Letter from the First Presidency to Dr. Lowry Nelson, July 17, 1947</span>
+        </div>
+      </div>
+      <div class="snippet-verdict" id="verdict-race-prophets">
+        <button class="snippet-verdict-toggle" onclick="toggleVerdict('verdict-race-prophets')">
+          <span class="verdict-label">✦ &nbsp;Why This Matters</span>
+          <span class="verdict-chevron">&#9660;</span>
+        </button>
+        <div class="snippet-verdict-content">
+          <p>D&amp;C 1:39 is the foundational claim that gives prophetic authority its weight: when the Lord's servants speak, it is as if God Himself speaks. Four successive Church presidents — spanning over a century — used that authority to teach that racial discrimination was God's will. The Church has since disavowed those teachings. <strong>If these prophets were wrong when speaking as prophets, then D&amp;C 1:39 either doesn't mean what it says, or it proves that LDS prophets can attribute their own prejudices to God.</strong> Neither conclusion supports the LDS model of prophetic authority.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SNIPPET: Principal → Among (BoM Introduction Change) ═══ -->
+  <div class="snippet-box">
+    <div class="snippet-header">
+      <span class="snippet-tag">Contradiction</span>
+      <span class="snippet-title">One Word Changed: &ldquo;Principal&rdquo; to &ldquo;Among&rdquo;</span>
+    </div>
+    <div class="snippet-body">
+      <div class="snippet-quotes">
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-condemns">Before 2006</div>
+          <blockquote>&hellip;all were destroyed except the Lamanites, and they are <span class="highlight-condemn">the principal ancestors</span> of the American Indians.</blockquote>
+          <span class="snippet-quote-ref">Book of Mormon Introduction — Original</span>
+        </div>
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-permits">After 2006</div>
+          <blockquote>&hellip;all were destroyed except the Lamanites, and they are <span class="highlight-permit">among the ancestors</span> of the American Indians.</blockquote>
+          <span class="snippet-quote-ref">Book of Mormon Introduction — Changed 2006</span>
+        </div>
+      </div>
+      <div class="snippet-verdict" id="verdict-principal">
+        <button class="snippet-verdict-toggle" onclick="toggleVerdict('verdict-principal')">
+          <span class="verdict-label">✦ &nbsp;Why This Matters</span>
+          <span class="verdict-chevron">&#9660;</span>
+        </button>
+        <div class="snippet-verdict-content">
+          <p>DNA studies of indigenous American populations consistently show Asian — not Middle Eastern — ancestry. Faced with this evidence, the Church quietly changed a single word in the Book of Mormon's introduction, retreating from "principal" to "among." But this wasn't a minor editorial fix. <strong>For 175 years, prophets taught that Native Americans were descended from the Lamanites.</strong> The 2006 change concedes that the prophets were wrong about the central historical claim of the Book of Mormon — a claim that was foundational to LDS missionary work among indigenous peoples worldwide.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SNIPPET: Journal of Discourses — Authoritative or Not? ═══ -->
+  <div class="snippet-box">
+    <div class="snippet-header">
+      <span class="snippet-tag">Contradiction</span>
+      <span class="snippet-title">The Journal of Discourses: Authoritative or Not?</span>
+    </div>
+    <div class="snippet-body">
+      <div class="snippet-quotes">
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-condemns">Then: A Vehicle of Doctrine</div>
+          <blockquote>The Journal of Discourses <span class="highlight-condemn">is a vehicle of doctrine, counsel, and instruction to all people,</span> but especially to the Saints.</blockquote>
+          <span class="snippet-quote-ref">Brigham Young Jr. — Journal of Discourses, Vol. 11, p. iii (1867)</span>
+        </div>
+        <div class="snippet-quote">
+          <div class="snippet-quote-source source-permits">Now: Not Authoritative</div>
+          <blockquote>The Journal of Discourses is <span class="highlight-permit">not an official publication</span> of The Church of Jesus Christ of Latter-day Saints&hellip; by itself it is <span class="highlight-permit">not an authoritative source of Church doctrine.</span></blockquote>
+          <span class="snippet-quote-ref">Journal of Discourses Topic — LDS.org</span>
+        </div>
+      </div>
+      <div class="snippet-verdict" id="verdict-jod">
+        <button class="snippet-verdict-toggle" onclick="toggleVerdict('verdict-jod')">
+          <span class="verdict-label">✦ &nbsp;Why This Matters</span>
+          <span class="verdict-chevron">&#9660;</span>
+        </button>
+        <div class="snippet-verdict-content">
+          <p>The Journal of Discourses contains 26 volumes of sermons by Brigham Young and other early Church leaders, presented at the time as authoritative doctrinal instruction. It includes teachings on blood atonement, Adam-God theory, racial doctrine, and plural marriage — all of which the modern Church finds embarrassing. <strong>The solution was not to explain why the prophets taught these things, but to retroactively declare the source non-authoritative.</strong> This allows the Church to selectively cite the JoD when convenient while disavowing it when the content contradicts current teaching.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SNIPPET: Richard Bushman — 19th Century Theology ═══ -->
+  <div class="snippet-box">
+    <div class="snippet-header">
+      <span class="snippet-tag tag-quote">Quote</span>
+      <span class="snippet-title">An LDS Historian on the Book of Mormon&rsquo;s Origins</span>
+    </div>
+    <div class="snippet-body">
+      <div class="snippet-single-quote">
+        <blockquote>&hellip;there is phrasing everywhere — long phrases that if you google them you will find them in 19th century writings. <span class="highlight-key">The theology of the Book of Mormon is very much 19th century theology,</span> and it reads like a 19th century understanding of the Hebrew Bible as an Old Testament.</blockquote>
+        <span class="snippet-quote-ref">Richard L. Bushman — LDS Historian · Mormon Discussions Podcast, #182</span>
+      </div>
+      <div class="snippet-verdict" id="verdict-bushman">
+        <button class="snippet-verdict-toggle" onclick="toggleVerdict('verdict-bushman')">
+          <span class="verdict-label">✦ &nbsp;Why This Matters</span>
+          <span class="verdict-chevron">&#9660;</span>
+        </button>
+        <div class="snippet-verdict-content">
+          <p>Richard Bushman is not a critic — he is the foremost LDS historian, author of <em>Joseph Smith: Rough Stone Rolling,</em> and a faithful Latter-day Saint. His admission that the Book of Mormon reads as 19th-century theology with identifiable 19th-century phrasing is devastating precisely because it comes from within. <strong>An ancient record translated by divine power should not read like a 19th-century Protestant sermon.</strong> It should contain theological concepts, literary forms, and linguistic patterns consistent with its claimed ancient origin — not with the religious environment of upstate New York in the 1820s.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SNIPPET: Widtsoe — No Surplus of Women ═══ -->
+  <div class="snippet-box">
+    <div class="snippet-header">
+      <span class="snippet-tag tag-quote">Quote</span>
+      <span class="snippet-title">An Apostle Debunks the &ldquo;Surplus of Women&rdquo; Polygamy Defense</span>
+    </div>
+    <div class="snippet-body">
+      <div class="snippet-single-quote">
+        <blockquote>The theory that plural marriage was a consequence of a surplus of female Church members fails from lack of evidence. Another conjecture is that the people were few in number and that the Church, desiring greater numbers, permitted the practice so that a phenomenal increase in population could be attained. This is not defensible, since <span class="highlight-key">there was no surplus of women.</span></blockquote>
+        <span class="snippet-quote-ref">John A. Widtsoe, Apostle — Evidences and Reconciliations, 1943</span>
+      </div>
+      <div class="snippet-verdict" id="verdict-widtsoe">
+        <button class="snippet-verdict-toggle" onclick="toggleVerdict('verdict-widtsoe')">
+          <span class="verdict-label">✦ &nbsp;Why This Matters</span>
+          <span class="verdict-chevron">&#9660;</span>
+        </button>
+        <div class="snippet-verdict-content">
+          <p>One of the most common defenses of early LDS polygamy is that there were more women than men on the frontier, requiring plural marriage to care for widows and single women. An LDS apostle himself — writing in an officially distributed book — called this defense indefensible. <strong>Census records confirm that men outnumbered women in Utah Territory during the polygamy era.</strong> Joseph Smith's own plural marriages included women who were already married to other living men (polyandry), further demolishing any charitable demographic explanation for the practice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </main>
 
 <footer>&copy; One Faith Delivered &nbsp;&#8901;&nbsp; All Rights Reserved</footer>
@@ -309,6 +1123,9 @@ footer {
 </aside>
 
 <script>
+function toggleVerdict(id) {
+  document.getElementById(id).classList.toggle('open');
+}
 function toggleSidebar() {
   var btn = document.querySelector('.nav-hamburger'), sidebar = document.querySelector('.sidebar'), overlay = document.querySelector('.sidebar-overlay');
   var isOpen = sidebar.classList.contains('open');
