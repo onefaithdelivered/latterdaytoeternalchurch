@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Priesthood Question | One Faith Delivered</title>
+<meta name="description" content="A comprehensive comparison of Catholic and Latter-day Saint priesthood theology, succession, and the historical problems with Joseph Smith's priesthood restoration claims.">
+<link rel="canonical" href="https://onefaithdelivered.org/articles/priesthood-comparison.html" />
+<link rel="icon" href="../favicons/favicon.ico" sizes="any" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="The Priesthood Question: Catholic vs. Latter-day Saint Authority" />
+<meta property="og:description" content="Two churches claim God's priesthood succession. Only one can document it. A scholarly examination of priesthood theology, apostolic succession, and the historical record." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://onefaithdelivered.org/articles/priesthood-comparison.html" />
+<meta property="og:image" content="https://onefaithdelivered.org/android-chrome-512x512.png" />
+<meta property="og:site_name" content="One Faith Delivered" />
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Priesthood Question: Catholic vs. Latter-day Saint Authority" />
+<meta name="twitter:description" content="Two churches claim God's priesthood succession. Only one can document it." />
+<meta name="twitter:image" content="https://onefaithdelivered.org/android-chrome-512x512.png" />
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* ═══════════════════════════════════════════════════════════
+   THE PRIESTHOOD QUESTION
+   Design system: matches celibacy-monasticism-chastity.html
+   Fonts: Playfair Display + Source Serif 4 + JetBrains Mono
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --crimson:      #8B0000;
+  --dark-crimson: #5C0000;
+  --gold:         #C5A55A;
+  --dark-gold:    #8B7335;
+  --parchment:    #F5F0E8;
+  --text:         #2A2A2A;
+  --muted:        #666;
+  --line-gray:    #D0C8B8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--parchment);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.6;
+}
+
+/* ── SITE NAV ── */
+.site-nav {
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(245,240,232,0.98), rgba(240,235,225,0.95));
+  border-bottom: 1px solid var(--line-gray);
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.site-nav a.nav-home {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--crimson);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: var(--dark-crimson); }
+.site-nav .nav-back {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  text-decoration: none;
+  border: 1px solid rgba(139,115,53,0.35);
+  padding: 0.4rem 1.1rem;
+  border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
+}
+.site-nav .nav-back:hover { background: rgba(139,115,53,0.08); color: var(--crimson); }
+.site-nav .nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.site-nav .nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav .nav-links a:hover { color: var(--crimson); }
+
+/* ── Hamburger ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  cursor: pointer;
+  background: none;
+  border: 1px solid rgba(139,115,53,0.3);
+  border-radius: 3px;
+  padding: 6px;
+  z-index: 10001;
+}
+.nav-hamburger span {
+  display: block; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Sidebar ── */
+.sidebar-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+.sidebar-overlay.visible { display: block; }
+.sidebar {
+  position: fixed;
+  top: 0; right: -280px;
+  width: 260px; height: 100%;
+  background: linear-gradient(to bottom, #FAF6F0, #F5F0E8);
+  border-left: 1px solid var(--line-gray);
+  z-index: 10002;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+.sidebar.open { right: 0; }
+.sidebar-inner {
+  padding: 5rem 2rem 2rem;
+  display: flex; flex-direction: column; gap: 0;
+}
+.sidebar-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--crimson);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line-gray);
+}
+.sidebar-inner a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(208,200,184,0.5);
+  transition: color 0.2s;
+}
+.sidebar-inner a:hover { color: var(--crimson); }
+.sidebar-inner a.sidebar-back {
+  color: var(--dark-gold);
+  margin-top: 1.5rem;
+  border: 1px solid rgba(139,115,53,0.3);
+  padding: 0.7rem 1rem;
+  text-align: center;
+  border-radius: 2px;
+}
+.sidebar-ornament {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 8px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  background: linear-gradient(135deg, #1a0a05 0%, #2C1810 40%, #3d2218 100%);
+  color: #F5F0E8;
+  padding: 72px 40px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+  pointer-events: none;
+}
+.back-link {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  margin-bottom: 1.8rem;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+  position: relative;
+  z-index: 1;
+}
+.back-link:hover { opacity: 1; }
+.ornament {
+  display: block;
+  color: var(--gold);
+  font-size: 1rem;
+  letter-spacing: 12px;
+  margin-bottom: 1.2rem;
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2em, 4vw, 3.2em);
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: #F5F0E8;
+  margin-bottom: 14px;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+}
+.page-header h1 span { color: var(--gold); }
+.page-header .subtitle {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(245,240,232,0.75);
+  max-width: 700px;
+  margin: 0 auto 0;
+  position: relative;
+  z-index: 1;
+}
+.page-header .meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(197,165,90,0.65);
+  margin-top: 1.4rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── MAIN CONTENT ── */
+main {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 56px 24px 88px;
+}
+
+/* ── INTRO BOX ── */
+.intro-box {
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-left: 5px solid var(--crimson);
+  border-radius: 4px;
+  padding: 28px 32px;
+  margin-bottom: 48px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.intro-box p {
+  font-size: 1.02rem;
+  line-height: 1.9;
+  color: var(--text);
+}
+.intro-box p + p { margin-top: 0.9rem; }
+.intro-box strong { color: var(--crimson); font-weight: 600; }
+
+/* ── SECTION DIVIDER ── */
+.section-divider {
+  margin: 52px 0 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.section-divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line-gray);
+}
+.section-divider-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  white-space: nowrap;
+}
+
+/* ── ARTICLE SECTION ── */
+.article-section { margin-bottom: 8px; }
+.article-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75em;
+  font-weight: 700;
+  color: var(--crimson);
+  line-height: 1.25;
+  margin-bottom: 22px;
+}
+.article-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15em;
+  font-weight: 700;
+  color: #1E3A5F;
+  margin: 28px 0 12px;
+  letter-spacing: 0.01em;
+}
+.article-section p {
+  font-size: 1.01rem;
+  line-height: 1.9;
+  color: var(--text);
+  margin-bottom: 1.1rem;
+}
+.article-section p:last-child { margin-bottom: 0; }
+
+/* ── DROP CAP ── */
+.drop-cap::first-letter {
+  font-family: 'Playfair Display', serif;
+  float: left;
+  font-size: 4.2em;
+  line-height: 0.8;
+  padding-right: 10px;
+  padding-top: 6px;
+  color: var(--crimson);
+  font-weight: 900;
+}
+
+/* ── SCRIPTURE / BLOCK QUOTE ── */
+.scripture-block {
+  border-left: 4px solid var(--gold);
+  margin: 28px 0;
+  padding: 18px 26px;
+  background: rgba(197,165,90,0.07);
+  border-radius: 0 4px 4px 0;
+}
+.scripture-block p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05em !important;
+  font-style: italic;
+  font-weight: 400;
+  color: #3A1A1A !important;
+  line-height: 1.75 !important;
+  margin-bottom: 0.5rem !important;
+}
+.scripture-block p:last-of-type { margin-bottom: 0 !important; }
+.scripture-ref {
+  display: block;
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--dark-gold);
+  letter-spacing: 0.08em;
+  margin-top: 10px;
+}
+
+/* ── PATRISTIC / FEATURED QUOTE ── */
+.patristic-block {
+  background: #fff;
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+  padding: 32px 36px;
+  margin: 36px 0;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  position: relative;
+}
+.patristic-block::before,
+.patristic-block::after {
+  content: '✦';
+  position: absolute;
+  color: var(--gold);
+  font-size: 14px;
+}
+.patristic-block::before {
+  top: -9px; left: 50%; transform: translateX(-50%);
+  background: #fff; padding: 0 8px;
+}
+.patristic-block::after {
+  bottom: -9px; left: 50%; transform: translateX(-50%);
+  background: var(--parchment); padding: 0 8px;
+}
+.patristic-block p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.15em;
+  line-height: 1.7;
+  color: #3A1A1A;
+  margin-bottom: 12px;
+}
+.patristic-block .attribution {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-style: normal;
+  font-weight: 600;
+  color: var(--dark-gold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ── KEY POINT BOX ── */
+.key-point {
+  background: rgba(197,165,90,0.07);
+  border: 1px solid rgba(197,165,90,0.25);
+  border-left: 5px solid var(--gold);
+  border-radius: 4px;
+  padding: 24px 28px;
+  margin: 32px 0;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.03);
+}
+.key-point-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  margin-bottom: 10px;
+}
+.key-point p {
+  font-size: 1.01rem;
+  line-height: 1.9;
+  color: var(--text);
+}
+
+/* ── CRITIQUE BOX ── */
+.critique-box {
+  background: rgba(139,0,0,0.03);
+  border: 1px solid rgba(139,0,0,0.12);
+  border-left: 5px solid var(--crimson);
+  border-radius: 4px;
+  padding: 24px 28px;
+  margin: 32px 0;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.03);
+}
+.critique-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  margin-bottom: 10px;
+}
+.critique-box p {
+  font-size: 1.01rem;
+  line-height: 1.9;
+  color: var(--text);
+}
+
+/* ── COMPARISON TABLE ── */
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0 40px;
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+.compare-table thead th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 2px solid var(--gold);
+  background: rgba(197,165,90,0.06);
+}
+.compare-table thead th.catholic-col { color: var(--crimson); }
+.compare-table thead th.lds-col { color: var(--muted); }
+.compare-table tbody td {
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--line-gray);
+  vertical-align: top;
+}
+.compare-table tbody td:first-child {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  width: 20%;
+}
+.compare-table tbody tr:hover td { background: rgba(197,165,90,0.04); }
+
+/* ── DUAL PANEL (SIDE BY SIDE) ── */
+.dual-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 36px 0;
+  border: 1px solid var(--line-gray);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+.dual-col {
+  padding: 28px 24px;
+  background: #fff;
+}
+.dual-col.catholic-side {
+  border-right: 1px solid var(--line-gray);
+}
+.dual-col-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--gold);
+}
+.catholic-side .dual-col-title { color: var(--crimson); }
+.lds-side .dual-col-title { color: var(--muted); }
+.dual-col p {
+  font-size: 0.94rem;
+  line-height: 1.8;
+  margin-bottom: 0.8rem;
+  color: var(--text);
+}
+.dual-col p:last-child { margin-bottom: 0; }
+
+/* ── SUCCESSION LIST ── */
+.succession-panel { margin: 40px 0; }
+.succession-header {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--gold);
+  margin-bottom: 16px;
+}
+.lds-succession .succession-header { color: var(--muted); }
+.succession-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(208,200,184,0.5);
+  align-items: start;
+}
+.succession-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--dark-gold);
+  text-align: right;
+  padding-top: 3px;
+}
+.succession-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text);
+}
+.succession-dates {
+  font-size: 0.9rem;
+  color: var(--muted);
+  font-style: italic;
+}
+.succession-note {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-top: 2px;
+  line-height: 1.6;
+}
+
+/* ── TIMELINE ── */
+.js-timeline {
+  margin: 36px 0;
+  position: relative;
+  padding-left: 30px;
+}
+.js-timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--gold), var(--crimson));
+}
+.timeline-event {
+  position: relative;
+  margin-bottom: 28px;
+  padding-left: 22px;
+}
+.timeline-event::before {
+  content: '';
+  position: absolute;
+  left: -26px; top: 8px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: var(--parchment);
+}
+.timeline-event.claimed::before { background: var(--gold); }
+.timeline-event.documented::before { background: var(--crimson); border-color: var(--crimson); }
+.timeline-event.problem::before { background: #C04040; border-color: #C04040; }
+.timeline-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  margin-bottom: 4px;
+}
+.timeline-event.documented .timeline-date { color: var(--crimson); }
+.timeline-event.problem .timeline-date { color: #C04040; }
+.timeline-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.timeline-desc {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+.timeline-legend {
+  display: flex; gap: 24px; flex-wrap: wrap;
+  margin-bottom: 24px;
+  padding: 14px 20px;
+  background: #fff;
+  border: 1px solid var(--line-gray);
+  border-radius: 4px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.03);
+}
+.legend-item {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.legend-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+}
+.legend-dot.claimed { background: var(--gold); }
+.legend-dot.documented { background: var(--crimson); }
+.legend-dot.problem { background: #C04040; }
+
+/* ── GAP CALLOUT ── */
+.gap-callout {
+  background: #fff;
+  border: 2px solid #C04040;
+  border-radius: 4px;
+  padding: 32px 28px;
+  margin: 36px 0;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  position: relative;
+}
+.gap-callout::before {
+  content: '⚠';
+  position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+  background: #fff; padding: 0 10px;
+  font-size: 16px;
+}
+.gap-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: #C04040;
+  line-height: 1;
+}
+.gap-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(192,64,64,0.7);
+  margin-top: 6px;
+}
+.gap-desc {
+  margin-top: 14px;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+/* ── VERDICT BOX ── */
+.verdict-box {
+  background: linear-gradient(135deg, #1a0a05, #2C1810);
+  border: 2px solid var(--gold);
+  border-radius: 4px;
+  padding: 40px 36px;
+  margin: 48px 0 36px;
+  text-align: center;
+  position: relative;
+}
+.verdict-box::before {
+  content: '✦';
+  position: absolute;
+  top: -10px; left: 50%; transform: translateX(-50%);
+  background: linear-gradient(135deg, #1a0a05, #2C1810);
+  padding: 0 12px;
+  color: var(--gold);
+  font-size: 14px;
+}
+.verdict-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.verdict-box p {
+  font-family: 'Source Serif 4', serif;
+  color: #F5F0E8;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+.verdict-box p:last-child { margin-bottom: 0; }
+.verdict-box em { color: var(--gold); }
+
+/* ── REFERENCES ── */
+.references-section {
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 2px solid var(--line-gray);
+}
+.references-section h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  margin-bottom: 16px;
+  margin-top: 28px;
+}
+.references-section h3:first-child { margin-top: 0; }
+.references-section ul { list-style: none; padding: 0; }
+.references-section li {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--muted);
+  padding: 5px 0 5px 20px;
+  position: relative;
+}
+.references-section li::before {
+  content: '✦';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-size: 8px;
+  top: 10px;
+}
+.references-section a {
+  color: var(--crimson);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(139,0,0,0.2);
+  transition: border-color 0.2s;
+}
+.references-section a:hover { border-bottom-color: var(--crimson); }
+.references-section em { font-style: italic; }
+
+/* ── FOOTER ── */
+footer {
+  background: #fff;
+  text-align: center;
+  padding: 28px 20px;
+  border-top: 1px solid var(--line-gray);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── READING PROGRESS BAR ── */
+#reading-progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(to right, #8B0000, #C5A55A);
+  z-index: 99999;
+  transition: width 0.12s linear;
+  pointer-events: none;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── PRINT BUTTON ── */
+.nav-print-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dark-gold);
+  background: none;
+  border: 1px solid rgba(139,115,53,0.35);
+  padding: 0.4rem 1.1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+.nav-print-btn:hover { background: rgba(139,115,53,0.08); color: var(--crimson); }
+.nav-print-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+.print-colophon { display: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .page-header { padding: 48px 24px 40px; }
+  .page-header h1 { font-size: 1.9em; }
+  main { padding: 32px 16px 60px; }
+  .intro-box { padding: 22px 20px; }
+  .patristic-block { padding: 24px 20px; }
+  .scripture-block { padding: 16px 18px; }
+  .compare-table { font-size: 0.82rem; }
+  .compare-table thead th,
+  .compare-table tbody td { padding: 10px 10px; }
+  .dual-panel { grid-template-columns: 1fr; }
+  .dual-col.catholic-side { border-right: none; border-bottom: 1px solid var(--line-gray); }
+}
+@media (max-width: 700px) {
+  .nav-hamburger { display: flex; margin-left: auto; order: 99; flex-shrink: 0; }
+  .site-nav .nav-links { display: none; }
+  .site-nav .nav-back { display: none; }
+  body { overflow-x: hidden; }
+  .site-nav { padding: 0.55rem 1rem; }
+  .page-header { padding: 44px 18px 32px; }
+  .page-header h1 { font-size: clamp(1.35rem, 5.5vw, 2rem); }
+  .page-header .subtitle { font-size: 0.92rem; }
+  .sidebar { display: block; transform: translateX(100%); right: 0; position: fixed; }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-inner { padding: 4rem 1.5rem 2rem; }
+  .sidebar-overlay.visible { display: block; }
+  .drop-cap::first-letter { font-size: 3.4em; }
+  .article-section h2 { font-size: 1.45em; }
+  .succession-item { grid-template-columns: 30px 1fr; gap: 8px; }
+  .timeline-legend { gap: 12px; flex-direction: column; }
+  .nav-print-btn { display: none; }
+}
+
+/* ── @MEDIA PRINT ── */
+@media print {
+  #reading-progress-bar, .site-nav, .sidebar-overlay, .sidebar, .nav-print-btn, .back-link, footer { display: none !important; }
+  .page-header { background: #2C1810 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  main { padding: 32px 0; }
+  .print-colophon {
+    display: block;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65em;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line-gray);
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ── SITE NAV ── -->
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">One Faith Delivered</a>
+  <ul class="nav-links">
+    <li><a href="../articles.html">Articles</a></li>
+    <li><a href="../charts.html">Charts</a></li>
+    <li><a href="../topics.html">Topics</a></li>
+    <li><a href="../resources.html">Resources</a></li>
+  </ul>
+  <a href="../articles.html" class="nav-back">&#8592; All Articles</a>
+  <button class="nav-print-btn" onclick="window.print()" aria-label="Print or save as PDF" title="Print / Save as PDF">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Print
+  </button>
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div id="reading-progress-bar" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <a href="../articles.html" class="back-link">&#8592; All Articles</a>
+  <span class="ornament">✦ &nbsp; ✦ &nbsp; ✦</span>
+  <h1>The <span>Priesthood</span> Question</h1>
+  <p class="subtitle">Two churches claim God's priesthood authority and apostolic succession. Only one can document it from the beginning. A scholarly comparison of Catholic and Latter-day Saint priesthood theology, lines of succession, and the historical record behind Joseph Smith's restoration claims.</p>
+  <p class="meta">Long-Form Article &nbsp;·&nbsp; Priesthood &amp; Authority &nbsp;·&nbsp; ~25 Minute Read</p>
+</header>
+
+
+<!-- ── MAIN ── -->
+<main>
+
+  <!-- INTRO -->
+  <div class="intro-box">
+    <p>Both the Catholic Church and The Church of Jesus Christ of Latter-day Saints claim to possess the true priesthood of God — the divinely authorized power to act in His name, administer sacraments, and govern His Church on earth. Both teach that this authority is not self-conferred but must be received through an unbroken chain of authorization reaching back to Jesus Christ Himself.</p>
+    <p>This shared emphasis on priesthood authority makes the question of which claim is historically grounded one of the most important theological comparisons a Latter-day Saint can examine. <strong>The answer determines whether God's priesthood has been present on earth continuously for two millennia — or whether it vanished entirely for eighteen centuries and had to be reconstituted by angelic visitation in nineteenth-century America.</strong></p>
+  </div>
+
+
+  <!-- ═══════════════════════ SECTION I ═══════════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">Section I</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="article-section">
+    <h2>What Is Priesthood?</h2>
+
+    <div class="dual-panel">
+      <div class="dual-col catholic-side">
+        <div class="dual-col-title">Catholic Understanding</div>
+        <p>In Catholic theology, the priesthood is a sacrament — the Sacrament of Holy Orders — instituted by Christ at the Last Supper when He commanded His Apostles, "Do this in remembrance of me" (Luke 22:19). The priesthood is not a personal possession but a participation in the one eternal priesthood of Christ Himself (Hebrews 7:24).</p>
+        <p>The priesthood exists in three degrees: the episcopate (bishops), the presbyterate (priests), and the diaconate (deacons). Bishops possess the fullness of the sacrament and can ordain others; priests share in the bishop's priesthood and act <em>in persona Christi</em> to celebrate the sacraments; deacons serve in ministry to Word, liturgy, and charity.</p>
+        <p>The sacramental character of ordination is permanent and indelible — "once a priest, always a priest." Authority is transmitted through the physical laying on of hands in an unbroken chain from the Apostles to the present day. Every Catholic bishop alive today can trace his episcopal lineage to the Apostles through documented ordination records.</p>
+      </div>
+      <div class="dual-col lds-side">
+        <div class="dual-col-title">Latter-day Saint Understanding</div>
+        <p>In LDS theology, priesthood is defined as "the power and authority of God given to man on earth to act in all things for the salvation of man" (Teachings of the Prophet Joseph Smith). It is not a sacrament but rather an authority held personally by individual male members of the Church.</p>
+        <p>The LDS Church recognizes two priesthood orders: the Aaronic (or Levitical) Priesthood, considered the lesser priesthood associated with temporal ordinances and baptism; and the Melchizedek Priesthood, the greater priesthood encompassing all authority in the Church, including the sealing power exercised in temple ordinances.</p>
+        <p>All worthy male members ages twelve and older may receive the Aaronic Priesthood, and those eighteen and older the Melchizedek Priesthood. The LDS priesthood is understood not as a sacramental character but as a delegated authority that can be conferred (or revoked) through the laying on of hands by those already holding it. The Church teaches this authority was lost from the earth after the death of the original Apostles and was restored through angelic visitation to Joseph Smith.</p>
+      </div>
+    </div>
+
+    <div class="key-point">
+      <div class="key-point-label">Key Distinction</div>
+      <p>The fundamental difference is not merely structural but theological. For the Catholic, priesthood is a sacramental participation in Christ's own eternal priesthood — it does not need periodic restoration because Christ's priesthood is eternal and His Church indefectible. For the Latter-day Saint, priesthood is a delegated authority that was entirely lost from the earth for approximately 1,800 years. The Catholic position requires trust in Christ's promise that "the gates of hell shall not prevail against" His Church (Matthew 16:18). The LDS position requires believing they did prevail — completely — for nearly two millennia.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════ SECTION II ═══════════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">Section II</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="article-section">
+    <h2>Side-by-Side Comparison</h2>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th class="catholic-col">Catholic Church</th>
+          <th class="lds-col">LDS Church</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Source of Authority</td>
+          <td>Christ → Apostles → bishops, transmitted sacramentally through laying on of hands for 2,000 years without interruption</td>
+          <td>Christ → Apostles → [total loss / Great Apostasy] → restored by angelic visitation to Joseph Smith in 1829</td>
+        </tr>
+        <tr>
+          <td>Nature of Priesthood</td>
+          <td>Sacramental character: permanent, indelible participation in Christ's eternal priesthood (Hebrews 7:24)</td>
+          <td>Delegated authority: conferred and potentially revoked; held personally by individual male members</td>
+        </tr>
+        <tr>
+          <td>Priesthood Orders</td>
+          <td>Three degrees within one sacrament: bishop (fullness), priest, deacon</td>
+          <td>Two separate priesthoods: Aaronic (lesser) and Melchizedek (greater), each with multiple offices</td>
+        </tr>
+        <tr>
+          <td>Who Holds It</td>
+          <td>Men who receive the Sacrament of Holy Orders through a validly ordained bishop</td>
+          <td>All worthy male members beginning at age 12 (Aaronic) and age 18 (Melchizedek)</td>
+        </tr>
+        <tr>
+          <td>Succession Model</td>
+          <td>Documented episcopal succession: every bishop ordained by bishops who were ordained by bishops, traceable to the Apostles</td>
+          <td>Prophetic succession: the senior apostle automatically becomes Church President upon the death of the current President</td>
+        </tr>
+        <tr>
+          <td>Historical Evidence</td>
+          <td>Irenaeus lists the bishops of Rome from Peter to his own day (c. AD 180); thousands of ordination records survive across centuries</td>
+          <td>No contemporaneous documentation of the priesthood restoration exists from 1829; the first recorded mention appears in 1834, five years after the claimed event</td>
+        </tr>
+        <tr>
+          <td>Duration of Line</td>
+          <td>~2,000 years, unbroken: 267 popes from St. Peter to Leo XIV (the current pope), plus thousands of bishops worldwide</td>
+          <td>~196 years: 18 Church Presidents from Joseph Smith to Dallin H. Oaks (current)</td>
+        </tr>
+        <tr>
+          <td>Continuity Claim</td>
+          <td>Christ promised His Church would endure (Matt. 16:18). The Church has never ceased to exist or to ordain.</td>
+          <td>Total apostasy occurred after the Apostles died. The Church and its authority were completely absent from the earth until 1829.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- ═══════════════════════ SECTION III ═══════════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">Section III</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="article-section">
+    <h2>Catholic Apostolic Succession</h2>
+
+    <p class="drop-cap">The Catholic claim to apostolic succession rests on the teaching that Christ entrusted the leadership of His Church to the Apostle Peter ("You are Peter, and on this rock I will build my Church" — Matthew 16:18), and that this authority has been transmitted from bishop to bishop in an unbroken chain for two thousand years. Irenaeus of Lyon, writing around AD 180, already compiled a list of the bishops of Rome stretching from Peter through Linus, Anacletus, and Clement to his own day — and presented this succession as proof against heretical claims.</p>
+
+    <p>The early Church Fathers consistently appealed to episcopal succession as a mark of authentic Christian authority. Tertullian (c. AD 200) challenged heretics to produce their own succession lists. Eusebius of Caesarea (c. AD 325) documented the succession in Rome, Jerusalem, Antioch, and Alexandria as historical evidence of the Church's continuity.</p>
+
+    <div class="patristic-block">
+      <p>"It is possible, then, for every Church, who may wish to know the truth, to contemplate the tradition of the Apostles which has been made known to us throughout the whole world. And we are in a position to enumerate those who were instituted bishops by the Apostles, and their successors to our own times."</p>
+      <div class="attribution">St. Irenaeus of Lyon, Against Heresies 3.3.1, c. AD 180</div>
+    </div>
+
+    <div class="succession-panel">
+      <div class="succession-header">The Bishops of Rome: A Selection from St. Peter to the Present</div>
+      <div class="succession-list">
+        <div class="succession-item">
+          <div class="succession-num">1</div>
+          <div><span class="succession-name">St. Peter the Apostle</span><br><span class="succession-dates">c. AD 30–67</span><br><span class="succession-note">Chief of the Apostles; commissioned by Christ (Matt. 16:18–19; John 21:15–17); martyred in Rome under Nero</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">2</div>
+          <div><span class="succession-name">St. Linus</span><br><span class="succession-dates">c. AD 67–76</span><br><span class="succession-note">Chosen by Peter and Paul before their martyrdom (Irenaeus, Against Heresies 3.3.3)</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">3</div>
+          <div><span class="succession-name">St. Anacletus (Cletus)</span><br><span class="succession-dates">c. AD 76–88</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">4</div>
+          <div><span class="succession-name">St. Clement I</span><br><span class="succession-dates">c. AD 88–99</span><br><span class="succession-note">Author of 1 Clement (c. AD 96), the earliest extra-biblical letter asserting Roman authority over another church (Corinth)</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">5</div>
+          <div><span class="succession-name">St. Evaristus</span><br><span class="succession-dates">c. AD 99–107</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">6–12</div>
+          <div><span class="succession-name">Alexander I through St. Pius I</span><br><span class="succession-dates">c. AD 107–155</span><br><span class="succession-note">The succession continues without interruption through the sub-apostolic age</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">13</div>
+          <div><span class="succession-name">St. Anicetus</span><br><span class="succession-dates">c. AD 155–166</span><br><span class="succession-note">Received Polycarp of Smyrna (a disciple of the Apostle John) in Rome</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">17</div>
+          <div><span class="succession-name">St. Victor I</span><br><span class="succession-dates">c. AD 189–199</span><br><span class="succession-note">First pope to assert Rome's authority in the Easter controversy</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">33</div>
+          <div><span class="succession-name">St. Sylvester I</span><br><span class="succession-dates">AD 314–335</span><br><span class="succession-note">Bishop during the Council of Nicaea (AD 325) and the reign of Constantine</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">38</div>
+          <div><span class="succession-name">St. Damasus I</span><br><span class="succession-dates">AD 366–384</span><br><span class="succession-note">Commissioned St. Jerome's Vulgate translation of Scripture</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">45</div>
+          <div><span class="succession-name">St. Leo I "the Great"</span><br><span class="succession-dates">AD 440–461</span><br><span class="succession-note">Defined the two natures of Christ in his Tome; turned back Attila the Hun</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">64</div>
+          <div><span class="succession-name">St. Gregory I "the Great"</span><br><span class="succession-dates">AD 590–604</span><br><span class="succession-note">Doctor of the Church; reformed the liturgy and sent missionaries to England</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">187</div>
+          <div><span class="succession-name">Urban II</span><br><span class="succession-dates">AD 1088–1099</span><br><span class="succession-note">Called the First Crusade</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">217</div>
+          <div><span class="succession-name">St. Pius V</span><br><span class="succession-dates">AD 1566–1572</span><br><span class="succession-note">Promulgated the Tridentine Mass and the Catechism of the Council of Trent</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">256</div>
+          <div><span class="succession-name">St. Pius X</span><br><span class="succession-dates">AD 1903–1914</span><br><span class="succession-note">Encouraged frequent Communion and lowered the First Communion age</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">262</div>
+          <div><span class="succession-name">St. John Paul II</span><br><span class="succession-dates">AD 1978–2005</span><br><span class="succession-note">Promulgated the Catechism of the Catholic Church (1992)</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">265</div>
+          <div><span class="succession-name">Benedict XVI</span><br><span class="succession-dates">AD 2005–2013</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">266</div>
+          <div><span class="succession-name">Francis</span><br><span class="succession-dates">AD 2013–2025</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">267</div>
+          <div><span class="succession-name">Leo XIV (Robert Francis Prevost)</span><br><span class="succession-dates">AD 2025–present</span><br><span class="succession-note">First American-born pope; elected May 8, 2025; 267th successor of St. Peter</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-point">
+      <div class="key-point-label">The Catholic Claim</div>
+      <p>Every one of these 267 popes was a bishop of Rome, ordained by other bishops, in a chain that reaches back to the Apostles. This is not a matter of faith alone: it is documented history, attested by pagan and Christian sources alike from the first centuries onward. No generation lacked bishops. No century was without ordinations. The line never broke.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════ SECTION IV ═══════════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">Section IV</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="article-section">
+    <h2>LDS Prophetic Succession</h2>
+
+    <p>The Latter-day Saint claim to priesthood authority begins with Joseph Smith's account of angelic visitations restoring the Aaronic and Melchizedek Priesthoods in 1829. Since that time, authority has been transmitted through the Quorum of the Twelve Apostles, with the senior apostle (by length of service in the Quorum) becoming Church President upon the death of the incumbent.</p>
+
+    <p>Notably, Joseph Smith himself did not establish a clear succession plan. His death in 1844 triggered a succession crisis in which multiple claimants — Brigham Young, Sidney Rigdon, James Strang, and the Smith family line — each asserted their own legitimacy. The question was not settled peacefully or unanimously. The resulting schism produced multiple Latter Day Saint denominations, each claiming to be the rightful continuation of Joseph Smith's priesthood.</p>
+
+    <div class="succession-panel lds-succession">
+      <div class="succession-header">Presidents of the LDS Church: Joseph Smith to the Present</div>
+      <div class="succession-list">
+        <div class="succession-item">
+          <div class="succession-num">1</div>
+          <div><span class="succession-name">Joseph Smith Jr.</span><br><span class="succession-dates">1830–1844</span><br><span class="succession-note">Founder; killed June 27, 1844 at Carthage, Illinois; left no clear succession plan</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">—</div>
+          <div><span class="succession-name">Succession Crisis (1844–1847)</span><br><span class="succession-dates">3-year interregnum</span><br><span class="succession-note">Competing claims from Brigham Young (Quorum of the Twelve), Sidney Rigdon (First Counselor), James Strang (claimed letter of appointment), Joseph Smith III (lineal succession). Movement fractured permanently.</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">2</div>
+          <div><span class="succession-name">Brigham Young</span><br><span class="succession-dates">1847–1877</span><br><span class="succession-note">Led the migration to Utah; not sustained as President until December 1847, over three years after Smith's death</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">3</div>
+          <div><span class="succession-name">John Taylor</span><br><span class="succession-dates">1880–1887</span><br><span class="succession-note">Wounded at Carthage alongside Joseph Smith; died in hiding from federal marshals enforcing anti-polygamy laws</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">4</div>
+          <div><span class="succession-name">Wilford Woodruff</span><br><span class="succession-dates">1889–1898</span><br><span class="succession-note">Issued the 1890 Manifesto officially ending polygamy (under federal pressure)</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">5</div>
+          <div><span class="succession-name">Lorenzo Snow</span><br><span class="succession-dates">1898–1901</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">6</div>
+          <div><span class="succession-name">Joseph F. Smith</span><br><span class="succession-dates">1901–1918</span><br><span class="succession-note">Nephew of Joseph Smith Jr.; seniority rules were changed under Lorenzo Snow to ensure his succession over Brigham Young Jr.</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">7</div>
+          <div><span class="succession-name">Heber J. Grant</span><br><span class="succession-dates">1918–1945</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">8</div>
+          <div><span class="succession-name">George Albert Smith</span><br><span class="succession-dates">1945–1951</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">9</div>
+          <div><span class="succession-name">David O. McKay</span><br><span class="succession-dates">1951–1970</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">10</div>
+          <div><span class="succession-name">Joseph Fielding Smith</span><br><span class="succession-dates">1970–1972</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">11</div>
+          <div><span class="succession-name">Harold B. Lee</span><br><span class="succession-dates">1972–1973</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">12</div>
+          <div><span class="succession-name">Spencer W. Kimball</span><br><span class="succession-dates">1973–1985</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">13</div>
+          <div><span class="succession-name">Ezra Taft Benson</span><br><span class="succession-dates">1985–1994</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">14</div>
+          <div><span class="succession-name">Howard W. Hunter</span><br><span class="succession-dates">1994–1995</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">15</div>
+          <div><span class="succession-name">Gordon B. Hinckley</span><br><span class="succession-dates">1995–2008</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">16</div>
+          <div><span class="succession-name">Thomas S. Monson</span><br><span class="succession-dates">2008–2018</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">17</div>
+          <div><span class="succession-name">Russell M. Nelson</span><br><span class="succession-dates">2018–2025</span><br><span class="succession-note">Died September 27, 2025 at age 101</span></div>
+        </div>
+        <div class="succession-item">
+          <div class="succession-num">18</div>
+          <div><span class="succession-name">Dallin H. Oaks</span><br><span class="succession-dates">2025–present</span><br><span class="succession-note">Announced as 18th President on October 14, 2025; apostle since 1984</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="critique-box">
+      <div class="critique-label">Structural Problems</div>
+      <p>Several features of the LDS succession sequence raise difficulties. The original 1844 succession crisis produced permanent schisms — the Community of Christ (RLDS), the Church of Jesus Christ (Bickertonites), and numerous other Latter Day Saint factions all claim their own priesthood succession from Joseph Smith. The rules for determining seniority within the Quorum of the Twelve were changed multiple times under Brigham Young and Lorenzo Snow to ensure preferred candidates would succeed. And the entire line depends on the historical reliability of Joseph Smith's priesthood restoration claims — claims that, as we shall see, face serious documentary problems.</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════ SECTION V ═══════════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">Section V</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="article-section">
+    <h2>Joseph Smith's Priesthood Claims</h2>
+
+    <p class="drop-cap">The foundation of all Latter-day Saint priesthood authority rests on a single claim: that in 1829, angelic beings appeared to Joseph Smith and Oliver Cowdery and physically conferred upon them the Aaronic and Melchizedek Priesthoods. If this event occurred as described, LDS priesthood claims have a starting point. If it did not — or if it was fabricated or embellished after the fact — then the entire edifice of LDS priesthood authority collapses.</p>
+
+    <p>The historical record reveals a striking pattern: there is a significant gap between when these events allegedly occurred and when they were first mentioned. The following timeline documents both the claimed dates of the priesthood restoration events and the dates when they first appear in the documentary record, using LDS-friendly sources including the Joseph Smith Papers, official Church histories, and the observations of early Church members.</p>
+
+    <div class="timeline-legend">
+      <div class="legend-item"><div class="legend-dot claimed"></div> Claimed Event (Alleged Date)</div>
+      <div class="legend-item"><div class="legend-dot documented"></div> First Documentary Evidence</div>
+      <div class="legend-item"><div class="legend-dot problem"></div> Historical Problem</div>
+    </div>
+
+    <div class="js-timeline">
+
+      <div class="timeline-event claimed">
+        <div class="timeline-date">May 15, 1829 (Claimed)</div>
+        <div class="timeline-title">Aaronic Priesthood Restoration</div>
+        <div class="timeline-desc">Joseph Smith later claimed that John the Baptist appeared to him and Oliver Cowdery near Harmony, Pennsylvania, and conferred the "Priesthood of Aaron," giving them authority to baptize. They then baptized and ordained each other in the Susquehanna River.</div>
+      </div>
+
+      <div class="timeline-event claimed">
+        <div class="timeline-date">May–June 1829 (Claimed; Exact Date Unknown)</div>
+        <div class="timeline-title">Melchizedek Priesthood Restoration</div>
+        <div class="timeline-desc">Smith later claimed that the Apostles Peter, James, and John appeared and conferred the higher priesthood, including apostolic authority. The exact date, location, and circumstances were never definitively established. Joseph Smith himself never specified the date, and the Church's own Gospel Topics essay acknowledges that "the precise circumstances are less certain."</div>
+      </div>
+
+      <div class="timeline-event problem">
+        <div class="timeline-date">April 6, 1830</div>
+        <div class="timeline-title">Church Organized — No Mention of Priesthood Restoration</div>
+        <div class="timeline-desc">The Church of Christ was formally organized. The "Articles and Covenants" (now D&C 20) — drafted by Joseph Smith himself to outline the Church's authority and founding events — makes no mention of angelic ordinations, John the Baptist, Peter, James and John, or the Aaronic or Melchizedek Priesthoods. Joseph and Oliver were simply ordained as "elders."</div>
+      </div>
+
+      <div class="timeline-event problem">
+        <div class="timeline-date">1830–1833</div>
+        <div class="timeline-title">Complete Silence in All Contemporary Records</div>
+        <div class="timeline-desc">No journal, letter, sermon, newspaper account, revelation, or official Church document from this period mentions the angelic priesthood restoration. Early missionaries claimed authority from God but never mentioned heavenly messengers conferring specific priesthoods. The Book of Commandments (1833 predecessor to the D&C) contains no reference to the events. David Whitmer, one of the Three Witnesses, later stated: "I never heard that an Angel had ordained Joseph and Oliver to the Aaronic Priesthood until the year 1834, [18]35, or [18]36 — in Ohio."</div>
+      </div>
+
+      <div class="timeline-event problem">
+        <div class="timeline-date">June 1831</div>
+        <div class="timeline-title">"High Priesthood" Conferred at Kirtland Conference</div>
+        <div class="timeline-desc">At a conference in Kirtland, Ohio, Joseph Smith ordained several men (including Lyman Wight) to the "High Priesthood" — described in contemporary accounts as if it were a new development. The Joseph Smith Papers acknowledge that "early Church members did not use the terms Aaronic Priesthood or Melchizedek Priesthood" during this period. If Smith had already received the Melchizedek Priesthood in 1829, why was the conferral of "high priesthood" treated as a notable new event in 1831?</div>
+      </div>
+
+      <div class="timeline-event problem">
+        <div class="timeline-date">September 1832</div>
+        <div class="timeline-title">First Written Revelation Distinguishing Two Priesthoods</div>
+        <div class="timeline-desc">A revelation (now D&C 84) first introduces the concept of a lesser priesthood centered on the office of priest and a greater "high priesthood" centered on the office of high priest. The Joseph Smith Papers note that this revelation "changed JS's lexicon regarding priesthood." Before this date, Smith used "holy priesthood" to describe both orders indiscriminately.</div>
+      </div>
+
+      <div class="timeline-event documented">
+        <div class="timeline-date">April 21, 1834</div>
+        <div class="timeline-title">First Recorded Mention of Priesthood Restoration</div>
+        <div class="timeline-desc">At a conference in Medina County, Ohio, Joseph Smith recounted "the occasion when he and Oliver Cowdery received the Aaronic and Melchizedek Priesthoods." This is the first documented instance of Smith publicly narrating the priesthood restoration — five years after the events allegedly occurred.</div>
+      </div>
+
+      <div class="timeline-event documented">
+        <div class="timeline-date">September 1834</div>
+        <div class="timeline-title">Oliver Cowdery's First Published Account</div>
+        <div class="timeline-desc">Cowdery wrote to W.W. Phelps describing "an angel ordaining him and Joseph Smith in May 1829." This letter, published in the Messenger and Advocate, is the first published account of angelic ordination. As historian Dan Vogel has noted, the word "priesthood" itself did not appear in Church documents until June 1831, and connecting the lesser priesthood to the Levites did not occur until September 1832.</div>
+      </div>
+
+      <div class="timeline-event documented">
+        <div class="timeline-date">December 1834</div>
+        <div class="timeline-title">Oliver Cowdery Ordained "Assistant President"</div>
+        <div class="timeline-desc">Only months after first publishing the priesthood restoration story, Cowdery was ordained Assistant President of the High Priesthood — a position of near-equal status with Joseph Smith. Critics note the timing: the publication of the angelic ordination narrative elevated Cowdery's authority and provided theological justification for his new office.</div>
+      </div>
+
+      <div class="timeline-event documented">
+        <div class="timeline-date">1835</div>
+        <div class="timeline-title">Doctrine &amp; Covenants Published with Retroactive Additions</div>
+        <div class="timeline-desc">The 1835 edition of the Doctrine and Covenants included a revised version of a revelation originally dating to August 1830 (now D&C 27). The published 1835 text added references to John the Baptist and Peter, James, and John — language that was not present in the original manuscript copy or in the 1833 Book of Commandments. The Joseph Smith Papers confirm that the 1835 text "includes a revised and expanded version" with these priesthood references added. A total of 459 words were added to the original revelation.</div>
+      </div>
+
+      <div class="timeline-event documented">
+        <div class="timeline-date">1838–1839</div>
+        <div class="timeline-title">Joseph Smith's Official History Drafted</div>
+        <div class="timeline-desc">Smith composed his official history (now Joseph Smith—History in the Pearl of Great Price), which includes the detailed narrative of the May 15, 1829 Aaronic Priesthood restoration and the subsequent Melchizedek Priesthood restoration that is familiar to Latter-day Saints today. This history was written nine to ten years after the events it describes.</div>
+      </div>
+
+    </div>
+
+    <div class="gap-callout">
+      <div class="gap-number">5 Years</div>
+      <div class="gap-label">Between the Claimed Event and the First Recorded Mention</div>
+      <div class="gap-desc">Joseph Smith claimed the Aaronic Priesthood was restored on May 15, 1829. The first documented mention of this event does not appear until April 1834. During those five years, Joseph Smith organized a church, published the Book of Mormon, received dozens of written revelations, and sent missionaries across North America — all without once mentioning that angels had conferred priesthood authority upon him.</div>
+    </div>
+
+    <div class="critique-box">
+      <div class="critique-label">The Pattern of Embellishment</div>
+      <p>Historian Grant Palmer summarized the documentary pattern: "By degrees, the accounts became more detailed and more miraculous… Details usually become blurred over time; in this case, they multiplied and sharpened… The most plausible explanation is that they were retrofitted to an 1829–30 time period to give the impression that an impressive and unique authority had existed in the church from the beginning." Even the LDS Church's own Gospel Topics essay on the Melchizedek Priesthood restoration acknowledges that "during the first few years after the Church was organized, Joseph Smith and other early members of the Church did not use the terms Aaronic Priesthood or Melchizedek Priesthood to describe the authority they received. Their understanding of priesthood developed over time."</p>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════ SECTION VI ═══════════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">Section VI</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="article-section">
+    <h2>What the Early Church Actually Practiced</h2>
+
+    <p>If the LDS Great Apostasy narrative were true — that the true priesthood was lost from the earth shortly after the death of the original Apostles — we would expect to find the early post-apostolic Church in chaos: conflicting doctrines, no clear leadership, no sacramental authority, and no continuity of practice. Instead, we find precisely the opposite.</p>
+
+    <p>The earliest post-apostolic writings reveal a Church that was orderly, hierarchical, and intensely conscious of its priestly succession. These writers were not medieval innovators — many of them were personally taught by the Apostles themselves.</p>
+
+    <div class="patristic-block">
+      <p>"See that you all follow the bishop, even as Jesus Christ does the Father, and the presbytery as you would the apostles; and reverence the deacons, as being the institution of God. Let no man do anything connected with the Church without the bishop."</p>
+      <div class="attribution">St. Ignatius of Antioch, Letter to the Smyrnaeans 8.1, c. AD 110</div>
+    </div>
+
+    <p>Ignatius was a disciple of the Apostle John. Writing on his way to martyrdom in Rome, he already presupposes a three-fold ministry of bishop, presbyter (priest), and deacon as the normative structure of every local church. This is precisely the Catholic priesthood structure — and it appears within decades of the Apostles' deaths, not centuries later.</p>
+
+    <div class="patristic-block">
+      <p>"Our apostles also knew, through our Lord Jesus Christ, that there would be strife on account of the office of the episcopate. For this reason, therefore, inasmuch as they had obtained a perfect foreknowledge of this, they appointed those already mentioned, and afterwards gave instructions, that when these should fall asleep, other approved men should succeed them in their ministry."</p>
+      <div class="attribution">St. Clement of Rome, 1 Clement 44, c. AD 96</div>
+    </div>
+
+    <p>Clement, the fourth bishop of Rome, writing within the apostolic era itself, describes the principle of succession: the Apostles appointed bishops, and those bishops in turn appointed successors, precisely so that the ministry would continue unbroken. This is apostolic succession described from within the generation of the Apostles — the very generation that the LDS Church claims saw the beginning of the Great Apostasy.</p>
+  </div>
+
+
+  <!-- ═══════════════════════ CONCLUSION ═══════════════════════ -->
+  <div class="section-divider">
+    <span class="section-divider-line"></span>
+    <span class="section-divider-label">Conclusion</span>
+    <span class="section-divider-line"></span>
+  </div>
+
+  <div class="article-section">
+    <h2>Two Claims, One Conclusion</h2>
+
+    <p>The Latter-day Saint and the Catholic are asking the same question: Where is God's priesthood authority today? Both agree it matters. Both agree it must come through authorized channels. Both agree that it originates with Christ. The disagreement is whether that authority has been continuously present in the world since Christ — or whether it vanished completely and had to be re-conferred by angels in 1829.</p>
+
+    <p>The Catholic claim rests on two thousand years of documented, continuous episcopal succession, supported by pagan and Christian sources from the earliest centuries, attested by Church Fathers who personally knew the Apostles, and confirmed by an unbroken chain of ordination records that reaches from Peter to Leo XIV. It requires no extraordinary interventions because it posits no interruption.</p>
+
+    <p>The LDS claim rests on the testimony of two men — Joseph Smith and Oliver Cowdery — neither of whom mentioned the event for five years after it allegedly occurred, whose earliest documents make no reference to it, whose later accounts grew progressively more detailed over time, and whose published scriptures were retroactively edited to include priesthood language that was not present in the originals. The entire LDS succession — all eighteen presidents, all priesthood authority exercised by millions of members — depends on the reliability of this undocumented 1829 event.</p>
+
+    <div class="verdict-box">
+      <div class="verdict-label">The Fundamental Question</div>
+      <p>Which requires more faith: to believe that Christ kept His promise that "the gates of hell shall not prevail" against His Church, and that the priesthood He conferred on His Apostles has been passed down for two thousand years through the laying on of hands — documented, traceable, and historically attested from the first century to the present?</p>
+      <p>Or to believe that Christ's Church failed completely, that His priesthood vanished entirely from the earth, and that it was reconstituted in 1829 through an event that left no contemporary documentary trace, was not mentioned by its participants for five years, and was progressively embellished in the retelling?</p>
+      <p>The Latter-day Saint who takes priesthood authority seriously already has the instincts of a Catholic. The question is whether those instincts are best served by a 196-year-old line that begins with an undocumented angelic visitation — or by a 2,000-year-old line that begins with Christ Himself, speaking to Peter: <em>"Feed my sheep."</em></p>
+    </div>
+
+    <div class="patristic-block">
+      <p>"I will give you the keys of the kingdom of heaven, and whatever you bind on earth shall be bound in heaven, and whatever you loose on earth shall be loosed in heaven."</p>
+      <div class="attribution">Matthew 16:19</div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════ REFERENCES ═══════════════════════ -->
+  <div class="references-section">
+    <h3>Key Scripture References</h3>
+    <ul>
+      <li>Matthew 16:18–19 — Christ gives Peter the keys of the Kingdom</li>
+      <li>John 21:15–17 — "Feed my sheep" — Christ commissions Peter</li>
+      <li>Luke 22:19 — "Do this in remembrance of me" — institution of the priesthood</li>
+      <li>Hebrews 7:24 — Christ holds His priesthood permanently</li>
+      <li>Acts 1:20–26 — Matthias chosen to replace Judas, preserving apostolic succession</li>
+      <li>2 Timothy 1:6 — Paul reminds Timothy of the gift conferred through laying on of hands</li>
+      <li>Titus 1:5 — Paul instructs Titus to appoint elders in every town</li>
+    </ul>
+
+    <h3>Patristic &amp; Magisterial Sources</h3>
+    <ul>
+      <li>St. Clement of Rome, <em>1 Clement</em> 44 (c. AD 96) — apostolic succession and episcopal appointment</li>
+      <li>St. Ignatius of Antioch, <em>Letter to the Smyrnaeans</em> 8.1 (c. AD 110) — the three-fold ministry</li>
+      <li>St. Irenaeus of Lyon, <em>Against Heresies</em> 3.3.1 (c. AD 180) — <a href="https://www.newadvent.org/fathers/0103303.htm" target="_blank">New Advent</a></li>
+      <li>Catechism of the Catholic Church, §1536–1600 — The Sacrament of Holy Orders</li>
+    </ul>
+
+    <h3>LDS &amp; Historical Sources</h3>
+    <ul>
+      <li>Joseph Smith Papers, "Priesthood Restoration" — <a href="https://www.josephsmithpapers.org/site/priesthood-restoration" target="_blank">josephsmithpapers.org</a></li>
+      <li>LDS Gospel Topics Essay, "Restoration of the Melchizedek Priesthood" — <a href="https://www.churchofjesuschrist.org/study/history/topics/restoration-of-the-melchizedek-priesthood" target="_blank">ChurchOfJesusChrist.org</a></li>
+      <li>David Whitmer interview with Zenas H. Gurley, January 14, 1885 — <em>Early Mormon Documents</em>, 5:137</li>
+      <li>Grant Palmer, <em>An Insider's View of Mormon Origins</em> (Signature Books, 2002), pp. 228–230</li>
+      <li>Dan Vogel, <em>Joseph Smith: The Making of a Prophet</em> (Signature Books, 2004)</li>
+    </ul>
+  </div>
+
+  <div class="print-colophon">One Faith Delivered &nbsp;&middot;&nbsp; <span id="print-url-text">onefaithdelivered.org</span></div>
+
+  <div style="margin: 2.5rem auto 0; max-width: 680px; text-align: center;">
+    <p style="margin-bottom: 0.8rem; font-family: 'JetBrains Mono', monospace; font-variant: small-caps; font-size: 0.68rem; letter-spacing: 0.15em; color: var(--dark-gold); font-weight: 600; text-transform: uppercase;">Further Study</p>
+    <a href="https://onefaithdelivered.org/charts/great-apostasy-claim.html" style="display: block; color: var(--crimson); text-decoration: none; border-bottom: 1px solid rgba(139,0,0,0.2); padding-bottom: 2px; margin-bottom: 0.6rem; font-size: 1rem; transition: border-color 0.2s;">The Great Apostasy Claim</a>
+    <a href="https://onefaithdelivered.org/charts/apostolic-succession.html" style="display: block; color: var(--crimson); text-decoration: none; border-bottom: 1px solid rgba(139,0,0,0.2); padding-bottom: 2px; margin-bottom: 0.6rem; font-size: 1rem; transition: border-color 0.2s;">Apostolic Succession: An Interactive Chart</a>
+    <a href="https://onefaithdelivered.org/charts/two-timelines.html" style="display: block; color: var(--crimson); text-decoration: none; border-bottom: 1px solid rgba(139,0,0,0.2); padding-bottom: 2px; margin-bottom: 0.6rem; font-size: 1rem; transition: border-color 0.2s;">Two Timelines: Catholic Continuity vs. LDS Restoration</a>
+  </div>
+
+  <p style="text-align: center; font-size: 0.92rem; color: var(--muted); font-style: italic; margin-top: 48px;">One Faith Delivered is a resource for Catholics and those exploring the Catholic faith, with a particular focus on engaging Latter-day Saint theology through historical, scriptural, and patristic evidence. All content is offered in a spirit of scholarly charity and sincere ecumenical dialogue.</p>
+
+</main>
+
+<footer>&copy; One Faith Delivered &nbsp;&#8901;&nbsp; All Rights Reserved</footer>
+
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">One Faith Delivered</div>
+    <a href="../index.html">Home</a>
+    <a href="../articles.html">Articles</a>
+    <a href="../charts.html">Charts</a>
+    <a href="../topics.html">Topics</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../articles.html" class="sidebar-back">&#8592; All Articles</a>
+    <div class="sidebar-ornament">✦ ✦ ✦</div>
+  </div>
+</aside>
+
+<script>
+function toggleSidebar() {
+  var btn = document.querySelector('.nav-hamburger'),
+      sidebar = document.querySelector('.sidebar'),
+      overlay = document.querySelector('.sidebar-overlay');
+  var isOpen = sidebar.classList.contains('open');
+  if (isOpen) {
+    sidebar.classList.remove('open');
+    btn.classList.remove('open');
+    overlay.classList.remove('visible');
+    document.body.style.overflow = '';
+  } else {
+    sidebar.classList.add('open');
+    btn.classList.add('open');
+    overlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar();
+});
+</script>
+
+<script>
+/* Reading Progress Bar + Print URL */
+(function () {
+  var bar = document.getElementById('reading-progress-bar');
+  function updateProgress() {
+    if (!bar) return;
+    var scrollTop  = window.scrollY || document.documentElement.scrollTop;
+    var docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? Math.min(100, (scrollTop / docHeight) * 100) : 0;
+    bar.style.width = pct + '%';
+    bar.setAttribute('aria-valuenow', Math.round(pct));
+  }
+  if (bar) {
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  }
+  var urlEl = document.getElementById('print-url-text');
+  if (urlEl) {
+    var href = window.location.href;
+    urlEl.textContent = href && href !== 'about:blank' ? href : 'onefaithdelivered.org';
+  }
+})();
+</script>
+
+</body>
+</html>
