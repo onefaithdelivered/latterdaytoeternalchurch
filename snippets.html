@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snippets | One Faith Delivered</title>
+<meta name="description" content="Short-form notes, quick facts, and brief insights for Catholic apologetics to Latter-day Saints." />
+<link rel="canonical" href="https://onefaithdelivered.org/snippets.html" />
+<link rel="icon" href="favicons/favicon.ico" sizes="any" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   SNIPPETS — Short-Form Notes
+   Design system: matches site-wide One Faith Delivered style
+   Fonts: Playfair Display + Source Serif 4 + JetBrains Mono
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --crimson:      #8B0000;
+  --dark-crimson: #5C0000;
+  --gold:         #C5A55A;
+  --dark-gold:    #8B7335;
+  --parchment:    #F5F0E8;
+  --dark-bg:      #1A1A1A;
+  --text:         #2A2A2A;
+  --muted:        #666;
+  --line-gray:    #D0C8B8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--parchment);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.6;
+}
+
+/* ── SITE NAV ── */
+.site-nav {
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(245,240,232,0.98), rgba(240,235,225,0.95));
+  border-bottom: 1px solid var(--line-gray);
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  font-family: 'Source Serif 4', serif;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.site-nav a.nav-home {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--crimson);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: var(--dark-crimson); }
+.site-nav .nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.site-nav .nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav .nav-links a:hover { color: var(--crimson); }
+.site-nav .nav-links a.nav-active {
+  color: var(--crimson);
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 2px;
+}
+
+/* ── Hamburger ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  cursor: pointer;
+  background: none;
+  border: 1px solid rgba(139,115,53,0.3);
+  border-radius: 3px;
+  padding: 6px;
+  z-index: 10001;
+}
+.nav-hamburger span {
+  display: block; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Sidebar ── */
+.sidebar-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+.sidebar-overlay.visible { display: block; }
+.sidebar {
+  position: fixed;
+  top: 0; right: -280px;
+  width: 260px; height: 100%;
+  background: linear-gradient(to bottom, #FAF6F0, #F5F0E8);
+  border-left: 1px solid var(--line-gray);
+  z-index: 10002;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+.sidebar.open { right: 0; }
+.sidebar-inner {
+  padding: 5rem 2rem 2rem;
+  display: flex; flex-direction: column; gap: 0;
+}
+.sidebar-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--crimson);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line-gray);
+}
+.sidebar-inner a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(208,200,184,0.5);
+  transition: color 0.2s;
+}
+.sidebar-inner a:hover { color: var(--crimson); }
+.sidebar-ornament {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 8px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ── HERO / PAGE HEADER ── */
+.page-header {
+  background: linear-gradient(135deg, #4A0F1A 0%, #6B1D2A 40%, #3D1520 100%);
+  color: #F5F0E8;
+  padding: 72px 40px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
+  pointer-events: none;
+}
+.ornament {
+  display: block;
+  color: var(--gold);
+  font-size: 1rem;
+  letter-spacing: 12px;
+  margin-bottom: 1.2rem;
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+.page-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2em, 4vw, 3.2em);
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  color: #F5F0E8;
+  margin-bottom: 14px;
+  line-height: 1.2;
+  position: relative;
+  z-index: 1;
+}
+.page-header h1 span { color: var(--gold); }
+.page-header .subtitle {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(245,240,232,0.75);
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── MAIN CONTENT AREA ── */
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 50px 24px 80px;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem 3rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68em;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-top: 1px solid var(--line-gray);
+}
+
+/* ═══════════════════════════════════════════════
+   MOBILE RESPONSIVE STYLES
+   ═══════════════════════════════════════════════ */
+
+@media (max-width: 700px) {
+  .nav-hamburger { display: flex; }
+  .site-nav .nav-links { display: none; }
+}
+
+@media (max-width: 700px) {
+  body { padding: 0 !important; overflow-x: hidden; }
+  .site-nav { padding: 0.55rem 1rem !important; }
+  .site-nav .nav-links { display: none !important; }
+  .nav-hamburger {
+    display: flex !important;
+    margin-left: auto !important;
+    order: 99 !important;
+    flex-shrink: 0 !important;
+  }
+  .page-header { padding: 44px 18px 32px !important; }
+  .page-header h1 { font-size: clamp(1.35rem, 5.5vw, 2rem) !important; }
+  .page-header .subtitle { font-size: 0.92rem !important; }
+  .sidebar {
+    display: block !important;
+    transform: translateX(100%) !important;
+    right: 0 !important;
+    position: fixed !important;
+  }
+  .sidebar.open { transform: translateX(0) !important; }
+  .sidebar-inner { padding: 4rem 1.5rem 2rem !important; }
+  .sidebar-overlay.visible { display: block !important; }
+  main { padding: 24px 14px 48px !important; }
+  footer { padding: 1.5rem 1rem 2rem !important; }
+}
+
+@media (max-width: 960px) and (min-width: 701px) {
+  body { padding: 16px 12px !important; }
+  .site-nav .nav-links { gap: 1.2rem !important; }
+  .site-nav .nav-links a { font-size: 0.68rem !important; }
+}
+
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="index.html" class="nav-home">One Faith Delivered</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="articles.html">Articles</a></li>
+    <li><a href="charts.html">Charts</a></li>
+    <li><a href="snippets.html" class="nav-active">Snippets</a></li>
+    <li><a href="topics.html">Topics</a></li>
+    <li><a href="resources.html">Resources</a></li>
+  </ul>
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<header class="page-header">
+  <span class="ornament">✦ ✦ ✦</span>
+  <h1><span>Snippets</span></h1>
+  <p class="subtitle">Short-form notes, quick facts, and brief observations for Catholic apologetics</p>
+</header>
+
+<main>
+  <!-- Snippet content will go here -->
+</main>
+
+<footer>&copy; One Faith Delivered &nbsp;&#8901;&nbsp; All Rights Reserved</footer>
+
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">One Faith Delivered</div>
+    <a href="index.html">Home</a>
+    <a href="articles.html">Articles</a>
+    <a href="charts.html">Charts</a>
+    <a href="snippets.html">Snippets</a>
+    <a href="topics.html">Topics</a>
+    <a href="resources.html">Resources</a>
+    <div class="sidebar-ornament">✦ ✦ ✦</div>
+  </div>
+</aside>
+
+<script>
+function toggleSidebar() {
+  var btn = document.querySelector('.nav-hamburger'), sidebar = document.querySelector('.sidebar'), overlay = document.querySelector('.sidebar-overlay');
+  var isOpen = sidebar.classList.contains('open');
+  if (isOpen) { sidebar.classList.remove('open'); btn.classList.remove('open'); overlay.classList.remove('visible'); document.body.style.overflow = ''; }
+  else { sidebar.classList.add('open'); btn.classList.add('open'); overlay.classList.add('visible'); document.body.style.overflow = 'hidden'; }
+}
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar(); });
+</script>
+</body>
+</html>
