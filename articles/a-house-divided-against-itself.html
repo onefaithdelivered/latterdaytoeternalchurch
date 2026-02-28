@@ -1141,6 +1141,7 @@ document.addEventListener('keydown', function(e) {
   window.ReadAloudConfig = {
     selector: 'main',
     position: 'top',
+    defaultVoice: 'Samantha',
     accentColor: '#8B0000',
     goldColor: '#C5A55A',
     bgColor: '#F5F0E8',
@@ -1172,6 +1173,7 @@ document.addEventListener('keydown', function(e) {
     bodyFont: "'Cormorant Garamond', serif",
     monoFont: "'JetBrains Mono', 'Courier New', monospace",
     defaultRate: 1.0,
+    defaultVoice: '',
   }, window.ReadAloudConfig || {});
 
   // ── State ──
@@ -1314,8 +1316,9 @@ document.addEventListener('keydown', function(e) {
     const en = all.filter(v => v.lang.startsWith('en'));
     voices = en.length > 0 ? en : all;
     if (voices.length && !selectedVoice) {
-      const pref = voices.find(v => v.name.includes('Natural') || v.name.includes('Enhanced') || v.name.includes('Google'));
-      selectedVoice = (pref || voices[0]).name;
+      const configPref = cfg.defaultVoice ? voices.find(v => v.name.toLowerCase().includes(cfg.defaultVoice.toLowerCase())) : null;
+      const autoPref = voices.find(v => v.name.includes('Natural') || v.name.includes('Enhanced') || v.name.includes('Google'));
+      selectedVoice = (configPref || autoPref || voices[0]).name;
     }
     // Update select if it exists
     const sel = document.getElementById('ra-voice-select');
