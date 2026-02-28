@@ -264,7 +264,7 @@ function handleParaForward(){const ci=currentIndex>=0?currentIndex:0;let t=sente
 function handleSentenceClick(i){if(isPlaying||isPaused){synth.cancel();isPaused=false;isPlaying=true;updatePlayBtn();speakFrom(i)}else{currentIndex=i;updateHighlight()}}
 
 // VOICES
-function loadVoices(){const all=synth.getVoices();const en=all.filter(v=>v.lang.startsWith('en'));voices=en.length>0?en:all;$('voice-select').innerHTML='';voices.forEach(v=>{const o=document.createElement('option');o.value=v.name;o.textContent=v.name.replace(/^(Microsoft |Google |Apple )/,'');$('voice-select').appendChild(o)});if(voices.length&&!selectedVoice){const p=voices.find(v=>v.name.includes('Natural')||v.name.includes('Enhanced')||v.name.includes('Google'));selectedVoice=(p||voices[0]).name;$('voice-select').value=selectedVoice}}
+function loadVoices(){const all=synth.getVoices();const en=all.filter(v=>v.lang.startsWith('en'));voices=en.length>0?en:all;$('voice-select').innerHTML='';voices.forEach(v=>{const o=document.createElement('option');o.value=v.name;o.textContent=v.name.replace(/^(Microsoft |Google |Apple )/,'');$('voice-select').appendChild(o)});if(voices.length&&!selectedVoice){const s=voices.find(v=>v.name.toLowerCase().includes('samantha'));const p=voices.find(v=>v.name.includes('Natural')||v.name.includes('Enhanced')||v.name.includes('Google'));selectedVoice=(s||p||voices[0]).name;$('voice-select').value=selectedVoice}}
 loadVoices();speechSynthesis.onvoiceschanged=loadVoices;
 
 // MODE
