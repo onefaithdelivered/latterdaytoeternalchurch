@@ -946,8 +946,9 @@ footer { background: var(--cream); text-align: center; padding: 2.5rem 2rem 3rem
     margin-left: 1rem !important;
     border-bottom: none !important;
   }
-  /* Summary 4-col grid */
+  /* Summary 4/5-col grid */
   .summary-cols { grid-template-columns: 1fr 1fr !important; }
+  .summary-grid { grid-template-columns: 1fr !important; }
   /* Inline 2-col grids */
   [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
 }
@@ -998,14 +999,18 @@ footer { background: var(--cream); text-align: center; padding: 2.5rem 2rem 3rem
 <main>
 
   <div class="intro-box">
-    <p>The LDS Church teaches that Joseph Smith received consistent, coherent revelation from God from his First Vision in 1820 until his death in 1844. But a careful reading of his own writings and discourses — in chronological order — reveals something striking: <strong>his doctrine of God underwent four distinct, mutually contradictory phases</strong>. The God of the 1830 Book of Mormon is not the God of the 1843 D&amp;C. The God of the 1835 Lectures on Faith is not the God of the 1844 King Follett Discourse. These are not refinements of the same idea. They are categorical theological reversals — each delivered as divine revelation.</p>
+    <p>The LDS Church teaches that Joseph Smith received consistent, coherent revelation from God from his First Vision in 1820 until his death in 1844. But a careful reading of his own writings and discourses — in chronological order — reveals something striking: <strong>his doctrine of God underwent distinct, mutually contradictory phases</strong>. The God of the 1830 Book of Mormon is not the God of the 1843 D&amp;C. The God of the 1835 Lectures on Faith is not the God of the 1844 King Follett Discourse. And remarkably, Smith's own "inspired" Bible translation (1830–33) reinforces the early modalist view with even stronger language — language he would later abandon entirely. These are not refinements of the same idea. They are categorical theological reversals — each delivered as divine revelation.</p>
   </div>
 
   <!-- SUMMARY ROW -->
-  <div class="summary-grid">
+  <div class="summary-grid" style="grid-template-columns: 1fr 1fr 1fr 1fr 1fr;">
     <div class="summary-cell">
       <div class="summary-year">1830</div>
       <div class="summary-desc">One God, spiritual, triune — language nearly identical to orthodox Christianity</div>
+    </div>
+    <div class="summary-cell">
+      <div class="summary-year">1830–33</div>
+      <div class="summary-desc">JST Bible doubles down: "the Son is the Father" and the Mediator "is one God"</div>
     </div>
     <div class="summary-cell">
       <div class="summary-year">1835</div>
@@ -1060,6 +1065,36 @@ footer { background: var(--cream); text-align: center; padding: 2.5rem 2rem 3rem
         </div>
 
         <div class="tl-analysis">The 1830 Book of Mormon uses language that any Trinitarian Christian would recognize. God is "one God, without end," "unchangeable from all eternity to all eternity." Christ is simultaneously Father and Son — the classic language of Monarchianism or modalism. There is no hint of three separate beings, no embodied Father, no pre-mortal progression.</div>
+      </div>
+    </div>
+
+    <!-- 1830–1833: JST -->
+    <div class="tl-entry">
+      <div class="tl-left">
+        <span class="tl-year">1830–33</span>
+        <span class="tl-era">JST Bible</span>
+      </div>
+      <div class="tl-dot"></div>
+      <div class="tl-right">
+        <div class="tl-doc">Joseph Smith Translation of the Bible — Produced June 1830 to July 1833</div>
+
+        <div class="belief-card">
+          <div class="belief-card-header"><span class="belief-label label-plurality">On the Father and the Son Being One Person</span></div>
+          <div class="belief-card-body">
+            <div class="tl-quote">"All things are delivered to me of my Father; and no man knoweth that the Son is the Father, and the Father is the Son, but him to whom the Son will reveal it."</div>
+            <div class="tl-source">— JST Luke 10:22 (cf. similar changes in JST Matthew 11:27)</div>
+          </div>
+        </div>
+
+        <div class="belief-card">
+          <div class="belief-card-header"><span class="belief-label label-god">On the Mediator Who "Is One God"</span></div>
+          <div class="belief-card-body">
+            <div class="tl-quote">"Who is willing to have all men to be saved, and to come unto the knowledge of the truth which is in Christ Jesus, who is the Only Begotten Son of God, and ordained to be a Mediator between God and man; who is one God, and hath power over all men."</div>
+            <div class="tl-source">— JST 1 Timothy 2:4</div>
+          </div>
+        </div>
+
+        <div class="tl-analysis">Smith's own "inspired" revision of the Bible — produced during the same period as the Book of Mormon — goes even further than the Book of Mormon in affirming divine oneness. In the KJV, Luke 10:22 speaks of mutual knowledge between Father and Son: "no man knoweth who the Son is, but the Father; and who the Father is, but the Son." Smith deliberately changed this into a statement of identity: the Son <em>is</em> the Father, and the Father <em>is</em> the Son. He made a similar change to the parallel passage in Matthew 11:27. In 1 Timothy, Smith expanded Paul's text to declare that Christ the Mediator "is one God." These are not inherited King James passages — they are Smith's own "corrections," produced under claimed prophetic inspiration. They confirm that as late as 1833, Smith's theology was functionally modalist. The God he would later split into separate, embodied beings was still — in his own translation work — one God.</div>
       </div>
     </div>
 
@@ -1168,7 +1203,7 @@ footer { background: var(--cream); text-align: center; padding: 2.5rem 2rem 3rem
 
   <div class="verdict-box" style="margin-top: 2px;">
     <h3>✦ &nbsp; The Unavoidable Conclusion &nbsp; ✦</h3>
-    <p>If the God of the 1830 Book of Mormon is the true God, then the King Follett Discourse is false revelation. If the King Follett Discourse reveals the true God, then the Book of Mormon's declaration that God is "unchangeable from all eternity to all eternity" is wrong. And if the Lectures on Faith were true in 1835, then both are wrong in different ways. An authentic prophetic channel does not produce irreconcilable contradictions about the fundamental nature of the being it claims to represent.</p>
+    <p>If the God of the 1830 Book of Mormon is the true God, then the King Follett Discourse is false revelation. If the King Follett Discourse reveals the true God, then the Book of Mormon's declaration that God is "unchangeable from all eternity to all eternity" is wrong. And if the Lectures on Faith were true in 1835, then both are wrong in different ways. The Joseph Smith Translation makes the problem even more acute: as late as 1833, Smith was still actively writing — under claimed prophetic inspiration — that "the Son is the Father, and the Father is the Son" and that the Mediator "is one God." These are not inherited texts. They are his own "corrections." An authentic prophetic channel does not produce irreconcilable contradictions about the fundamental nature of the being it claims to represent.</p>
     <p>The Catholic Church has never changed what it teaches about who God is. The same God confessed by Peter and Paul, articulated by Justin and Irenaeus, defined at Nicaea, is the God worshipped at every Mass today. That consistency across twenty centuries is itself a theological argument.</p>
   </div>
 
