@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Succession Crisis: A Tale of Two Churches | One Faith Delivered</title>
+<meta name="description" content="A visual timeline contrasting the LDS succession crisis after Joseph Smith's death with the orderly apostolic succession of the early Catholic Church.">
+<link rel="canonical" href="https://onefaithdelivered.org/charts/succession-crisis.html" />
+<link rel="icon" href="../favicons/favicon.ico" sizes="any" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   SUCCESSION CRISIS: A TALE OF TWO CHURCHES
+   Design: Playfair Display + Source Serif 4 + JetBrains Mono
+   Matches book-of-abraham-problem / christian-family-tree
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --crimson:      #8B0000;
+  --dark-crimson: #5C0000;
+  --gold:         #C5A55A;
+  --dark-gold:    #8B7335;
+  --parchment:    #F5F0E8;
+  --dark-bg:      #1A1A1A;
+  --text:         #2A2A2A;
+  --muted:        #666;
+  --line-gray:    #D0C8B8;
+  --smith-red:    #A02020;
+
+  /* Panel-specific */
+  --lds-bg:       #FDF8F0;
+  --lds-accent:   #9B2335;
+  --lds-border:   #D4A574;
+  --catholic-bg:  #F0F4F8;
+  --catholic-accent: #1B4D6E;
+  --catholic-border: #7BA3C4;
+  --catholic-gold: #C5A55A;
+
+  /* Faction colors */
+  --faction-young:    #2E5A3A;
+  --faction-rigdon:   #6B3A6B;
+  --faction-strang:   #B8860B;
+  --faction-smith3:   #2E4A6B;
+  --faction-wight:    #8B4513;
+  --faction-cutler:   #556B2F;
+  --faction-hedrick:  #704214;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--parchment);
+  color: var(--text);
+  font-family: 'Source Serif 4', Georgia, serif;
+  line-height: 1.6;
+}
+
+/* ── SITE NAV ── */
+.site-nav {
+  position: sticky; top: 0; z-index: 9999;
+  background: linear-gradient(to bottom, rgba(245,240,232,0.98), rgba(240,235,225,0.95));
+  border-bottom: 1px solid var(--line-gray);
+  padding: 0.75rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  backdrop-filter: blur(6px);
+  font-family: 'Source Serif 4', serif;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.site-nav a.nav-home {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem; font-weight: 700;
+  letter-spacing: 0.05em; color: var(--crimson);
+  text-decoration: none; transition: color 0.2s;
+}
+.site-nav a.nav-home:hover { color: var(--dark-crimson); }
+.site-nav .nav-back {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--dark-gold); text-decoration: none;
+  border: 1px solid rgba(139,115,53,0.35);
+  padding: 0.4rem 1.1rem; border-radius: 3px;
+  transition: background 0.2s, color 0.2s;
+}
+.site-nav .nav-back:hover { background: rgba(139,115,53,0.08); color: var(--crimson); }
+.site-nav .nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.site-nav .nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text); text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav .nav-links a:hover { color: var(--crimson); }
+
+/* ── Hamburger ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px; height: 36px;
+  cursor: pointer;
+  background: none;
+  border: 1px solid rgba(139,115,53,0.3);
+  border-radius: 3px;
+  padding: 6px;
+  z-index: 10001;
+}
+.nav-hamburger span {
+  display: block; height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: all 0.25s;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Sidebar ── */
+.sidebar-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 10000;
+  backdrop-filter: blur(2px);
+}
+.sidebar-overlay.visible { display: block; }
+.sidebar {
+  position: fixed;
+  top: 0; right: -280px;
+  width: 260px; height: 100%;
+  background: linear-gradient(to bottom, #FAF6F0, #F5F0E8);
+  border-left: 1px solid var(--line-gray);
+  z-index: 10002;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+.sidebar.open { right: 0; }
+.sidebar-inner {
+  padding: 5rem 2rem 2rem;
+  display: flex; flex-direction: column; gap: 0;
+}
+.sidebar-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem; font-weight: 700;
+  color: var(--crimson);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line-gray);
+}
+.sidebar-inner a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text); text-decoration: none;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid rgba(208,200,184,0.5);
+  transition: color 0.2s;
+}
+.sidebar-inner a:hover { color: var(--crimson); }
+.sidebar-inner a.sidebar-back {
+  color: var(--dark-gold);
+  margin-top: 1.5rem;
+  border: 1px solid rgba(139,115,53,0.3);
+  padding: 0.7rem 1rem;
+  text-align: center;
+  border-radius: 2px;
+}
+.sidebar-ornament {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 8px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ── Print Button ── */
+.nav-print-btn {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--dark-gold);
+  background: none;
+  border: 1px solid rgba(139,115,53,0.35);
+  padding: 0.4rem 1.1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+.nav-print-btn:hover { background: rgba(139,115,53,0.08); color: var(--crimson); }
+.nav-print-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+/* ── HERO ── */
+.hero {
+  text-align: center;
+  padding: 5rem 2rem 3.5rem;
+  background: linear-gradient(170deg, #FFFDF9 0%, var(--parchment) 50%, #F8F2E8 100%);
+  border-bottom: 1px solid var(--line-gray);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(139,0,0,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(197,165,90,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--dark-gold);
+  margin-bottom: 1.2rem;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900; color: var(--crimson);
+  line-height: 1.15; margin-bottom: 0.6rem;
+}
+.hero h1 em {
+  font-style: italic; color: var(--dark-crimson);
+  font-weight: 700;
+}
+.hero .subtitle {
+  font-family: 'Source Serif 4', serif;
+  font-size: 1.15rem; color: var(--muted);
+  font-weight: 300; font-style: italic;
+  max-width: 680px; margin: 0 auto;
+  line-height: 1.55;
+}
+
+/* ── INTRO ── */
+.intro-section {
+  max-width: 800px; margin: 0 auto;
+  padding: 3rem 2rem 2rem;
+}
+.intro-section p {
+  font-size: 1.08rem; line-height: 1.75;
+  color: var(--text); margin-bottom: 1rem;
+}
+.intro-section .scripture-ref {
+  display: block; text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-style: italic; font-size: 1.15rem;
+  color: var(--crimson); margin: 2rem 0;
+  padding: 1.5rem 2rem;
+  border-left: 3px solid var(--gold);
+  border-right: 3px solid var(--gold);
+  background: rgba(197,165,90,0.06);
+}
+.intro-section .scripture-ref cite {
+  display: block; font-style: normal;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; color: var(--dark-gold);
+  letter-spacing: 0.15em; margin-top: 0.5rem;
+}
+
+/* ── TAB SYSTEM ── */
+.tab-system {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+.tab-nav {
+  display: flex; gap: 0; justify-content: center;
+  margin-bottom: 0;
+}
+.tab-btn {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem; font-weight: 700;
+  padding: 1rem 2.5rem;
+  border: 1px solid var(--line-gray);
+  background: rgba(255,255,255,0.5);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+}
+.tab-btn:first-child { border-radius: 6px 0 0 0; }
+.tab-btn:last-child { border-radius: 0 6px 0 0; }
+.tab-btn.active-lds {
+  background: var(--lds-bg);
+  color: var(--lds-accent);
+  border-bottom-color: var(--lds-bg);
+  box-shadow: 0 -3px 0 var(--lds-accent);
+}
+.tab-btn.active-catholic {
+  background: var(--catholic-bg);
+  color: var(--catholic-accent);
+  border-bottom-color: var(--catholic-bg);
+  box-shadow: 0 -3px 0 var(--catholic-accent);
+}
+
+.tab-panel {
+  display: none;
+  border: 1px solid var(--line-gray);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  padding: 2.5rem;
+  animation: fadeIn 0.4s ease;
+}
+.tab-panel.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.panel-lds { background: var(--lds-bg); }
+.panel-catholic { background: var(--catholic-bg); }
+
+/* ── TIMELINE ── */
+.timeline {
+  position: relative;
+  padding-left: 3rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute; left: 12px; top: 0; bottom: 0;
+  width: 3px;
+  border-radius: 3px;
+}
+.panel-lds .timeline::before {
+  background: linear-gradient(to bottom, var(--lds-accent), #D4A574, var(--lds-accent));
+}
+.panel-catholic .timeline::before {
+  background: linear-gradient(to bottom, var(--catholic-accent), var(--catholic-gold), var(--catholic-accent));
+}
+
+.timeline-event {
+  position: relative;
+  margin-bottom: 2.2rem;
+  padding: 1.5rem;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: all 0.3s;
+}
+.timeline-event:hover {
+  transform: translateX(4px);
+}
+.panel-lds .timeline-event {
+  background: rgba(255,255,255,0.7);
+  border-color: rgba(155,35,53,0.12);
+}
+.panel-lds .timeline-event:hover {
+  border-color: rgba(155,35,53,0.3);
+  box-shadow: 0 4px 16px rgba(155,35,53,0.08);
+}
+.panel-catholic .timeline-event {
+  background: rgba(255,255,255,0.7);
+  border-color: rgba(27,77,110,0.12);
+}
+.panel-catholic .timeline-event:hover {
+  border-color: rgba(27,77,110,0.3);
+  box-shadow: 0 4px 16px rgba(27,77,110,0.08);
+}
+
+.timeline-event::before {
+  content: '';
+  position: absolute;
+  left: -2.55rem; top: 1.7rem;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 3px solid;
+}
+.panel-lds .timeline-event::before {
+  background: var(--lds-bg); border-color: var(--lds-accent);
+}
+.panel-catholic .timeline-event::before {
+  background: var(--catholic-bg); border-color: var(--catholic-accent);
+}
+.timeline-event.major::before {
+  width: 18px; height: 18px;
+  left: -2.65rem; top: 1.55rem;
+}
+.panel-lds .timeline-event.major::before {
+  background: var(--lds-accent); border-color: var(--lds-accent);
+  box-shadow: 0 0 0 4px rgba(155,35,53,0.15);
+}
+.panel-catholic .timeline-event.major::before {
+  background: var(--catholic-accent); border-color: var(--catholic-accent);
+  box-shadow: 0 0 0 4px rgba(27,77,110,0.15);
+}
+
+.event-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+.panel-lds .event-date { color: var(--lds-accent); }
+.panel-catholic .event-date { color: var(--catholic-accent); }
+
+.event-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem; font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.event-body {
+  font-size: 0.95rem; line-height: 1.65;
+  color: #444;
+}
+
+.event-body .figure-tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem; font-weight: 600;
+  padding: 0.15rem 0.55rem;
+  border-radius: 3px;
+  margin-right: 0.3rem;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.05em;
+  vertical-align: middle;
+}
+
+/* Faction colors */
+.tag-young    { background: rgba(46,90,58,0.12); color: var(--faction-young); border: 1px solid rgba(46,90,58,0.25); }
+.tag-rigdon   { background: rgba(107,58,107,0.12); color: var(--faction-rigdon); border: 1px solid rgba(107,58,107,0.25); }
+.tag-strang   { background: rgba(184,134,11,0.12); color: var(--faction-strang); border: 1px solid rgba(184,134,11,0.25); }
+.tag-smith3   { background: rgba(46,74,107,0.12); color: var(--faction-smith3); border: 1px solid rgba(46,74,107,0.25); }
+.tag-wight    { background: rgba(139,69,19,0.12); color: var(--faction-wight); border: 1px solid rgba(139,69,19,0.25); }
+.tag-cutler   { background: rgba(85,107,47,0.12); color: var(--faction-cutler); border: 1px solid rgba(85,107,47,0.25); }
+.tag-hedrick  { background: rgba(112,66,20,0.12); color: var(--faction-hedrick); border: 1px solid rgba(112,66,20,0.25); }
+.tag-wm-smith { background: rgba(139,35,35,0.12); color: #8B2323; border: 1px solid rgba(139,35,35,0.25); }
+
+/* ── SCHISM DIAGRAM ── */
+.schism-section {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background: rgba(155,35,53,0.03);
+  border: 1px solid rgba(155,35,53,0.12);
+  border-radius: 6px;
+}
+.schism-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem; font-weight: 700;
+  color: var(--lds-accent);
+  margin-bottom: 1.2rem; text-align: center;
+}
+
+.schism-tree {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 0;
+}
+.schism-root {
+  background: var(--lds-accent); color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700; font-size: 0.95rem;
+  padding: 0.8rem 2rem; border-radius: 6px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(155,35,53,0.2);
+}
+.schism-connector {
+  width: 3px; height: 30px;
+  background: var(--lds-accent);
+}
+.schism-hline {
+  width: 85%; max-width: 700px;
+  height: 3px; background: var(--lds-accent);
+  position: relative;
+}
+.schism-branches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.6rem;
+  width: 85%; max-width: 700px;
+  margin-top: 0;
+}
+.schism-branch {
+  display: flex; flex-direction: column;
+  align-items: center;
+}
+.schism-branch .branch-line {
+  width: 3px; height: 20px;
+  background: var(--lds-accent);
+}
+.schism-branch .branch-node {
+  text-align: center;
+  padding: 0.7rem 0.5rem;
+  border-radius: 5px;
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.78rem; line-height: 1.35;
+  border: 1px solid;
+  min-width: 110px;
+}
+.branch-node strong {
+  display: block; font-size: 0.82rem;
+  margin-bottom: 0.2rem;
+}
+.branch-node .branch-year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+}
+
+/* ── CATHOLIC CHAIN ── */
+.succession-chain {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 0;
+  margin-top: 1.5rem;
+}
+.chain-node {
+  background: rgba(27,77,110,0.08);
+  border: 2px solid var(--catholic-accent);
+  border-radius: 50%;
+  width: 90px; height: 90px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  transition: all 0.3s;
+}
+.chain-node:hover {
+  background: rgba(27,77,110,0.15);
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px rgba(27,77,110,0.15);
+}
+.chain-node .pope-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.82rem; font-weight: 700;
+  color: var(--catholic-accent);
+  line-height: 1.1;
+}
+.chain-node .pope-years {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem; color: var(--muted);
+  letter-spacing: 0.05em;
+}
+.chain-link {
+  width: 2px; height: 20px;
+  background: var(--catholic-accent);
+}
+.chain-link.arrow {
+  width: 0; height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 10px solid var(--catholic-accent);
+  background: transparent;
+}
+
+/* ── KEY INSIGHT BOXES ── */
+.insight-box {
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
+  border-radius: 6px;
+  border-left: 4px solid;
+}
+.insight-lds {
+  background: rgba(155,35,53,0.05);
+  border-color: var(--lds-accent);
+}
+.insight-catholic {
+  background: rgba(27,77,110,0.05);
+  border-color: var(--catholic-accent);
+}
+.insight-box h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem; font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.insight-lds h4 { color: var(--lds-accent); }
+.insight-catholic h4 { color: var(--catholic-accent); }
+.insight-box p {
+  font-size: 0.95rem; line-height: 1.65;
+  color: #444;
+}
+.insight-box .source {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem; color: var(--muted);
+  margin-top: 0.5rem; display: block;
+}
+
+/* ── COMPARISON TABLE ── */
+.comparison-grid {
+  margin-top: 3rem;
+  max-width: 900px;
+  margin-left: auto; margin-right: auto;
+}
+.comparison-grid h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem; font-weight: 900;
+  color: var(--crimson); text-align: center;
+  margin-bottom: 1.5rem;
+}
+.comp-table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.comp-table thead th {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700; font-size: 0.95rem;
+  padding: 1rem 1.2rem;
+  border-bottom: 3px solid var(--line-gray);
+  text-align: left;
+}
+.comp-table thead th:first-child {
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem; letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.comp-table thead th:nth-child(2) { color: var(--lds-accent); }
+.comp-table thead th:nth-child(3) { color: var(--catholic-accent); }
+
+.comp-table tbody td {
+  padding: 0.9rem 1.2rem;
+  border-bottom: 1px solid rgba(208,200,184,0.5);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.comp-table tbody tr:hover td { background: rgba(197,165,90,0.04); }
+.comp-table tbody td:first-child {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--dark-gold);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.comp-table .verdict-lds {
+  color: var(--lds-accent); font-weight: 600;
+}
+.comp-table .verdict-catholic {
+  color: var(--catholic-accent); font-weight: 600;
+}
+
+/* ── BOTTOM REFLECTION ── */
+.reflection {
+  max-width: 800px; margin: 0 auto;
+  padding: 3rem 2rem 4rem;
+  text-align: center;
+}
+.reflection blockquote {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem; font-style: italic;
+  color: var(--crimson); line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.reflection cite {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem; color: var(--dark-gold);
+  letter-spacing: 0.12em; font-style: normal;
+}
+.reflection .closing-text {
+  font-size: 1.05rem; color: var(--text);
+  margin-top: 1.5rem; line-height: 1.7;
+  max-width: 640px; margin-left: auto; margin-right: auto;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center; padding: 2.5rem 2rem;
+  border-top: 1px solid var(--line-gray);
+  background: rgba(245,240,232,0.5);
+}
+footer p {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem; color: var(--muted);
+  letter-spacing: 0.1em;
+}
+footer a { color: var(--dark-gold); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .hero { padding: 3.5rem 1.5rem 2.5rem; }
+  .tab-btn { padding: 0.75rem 1.2rem; font-size: 0.85rem; }
+  .tab-panel { padding: 1.5rem 1rem; }
+  .timeline { padding-left: 2.5rem; }
+  .timeline-event { padding: 1rem; }
+  .timeline-event::before { left: -2.15rem; }
+  .timeline-event.major::before { left: -2.25rem; }
+  .schism-branches { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 0.4rem; }
+  .branch-node { font-size: 0.7rem; padding: 0.5rem 0.3rem; min-width: 85px; }
+  .comp-table { font-size: 0.78rem; }
+  .comp-table thead th, .comp-table tbody td { padding: 0.6rem 0.7rem; }
+  .chain-node { width: 75px; height: 75px; }
+  .chain-node .pope-name { font-size: 0.72rem; }
+}
+@media (max-width: 700px) {
+  .nav-hamburger { display: flex; margin-left: auto; order: 99; flex-shrink: 0; }
+  .site-nav .nav-links { display: none; }
+  .site-nav .nav-back { display: none; }
+  .nav-print-btn { display: none; }
+  body { overflow-x: hidden; }
+  .site-nav { padding: 0.55rem 1rem; }
+  .sidebar {
+    display: block;
+    transform: translateX(100%);
+    right: 0;
+    position: fixed;
+  }
+  .sidebar.open { transform: translateX(0); }
+  .sidebar-inner { padding: 4rem 1.5rem 2rem; }
+  .sidebar-overlay.visible { display: block; }
+}
+@media (max-width: 480px) {
+  .tab-nav { flex-direction: column; }
+  .tab-btn { border-radius: 0 !important; }
+  .tab-btn:first-child { border-radius: 6px 6px 0 0 !important; }
+  .schism-branches { grid-template-columns: repeat(2, 1fr); }
+  .comp-table tbody td:first-child { white-space: normal; }
+}
+
+/* ── @MEDIA PRINT ── */
+@media print {
+  .site-nav,
+  .sidebar-overlay,
+  .sidebar,
+  .nav-print-btn { display: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ════ NAV ════ -->
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">One Faith Delivered</a>
+  <ul class="nav-links">
+    <li><a href="../articles.html">Articles</a></li>
+    <li><a href="../charts.html">Charts</a></li>
+    <li><a href="../topics.html">Topics</a></li>
+    <li><a href="../resources.html">Resources</a></li>
+  </ul>
+  <a href="../charts.html" class="nav-back">&#8592; All Charts</a>
+  <button class="nav-print-btn" onclick="window.print()" aria-label="Print or save as PDF" title="Print / Save as PDF">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Print
+  </button>
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ════ HERO ════ -->
+<header class="hero">
+  <div class="hero-label">Visual Chart &bull; Historical Analysis</div>
+  <h1>The Succession Crisis<br><em>A Tale of Two Churches</em></h1>
+  <p class="subtitle">When the founder of the LDS movement died in 1844, chaos erupted. When each Apostle of Christ died, the Church carried on without interruption. What does this tell us about where true authority resides?</p>
+</header>
+
+<!-- ════ INTRO ════ -->
+<section class="intro-section">
+  <p>
+    One of the most revealing tests of a church's divine origin is what happens when its leader dies. If authority is truly established by God, then the death of any individual — even the founder — should not plunge the institution into crisis. The mechanism of succession should already be in place, ordained by God rather than improvised by men.
+  </p>
+  <p>
+    The contrast between what happened after Joseph Smith's death on June 27, 1844, and what happened after each of the Apostles of Christ died could not be more striking. Smith left behind no clear succession plan, at least <strong>eight competing methods</strong> of succession (according to LDS historian D. Michael Quinn), and a movement that immediately fractured into rival factions — many of which persist to this day.
+  </p>
+  <p>
+    The early Catholic Church, by contrast, experienced the martyrdom of nearly every one of its founding Apostles, including St. Peter, and never once suffered a succession crisis. Authority passed in an orderly, recognized manner through the laying on of hands — the same apostolic succession that continues unbroken to the present day.
+  </p>
+  <div class="scripture-ref">
+    "And I tell you, you are Peter, and on this rock I will build my church,<br>and the gates of hell shall not prevail against it."
+    <cite>— Matthew 16:18</cite>
+  </div>
+</section>
+
+<!-- ════ TAB SYSTEM ════ -->
+<section class="tab-system">
+  <div class="tab-nav">
+    <button class="tab-btn active-lds" data-tab="lds" onclick="switchTab('lds')">
+      ✦ The LDS Crisis (1844–1860)
+    </button>
+    <button class="tab-btn" data-tab="catholic" onclick="switchTab('catholic')">
+      ✦ The Apostolic Church (AD 33–180)
+    </button>
+  </div>
+
+  <!-- ═══ LDS PANEL ═══ -->
+  <div class="tab-panel panel-lds active" id="panel-lds">
+
+    <div class="timeline">
+
+      <div class="timeline-event major">
+        <div class="event-date">June 27, 1844</div>
+        <div class="event-title">Murder of Joseph and Hyrum Smith</div>
+        <div class="event-body">
+          Joseph Smith and his brother Hyrum are killed by a mob at Carthage Jail, Illinois. Hyrum — widely understood to be Joseph's designated successor — dies alongside him. Most of the Twelve Apostles are scattered across the eastern United States campaigning for Smith's presidential bid. Only the wounded John Taylor and Willard Richards remain in Nauvoo. The New York Herald predicts this will "seal the fate of Mormonism."
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="event-date">July 30, 1844</div>
+        <div class="event-title">Suspicious Death of Samuel Smith</div>
+        <div class="event-body">
+          Joseph's next surviving brother, Samuel Harrison Smith — whom Joseph reportedly named as successor if both he and Hyrum perished — dies suddenly, just one month after the murders. <span class="figure-tag tag-wm-smith">William Smith</span> Joseph's last surviving brother, later alleges Samuel was poisoned at the behest of Brigham Young. No investigation is conducted.
+        </div>
+      </div>
+
+      <div class="timeline-event major">
+        <div class="event-date">August 3, 1844</div>
+        <div class="event-title">Sidney Rigdon Arrives and Claims Authority</div>
+        <div class="event-body">
+          <span class="figure-tag tag-rigdon">Sidney Rigdon</span> the sole surviving member of the First Presidency (Smith's senior counselor), races back to Nauvoo from Pennsylvania. He claims a revelation appointing him as "guardian" of the Church. As the highest-ranking surviving officer, Rigdon has a strong institutional claim.
+        </div>
+      </div>
+
+      <div class="timeline-event major">
+        <div class="event-date">August 6, 1844</div>
+        <div class="event-title">Brigham Young Returns to Nauvoo</div>
+        <div class="event-body">
+          <span class="figure-tag tag-young">Brigham Young</span> president of the Quorum of the Twelve Apostles, arrives in Nauvoo with four other Apostles. He immediately begins countering Rigdon's claims, asserting that the keys of the priesthood rest with the Quorum of the Twelve as a body, not with any individual successor.
+        </div>
+      </div>
+
+      <div class="timeline-event major">
+        <div class="event-date">August 8, 1844</div>
+        <div class="event-title">The Showdown: Young vs. Rigdon</div>
+        <div class="event-body">
+          In a pivotal all-day meeting, <span class="figure-tag tag-rigdon">Rigdon</span> presents his case in the morning. <span class="figure-tag tag-young">Young</span> counters in the afternoon, arguing no single man can replace Smith and that the Twelve hold collective authority. A vote is taken and the Saints in Nauvoo side with Young. Later accounts — written years after the event — claim Young miraculously appeared to look and sound like Joseph Smith (the "mantle" experience), though no contemporary accounts describe a physical transformation.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="event-date">September 1844</div>
+        <div class="event-title">Rigdon Excommunicated — Founds Rival Church</div>
+        <div class="event-body">
+          <span class="figure-tag tag-rigdon">Rigdon</span> is excommunicated by the Common Council of the Church. He returns to Pennsylvania and organizes the <strong>Church of Christ</strong>, attracting followers who view Young's assumption of power as illegitimate. This church eventually becomes the basis for the Bickertonite movement.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="event-date">Late 1844</div>
+        <div class="event-title">James Strang Produces the "Letter of Appointment"</div>
+        <div class="event-body">
+          <span class="figure-tag tag-strang">James J. Strang</span> — baptized only four months before Smith's death — presents a letter he claims was written by Joseph Smith, appointing Strang as successor. He also claims angelic ordination at the moment of Smith's death. Major figures join Strang, including Book of Mormon witness <strong>Martin Harris</strong>, Joseph's brother <span class="figure-tag tag-wm-smith">William Smith</span>, and Apostle <strong>John E. Page</strong>.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="event-date">1845</div>
+        <div class="event-title">Lyman Wight Takes Saints to Texas</div>
+        <div class="event-body">
+          <span class="figure-tag tag-wight">Lyman Wight</span> — a member of the Quorum of the Twelve Apostles — claims to have received direct orders from Joseph Smith to lead a colony to Texas. Taking roughly 150 followers, he breaks with the main body and establishes the settlement of Zodiac on the Pedernales River.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="event-date">1846–1847</div>
+        <div class="event-title">Nauvoo Exodus — Young Consolidates Power</div>
+        <div class="event-body">
+          <span class="figure-tag tag-young">Brigham Young</span> leads the main body of Saints westward toward the Great Basin. <span class="figure-tag tag-cutler">Alpheus Cutler</span> — a member of the Council of Fifty and a close associate of Smith — refuses to follow and establishes his own community in Iowa, focused on what he considers the "kingdom" authority conferred by the Council of Fifty.
+        </div>
+      </div>
+
+      <div class="timeline-event major">
+        <div class="event-date">December 1847</div>
+        <div class="event-title">Young Becomes President — With a Bare Majority</div>
+        <div class="event-body">
+          Over three years after Smith's death, <span class="figure-tag tag-young">Young</span> finally reorganizes the First Presidency with himself as President. Of the original Twelve, <span class="figure-tag tag-wm-smith">William Smith</span>, <strong>John E. Page</strong>, and <span class="figure-tag tag-wight">Lyman Wight</span> have all denounced the proceedings and are absent. <strong>John Taylor</strong> and <strong>Parley P. Pratt</strong> are in the Salt Lake Valley. Only seven Apostles are present — Young must vote for himself to achieve a majority.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="event-date">1850</div>
+        <div class="event-title">Strang Crowned King on Beaver Island</div>
+        <div class="event-body">
+          <span class="figure-tag tag-strang">Strang</span> has his followers crown him king on Beaver Island, Michigan. He introduces his own endowment ritual, practices polygamy, and claims to have found and translated ancient plates (echoing Smith's own foundational narrative). He is eventually murdered by disaffected followers in 1856, and his church — like Smith's — fragments.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="event-date">1853</div>
+        <div class="event-title">Granville Hedrick Claims Independence, Missouri</div>
+        <div class="event-body">
+          <span class="figure-tag tag-hedrick">Granville Hedrick</span> organizes a return to Independence, Missouri — the site Joseph Smith designated as the New Jerusalem. His group purchases the Temple Lot, the parcel Smith dedicated for a future temple. The <strong>Church of Christ (Temple Lot)</strong> persists to this day.
+        </div>
+      </div>
+
+      <div class="timeline-event major">
+        <div class="event-date">April 6, 1860</div>
+        <div class="event-title">Joseph Smith III Organizes the Reorganized Church</div>
+        <div class="event-body">
+          <span class="figure-tag tag-smith3">Joseph Smith III</span> — the eldest surviving son of Joseph Smith, whom multiple witnesses say the elder Smith designated as his successor — is ordained president of the <strong>Reorganized Church of Jesus Christ of Latter Day Saints</strong> (now Community of Christ). He was eleven at his father's death. The Reorganization gathers remnants of the Strangite, Cutlerite, and Wightite factions, becoming the second-largest Latter Day Saint body.
+        </div>
+      </div>
+
+    </div><!-- .timeline -->
+
+    <!-- ═══ SCHISM DIAGRAM ═══ -->
+    <div class="schism-section">
+      <h3>The Fractured "Restoration": Major Splinter Groups from 1844</h3>
+      <div class="schism-tree">
+        <div class="schism-root">Joseph Smith's Church (1830–1844)</div>
+        <div class="schism-connector"></div>
+        <div class="schism-hline"></div>
+        <div class="schism-branches">
+          <div class="schism-branch">
+            <div class="branch-line"></div>
+            <div class="branch-node" style="background: rgba(46,90,58,0.08); border-color: var(--faction-young);">
+              <strong style="color: var(--faction-young);">Brigham Young</strong>
+              LDS Church (Utah)
+              <span class="branch-year">1847</span>
+            </div>
+          </div>
+          <div class="schism-branch">
+            <div class="branch-line"></div>
+            <div class="branch-node" style="background: rgba(107,58,107,0.08); border-color: var(--faction-rigdon);">
+              <strong style="color: var(--faction-rigdon);">Sidney Rigdon</strong>
+              Church of Christ (PA)
+              <span class="branch-year">1844</span>
+            </div>
+          </div>
+          <div class="schism-branch">
+            <div class="branch-line"></div>
+            <div class="branch-node" style="background: rgba(184,134,11,0.08); border-color: var(--faction-strang);">
+              <strong style="color: var(--faction-strang);">James Strang</strong>
+              Strangite Church (WI/MI)
+              <span class="branch-year">1844</span>
+            </div>
+          </div>
+          <div class="schism-branch">
+            <div class="branch-line"></div>
+            <div class="branch-node" style="background: rgba(46,74,107,0.08); border-color: var(--faction-smith3);">
+              <strong style="color: var(--faction-smith3);">Joseph Smith III</strong>
+              RLDS / Community of Christ
+              <span class="branch-year">1860</span>
+            </div>
+          </div>
+          <div class="schism-branch">
+            <div class="branch-line"></div>
+            <div class="branch-node" style="background: rgba(139,69,19,0.08); border-color: var(--faction-wight);">
+              <strong style="color: var(--faction-wight);">Lyman Wight</strong>
+              Wightites (Texas)
+              <span class="branch-year">1845</span>
+            </div>
+          </div>
+          <div class="schism-branch">
+            <div class="branch-line"></div>
+            <div class="branch-node" style="background: rgba(85,107,47,0.08); border-color: var(--faction-cutler);">
+              <strong style="color: var(--faction-cutler);">Alpheus Cutler</strong>
+              Cutlerites (Iowa)
+              <span class="branch-year">1853</span>
+            </div>
+          </div>
+          <div class="schism-branch">
+            <div class="branch-line"></div>
+            <div class="branch-node" style="background: rgba(112,66,20,0.08); border-color: var(--faction-hedrick);">
+              <strong style="color: var(--faction-hedrick);">Granville Hedrick</strong>
+              Temple Lot (MO)
+              <span class="branch-year">1863</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight-box insight-lds">
+      <h4>The Core Problem</h4>
+      <p>
+        LDS historian D. Michael Quinn identified <strong>eight distinct methods of succession</strong> that Joseph Smith established by word or action between 1834 and 1844 — but never settled on one definitive plan. This ambiguity was not a failure of administration. It reveals that Smith's authority was personal and charismatic, not institutional and sacramental. When the charismatic leader died, there was no sacramental mechanism to transfer authority. The result was exactly what one would expect: competing power claims and permanent schism.
+      </p>
+      <span class="source">Source: D. Michael Quinn, "The Mormon Succession Crisis of 1844," BYU Studies 16:2 (1976)</span>
+    </div>
+
+  </div><!-- panel-lds -->
+
+  <!-- ═══ CATHOLIC PANEL ═══ -->
+  <div class="tab-panel panel-catholic" id="panel-catholic">
+
+    <div class="timeline">
+
+      <div class="timeline-event major">
+        <div class="event-date">c. AD 33</div>
+        <div class="event-title">Christ Establishes the Church on Peter</div>
+        <div class="event-body">
+          Jesus commissions Simon Peter as head of the Apostles: <em>"Feed my lambs… tend my sheep… feed my sheep"</em> (John 21:15–17). He gives Peter the keys of the Kingdom (Matthew 16:18–19). Authority is conferred sacramentally through the laying on of hands and divine commission — not through personal charisma alone.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="event-date">c. AD 44</div>
+        <div class="event-title">Martyrdom of James the Greater</div>
+        <div class="event-body">
+          King Herod Agrippa I has James, the brother of John, killed by the sword (Acts 12:2). He is the first Apostle martyred. <strong>No succession crisis follows.</strong> The Church continues under Peter's leadership with the remaining Apostles. Matthias had already been chosen to replace Judas (Acts 1:26), demonstrating that the apostolic office was understood as an ongoing institution, not a personal gift that died with its holder.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="event-date">c. AD 49</div>
+        <div class="event-title">Council of Jerusalem — Institutional Authority in Action</div>
+        <div class="event-body">
+          When doctrinal controversy arises over Gentile circumcision, the Apostles and elders convene a council (Acts 15). Peter speaks authoritatively, James renders the definitive judgment, and the decision is binding on all churches. This is institutional, conciliar authority — not the charismatic authority of a single prophet whose death would dissolve the institution.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="event-date">c. AD 62</div>
+        <div class="event-title">Martyrdom of James the Just (Bishop of Jerusalem)</div>
+        <div class="event-body">
+          James the Just, the "brother of the Lord" and first Bishop of Jerusalem, is thrown from the Temple and clubbed to death. <strong>No succession crisis follows.</strong> Simeon, a relative of Jesus, succeeds James as Bishop of Jerusalem. The early historian Hegesippus records the orderly transition. The office continues.
+        </div>
+      </div>
+
+      <div class="timeline-event major">
+        <div class="event-date">c. AD 64–67</div>
+        <div class="event-title">Martyrdom of Peter and Paul in Rome</div>
+        <div class="event-body">
+          Both Peter and Paul are martyred in Rome under Nero — Peter by crucifixion (upside down, according to tradition) and Paul by beheading. The <em>founder</em> of the visible Church and its greatest missionary are both dead. <strong>No succession crisis follows.</strong> Linus succeeds Peter as Bishop of Rome. St. Irenaeus later records: <em>"The blessed apostles, having founded and built up the Church, committed into the hands of Linus the office of the episcopate."</em>
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="event-date">c. AD 76</div>
+        <div class="event-title">Linus Dies — Succeeded by Anacletus</div>
+        <div class="event-body">
+          Linus, the first successor of Peter, dies. <strong>No succession crisis follows.</strong> Anacletus (also called Cletus) takes up the see of Rome. The mechanism is understood: the bishop of Rome holds Peter's chair, and when one bishop dies, another is consecrated.
+        </div>
+      </div>
+
+      <div class="timeline-event major">
+        <div class="event-date">c. AD 88</div>
+        <div class="event-title">Anacletus Dies — Succeeded by Clement of Rome</div>
+        <div class="event-body">
+          Clement of Rome becomes the fourth leader of the Roman Church (or third, by some reckonings). <strong>No succession crisis follows.</strong> In fact, Clement writes his famous <em>First Epistle</em> to the Corinthians (c. AD 96) — in which he intervenes authoritatively in the affairs of a distant church, asserting Rome's right to govern. This letter is one of the earliest extra-biblical witnesses to Roman primacy and orderly succession.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="event-date">c. AD 99</div>
+        <div class="event-title">Death of the Apostle John — Last of the Twelve</div>
+        <div class="event-body">
+          The Apostle John, the last surviving member of the original Twelve, dies in Ephesus. Every one of the Twelve is now dead. <strong>No succession crisis follows.</strong> The churches continue under their bishops — Polycarp in Smyrna (personally trained by John), Ignatius in Antioch, Clement in Rome. The sacramental structure Christ established carries authority forward independent of any single person.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="event-date">c. AD 107</div>
+        <div class="event-title">Ignatius of Antioch — Succession is Already Established Doctrine</div>
+        <div class="event-body">
+          On his way to martyrdom in Rome, Ignatius writes seven letters to churches throughout the Mediterranean. He repeatedly insists: <em>"Do nothing without the bishop."</em> He describes a threefold ministry of bishop, priest, and deacon already well established across multiple churches. There is no trace of a "succession crisis" or competing claimants — because authority was never invested in a single charismatic leader to begin with.
+        </div>
+      </div>
+
+      <div class="timeline-event">
+        <div class="event-date">c. AD 180</div>
+        <div class="event-title">Irenaeus Documents the Unbroken Chain</div>
+        <div class="event-body">
+          St. Irenaeus, Bishop of Lyon, publishes <em>Against Heresies</em>, in which he traces the succession of Roman bishops from Peter through Linus, Anacletus, Clement, and onward to his contemporary, Pope Eleutherius — the twelfth successor of Peter. Irenaeus offers this list as <em>proof</em> of authentic apostolic teaching: the unbroken chain guarantees doctrinal fidelity. No such chain exists — or can exist — for the LDS Church.
+        </div>
+      </div>
+
+    </div><!-- .timeline -->
+
+    <!-- ═══ SUCCESSION CHAIN ═══ -->
+    <div style="text-align: center; margin-top: 2rem;">
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--catholic-accent); margin-bottom: 1.5rem;">
+        The Unbroken Chain: Peter to Eleutherius (c. AD 33–189)
+      </h3>
+      <div class="succession-chain">
+        <div class="chain-node">
+          <span class="pope-name">St. Peter</span>
+          <span class="pope-years">c. 33–67</span>
+        </div>
+        <div class="chain-link"></div>
+        <div class="chain-node">
+          <span class="pope-name">St. Linus</span>
+          <span class="pope-years">c. 67–76</span>
+        </div>
+        <div class="chain-link"></div>
+        <div class="chain-node">
+          <span class="pope-name">St. Anacletus</span>
+          <span class="pope-years">c. 76–88</span>
+        </div>
+        <div class="chain-link"></div>
+        <div class="chain-node">
+          <span class="pope-name">St. Clement I</span>
+          <span class="pope-years">c. 88–99</span>
+        </div>
+        <div class="chain-link"></div>
+        <div class="chain-node">
+          <span class="pope-name">St. Evaristus</span>
+          <span class="pope-years">c. 99–107</span>
+        </div>
+        <div class="chain-link"></div>
+        <div class="chain-node">
+          <span class="pope-name">St. Alexander I</span>
+          <span class="pope-years">c. 107–115</span>
+        </div>
+        <div class="chain-link"></div>
+        <div class="chain-node">
+          <span class="pope-name">St. Sixtus I</span>
+          <span class="pope-years">c. 115–125</span>
+        </div>
+        <div class="chain-link"></div>
+        <div class="chain-node">
+          <span class="pope-name">St. Telesphorus</span>
+          <span class="pope-years">c. 125–136</span>
+        </div>
+        <div class="chain-link"></div>
+        <div class="chain-node">
+          <span class="pope-name">St. Hyginus</span>
+          <span class="pope-years">c. 136–140</span>
+        </div>
+        <div class="chain-link"></div>
+        <div class="chain-node">
+          <span class="pope-name">St. Pius I</span>
+          <span class="pope-years">c. 140–155</span>
+        </div>
+        <div class="chain-link"></div>
+        <div class="chain-node">
+          <span class="pope-name">St. Anicetus</span>
+          <span class="pope-years">c. 155–166</span>
+        </div>
+        <div class="chain-link"></div>
+        <div class="chain-node">
+          <span class="pope-name">St. Soter</span>
+          <span class="pope-years">c. 166–175</span>
+        </div>
+        <div class="chain-link"></div>
+        <div class="chain-node">
+          <span class="pope-name">St. Eleutherius</span>
+          <span class="pope-years">c. 175–189</span>
+        </div>
+        <div class="chain-link arrow"></div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 0.12em; margin-top: 0.5rem;">
+          CONTINUES UNBROKEN TO POPE FRANCIS (266TH)
+        </div>
+      </div>
+    </div>
+
+    <div class="insight-box insight-catholic">
+      <h4>The Key Distinction: Sacramental vs. Charismatic Authority</h4>
+      <p>
+        The reason the early Church never experienced a succession crisis is that Christ established <strong>sacramental</strong> authority, not <strong>charismatic</strong> authority. The power to teach, govern, and sanctify was conferred through the laying on of hands (ordination) and was attached to the <em>office</em>, not to the personality of the officeholder. When Peter died, the office of the Bishop of Rome did not die with him — just as when a king dies, the crown does not die. Smith's authority, by contrast, was personal and prophetic. When the prophet died, the "priesthood" he claimed to hold had no institutional mechanism for transfer — which is why eight different succession theories existed and none was decisive.
+      </p>
+      <span class="source">Cf. St. Irenaeus, Against Heresies III.3.1–3; Catechism of the Catholic Church §§ 861–862</span>
+    </div>
+
+  </div><!-- panel-catholic -->
+</section>
+
+<!-- ════ COMPARISON TABLE ════ -->
+<section class="comparison-grid" style="padding: 0 2rem 3rem;">
+  <h2>Side-by-Side: Two Models of Succession</h2>
+  <table class="comp-table">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>LDS Church (1844)</th>
+        <th>Catholic Church (AD 33–180)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Succession Plan</td>
+        <td class="verdict-lds">None definitive — 8 competing methods (Quinn)</td>
+        <td class="verdict-catholic">Laying on of hands; episcopal ordination</td>
+      </tr>
+      <tr>
+        <td>When Founder Died</td>
+        <td class="verdict-lds">Immediate power vacuum and factional struggle</td>
+        <td class="verdict-catholic">Orderly transition to Linus; no disruption</td>
+      </tr>
+      <tr>
+        <td>Competing Claimants</td>
+        <td class="verdict-lds">At least 7 major rival leaders</td>
+        <td class="verdict-catholic">Zero — succession was recognized by all</td>
+      </tr>
+      <tr>
+        <td>Resulting Schisms</td>
+        <td class="verdict-lds">100+ denominations over time</td>
+        <td class="verdict-catholic">None from succession itself</td>
+      </tr>
+      <tr>
+        <td>Time to New Leader</td>
+        <td class="verdict-lds">3.5 years (Dec. 1847) for First Presidency</td>
+        <td class="verdict-catholic">Immediate upon each bishop's death</td>
+      </tr>
+      <tr>
+        <td>Authority Model</td>
+        <td class="verdict-lds">Charismatic — bound to one prophetic figure</td>
+        <td class="verdict-catholic">Sacramental — bound to the office, not the man</td>
+      </tr>
+      <tr>
+        <td>Historical Documentation</td>
+        <td class="verdict-lds">Contradictory accounts; "mantle" narrative added later</td>
+        <td class="verdict-catholic">Irenaeus lists bishops by name (c. AD 180)</td>
+      </tr>
+      <tr>
+        <td>Biblical Precedent</td>
+        <td class="verdict-lds">None — prophetic succession is not a biblical model</td>
+        <td class="verdict-catholic">Acts 1:26 (Matthias); 2 Tim 2:2; Titus 1:5</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ════ REFLECTION ════ -->
+<section class="reflection">
+  <blockquote>
+    "The blessed apostles, having founded and built up the Church,<br>
+    committed into the hands of Linus the office of the episcopate."
+  </blockquote>
+  <cite>— St. Irenaeus, Against Heresies III.3.3 (c. AD 180)</cite>
+  <p class="closing-text">
+    The LDS succession crisis is not simply a historical embarrassment — it is a theological revelation. It reveals that the authority Joseph Smith claimed was personal, not institutional; charismatic, not sacramental. When the man died, the authority died with him, and no amount of retroactive narrative (the "mantle" story, the appeal to "keys") could resolve the fundamental problem: Christ's Church was built on a rock, not on a personality. The rock endures.
+  </p>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <p>&copy; 2025 <a href="../index.html">One Faith Delivered</a> &mdash; Catholic Apologetics &bull; All Rights Reserved</p>
+  <p style="margin-top: 0.5rem; font-size: 0.6rem; color: #999;">
+    Sources: D. Michael Quinn, "The Mormon Succession Crisis of 1844" (BYU Studies, 1976) &bull;
+    Ronald W. Walker, "Six Days in August" (BYU Religious Studies Center, 2011) &bull;
+    LDS Gospel Topics: "Succession of Church Leadership" &bull;
+    St. Irenaeus, Against Heresies III &bull; Eusebius, Church History &bull;
+    Catechism of the Catholic Church §§ 857–865
+  </p>
+</footer>
+
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">One Faith Delivered</div>
+    <a href="../index.html">Home</a>
+    <a href="../articles.html">Articles</a>
+    <a href="../charts.html">Charts</a>
+    <a href="../topics.html">Topics</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../charts.html" class="sidebar-back">&#8592; All Charts</a>
+    <div class="sidebar-ornament">✦ ✦ ✦</div>
+  </div>
+</aside>
+
+<script>
+function toggleSidebar() {
+  var btn = document.querySelector('.nav-hamburger'),
+      sidebar = document.querySelector('.sidebar'),
+      overlay = document.querySelector('.sidebar-overlay');
+  var isOpen = sidebar.classList.contains('open');
+  if (isOpen) {
+    sidebar.classList.remove('open');
+    btn.classList.remove('open');
+    overlay.classList.remove('visible');
+    document.body.style.overflow = '';
+  } else {
+    sidebar.classList.add('open');
+    btn.classList.add('open');
+    overlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar();
+});
+</script>
+
+<script>
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.classList.remove('active-lds', 'active-catholic');
+  });
+  document.querySelectorAll('.tab-panel').forEach(panel => {
+    panel.classList.remove('active');
+  });
+  const btn = document.querySelector(`[data-tab="${tab}"]`);
+  const panel = document.getElementById(`panel-${tab}`);
+  btn.classList.add(tab === 'lds' ? 'active-lds' : 'active-catholic');
+  panel.classList.add('active');
+}
+</script>
+
+</body>
+</html>
