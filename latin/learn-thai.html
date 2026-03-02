@@ -8,867 +8,1145 @@
 <meta name="apple-mobile-web-app-title" content="Learn Thai">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#1a1040">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
 <title>Learn Thai — เรียนภาษาไทย</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --gold: #d4a845;
-    --gold-light: #f0d078;
-    --gold-glow: rgba(212,168,69,0.3);
-    --deep-blue: #1a1040;
-    --royal-blue: #2d1b69;
-    --temple-red: #c0392b;
-    --temple-red-light: #e74c3c;
-    --white: #f8f4ec;
-    --cream: #faf6ee;
-    --text-light: #e8e0d0;
-    --text-dim: #a89880;
-    --success: #27ae60;
-    --fail: #c0392b;
-    --card-bg: rgba(255,255,255,0.06);
-    --card-border: rgba(212,168,69,0.2);
-  }
-
-  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-
-  body {
-    font-family:'Outfit','Noto Sans Thai',sans-serif;
-    background: var(--deep-blue);
-    color: var(--text-light);
-    min-height:100vh;
-    min-height:100dvh;
-    overflow-x:hidden;
-    position:relative;
-  }
-
-  body::before {
-    content:'';
-    position:fixed;
-    inset:0;
-    background:
-      radial-gradient(ellipse at 20% 0%, rgba(45,27,105,0.8) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 100%, rgba(192,57,43,0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 50% 50%, rgba(212,168,69,0.05) 0%, transparent 70%);
-    pointer-events:none;
-    z-index:0;
-  }
-
-  .thai-border { position:relative; }
-  .thai-border::after {
-    content:'';
-    position:absolute;
-    bottom:0; left:10%; right:10%;
-    height:2px;
-    background: repeating-linear-gradient(90deg, var(--gold) 0px, var(--gold) 8px, transparent 8px, transparent 16px);
-    opacity:0.4;
-  }
-
-  .nav {
-    position:fixed;
-    bottom:0; left:0; right:0;
-    background: rgba(26,16,64,0.95);
-    backdrop-filter:blur(20px);
-    -webkit-backdrop-filter:blur(20px);
-    border-top:1px solid var(--card-border);
-    display:flex;
-    z-index:100;
-    padding-bottom: env(safe-area-inset-bottom, 8px);
-  }
-  .nav-btn {
-    flex:1;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:3px;
-    padding:10px 4px 8px;
-    background:none;
-    border:none;
-    color:var(--text-dim);
-    font-family:inherit;
-    font-size:10px;
-    font-weight:600;
-    letter-spacing:0.5px;
-    cursor:pointer;
-    transition:all 0.3s;
-    position:relative;
-  }
-  .nav-btn.active { color:var(--gold); }
-  .nav-btn.active::before {
-    content:'';
-    position:absolute;
-    top:0; left:20%; right:20%;
-    height:2px;
-    background:var(--gold);
-    border-radius:0 0 2px 2px;
-  }
-  .nav-btn svg { width:22px; height:22px; }
-
-  .header {
-    padding: 50px 24px 20px;
-    text-align:center;
-    position:relative;
-    z-index:1;
-  }
-  .header h1 {
-    font-size:14px;
-    font-weight:300;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    color:var(--gold);
-    margin-bottom:4px;
-  }
-  .header .thai-title {
-    font-family:'Noto Sans Thai','Outfit',sans-serif;
-    font-size:28px;
-    font-weight:700;
-    color:var(--white);
-    text-shadow: 0 0 30px var(--gold-glow);
-  }
-
-  .content {
-    position:relative;
-    z-index:1;
-    padding: 0 16px 100px;
-    max-width:480px;
-    margin:0 auto;
-  }
-
-  .page { display:none; }
-  .page.active { display:block; animation: fadeUp 0.35s ease; }
-
-  @keyframes fadeUp {
-    from { opacity:0; transform:translateY(12px); }
-    to { opacity:1; transform:translateY(0); }
-  }
-
-  .section-title {
-    font-size:11px;
-    font-weight:600;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    color:var(--gold);
-    margin:24px 0 12px;
-    padding-left:4px;
-  }
-
-  .card {
-    background: var(--card-bg);
-    border:1px solid var(--card-border);
-    border-radius:16px;
-    padding:20px;
-    margin-bottom:12px;
-    cursor:pointer;
-    transition: all 0.3s;
-    position:relative;
-    overflow:hidden;
-  }
-  .card:hover, .card:active {
-    background:rgba(255,255,255,0.1);
-    border-color:var(--gold);
-    transform:translateY(-1px);
-  }
-  .card-row {
-    display:flex;
-    align-items:center;
-    gap:16px;
-  }
-  .card-icon {
-    width:48px; height:48px;
-    border-radius:12px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:24px;
-    flex-shrink:0;
-  }
-  .card-icon.gold { background: rgba(212,168,69,0.15); }
-  .card-icon.red { background: rgba(192,57,43,0.15); }
-  .card-icon.blue { background: rgba(45,27,105,0.4); }
-  .card-label {
-    font-size:16px;
-    font-weight:600;
-    color:var(--white);
-  }
-  .card-sub {
-    font-size:12px;
-    color:var(--text-dim);
-    margin-top:2px;
-  }
-
-  .lesson-header {
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:10px 0 20px;
-  }
-  .back-btn {
-    width:36px; height:36px;
-    border-radius:10px;
-    background:var(--card-bg);
-    border:1px solid var(--card-border);
-    color:var(--gold);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    cursor:pointer;
-    font-size:18px;
-    transition:all 0.2s;
-  }
-  .back-btn:active { background:rgba(212,168,69,0.2); }
-  .lesson-title {
-    font-size:18px;
-    font-weight:700;
-    color:var(--white);
-  }
-
-  .flashcard-container {
-    perspective:800px;
-    margin:0 auto 20px;
-  }
-  .flashcard {
-    width:100%;
-    min-height:220px;
-    position:relative;
-    transform-style:preserve-3d;
-    transition:transform 0.5s ease;
-    cursor:pointer;
-    border-radius:20px;
-  }
-  .flashcard.flipped { transform:rotateY(180deg); }
-  .flashcard-face {
-    position:absolute;
-    inset:0;
-    backface-visibility:hidden;
-    -webkit-backface-visibility:hidden;
-    border-radius:20px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    padding:30px 24px;
-    border:1px solid var(--card-border);
-  }
-  .flashcard-front {
-    background: linear-gradient(135deg, rgba(45,27,105,0.6), rgba(26,16,64,0.8));
-    border-color:var(--gold);
-  }
-  .flashcard-back {
-    background: linear-gradient(135deg, rgba(212,168,69,0.15), rgba(45,27,105,0.4));
-    transform:rotateY(180deg);
-    border-color:var(--gold);
-  }
-  .fc-thai {
-    font-family:'Noto Sans Thai',sans-serif;
-    font-size:52px;
-    font-weight:700;
-    color:var(--gold-light);
-    line-height:1.3;
-    text-align:center;
-  }
-  .fc-romanized {
-    font-size:16px;
-    color:var(--text-dim);
-    margin-top:8px;
-    font-style:italic;
-  }
-  .fc-english {
-    font-size:22px;
-    font-weight:600;
-    color:var(--white);
-    text-align:center;
-  }
-  .fc-hint {
-    font-size:11px;
-    color:var(--text-dim);
-    margin-top:12px;
-    letter-spacing:1px;
-    text-transform:uppercase;
-  }
-  .fc-example {
-    font-size:14px;
-    color:var(--text-dim);
-    margin-top:12px;
-    text-align:center;
-    line-height:1.5;
-  }
-
-  .card-nav {
-    display:flex;
-    justify-content:center;
-    gap:12px;
-    margin-top:16px;
-  }
-  .card-nav button {
-    padding:10px 28px;
-    border-radius:12px;
-    background:var(--card-bg);
-    border:1px solid var(--card-border);
-    color:var(--gold);
-    font-family:inherit;
-    font-size:14px;
-    font-weight:600;
-    cursor:pointer;
-    transition:all 0.2s;
-  }
-  .card-nav button:active { background:rgba(212,168,69,0.2); }
-  .card-nav .counter {
-    display:flex;
-    align-items:center;
-    color:var(--text-dim);
-    font-size:13px;
-    min-width:60px;
-    justify-content:center;
-  }
-
-  .quiz-progress {
-    height:4px;
-    background:rgba(255,255,255,0.08);
-    border-radius:2px;
-    margin-bottom:24px;
-    overflow:hidden;
-  }
-  .quiz-progress-bar {
-    height:100%;
-    background: linear-gradient(90deg, var(--gold), var(--gold-light));
-    border-radius:2px;
-    transition:width 0.4s ease;
-  }
-  .quiz-question { text-align:center; margin-bottom:24px; }
-  .quiz-prompt {
-    font-size:13px;
-    color:var(--text-dim);
-    margin-bottom:8px;
-    text-transform:uppercase;
-    letter-spacing:1px;
-  }
-  .quiz-thai {
-    font-family:'Noto Sans Thai',sans-serif;
-    font-size:44px;
-    font-weight:700;
-    color:var(--gold-light);
-  }
-  .quiz-romanized {
-    font-size:15px;
-    color:var(--text-dim);
-    font-style:italic;
-    margin-top:4px;
-  }
-  .quiz-options {
-    display:flex;
-    flex-direction:column;
-    gap:10px;
-  }
-  .quiz-option {
-    padding:16px 20px;
-    border-radius:14px;
-    background:var(--card-bg);
-    border:1.5px solid var(--card-border);
-    color:var(--text-light);
-    font-family:inherit;
-    font-size:16px;
-    font-weight:500;
-    cursor:pointer;
-    transition:all 0.25s;
-    text-align:left;
-  }
-  .quiz-option:active { transform:scale(0.98); }
-  .quiz-option.correct {
-    background:rgba(39,174,96,0.2);
-    border-color:var(--success);
-    color:var(--success);
-  }
-  .quiz-option.wrong {
-    background:rgba(192,57,43,0.2);
-    border-color:var(--fail);
-    color:var(--fail);
-  }
-  .quiz-option.disabled { pointer-events:none; }
-
-  .quiz-score { text-align:center; padding:40px 20px; }
-  .score-number {
-    font-size:64px;
-    font-weight:700;
-    color:var(--gold-light);
-    line-height:1;
-  }
-  .score-label { font-size:14px; color:var(--text-dim); margin-top:8px; }
-  .score-msg { font-size:18px; color:var(--white); margin-top:16px; font-weight:600; }
-  .restart-btn {
-    margin-top:24px;
-    padding:14px 40px;
-    border-radius:14px;
-    background:linear-gradient(135deg, var(--gold), var(--gold-light));
-    border:none;
-    color:var(--deep-blue);
-    font-family:inherit;
-    font-size:15px;
-    font-weight:700;
-    cursor:pointer;
-    transition:all 0.2s;
-  }
-  .restart-btn:active { transform:scale(0.96); }
-
-  .phrase-item {
-    background:var(--card-bg);
-    border:1px solid var(--card-border);
-    border-radius:14px;
-    padding:16px 18px;
-    margin-bottom:10px;
-    transition:all 0.2s;
-  }
-  .phrase-thai {
-    font-family:'Noto Sans Thai',sans-serif;
-    font-size:22px;
-    font-weight:600;
-    color:var(--gold-light);
-  }
-  .phrase-roman {
-    font-size:13px;
-    color:var(--text-dim);
-    font-style:italic;
-    margin-top:2px;
-  }
-  .phrase-eng {
-    font-size:14px;
-    color:var(--text-light);
-    margin-top:6px;
-  }
-  .phrase-note {
-    font-size:11px;
-    color:var(--text-dim);
-    margin-top:4px;
-    font-style:italic;
-  }
-
-  .speak-btn {
-    display:inline-flex;
-    align-items:center;
-    gap:6px;
-    padding:6px 14px;
-    border-radius:20px;
-    background:rgba(212,168,69,0.15);
-    border:1px solid rgba(212,168,69,0.3);
-    color:var(--gold);
-    font-size:12px;
-    font-weight:600;
-    cursor:pointer;
-    margin-top:8px;
-    transition:all 0.2s;
-  }
-  .speak-btn:active { background:rgba(212,168,69,0.3); }
-  .speak-btn svg { width:14px; height:14px; }
-
-  .pills {
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    margin-bottom:16px;
-  }
-  .pill {
-    padding:8px 16px;
-    border-radius:20px;
-    background:var(--card-bg);
-    border:1px solid var(--card-border);
-    color:var(--text-dim);
-    font-family:inherit;
-    font-size:12px;
-    font-weight:600;
-    cursor:pointer;
-    transition:all 0.2s;
-  }
-  .pill.active {
-    background:rgba(212,168,69,0.2);
-    border-color:var(--gold);
-    color:var(--gold);
-  }
-
-  .lotus { text-align:center; font-size:32px; opacity:0.3; margin:30px 0 10px; }
-
-  .tone-row {
-    display:flex;
-    align-items:center;
-    gap:12px;
-    padding:14px 0;
-    border-bottom:1px solid rgba(255,255,255,0.05);
-  }
-  .tone-row:last-child { border-bottom:none; }
-  .tone-mark {
-    width:40px; height:40px;
-    border-radius:10px;
-    background:rgba(212,168,69,0.12);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-family:'Noto Sans Thai',sans-serif;
-    font-size:22px;
-    color:var(--gold-light);
-    flex-shrink:0;
-  }
-  .tone-info { flex:1; }
-  .tone-name { font-size:14px; font-weight:600; color:var(--white); }
-  .tone-desc { font-size:12px; color:var(--text-dim); margin-top:2px; }
+:root {
+  --gold:#d4a845;--gold-light:#f0d078;--gold-glow:rgba(212,168,69,0.3);
+  --deep-blue:#1a1040;--royal-blue:#2d1b69;
+  --temple-red:#c0392b;--temple-red-light:#e74c3c;
+  --white:#f8f4ec;--cream:#faf6ee;
+  --text-light:#e8e0d0;--text-dim:#a89880;
+  --success:#27ae60;--fail:#c0392b;
+  --card-bg:rgba(255,255,255,0.06);--card-border:rgba(212,168,69,0.2);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:'Outfit','Noto Sans Thai',sans-serif;background:var(--deep-blue);color:var(--text-light);min-height:100vh;min-height:100dvh;overflow-x:hidden;position:relative}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(45,27,105,0.8) 0%,transparent 60%),radial-gradient(ellipse at 80% 100%,rgba(192,57,43,0.15) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(212,168,69,0.05) 0%,transparent 70%);pointer-events:none;z-index:0}
+.thai-border{position:relative}
+.thai-border::after{content:'';position:absolute;bottom:0;left:10%;right:10%;height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0px,var(--gold) 8px,transparent 8px,transparent 16px);opacity:0.4}
+.nav{position:fixed;bottom:0;left:0;right:0;background:rgba(26,16,64,0.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--card-border);display:flex;z-index:100;padding-bottom:env(safe-area-inset-bottom,8px)}
+.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 4px 8px;background:none;border:none;color:var(--text-dim);font-family:inherit;font-size:9px;font-weight:600;letter-spacing:0.5px;cursor:pointer;transition:all 0.3s;position:relative}
+.nav-btn.active{color:var(--gold)}
+.nav-btn.active::before{content:'';position:absolute;top:0;left:20%;right:20%;height:2px;background:var(--gold);border-radius:0 0 2px 2px}
+.nav-btn svg{width:20px;height:20px}
+.header{padding:50px 24px 16px;text-align:center;position:relative;z-index:1}
+.header h1{font-size:13px;font-weight:300;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.header .thai-title{font-family:'Noto Sans Thai','Outfit',sans-serif;font-size:26px;font-weight:700;color:var(--white);text-shadow:0 0 30px var(--gold-glow)}
+.content{position:relative;z-index:1;padding:0 16px 100px;max-width:500px;margin:0 auto}
+.page{display:none}.page.active{display:block;animation:fadeUp 0.35s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.section-title{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:24px 0 12px;padding-left:4px}
+.card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:16px 18px;margin-bottom:10px;cursor:pointer;transition:all 0.3s;position:relative;overflow:hidden}
+.card:active{background:rgba(255,255,255,0.1);border-color:var(--gold)}
+.card-row{display:flex;align-items:center;gap:14px}
+.card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.card-icon.gold{background:rgba(212,168,69,0.15)}
+.card-icon.red{background:rgba(192,57,43,0.15)}
+.card-icon.blue{background:rgba(45,27,105,0.4)}
+.card-icon.green{background:rgba(39,174,96,0.15)}
+.card-label{font-size:15px;font-weight:600;color:var(--white)}
+.card-sub{font-size:11px;color:var(--text-dim);margin-top:2px}
+.lesson-header{display:flex;align-items:center;gap:12px;padding:10px 0 18px}
+.back-btn{width:36px;height:36px;border-radius:10px;background:var(--card-bg);border:1px solid var(--card-border);color:var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;transition:all 0.2s}
+.back-btn:active{background:rgba(212,168,69,0.2)}
+.lesson-title{font-size:17px;font-weight:700;color:var(--white)}
+.flashcard-container{perspective:800px;margin:0 auto 16px}
+.flashcard{width:100%;min-height:200px;position:relative;transform-style:preserve-3d;transition:transform 0.5s ease;cursor:pointer;border-radius:20px}
+.flashcard.flipped{transform:rotateY(180deg)}
+.flashcard-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 22px;border:1px solid var(--card-border)}
+.flashcard-front{background:linear-gradient(135deg,rgba(45,27,105,0.6),rgba(26,16,64,0.8));border-color:var(--gold)}
+.flashcard-back{background:linear-gradient(135deg,rgba(212,168,69,0.15),rgba(45,27,105,0.4));transform:rotateY(180deg);border-color:var(--gold)}
+.fc-thai{font-family:'Noto Sans Thai',sans-serif;font-size:46px;font-weight:700;color:var(--gold-light);line-height:1.3;text-align:center}
+.fc-romanized{font-size:15px;color:var(--text-dim);margin-top:6px;font-style:italic}
+.fc-english{font-size:20px;font-weight:600;color:var(--white);text-align:center}
+.fc-hint{font-size:10px;color:var(--text-dim);margin-top:10px;letter-spacing:1px;text-transform:uppercase}
+.fc-example{font-size:13px;color:var(--text-dim);margin-top:10px;text-align:center;line-height:1.5}
+.card-nav{display:flex;justify-content:center;gap:10px;margin-top:14px}
+.card-nav button{padding:10px 24px;border-radius:12px;background:var(--card-bg);border:1px solid var(--card-border);color:var(--gold);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s}
+.card-nav button:active{background:rgba(212,168,69,0.2)}
+.card-nav .counter{display:flex;align-items:center;color:var(--text-dim);font-size:13px;min-width:55px;justify-content:center}
+.quiz-progress{height:4px;background:rgba(255,255,255,0.08);border-radius:2px;margin-bottom:20px;overflow:hidden}
+.quiz-progress-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:2px;transition:width 0.4s ease}
+.quiz-question{text-align:center;margin-bottom:20px}
+.quiz-prompt{font-size:12px;color:var(--text-dim);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px}
+.quiz-thai{font-family:'Noto Sans Thai',sans-serif;font-size:40px;font-weight:700;color:var(--gold-light)}
+.quiz-romanized{font-size:14px;color:var(--text-dim);font-style:italic;margin-top:4px}
+.quiz-options{display:flex;flex-direction:column;gap:8px}
+.quiz-option{padding:14px 18px;border-radius:14px;background:var(--card-bg);border:1.5px solid var(--card-border);color:var(--text-light);font-family:inherit;font-size:15px;font-weight:500;cursor:pointer;transition:all 0.25s;text-align:left}
+.quiz-option:active{transform:scale(0.98)}
+.quiz-option.correct{background:rgba(39,174,96,0.2);border-color:var(--success);color:var(--success)}
+.quiz-option.wrong{background:rgba(192,57,43,0.2);border-color:var(--fail);color:var(--fail)}
+.quiz-option.disabled{pointer-events:none}
+.quiz-score{text-align:center;padding:40px 20px}
+.score-number{font-size:60px;font-weight:700;color:var(--gold-light);line-height:1}
+.score-label{font-size:14px;color:var(--text-dim);margin-top:8px}
+.score-msg{font-size:18px;color:var(--white);margin-top:16px;font-weight:600}
+.restart-btn{margin-top:20px;padding:14px 36px;border-radius:14px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border:none;color:var(--deep-blue);font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s}
+.restart-btn:active{transform:scale(0.96)}
+.restart-btn.secondary{background:var(--card-bg);color:var(--gold);border:1px solid var(--card-border)}
+.phrase-item{background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;padding:14px 16px;margin-bottom:8px}
+.phrase-thai{font-family:'Noto Sans Thai',sans-serif;font-size:20px;font-weight:600;color:var(--gold-light)}
+.phrase-roman{font-size:12px;color:var(--text-dim);font-style:italic;margin-top:2px}
+.phrase-eng{font-size:13px;color:var(--text-light);margin-top:5px}
+.phrase-note{font-size:11px;color:var(--text-dim);margin-top:3px;font-style:italic}
+.speak-btn{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:20px;background:rgba(212,168,69,0.15);border:1px solid rgba(212,168,69,0.3);color:var(--gold);font-size:11px;font-weight:600;cursor:pointer;margin-top:6px;transition:all 0.2s}
+.speak-btn:active{background:rgba(212,168,69,0.3)}
+.speak-btn svg{width:13px;height:13px}
+.pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.pill{padding:7px 14px;border-radius:20px;background:var(--card-bg);border:1px solid var(--card-border);color:var(--text-dim);font-family:inherit;font-size:11px;font-weight:600;cursor:pointer;transition:all 0.2s}
+.pill.active{background:rgba(212,168,69,0.2);border-color:var(--gold);color:var(--gold)}
+.lotus{text-align:center;font-size:28px;opacity:0.3;margin:24px 0 8px}
+.tone-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.tone-row:last-child{border-bottom:none}
+.tone-mark{width:40px;height:40px;border-radius:10px;background:rgba(212,168,69,0.12);display:flex;align-items:center;justify-content:center;font-family:'Noto Sans Thai',sans-serif;font-size:20px;color:var(--gold-light);flex-shrink:0}
+.tone-info{flex:1}
+.tone-name{font-size:13px;font-weight:600;color:var(--white)}
+.tone-desc{font-size:11px;color:var(--text-dim);margin-top:2px}
+/* Grammar styles */
+.grammar-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:20px;margin-bottom:14px}
+.grammar-card h3{font-size:16px;font-weight:700;color:var(--gold-light);margin-bottom:10px;font-family:'Noto Sans Thai','Outfit',sans-serif}
+.grammar-card p{font-size:13px;color:var(--text-light);line-height:1.7;margin-bottom:8px}
+.grammar-card p:last-child{margin-bottom:0}
+.grammar-card .gl{font-size:12px;color:var(--text-dim);font-style:italic;margin-bottom:6px}
+.example-box{background:rgba(212,168,69,0.08);border:1px solid rgba(212,168,69,0.15);border-radius:12px;padding:14px 16px;margin:10px 0}
+.example-box .ex-thai{font-family:'Noto Sans Thai',sans-serif;font-size:18px;font-weight:600;color:var(--gold-light)}
+.example-box .ex-roman{font-size:12px;color:var(--text-dim);font-style:italic;margin-top:2px}
+.example-box .ex-eng{font-size:13px;color:var(--white);margin-top:4px}
+.example-box .ex-literal{font-size:11px;color:var(--text-dim);margin-top:2px}
+.compare-box{display:flex;gap:10px;margin:10px 0}
+.compare-box .cb{flex:1;border-radius:10px;padding:12px;font-size:12px;line-height:1.5}
+.compare-box .cb-en{background:rgba(45,27,105,0.3);border:1px solid rgba(45,27,105,0.5);color:var(--text-light)}
+.compare-box .cb-th{background:rgba(212,168,69,0.1);border:1px solid rgba(212,168,69,0.2);color:var(--gold-light)}
+.compare-box .cb-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;opacity:0.6}
+.grammar-note{background:rgba(192,57,43,0.1);border:1px solid rgba(192,57,43,0.2);border-radius:10px;padding:12px 14px;margin:10px 0;font-size:12px;color:var(--text-light);line-height:1.6}
+.grammar-note strong{color:var(--temple-red-light)}
+.grammar-tip{background:rgba(39,174,96,0.1);border:1px solid rgba(39,174,96,0.2);border-radius:10px;padding:12px 14px;margin:10px 0;font-size:12px;color:var(--text-light);line-height:1.6}
+.grammar-tip strong{color:var(--success)}
+.scroll-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:14px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.scroll-tabs::-webkit-scrollbar{display:none}
+.scroll-tabs .pill{white-space:nowrap;flex-shrink:0}
 </style>
 </head>
 <body>
-
 <div class="header thai-border">
   <h1>Learn Thai</h1>
   <div class="thai-title">เรียนภาษาไทย</div>
 </div>
-
 <div class="content">
 
-  <!-- HOME -->
-  <div class="page active" id="page-home">
-    <div class="section-title">Lessons</div>
-    <div class="card" onclick="openLesson('greetings')">
-      <div class="card-row">
-        <div class="card-icon gold">🙏</div>
-        <div><div class="card-label">Greetings & Basics</div><div class="card-sub">สวัสดี — Essential first words</div></div>
-      </div>
-    </div>
-    <div class="card" onclick="openLesson('numbers')">
-      <div class="card-row">
-        <div class="card-icon red">🔢</div>
-        <div><div class="card-label">Numbers 0–10</div><div class="card-sub">ศูนย์ ถึง สิบ — Count in Thai</div></div>
-      </div>
-    </div>
-    <div class="card" onclick="openLesson('food')">
-      <div class="card-row">
-        <div class="card-icon gold">🍜</div>
-        <div><div class="card-label">Food & Ordering</div><div class="card-sub">อาหาร — Eat like a local</div></div>
-      </div>
-    </div>
-    <div class="card" onclick="openLesson('family')">
-      <div class="card-row">
-        <div class="card-icon blue">👨‍👩‍👧</div>
-        <div><div class="card-label">Family & People</div><div class="card-sub">ครอบครัว — Talk about loved ones</div></div>
-      </div>
-    </div>
-    <div class="card" onclick="openLesson('travel')">
-      <div class="card-row">
-        <div class="card-icon red">🗺️</div>
-        <div><div class="card-label">Travel & Directions</div><div class="card-sub">เดินทาง — Get around</div></div>
-      </div>
-    </div>
-
-    <div class="section-title">Reference</div>
-    <div class="card" onclick="showPage('page-tones')">
-      <div class="card-row">
-        <div class="card-icon blue">🎵</div>
-        <div><div class="card-label">Thai Tones Guide</div><div class="card-sub">The 5 tones that change meaning</div></div>
-      </div>
-    </div>
-    <div class="card" onclick="showPage('page-tips')">
-      <div class="card-row">
-        <div class="card-icon gold">💡</div>
-        <div><div class="card-label">Survival Tips</div><div class="card-sub">Polite particles, culture notes</div></div>
-      </div>
-    </div>
-    <div class="lotus">🪷</div>
+<!-- ============ HOME ============ -->
+<div class="page active" id="page-home">
+  <div class="section-title">Core Lessons</div>
+  <div id="home-lessons"></div>
+  <div class="section-title">Reference</div>
+  <div class="card" onclick="showPage('page-tones')">
+    <div class="card-row"><div class="card-icon blue">🎵</div><div><div class="card-label">Thai Tones Guide</div><div class="card-sub">The 5 tones that change meaning</div></div></div>
   </div>
+  <div class="card" onclick="showPage('page-tips')">
+    <div class="card-row"><div class="card-icon gold">💡</div><div><div class="card-label">Survival Tips</div><div class="card-sub">Polite particles, culture notes</div></div></div>
+  </div>
+  <div class="lotus">🪷</div>
+</div>
 
-  <!-- FLASHCARD LESSON -->
-  <div class="page" id="page-lesson">
-    <div class="lesson-header">
-      <button class="back-btn" onclick="showPage('page-home')">←</button>
-      <div class="lesson-title" id="lesson-title"></div>
-    </div>
-    <div class="flashcard-container">
-      <div class="flashcard" id="flashcard" onclick="flipCard()">
-        <div class="flashcard-face flashcard-front">
-          <div class="fc-thai" id="fc-thai"></div>
-          <div class="fc-romanized" id="fc-roman"></div>
-          <div class="fc-hint">Tap to reveal</div>
-        </div>
-        <div class="flashcard-face flashcard-back">
-          <div class="fc-english" id="fc-eng"></div>
-          <div class="fc-example" id="fc-example"></div>
-          <button class="speak-btn" id="fc-speak" onclick="event.stopPropagation(); speakCurrent()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.08"/></svg>
-            Listen
-          </button>
-        </div>
+<!-- ============ FLASHCARD LESSON ============ -->
+<div class="page" id="page-lesson">
+  <div class="lesson-header">
+    <button class="back-btn" onclick="showPage('page-home')">←</button>
+    <div class="lesson-title" id="lesson-title"></div>
+  </div>
+  <div class="flashcard-container">
+    <div class="flashcard" id="flashcard" onclick="flipCard()">
+      <div class="flashcard-face flashcard-front">
+        <div class="fc-thai" id="fc-thai"></div>
+        <div class="fc-romanized" id="fc-roman"></div>
+        <div class="fc-hint">Tap to reveal</div>
       </div>
-    </div>
-    <div class="card-nav">
-      <button onclick="prevCard()">← Prev</button>
-      <div class="counter"><span id="card-counter">1 / 10</span></div>
-      <button onclick="nextCard()">Next →</button>
+      <div class="flashcard-face flashcard-back">
+        <div class="fc-english" id="fc-eng"></div>
+        <div class="fc-example" id="fc-example"></div>
+        <button class="speak-btn" onclick="event.stopPropagation();speakCurrent()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.08"/></svg>Listen
+        </button>
+      </div>
     </div>
   </div>
-
-  <!-- QUIZ -->
-  <div class="page" id="page-quiz">
-    <div class="lesson-header">
-      <button class="back-btn" onclick="showPage('page-home')">←</button>
-      <div class="lesson-title">Quiz</div>
-    </div>
-    <div id="quiz-area">
-      <div class="pills" id="quiz-pills"></div>
-      <div class="quiz-progress"><div class="quiz-progress-bar" id="quiz-bar"></div></div>
-      <div class="quiz-question">
-        <div class="quiz-prompt" id="quiz-prompt">What does this mean?</div>
-        <div class="quiz-thai" id="quiz-thai"></div>
-        <div class="quiz-romanized" id="quiz-roman"></div>
-      </div>
-      <div class="quiz-options" id="quiz-options"></div>
-    </div>
-    <div class="quiz-score" id="quiz-score" style="display:none">
-      <div class="score-number" id="score-num"></div>
-      <div class="score-label">correct answers</div>
-      <div class="score-msg" id="score-msg"></div>
-      <button class="restart-btn" onclick="startQuiz(currentQuizCategory)">Try Again</button>
-      <br>
-      <button class="restart-btn" style="background:var(--card-bg);color:var(--gold);border:1px solid var(--card-border);margin-top:10px" onclick="showPage('page-home')">Back Home</button>
-    </div>
+  <div class="card-nav">
+    <button onclick="prevCard()">← Prev</button>
+    <div class="counter"><span id="card-counter"></span></div>
+    <button onclick="nextCard()">Next →</button>
   </div>
+</div>
 
-  <!-- PHRASES -->
-  <div class="page" id="page-phrases">
-    <div class="lesson-header">
-      <button class="back-btn" onclick="showPage('page-home')">←</button>
-      <div class="lesson-title">Phrase Book</div>
-    </div>
-    <div class="pills" id="phrase-pills"></div>
-    <div id="phrase-list"></div>
+<!-- ============ QUIZ ============ -->
+<div class="page" id="page-quiz">
+  <div class="lesson-header">
+    <button class="back-btn" onclick="showPage('page-home')">←</button>
+    <div class="lesson-title">Quiz</div>
   </div>
+  <div id="quiz-area">
+    <div class="scroll-tabs" id="quiz-pills"></div>
+    <div class="quiz-progress"><div class="quiz-progress-bar" id="quiz-bar"></div></div>
+    <div class="quiz-question">
+      <div class="quiz-prompt" id="quiz-prompt">What does this mean?</div>
+      <div class="quiz-thai" id="quiz-thai"></div>
+      <div class="quiz-romanized" id="quiz-roman"></div>
+    </div>
+    <div class="quiz-options" id="quiz-options"></div>
+  </div>
+  <div class="quiz-score" id="quiz-score" style="display:none">
+    <div class="score-number" id="score-num"></div>
+    <div class="score-label">correct answers</div>
+    <div class="score-msg" id="score-msg"></div>
+    <button class="restart-btn" onclick="startQuiz(currentQuizCat)">Try Again</button><br>
+    <button class="restart-btn secondary" style="margin-top:10px" onclick="showPage('page-home')">Back Home</button>
+  </div>
+</div>
 
-  <!-- TONES -->
-  <div class="page" id="page-tones">
-    <div class="lesson-header">
-      <button class="back-btn" onclick="showPage('page-home')">←</button>
-      <div class="lesson-title">Thai Tones</div>
-    </div>
-    <p style="font-size:14px;color:var(--text-dim);margin-bottom:16px;line-height:1.6;">
-      Thai has <strong style="color:var(--white)">5 tones</strong>. The same syllable said with a different tone can mean something completely different. This is the key to being understood!
-    </p>
-    <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:16px;">
-      <div class="tone-row">
-        <div class="tone-mark">กา</div>
-        <div class="tone-info">
-          <div class="tone-name">Mid Tone (สามัญ)</div>
-          <div class="tone-desc">Flat, neutral pitch — like stating a fact calmly. กา (gaa) = crow</div>
-        </div>
-      </div>
-      <div class="tone-row">
-        <div class="tone-mark">ก่า</div>
-        <div class="tone-info">
-          <div class="tone-name">Low Tone (เอก)</div>
-          <div class="tone-desc">Pitch drops low and stays — like a disappointed "oh."</div>
-        </div>
-      </div>
-      <div class="tone-row">
-        <div class="tone-mark">ก้า</div>
-        <div class="tone-info">
-          <div class="tone-name">Falling Tone (โท)</div>
-          <div class="tone-desc">Starts high, drops sharply — like an emphatic "No!"</div>
-        </div>
-      </div>
-      <div class="tone-row">
-        <div class="tone-mark">ก๊า</div>
-        <div class="tone-info">
-          <div class="tone-name">High Tone (ตรี)</div>
-          <div class="tone-desc">Pitch rises high — like an excited question.</div>
-        </div>
-      </div>
-      <div class="tone-row">
-        <div class="tone-mark">ก๋า</div>
-        <div class="tone-info">
-          <div class="tone-name">Rising Tone (จัตวา)</div>
-          <div class="tone-desc">Dips low then rises — like a surprised "Really?"</div>
-        </div>
-      </div>
-    </div>
-    <p style="font-size:13px;color:var(--text-dim);margin-top:16px;line-height:1.6;">
-      <strong style="color:var(--gold)">Classic example:</strong> "ไหม" — <em>mái</em> (rising) = new, <em>mâi</em> (falling) = not, <em>máai</em> (high) = silk, <em>mǎai</em> (rising) = wood. Your wife can help you hear the differences!
-    </p>
-    <div class="lotus">🪷</div>
+<!-- ============ PHRASES ============ -->
+<div class="page" id="page-phrases">
+  <div class="lesson-header">
+    <button class="back-btn" onclick="showPage('page-home')">←</button>
+    <div class="lesson-title">Phrase Book</div>
   </div>
+  <div class="scroll-tabs" id="phrase-pills"></div>
+  <div id="phrase-list"></div>
+</div>
 
-  <!-- TIPS -->
-  <div class="page" id="page-tips">
-    <div class="lesson-header">
-      <button class="back-btn" onclick="showPage('page-home')">←</button>
-      <div class="lesson-title">Survival Tips</div>
-    </div>
-    <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:20px;margin-bottom:14px;">
-      <div style="font-size:16px;font-weight:700;color:var(--gold-light);margin-bottom:8px;">🙏 ครับ / ค่ะ — The Polite Particles</div>
-      <p style="font-size:14px;color:var(--text-light);line-height:1.6;">
-        As a <strong>male</strong>, add <strong style="color:var(--gold)">ครับ (kráp)</strong> to the end of sentences to be polite. Your wife uses <strong style="color:var(--gold)">ค่ะ (kâ)</strong>. This is the single easiest way to sound polite and respectful.
-      </p>
-    </div>
-    <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:20px;margin-bottom:14px;">
-      <div style="font-size:16px;font-weight:700;color:var(--gold-light);margin-bottom:8px;">😊 Smile — It Goes Far</div>
-      <p style="font-size:14px;color:var(--text-light);line-height:1.6;">
-        Thailand is called the "Land of Smiles." Even if your Thai is rough, a smile + attempt goes a very long way. Thai people genuinely appreciate any effort to speak their language.
-      </p>
-    </div>
-    <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:20px;margin-bottom:14px;">
-      <div style="font-size:16px;font-weight:700;color:var(--gold-light);margin-bottom:8px;">🌶️ Ordering Food Hack</div>
-      <p style="font-size:14px;color:var(--text-light);line-height:1.6;">
-        Say <strong style="color:var(--gold)">ไม่เผ็ด (mâi pèt)</strong> for "not spicy" or <strong style="color:var(--gold)">เผ็ดนิดหน่อย (pèt nít nòi)</strong> for "a little spicy." Thai spicy is no joke!
-      </p>
-    </div>
-    <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:20px;margin-bottom:14px;">
-      <div style="font-size:16px;font-weight:700;color:var(--gold-light);margin-bottom:8px;">🗣️ No Verb Conjugation!</div>
-      <p style="font-size:14px;color:var(--text-light);line-height:1.6;">
-        Thai verbs don't change for tense, person, or number. "Go" is always <strong style="color:var(--gold)">ไป (bpai)</strong> whether it's I go, he went, or we will go. Context does the heavy lifting.
-      </p>
-    </div>
-    <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:20px;">
-      <div style="font-size:16px;font-weight:700;color:var(--gold-light);margin-bottom:8px;">👑 Pronouns Are Flexible</div>
-      <p style="font-size:14px;color:var(--text-light);line-height:1.6;">
-        Use <strong style="color:var(--gold)">ผม (pǒm)</strong> for "I/me" as a male. With your wife you can use <strong style="color:var(--gold)">เธอ (ter)</strong> for "you" in a familiar way. In casual speech, pronouns are often dropped entirely.
-      </p>
-    </div>
-    <div class="lotus">🪷</div>
+<!-- ============ GRAMMAR ============ -->
+<div class="page" id="page-grammar">
+  <div class="lesson-header">
+    <button class="back-btn" onclick="showPage('page-home')">←</button>
+    <div class="lesson-title">Grammar</div>
   </div>
+  <div class="scroll-tabs" id="grammar-pills"></div>
+  <div id="grammar-content"></div>
+</div>
+
+<!-- ============ TONES ============ -->
+<div class="page" id="page-tones">
+  <div class="lesson-header">
+    <button class="back-btn" onclick="showPage('page-home')">←</button>
+    <div class="lesson-title">Thai Tones</div>
+  </div>
+  <p style="font-size:13px;color:var(--text-dim);margin-bottom:14px;line-height:1.6">Thai has <strong style="color:var(--white)">5 tones</strong>. The same syllable with a different tone means something completely different. This is the key to being understood!</p>
+  <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:14px">
+    <div class="tone-row"><div class="tone-mark">กา</div><div class="tone-info"><div class="tone-name">Mid Tone (สามัญ)</div><div class="tone-desc">Flat, neutral pitch — like stating a fact calmly. กา (gaa) = crow</div></div></div>
+    <div class="tone-row"><div class="tone-mark">ก่า</div><div class="tone-info"><div class="tone-name">Low Tone (เอก)</div><div class="tone-desc">Pitch drops low and stays — like a disappointed "oh."</div></div></div>
+    <div class="tone-row"><div class="tone-mark">ก้า</div><div class="tone-info"><div class="tone-name">Falling Tone (โท)</div><div class="tone-desc">Starts high, drops sharply — like an emphatic "No!"</div></div></div>
+    <div class="tone-row"><div class="tone-mark">ก๊า</div><div class="tone-info"><div class="tone-name">High Tone (ตรี)</div><div class="tone-desc">Pitch rises high — like an excited question.</div></div></div>
+    <div class="tone-row"><div class="tone-mark">ก๋า</div><div class="tone-info"><div class="tone-name">Rising Tone (จัตวา)</div><div class="tone-desc">Dips low then rises — like a surprised "Really?"</div></div></div>
+  </div>
+  <p style="font-size:12px;color:var(--text-dim);margin-top:14px;line-height:1.6"><strong style="color:var(--gold)">Classic example:</strong> "ไหม" — <em>mái</em> (rising) = new, <em>mâi</em> (falling) = not, <em>máai</em> (high) = silk, <em>mǎai</em> (rising) = wood. Your wife can help you hear the differences!</p>
+  <div class="lotus">🪷</div>
+</div>
+
+<!-- ============ TIPS ============ -->
+<div class="page" id="page-tips">
+  <div class="lesson-header">
+    <button class="back-btn" onclick="showPage('page-home')">←</button>
+    <div class="lesson-title">Survival Tips</div>
+  </div>
+  <div class="grammar-card"><h3>🙏 ครับ / ค่ะ — Polite Particles</h3><p>As a <strong style="color:var(--gold)">male</strong>, add <strong style="color:var(--gold)">ครับ (kráp)</strong> to the end of sentences. Your wife uses <strong style="color:var(--gold)">ค่ะ (kâ)</strong>. This is the single easiest way to sound polite and respectful — use it with everyone.</p></div>
+  <div class="grammar-card"><h3>😊 Smile — It Goes Far</h3><p>Thailand is called the "Land of Smiles." Even rough Thai + a smile goes a very long way. Thai people genuinely appreciate any effort to speak their language.</p></div>
+  <div class="grammar-card"><h3>🌶️ Ordering Food Hack</h3><p>Say <strong style="color:var(--gold)">ไม่เผ็ด (mâi pèt)</strong> for "not spicy" or <strong style="color:var(--gold)">เผ็ดนิดหน่อย (pèt nít nòi)</strong> for "a little spicy." Thai spicy is no joke!</p></div>
+  <div class="grammar-card"><h3>🗣️ No Verb Conjugation!</h3><p>Thai verbs never change for tense, person, or number. "Go" is always <strong style="color:var(--gold)">ไป (bpai)</strong>. Context and time words do the heavy lifting.</p></div>
+  <div class="grammar-card"><h3>👑 Pronouns Are Flexible</h3><p>Use <strong style="color:var(--gold)">ผม (pǒm)</strong> for "I/me" as a male. With your wife, use <strong style="color:var(--gold)">เธอ (ter)</strong> for "you" informally. In casual speech, pronouns are often dropped entirely.</p></div>
+  <div class="grammar-card"><h3>🔢 555 = LOL</h3><p>The number 5 in Thai is <strong style="color:var(--gold)">ห้า (hâa)</strong>. So 555 sounds like "hahaha" — Thai people text this instead of "LOL."</p></div>
+  <div class="grammar-card"><h3>🙏 The Wai</h3><p>The traditional Thai greeting — palms pressed together at chest level with a slight bow. The higher the hands, the more respect shown. Don't wai to children or service staff — they'll wai you first.</p></div>
+  <div class="lotus">🪷</div>
+</div>
 
 </div>
 
-<!-- NAV -->
+<!-- ============ NAV ============ -->
 <nav class="nav">
   <button class="nav-btn active" id="nav-home" onclick="showPage('page-home')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    HOME
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>HOME
   </button>
   <button class="nav-btn" id="nav-phrases" onclick="openPhrases()">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-    PHRASES
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>PHRASES
+  </button>
+  <button class="nav-btn" id="nav-grammar" onclick="openGrammar()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>GRAMMAR
   </button>
   <button class="nav-btn" id="nav-quiz" onclick="openQuiz()">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-    QUIZ
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>QUIZ
   </button>
 </nav>
 
 <script>
+// ============================= DATA =============================
 const lessons = {
-  greetings: {
-    title: 'Greetings & Basics',
-    cards: [
-      { thai:'สวัสดี', roman:'sà-wàt-dee', eng:'Hello / Goodbye', example:'สวัสดีครับ (sà-wàt-dee kráp) — Hello! (polite, male)' },
-      { thai:'ครับ', roman:'kráp', eng:'Polite particle (male)', example:'Added to end of sentences for politeness' },
-      { thai:'ขอบคุณ', roman:'kòp-kun', eng:'Thank you', example:'ขอบคุณครับ (kòp-kun kráp) — Thank you!' },
-      { thai:'ใช่', roman:'châi', eng:'Yes / Correct', example:'ใช่ครับ (châi kráp) — Yes!' },
-      { thai:'ไม่', roman:'mâi', eng:'No / Not', example:'ไม่ครับ (mâi kráp) — No.' },
-      { thai:'ขอโทษ', roman:'kǒr-tôht', eng:'Sorry / Excuse me', example:'ขอโทษครับ (kǒr-tôht kráp) — Sorry!' },
-      { thai:'ไม่เป็นไร', roman:'mâi bpen rai', eng:"It's okay / No problem", example:'Thai philosophy in 3 words — "never mind"' },
-      { thai:'ผม', roman:'pǒm', eng:'I / Me (male)', example:'ผมชื่อ... (pǒm chêu...) — My name is...' },
-      { thai:'คุณ', roman:'kun', eng:'You (polite)', example:'คุณชื่ออะไร (kun chêu à-rai) — What is your name?' },
-      { thai:'สบายดี', roman:'sà-baai dee', eng:'I\'m fine / How are you?', example:'สบายดีไหม? (sà-baai dee mǎi?) — How are you?' },
-    ]
-  },
-  numbers: {
-    title: 'Numbers 0–10',
-    cards: [
-      { thai:'ศูนย์', roman:'sǔun', eng:'0 — Zero', example:'Used in phone numbers and prices' },
-      { thai:'หนึ่ง', roman:'nèung', eng:'1 — One', example:'หนึ่งชิ้น (nèung chín) — one piece' },
-      { thai:'สอง', roman:'sǒng', eng:'2 — Two', example:'สองคน (sǒng kon) — two people' },
-      { thai:'สาม', roman:'sǎam', eng:'3 — Three', example:'สามวัน (sǎam wan) — three days' },
-      { thai:'สี่', roman:'sìi', eng:'4 — Four', example:'' },
-      { thai:'ห้า', roman:'hâa', eng:'5 — Five', example:'555 = "hahaha" in Thai internet slang!' },
-      { thai:'หก', roman:'hòk', eng:'6 — Six', example:'' },
-      { thai:'เจ็ด', roman:'jèt', eng:'7 — Seven', example:'' },
-      { thai:'แปด', roman:'bpàet', eng:'8 — Eight', example:'' },
-      { thai:'เก้า', roman:'gâo', eng:'9 — Nine', example:'' },
-      { thai:'สิบ', roman:'sìp', eng:'10 — Ten', example:'สิบบาท (sìp bàat) — ten baht' },
-    ]
-  },
-  food: {
-    title: 'Food & Ordering',
-    cards: [
-      { thai:'อร่อย', roman:'à-ròi', eng:'Delicious!', example:'อร่อยมาก! (à-ròi mâak!) — Very delicious!' },
-      { thai:'ข้าว', roman:'kâao', eng:'Rice', example:'The foundation of every Thai meal' },
-      { thai:'น้ำ', roman:'nám', eng:'Water', example:'ขอน้ำครับ (kǒr nám kráp) — Water please' },
-      { thai:'เผ็ด', roman:'pèt', eng:'Spicy', example:'เผ็ดไหม? (pèt mǎi?) — Is it spicy?' },
-      { thai:'ไม่เผ็ด', roman:'mâi pèt', eng:'Not spicy', example:'ขอไม่เผ็ดครับ — Not spicy please' },
-      { thai:'อาหาร', roman:'aa-hǎan', eng:'Food', example:'อาหารไทย (aa-hǎan tai) — Thai food' },
-      { thai:'เช็คบิล', roman:'chék bin', eng:'Check please', example:'เช็คบิลครับ! — Check please!' },
-      { thai:'ผัดไทย', roman:'pàt tai', eng:'Pad Thai', example:'Thailand\'s most famous dish' },
-      { thai:'แกง', roman:'gaeng', eng:'Curry', example:'แกงเขียวหวาน — Green curry' },
-      { thai:'เบียร์', roman:'bia', eng:'Beer', example:'ขอเบียร์ครับ (kǒr bia kráp) — Beer please!' },
-    ]
-  },
-  family: {
-    title: 'Family & People',
-    cards: [
-      { thai:'ครอบครัว', roman:'krôp-krua', eng:'Family', example:'' },
-      { thai:'ภรรยา', roman:'pan-rá-yaa', eng:'Wife', example:'ภรรยาผม (pan-rá-yaa pǒm) — my wife' },
-      { thai:'สามี', roman:'sǎa-mee', eng:'Husband', example:'' },
-      { thai:'แม่', roman:'mâe', eng:'Mother / Mom', example:'' },
-      { thai:'พ่อ', roman:'pôr', eng:'Father / Dad', example:'' },
-      { thai:'ลูก', roman:'lûuk', eng:'Child', example:'ลูกชาย (lûuk chaai) — son / ลูกสาว (lûuk sǎao) — daughter' },
-      { thai:'พี่', roman:'pêe', eng:'Older sibling', example:'Also used for anyone slightly older — very common' },
-      { thai:'น้อง', roman:'nóng', eng:'Younger sibling', example:'Also used affectionately for someone younger' },
-      { thai:'เพื่อน', roman:'pêuan', eng:'Friend', example:'เพื่อนผม (pêuan pǒm) — my friend' },
-      { thai:'รัก', roman:'rák', eng:'Love', example:'ผมรักคุณ (pǒm rák kun) — I love you' },
-    ]
-  },
-  travel: {
-    title: 'Travel & Directions',
-    cards: [
-      { thai:'ไป', roman:'bpai', eng:'Go', example:'ไปไหน? (bpai nǎi?) — Where are you going?' },
-      { thai:'มา', roman:'maa', eng:'Come', example:'มาที่นี่ (maa têe nêe) — Come here' },
-      { thai:'ที่ไหน', roman:'têe-nǎi', eng:'Where?', example:'ห้องน้ำอยู่ที่ไหน? — Where is the bathroom?' },
-      { thai:'เท่าไหร่', roman:'tâo-rài', eng:'How much?', example:'นี่เท่าไหร่? (nêe tâo-rài?) — How much is this?' },
-      { thai:'ซ้าย', roman:'sáai', eng:'Left', example:'' },
-      { thai:'ขวา', roman:'kwǎa', eng:'Right', example:'' },
-      { thai:'ตรงไป', roman:'dtrong bpai', eng:'Go straight', example:'' },
-      { thai:'ใกล้', roman:'glâi', eng:'Near', example:'ใกล้ไหม? (glâi mǎi?) — Is it near?' },
-      { thai:'ไกล', roman:'glai', eng:'Far', example:'Same consonants as "near" but different tone!' },
-      { thai:'โรงแรม', roman:'rohng raem', eng:'Hotel', example:'' },
-    ]
-  }
+  greetings: { title:'Greetings & Basics', icon:'🙏', color:'gold', sub:'สวัสดี — Essential first words', cards:[
+    {thai:'สวัสดี',roman:'sà-wàt-dee',eng:'Hello / Goodbye',example:'สวัสดีครับ (sà-wàt-dee kráp) — Hello! (polite, male)'},
+    {thai:'ครับ',roman:'kráp',eng:'Polite particle (male)',example:'Add to end of any sentence for politeness'},
+    {thai:'ขอบคุณ',roman:'kòp-kun',eng:'Thank you',example:'ขอบคุณครับ (kòp-kun kráp) — Thank you!'},
+    {thai:'ใช่',roman:'châi',eng:'Yes / Correct',example:'ใช่ครับ (châi kráp) — Yes!'},
+    {thai:'ไม่',roman:'mâi',eng:'No / Not',example:'ไม่ครับ (mâi kráp) — No.'},
+    {thai:'ขอโทษ',roman:'kǒr-tôht',eng:'Sorry / Excuse me',example:'ขอโทษครับ (kǒr-tôht kráp)'},
+    {thai:'ไม่เป็นไร',roman:'mâi bpen rai',eng:"It's okay / Never mind",example:'Thai philosophy in 3 words'},
+    {thai:'ผม',roman:'pǒm',eng:'I / Me (male)',example:'ผมชื่อ... (pǒm chêu...) — My name is...'},
+    {thai:'คุณ',roman:'kun',eng:'You (polite)',example:'คุณชื่ออะไร? — What is your name?'},
+    {thai:'สบายดี',roman:'sà-baai dee',eng:"I'm fine / How are you?",example:'สบายดีไหม? — How are you?'},
+    {thai:'ยินดีที่ได้รู้จัก',roman:'yin-dee têe dâi rúu-jàk',eng:'Nice to meet you',example:'Very polite introduction phrase'},
+    {thai:'ลาก่อน',roman:'laa gòn',eng:'Goodbye (formal)',example:'More formal than สวัสดี for goodbye'},
+  ]},
+  numbers: { title:'Numbers 0–10', icon:'🔢', color:'red', sub:'ศูนย์ ถึง สิบ — Count in Thai', cards:[
+    {thai:'ศูนย์',roman:'sǔun',eng:'0 — Zero',example:'Used in phone numbers and prices'},
+    {thai:'หนึ่ง',roman:'nèung',eng:'1 — One',example:'หนึ่งชิ้น (nèung chín) — one piece'},
+    {thai:'สอง',roman:'sǒng',eng:'2 — Two',example:'สองคน (sǒng kon) — two people'},
+    {thai:'สาม',roman:'sǎam',eng:'3 — Three',example:'สามวัน (sǎam wan) — three days'},
+    {thai:'สี่',roman:'sìi',eng:'4 — Four',example:''},
+    {thai:'ห้า',roman:'hâa',eng:'5 — Five',example:'555 = "hahaha" in Thai internet slang!'},
+    {thai:'หก',roman:'hòk',eng:'6 — Six',example:''},
+    {thai:'เจ็ด',roman:'jèt',eng:'7 — Seven',example:''},
+    {thai:'แปด',roman:'bpàet',eng:'8 — Eight',example:''},
+    {thai:'เก้า',roman:'gâo',eng:'9 — Nine',example:''},
+    {thai:'สิบ',roman:'sìp',eng:'10 — Ten',example:'สิบบาท (sìp bàat) — ten baht'},
+  ]},
+  daily: { title:'Daily Conversation', icon:'💬', color:'blue', sub:'พูดทุกวัน — Everyday talking', cards:[
+    {thai:'วันนี้',roman:'wan-née',eng:'Today',example:'วันนี้ทำอะไร? — What are you doing today?'},
+    {thai:'พรุ่งนี้',roman:'prûng-née',eng:'Tomorrow',example:'เจอกันพรุ่งนี้ — See you tomorrow'},
+    {thai:'เมื่อวาน',roman:'mêua-waan',eng:'Yesterday',example:''},
+    {thai:'ตอนนี้',roman:'dton-née',eng:'Now / Right now',example:'ตอนนี้อยู่ไหน? — Where are you now?'},
+    {thai:'รอ',roman:'ror',eng:'Wait',example:'รอแป๊บนะ (ror bpáep ná) — Wait a moment'},
+    {thai:'เร็ว',roman:'reo',eng:'Fast / Quick',example:'เร็วๆ (reo reo) — Hurry up'},
+    {thai:'ช้า',roman:'cháa',eng:'Slow',example:'พูดช้าๆ — Speak slowly'},
+    {thai:'ได้',roman:'dâi',eng:'Can / Yes / OK',example:'ได้ครับ — Sure / Can do'},
+    {thai:'ไม่ได้',roman:'mâi dâi',eng:"Can't / Didn't",example:'ไม่ได้ครับ — Can\'t do that'},
+    {thai:'ต้อง',roman:'dtông',eng:'Must / Have to',example:'ผมต้องไป — I have to go'},
+    {thai:'อยาก',roman:'yàak',eng:'Want to',example:'อยากกินอะไร? — What do you want to eat?'},
+    {thai:'ชอบ',roman:'chôp',eng:'Like',example:'ผมชอบอาหารไทย — I like Thai food'},
+    {thai:'ไม่ชอบ',roman:'mâi chôp',eng:"Don't like",example:''},
+    {thai:'รู้',roman:'rúu',eng:'Know (a fact)',example:'ไม่รู้ (mâi rúu) — I don\'t know'},
+    {thai:'เข้าใจ',roman:'kâo jai',eng:'Understand',example:'เข้าใจไหม? — Do you understand?'},
+    {thai:'ทำ',roman:'tam',eng:'Do / Make',example:'ทำอะไร? (tam à-rai?) — What are you doing?'},
+  ]},
+  food: { title:'Food & Ordering', icon:'🍜', color:'gold', sub:'อาหาร — Eat like a local', cards:[
+    {thai:'อร่อย',roman:'à-ròi',eng:'Delicious!',example:'อร่อยมาก! — Very delicious!'},
+    {thai:'ข้าว',roman:'kâao',eng:'Rice',example:'Foundation of every Thai meal'},
+    {thai:'น้ำ',roman:'nám',eng:'Water',example:'ขอน้ำครับ — Water please'},
+    {thai:'เผ็ด',roman:'pèt',eng:'Spicy',example:'เผ็ดไหม? — Is it spicy?'},
+    {thai:'ไม่เผ็ด',roman:'mâi pèt',eng:'Not spicy',example:'ขอไม่เผ็ดครับ — Not spicy please'},
+    {thai:'หวาน',roman:'wǎan',eng:'Sweet',example:'หวานไป — Too sweet'},
+    {thai:'เปรี้ยว',roman:'bprîao',eng:'Sour',example:'ส้มตำเปรี้ยว — sour papaya salad'},
+    {thai:'เค็ม',roman:'kem',eng:'Salty',example:''},
+    {thai:'อาหาร',roman:'aa-hǎan',eng:'Food',example:'อาหารไทย — Thai food'},
+    {thai:'เช็คบิล',roman:'chék bin',eng:'Check please',example:'เช็คบิลครับ!'},
+    {thai:'ผัดไทย',roman:'pàt tai',eng:'Pad Thai',example:'Thailand\'s famous stir-fried noodles'},
+    {thai:'ต้มยำ',roman:'dtôm yam',eng:'Tom Yum soup',example:'Hot and sour shrimp soup'},
+    {thai:'แกง',roman:'gaeng',eng:'Curry',example:'แกงเขียวหวาน — Green curry'},
+    {thai:'ส้มตำ',roman:'sôm dtam',eng:'Papaya salad',example:'Northeastern Thai classic'},
+    {thai:'เบียร์',roman:'bia',eng:'Beer',example:'ขอเบียร์ครับ — Beer please!'},
+    {thai:'กาแฟ',roman:'gaa-fae',eng:'Coffee',example:'กาแฟเย็น — Iced coffee'},
+    {thai:'ไข่',roman:'kài',eng:'Egg',example:'ข้าวผัดไข่ — Egg fried rice'},
+    {thai:'หมู',roman:'mǔu',eng:'Pork',example:'Most common meat in Thai cooking'},
+    {thai:'ไก่',roman:'gài',eng:'Chicken',example:'ข้าวมันไก่ — Chicken rice'},
+    {thai:'กุ้ง',roman:'gûng',eng:'Shrimp / Prawn',example:'ต้มยำกุ้ง — Tom Yum with shrimp'},
+    {thai:'ผัก',roman:'pàk',eng:'Vegetables',example:'ผัดผัก — Stir-fried vegetables'},
+    {thai:'อิ่ม',roman:'ìm',eng:'Full (not hungry)',example:'อิ่มแล้ว — I\'m full already'},
+    {thai:'หิว',roman:'hǐu',eng:'Hungry',example:'หิวข้าว — Hungry for rice/food'},
+  ]},
+  family: { title:'Family & People', icon:'👨‍👩‍👧', color:'blue', sub:'ครอบครัว — Talk about loved ones', cards:[
+    {thai:'ครอบครัว',roman:'krôp-krua',eng:'Family',example:''},
+    {thai:'ภรรยา',roman:'pan-rá-yaa',eng:'Wife',example:'ภรรยาผม — my wife'},
+    {thai:'สามี',roman:'sǎa-mee',eng:'Husband',example:''},
+    {thai:'แม่',roman:'mâe',eng:'Mother / Mom',example:''},
+    {thai:'พ่อ',roman:'pôr',eng:'Father / Dad',example:''},
+    {thai:'ลูก',roman:'lûuk',eng:'Child',example:'ลูกชาย (son) / ลูกสาว (daughter)'},
+    {thai:'พี่',roman:'pêe',eng:'Older sibling / elder',example:'Also used for anyone slightly older'},
+    {thai:'น้อง',roman:'nóng',eng:'Younger sibling',example:'Used affectionately for someone younger'},
+    {thai:'เพื่อน',roman:'pêuan',eng:'Friend',example:'เพื่อนผม — my friend'},
+    {thai:'รัก',roman:'rák',eng:'Love',example:'ผมรักคุณ — I love you'},
+    {thai:'ปู่',roman:'bpùu',eng:'Paternal grandfather',example:''},
+    {thai:'ย่า',roman:'yâa',eng:'Paternal grandmother',example:''},
+    {thai:'ตา',roman:'dtaa',eng:'Maternal grandfather',example:''},
+    {thai:'ยาย',roman:'yaai',eng:'Maternal grandmother',example:''},
+    {thai:'ลุง',roman:'lung',eng:'Uncle (older)',example:''},
+    {thai:'ป้า',roman:'bpâa',eng:'Aunt (older)',example:''},
+    {thai:'แต่งงาน',roman:'dtàeng ngaan',eng:'Married / Wedding',example:''},
+  ]},
+  shopping: { title:'Shopping & Money', icon:'🛒', color:'red', sub:'ซื้อของ — Buy things', cards:[
+    {thai:'เท่าไหร่',roman:'tâo-rài',eng:'How much?',example:'นี่เท่าไหร่? — How much is this?'},
+    {thai:'แพง',roman:'paeng',eng:'Expensive',example:'แพงไป! — Too expensive!'},
+    {thai:'ถูก',roman:'tùuk',eng:'Cheap',example:'ถูกมาก — Very cheap'},
+    {thai:'ลดได้ไหม',roman:'lót dâi mǎi',eng:'Can you give a discount?',example:'Essential for markets!'},
+    {thai:'ซื้อ',roman:'séu',eng:'Buy',example:'อยากซื้อ — I want to buy'},
+    {thai:'ขาย',roman:'kǎai',eng:'Sell',example:'ขายไหม? — Do you sell (this)?'},
+    {thai:'เงิน',roman:'ngern',eng:'Money',example:'Also means "silver"'},
+    {thai:'บาท',roman:'bàat',eng:'Baht (currency)',example:'ร้อยบาท — 100 baht'},
+    {thai:'ร้าน',roman:'ráan',eng:'Shop / Store',example:'ร้านอาหาร — restaurant'},
+    {thai:'ตลาด',roman:'dtà-làat',eng:'Market',example:'ตลาดนัด — weekend/night market'},
+    {thai:'ใหญ่',roman:'yài',eng:'Big / Large',example:'ไซส์ใหญ่ — large size'},
+    {thai:'เล็ก',roman:'lék',eng:'Small / Little',example:'ไซส์เล็ก — small size'},
+    {thai:'สี',roman:'sǐi',eng:'Color',example:'สีอะไร? — What color?'},
+    {thai:'ห้าง',roman:'hâang',eng:'Department store / Mall',example:'ไปห้าง — go to the mall'},
+    {thai:'ถุง',roman:'tǔng',eng:'Bag',example:'ไม่ต้องถุง — No bag needed'},
+  ]},
+  travel: { title:'Travel & Directions', icon:'🗺️', color:'gold', sub:'เดินทาง — Get around', cards:[
+    {thai:'ไป',roman:'bpai',eng:'Go',example:'ไปไหน? — Where are you going?'},
+    {thai:'มา',roman:'maa',eng:'Come',example:'มาที่นี่ — Come here'},
+    {thai:'ที่ไหน',roman:'têe-nǎi',eng:'Where?',example:'ห้องน้ำอยู่ที่ไหน? — Where is the bathroom?'},
+    {thai:'ซ้าย',roman:'sáai',eng:'Left',example:'เลี้ยวซ้าย — Turn left'},
+    {thai:'ขวา',roman:'kwǎa',eng:'Right',example:'เลี้ยวขวา — Turn right'},
+    {thai:'ตรงไป',roman:'dtrong bpai',eng:'Go straight',example:''},
+    {thai:'ใกล้',roman:'glâi',eng:'Near',example:'ใกล้ไหม? — Is it near?'},
+    {thai:'ไกล',roman:'glai',eng:'Far',example:'Same consonants as near, different tone!'},
+    {thai:'โรงแรม',roman:'rohng raem',eng:'Hotel',example:''},
+    {thai:'สนามบิน',roman:'sà-nǎam bin',eng:'Airport',example:'ไปสนามบิน — Go to the airport'},
+    {thai:'รถไฟฟ้า',roman:'rót fai fáa',eng:'BTS / Skytrain',example:'Bangkok\'s elevated train'},
+    {thai:'รถแท็กซี่',roman:'rót táek-sêe',eng:'Taxi',example:'เรียกแท็กซี่ — Call a taxi'},
+    {thai:'ตุ๊กตุ๊ก',roman:'dtúk dtúk',eng:'Tuk-tuk',example:'Iconic Thai 3-wheeled taxi'},
+    {thai:'ถนน',roman:'tà-nǒn',eng:'Road / Street',example:''},
+    {thai:'แผนที่',roman:'pǎen-têe',eng:'Map',example:'ดูแผนที่ — Look at the map'},
+    {thai:'จอด',roman:'jòt',eng:'Stop / Park',example:'จอดที่นี่ — Stop here'},
+    {thai:'กลับ',roman:'glàp',eng:'Return / Go back',example:'กลับบ้าน — Go home'},
+  ]},
+  feelings: { title:'Feelings & States', icon:'😊', color:'green', sub:'ความรู้สึก — Express yourself', cards:[
+    {thai:'ดีใจ',roman:'dee jai',eng:'Happy / Glad',example:'ดีใจมาก! — Very happy!'},
+    {thai:'เสียใจ',roman:'sǐa jai',eng:'Sad / Sorry',example:'เสียใจด้วย — I\'m sorry (sympathy)'},
+    {thai:'โกรธ',roman:'gròht',eng:'Angry',example:'อย่าโกรธ — Don\'t be angry'},
+    {thai:'กลัว',roman:'glua',eng:'Scared / Afraid',example:'อย่ากลัว — Don\'t be afraid'},
+    {thai:'เหนื่อย',roman:'nèuay',eng:'Tired',example:'เหนื่อยมาก — Very tired'},
+    {thai:'สนุก',roman:'sà-nùk',eng:'Fun / Enjoyable',example:'สนุกไหม? — Is it fun?'},
+    {thai:'เบื่อ',roman:'bèua',eng:'Bored',example:'เบื่อมาก — So bored'},
+    {thai:'ร้อน',roman:'rón',eng:'Hot (weather/feeling)',example:'ร้อนมาก — Very hot'},
+    {thai:'หนาว',roman:'nǎao',eng:'Cold',example:'หนาวไหม? — Are you cold?'},
+    {thai:'สบาย',roman:'sà-baai',eng:'Comfortable / Relaxed',example:'สบายดี — I\'m fine'},
+    {thai:'ดี',roman:'dee',eng:'Good',example:'ดีมาก! — Very good!'},
+    {thai:'ไม่ดี',roman:'mâi dee',eng:'Bad / Not good',example:''},
+    {thai:'คิดถึง',roman:'kít tǔeng',eng:'Miss (someone)',example:'คิดถึงมาก — Miss you a lot'},
+    {thai:'เจ็บ',roman:'jèp',eng:'Hurt / Pain',example:'เจ็บตรงไหน? — Where does it hurt?'},
+    {thai:'ป่วย',roman:'bpùay',eng:'Sick / Ill',example:'ผมป่วย — I\'m sick'},
+    {thai:'แข็งแรง',roman:'kǎeng raeng',eng:'Strong / Healthy',example:''},
+  ]},
+  home: { title:'Around the House', icon:'🏠', color:'blue', sub:'บ้าน — Home vocabulary', cards:[
+    {thai:'บ้าน',roman:'bâan',eng:'House / Home',example:'กลับบ้าน — Go home'},
+    {thai:'ห้อง',roman:'hông',eng:'Room',example:'ห้องนอน (bedroom) / ห้องน้ำ (bathroom)'},
+    {thai:'ห้องนอน',roman:'hông non',eng:'Bedroom',example:''},
+    {thai:'ห้องน้ำ',roman:'hông nám',eng:'Bathroom / Toilet',example:'ห้องน้ำอยู่ไหน? — Where\'s the bathroom?'},
+    {thai:'ห้องครัว',roman:'hông krua',eng:'Kitchen',example:''},
+    {thai:'ประตู',roman:'bprà-dtuu',eng:'Door',example:'เปิดประตู — Open the door'},
+    {thai:'หน้าต่าง',roman:'nâa dtàang',eng:'Window',example:''},
+    {thai:'เปิด',roman:'bpèrt',eng:'Open / Turn on',example:'เปิดไฟ — Turn on the light'},
+    {thai:'ปิด',roman:'bpìt',eng:'Close / Turn off',example:'ปิดไฟ — Turn off the light'},
+    {thai:'ร้อน',roman:'rón',eng:'Hot',example:'น้ำร้อน — hot water'},
+    {thai:'เย็น',roman:'yen',eng:'Cool / Cold',example:'น้ำเย็น — cold water'},
+    {thai:'นอน',roman:'non',eng:'Sleep / Lie down',example:'นอนหลับ — to sleep'},
+    {thai:'ตื่น',roman:'dtèun',eng:'Wake up',example:'ตื่นนอน — wake up (from sleep)'},
+    {thai:'อาบน้ำ',roman:'àap nám',eng:'Take a shower/bath',example:''},
+    {thai:'ซัก',roman:'sák',eng:'Wash (clothes)',example:'ซักผ้า — do laundry'},
+    {thai:'ทำความสะอาด',roman:'tam kwaam sà-àat',eng:'Clean',example:'ทำความสะอาดบ้าน — clean the house'},
+  ]},
+  time: { title:'Time & Days', icon:'📅', color:'red', sub:'เวลา — When things happen', cards:[
+    {thai:'เช้า',roman:'cháo',eng:'Morning',example:'ตอนเช้า — in the morning'},
+    {thai:'เที่ยง',roman:'tîang',eng:'Noon / Midday',example:''},
+    {thai:'บ่าย',roman:'bàai',eng:'Afternoon',example:'ตอนบ่าย — in the afternoon'},
+    {thai:'เย็น',roman:'yen',eng:'Evening',example:'ตอนเย็น — in the evening'},
+    {thai:'คืน',roman:'keun',eng:'Night',example:'คืนนี้ — tonight'},
+    {thai:'วันจันทร์',roman:'wan jan',eng:'Monday',example:''},
+    {thai:'วันอังคาร',roman:'wan ang-kaan',eng:'Tuesday',example:''},
+    {thai:'วันพุธ',roman:'wan pút',eng:'Wednesday',example:''},
+    {thai:'วันพฤหัสบดี',roman:'wan pá-réu-hàt',eng:'Thursday',example:''},
+    {thai:'วันศุกร์',roman:'wan sùk',eng:'Friday',example:''},
+    {thai:'วันเสาร์',roman:'wan sǎo',eng:'Saturday',example:''},
+    {thai:'วันอาทิตย์',roman:'wan aa-tít',eng:'Sunday',example:''},
+    {thai:'โมง',roman:'mohng',eng:'O\'clock',example:'สามโมง — 3 o\'clock'},
+    {thai:'นาที',roman:'naa-tee',eng:'Minute',example:'ห้านาที — 5 minutes'},
+    {thai:'ชั่วโมง',roman:'chûa mohng',eng:'Hour',example:'สองชั่วโมง — 2 hours'},
+  ]},
+  verbs: { title:'Common Verbs', icon:'🏃', color:'green', sub:'กริยา — Action words', cards:[
+    {thai:'กิน',roman:'gin',eng:'Eat',example:'กินข้าว — eat rice / eat a meal'},
+    {thai:'ดื่ม',roman:'dèum',eng:'Drink',example:'ดื่มน้ำ — drink water'},
+    {thai:'ไป',roman:'bpai',eng:'Go',example:'ไปเที่ยว — go out / travel'},
+    {thai:'มา',roman:'maa',eng:'Come',example:'มานี่ — come here'},
+    {thai:'ดู',roman:'duu',eng:'Watch / Look',example:'ดูหนัง — watch a movie'},
+    {thai:'ฟัง',roman:'fang',eng:'Listen',example:'ฟังเพลง — listen to music'},
+    {thai:'พูด',roman:'pûut',eng:'Speak / Say',example:'พูดไทย — speak Thai'},
+    {thai:'อ่าน',roman:'àan',eng:'Read',example:'อ่านหนังสือ — read a book'},
+    {thai:'เขียน',roman:'kǐan',eng:'Write',example:''},
+    {thai:'ให้',roman:'hâi',eng:'Give',example:'ให้ผม — give me'},
+    {thai:'เอา',roman:'ao',eng:'Take / Want',example:'เอาอันนี้ — I\'ll take this one'},
+    {thai:'ซื้อ',roman:'séu',eng:'Buy',example:'ซื้ออะไร? — What are you buying?'},
+    {thai:'ขาย',roman:'kǎai',eng:'Sell',example:''},
+    {thai:'นั่ง',roman:'nâng',eng:'Sit',example:'นั่งตรงนี้ — Sit here'},
+    {thai:'ยืน',roman:'yeun',eng:'Stand',example:''},
+    {thai:'เดิน',roman:'dern',eng:'Walk',example:'เดินไป — walk there'},
+    {thai:'วิ่ง',roman:'wîng',eng:'Run',example:''},
+    {thai:'ทำงาน',roman:'tam ngaan',eng:'Work',example:'ไปทำงาน — go to work'},
+    {thai:'พักผ่อน',roman:'pák pòn',eng:'Rest / Relax',example:''},
+    {thai:'ช่วย',roman:'chûay',eng:'Help',example:'ช่วยหน่อย — Help me please'},
+  ]},
+  places: { title:'Places & Locations', icon:'📍', color:'gold', sub:'สถานที่ — Where to go', cards:[
+    {thai:'วัด',roman:'wát',eng:'Temple',example:'ไปวัด — Go to the temple'},
+    {thai:'โรงพยาบาล',roman:'rohng pá-yaa-baan',eng:'Hospital',example:''},
+    {thai:'ธนาคาร',roman:'tá-naa-kaan',eng:'Bank',example:''},
+    {thai:'โรงเรียน',roman:'rohng rian',eng:'School',example:''},
+    {thai:'ร้านอาหาร',roman:'ráan aa-hǎan',eng:'Restaurant',example:''},
+    {thai:'ร้านกาแฟ',roman:'ráan gaa-fae',eng:'Coffee shop / Café',example:''},
+    {thai:'ซุปเปอร์มาร์เก็ต',roman:'súp-bpèr-maa-gét',eng:'Supermarket',example:''},
+    {thai:'ร้านสะดวกซื้อ',roman:'ráan sà-dùak séu',eng:'Convenience store',example:'7-Eleven is everywhere!'},
+    {thai:'สถานีรถไฟ',roman:'sà-tǎa-nee rót fai',eng:'Train station',example:''},
+    {thai:'ชายหาด',roman:'chaai hàat',eng:'Beach',example:'ไปชายหาด — Go to the beach'},
+    {thai:'ภูเขา',roman:'puu kǎo',eng:'Mountain',example:''},
+    {thai:'ทะเล',roman:'tá-le',eng:'Sea / Ocean',example:''},
+    {thai:'สวน',roman:'sǔan',eng:'Garden / Park',example:'สวนสาธารณะ — public park'},
+    {thai:'ตลาดนัด',roman:'dtà-làat nát',eng:'Weekend/Night market',example:'Thai market culture is amazing'},
+  ]},
+  descriptions: { title:'Descriptions & Colors', icon:'🎨', color:'blue', sub:'คำอธิบาย — Describe things', cards:[
+    {thai:'สวย',roman:'sǔay',eng:'Beautiful',example:'สวยมาก — Very beautiful'},
+    {thai:'หล่อ',roman:'lòr',eng:'Handsome',example:'For men'},
+    {thai:'น่ารัก',roman:'nâa rák',eng:'Cute / Lovable',example:'Very commonly used'},
+    {thai:'ใหม่',roman:'mài',eng:'New',example:'รถใหม่ — new car'},
+    {thai:'เก่า',roman:'gào',eng:'Old (things)',example:'บ้านเก่า — old house'},
+    {thai:'ดี',roman:'dee',eng:'Good',example:'คนดี — good person'},
+    {thai:'สูง',roman:'sǔung',eng:'Tall / High',example:''},
+    {thai:'เตี้ย',roman:'dtîa',eng:'Short (height)',example:''},
+    {thai:'อ้วน',roman:'ûan',eng:'Fat',example:'Use carefully! 😄'},
+    {thai:'ผอม',roman:'pǒm',eng:'Thin / Skinny',example:''},
+    {thai:'แดง',roman:'daeng',eng:'Red',example:'สีแดง — red color'},
+    {thai:'น้ำเงิน',roman:'nám ngern',eng:'Blue',example:'Literally "water-silver"'},
+    {thai:'เขียว',roman:'kǐao',eng:'Green',example:''},
+    {thai:'เหลือง',roman:'lěuang',eng:'Yellow',example:''},
+    {thai:'ขาว',roman:'kǎao',eng:'White',example:''},
+    {thai:'ดำ',roman:'dam',eng:'Black',example:''},
+  ]},
+  polite: { title:'Polite & Social', icon:'🙏', color:'green', sub:'มารยาท — Good manners', cards:[
+    {thai:'ขอ',roman:'kǒr',eng:'May I have / Please',example:'ขอน้ำ — May I have water'},
+    {thai:'ขอบคุณมาก',roman:'kòp-kun mâak',eng:'Thank you very much',example:''},
+    {thai:'ด้วยความยินดี',roman:'dûay kwaam yin dee',eng:'You\'re welcome / With pleasure',example:'Formal'},
+    {thai:'ไม่เป็นไร',roman:'mâi bpen rai',eng:'You\'re welcome / Never mind',example:'More casual and common'},
+    {thai:'เชิญ',roman:'chern',eng:'Please (invitation)',example:'เชิญนั่ง — Please sit down'},
+    {thai:'ขอโทษ',roman:'kǒr tôht',eng:'Excuse me / Sorry',example:'Getting attention politely'},
+    {thai:'ยินดี',roman:'yin dee',eng:'Glad / Pleased',example:'ยินดีที่ได้รู้จัก — Nice to meet you'},
+    {thai:'ไม่เป็นไร',roman:'mâi bpen rai',eng:'It\'s nothing / No worries',example:'The most Thai phrase ever'},
+    {thai:'สวัสดีปีใหม่',roman:'sà-wàt-dee bpee mài',eng:'Happy New Year',example:''},
+    {thai:'โชคดี',roman:'chôhk dee',eng:'Good luck',example:''},
+    {thai:'ไว้เจอกัน',roman:'wái jer gan',eng:'See you later',example:'Casual goodbye'},
+    {thai:'ระวัง',roman:'rá-wang',eng:'Be careful',example:'ระวังนะ — Be careful, okay?'},
+  ]},
 };
 
+// ============================= PHRASES =============================
 const phrases = {
-  essential: [
-    { thai:'สวัสดีครับ', roman:'sà-wàt-dee kráp', eng:'Hello (male speaker)', note:'The most important phrase' },
-    { thai:'ขอบคุณครับ', roman:'kòp-kun kráp', eng:'Thank you', note:'' },
-    { thai:'ไม่เป็นไร', roman:'mâi bpen rai', eng:'No problem / Never mind', note:'Core Thai philosophy' },
-    { thai:'ผมไม่เข้าใจ', roman:'pǒm mâi kâo jai', eng:'I don\'t understand', note:'' },
-    { thai:'พูดช้าๆ ได้ไหม', roman:'pûut cháa cháa dâi mǎi', eng:'Can you speak slowly?', note:'Very useful when learning!' },
-    { thai:'ภาษาไทยนิดหน่อย', roman:'paa-sǎa tai nít nòi', eng:'I speak a little Thai', note:'People will love hearing this' },
-  ],
-  romantic: [
-    { thai:'ผมรักคุณ', roman:'pǒm rák kun', eng:'I love you (male speaker)', note:'รัก (rák) = love' },
-    { thai:'คิดถึง', roman:'kít tǔeng', eng:'I miss you', note:'Very commonly used' },
-    { thai:'ที่รัก', roman:'têe rák', eng:'Darling / Sweetheart', note:'Term of endearment' },
-    { thai:'สวยมาก', roman:'sǔay mâak', eng:'Very beautiful', note:'Great compliment for your wife' },
-    { thai:'หิวไหม', roman:'hǐu mǎi', eng:'Are you hungry?', note:'Showing you care, Thai-style' },
-    { thai:'ไปเที่ยวกัน', roman:'bpai tîao gan', eng:'Let\'s go out together', note:'' },
-  ],
-  emergency: [
-    { thai:'ช่วยด้วย', roman:'chûay dûay', eng:'Help!', note:'' },
-    { thai:'อันตราย', roman:'an-dtà-raai', eng:'Danger!', note:'' },
-    { thai:'ไม่สบาย', roman:'mâi sà-baai', eng:'I\'m not feeling well', note:'Literally "not comfortable"' },
-    { thai:'โรงพยาบาล', roman:'rohng pá-yaa-baan', eng:'Hospital', note:'' },
-    { thai:'ตำรวจ', roman:'dtam-rùat', eng:'Police', note:'' },
-    { thai:'แพ้อาหาร', roman:'páe aa-hǎan', eng:'Food allergy', note:'' },
-  ]
+  greetings: { label:'Greetings', items:[
+    {thai:'สวัสดีครับ',roman:'sà-wàt-dee kráp',eng:'Hello (male speaker)',note:'The most important phrase'},
+    {thai:'สบายดีไหมครับ',roman:'sà-baai dee mǎi kráp',eng:'How are you?',note:''},
+    {thai:'สบายดีครับ ขอบคุณ',roman:'sà-baai dee kráp kòp-kun',eng:'I\'m fine, thank you',note:''},
+    {thai:'ยินดีที่ได้รู้จักครับ',roman:'yin-dee têe dâi rúu-jàk kráp',eng:'Nice to meet you',note:''},
+    {thai:'คุณชื่ออะไรครับ',roman:'kun chêu à-rai kráp',eng:'What is your name?',note:''},
+    {thai:'ผมชื่อ...',roman:'pǒm chêu...',eng:'My name is...',note:'Insert your name'},
+    {thai:'ไปก่อนนะครับ',roman:'bpai gòn ná kráp',eng:'I\'m heading off now',note:'Casual goodbye'},
+    {thai:'เจอกันใหม่',roman:'jer gan mài',eng:'See you again',note:''},
+  ]},
+  daily: { label:'Daily Life', items:[
+    {thai:'วันนี้ทำอะไร',roman:'wan-née tam à-rai',eng:'What are you doing today?',note:''},
+    {thai:'ไม่ได้ทำอะไร',roman:'mâi dâi tam à-rai',eng:'Not doing anything',note:''},
+    {thai:'ไปทำงาน',roman:'bpai tam ngaan',eng:'Going to work',note:''},
+    {thai:'กลับบ้าน',roman:'glàp bâan',eng:'Going home',note:'Very common phrase'},
+    {thai:'นอนหลับฝันดี',roman:'non làp fǎn dee',eng:'Sleep well / Sweet dreams',note:'Say to your wife'},
+    {thai:'ตื่นแล้ว',roman:'dtèun láew',eng:'I\'m awake now',note:''},
+    {thai:'กินข้าวยัง',roman:'gin kâao yang',eng:'Have you eaten yet?',note:'Thai way of saying "how are you"'},
+    {thai:'กินแล้ว',roman:'gin láew',eng:'Already ate',note:''},
+    {thai:'ยังไม่ได้กิน',roman:'yang mâi dâi gin',eng:'Haven\'t eaten yet',note:''},
+    {thai:'รอแป๊บนะ',roman:'ror bpáep ná',eng:'Wait a moment',note:'Very casual'},
+    {thai:'พร้อมยัง',roman:'próm yang',eng:'Are you ready yet?',note:''},
+    {thai:'พร้อมแล้ว',roman:'próm láew',eng:'I\'m ready',note:''},
+  ]},
+  restaurant: { label:'Restaurant', items:[
+    {thai:'ขอเมนูครับ',roman:'kǒr me-nuu kráp',eng:'Menu please',note:''},
+    {thai:'ขอสั่งอาหารครับ',roman:'kǒr sàng aa-hǎan kráp',eng:'I\'d like to order',note:''},
+    {thai:'ขอ...หนึ่งที่',roman:'kǒr...nèung têe',eng:'One of... please',note:'Point at menu and say this'},
+    {thai:'ไม่เผ็ดครับ',roman:'mâi pèt kráp',eng:'Not spicy please',note:'Essential!'},
+    {thai:'เผ็ดนิดหน่อย',roman:'pèt nít nòi',eng:'A little spicy',note:''},
+    {thai:'อร่อยมาก',roman:'à-ròi mâak',eng:'Very delicious!',note:'Great compliment to staff'},
+    {thai:'ขอน้ำเปล่าครับ',roman:'kǒr nám bplào kráp',eng:'Plain water please',note:''},
+    {thai:'ขอข้าวเพิ่มครับ',roman:'kǒr kâao pêrm kráp',eng:'More rice please',note:'Rice is often free refills!'},
+    {thai:'ใส่ถุงครับ',roman:'sài tǔng kráp',eng:'Put in a bag (takeaway)',note:'For takeaway'},
+    {thai:'กินที่ร้าน',roman:'gin têe ráan',eng:'Eat at the restaurant',note:'Dine in'},
+    {thai:'เช็คบิลครับ',roman:'chék bin kráp',eng:'Check please',note:''},
+    {thai:'ผมแพ้....',roman:'pǒm páe...',eng:'I\'m allergic to...',note:'Important safety phrase'},
+  ]},
+  transport: { label:'Transport', items:[
+    {thai:'ไป...ครับ',roman:'bpai...kráp',eng:'Go to... (tell driver)',note:'Most useful phrase for transport'},
+    {thai:'จอดที่นี่ครับ',roman:'jòt têe nêe kráp',eng:'Stop here please',note:''},
+    {thai:'ตรงไปครับ',roman:'dtrong bpai kráp',eng:'Go straight',note:''},
+    {thai:'เลี้ยวซ้าย',roman:'líao sáai',eng:'Turn left',note:''},
+    {thai:'เลี้ยวขวา',roman:'líao kwǎa',eng:'Turn right',note:''},
+    {thai:'ไกลไหมครับ',roman:'glai mǎi kráp',eng:'Is it far?',note:''},
+    {thai:'ใช้เวลานานไหม',roman:'chái we-laa naan mǎi',eng:'Does it take long?',note:''},
+    {thai:'เปิดมิเตอร์ครับ',roman:'bpèrt mí-dtêr kráp',eng:'Turn on the meter please',note:'For taxis — always ask!'},
+    {thai:'ไปสนามบินครับ',roman:'bpai sà-nǎam bin kráp',eng:'Go to the airport',note:''},
+    {thai:'รถไฟฟ้าสถานีไหน',roman:'rót fai fáa sà-tǎa-nee nǎi',eng:'Which BTS station?',note:''},
+  ]},
+  shopping: { label:'Shopping', items:[
+    {thai:'นี่เท่าไหร่ครับ',roman:'nêe tâo-rài kráp',eng:'How much is this?',note:''},
+    {thai:'แพงไปครับ',roman:'paeng bpai kráp',eng:'Too expensive',note:'First step of bargaining'},
+    {thai:'ลดได้ไหมครับ',roman:'lót dâi mǎi kráp',eng:'Can you reduce the price?',note:'Bargaining essential'},
+    {thai:'ลดหน่อยได้ไหม',roman:'lót nòi dâi mǎi',eng:'Can you lower it a bit?',note:'Softer bargaining'},
+    {thai:'เอาอันนี้ครับ',roman:'ao an née kráp',eng:'I\'ll take this one',note:''},
+    {thai:'ไม่เอาครับ',roman:'mâi ao kráp',eng:'I don\'t want it',note:''},
+    {thai:'ดูก่อน',roman:'duu gòn',eng:'Just looking',note:'When browsing'},
+    {thai:'มีสีอื่นไหม',roman:'mee sǐi èun mǎi',eng:'Do you have other colors?',note:''},
+    {thai:'มีไซส์ใหญ่กว่านี้ไหม',roman:'mee sai yài gwàa née mǎi',eng:'Do you have a bigger size?',note:''},
+    {thai:'รับบัตรเครดิตไหม',roman:'ráp bàt kre-dìt mǎi',eng:'Do you accept credit cards?',note:''},
+  ]},
+  romantic: { label:'Romantic 💕', items:[
+    {thai:'ผมรักคุณ',roman:'pǒm rák kun',eng:'I love you (male)',note:'รัก (rák) = love'},
+    {thai:'รักเธอมาก',roman:'rák ter mâak',eng:'Love you so much',note:'Informal / intimate'},
+    {thai:'คิดถึง',roman:'kít tǔeng',eng:'I miss you',note:'Very common'},
+    {thai:'ที่รัก',roman:'têe rák',eng:'Darling / Sweetheart',note:'Term of endearment'},
+    {thai:'สวยมาก',roman:'sǔay mâak',eng:'Very beautiful',note:'Compliment for your wife'},
+    {thai:'หิวไหม',roman:'hǐu mǎi',eng:'Are you hungry?',note:'Thai way of caring'},
+    {thai:'ไปเที่ยวกัน',roman:'bpai tîao gan',eng:'Let\'s go out together',note:''},
+    {thai:'ผมเป็นของเธอ',roman:'pǒm bpen kǒng ter',eng:'I\'m yours',note:''},
+    {thai:'เธอคือทุกอย่างของผม',roman:'ter keu túk yàang kǒng pǒm',eng:'You are my everything',note:''},
+    {thai:'กอดหน่อย',roman:'gòt nòi',eng:'Give me a hug',note:''},
+  ]},
+  emergency: { label:'Emergency', items:[
+    {thai:'ช่วยด้วย',roman:'chûay dûay',eng:'Help!',note:''},
+    {thai:'อันตราย',roman:'an-dtà-raai',eng:'Danger!',note:''},
+    {thai:'ไม่สบาย',roman:'mâi sà-baai',eng:'I\'m not well',note:'Literally "not comfortable"'},
+    {thai:'โรงพยาบาล',roman:'rohng pá-yaa-baan',eng:'Hospital',note:''},
+    {thai:'ตำรวจ',roman:'dtam-rùat',eng:'Police',note:''},
+    {thai:'แพ้อาหาร',roman:'páe aa-hǎan',eng:'Food allergy',note:''},
+    {thai:'เรียกรถพยาบาลครับ',roman:'rîak rót pá-yaa-baan kráp',eng:'Call an ambulance',note:''},
+    {thai:'ผมหลงทาง',roman:'pǒm lǒng taang',eng:'I\'m lost',note:''},
+    {thai:'ขโมย',roman:'kà-mohy',eng:'Thief!',note:''},
+    {thai:'ไฟไหม้',roman:'fai mâi',eng:'Fire!',note:''},
+  ]},
+  inlaws: { label:'With In-Laws 👨‍👩‍👧', items:[
+    {thai:'สวัสดีครับ แม่',roman:'sà-wàt-dee kráp mâe',eng:'Hello, Mom',note:'Call her parents แม่/พ่อ too'},
+    {thai:'สวัสดีครับ พ่อ',roman:'sà-wàt-dee kráp pôr',eng:'Hello, Dad',note:'Shows respect'},
+    {thai:'กินข้าวด้วยกันนะครับ',roman:'gin kâao dûay gan ná kráp',eng:'Let\'s eat together',note:''},
+    {thai:'อร่อยมากครับ แม่ทำเก่ง',roman:'à-ròi mâak kráp mâe tam gèng',eng:'Very delicious, Mom cooks well',note:'Big points with mother-in-law!'},
+    {thai:'ผมจะดูแลลูกสาว',roman:'pǒm jà duu lae lûuk sǎao',eng:'I will take care of your daughter',note:'Traditional and respectful'},
+    {thai:'ขอบคุณที่ต้อนรับครับ',roman:'kòp-kun têe dtôn ráp kráp',eng:'Thank you for the welcome',note:''},
+    {thai:'ผมเคารพครอบครัว',roman:'pǒm kao-róp krôp-krua',eng:'I respect the family',note:'Goes a long way in Thai culture'},
+    {thai:'ครอบครัวสำคัญมาก',roman:'krôp-krua sǎm-kan mâak',eng:'Family is very important',note:''},
+  ]},
 };
 
-let currentCards=[], cardIndex=0, quizQuestions=[], quizIndex=0, quizScore=0, currentQuizCategory='all', currentPhraseCategory='essential';
+// ============================= GRAMMAR =============================
+const grammarSections = {
+  structure: {
+    label: 'Sentence Order',
+    content: `
+      <div class="grammar-card">
+        <h3>📐 Basic Sentence Structure</h3>
+        <p>Thai uses <strong style="color:var(--gold)">Subject + Verb + Object</strong> order — the same as English! This makes basic sentences surprisingly straightforward.</p>
+        <div class="compare-box">
+          <div class="cb cb-en"><div class="cb-label">English</div>I eat rice.</div>
+          <div class="cb cb-th"><div class="cb-label">Thai</div>ผม กิน ข้าว<br><em style="font-size:11px">pǒm gin kâao</em><br><span style="font-size:10px;opacity:0.7">I + eat + rice</span></div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai">ผม ชอบ อาหารไทย</div>
+          <div class="ex-roman">pǒm chôp aa-hǎan tai</div>
+          <div class="ex-eng">I like Thai food.</div>
+          <div class="ex-literal">Literally: I + like + food-Thai</div>
+        </div>
+        <div class="grammar-tip"><strong>💡 Good news:</strong> If you can form a sentence in English, the Thai word order for basic sentences is usually the same!</div>
+      </div>
+
+      <div class="grammar-card">
+        <h3>📐 Adjectives Come AFTER the Noun</h3>
+        <p>This is one key difference from English. In Thai, the describing word follows what it describes.</p>
+        <div class="compare-box">
+          <div class="cb cb-en"><div class="cb-label">English</div><strong>Big</strong> house<br>(adjective first)</div>
+          <div class="cb cb-th"><div class="cb-label">Thai</div>บ้าน<strong>ใหญ่</strong><br>bâan yài<br>(noun first)</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai">รถ สี แดง</div>
+          <div class="ex-roman">rót sǐi daeng</div>
+          <div class="ex-eng">A red car</div>
+          <div class="ex-literal">Literally: car + color + red</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai">คน ดี</div>
+          <div class="ex-roman">kon dee</div>
+          <div class="ex-eng">A good person</div>
+          <div class="ex-literal">Literally: person + good</div>
+        </div>
+        <div class="grammar-note"><strong>⚠️ Remember:</strong> Think "house big" not "big house," "water cold" not "cold water," "food Thai" not "Thai food."</div>
+      </div>
+    `
+  },
+  noconj: {
+    label: 'No Conjugation!',
+    content: `
+      <div class="grammar-card">
+        <h3>🎉 Verbs Never Change</h3>
+        <p>This is the best news for learners. Thai verbs are <strong style="color:var(--gold)">always the same</strong> no matter who does the action or when it happens. No conjugation tables to memorize — ever.</p>
+        <div class="compare-box">
+          <div class="cb cb-en"><div class="cb-label">English</div>I <strong>go</strong><br>He <strong>goes</strong><br>We <strong>went</strong><br>They will <strong>go</strong><br>She has <strong>gone</strong></div>
+          <div class="cb cb-th"><div class="cb-label">Thai</div>ผม <strong>ไป</strong><br>เขา <strong>ไป</strong><br>เรา <strong>ไป</strong><br>พวกเขา <strong>ไป</strong><br>เธอ <strong>ไป</strong><br><em style="font-size:10px">Always just: ไป (bpai)</em></div>
+        </div>
+        <div class="grammar-tip"><strong>💡 Compared to Latin:</strong> Remember all those Latin verb endings? Thai has zero. กิน (eat) is always กิน whether it's I, you, he, or they, past or future.</div>
+      </div>
+
+      <div class="grammar-card">
+        <h3>⏰ Time Words Do the Work</h3>
+        <p>Instead of changing the verb, Thai just adds time words before or after it:</p>
+        <div class="example-box">
+          <div class="ex-thai">ผม กิน ข้าว</div>
+          <div class="ex-roman">pǒm gin kâao</div>
+          <div class="ex-eng">I eat rice. (general/present)</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai">ผม <strong style="color:var(--gold)">จะ</strong> กิน ข้าว</div>
+          <div class="ex-roman">pǒm <strong>jà</strong> gin kâao</div>
+          <div class="ex-eng">I <strong>will</strong> eat rice. (future)</div>
+          <div class="ex-literal">จะ (jà) = "will" — placed before the verb</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai">ผม กิน ข้าว <strong style="color:var(--gold)">แล้ว</strong></div>
+          <div class="ex-roman">pǒm gin kâao <strong>láew</strong></div>
+          <div class="ex-eng">I <strong>already</strong> ate rice. (past)</div>
+          <div class="ex-literal">แล้ว (láew) = "already" — placed after the verb/object</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai">ผม <strong style="color:var(--gold)">กำลัง</strong> กิน ข้าว</div>
+          <div class="ex-roman">pǒm <strong>gam-lang</strong> gin kâao</div>
+          <div class="ex-eng">I <strong>am</strong> eating rice. (right now)</div>
+          <div class="ex-literal">กำลัง (gam-lang) = "currently" — before the verb</div>
+        </div>
+      </div>
+    `
+  },
+  questions: {
+    label: 'Asking Questions',
+    content: `
+      <div class="grammar-card">
+        <h3>❓ The Magic of ไหม (mǎi)</h3>
+        <p>To turn any statement into a yes/no question, just add <strong style="color:var(--gold)">ไหม (mǎi)</strong> at the end. That's it — no word reordering needed!</p>
+        <div class="example-box">
+          <div class="ex-thai">คุณ ชอบ อาหารไทย <strong style="color:var(--gold)">ไหม</strong></div>
+          <div class="ex-roman">kun chôp aa-hǎan tai <strong>mǎi</strong></div>
+          <div class="ex-eng">Do you like Thai food?</div>
+          <div class="ex-literal">Statement "You like Thai food" + ไหม = question</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai">เผ็ด <strong style="color:var(--gold)">ไหม</strong></div>
+          <div class="ex-roman">pèt <strong>mǎi</strong></div>
+          <div class="ex-eng">Is it spicy?</div>
+        </div>
+        <p>To answer yes, <strong>repeat the verb or adjective</strong>. To answer no, put <strong>ไม่ (mâi)</strong> before it:</p>
+        <div class="compare-box">
+          <div class="cb cb-th" style="text-align:center"><div class="cb-label">Yes</div>ชอบ<br><em>chôp</em><br>"Like" (= yes)</div>
+          <div class="cb cb-en" style="text-align:center;background:rgba(192,57,43,0.1);border-color:rgba(192,57,43,0.2)"><div class="cb-label">No</div>ไม่ชอบ<br><em>mâi chôp</em><br>"Not like" (= no)</div>
+        </div>
+      </div>
+
+      <div class="grammar-card">
+        <h3>❓ ...ได้ไหม (dâi mǎi) — "Can you...?"</h3>
+        <p>Add <strong style="color:var(--gold)">ได้ไหม (dâi mǎi)</strong> after a verb to ask "can you do X?"</p>
+        <div class="example-box">
+          <div class="ex-thai">ลด ได้ไหม</div>
+          <div class="ex-roman">lót dâi mǎi</div>
+          <div class="ex-eng">Can you reduce (the price)?</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai">พูดช้าๆ ได้ไหม</div>
+          <div class="ex-roman">pûut cháa cháa dâi mǎi</div>
+          <div class="ex-eng">Can you speak slowly?</div>
+        </div>
+      </div>
+
+      <div class="grammar-card">
+        <h3>❓ Question Words</h3>
+        <p>Thai question words usually go where the answer would go in the sentence:</p>
+        <div class="example-box">
+          <div class="ex-thai">คุณ ไป <strong style="color:var(--gold)">ไหน</strong></div>
+          <div class="ex-roman">kun bpai <strong>nǎi</strong></div>
+          <div class="ex-eng">Where are you going?</div>
+          <div class="ex-literal">You + go + where? (answer replaces "where")</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai">นี่ <strong style="color:var(--gold)">อะไร</strong></div>
+          <div class="ex-roman">nêe <strong>à-rai</strong></div>
+          <div class="ex-eng">What is this?</div>
+          <div class="ex-literal">This + what?</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai"><strong style="color:var(--gold)">ทำไม</strong> ไม่ไป</div>
+          <div class="ex-roman"><strong>tam-mai</strong> mâi bpai</div>
+          <div class="ex-eng">Why don't you go?</div>
+        </div>
+        <p style="margin-top:10px"><strong style="color:var(--gold)">Common question words:</strong></p>
+        <p>อะไร (à-rai) = what &nbsp;|&nbsp; ไหน (nǎi) = where &nbsp;|&nbsp; ทำไม (tam-mai) = why &nbsp;|&nbsp; เมื่อไหร่ (mêua-rài) = when &nbsp;|&nbsp; กี่ (gìi) = how many &nbsp;|&nbsp; ยังไง (yang-ngai) = how</p>
+      </div>
+    `
+  },
+  negation: {
+    label: 'Saying No',
+    content: `
+      <div class="grammar-card">
+        <h3>🚫 ไม่ (mâi) — The Universal "Not"</h3>
+        <p>Put <strong style="color:var(--gold)">ไม่ (mâi)</strong> before any verb or adjective to negate it. Simple as that.</p>
+        <div class="example-box">
+          <div class="ex-thai">ผม <strong style="color:var(--temple-red)">ไม่</strong> ชอบ</div>
+          <div class="ex-roman">pǒm <strong>mâi</strong> chôp</div>
+          <div class="ex-eng">I don't like (it).</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai"><strong style="color:var(--temple-red)">ไม่</strong> เผ็ด</div>
+          <div class="ex-roman"><strong>mâi</strong> pèt</div>
+          <div class="ex-eng">Not spicy.</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai"><strong style="color:var(--temple-red)">ไม่</strong> รู้</div>
+          <div class="ex-roman"><strong>mâi</strong> rúu</div>
+          <div class="ex-eng">I don't know.</div>
+        </div>
+      </div>
+
+      <div class="grammar-card">
+        <h3>🚫 ไม่ได้ (mâi dâi) — "Didn't" or "Can't"</h3>
+        <p>This form is used for past negation ("didn't do") or inability ("can't do"):</p>
+        <div class="example-box">
+          <div class="ex-thai">ผม <strong style="color:var(--temple-red)">ไม่ได้</strong> ไป</div>
+          <div class="ex-roman">pǒm <strong>mâi dâi</strong> bpai</div>
+          <div class="ex-eng">I didn't go. / I can't go.</div>
+        </div>
+      </div>
+
+      <div class="grammar-card">
+        <h3>🚫 อย่า (yàa) — "Don't!" (Command)</h3>
+        <p>Use this to tell someone NOT to do something:</p>
+        <div class="example-box">
+          <div class="ex-thai"><strong style="color:var(--temple-red)">อย่า</strong> โกรธ</div>
+          <div class="ex-roman"><strong>yàa</strong> gròht</div>
+          <div class="ex-eng">Don't be angry.</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai"><strong style="color:var(--temple-red)">อย่า</strong> ลืม</div>
+          <div class="ex-roman"><strong>yàa</strong> leum</div>
+          <div class="ex-eng">Don't forget.</div>
+        </div>
+      </div>
+    `
+  },
+  classifiers: {
+    label: 'Classifiers',
+    content: `
+      <div class="grammar-card">
+        <h3>📦 Classifiers (ลักษณนาม)</h3>
+        <p>When counting things in Thai, you need a <strong style="color:var(--gold)">classifier word</strong> between the number and the noun. Think of it like how English says "two <em>sheets</em> of paper" — Thai does this for everything.</p>
+        <p>The pattern is: <strong style="color:var(--gold)">Noun + Number + Classifier</strong></p>
+        <div class="example-box">
+          <div class="ex-thai">แมว สอง <strong style="color:var(--gold)">ตัว</strong></div>
+          <div class="ex-roman">maew sǒng <strong>dtua</strong></div>
+          <div class="ex-eng">Two cats</div>
+          <div class="ex-literal">cat + two + [animal classifier]</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai">น้ำ สาม <strong style="color:var(--gold)">แก้ว</strong></div>
+          <div class="ex-roman">nám sǎam <strong>gâew</strong></div>
+          <div class="ex-eng">Three glasses of water</div>
+          <div class="ex-literal">water + three + [glass classifier]</div>
+        </div>
+      </div>
+
+      <div class="grammar-card">
+        <h3>📦 Common Classifiers to Know</h3>
+        <p><strong style="color:var(--gold)">คน (kon)</strong> — for people<br>
+        <em>สามคน (sǎam kon) = three people</em></p>
+        <p><strong style="color:var(--gold)">ตัว (dtua)</strong> — for animals, shirts, tables, chairs<br>
+        <em>หมาสองตัว (mǎa sǒng dtua) = two dogs</em></p>
+        <p><strong style="color:var(--gold)">อัน (an)</strong> — for small objects (general)<br>
+        <em>อันนี้ (an née) = this one</em></p>
+        <p><strong style="color:var(--gold)">ใบ (bai)</strong> — for flat things: leaves, bags, plates, cups<br></p>
+        <p><strong style="color:var(--gold)">คัน (kan)</strong> — for vehicles<br>
+        <em>รถสองคัน (rót sǒng kan) = two cars</em></p>
+        <p><strong style="color:var(--gold)">ที่ (têe)</strong> — for servings of food, places<br>
+        <em>กาแฟหนึ่งที่ (gaa-fae nèung têe) = one coffee</em></p>
+        <p><strong style="color:var(--gold)">ขวด (kùat)</strong> — for bottles<br>
+        <em>เบียร์สองขวด (bia sǒng kùat) = two bottles of beer</em></p>
+        <div class="grammar-tip"><strong>💡 Beginner tip:</strong> If you forget the right classifier, <strong>อัน (an)</strong> works as a generic fallback for objects. Thai people will understand you and appreciate the effort!</div>
+      </div>
+    `
+  },
+  pronouns: {
+    label: 'Pronouns',
+    content: `
+      <div class="grammar-card">
+        <h3>👤 Thai Pronouns</h3>
+        <p>Thai has many pronouns based on formality, gender, and relationship. As a beginner, you only need a few:</p>
+        <p><strong style="color:var(--gold)">ผม (pǒm)</strong> — I/me (male, polite) — <em>Your go-to "I"</em></p>
+        <p><strong style="color:var(--gold)">คุณ (kun)</strong> — You (polite, neutral)</p>
+        <p><strong style="color:var(--gold)">เขา (kǎo)</strong> — He / She / They</p>
+        <p><strong style="color:var(--gold)">เรา (rao)</strong> — We / Us (also casual "I")</p>
+        <p><strong style="color:var(--gold)">พวกเขา (pûak kǎo)</strong> — They (plural)</p>
+        <div class="grammar-tip"><strong>💡 Key insight:</strong> เขา (kǎo) means both "he" AND "she" — Thai doesn't distinguish gender in third-person pronouns!</div>
+      </div>
+
+      <div class="grammar-card">
+        <h3>👤 Informal Pronouns — With Your Wife</h3>
+        <p>With people you're close to, Thai uses different pronouns:</p>
+        <p><strong style="color:var(--gold)">เธอ (ter)</strong> — You / She (intimate, for girlfriend/wife)</p>
+        <p><strong style="color:var(--gold)">แก (gae)</strong> — You (very casual, among close friends)</p>
+        <p><strong style="color:var(--gold)">กู (guu)</strong> — I (very rough, only between close male friends)</p>
+        <p><strong style="color:var(--gold)">มึง (meung)</strong> — You (very rough, only close male friends)</p>
+        <div class="grammar-note"><strong>⚠️ Warning:</strong> กู and มึง are extremely informal — like strong slang between bros. Never use with strangers, elders, or in polite settings. Stick with ผม and คุณ to be safe.</div>
+      </div>
+
+      <div class="grammar-card">
+        <h3>👤 Dropping Pronouns</h3>
+        <p>In casual Thai, pronouns are <strong>often dropped entirely</strong> when the context is clear. This is totally normal:</p>
+        <div class="compare-box">
+          <div class="cb cb-en"><div class="cb-label">Full</div>ผม หิว ข้าว<br><em>pǒm hǐu kâao</em><br>I am hungry</div>
+          <div class="cb cb-th"><div class="cb-label">Casual</div>หิว ข้าว<br><em>hǐu kâao</em><br>(Am) hungry</div>
+        </div>
+        <p>This happens constantly in Thai conversation. Once you and the other person know who you're talking about, the pronoun disappears.</p>
+      </div>
+    `
+  },
+  requests: {
+    label: 'Making Requests',
+    content: `
+      <div class="grammar-card">
+        <h3>🙏 ขอ (kǒr) — "May I have" / "Please"</h3>
+        <p>The most useful word for making polite requests. Put it at the start:</p>
+        <div class="example-box">
+          <div class="ex-thai"><strong style="color:var(--gold)">ขอ</strong> น้ำ ครับ</div>
+          <div class="ex-roman"><strong>kǒr</strong> nám kráp</div>
+          <div class="ex-eng">May I have water, please.</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai"><strong style="color:var(--gold)">ขอ</strong> เช็คบิล ครับ</div>
+          <div class="ex-roman"><strong>kǒr</strong> chék bin kráp</div>
+          <div class="ex-eng">Check please.</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai"><strong style="color:var(--gold)">ขอ</strong> ถามหน่อย ครับ</div>
+          <div class="ex-roman"><strong>kǒr</strong> tǎam nòi kráp</div>
+          <div class="ex-eng">May I ask something?</div>
+        </div>
+      </div>
+
+      <div class="grammar-card">
+        <h3>🙏 อยาก (yàak) — "Want to"</h3>
+        <p>Put before a verb to express wanting to do something:</p>
+        <div class="example-box">
+          <div class="ex-thai">ผม <strong style="color:var(--gold)">อยาก</strong> กิน ส้มตำ</div>
+          <div class="ex-roman">pǒm <strong>yàak</strong> gin sôm dtam</div>
+          <div class="ex-eng">I want to eat papaya salad.</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai"><strong style="color:var(--gold)">อยาก</strong> ไป ทะเล</div>
+          <div class="ex-roman"><strong>yàak</strong> bpai tá-le</div>
+          <div class="ex-eng">I want to go to the sea.</div>
+        </div>
+      </div>
+
+      <div class="grammar-card">
+        <h3>🙏 ช่วย (chûay) — "Help / Please do"</h3>
+        <p>Use to ask someone to do something for you:</p>
+        <div class="example-box">
+          <div class="ex-thai"><strong style="color:var(--gold)">ช่วย</strong> พูดช้าๆ ได้ไหม ครับ</div>
+          <div class="ex-roman"><strong>chûay</strong> pûut cháa cháa dâi mǎi kráp</div>
+          <div class="ex-eng">Could you please speak slowly?</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai"><strong style="color:var(--gold)">ช่วย</strong> ถ่ายรูป ให้หน่อย ครับ</div>
+          <div class="ex-roman"><strong>chûay</strong> tàai rûup hâi nòi kráp</div>
+          <div class="ex-eng">Could you take a photo for me?</div>
+        </div>
+      </div>
+    `
+  },
+  comparison: {
+    label: 'Comparing Things',
+    content: `
+      <div class="grammar-card">
+        <h3>📊 กว่า (gwàa) — "More than"</h3>
+        <p>To compare two things, add <strong style="color:var(--gold)">กว่า (gwàa)</strong> after the adjective:</p>
+        <div class="example-box">
+          <div class="ex-thai">อันนี้ <strong style="color:var(--gold)">ใหญ่กว่า</strong></div>
+          <div class="ex-roman">an née <strong>yài gwàa</strong></div>
+          <div class="ex-eng">This one is bigger.</div>
+          <div class="ex-literal">this-one + big-more-than</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai">อาหารไทย อร่อย<strong style="color:var(--gold)">กว่า</strong></div>
+          <div class="ex-roman">aa-hǎan tai à-ròi <strong>gwàa</strong></div>
+          <div class="ex-eng">Thai food is more delicious.</div>
+        </div>
+      </div>
+
+      <div class="grammar-card">
+        <h3>📊 ที่สุด (têe sùt) — "The most"</h3>
+        <p>Add after an adjective for superlatives:</p>
+        <div class="example-box">
+          <div class="ex-thai">อร่อย <strong style="color:var(--gold)">ที่สุด</strong></div>
+          <div class="ex-roman">à-ròi <strong>têe sùt</strong></div>
+          <div class="ex-eng">The most delicious / The best</div>
+        </div>
+      </div>
+
+      <div class="grammar-card">
+        <h3>📊 มาก (mâak) & นิดหน่อย (nít nòi) — Degree</h3>
+        <p>Modify adjectives with these intensifiers:</p>
+        <div class="example-box">
+          <div class="ex-thai">เผ็ด<strong style="color:var(--gold)">มาก</strong></div>
+          <div class="ex-roman">pèt <strong>mâak</strong></div>
+          <div class="ex-eng">Very spicy</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai">เผ็ด<strong style="color:var(--gold)">นิดหน่อย</strong></div>
+          <div class="ex-roman">pèt <strong>nít nòi</strong></div>
+          <div class="ex-eng">A little spicy</div>
+        </div>
+        <p style="margin-top:8px"><strong style="color:var(--gold)">...ไป (bpai)</strong> = "too much":<br>เผ็ด<strong>ไป</strong> (pèt bpai) = <em>too</em> spicy<br>แพง<strong>ไป</strong> (paeng bpai) = <em>too</em> expensive</p>
+      </div>
+    `
+  },
+  particles: {
+    label: 'Particles & Mood',
+    content: `
+      <div class="grammar-card">
+        <h3>✨ Sentence-Ending Particles</h3>
+        <p>Thai uses small words at the end of sentences to convey <strong style="color:var(--gold)">politeness, mood, and tone</strong>. These are critical for sounding natural:</p>
+      </div>
+
+      <div class="grammar-card">
+        <h3>ครับ (kráp) — Polite (Male)</h3>
+        <p>You'll use this the most. Add to <em>everything</em> when being polite:</p>
+        <div class="example-box">
+          <div class="ex-thai">ขอบคุณ<strong style="color:var(--gold)">ครับ</strong></div>
+          <div class="ex-roman">kòp-kun <strong>kráp</strong></div>
+          <div class="ex-eng">Thank you. (polite, male)</div>
+        </div>
+        <p>Your wife would say ค่ะ (kâ) for statements or คะ (ká) for questions instead.</p>
+      </div>
+
+      <div class="grammar-card">
+        <h3>นะ (ná) — Softener / Seeking Agreement</h3>
+        <p>Makes a statement softer, friendlier, or seeks a gentle "okay?"</p>
+        <div class="example-box">
+          <div class="ex-thai">รอแป๊บ<strong style="color:var(--gold)">นะ</strong></div>
+          <div class="ex-roman">ror bpáep <strong>ná</strong></div>
+          <div class="ex-eng">Wait a sec, okay?</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai">ไปกัน<strong style="color:var(--gold)">นะ</strong></div>
+          <div class="ex-roman">bpai gan <strong>ná</strong></div>
+          <div class="ex-eng">Let's go, yeah?</div>
+        </div>
+      </div>
+
+      <div class="grammar-card">
+        <h3>สิ (sì) — Encouraging / Urging</h3>
+        <p>Encourages action, like "go ahead!" or "come on!"</p>
+        <div class="example-box">
+          <div class="ex-thai">กิน<strong style="color:var(--gold)">สิ</strong></div>
+          <div class="ex-roman">gin <strong>sì</strong></div>
+          <div class="ex-eng">Go ahead and eat! / Eat!</div>
+        </div>
+      </div>
+
+      <div class="grammar-card">
+        <h3>เหรอ (rěr) — Surprise / Really?</h3>
+        <p>Shows surprise or asks for confirmation:</p>
+        <div class="example-box">
+          <div class="ex-thai">จริง<strong style="color:var(--gold)">เหรอ</strong></div>
+          <div class="ex-roman">jing <strong>rěr</strong></div>
+          <div class="ex-eng">Really? / Is that true?</div>
+        </div>
+      </div>
+
+      <div class="grammar-card">
+        <h3>ล่ะ (là) — "And what about...?"</h3>
+        <p>Turns the question back on someone:</p>
+        <div class="example-box">
+          <div class="ex-thai">คุณ<strong style="color:var(--gold)">ล่ะ</strong></div>
+          <div class="ex-roman">kun <strong>là</strong></div>
+          <div class="ex-eng">And you? / What about you?</div>
+        </div>
+      </div>
+    `
+  },
+  existence: {
+    label: 'Have & There Is',
+    content: `
+      <div class="grammar-card">
+        <h3>📌 มี (mee) — "Have" and "There is"</h3>
+        <p>This single word handles both "to have" and "there is/are":</p>
+        <div class="example-box">
+          <div class="ex-thai">ผม <strong style="color:var(--gold)">มี</strong> ลูก สอง คน</div>
+          <div class="ex-roman">pǒm <strong>mee</strong> lûuk sǒng kon</div>
+          <div class="ex-eng">I have two children.</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai"><strong style="color:var(--gold)">มี</strong> ร้านอาหาร ใกล้ๆ ไหม</div>
+          <div class="ex-roman"><strong>mee</strong> ráan aa-hǎan glâi glâi mǎi</div>
+          <div class="ex-eng">Is there a restaurant nearby?</div>
+        </div>
+        <p>Negate with ไม่มี (mâi mee) = "don't have" / "there isn't":</p>
+        <div class="example-box">
+          <div class="ex-thai"><strong style="color:var(--temple-red)">ไม่มี</strong> ปัญหา</div>
+          <div class="ex-roman"><strong>mâi mee</strong> bpan-hǎa</div>
+          <div class="ex-eng">No problem. (There is no problem.)</div>
+        </div>
+      </div>
+
+      <div class="grammar-card">
+        <h3>📌 อยู่ (yùu) — "Is at" / "Is located"</h3>
+        <p>Used for location — where something IS:</p>
+        <div class="example-box">
+          <div class="ex-thai">ห้องน้ำ <strong style="color:var(--gold)">อยู่</strong> ที่ไหน</div>
+          <div class="ex-roman">hông nám <strong>yùu</strong> têe nǎi</div>
+          <div class="ex-eng">Where is the bathroom?</div>
+          <div class="ex-literal">bathroom + is-located + where?</div>
+        </div>
+        <div class="example-box">
+          <div class="ex-thai">ผม <strong style="color:var(--gold)">อยู่</strong> บ้าน</div>
+          <div class="ex-roman">pǒm <strong>yùu</strong> bâan</div>
+          <div class="ex-eng">I'm at home.</div>
+        </div>
+        <div class="grammar-tip"><strong>💡 Think of it this way:</strong> มี = "exists" (there is a...), อยู่ = "is located at" (it's over there).</div>
+      </div>
+    `
+  },
+};
+
+// ============================= APP LOGIC =============================
+let currentCards=[],cardIndex=0,quizQuestions=[],quizIndex=0,quizScore=0,currentQuizCat='all',currentPhraseCat='greetings',currentGrammarCat='structure';
+
+// Build home page
+function buildHome() {
+  const el=document.getElementById('home-lessons');
+  el.innerHTML='';
+  Object.entries(lessons).forEach(([key,l])=>{
+    const d=document.createElement('div');
+    d.className='card';
+    d.onclick=()=>openLesson(key);
+    d.innerHTML=`<div class="card-row"><div class="card-icon ${l.color}">${l.icon}</div><div><div class="card-label">${l.title}</div><div class="card-sub">${l.sub}</div></div></div>`;
+    el.appendChild(d);
+  });
+}
 
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  if(['page-home','page-lesson','page-tones','page-tips'].includes(id)) document.getElementById('nav-home').classList.add('active');
-  else if(id==='page-phrases') document.getElementById('nav-phrases').classList.add('active');
-  else if(id==='page-quiz') document.getElementById('nav-quiz').classList.add('active');
+  const map={
+    'page-home':'nav-home','page-lesson':'nav-home','page-tones':'nav-home','page-tips':'nav-home',
+    'page-phrases':'nav-phrases','page-grammar':'nav-grammar','page-quiz':'nav-quiz'
+  };
+  if(map[id]) document.getElementById(map[id]).classList.add('active');
   window.scrollTo(0,0);
 }
 
+// FLASHCARDS
 function openLesson(key) {
   currentCards=lessons[key].cards; cardIndex=0;
   document.getElementById('lesson-title').textContent=lessons[key].title;
   renderCard(); showPage('page-lesson');
 }
-
 function renderCard() {
   const c=currentCards[cardIndex];
   document.getElementById('fc-thai').textContent=c.thai;
@@ -878,104 +1156,106 @@ function renderCard() {
   document.getElementById('card-counter').textContent=`${cardIndex+1} / ${currentCards.length}`;
   document.getElementById('flashcard').classList.remove('flipped');
 }
-
 function flipCard(){document.getElementById('flashcard').classList.toggle('flipped')}
 function nextCard(){if(cardIndex<currentCards.length-1){cardIndex++;renderCard()}}
 function prevCard(){if(cardIndex>0){cardIndex--;renderCard()}}
 function speakCurrent(){speakThai(currentCards[cardIndex].thai)}
+function speakThai(t){if('speechSynthesis' in window){const u=new SpeechSynthesisUtterance(t);u.lang='th-TH';u.rate=0.8;speechSynthesis.speak(u)}}
 
-function speakThai(text) {
-  if('speechSynthesis' in window){
-    const u=new SpeechSynthesisUtterance(text);
-    u.lang='th-TH'; u.rate=0.8;
-    speechSynthesis.speak(u);
-  }
-}
-
+// PHRASES
 function openPhrases(){renderPhrases();showPage('page-phrases')}
-
 function renderPhrases() {
-  const pe=document.getElementById('phrase-pills'); pe.innerHTML='';
-  const cats={essential:'Essential',romantic:'Romantic 💕',emergency:'Emergency'};
-  Object.entries(cats).forEach(([k,l])=>{
+  const pe=document.getElementById('phrase-pills');pe.innerHTML='';
+  Object.entries(phrases).forEach(([k,v])=>{
     const b=document.createElement('button');
-    b.className='pill'+(currentPhraseCategory===k?' active':'');
-    b.textContent=l; b.onclick=()=>{currentPhraseCategory=k;renderPhrases()};
+    b.className='pill'+(currentPhraseCat===k?' active':'');
+    b.textContent=v.label;b.onclick=()=>{currentPhraseCat=k;renderPhrases()};
     pe.appendChild(b);
   });
-  const le=document.getElementById('phrase-list'); le.innerHTML='';
-  phrases[currentPhraseCategory].forEach(p=>{
-    const d=document.createElement('div'); d.className='phrase-item';
-    d.innerHTML=`<div class="phrase-thai">${p.thai}</div><div class="phrase-roman">${p.roman}</div><div class="phrase-eng">${p.eng}</div>${p.note?`<div class="phrase-note">${p.note}</div>`:''}<button class="speak-btn" onclick="speakThai('${p.thai.replace(/'/g,"\\'")}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.08"/></svg>Listen</button>`;
+  const le=document.getElementById('phrase-list');le.innerHTML='';
+  phrases[currentPhraseCat].items.forEach(p=>{
+    const d=document.createElement('div');d.className='phrase-item';
+    const thaiEsc=p.thai.replace(/'/g,"\\'");
+    d.innerHTML=`<div class="phrase-thai">${p.thai}</div><div class="phrase-roman">${p.roman}</div><div class="phrase-eng">${p.eng}</div>${p.note?`<div class="phrase-note">${p.note}</div>`:''}<button class="speak-btn" onclick="speakThai('${thaiEsc}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg>Listen</button>`;
     le.appendChild(d);
   });
 }
 
-function openQuiz(){startQuiz('all');showPage('page-quiz')}
+// GRAMMAR
+function openGrammar(){renderGrammar();showPage('page-grammar')}
+function renderGrammar() {
+  const pe=document.getElementById('grammar-pills');pe.innerHTML='';
+  Object.entries(grammarSections).forEach(([k,v])=>{
+    const b=document.createElement('button');
+    b.className='pill'+(currentGrammarCat===k?' active':'');
+    b.textContent=v.label;b.onclick=()=>{currentGrammarCat=k;renderGrammar()};
+    pe.appendChild(b);
+  });
+  document.getElementById('grammar-content').innerHTML=grammarSections[currentGrammarCat].content;
+}
 
+// QUIZ
+function openQuiz(){startQuiz('all');showPage('page-quiz')}
 function startQuiz(cat) {
-  currentQuizCategory=cat; quizIndex=0; quizScore=0;
-  const pe=document.getElementById('quiz-pills'); pe.innerHTML='';
-  const cats={all:'All Topics',greetings:'Greetings',numbers:'Numbers',food:'Food',family:'Family',travel:'Travel'};
+  currentQuizCat=cat;quizIndex=0;quizScore=0;
+  const pe=document.getElementById('quiz-pills');pe.innerHTML='';
+  const cats={all:'All Topics'};
+  Object.entries(lessons).forEach(([k,v])=>cats[k]=v.title);
   Object.entries(cats).forEach(([k,l])=>{
     const b=document.createElement('button');
-    b.className='pill'+(currentQuizCategory===k?' active':'');
-    b.textContent=l; b.onclick=()=>startQuiz(k); pe.appendChild(b);
+    b.className='pill'+(currentQuizCat===k?' active':'');
+    b.textContent=l;b.onclick=()=>startQuiz(k);pe.appendChild(b);
   });
   let pool=[];
   if(cat==='all') Object.values(lessons).forEach(l=>pool.push(...l.cards));
-  else pool=[...lessons[cat].cards];
-  pool=shuffle(pool); quizQuestions=pool.slice(0,Math.min(10,pool.length));
+  else if(lessons[cat]) pool=[...lessons[cat].cards];
+  pool=shuffle(pool);quizQuestions=pool.slice(0,Math.min(10,pool.length));
   document.getElementById('quiz-area').style.display='block';
   document.getElementById('quiz-score').style.display='none';
   renderQuiz();
 }
-
 function renderQuiz() {
   if(quizIndex>=quizQuestions.length){showScore();return}
-  const q=quizQuestions[quizIndex], t=quizQuestions.length;
+  const q=quizQuestions[quizIndex],t=quizQuestions.length;
   document.getElementById('quiz-bar').style.width=`${(quizIndex/t)*100}%`;
   document.getElementById('quiz-thai').textContent=q.thai;
   document.getElementById('quiz-roman').textContent=q.roman;
-  let all=[]; Object.values(lessons).forEach(l=>all.push(...l.cards));
+  let all=[];Object.values(lessons).forEach(l=>all.push(...l.cards));
   let w=all.filter(c=>c.eng!==q.eng);
   w=shuffle(w).slice(0,3).map(c=>c.eng);
   let opts=shuffle([q.eng,...w]);
-  const oe=document.getElementById('quiz-options'); oe.innerHTML='';
+  const oe=document.getElementById('quiz-options');oe.innerHTML='';
   opts.forEach(o=>{
-    const b=document.createElement('button'); b.className='quiz-option';
-    b.textContent=o; b.onclick=()=>answer(b,o,q.eng); oe.appendChild(b);
+    const b=document.createElement('button');b.className='quiz-option';
+    b.textContent=o;b.onclick=()=>answer(b,o,q.eng);oe.appendChild(b);
   });
 }
-
 function answer(btn,chosen,correct) {
   document.querySelectorAll('.quiz-option').forEach(b=>{
     b.classList.add('disabled');
-    if(b.textContent===correct) b.classList.add('correct');
+    if(b.textContent===correct)b.classList.add('correct');
   });
-  if(chosen!==correct) btn.classList.add('wrong'); else quizScore++;
-  setTimeout(()=>{quizIndex++;renderQuiz()},1200);
+  if(chosen!==correct)btn.classList.add('wrong');else quizScore++;
+  setTimeout(()=>{quizIndex++;renderQuiz()},1100);
 }
-
 function showScore() {
   document.getElementById('quiz-area').style.display='none';
   document.getElementById('quiz-score').style.display='block';
   const t=quizQuestions.length;
   document.getElementById('score-num').textContent=`${quizScore}/${t}`;
   const p=quizScore/t;
-  let m='';
-  if(p===1) m='เก่งมาก! — Perfect!';
-  else if(p>=0.8) m='ดีมาก! — Great job!';
-  else if(p>=0.6) m='ดี! — Keep practicing!';
-  else m='ไม่เป็นไร — Try again!';
+  let m=p===1?'เก่งมาก! — Perfect!':p>=0.8?'ดีมาก! — Great job!':p>=0.6?'ดี! — Keep going!':'ไม่เป็นไร — Try again!';
   document.getElementById('score-msg').textContent=m;
 }
-
 function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]]}return b}
 
+// Swipe on flashcards
 let tx=0;
 document.getElementById('flashcard').addEventListener('touchstart',e=>{tx=e.changedTouches[0].screenX},{passive:true});
 document.getElementById('flashcard').addEventListener('touchend',e=>{const d=e.changedTouches[0].screenX-tx;if(Math.abs(d)>50){d<0?nextCard():prevCard()}});
+
+// Init
+buildHome();
 </script>
 </body>
 </html>
