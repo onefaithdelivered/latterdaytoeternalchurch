@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Learn Thai">
@@ -18,14 +18,14 @@
 body{font-family:'Outfit','Noto Sans Thai',sans-serif;background:var(--deep-blue);color:var(--text-light);min-height:100vh;min-height:100dvh;overflow-x:hidden;position:relative}
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 0%,rgba(45,27,105,0.8) 0%,transparent 60%),radial-gradient(ellipse at 80% 100%,rgba(192,57,43,0.15) 0%,transparent 50%);pointer-events:none;z-index:0}
 .thai-border{position:relative}.thai-border::after{content:'';position:absolute;bottom:0;left:10%;right:10%;height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0px,var(--gold) 8px,transparent 8px,transparent 16px);opacity:0.4}
-.nav{position:fixed;bottom:0;left:0;right:0;background:rgba(26,16,64,0.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--card-border);display:flex;z-index:100;padding-bottom:calc(env(safe-area-inset-bottom, 34px) + 10px)}
-.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:14px 2px 12px;background:none;border:none;color:var(--text-dim);font-family:inherit;font-size:9px;font-weight:600;letter-spacing:0.3px;cursor:pointer;transition:all 0.3s;position:relative}
+.nav{position:fixed;bottom:0;left:0;right:0;background:rgba(26,16,64,0.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--card-border);display:flex;z-index:100;padding-bottom:env(safe-area-inset-bottom,8px)}
+.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px 6px;background:none;border:none;color:var(--text-dim);font-family:inherit;font-size:8px;font-weight:600;letter-spacing:0.3px;cursor:pointer;transition:all 0.3s;position:relative}
 .nav-btn.active{color:var(--gold)}.nav-btn.active::before{content:'';position:absolute;top:0;left:20%;right:20%;height:2px;background:var(--gold);border-radius:0 0 2px 2px}
-.nav-btn svg{width:22px;height:22px}
+.nav-btn svg{width:19px;height:19px}
 .header{padding:48px 24px 14px;text-align:center;position:relative;z-index:1}
 .header h1{font-size:12px;font-weight:300;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
 .header .thai-title{font-family:'Noto Sans Thai','Outfit',sans-serif;font-size:24px;font-weight:700;color:var(--white);text-shadow:0 0 30px var(--gold-glow)}
-.content{position:relative;z-index:1;padding:0 16px 140px;max-width:500px;margin:0 auto}
+.content{position:relative;z-index:1;padding:0 16px 100px;max-width:500px;margin:0 auto}
 .page{display:none}.page.active{display:block;animation:fadeUp 0.3s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .section-title{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:20px 0 10px;padding-left:4px}
@@ -625,47 +625,47 @@ inlaws:{title:'👨‍👩‍👧 Meeting In-Laws',desc:'Making a good impressio
 // ============================= ALPHABET =============================
 const alphabet={
 mid:{label:'Mid Class',desc:'9 consonants — mid tone by default',chars:[
-{char:'ก',name:'gor gài',sound:'g',meaning:'chicken'},{char:'จ',name:'jor jaan',sound:'j',meaning:'plate'},
-{char:'ฎ',name:'dor chá-daa',sound:'d',meaning:'headdress'},{char:'ฏ',name:'dtor bpà-dtàk',sound:'dt',meaning:'goad'},
-{char:'ด',name:'dor dèk',sound:'d',meaning:'child'},{char:'ต',name:'dtor dtào',sound:'dt',meaning:'turtle'},
-{char:'บ',name:'bor bai-mái',sound:'b',meaning:'leaf'},{char:'ป',name:'bpor bplaa',sound:'bp',meaning:'fish'},
-{char:'อ',name:'or àang',sound:'or',meaning:'basin'},
+{char:'ก',name:'gor gài',sound:'g',meaning:'🐔 chicken'},{char:'จ',name:'jor jaan',sound:'j',meaning:'🍽️ plate'},
+{char:'ฎ',name:'dor chá-daa',sound:'d',meaning:'👑 headdress'},{char:'ฏ',name:'dtor bpà-dtàk',sound:'dt',meaning:'🪝 goad'},
+{char:'ด',name:'dor dèk',sound:'d',meaning:'👶 child'},{char:'ต',name:'dtor dtào',sound:'dt',meaning:'🐢 turtle'},
+{char:'บ',name:'bor bai-mái',sound:'b',meaning:'🍃 leaf'},{char:'ป',name:'bpor bplaa',sound:'bp',meaning:'🐟 fish'},
+{char:'อ',name:'or àang',sound:'or',meaning:'🪣 basin'},
 ]},
 high:{label:'High Class',desc:'11 consonants — rising tone by default',chars:[
-{char:'ข',name:'kǒr kài',sound:'k',meaning:'egg'},{char:'ฃ',name:'kǒr kùat',sound:'k',meaning:'bottle (obsolete)'},
-{char:'ฉ',name:'chǒr chìng',sound:'ch',meaning:'cymbals'},{char:'ฐ',name:'tǒr tǎan',sound:'t',meaning:'base'},
-{char:'ถ',name:'tǒr tǔng',sound:'t',meaning:'bag'},{char:'ผ',name:'pǒr pêung',sound:'p',meaning:'bee'},
-{char:'ฝ',name:'fǒr fǎa',sound:'f',meaning:'lid'},{char:'ศ',name:'sǒr sǎa-laa',sound:'s',meaning:'pavilion'},
-{char:'ษ',name:'sǒr reu-sǐi',sound:'s',meaning:'hermit'},{char:'ส',name:'sǒr sěua',sound:'s',meaning:'tiger'},
-{char:'ห',name:'hǒr hìip',sound:'h',meaning:'chest/box'},
+{char:'ข',name:'kǒr kài',sound:'k',meaning:'🥚 egg'},{char:'ฃ',name:'kǒr kùat',sound:'k',meaning:'🍾 bottle (obsolete)'},
+{char:'ฉ',name:'chǒr chìng',sound:'ch',meaning:'🥁 cymbals'},{char:'ฐ',name:'tǒr tǎan',sound:'t',meaning:'🏛️ base'},
+{char:'ถ',name:'tǒr tǔng',sound:'t',meaning:'👜 bag'},{char:'ผ',name:'pǒr pêung',sound:'p',meaning:'🐝 bee'},
+{char:'ฝ',name:'fǒr fǎa',sound:'f',meaning:'🫙 lid'},{char:'ศ',name:'sǒr sǎa-laa',sound:'s',meaning:'⛩️ pavilion'},
+{char:'ษ',name:'sǒr reu-sǐi',sound:'s',meaning:'🧙 hermit'},{char:'ส',name:'sǒr sěua',sound:'s',meaning:'🐯 tiger'},
+{char:'ห',name:'hǒr hìip',sound:'h',meaning:'📦 chest/box'},
 ]},
 low:{label:'Low Class',desc:'24 consonants — the largest group',chars:[
-{char:'ค',name:'kor kwai',sound:'k',meaning:'buffalo'},{char:'ฆ',name:'kor rá-kang',sound:'k',meaning:'bell'},
-{char:'ง',name:'ngor nguu',sound:'ng',meaning:'snake'},{char:'ช',name:'chor cháang',sound:'ch',meaning:'elephant'},
-{char:'ซ',name:'sor sôh',sound:'s',meaning:'chain'},{char:'ฌ',name:'chor cher',sound:'ch',meaning:'tree'},
-{char:'ญ',name:'yor yǐng',sound:'y',meaning:'woman'},{char:'ฑ',name:'tor mon-toh',sound:'t',meaning:'Montho'},
-{char:'ฒ',name:'tor pûu-tâo',sound:'t',meaning:'elder'},{char:'ณ',name:'nor nen',sound:'n',meaning:'novice monk'},
-{char:'ท',name:'tor tá-hǎan',sound:'t',meaning:'soldier'},{char:'ธ',name:'tor tong',sound:'t',meaning:'flag'},
-{char:'น',name:'nor nǔu',sound:'n',meaning:'mouse'},{char:'พ',name:'por paan',sound:'p',meaning:'tray'},
-{char:'ฟ',name:'for fan',sound:'f',meaning:'tooth'},{char:'ภ',name:'por sǎm-pao',sound:'p',meaning:'junk/ship'},
-{char:'ม',name:'mor máa',sound:'m',meaning:'horse'},{char:'ย',name:'yor yák',sound:'y',meaning:'giant'},
-{char:'ร',name:'ror reua',sound:'r',meaning:'boat'},{char:'ล',name:'lor ling',sound:'l',meaning:'monkey'},
-{char:'ว',name:'wor wǎen',sound:'w',meaning:'ring'},{char:'ฬ',name:'lor jù-laa',sound:'l',meaning:'kite'},
-{char:'ฮ',name:'hor nók-hûuk',sound:'h',meaning:'owl'},
+{char:'ค',name:'kor kwai',sound:'k',meaning:'🐃 buffalo'},{char:'ฆ',name:'kor rá-kang',sound:'k',meaning:'🔔 bell'},
+{char:'ง',name:'ngor nguu',sound:'ng',meaning:'🐍 snake'},{char:'ช',name:'chor cháang',sound:'ch',meaning:'🐘 elephant'},
+{char:'ซ',name:'sor sôh',sound:'s',meaning:'⛓️ chain'},{char:'ฌ',name:'chor cher',sound:'ch',meaning:'🌳 tree'},
+{char:'ญ',name:'yor yǐng',sound:'y',meaning:'👩 woman'},{char:'ฑ',name:'tor mon-toh',sound:'t',meaning:'👸 Montho'},
+{char:'ฒ',name:'tor pûu-tâo',sound:'t',meaning:'👴 elder'},{char:'ณ',name:'nor nen',sound:'n',meaning:'🧑 novice monk'},
+{char:'ท',name:'tor tá-hǎan',sound:'t',meaning:'💂 soldier'},{char:'ธ',name:'tor tong',sound:'t',meaning:'🚩 flag'},
+{char:'น',name:'nor nǔu',sound:'n',meaning:'🐭 mouse'},{char:'พ',name:'por paan',sound:'p',meaning:'🍽️ tray'},
+{char:'ฟ',name:'for fan',sound:'f',meaning:'🦷 tooth'},{char:'ภ',name:'por sǎm-pao',sound:'p',meaning:'⛵ junk/ship'},
+{char:'ม',name:'mor máa',sound:'m',meaning:'🐴 horse'},{char:'ย',name:'yor yák',sound:'y',meaning:'👹 giant'},
+{char:'ร',name:'ror reua',sound:'r',meaning:'🚣 boat'},{char:'ล',name:'lor ling',sound:'l',meaning:'🐒 monkey'},
+{char:'ว',name:'wor wǎen',sound:'w',meaning:'💍 ring'},{char:'ฬ',name:'lor jù-laa',sound:'l',meaning:'🪁 kite'},
+{char:'ฮ',name:'hor nók-hûuk',sound:'h',meaning:'🦉 owl'},
 ]},
 vowels:{label:'Key Vowels',desc:'Common vowels you\'ll see most often',chars:[
-{char:'–ะ',name:'sara à',sound:'à',meaning:'short a'},{char:'–า',name:'sara aa',sound:'aa',meaning:'long a'},
-{char:'–ิ',name:'sara ì',sound:'ì',meaning:'short i'},{char:'–ี',name:'sara ee',sound:'ee',meaning:'long i'},
-{char:'–ุ',name:'sara ù',sound:'ù',meaning:'short u'},{char:'–ู',name:'sara uu',sound:'uu',meaning:'long u'},
-{char:'เ–',name:'sara e',sound:'e',meaning:'long e (front)'},{char:'แ–',name:'sara ae',sound:'ae',meaning:'long ae (front)'},
-{char:'โ–',name:'sara oh',sound:'oh',meaning:'long o (front)'},{char:'ไ–',name:'sara ai',sound:'ai',meaning:'ai (front)'},
-{char:'–ั',name:'mai hǎn aa-gàat',sound:'a',meaning:'short a + consonant'},{char:'เ–า',name:'sara ao',sound:'ao',meaning:'ao'},
+{char:'–ะ',name:'sara à',sound:'à',meaning:'🅰️ short a'},{char:'–า',name:'sara aa',sound:'aa',meaning:'🅰️ long a'},
+{char:'–ิ',name:'sara ì',sound:'ì',meaning:'ℹ️ short i'},{char:'–ี',name:'sara ee',sound:'ee',meaning:'ℹ️ long i'},
+{char:'–ุ',name:'sara ù',sound:'ù',meaning:'🔵 short u'},{char:'–ู',name:'sara uu',sound:'uu',meaning:'🔵 long u'},
+{char:'เ–',name:'sara e',sound:'e',meaning:'📧 long e (front)'},{char:'แ–',name:'sara ae',sound:'ae',meaning:'📧 long ae (front)'},
+{char:'โ–',name:'sara oh',sound:'oh',meaning:'⭕ long o (front)'},{char:'ไ–',name:'sara ai',sound:'ai',meaning:'🔊 ai (front)'},
+{char:'–ั',name:'mai hǎn aa-gàat',sound:'a',meaning:'🅰️ short a + consonant'},{char:'เ–า',name:'sara ao',sound:'ao',meaning:'🔊 ao'},
 ]},
 tonemarks:{label:'Tone Marks',desc:'4 marks that change the tone of syllables',chars:[
-{char:'–่',name:'mai èhk',sound:'่',meaning:'Low/falling tone marker'},
-{char:'–้',name:'mai toh',sound:'้',meaning:'Falling/high tone marker'},
-{char:'–๊',name:'mai dtree',sound:'๊',meaning:'High tone marker'},
-{char:'–๋',name:'mai jàt-dtà-waa',sound:'๋',meaning:'Rising tone marker'},
+{char:'–่',name:'mai èhk',sound:'่',meaning:'⬇️ Low/falling tone marker'},
+{char:'–้',name:'mai toh',sound:'้',meaning:'📉 Falling/high tone marker'},
+{char:'–๊',name:'mai dtree',sound:'๊',meaning:'⬆️ High tone marker'},
+{char:'–๋',name:'mai jàt-dtà-waa',sound:'๋',meaning:'📈 Rising tone marker'},
 ]},
 };
 
