@@ -234,6 +234,63 @@ main{padding-bottom:40px;transition:opacity 0.25s ease}
 .chapter-title{font-size:1.2rem;font-weight:700;color:var(--brown-mid);text-align:center;margin:24px 0 6px}
 .chapter-subtitle{font-size:0.88rem;color:var(--brown-muted);text-align:center;font-style:italic;margin-bottom:16px}
 
+/* Word tap popup for scripture */
+.word-tap{cursor:pointer;border-bottom:1px dotted rgba(184,134,11,0.4);transition:background 0.15s}
+.word-tap:hover,.word-tap:active{background:rgba(184,134,11,0.12);border-radius:2px}
+.word-popup-scripture{position:fixed;bottom:0;left:0;right:0;background:var(--card-bg);border-top:3px solid var(--gold);padding:16px 20px;z-index:1001;box-shadow:0 -4px 20px rgba(0,0,0,0.2);max-height:40vh;overflow-y:auto;animation:slideUp 0.2s ease}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.word-popup-scripture h3{color:var(--gold);font-size:1.1rem;margin-bottom:4px}
+.word-popup-scripture .wp-pos{font-size:0.78rem;color:var(--brown-muted);font-style:italic;margin-bottom:6px}
+.word-popup-scripture .wp-def{font-size:0.92rem;color:var(--brown-mid);margin-bottom:4px}
+.word-popup-scripture .wp-note{font-size:0.8rem;color:var(--brown-muted);line-height:1.5}
+.word-popup-scripture .wp-close{position:absolute;top:10px;right:14px;background:none;border:none;font-size:1.3rem;color:var(--brown-muted);cursor:pointer}
+/* Font size controls */
+.font-controls{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:14px}
+.font-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--gold-border-strong);background:transparent;font-size:1.1rem;color:var(--brown-soft);cursor:pointer;font-weight:700;display:flex;align-items:center;justify-content:center}
+.font-btn:active{background:var(--gold-08)}
+.font-label{font-size:0.8rem;color:var(--brown-muted)}
+/* Bookmarked verse */
+.verse-bookmark{position:absolute;right:8px;top:8px;background:none;border:none;font-size:1rem;cursor:pointer;opacity:0.3;transition:opacity 0.2s}
+.verse-bookmark.active{opacity:1}
+.il-line{position:relative}
+.il-line.bookmarked{border-left-color:var(--red)}
+/* Daily verse card */
+.daily-verse{background:var(--card-bg);border-radius:12px;padding:16px 20px;border-left:4px solid var(--gold);margin-bottom:20px}
+.daily-verse .dv-label{font-size:0.75rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.daily-verse .dv-latin{font-size:1rem;color:var(--brown-dark);font-style:italic;margin-bottom:6px;line-height:1.5}
+.daily-verse .dv-english{font-size:0.88rem;color:var(--brown-muted);margin-bottom:4px}
+.daily-verse .dv-ref{font-size:0.78rem;color:var(--gold);font-weight:600}
+/* Vulgate Core vocab */
+.vc-card{background:var(--card-bg);border-radius:8px;padding:10px 14px;border-left:3px solid var(--gold);margin-bottom:6px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:background 0.15s}
+.vc-card:hover{background:var(--card-bg-hover)}
+.vc-latin{font-weight:700;color:var(--brown-mid);font-size:0.95rem}
+.vc-english{color:var(--brown-soft);font-size:0.88rem}
+.vc-pos{font-size:0.72rem;color:var(--gold);font-weight:600;text-transform:uppercase;margin-left:6px}
+.vc-note{font-size:0.78rem;color:var(--brown-muted);margin-top:4px;line-height:1.4;display:none}
+.vc-card.expanded .vc-note{display:block}
+.vc-freq{font-size:0.7rem;color:var(--brown-faint)}
+.vc-search{width:100%;padding:10px 14px;border:1px solid var(--gold-border);border-radius:8px;font-size:0.9rem;font-family:inherit;background:var(--card-bg);color:var(--brown-dark);margin-bottom:10px}
+.vc-filter-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.vc-filter-btn{padding:5px 12px;border-radius:6px;border:1px solid var(--gold-border);background:transparent;font-size:0.78rem;color:var(--brown-soft);cursor:pointer}
+.vc-filter-btn.active{background:var(--brown-mid);color:var(--parchment);border-color:var(--brown-mid)}
+/* Parsing drills */
+.parse-card{background:var(--card-bg);border-radius:10px;padding:20px;text-align:center;margin-bottom:16px}
+.parse-word{font-size:1.6rem;font-weight:700;color:var(--brown-dark);margin-bottom:4px}
+.parse-hint{font-size:0.82rem;color:var(--brown-muted);margin-bottom:16px}
+.parse-options{display:flex;flex-direction:column;gap:8px}
+.parse-option{padding:12px 16px;border-radius:8px;border:1px solid var(--gold-border);background:transparent;font-family:inherit;font-size:0.9rem;color:var(--brown-soft);cursor:pointer;text-align:left;transition:all 0.15s}
+.parse-option:hover{background:var(--gold-08)}
+.parse-option.correct{background:rgba(45,90,39,0.15);border-color:var(--green);color:var(--green)}
+.parse-option.wrong{background:rgba(139,32,32,0.1);border-color:var(--red);color:var(--red)}
+.parse-option.disabled{pointer-events:none}
+/* Conjugation drill */
+.conj-table{width:100%;border-collapse:collapse;margin:12px 0}
+.conj-table th,.conj-table td{padding:8px 10px;border:1px solid var(--gold-border);font-size:0.85rem}
+.conj-table th{background:var(--gold-08);color:var(--brown-mid);font-weight:700}
+.conj-table input{width:100%;padding:6px;border:1px solid var(--gold-border);border-radius:4px;font-family:inherit;font-size:0.85rem;background:var(--card-bg);color:var(--brown-dark)}
+.conj-table input.correct{border-color:var(--green);background:rgba(45,90,39,0.08)}
+.conj-table input.wrong{border-color:var(--red);background:rgba(139,32,32,0.06)}
+
 footer{text-align:center;padding:28px 0 44px}
 footer .footer-text{margin-top:10px;font-size:0.78rem;color:var(--brown-muted)}
 @media(max-width:600px){.quiz-options{grid-template-columns:1fr}.stats-row{grid-template-columns:1fr 1fr}.quick-grid{grid-template-columns:1fr 1fr}.vocab-grid{grid-template-columns:1fr 1fr}nav{gap:2px}.nav-btn{padding:6px 8px}.nav-latin{font-size:0.8rem}.nav-english{font-size:0.58rem}.quiz-word{font-size:1.6rem}.grammar-table{font-size:0.76rem}.grammar-table th,.grammar-table td{padding:4px 5px}.grammar-content{padding:14px}.word-popup{max-width:90%}}
@@ -261,13 +318,93 @@ footer .footer-text{margin-top:10px;font-size:0.78rem;color:var(--brown-muted)}
 <div id="view-hymns" class="view"></div>
 <div id="view-scripture" class="view"></div>
 </main>
-<footer><div class="ornament">&#10022; &#10022; &#10022;</div><p class="footer-text">Ad Maiorem Dei Gloriam</p></footer>
+<footer><div class="ornament">&#10022; &#10022; &#10022;</div><p class="footer-text">Ad Maiorem Dei Gloriam</p></footer><div id="word-panel"></div>
 </div>
 <div id="word-popup-container"></div>
 <script>
 // ═══════════════════════════════════════════════════════════════════
 // VOCABULARY DATA (224 words)
 // ═══════════════════════════════════════════════════════════════════
+const VULGATE_CORE=[
+{la:"et",en:"and",pos:"conj",freq:28000},
+{la:"in",en:"in, into",pos:"prep",freq:18000,note:"+ abl. (location) or + acc. (motion)"},
+{la:"non",en:"not",pos:"adv",freq:10000},
+{la:"qui",en:"who, which",pos:"pron",freq:9500,note:"Relative pronoun: qui/quae/quod"},
+{la:"est",en:"is, exists",pos:"verb",freq:9000,note:"3rd sg. present of esse"},
+{la:"ut",en:"so that, as",pos:"conj",freq:5500,note:"+ subjunctive = purpose/result; + indicative = as"},
+{la:"ad",en:"to, toward",pos:"prep",freq:5000,note:"Always + accusative"},
+{la:"de",en:"from, about, concerning",pos:"prep",freq:4800,note:"Always + ablative"},
+{la:"quia",en:"because, that",pos:"conj",freq:4500},
+{la:"autem",en:"but, however, moreover",pos:"conj",freq:4200,note:"Postpositive — never first word"},
+{la:"Dominus",en:"Lord, master",pos:"noun",freq:4000,note:"2nd decl. m. Voc: Domine!"},
+{la:"Deus",en:"God",pos:"noun",freq:3800,note:"2nd decl. m. (irregular gen. Dei)"},
+{la:"ego",en:"I",pos:"pron",freq:3500,note:"Nom. ego, gen. mei, dat. mihi, acc. me, abl. me"},
+{la:"enim",en:"for, indeed",pos:"conj",freq:3300,note:"Postpositive — never first word"},
+{la:"ex",en:"out of, from",pos:"prep",freq:3200,note:"Always + ablative. Variant: e (before consonants)"},
+{la:"omnis",en:"all, every, each",pos:"adj",freq:3100,note:"3rd decl. adj: omnis/omne"},
+{la:"cum",en:"with; when",pos:"prep/conj",freq:3000,note:"Prep: + abl. (with). Conj: + subj. (when/since)"},
+{la:"ab",en:"from, by",pos:"prep",freq:2900,note:"Always + ablative. Agent: 'by [someone]'"},
+{la:"tu",en:"you (sg.)",pos:"pron",freq:2800,note:"Nom. tu, gen. tui, dat. tibi, acc. te, abl. te"},
+{la:"dico",en:"I say, speak",pos:"verb",freq:2700,note:"3rd conj. Perfect: dixi. 'Dicit eis' = he says to them"},
+{la:"facio",en:"I do, make",pos:"verb",freq:2600,note:"3rd conj. (io-stem). Perf: feci. Pass: fio, fieri"},
+{la:"si",en:"if",pos:"conj",freq:2500,note:"+ indicative = real condition; + subjunctive = hypothetical"},
+{la:"hic",en:"this, this one",pos:"pron",freq:2400,note:"Demonstrative: hic/haec/hoc"},
+{la:"quod",en:"which, that, because",pos:"pron/conj",freq:2300},
+{la:"sed",en:"but",pos:"conj",freq:2200,note:"Stronger contrast than 'autem'"},
+{la:"filius",en:"son",pos:"noun",freq:2100,note:"2nd decl. m. Filius Dei = Son of God"},
+{la:"per",en:"through, by means of",pos:"prep",freq:2000,note:"Always + accusative"},
+{la:"rex",en:"king",pos:"noun",freq:1900,note:"3rd decl. m. Stem: reg-. Gen: regis"},
+{la:"terra",en:"earth, land",pos:"noun",freq:1800,note:"1st decl. f."},
+{la:"homo",en:"man, human being",pos:"noun",freq:1700,note:"3rd decl. m. Stem: homin-. Gen: hominis"},
+{la:"ille",en:"that, that one, he/she",pos:"pron",freq:1700,note:"Demonstrative: ille/illa/illud"},
+{la:"pater",en:"father",pos:"noun",freq:1600,note:"3rd decl. m. Stem: patr-. Gen: patris"},
+{la:"meus",en:"my, mine",pos:"adj",freq:1600,note:"1st/2nd decl: meus/mea/meum"},
+{la:"suus",en:"his/her/its own, their own",pos:"adj",freq:1500,note:"Reflexive possessive: suus/sua/suum"},
+{la:"nomen",en:"name",pos:"noun",freq:1500,note:"3rd decl. n. Stem: nomin-"},
+{la:"tuus",en:"your, yours (sg.)",pos:"adj",freq:1400,note:"1st/2nd decl: tuus/tua/tuum"},
+{la:"video",en:"I see",pos:"verb",freq:1400,note:"2nd conj. Perf: vidi. Pass: videor (I seem)"},
+{la:"noster",en:"our, ours",pos:"adj",freq:1350,note:"noster/nostra/nostrum"},
+{la:"verbum",en:"word",pos:"noun",freq:1300,note:"2nd decl. n. In principio erat Verbum"},
+{la:"venio",en:"I come",pos:"verb",freq:1300,note:"4th conj. Perf: veni. Imper: veni! / venite!"},
+{la:"do",en:"I give",pos:"verb",freq:1200,note:"1st conj. Perf: dedi. Imper: da! / date!"},
+{la:"regnum",en:"kingdom, reign",pos:"noun",freq:1200,note:"2nd decl. n. Adveniat regnum tuum"},
+{la:"dies",en:"day",pos:"noun",freq:1200,note:"5th decl. m./f. (rare declension)"},
+{la:"populus",en:"people, nation",pos:"noun",freq:1100,note:"2nd decl. m."},
+{la:"manus",en:"hand",pos:"noun",freq:1100,note:"4th decl. f. (unusual: -us but feminine)"},
+{la:"magnus",en:"great, large",pos:"adj",freq:1100,note:"1st/2nd decl: magnus/magna/magnum"},
+{la:"audio",en:"I hear",pos:"verb",freq:1050,note:"4th conj. Perf: audivi. Imper: audi! / audite!"},
+{la:"vox",en:"voice",pos:"noun",freq:1000,note:"3rd decl. f. Stem: voc-. Gen: vocis"},
+{la:"aqua",en:"water",pos:"noun",freq:1000,note:"1st decl. f."},
+{la:"spiritus",en:"spirit, breath, wind",pos:"noun",freq:1000,note:"4th decl. m. Spiritus Sanctus"},
+{la:"vita",en:"life",pos:"noun",freq:950,note:"1st decl. f. Vitam aeternam"},
+{la:"pax",en:"peace",pos:"noun",freq:950,note:"3rd decl. f. Stem: pac-. Dona nobis pacem"},
+{la:"corpus",en:"body",pos:"noun",freq:900,note:"3rd decl. n. Stem: corpor-. Corpus Christi"},
+{la:"caelum",en:"heaven, sky",pos:"noun",freq:900,note:"2nd decl. n. Pl: caeli (heavens)"},
+{la:"lux",en:"light",pos:"noun",freq:850,note:"3rd decl. f. Stem: luc-. Lux mundi"},
+{la:"gratia",en:"grace, favor, thanks",pos:"noun",freq:850,note:"1st decl. f. Gratia plena"},
+{la:"gloria",en:"glory",pos:"noun",freq:800,note:"1st decl. f. Gloria Patri"},
+{la:"credo",en:"I believe",pos:"verb",freq:800,note:"3rd conj. + dat. Perf: credidi. Credo in unum Deum"},
+{la:"sanctus",en:"holy, saint",pos:"adj",freq:800,note:"1st/2nd decl. Sanctus/Sancta/Sanctum"},
+{la:"peccatum",en:"sin",pos:"noun",freq:750,note:"2nd decl. n. Perf. part. of peccare (to sin)"},
+{la:"mors",en:"death",pos:"noun",freq:750,note:"3rd decl. f. Stem: mort-. In hora mortis"},
+{la:"ecclesia",en:"church, assembly",pos:"noun",freq:700,note:"1st decl. f. From Greek ekklēsia"},
+{la:"amen",en:"amen, truly",pos:"adv",freq:700,note:"Indeclinable. Hebrew: 'so be it'"},
+{la:"crux",en:"cross",pos:"noun",freq:650,note:"3rd decl. f. Stem: cruc-. Signum crucis"},
+{la:"sanguis",en:"blood",pos:"noun",freq:650,note:"3rd decl. m. Stem: sanguin-"},
+{la:"panis",en:"bread",pos:"noun",freq:600,note:"3rd decl. m. Panis vitae = bread of life"},
+{la:"aeternus",en:"eternal, everlasting",pos:"adj",freq:600,note:"1st/2nd decl. Vitam aeternam"},
+{la:"misericordia",en:"mercy, compassion",pos:"noun",freq:550,note:"1st decl. f."},
+{la:"lex",en:"law",pos:"noun",freq:550,note:"3rd decl. f. Stem: leg-. Gen: legis"},
+{la:"caro",en:"flesh, meat",pos:"noun",freq:550,note:"3rd decl. f. Stem: carn-. Verbum caro factum est"},
+{la:"voluntas",en:"will, desire",pos:"noun",freq:500,note:"3rd decl. f. Stem: voluntat-. Fiat voluntas tua"},
+{la:"resurrectio",en:"resurrection",pos:"noun",freq:450,note:"3rd decl. f. Stem: resurrection-"},
+{la:"anima",en:"soul, spirit",pos:"noun",freq:450,note:"1st decl. f. Anima Christi"},
+{la:"fides",en:"faith, trust",pos:"noun",freq:450,note:"5th decl. f."},
+{la:"saecula",en:"ages, forever",pos:"noun",freq:400,note:"2nd decl. n. pl. In saecula saeculorum = forever and ever"},
+{la:"agnus",en:"lamb",pos:"noun",freq:400,note:"2nd decl. m. Agnus Dei"},
+];
+
+
 const VOCABULARY=[
 {c:"Liturgical",l:"Dominus",e:"Lord",p:"DOH-mee-noos"},{c:"Liturgical",l:"Deus",e:"God",p:"DEH-oos"},{c:"Liturgical",l:"Sanctus",e:"Holy",p:"SAHNK-toos"},{c:"Liturgical",l:"Gloria",e:"Glory",p:"GLOH-ree-ah"},{c:"Liturgical",l:"Pax",e:"Peace",p:"PAHKS"},{c:"Liturgical",l:"Agnus",e:"Lamb",p:"AHG-noos"},{c:"Liturgical",l:"Credo",e:"I believe",p:"KREH-doh"},{c:"Liturgical",l:"Misericordia",e:"Mercy",p:"mee-seh-ree-KOR-dee-ah"},{c:"Liturgical",l:"Resurrectio",e:"Resurrection",p:"reh-soo-REK-tsee-oh"},{c:"Liturgical",l:"Eucharistia",e:"Eucharist / Thanksgiving",p:"eh-oo-kah-REES-tee-ah"},{c:"Liturgical",l:"Missa",e:"Mass",p:"MEES-sah"},{c:"Liturgical",l:"Evangelium",e:"Gospel",p:"eh-vahn-JEH-lee-oom"},{c:"Liturgical",l:"Alleluia",e:"Praise the Lord",p:"ah-leh-LOO-yah"},{c:"Liturgical",l:"Amen",e:"So be it / Truly",p:"AH-mehn"},{c:"Liturgical",l:"Hosanna",e:"Save us / Praise",p:"oh-ZAHN-nah"},{c:"Liturgical",l:"Communio",e:"Communion",p:"kohm-MOO-nee-oh"},{c:"Liturgical",l:"Offertorium",e:"Offertory",p:"ohf-fehr-TOH-ree-oom"},{c:"Liturgical",l:"Introitus",e:"Introit / Entrance",p:"een-TROH-ee-toos"},{c:"Liturgical",l:"Benedictio",e:"Blessing",p:"beh-neh-DEEK-tsee-oh"},{c:"Liturgical",l:"Lectio",e:"Reading / Lesson",p:"LEK-tsee-oh"},{c:"Liturgical",l:"Homilia",e:"Homily",p:"hoh-MEE-lee-ah"},{c:"Liturgical",l:"Psalmus",e:"Psalm",p:"PSAHL-moos"},{c:"Liturgical",l:"Hymnus",e:"Hymn",p:"HEEM-noos"},
 {c:"Sacraments",l:"Baptisma",e:"Baptism",p:"bahp-TEES-mah"},{c:"Sacraments",l:"Confirmatio",e:"Confirmation",p:"kohn-feer-MAH-tsee-oh"},{c:"Sacraments",l:"Paenitentia",e:"Penance / Confession",p:"peh-nee-TEHN-tsee-ah"},{c:"Sacraments",l:"Matrimonium",e:"Marriage",p:"mah-tree-MOH-nee-oom"},{c:"Sacraments",l:"Ordo",e:"Holy Orders",p:"OR-doh"},{c:"Sacraments",l:"Unctio",e:"Anointing",p:"OOHNK-tsee-oh"},{c:"Sacraments",l:"Absolutio",e:"Absolution",p:"ahb-soh-LOO-tsee-oh"},{c:"Sacraments",l:"Gratia",e:"Grace",p:"GRAH-tsee-ah"},{c:"Sacraments",l:"Peccatum",e:"Sin",p:"pehk-KAH-toom"},{c:"Sacraments",l:"Indulgentia",e:"Indulgence",p:"een-dool-JEHN-tsee-ah"},
@@ -827,10 +964,10 @@ const ACHIEVEMENTS=[
 // STATE & PERSISTENCE
 // ═══════════════════════════════════════════════════════════════════
 const CASES=["Nom.","Gen.","Dat.","Acc.","Abl."];
-function defaultState(){return{activeTab:"home",learnedWords:[],score:{correct:0,total:0},streak:0,bestStreak:0,vocabFilter:"All",vocabSearch:"",flippedCards:[],prayerExpanded:null,prayerShowLatin:true,activeLesson:0,quizMode:"latin-to-english",quizCategory:"All",quizCurrent:null,quizOptions:[],quizSelected:null,darkMode:false,studyDays:[],currentDayStreak:0,sr:{},practiceTab:"quiz",sbIndex:0,sbPlaced:[],sbChecked:false,completedLessons:[],scrSection:"john",scrChapter:0};}
+function defaultState(){return{activeTab:"home",learnedWords:[],score:{correct:0,total:0},streak:0,bestStreak:0,vocabFilter:"All",vocabSearch:"",flippedCards:[],prayerExpanded:null,prayerShowLatin:true,activeLesson:0,quizMode:"latin-to-english",quizCategory:"All",quizCurrent:null,quizOptions:[],quizSelected:null,darkMode:false,studyDays:[],currentDayStreak:0,sr:{},practiceTab:"quiz",sbIndex:0,sbPlaced:[],sbChecked:false,completedLessons:[],scrSection:"john",scrChapter:0,fontSize:1,bookmarks:[],vcFilter:"All",vcSearch:"",practiceSubTab:"quiz"};}
 let S=defaultState();
-function saveState(){try{const d={learnedWords:S.learnedWords,score:S.score,bestStreak:S.bestStreak,darkMode:S.darkMode,studyDays:S.studyDays,currentDayStreak:S.currentDayStreak,sr:S.sr,activeLesson:S.activeLesson,completedLessons:S.completedLessons,scrChapter:S.scrChapter};localStorage.setItem("latina_state",JSON.stringify(d));}catch(e){}}
-function loadState(){try{const d=JSON.parse(localStorage.getItem("latina_state"));if(d){S.learnedWords=d.learnedWords||[];S.score=d.score||{correct:0,total:0};S.bestStreak=d.bestStreak||0;S.darkMode=d.darkMode||false;S.studyDays=d.studyDays||[];S.currentDayStreak=d.currentDayStreak||0;S.sr=d.sr||{};S.activeLesson=d.activeLesson||0;S.completedLessons=d.completedLessons||[];S.scrChapter=d.scrChapter||0;}}catch(e){}}
+function saveState(){try{const d={learnedWords:S.learnedWords,score:S.score,bestStreak:S.bestStreak,darkMode:S.darkMode,studyDays:S.studyDays,currentDayStreak:S.currentDayStreak,sr:S.sr,activeLesson:S.activeLesson,completedLessons:S.completedLessons,scrChapter:S.scrChapter,fontSize:S.fontSize,bookmarks:S.bookmarks};localStorage.setItem("latina_state",JSON.stringify(d));}catch(e){}}
+function loadState(){try{const d=JSON.parse(localStorage.getItem("latina_state"));if(d){S.learnedWords=d.learnedWords||[];S.score=d.score||{correct:0,total:0};S.bestStreak=d.bestStreak||0;S.darkMode=d.darkMode||false;S.studyDays=d.studyDays||[];S.currentDayStreak=d.currentDayStreak||0;S.sr=d.sr||{};S.activeLesson=d.activeLesson||0;S.completedLessons=d.completedLessons||[];S.scrChapter=d.scrChapter||0;S.fontSize=d.fontSize||1;S.bookmarks=d.bookmarks||[];}}catch(e){}}
 function todayStr(){return new Date().toISOString().slice(0,10);}
 function recordStudyDay(){const t=todayStr();if(!S.studyDays.includes(t)){S.studyDays.push(t);calcDayStreak();saveState();}}
 function calcDayStreak(){const days=S.studyDays.sort();if(!days.length){S.currentDayStreak=0;return;}let streak=1;const today=new Date(todayStr());const last=new Date(days[days.length-1]);const diff=Math.floor((today-last)/(86400000));if(diff>1){S.currentDayStreak=1;return;}for(let i=days.length-1;i>0;i--){const a=new Date(days[i]),b=new Date(days[i-1]);if(Math.floor((a-b)/86400000)===1)streak++;else break;}S.currentDayStreak=streak;}
@@ -843,6 +980,142 @@ function srClass(word){return["sr-new","sr-learning","sr-familiar","sr-known","s
 function srLabel(word){return["New","Learning","Familiar","Known","Mastered"][srLevel(word)];}
 
 loadState();
+
+// ═══════════════════════════════════════════════════════════════════
+// WORD LOOKUP DICTIONARY
+// ═══════════════════════════════════════════════════════════════════
+function buildDict(){
+  const d={};
+  VULGATE_CORE.forEach(w=>{
+    const key=w.la.toLowerCase();
+    d[key]={la:w.la,en:w.en,pos:w.pos,note:w.note||""};
+  });
+  VOCABULARY.forEach(w=>{
+    const key=w.latin.toLowerCase();
+    if(!d[key])d[key]={la:w.latin,en:w.english,pos:w.category,note:""};
+  });
+  // Common forms mapping to roots
+  const forms={
+    "est":"esse (to be) — 3rd sg. present: is",
+    "sunt":"esse (to be) — 3rd pl. present: they are",
+    "erat":"esse (to be) — 3rd sg. imperfect: was",
+    "erant":"esse (to be) — 3rd pl. imperfect: they were",
+    "fuit":"esse (to be) — 3rd sg. perfect: was",
+    "sit":"esse (to be) — 3rd sg. present subjunctive: may be",
+    "sint":"esse (to be) — 3rd pl. present subjunctive: may be",
+    "esset":"esse (to be) — 3rd sg. imperfect subjunctive: were/would be",
+    "sum":"esse (to be) — 1st sg. present: I am",
+    "es":"esse (to be) — 2nd sg. present: you are",
+    "erit":"esse (to be) — 3rd sg. future: will be",
+    "dixit":"dicere (to say) — 3rd sg. perfect: he/she said",
+    "dixerunt":"dicere (to say) — 3rd pl. perfect: they said",
+    "dicit":"dicere (to say) — 3rd sg. present: he/she says",
+    "dicens":"dicere (to say) — present participle: saying",
+    "dixisset":"dicere (to say) — pluperfect subjunctive: had said",
+    "fecit":"facere (to do/make) — 3rd sg. perfect: he/she did/made",
+    "facta":"facere (to do/make) — perfect passive participle f.: made/done",
+    "factum":"facere (to do/make) — perfect passive participle n.: made/done",
+    "factus":"facere (to do/make) — perfect passive participle m.: made/done",
+    "facere":"facere — infinitive: to do/make",
+    "fecerunt":"facere (to do/make) — 3rd pl. perfect: they did/made",
+    "venit":"venire (to come) — 3rd sg. perfect/present: he came / comes",
+    "venerunt":"venire (to come) — 3rd pl. perfect: they came",
+    "venientem":"venire (to come) — acc. present participle: coming",
+    "venite":"venire (to come) — 2nd pl. imperative: come!",
+    "misit":"mittere (to send) — 3rd sg. perfect: he sent",
+    "missus":"mittere (to send) — perf. passive participle: sent",
+    "dedit":"dare (to give) — 3rd sg. perfect: he gave",
+    "dabo":"dare (to give) — 1st sg. future: I will give",
+    "vidit":"videre (to see) — 3rd sg. perfect: he saw",
+    "viderunt":"videre (to see) — 3rd pl. perfect: they saw",
+    "vidisset":"videre (to see) — pluperfect subjunctive: had seen",
+    "videns":"videre (to see) — present participle: seeing",
+    "credit":"credere (to believe) — 3rd sg. present: believes",
+    "credunt":"credere (to believe) — 3rd pl. present: they believe",
+    "credidimus":"credere (to believe) — 1st pl. perfect: we believed",
+    "habet":"habere (to have) — 3rd sg. present: has",
+    "habent":"habere (to have) — 3rd pl. present: they have",
+    "habeat":"habere (to have) — 3rd sg. present subjunctive: may have",
+    "audit":"audire (to hear) — 3rd sg. present: hears",
+    "audient":"audire (to hear) — 3rd pl. future: will hear",
+    "potest":"posse (to be able) — 3rd sg. present: can",
+    "possunt":"posse (to be able) — 3rd pl. present: they can",
+    "scit":"scire (to know) — 3rd sg. present: knows",
+    "scimus":"scire (to know) — 1st pl. present: we know",
+    "scribit":"scribere (to write) — 3rd sg. present: writes",
+    "scripsit":"scribere (to write) — 3rd sg. perfect: wrote",
+    "respondit":"respondere (to answer) — 3rd sg. perfect: answered",
+    "vult":"velle (to wish) — 3rd sg. present: wills/wishes",
+    "eius":"is/ea/id — genitive: his/her/its",
+    "eum":"is/ea/id — acc. m.: him",
+    "eam":"is/ea/id — acc. f.: her/it",
+    "ei":"is/ea/id — dative: to him/her",
+    "eis":"is/ea/id — dat./abl. pl.: to/by them",
+    "eos":"is/ea/id — acc. m. pl.: them",
+    "eorum":"is/ea/id — gen. pl.: of them/their",
+    "me":"ego — acc./abl.: me",
+    "mihi":"ego — dative: to me",
+    "te":"tu — acc./abl.: you",
+    "tibi":"tu — dative: to you",
+    "nos":"nos — nom./acc.: we/us",
+    "nobis":"nos — dat./abl.: to/for us",
+    "vobis":"vos — dat./abl.: to/for you all",
+    "se":"sui — acc./abl. reflexive: himself/herself/themselves",
+    "sibi":"sui — dat. reflexive: to himself/herself",
+    "ipso":"ipse — abl. m./n.: himself/itself",
+    "ipsum":"ipse — acc. m./nom.-acc. n.: himself/itself",
+    "ipse":"ipse — nom. m.: he himself (emphatic)",
+    "hoc":"hic — nom./acc. n.: this",
+    "haec":"hic — nom. f./nom.-acc. n. pl.: this/these",
+    "illum":"ille — acc. m.: that one / him",
+    "illo":"ille — abl. m./n.: that / by that",
+    "illud":"ille — nom./acc. n.: that thing",
+    "quem":"qui — acc. m.: whom/which",
+    "quae":"qui — nom. f. / nom.-acc. n. pl.: who/which",
+    "quod":"qui — nom./acc. n.: which/that; also: because",
+    "quo":"qui — abl. m./n.: by/in which; also: where (to)",
+    "qua":"qui — abl. f.: by/in which",
+    "quibus":"qui — dat./abl. pl.: to/by whom",
+    "cui":"qui — dative sg.: to whom",
+    "cuius":"qui — gen. sg.: whose",
+    "quid":"quis — nom./acc. n. interrogative: what?",
+    "quis":"quis — nom. m./f. interrogative: who?",
+    "mea":"meus — nom. f. / nom.-acc. n. pl.: my",
+    "meum":"meus — acc. m. / nom.-acc. n.: my",
+    "mei":"meus — gen.: of me / my",
+    "tua":"tuus — nom. f.: your",
+    "tuum":"tuus — acc. m. / nom.-acc. n.: your",
+    "tui":"tuus — gen.: of you / your",
+    "sua":"suus — nom. f.: his/her own",
+    "suum":"suus — acc. m. / nom.-acc. n.: his/her own",
+    "sui":"suus — gen.: of his/her own; also: nom. pl. his own people",
+    "nostra":"noster — nom. f.: our",
+    "nostrum":"noster — acc. m. / nom.-acc. n.: our",
+    "nostrae":"noster — gen./dat. f. sg.: of/to our",
+  };
+  Object.entries(forms).forEach(([k,v])=>{if(!d[k])d[k]={la:k,en:v,pos:"form",note:""};});
+  return d;
+}
+const DICT=buildDict();
+function lookupWord(word){
+  const clean=word.toLowerCase().replace(/[.,;:!?\u201C\u201D\u2018\u2019""''()]/g,"").trim();
+  if(DICT[clean])return DICT[clean];
+  // Try without trailing case endings
+  const stems=[clean.replace(/que$/,""),clean.replace(/(m|s|rum|rum|is|us|um|i|ae|am|o|a|em|e|es|ibus|bus)$/,"")];
+  for(const s of stems){if(s.length>2&&DICT[s])return{...DICT[s],note:"Root: "+DICT[s].la+". "+DICT[s].note};}
+  return null;
+}
+function showWordPanel(word){
+  const info=lookupWord(word);
+  const el=document.getElementById("word-panel");
+  if(!info){
+    el.innerHTML=`<div class="word-popup-scripture"><button class="wp-close" id="wp-close-scr">\u2715</button><h3>${word}</h3><div class="wp-def" style="color:var(--brown-muted);font-style:italic">Word not in dictionary yet. Check the grammar notes below each verse for parsing help.</div></div>`;
+  } else {
+    el.innerHTML=`<div class="word-popup-scripture"><button class="wp-close" id="wp-close-scr">\u2715</button><h3>${info.la}</h3><div class="wp-pos">${info.pos}</div><div class="wp-def">${info.en}</div>${info.note?`<div class="wp-note">${info.note}</div>`:""}</div>`;
+  }
+  document.getElementById("wp-close-scr").addEventListener("click",()=>el.innerHTML="");
+}
+
 
 // ═══════════════════════════════════════════════════════════════════
 // SOUND & HAPTICS
@@ -889,6 +1162,17 @@ function renderView(t){const fn={home:renderHome,vocabulary:renderVocabulary,pra
 // ═══════════════════════════════════════════════════════════════════
 // HOME
 // ═══════════════════════════════════════════════════════════════════
+
+function getDailyVerse(){
+  const allVerses=[];
+  JOHN_CHAPTERS.forEach(ch=>{ch.verses.forEach(v=>{allVerses.push({ch:ch.ch,v:v.v,la:v.la,en:v.en,ref:"Io. "+ch.ch+":"+v.v});});});
+  // Deterministic based on day of year
+  const now=new Date();const dayOfYear=Math.floor((now-new Date(now.getFullYear(),0,0))/(86400000));
+  return allVerses[dayOfYear%allVerses.length];
+}
+function isBookmarked(ref){return S.bookmarks.includes(ref);}
+function toggleBookmark(ref){if(isBookmarked(ref))S.bookmarks=S.bookmarks.filter(x=>x!==ref);else{S.bookmarks.push(ref);haptic("success");}saveState();}
+
 function renderHome(){
   const p=Math.round((S.learnedWords.length/VOCABULARY.length)*100);
   const a=S.score.total>0?Math.round((S.score.correct/S.score.total)*100):0;
@@ -901,7 +1185,7 @@ function renderHome(){
 
   $("view-home").innerHTML=`
 <div class="home-hero"><div class="hero-cross">\u2720</div><h2 class="home-title">Salv\u0113, Discipule!</h2><p class="home-subtitle">Greetings, Student!</p><p class="home-desc">Master <b>${VOCABULARY.length}</b> words, <b>${GRAMMAR_LESSONS.length}</b> grammar lessons, <b>${PRAYERS.length}</b> prayers, the Ordinary of the Mass, hymns, and Scripture.</p></div>
-<div class="stats-row"><div class="stat-card"><div class="stat-number">${S.learnedWords.length}</div><div class="stat-label">Words Learned</div><div class="stat-sub">of ${VOCABULARY.length}</div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${p}%"></div></div></div><div class="stat-card"><div class="stat-number">${S.score.total}</div><div class="stat-label">Quiz Answers</div><div class="stat-sub">${a}% accuracy</div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${a}%"></div></div></div><div class="stat-card"><div class="stat-number">${S.currentDayStreak}</div><div class="stat-label">Day Streak</div><div class="stat-sub">best quiz streak: ${S.bestStreak}</div></div></div>
+${(()=>{const dv=getDailyVerse();return `<div class="daily-verse"><div class="dv-label">\u2720 Versus Hodierni \u2014 Verse of the Day</div><div class="dv-latin">${dv.la}</div><div class="dv-english">${dv.en}</div><div class="dv-ref">${dv.ref}</div></div>`;})()}<div class="stats-row"><div class="stat-card"><div class="stat-number">${S.learnedWords.length}</div><div class="stat-label">Words Learned</div><div class="stat-sub">of ${VOCABULARY.length}</div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${p}%"></div></div></div><div class="stat-card"><div class="stat-number">${S.score.total}</div><div class="stat-label">Quiz Answers</div><div class="stat-sub">${a}% accuracy</div><div class="progress-bar-bg"><div class="progress-bar-fill" style="width:${a}%"></div></div></div><div class="stat-card"><div class="stat-number">${S.currentDayStreak}</div><div class="stat-label">Day Streak</div><div class="stat-sub">best quiz streak: ${S.bestStreak}</div></div></div>
 <div class="streak-section"><div class="streak-label">Last 28 Days</div><div class="streak-grid">${days.map(d=>{const active=S.studyDays.includes(d);const today=d===todayStr();return`<div class="streak-day${active?' active':''}${today?' today':''}">${parseInt(d.slice(8))}</div>`;}).join("")}</div></div>
 ${ST("Achievements")}
 <div class="achievements-grid">${ACHIEVEMENTS.map(ac=>{const u=ac.check(S);return`<div class="achievement${u?' unlocked':''}"><div class="achievement-icon">${ac.icon}</div><div class="achievement-name">${ac.name}</div><div class="achievement-desc">${ac.desc}</div></div>`;}).join("")}</div>
@@ -996,13 +1280,13 @@ ${drillHtml}
 }
 
 function renderPractice(){
-  const tabs=[{id:"quiz",label:"Quiz"},{id:"sentence",label:"Sentence Builder"}];
+  const tabs=[{id:"quiz",label:"Quiz"},{id:"sentence",label:"Sentences"},{id:"parsing",label:"Parsing"},{id:"conjugation",label:"Conjugation"}];
   $("view-practice").innerHTML=`
 ${ST("Exercitia \u2014 Practice")}
 <div class="toggle-row">${tabs.map(t=>`<button class="toggle-btn ${S.practiceTab===t.id?'active':''}" data-ptab="${t.id}">${t.label}</button>`).join("")}</div>
 <div id="practice-content"></div>`;
   document.querySelectorAll("#view-practice .toggle-btn").forEach(b=>b.addEventListener("click",()=>{S.practiceTab=b.dataset.ptab;renderPractice();}));
-  if(S.practiceTab==="quiz")renderQuiz();else renderSentenceBuilder();
+  if(S.practiceTab==="quiz")renderQuiz();else if(S.practiceTab==="sentence")renderSentenceBuilder();else if(S.practiceTab==="parsing")renderParsingDrill();else if(S.practiceTab==="conjugation")renderConjugationDrill();
 }
 
 // Quiz
@@ -1070,6 +1354,78 @@ ${S.sbChecked?`<div class="quiz-feedback">${isCorrect?'<div class="correct-msg">
 // ═══════════════════════════════════════════════════════════════════
 // MASS WALKTHROUGH
 // ═══════════════════════════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════════════════════════
+// PARSING DRILL
+// ═══════════════════════════════════════════════════════════════════
+const PARSE_ITEMS=[
+{word:"ecclesiae",answer:"1st decl., gen./dat. sg. — of/to the church",options:["1st decl., nom. pl. — churches (subject)","1st decl., gen./dat. sg. — of/to the church","1st decl., acc. pl. — churches (object)","2nd decl., gen. sg. — of the church"]},
+{word:"Dominum",answer:"2nd decl., acc. sg. — the Lord (object)",options:["2nd decl., nom. sg. — the Lord (subject)","2nd decl., gen. sg. — of the Lord","2nd decl., acc. sg. — the Lord (object)","2nd decl., abl. sg. — by the Lord"]},
+{word:"pacis",answer:"3rd decl., gen. sg. — of peace",options:["3rd decl., nom. sg. — peace (subject)","3rd decl., gen. sg. — of peace","3rd decl., dat. sg. — to/for peace","3rd decl., acc. sg. — peace (object)"]},
+{word:"Domine",answer:"2nd decl., voc. sg. — O Lord!",options:["2nd decl., nom. sg. — the Lord","2nd decl., abl. sg. — by the Lord","2nd decl., voc. sg. — O Lord!","2nd decl., dat. sg. — to the Lord"]},
+{word:"gratiam",answer:"1st decl., acc. sg. — grace (object)",options:["1st decl., nom. sg. — grace (subject)","1st decl., gen. sg. — of grace","1st decl., acc. sg. — grace (object)","1st decl., abl. sg. — by/with grace"]},
+{word:"Patris",answer:"3rd decl., gen. sg. — of the Father",options:["3rd decl., nom. sg. — the Father","3rd decl., gen. sg. — of the Father","3rd decl., acc. sg. — the Father (object)","3rd decl., dat. sg. — to the Father"]},
+{word:"verbum",answer:"2nd decl. neut., nom./acc. sg. — word",options:["2nd decl., nom. sg. (masc.) — word","2nd decl. neut., nom./acc. sg. — word","2nd decl., acc. sg. — word (object)","2nd decl., gen. sg. — of the word"]},
+{word:"peccata",answer:"2nd decl. neut., nom./acc. pl. — sins",options:["1st decl., nom. sg. — sin","2nd decl. neut., nom./acc. pl. — sins","1st decl., abl. sg. — by sin","2nd decl., gen. sg. — of sin"]},
+{word:"caelorum",answer:"2nd decl., gen. pl. — of the heavens",options:["2nd decl., nom. pl. — heavens","2nd decl., acc. pl. — heavens (object)","2nd decl., gen. pl. — of the heavens","2nd decl., abl. pl. — in the heavens"]},
+{word:"nominis",answer:"3rd decl., gen. sg. — of the name",options:["3rd decl., nom. sg. — the name","3rd decl., gen. sg. — of the name","3rd decl., dat. sg. — to/for the name","3rd decl., abl. sg. — by the name"]},
+{word:"vitam",answer:"1st decl., acc. sg. — life (object)",options:["1st decl., nom. sg. — life (subject)","1st decl., acc. sg. — life (object)","1st decl., abl. sg. — by/with life","1st decl., gen. sg. — of life"]},
+{word:"Filii",answer:"2nd decl., gen. sg. — of the Son",options:["2nd decl., nom. pl. — sons","2nd decl., gen. sg. — of the Son","2nd decl., dat. sg. — to the Son","2nd decl., voc. sg. — O Son!"]},
+{word:"nomine",answer:"3rd decl., abl. sg. — by/in the name",options:["3rd decl., nom. sg. — name","3rd decl., gen. sg. — of the name","3rd decl., abl. sg. — by/in the name","3rd decl., acc. sg. — name (object)"]},
+{word:"laudamus",answer:"1st conj., 1st pl. present indicative — we praise",options:["1st conj., 1st pl. present indicative — we praise","1st conj., 1st pl. present subjunctive — let us praise","1st conj., 1st pl. perfect — we praised","1st conj., 1st pl. imperfect — we were praising"]},
+{word:"oremus",answer:"1st conj., 1st pl. present subjunctive — let us pray",options:["1st conj., 1st pl. present indicative — we pray","1st conj., 1st pl. present subjunctive — let us pray","1st conj., 1st pl. future — we will pray","1st conj., 2nd pl. imperative — pray!"]},
+{word:"sanctificetur",answer:"Passive subjunctive, 3rd sg. — may it be hallowed",options:["Active indicative, 3rd sg. — it hallows","Passive indicative, 3rd sg. — it is hallowed","Passive subjunctive, 3rd sg. — may it be hallowed","Active subjunctive, 3rd sg. — may it hallow"]},
+{word:"fiat",answer:"Subjunctive, 3rd sg. of fieri — may it be done",options:["Indicative, 3rd sg. — it becomes","Subjunctive, 3rd sg. of fieri — may it be done","Imperative, 2nd sg. — become!","Perfect, 3rd sg. — it was done"]},
+{word:"dixit",answer:"3rd conj., 3rd sg. perfect — he/she said",options:["3rd conj., 3rd sg. present — he/she says","3rd conj., 3rd sg. imperfect — he/she was saying","3rd conj., 3rd sg. perfect — he/she said","3rd conj., 3rd sg. future — he/she will say"]},
+{word:"credidimus",answer:"3rd conj., 1st pl. perfect — we have believed",options:["3rd conj., 1st pl. present — we believe","3rd conj., 1st pl. imperfect — we were believing","3rd conj., 1st pl. perfect — we have believed","3rd conj., 1st pl. future — we will believe"]},
+{word:"venite",answer:"4th conj., 2nd pl. imperative — come!",options:["4th conj., 2nd pl. present — you come","4th conj., 2nd pl. imperative — come!","4th conj., 2nd pl. perfect — you came","4th conj., 2nd pl. subjunctive — you may come"]},
+];
+let parseIdx=0,parseAnswered=false;
+function renderParsingDrill(){
+  const item=PARSE_ITEMS[parseIdx%PARSE_ITEMS.length];
+  $("practice-content").innerHTML=`<div class="parse-card"><div style="font-size:0.8rem;color:var(--brown-muted);margin-bottom:6px">Question ${(parseIdx%PARSE_ITEMS.length)+1} of ${PARSE_ITEMS.length}</div><div class="parse-word">${item.word}</div><div class="parse-hint">Identify the form:</div><div class="parse-options">${item.options.map((o,i)=>`<button class="parse-option" data-oidx="${i}">${o}</button>`).join('')}</div></div>${parseAnswered?`<div style="text-align:center;margin-top:10px"><button class="next-btn" id="parse-next">Next \u2192</button></div>`:''}`;
+  if(!parseAnswered){document.querySelectorAll(".parse-option").forEach(b=>b.addEventListener("click",()=>{
+    parseAnswered=true;const isCorrect=item.options[parseInt(b.dataset.oidx)]===item.answer;
+    document.querySelectorAll(".parse-option").forEach(o=>{o.classList.add("disabled");if(item.options[parseInt(o.dataset.oidx)]===item.answer)o.classList.add("correct");});
+    if(!isCorrect)b.classList.add("wrong");
+    if(isCorrect){playCorrect();haptic("success");S.score.correct++;S.streak++;if(S.streak>S.bestStreak)S.bestStreak=S.streak;}else{playWrong();haptic("error");S.streak=0;}
+    S.score.total++;recordStudyDay();saveState();renderParsingDrill();
+  }));}
+  const nb=$("parse-next");if(nb)nb.addEventListener("click",()=>{parseIdx++;parseAnswered=false;renderParsingDrill();});
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// CONJUGATION DRILL
+// ═══════════════════════════════════════════════════════════════════
+const CONJ_DRILLS=[
+{verb:"laudare",meaning:"to praise",conj:"1st",tense:"Present",forms:["laudo","laudas","laudat","laudamus","laudatis","laudant"]},
+{verb:"videre",meaning:"to see",conj:"2nd",tense:"Present",forms:["video","vides","videt","videmus","videtis","vident"]},
+{verb:"credere",meaning:"to believe",conj:"3rd",tense:"Present",forms:["credo","credis","credit","credimus","creditis","credunt"]},
+{verb:"audire",meaning:"to hear",conj:"4th",tense:"Present",forms:["audio","audis","audit","audimus","auditis","audiunt"]},
+{verb:"orare",meaning:"to pray",conj:"1st",tense:"Present",forms:["oro","oras","orat","oramus","oratis","orant"]},
+{verb:"laudare",meaning:"to praise",conj:"1st",tense:"Imperfect",forms:["laudabam","laudabas","laudabat","laudabamus","laudabatis","laudabant"]},
+{verb:"laudare",meaning:"to praise",conj:"1st",tense:"Perfect",forms:["laudavi","laudavisti","laudavit","laudavimus","laudavistis","laudaverunt"]},
+{verb:"esse",meaning:"to be",conj:"irreg.",tense:"Present",forms:["sum","es","est","sumus","estis","sunt"]},
+{verb:"esse",meaning:"to be",conj:"irreg.",tense:"Imperfect",forms:["eram","eras","erat","eramus","eratis","erant"]},
+];
+const PERSONS=["1st sg. (I)","2nd sg. (you)","3rd sg. (he/she)","1st pl. (we)","2nd pl. (you all)","3rd pl. (they)"];
+let conjIdx=0;
+function renderConjugationDrill(){
+  const drill=CONJ_DRILLS[conjIdx%CONJ_DRILLS.length];
+  $("practice-content").innerHTML=`<div class="parse-card"><div style="font-size:0.8rem;color:var(--brown-muted);margin-bottom:4px">Drill ${(conjIdx%CONJ_DRILLS.length)+1} of ${CONJ_DRILLS.length}</div><div class="parse-word">${drill.verb}</div><div class="parse-hint">${drill.meaning} — ${drill.conj} conj., ${drill.tense} tense</div>
+<table class="conj-table"><thead><tr><th>Person</th><th>Form</th></tr></thead><tbody>${PERSONS.map((p,i)=>`<tr><td>${p}</td><td><input class="conj-input" data-idx="${i}" placeholder="..."></td></tr>`).join('')}</tbody></table>
+<div style="text-align:center;margin-top:10px"><button class="drill-btn" id="conj-check">Check</button><button class="drill-btn" id="conj-show" style="background:transparent;color:var(--brown-soft);border:1px solid var(--gold-border-strong)">Show</button><button class="drill-btn" id="conj-next" style="background:transparent;color:var(--brown-soft);border:1px solid var(--gold-border-strong)">Next Verb \u2192</button></div></div>`;
+  $("conj-check").addEventListener("click",()=>{
+    const norm=s=>s.trim().toLowerCase().replace(/[\u0101\u0113\u012b\u014d\u016b]/g,m=>({"\u0101":"a","\u0113":"e","\u012b":"i","\u014d":"o","\u016b":"u"}[m]||m));
+    document.querySelectorAll(".conj-input").forEach(inp=>{const idx=parseInt(inp.dataset.idx);const ans=drill.forms[idx];inp.classList.remove("correct","wrong");inp.classList.add(norm(inp.value)===norm(ans)?"correct":"wrong");});
+    const allOk=document.querySelectorAll(".conj-input.wrong").length===0&&document.querySelectorAll(".conj-input.correct").length>0;
+    if(allOk){playAchievement();haptic("success");}else{haptic("error");}recordStudyDay();
+  });
+  $("conj-show").addEventListener("click",()=>{document.querySelectorAll(".conj-input").forEach(inp=>{inp.value=drill.forms[parseInt(inp.dataset.idx)];inp.classList.remove("wrong");inp.classList.add("correct");});});
+  $("conj-next").addEventListener("click",()=>{conjIdx++;renderConjugationDrill();});
+}
+
+
 function renderMass(){
   $("view-mass").innerHTML=`
 ${ST("Missa \u2014 The Ordinary of the Mass")}
@@ -1092,28 +1448,59 @@ ${HYMNS.map((h,i)=>`<div class="hymn-card ${S._hymnExp===i?'expanded':''}" data-
 // SCRIPTURE
 // ═══════════════════════════════════════════════════════════════════
 function renderScripture(){
-  const sections=[{id:"john",label:"Gospel of John (1\u20135)"},{id:"other",label:"Other Passages"}];
+  const sections=[{id:"john",label:"Gospel of John"},{id:"vulgate",label:"Vulgate Core Words"},{id:"bookmarks",label:"\u2661 Bookmarks"},{id:"other",label:"Other Passages"}];
   let content="";
+  const fz=S.fontSize||1;
+  const fontStyle="font-size:"+(fz*100)+"%";
   if(S.scrSection==="john"){
     const ch=JOHN_CHAPTERS[S.scrChapter];
-    content=`<div class="scripture-nav">${JOHN_CHAPTERS.map((c,i)=>`<button class="scripture-nav-btn ${S.scrChapter===i?'active':''}" data-ch="${i}">Ch. ${c.ch}: ${c.title}</button>`).join('')}</div>
-<div class="chapter-title">Evangelium Secundum Ioannem \u2014 Chapter ${ch.ch}</div>
+    content=`<div class="font-controls"><button class="font-btn" id="font-down">A\u2212</button><span class="font-label">Text Size</span><button class="font-btn" id="font-up">A+</button></div>
+<div class="scripture-nav">${JOHN_CHAPTERS.map((c,i)=>`<button class="scripture-nav-btn ${S.scrChapter===i?'active':''}" data-ch="${i}">Ch. ${c.ch}</button>`).join('')}</div>
+<div class="chapter-title">${ch.title}</div>
 <div class="chapter-subtitle">${ch.subtitle}</div>
-<div class="interlinear">${ch.verses.map(v=>`<div class="il-line"><div class="il-latin"><span class="verse-num">${v.v}</span>${v.la}</div><div class="il-english">${v.en}</div>${v.n?`<div class="il-note">${v.n}</div>`:''}</div>`).join('')}</div>
-<div style="display:flex;justify-content:space-between;margin-top:20px">${S.scrChapter>0?`<button class="next-btn" id="prev-ch">\u2190 Chapter ${JOHN_CHAPTERS[S.scrChapter-1].ch}</button>`:'<div></div>'}${S.scrChapter<JOHN_CHAPTERS.length-1?`<button class="next-btn" id="next-ch">Chapter ${JOHN_CHAPTERS[S.scrChapter+1].ch} \u2192</button>`:'<div></div>'}</div>`;
+<p class="instructions">Tap any Latin word to see its definition. Grammar notes appear below each verse.</p>
+<div class="interlinear" style="${fontStyle}">${ch.verses.map(v=>{const ref="Io."+ch.ch+":"+v.v;const bk=isBookmarked(ref);const words=v.la.split(/\b/).map(w=>/[a-zA-ZāēīōūÀ-ÿ]{2,}/.test(w)?`<span class="word-tap" data-word="${w}">${w}</span>`:w).join('');return`<div class="il-line ${bk?'bookmarked':''}"><button class="verse-bookmark ${bk?'active':''}" data-ref="${ref}" title="Bookmark">${bk?'\u2665':'\u2661'}</button><div class="il-latin"><span class="verse-num">${v.v}</span>${words}</div><div class="il-english">${v.en}</div>${v.n?`<div class="il-note">${v.n}</div>`:''}</div>`;}).join('')}</div>
+<div style="display:flex;justify-content:space-between;margin-top:20px">${S.scrChapter>0?`<button class="next-btn" id="prev-ch">\u2190 Ch. ${JOHN_CHAPTERS[S.scrChapter-1].ch}</button>`:'<div></div>'}${S.scrChapter<JOHN_CHAPTERS.length-1?`<button class="next-btn" id="next-ch">Ch. ${JOHN_CHAPTERS[S.scrChapter+1].ch} \u2192</button>`:'<div></div>'}</div>`;
+  } else if(S.scrSection==="vulgate"){
+    const cats=["All","noun","verb","adj","prep","conj","pron","adv"];
+    let filtered=S.vcFilter==="All"?VULGATE_CORE:VULGATE_CORE.filter(w=>w.pos===S.vcFilter);
+    if(S.vcSearch){const q=S.vcSearch.toLowerCase();filtered=filtered.filter(w=>w.la.toLowerCase().includes(q)||w.en.toLowerCase().includes(q));}
+    content=`<p class="instructions">The most frequent words in the Latin Vulgate. Master these to read ~80% of the text.</p>
+<input type="text" class="vc-search" id="vc-search" placeholder="Search words..." value="${S.vcSearch||''}">
+<div class="vc-filter-row">${cats.map(c=>`<button class="vc-filter-btn ${S.vcFilter===c?'active':''}" data-vcat="${c}">${c==="All"?"All ("+VULGATE_CORE.length+")":c}</button>`).join('')}</div>
+<div class="vc-count" style="font-size:0.82rem;color:var(--brown-muted);margin-bottom:10px">Showing ${filtered.length} words</div>
+${filtered.map((w,i)=>`<div class="vc-card" data-vci="${i}"><div><span class="vc-latin">${w.la}</span><span class="vc-pos">${w.pos}</span><div class="vc-english">${w.en}</div>${w.note?`<div class="vc-note">${w.note}</div>`:''}</div></div>`).join('')}`;
+  } else if(S.scrSection==="bookmarks"){
+    if(S.bookmarks.length===0){
+      content='<div style="text-align:center;padding:40px 20px;color:var(--brown-muted)"><div style="font-size:2rem;margin-bottom:10px">\u2661</div><p>No bookmarked verses yet.</p><p style="font-size:0.85rem;margin-top:8px">Tap the heart icon on any verse while reading to save it here.</p></div>';
+    } else {
+      const bkVerses=[];
+      S.bookmarks.forEach(ref=>{const m=ref.match(/Io\.(\d+):(\d+)/);if(m){const ch=JOHN_CHAPTERS.find(c=>c.ch===parseInt(m[1]));if(ch){const v=ch.verses.find(x=>x.v===parseInt(m[2]));if(v)bkVerses.push({ref,ch:ch.ch,...v});}}});
+      content=`<p class="instructions">Your saved verses (${bkVerses.length})</p><div class="interlinear">${bkVerses.map(v=>`<div class="il-line bookmarked"><button class="verse-bookmark active" data-ref="${v.ref}" title="Remove">\u2665</button><div class="il-latin"><span class="verse-num">Io.${v.ch}:${v.v}</span>${v.la}</div><div class="il-english">${v.en}</div></div>`).join('')}</div>`;
+    }
   } else {
     content=SCRIPTURE.map(s=>`<div style="margin-bottom:28px"><h3 style="font-size:1.1rem;color:var(--brown-mid);margin-bottom:2px">${s.title}</h3><p style="font-size:0.82rem;color:var(--gold);margin-bottom:12px;font-weight:600">${s.ref}</p><div class="interlinear">${s.lines.map(l=>`<div class="il-line"><div class="il-latin">${l.la}</div><div class="il-english">${l.en}</div></div>`).join('')}</div></div>`).join('');
   }
   $("view-scripture").innerHTML=`
 ${ST("Scriptura Sacra \u2014 Holy Scripture")}
-<p class="instructions">Vulgate text with interlinear translation. Grammar notes highlight key forms and constructions.</p>
 <div class="toggle-row">${sections.map(s=>`<button class="toggle-btn ${S.scrSection===s.id?'active':''}" data-sec="${s.id}">${s.label}</button>`).join('')}</div>
 ${content}`;
+  // Event listeners
   document.querySelectorAll("#view-scripture .toggle-btn").forEach(b=>b.addEventListener("click",()=>{S.scrSection=b.dataset.sec;renderScripture();}));
   document.querySelectorAll(".scripture-nav-btn").forEach(b=>b.addEventListener("click",()=>{S.scrChapter=parseInt(b.dataset.ch);saveState();renderScripture();window.scrollTo({top:0,behavior:"smooth"});}));
+  document.querySelectorAll(".word-tap").forEach(el=>el.addEventListener("click",e=>{e.stopPropagation();showWordPanel(el.dataset.word);}));
+  document.querySelectorAll(".verse-bookmark").forEach(b=>b.addEventListener("click",e=>{e.stopPropagation();toggleBookmark(b.dataset.ref);renderScripture();}));
+  document.querySelectorAll(".vc-card").forEach(c=>c.addEventListener("click",()=>c.classList.toggle("expanded")));
+  document.querySelectorAll(".vc-filter-btn").forEach(b=>b.addEventListener("click",()=>{S.vcFilter=b.dataset.vcat;renderScripture();}));
+  const vcs=document.getElementById("vc-search");if(vcs)vcs.addEventListener("input",e=>{S.vcSearch=e.target.value;renderScripture();setTimeout(()=>{const el=document.getElementById("vc-search");if(el){el.focus();el.setSelectionRange(e.target.value.length,e.target.value.length);}},0);});
+  const fu=document.getElementById("font-up"),fd=document.getElementById("font-down");
+  if(fu)fu.addEventListener("click",()=>{S.fontSize=Math.min((S.fontSize||1)+0.1,1.5);saveState();renderScripture();});
+  if(fd)fd.addEventListener("click",()=>{S.fontSize=Math.max((S.fontSize||1)-0.1,0.7);saveState();renderScripture();});
   const pc=$("prev-ch"),nc=$("next-ch");
   if(pc)pc.addEventListener("click",()=>{S.scrChapter--;saveState();renderScripture();window.scrollTo({top:0,behavior:"smooth"});});
   if(nc)nc.addEventListener("click",()=>{S.scrChapter++;saveState();renderScripture();window.scrollTo({top:0,behavior:"smooth"});});
+  // Close word panel on body click
+  document.addEventListener("click",e=>{if(!e.target.closest(".word-tap")&&!e.target.closest(".word-popup-scripture")){document.getElementById("word-panel").innerHTML="";}},{once:true});
 }
 
 renderNav();renderHome();
