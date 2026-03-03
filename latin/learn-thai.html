@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Learn Thai">
@@ -25,7 +25,7 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .header{padding:48px 24px 14px;text-align:center;position:relative;z-index:1}
 .header h1{font-size:12px;font-weight:300;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
 .header .thai-title{font-family:'Noto Sans Thai','Outfit',sans-serif;font-size:24px;font-weight:700;color:var(--white);text-shadow:0 0 30px var(--gold-glow)}
-.content{position:relative;z-index:1;padding:0 16px 100px;max-width:500px;margin:0 auto}
+.content{position:relative;z-index:1;padding:0 16px 140px;max-width:500px;margin:0 auto}
 .page{display:none}.page.active{display:block;animation:fadeUp 0.3s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .section-title{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin:20px 0 10px;padding-left:4px}
@@ -162,6 +162,37 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 .listen-play:active{transform:scale(0.93)}
 .listen-play svg{width:32px;height:32px;color:var(--deep-blue);margin-left:4px}
 .listen-hint{text-align:center;font-size:11px;color:var(--text-dim);margin-bottom:16px}
+
+/* Listen & Learn */
+.listen-mode{text-align:center}
+.listen-controls{display:flex;justify-content:center;gap:12px;margin-bottom:16px;align-items:center}
+.listen-ctrl-btn{width:48px;height:48px;border-radius:50%;background:var(--card-bg);border:1px solid var(--card-border);color:var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all 0.2s}
+.listen-ctrl-btn:active{background:rgba(212,168,69,0.2)}
+.listen-ctrl-btn svg{width:20px;height:20px}
+.listen-ctrl-btn.primary{width:64px;height:64px;background:linear-gradient(135deg,var(--gold),var(--gold-light));border:none;color:var(--deep-blue);box-shadow:0 4px 20px var(--gold-glow)}
+.listen-ctrl-btn.primary svg{width:28px;height:28px}
+.listen-ctrl-btn.primary:active{transform:scale(0.93)}
+.listen-speed{font-size:12px;font-weight:700;min-width:40px}
+.listen-timeline{margin-bottom:6px}
+.listen-line{padding:12px 16px;border-radius:12px;margin-bottom:6px;transition:all 0.4s;cursor:pointer;border:1px solid transparent}
+.listen-line.active{background:rgba(212,168,69,0.12);border-color:var(--gold);transform:scale(1.01)}
+.listen-line.played{opacity:0.5}
+.listen-line .ll-speaker{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-dim);margin-bottom:3px}
+.listen-line.active .ll-speaker{color:var(--gold)}
+.listen-line .ll-thai{font-family:'Noto Sans Thai',sans-serif;font-size:18px;font-weight:600;color:var(--gold-light);margin-bottom:2px}
+.listen-line .ll-roman{font-size:11px;color:var(--text-dim);font-style:italic}
+.listen-line .ll-eng{font-size:12px;color:var(--text-light);margin-top:3px;transition:all 0.3s}
+.listen-line .ll-eng.hidden{opacity:0;height:0;margin:0;overflow:hidden}
+.listen-progress{height:3px;background:rgba(255,255,255,0.08);border-radius:2px;margin-bottom:14px;overflow:hidden}
+.listen-progress-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-light));border-radius:2px;transition:width 0.3s}
+.listen-toggle-row{display:flex;justify-content:center;gap:8px;margin-bottom:16px}
+.listen-toggle{padding:6px 14px;border-radius:16px;background:var(--card-bg);border:1px solid var(--card-border);color:var(--text-dim);font-family:inherit;font-size:10px;font-weight:600;cursor:pointer;transition:all 0.2s}
+.listen-toggle.on{background:rgba(212,168,69,0.2);border-color:var(--gold);color:var(--gold)}
+.listen-episode-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;padding:16px;margin-bottom:10px;cursor:pointer;transition:all 0.3s}
+.listen-episode-card:active{border-color:var(--gold);background:rgba(255,255,255,0.08)}
+.listen-episode-card .ep-title{font-size:15px;font-weight:700;color:var(--white);margin-bottom:3px}
+.listen-episode-card .ep-desc{font-size:11px;color:var(--text-dim);margin-bottom:6px;line-height:1.4}
+.listen-episode-card .ep-meta{font-size:10px;color:var(--gold);font-weight:600}
 </style>
 </head>
 <body>
@@ -174,6 +205,8 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
   <div id="home-lessons"></div>
   <div class="section-title">Conversations</div>
   <div id="home-dialogues"></div>
+  <div class="section-title">Listen & Learn</div>
+  <div class="card" onclick="showPage('page-listen-hub')"><div class="card-row"><div class="card-icon gold">🎧</div><div><div class="card-label">Audio Conversations</div><div class="card-sub">Play full dialogues — great for walking practice</div></div></div></div>
   <div class="section-title">Reference</div>
   <div class="card" onclick="showPage('page-tones')"><div class="card-row"><div class="card-icon blue">🎵</div><div><div class="card-label">Thai Tones Guide</div><div class="card-sub">The 5 tones that change meaning</div></div></div></div>
   <div class="card" onclick="showPage('page-tips')"><div class="card-row"><div class="card-icon gold">💡</div><div><div class="card-label">Survival Tips</div><div class="card-sub">Polite particles, culture notes</div></div></div></div>
@@ -327,6 +360,32 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
 </div>
 
 </div>
+<!-- LISTEN HUB -->
+<div class="page" id="page-listen-hub">
+  <div class="lesson-header"><button class="back-btn" onclick="showPage('page-home')">←</button><div class="lesson-title">🎧 Listen & Learn</div></div>
+  <p style="font-size:12px;color:var(--text-dim);margin-bottom:14px;line-height:1.6">Full conversations with audio playback. Hit play and practice while you walk, cook, or commute. Tap any line to replay it.</p>
+  <div id="listen-episodes"></div>
+</div>
+
+<!-- LISTEN PLAYER -->
+<div class="page" id="page-listen-player">
+  <div class="lesson-header"><button class="back-btn" onclick="stopListenMode();showPage('page-listen-hub')">←</button><div class="lesson-title" id="listen-player-title"></div></div>
+  <div class="listen-toggle-row">
+    <button class="listen-toggle on" id="toggle-roman" onclick="toggleListenRoman()">Romanization</button>
+    <button class="listen-toggle on" id="toggle-eng" onclick="toggleListenEng()">English</button>
+    <button class="listen-toggle" id="toggle-slow" onclick="toggleListenSpeed()">Slow</button>
+  </div>
+  <div class="listen-progress"><div class="listen-progress-bar" id="listen-pbar"></div></div>
+  <div class="listen-controls">
+    <button class="listen-ctrl-btn" onclick="listenRestart()" title="Restart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 105.64-11.36L1 10"/></svg></button>
+    <button class="listen-ctrl-btn" onclick="listenPrev()" title="Previous"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="4" x2="5" y2="20" stroke="currentColor" stroke-width="2"/></svg></button>
+    <button class="listen-ctrl-btn primary" id="listen-pp-btn" onclick="listenPlayPause()"><svg viewBox="0 0 24 24" fill="currentColor" id="listen-pp-icon"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
+    <button class="listen-ctrl-btn" onclick="listenNext()" title="Next"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="4" x2="19" y2="20" stroke="currentColor" stroke-width="2"/></svg></button>
+    <button class="listen-ctrl-btn" onclick="listenRepeatToggle()" id="listen-repeat-btn" title="Repeat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg></button>
+  </div>
+  <div class="listen-timeline" id="listen-timeline"></div>
+</div>
+
 <nav class="nav">
   <button class="nav-btn active" id="nav-home" onclick="showPage('page-home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>HOME</button>
   <button class="nav-btn" id="nav-alpha" onclick="openAlphabet()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>อักษร</button>
@@ -716,7 +775,7 @@ function showPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  const m={'page-home':'nav-home','page-lesson':'nav-home','page-tones':'nav-home','page-tips':'nav-home','page-dialogue':'nav-home',
+  const m={'page-home':'nav-home','page-lesson':'nav-home','page-tones':'nav-home','page-tips':'nav-home','page-dialogue':'nav-home','page-listen-hub':'nav-home','page-listen-player':'nav-home',
     'page-alpha':'nav-alpha','page-phrases':'nav-phrases','page-grammar':'nav-grammar',
     'page-games':'nav-games','page-quiz':'nav-games','page-listen':'nav-games','page-sentence':'nav-games','page-match':'nav-games'};
   if(m[id])document.getElementById(m[id]).classList.add('active');
@@ -1071,6 +1130,238 @@ document.getElementById('flashcard').addEventListener('touchend',e=>{const d=e.c
 
 // Init
 buildHome();
+
+// ============================= LISTEN & LEARN DATA =============================
+const listenEpisodes = [
+{id:'morning',title:'Morning Routine',desc:'A couple talks through their morning — waking up, breakfast, and heading out.',duration:'~2 min',speakers:['Husband','Wife'],lines:[
+{s:1,thai:'สวัสดีครับ ตื่นแล้ว',roman:'sa\u0300-wa\u0300t-dee kra\u0301p dteu\u0300n la\u0301ew',eng:'Good morning! I\'m awake.'},
+{s:2,thai:'สวัสดีค่ะ หิวข้าวไหม',roman:'sa\u0300-wa\u0300t-dee ka\u0302 hi\u030cu kha\u0302ao ma\u030ci',eng:'Good morning! Are you hungry?'},
+{s:1,thai:'หิวมากครับ วันนี้กินอะไรดี',roman:'hi\u030cu ma\u0302ak kra\u0301p wan-ne\u0301e gin a\u0300-rai dee',eng:'Very hungry! What should we eat today?'},
+{s:2,thai:'ทำไข่ดาวไหมคะ กับกาแฟ',roman:'tam kha\u0300i da\u0300ao ma\u030ci ka\u0301 ga\u0300p gaa-fae',eng:'How about fried eggs? With coffee.'},
+{s:1,thai:'ดีครับ ขอกาแฟเย็นครับ',roman:'dee kra\u0301p kho\u030cr gaa-fae yen kra\u0301p',eng:'Sounds good! Iced coffee please.'},
+{s:2,thai:'วันนี้ต้องทำงานไหมคะ',roman:'wan-ne\u0301e dto\u0302ng tam ngaan ma\u030ci ka\u0301',eng:'Do you have to work today?'},
+{s:1,thai:'ต้องครับ ไปทำงานตอนเก้าโมง',roman:'dto\u0302ng kra\u0301p bpai tam ngaan dton ga\u0302o mohng',eng:'Yes, I have to go to work at 9 o\'clock.'},
+{s:2,thai:'รีบอาบน้ำก่อนนะคะ',roman:'re\u0301ep a\u0300ap na\u0301m go\u0300n na\u0301 ka\u0301',eng:'Hurry and shower first, okay?'},
+{s:1,thai:'ได้ครับ ไปอาบน้ำแล้วก็ไปทำงาน',roman:'da\u0302i kra\u0301p bpai a\u0300ap na\u0301m la\u0301ew go\u0302 bpai tam ngaan',eng:'Okay, I\'ll shower then head to work.'},
+{s:2,thai:'ระวังนะคะ รักนะ',roman:'ra\u0301-wang na\u0301 ka\u0301 ra\u0301k na\u0301',eng:'Be careful, okay? Love you.'},
+{s:1,thai:'รักครับ เจอกันตอนเย็น',roman:'ra\u0301k kra\u0301p jer gan dton yen',eng:'Love you too! See you this evening.'},
+]},
+{id:'market',title:'Night Market Adventure',desc:'Exploring a Thai night market — food, shopping, and bargaining.',duration:'~3 min',speakers:['You','Wife','Vendor'],lines:[
+{s:2,thai:'ตลาดนี้ใหญ่มากเลย สนุกดี',roman:'dta\u0300-la\u0300at ne\u0301e ya\u0300i ma\u0302ak loei sa\u0300-nu\u0300k dee',eng:'This market is so big! Looks fun.'},
+{s:1,thai:'สนุกมากครับ หิวไหมครับ อยากกินอะไรก่อน',roman:'sa\u0300-nu\u0300k ma\u0302ak kra\u0301p hi\u030cu ma\u030ci kra\u0301p ya\u0300ak gin a\u0300-rai go\u0300n',eng:'Really fun! Are you hungry? What do you want to eat first?'},
+{s:2,thai:'อยากกินส้มตำ แล้วก็กินไก่ย่าง',roman:'ya\u0300ak gin so\u0302m dtam la\u0301ew go\u0302 gin ga\u0300i ya\u0302ang',eng:'I want papaya salad, then grilled chicken.'},
+{s:1,thai:'ขอส้มตำหนึ่งที่ครับ ไม่เผ็ดครับ',roman:'kho\u030cr so\u0302m dtam neu\u0300ng te\u0302e kra\u0301p ma\u0302i pe\u0300t kra\u0301p',eng:'One papaya salad please, not spicy.'},
+{s:3,thai:'ไม่เผ็ดเลยเหรอคะ เผ็ดนิดหน่อยได้ไหมคะ',roman:'ma\u0302i pe\u0300t loei re\u030cr ka\u0301 pe\u0300t ni\u0301t no\u0300i da\u0302i ma\u030ci ka\u0301',eng:'Not spicy at all? How about a little spicy?'},
+{s:1,thai:'เผ็ดนิดหน่อยก็ได้ครับ',roman:'pe\u0300t ni\u0301t no\u0300i go\u0302 da\u0302i kra\u0301p',eng:'A little spicy is fine.'},
+{s:3,thai:'ได้ค่ะ รอสักครู่นะคะ',roman:'da\u0302i ka\u0302 ror sa\u0300k kruu\u0302 na\u0301 ka\u0301',eng:'Sure! Wait a moment, okay?'},
+{s:2,thai:'ดูเสื้อสวยไหมคะ อยากซื้อ',roman:'duu seu\u0302a su\u030cay ma\u030ci ka\u0301 ya\u0300ak se\u0301u',eng:'Look at that pretty shirt! I want to buy it.'},
+{s:1,thai:'นี่เท่าไหร่ครับ',roman:'ne\u0302e ta\u0302o-ra\u0300i kra\u0301p',eng:'How much is this?'},
+{s:3,thai:'สามร้อยห้าสิบค่ะ',roman:'sa\u030cam ro\u0301i ha\u0302a si\u0300p ka\u0302',eng:'350 baht.'},
+{s:1,thai:'แพงไปครับ ลดได้ไหมครับ',roman:'paeng bpai kra\u0301p lo\u0301t da\u0302i ma\u030ci kra\u0301p',eng:'Too expensive! Can you lower the price?'},
+{s:3,thai:'สองร้อยห้าสิบได้ค่ะ',roman:'so\u030cng ro\u0301i ha\u0302a si\u0300p da\u0302i ka\u0302',eng:'250 is okay.'},
+{s:1,thai:'ดีครับ เอาอันนี้ครับ ขอบคุณครับ',roman:'dee kra\u0301p ao an ne\u0301e kra\u0301p kho\u0300p-kun kra\u0301p',eng:'Great, I\'ll take this one. Thank you!'},
+{s:2,thai:'อร่อยมาก ส้มตำอร่อยที่สุด',roman:'a\u0300-ro\u0300i ma\u0302ak so\u0302m dtam a\u0300-ro\u0300i te\u0302e su\u0300t',eng:'So delicious! The papaya salad is the best!'},
+{s:1,thai:'อร่อยมากครับ อิ่มแล้ว กลับบ้านไหมครับ',roman:'a\u0300-ro\u0300i ma\u0302ak kra\u0301p i\u0300m la\u0301ew gla\u0300p ba\u0302an ma\u030ci kra\u0301p',eng:'Very delicious! I\'m full. Shall we go home?'},
+{s:2,thai:'ไปค่ะ เหนื่อยแล้ว',roman:'bpai ka\u0302 neu\u0300ay la\u0301ew',eng:'Let\'s go, I\'m tired.'},
+]},
+{id:'doctor',title:'At the Doctor',desc:'Visiting a clinic — describing symptoms and understanding instructions.',duration:'~2 min',speakers:['You','Doctor'],lines:[
+{s:1,thai:'สวัสดีครับ ผมไม่สบายครับ',roman:'sa\u0300-wa\u0300t-dee kra\u0301p po\u030cm ma\u0302i sa\u0300-baai kra\u0301p',eng:'Hello, I\'m not feeling well.'},
+{s:2,thai:'เป็นอะไรคะ ปวดตรงไหนคะ',roman:'bpen a\u0300-rai ka\u0301 bpu\u0300at dtrong na\u030ci ka\u0301',eng:'What\'s wrong? Where does it hurt?'},
+{s:1,thai:'ปวดหัวครับ แล้วก็เป็นไข้ด้วย',roman:'bpu\u0300at hu\u030ca kra\u0301p la\u0301ew go\u0302 bpen kha\u0302i du\u0302ay',eng:'I have a headache and a fever too.'},
+{s:2,thai:'เป็นมากี่วันแล้วคะ',roman:'bpen maa ge\u0300e wa\u0301n la\u0301ew ka\u0301',eng:'How many days have you had this?'},
+{s:1,thai:'สองวันแล้วครับ',roman:'so\u030cng wan la\u0301ew kra\u0301p',eng:'Two days already.'},
+{s:2,thai:'แพ้อะไรไหมคะ',roman:'pa\u0301e a\u0300-rai ma\u030ci ka\u0301',eng:'Are you allergic to anything?'},
+{s:1,thai:'ไม่แพ้อะไรครับ',roman:'ma\u0302i pa\u0301e a\u0300-rai kra\u0301p',eng:'No allergies.'},
+{s:2,thai:'ให้กินยาวันละสามครั้งนะคะ หลังอาหาร',roman:'ha\u0302i gin yaa wan la\u0301 sa\u030cam kra\u0301ng na\u0301 ka\u0301 la\u030cng aa-ha\u030can',eng:'Take medicine 3 times a day, after meals.'},
+{s:1,thai:'ได้ครับ ขอบคุณครับ',roman:'da\u0302i kra\u0301p kho\u0300p-kun kra\u0301p',eng:'Got it. Thank you!'},
+{s:2,thai:'พักผ่อนเยอะๆนะคะ ดื่มน้ำเยอะๆ',roman:'pa\u0301k po\u0300n yoe\u0301-yoe\u0301 na\u0301 ka\u0301 deu\u0300m na\u0301m yoe\u0301-yoe\u0301',eng:'Rest a lot, okay? Drink lots of water.'},
+{s:1,thai:'ครับ ขอบคุณมากครับ',roman:'kra\u0301p kho\u0300p-kun ma\u0302ak kra\u0301p',eng:'Yes, thank you very much!'},
+]},
+{id:'songthaew',title:'Taking a Songthaew',desc:'Riding the shared red truck taxi — a classic Thai transport experience.',duration:'~1.5 min',speakers:['You','Driver','Wife'],lines:[
+{s:1,thai:'ไปนิมมานไหมครับ',roman:'bpai nim-maan ma\u030ci kra\u0301p',eng:'Do you go to Nimman? (Chiang Mai area)'},
+{s:2,thai:'ไปครับ ขึ้นมาเลย',roman:'bpai kra\u0301p keu\u0302n maa loei',eng:'Yes! Hop on.'},
+{s:3,thai:'ไกลไหมคะ',roman:'glai ma\u030ci ka\u0301',eng:'Is it far?'},
+{s:2,thai:'ไม่ไกลครับ สักสิบนาที',roman:'ma\u0302i glai kra\u0301p sa\u0300k si\u0300p naa-tee',eng:'Not far, about 10 minutes.'},
+{s:1,thai:'คนละเท่าไหร่ครับ',roman:'kon la\u0301 ta\u0302o-ra\u0300i kra\u0301p',eng:'How much per person?'},
+{s:2,thai:'คนละสามสิบบาทครับ',roman:'kon la\u0301 sa\u030cam-si\u0300p ba\u0300at kra\u0301p',eng:'30 baht per person.'},
+{s:1,thai:'ได้ครับ',roman:'da\u0302i kra\u0301p',eng:'Okay!'},
+{s:1,thai:'จอดตรงนี้ครับ',roman:'jo\u0300t dtrong ne\u0301e kra\u0301p',eng:'Stop here please!'},
+{s:2,thai:'ได้ครับ',roman:'da\u0302i kra\u0301p',eng:'Sure!'},
+{s:1,thai:'ขอบคุณครับ',roman:'kho\u0300p-kun kra\u0301p',eng:'Thank you!'},
+]},
+{id:'temple',title:'Visiting a Temple',desc:'A peaceful temple visit — learning about customs and etiquette.',duration:'~2 min',speakers:['You','Wife'],lines:[
+{s:2,thai:'\u0e15\u0e49\u0e2d\u0e07\u0e16\u0e2d\u0e14\u0e23\u0e2d\u0e07\u0e40\u0e17\u0e49\u0e32\u0e01\u0e48\u0e2d\u0e19\u0e40\u0e02\u0e49\u0e32\u0e27\u0e31\u0e14\u0e19\u0e30',roman:'dto\u0302ng to\u0300t rong ta\u0301o go\u0300n ka\u0302o wa\u0301t na\u0301',eng:'You have to take off your shoes before entering the temple.'},
+{s:1,thai:'\u0e44\u0e14\u0e49\u0e04\u0e23\u0e31\u0e1a \u0e41\u0e25\u0e49\u0e27\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e2a\u0e48\u0e40\u0e2a\u0e37\u0e49\u0e2d\u0e2d\u0e30\u0e44\u0e23\u0e04\u0e23\u0e31\u0e1a',roman:'da\u0302i kra\u0301p la\u0301ew dto\u0302ng sa\u0300i seu\u0302a a\u0300-rai kra\u0301p',eng:'Okay. And what should I wear?'},
+{s:2,thai:'\u0e15\u0e49\u0e2d\u0e07\u0e43\u0e2a\u0e48\u0e40\u0e2a\u0e37\u0e49\u0e2d\u0e1b\u0e34\u0e14\u0e44\u0e2b\u0e25\u0e48 \u0e01\u0e32\u0e07\u0e40\u0e01\u0e07\u0e22\u0e32\u0e27\u0e04\u0e48\u0e30',roman:'dto\u0302ng sa\u0300i seu\u0302a bpi\u0300t la\u0300i gaang gehng yaao ka\u0302',eng:'You need to wear clothes that cover your shoulders and long pants.'},
+{s:1,thai:'\u0e27\u0e31\u0e14\u0e19\u0e35\u0e49\u0e2a\u0e27\u0e22\u0e21\u0e32\u0e01\u0e04\u0e23\u0e31\u0e1a',roman:'wa\u0301t ne\u0301e su\u030cay ma\u0302ak kra\u0301p',eng:'This temple is very beautiful!'},
+{s:2,thai:'\u0e43\u0e0a\u0e48\u0e04\u0e48\u0e30 \u0e2d\u0e22\u0e32\u0e01\u0e44\u0e1b\u0e44\u0e2b\u0e27\u0e49\u0e1e\u0e23\u0e30\u0e44\u0e2b\u0e21\u0e04\u0e30',roman:'cha\u0302i ka\u0302 ya\u0300ak bpai wa\u0302i pra\u0301 ma\u030ci ka\u0301',eng:'Yes! Want to go pray?'},
+{s:1,thai:'\u0e2d\u0e22\u0e32\u0e01\u0e04\u0e23\u0e31\u0e1a \u0e17\u0e33\u0e22\u0e31\u0e07\u0e44\u0e07\u0e04\u0e23\u0e31\u0e1a',roman:'ya\u0300ak kra\u0301p tam yang ngai kra\u0301p',eng:'Yes! How do I do it?'},
+{s:2,thai:'\u0e08\u0e38\u0e14\u0e18\u0e39\u0e1b\u0e2a\u0e32\u0e21\u0e14\u0e2d\u0e01 \u0e41\u0e25\u0e49\u0e27\u0e44\u0e2b\u0e27\u0e49\u0e1e\u0e23\u0e30\u0e04\u0e48\u0e30',roman:'ju\u0300t tuup sa\u030cam do\u0300k la\u0301ew wa\u0302i pra\u0301 ka\u0302',eng:'Light three incense sticks, then pray.'},
+{s:1,thai:'\u0e02\u0e2d\u0e1a\u0e04\u0e38\u0e13\u0e17\u0e35\u0e48\u0e2a\u0e2d\u0e19\u0e04\u0e23\u0e31\u0e1a',roman:'kho\u0300p-kun te\u0302e so\u030cn kra\u0301p',eng:'Thank you for teaching me!'},
+{s:2,thai:'\u0e44\u0e21\u0e48\u0e40\u0e1b\u0e47\u0e19\u0e44\u0e23\u0e04\u0e48\u0e30 \u0e21\u0e32\u0e16\u0e48\u0e32\u0e22\u0e23\u0e39\u0e1b\u0e14\u0e49\u0e27\u0e22\u0e01\u0e31\u0e19\u0e19\u0e30',roman:'ma\u0302i bpen rai ka\u0302 maa ta\u0300ai ru\u0302up du\u0302ay gan na\u0301',eng:'No problem! Let\'s take a photo together.'},
+]},
+];
+
+// ============================= LISTEN & LEARN LOGIC =============================
+let listenPlaying=false, listenLineIdx=0, listenCurrentEp=null, listenTimer=null;
+let listenShowRoman=true, listenShowEng=true, listenSlow=false, listenRepeat=false;
+
+function buildListenHub() {
+  const el=document.getElementById('listen-episodes');
+  if(!el) return;
+  el.innerHTML='';
+  listenEpisodes.forEach(ep=>{
+    const d=document.createElement('div');
+    d.className='listen-episode-card';
+    d.onclick=()=>openListenEpisode(ep.id);
+    d.innerHTML=`<div class="ep-title">${ep.title}</div><div class="ep-desc">${ep.desc}</div><div class="ep-meta">${ep.speakers.join(' & ')} \u2022 ${ep.duration} \u2022 ${ep.lines.length} lines</div>`;
+    el.appendChild(d);
+  });
+}
+
+function openListenEpisode(id) {
+  stopListenMode();
+  listenCurrentEp = listenEpisodes.find(e=>e.id===id);
+  if(!listenCurrentEp) return;
+  listenLineIdx = 0;
+  document.getElementById('listen-player-title').textContent = listenCurrentEp.title;
+  renderListenTimeline();
+  updateListenProgress();
+  updatePPIcon();
+  showPage('page-listen-player');
+}
+
+function renderListenTimeline() {
+  const el = document.getElementById('listen-timeline');
+  el.innerHTML = '';
+  listenCurrentEp.lines.forEach((line, i) => {
+    const div = document.createElement('div');
+    div.className = 'listen-line' + (i === listenLineIdx ? ' active' : '') + (i < listenLineIdx ? ' played' : '');
+    div.id = 'listen-line-' + i;
+    const speaker = listenCurrentEp.speakers[line.s - 1];
+    div.innerHTML = `<div class="ll-speaker">${speaker}</div><div class="ll-thai">${line.thai}</div><div class="ll-roman${listenShowRoman ? '' : ' hidden'}">${line.roman}</div><div class="ll-eng${listenShowEng ? '' : ' hidden'}">${line.eng}</div>`;
+    div.onclick = () => { listenLineIdx = i; speakListenLine(i); highlightListenLine(); };
+    el.appendChild(div);
+  });
+}
+
+function highlightListenLine() {
+  document.querySelectorAll('.listen-line').forEach((el, i) => {
+    el.className = 'listen-line' + (i === listenLineIdx ? ' active' : '') + (i < listenLineIdx ? ' played' : '');
+  });
+  updateListenProgress();
+  const active = document.getElementById('listen-line-' + listenLineIdx);
+  if (active) active.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function updateListenProgress() {
+  if (!listenCurrentEp) return;
+  const pct = (listenLineIdx / listenCurrentEp.lines.length) * 100;
+  document.getElementById('listen-pbar').style.width = pct + '%';
+}
+
+function speakListenLine(idx) {
+  if (!listenCurrentEp || idx >= listenCurrentEp.lines.length) return;
+  speechSynthesis.cancel();
+  const line = listenCurrentEp.lines[idx];
+  const u = new SpeechSynthesisUtterance(line.thai);
+  u.lang = 'th-TH';
+  u.rate = listenSlow ? 0.55 : 0.75;
+  u.onend = () => {
+    if (listenPlaying) {
+      listenTimer = setTimeout(() => {
+        listenLineIdx++;
+        if (listenLineIdx >= listenCurrentEp.lines.length) {
+          if (listenRepeat) {
+            listenLineIdx = 0;
+            highlightListenLine();
+            speakListenLine(0);
+          } else {
+            listenPlaying = false;
+            updatePPIcon();
+            playPerfectSound();
+          }
+        } else {
+          highlightListenLine();
+          speakListenLine(listenLineIdx);
+        }
+      }, listenSlow ? 2200 : 1500);
+    }
+  };
+  speechSynthesis.speak(u);
+}
+
+function listenPlayPause() {
+  if (listenPlaying) {
+    listenPlaying = false;
+    speechSynthesis.cancel();
+    clearTimeout(listenTimer);
+  } else {
+    listenPlaying = true;
+    if (listenLineIdx >= listenCurrentEp.lines.length) listenLineIdx = 0;
+    highlightListenLine();
+    speakListenLine(listenLineIdx);
+  }
+  updatePPIcon();
+}
+
+function updatePPIcon() {
+  const icon = document.getElementById('listen-pp-icon');
+  if (listenPlaying) {
+    icon.innerHTML = '<rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" />';
+  } else {
+    icon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+  }
+}
+
+function listenPrev() {
+  if (listenLineIdx > 0) listenLineIdx--;
+  highlightListenLine();
+  if (listenPlaying) { speechSynthesis.cancel(); clearTimeout(listenTimer); speakListenLine(listenLineIdx); }
+}
+
+function listenNext() {
+  if (listenCurrentEp && listenLineIdx < listenCurrentEp.lines.length - 1) listenLineIdx++;
+  highlightListenLine();
+  if (listenPlaying) { speechSynthesis.cancel(); clearTimeout(listenTimer); speakListenLine(listenLineIdx); }
+}
+
+function listenRestart() {
+  listenLineIdx = 0;
+  highlightListenLine();
+  if (listenPlaying) { speechSynthesis.cancel(); clearTimeout(listenTimer); speakListenLine(0); }
+}
+
+function listenRepeatToggle() {
+  listenRepeat = !listenRepeat;
+  document.getElementById('listen-repeat-btn').style.color = listenRepeat ? 'var(--gold)' : '';
+  document.getElementById('listen-repeat-btn').style.borderColor = listenRepeat ? 'var(--gold)' : '';
+}
+
+function stopListenMode() {
+  listenPlaying = false;
+  speechSynthesis.cancel();
+  clearTimeout(listenTimer);
+}
+
+function toggleListenRoman() {
+  listenShowRoman = !listenShowRoman;
+  document.getElementById('toggle-roman').className = 'listen-toggle' + (listenShowRoman ? ' on' : '');
+  document.querySelectorAll('.ll-roman').forEach(el => el.className = 'll-roman' + (listenShowRoman ? '' : ' hidden'));
+}
+
+function toggleListenEng() {
+  listenShowEng = !listenShowEng;
+  document.getElementById('toggle-eng').className = 'listen-toggle' + (listenShowEng ? ' on' : '');
+  document.querySelectorAll('.ll-eng').forEach(el => el.className = 'll-eng' + (listenShowEng ? '' : ' hidden'));
+}
+
+function toggleListenSpeed() {
+  listenSlow = !listenSlow;
+  document.getElementById('toggle-slow').className = 'listen-toggle' + (listenSlow ? ' on' : '');
+}
+
+buildListenHub();
 </script>
 </body>
 </html>
