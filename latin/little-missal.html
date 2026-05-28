@@ -312,150 +312,375 @@
 
   <script>
     // ============================================================
-    // DAILY ENTRIES — Easter Season, Year C
-    // Tuesday, April 21, 2026 → Sunday, May 10, 2026 (Mother's Day)
+    // DAILY ENTRIES — Ordinary Time, Year II weekdays / Year C Sundays
+    // Wednesday, May 27, 2026 → Friday, July 17, 2026 (52 days)
+    // Includes Trinity Sunday, Corpus Christi, Sacred Heart, Sts. Peter & Paul, Independence Day.
     // Regenerate this block monthly.
     // ============================================================
     const DAILY_ENTRIES = {
-      "2026-04-21": {
-        liturgicalDay: "Tuesday · 3rd Week of Easter",
-        gospelReference: "John 6:30–35",
-        theme: "Jesus says, \u201CI am the Bread of Life.\u201D When we stay close to him, our hearts will never feel empty or alone.",
-        question: "What makes your heart feel full and happy? How might Jesus fill you up even more?",
-        prayer: "Jesus, thank you for being the Bread of Life. Help me remember that you fill my heart with love. I want to stay close to you today."
+      "2026-05-27": {
+        liturgicalDay: "Wednesday \u00b7 8th Week in Ordinary Time",
+        gospelReference: "Mark 10:32\u201345",
+        theme: "Jesus tells us that the greatest people in his Kingdom are not the bossiest \u2014 they are the ones who help and serve others.",
+        question: "What is one way you could serve someone in your family today, like Jesus served us?",
+        prayer: "Jesus, you came to serve and not to be served. Teach me to look for ways to help others. Make my heart kind like yours."
       },
-      "2026-04-22": {
-        liturgicalDay: "Wednesday · 3rd Week of Easter",
-        gospelReference: "John 6:35–40",
-        theme: "Jesus promises that everyone who looks to him and trusts him will be with him forever. He does not want to lose even one of us.",
-        question: "What do you think it means that Jesus wants to keep you close forever?",
-        prayer: "Father, thank you for sending Jesus to bring us home to you. Help me trust you every day. Please keep me close to you."
+      "2026-05-28": {
+        liturgicalDay: "Thursday \u00b7 8th Week in Ordinary Time",
+        gospelReference: "Mark 10:46\u201352",
+        theme: "A blind man named Bartimaeus called out to Jesus for help, and Jesus stopped, listened, and healed him. Jesus always hears us when we call.",
+        question: "When you need Jesus\u2019s help, what is one thing you can say to him?",
+        prayer: "Jesus, thank you for hearing me when I pray. When I need help, give me courage to ask. Open the eyes of my heart to see you."
       },
-      "2026-04-23": {
-        liturgicalDay: "Thursday · 3rd Week of Easter",
-        gospelReference: "John 6:44–51",
-        theme: "Jesus calls himself the living bread from heaven. When we receive him, he gives us a life that never ends.",
-        question: "Jesus gives us life that lasts forever. How does that change the way you feel about today?",
-        prayer: "Jesus, you are the living bread. Thank you for giving me a life that lasts forever. Help me love you more each day."
+      "2026-05-29": {
+        liturgicalDay: "Friday \u00b7 8th Week in Ordinary Time",
+        gospelReference: "Mark 11:11\u201326",
+        theme: "Jesus teaches us that if we have even a little faith and we pray, big things can happen \u2014 even big mountains can be moved.",
+        question: "What is something big you can talk to Jesus about today in prayer?",
+        prayer: "Jesus, I believe in you, even when my faith is small. Help me trust that you hear my prayers. Make my faith grow stronger every day."
       },
-      "2026-04-24": {
-        liturgicalDay: "Friday · 3rd Week of Easter",
-        gospelReference: "John 6:52–59",
-        theme: "Jesus tells us that when we receive his Body and Blood in Holy Communion, he lives inside us and we live in him.",
-        question: "What do you think happens inside your heart when you receive Jesus in Holy Communion?",
-        prayer: "Jesus, thank you for giving me your very self in Holy Communion. Help me love you with a quiet, grateful heart."
+      "2026-05-30": {
+        liturgicalDay: "Saturday \u00b7 8th Week in Ordinary Time",
+        gospelReference: "Mark 11:27\u201333",
+        theme: "People asked Jesus where his power came from. We know the answer: everything Jesus does comes from his Father in heaven, who loves us.",
+        question: "What is one good thing Jesus does that you are thankful for?",
+        prayer: "Jesus, you do everything in your Father\u2019s love. Thank you for using your power to help us. Help me always trust you."
       },
-      "2026-04-25": {
-        liturgicalDay: "Feast of St. Mark, Evangelist",
-        gospelReference: "Mark 16:15–20",
-        theme: "Jesus sent his friends out to tell everyone the good news that he loves us. St. Mark wrote one of the Gospels so we could hear it too.",
-        question: "If someone asked you, \u201CWho is Jesus?\u201D \u2014 what is one thing you would tell them?",
-        prayer: "Jesus, thank you for St. Mark, who told the world about you. Help me be brave like him and share your love with others."
+      "2026-05-31": {
+        liturgicalDay: "The Most Holy Trinity \u00b7 Sunday",
+        gospelReference: "John 16:12\u201315",
+        theme: "God is three Persons in one God: the Father, the Son, and the Holy Spirit. They love each other perfectly \u2014 and they invite us into that same love.",
+        question: "When you make the Sign of the Cross, what does each part mean to you?",
+        prayer: "Holy Trinity \u2014 Father, Son, and Holy Spirit \u2014 I love you. Thank you for letting me share in your love. Help me grow in faith every day."
       },
-      "2026-04-26": {
-        liturgicalDay: "4th Sunday of Easter · Good Shepherd Sunday",
-        gospelReference: "John 10:27–30",
-        theme: "Jesus is our Good Shepherd. He knows each of us by name, and we learn to know his voice when we listen with our hearts.",
-        question: "How do you think Jesus speaks to you? Where do you hear his voice?",
-        prayer: "Good Shepherd Jesus, thank you for knowing me and loving me. Help me listen for your voice today. Keep me close to you, like a lamb in your arms."
+      "2026-06-01": {
+        liturgicalDay: "St. Justin \u00b7 Martyr",
+        gospelReference: "Mark 12:1\u201312",
+        theme: "Jesus is the special stone that holds everything together, even though some people did not believe in him. He is the strong center of our faith.",
+        question: "How do you think Jesus holds your family together?",
+        prayer: "Jesus, you are the strong stone our faith is built on. Help me trust you with all my heart. St. Justin, pray for me."
       },
-      "2026-04-27": {
-        liturgicalDay: "Monday · 4th Week of Easter",
-        gospelReference: "John 10:1–10",
-        theme: "Jesus says he is the gate for his sheep. When we follow him, we find safety, freedom, and a life full of joy.",
-        question: "What does it feel like to know that Jesus keeps you safe?",
-        prayer: "Jesus, thank you for being the gate that keeps me safe. Help me follow you and nobody else. I want to walk with you today."
+      "2026-06-02": {
+        liturgicalDay: "Tuesday \u00b7 9th Week in Ordinary Time",
+        gospelReference: "Mark 12:13\u201317",
+        theme: "Jesus tells us to give to God what belongs to God \u2014 our hearts, our love, and our whole selves.",
+        question: "What is one part of you that you can give to God today?",
+        prayer: "God, everything I have comes from you. I give you my heart, my time, and my love. Help me belong fully to you."
       },
-      "2026-04-28": {
-        liturgicalDay: "Tuesday · 4th Week of Easter",
-        gospelReference: "John 10:22–30",
-        theme: "Jesus calls us his sheep, and he says no one can ever take us out of his hand. He holds us with a strong, loving grip.",
-        question: "What does it feel like to know that Jesus is holding onto you?",
-        prayer: "Jesus, thank you for holding me in your strong, gentle hand. I am safe because you love me. Please never let me go."
+      "2026-06-03": {
+        liturgicalDay: "Sts. Charles Lwanga & Companions \u00b7 Martyrs",
+        gospelReference: "Mark 12:18\u201327",
+        theme: "Jesus reminds us that God is the God of the living. When we love God, our lives never really end \u2014 they go on forever with him.",
+        question: "What does it feel like to know your life will last forever with Jesus?",
+        prayer: "Father, thank you for the gift of life that lasts forever. Help me live each day with joy because I belong to you. St. Charles Lwanga, pray for us."
       },
-      "2026-04-29": {
-        liturgicalDay: "St. Catherine of Siena · Doctor of the Church",
-        gospelReference: "Matthew 11:25–30",
-        theme: "Jesus thanks the Father for showing his love to little ones. He invites us to come to him when we\u2019re tired, and he gives us rest.",
-        question: "When do you feel tired or worried? How might Jesus give you rest?",
-        prayer: "Jesus, thank you for loving little hearts like mine. When I feel tired or sad, help me come to you. St. Catherine, pray for me."
+      "2026-06-04": {
+        liturgicalDay: "Thursday \u00b7 9th Week in Ordinary Time",
+        gospelReference: "Mark 12:28\u201334",
+        theme: "Jesus tells us the two most important things: love God with all our heart, and love our neighbor as ourselves. That is the whole Christian life.",
+        question: "Who is one neighbor \u2014 someone close to you \u2014 that you can love today?",
+        prayer: "Jesus, help me love God with all my heart, soul, mind, and strength. And help me love the people around me, just like you love me."
       },
-      "2026-04-30": {
-        liturgicalDay: "Thursday · 4th Week of Easter",
-        gospelReference: "John 13:16–20",
-        theme: "Jesus tells us that whoever welcomes one of his friends welcomes him too. The way we treat others is the way we treat Jesus.",
-        question: "How could you welcome Jesus today by being kind to someone?",
-        prayer: "Jesus, help me see you in the people around me. When I am kind to them, I am kind to you. Make my heart gentle and welcoming."
+      "2026-06-05": {
+        liturgicalDay: "St. Boniface \u00b7 Bishop and Martyr",
+        gospelReference: "Mark 12:35\u201337",
+        theme: "Jesus is more than just a great teacher \u2014 he is the King and Lord whom David himself called Lord. He is God, come to be with us.",
+        question: "What is one name you like to call Jesus when you talk to him?",
+        prayer: "Jesus, you are my King and my Lord. I love you and I want to follow you. St. Boniface, pray that I am brave for Jesus."
       },
-      "2026-05-01": {
-        liturgicalDay: "St. Joseph the Worker",
-        gospelReference: "Matthew 13:54–58",
-        theme: "Jesus grew up in a regular town with a regular carpenter dad. St. Joseph shows us that ordinary work, done with love, is holy.",
-        question: "What is one ordinary thing you do every day? How could doing it with love make it special?",
-        prayer: "Good St. Joseph, you worked hard and loved Jesus. Help me do my small jobs well today \u2014 with love, the way you did."
+      "2026-06-06": {
+        liturgicalDay: "Saturday \u00b7 9th Week in Ordinary Time",
+        gospelReference: "Mark 12:38\u201344",
+        theme: "A poor widow gave just two tiny coins, but Jesus said she gave more than anyone else, because she gave everything she had with love.",
+        question: "What is one small thing you could give with great love today?",
+        prayer: "Jesus, I want to give you my whole heart, even when it feels small. Help me love big, like the widow with her two coins."
       },
-      "2026-05-02": {
-        liturgicalDay: "St. Athanasius · Bishop and Doctor",
-        gospelReference: "John 14:7–14",
-        theme: "Jesus tells us, \u201CIf you have seen me, you have seen the Father.\u201D When we look at Jesus, we see exactly what God is like.",
-        question: "What is one thing about Jesus that tells you what God is like?",
-        prayer: "Jesus, thank you for showing me what the Father is like. When I look at you, I see love. Help me look at you more every day."
+      "2026-06-07": {
+        liturgicalDay: "The Most Holy Body and Blood of Christ \u00b7 Corpus Christi",
+        gospelReference: "Luke 9:11b\u201317",
+        theme: "Jesus took a few loaves and fishes and fed thousands of people. Today in Holy Communion, he still feeds us \u2014 with his very own self.",
+        question: "What do you think Jesus wants to give you when you receive him in Holy Communion?",
+        prayer: "Jesus, thank you for feeding us with your Body and Blood. Help me come to you hungry for your love. Make me strong with your life inside me."
       },
-      "2026-05-03": {
-        liturgicalDay: "5th Sunday of Easter",
-        gospelReference: "John 13:31–33a, 34–35",
-        theme: "Jesus gives us a new rule: \u201CLove one another as I have loved you.\u201D People will know we belong to Jesus by how we love each other.",
-        question: "Who is someone you can love today the way Jesus loves you?",
-        prayer: "Jesus, you loved us all the way to the cross. Teach me to love my family and friends the same way. Let my love show people who you are."
+      "2026-06-08": {
+        liturgicalDay: "Monday \u00b7 10th Week in Ordinary Time",
+        gospelReference: "Matthew 5:1\u201312",
+        theme: "Jesus teaches the Beatitudes \u2014 the secret of being truly happy. The gentle, the pure of heart, and the peacemakers are blessed by God.",
+        question: "Which of the Beatitudes do you want to grow in today?",
+        prayer: "Jesus, you said the gentle and pure of heart are blessed. Make my heart like that. Help me find true happiness in following you."
       },
-      "2026-05-04": {
-        liturgicalDay: "Monday · 5th Week of Easter",
-        gospelReference: "John 14:21–26",
-        theme: "Jesus says that if we love him, the Father and Jesus come to make their home in our hearts. God really wants to live with us!",
-        question: "If Jesus lives in your heart, how might that change the way you act today?",
-        prayer: "Jesus, please come and make your home in my heart. Bring the Father and the Holy Spirit with you. I want my heart to be a happy home for you."
+      "2026-06-09": {
+        liturgicalDay: "Tuesday \u00b7 10th Week in Ordinary Time",
+        gospelReference: "Matthew 5:13\u201316",
+        theme: "Jesus says we are the salt of the earth and the light of the world. When we live with love, others see God shining through us.",
+        question: "How can your light shine for Jesus today?",
+        prayer: "Jesus, you are the true light. Let your light shine through me so others can see your goodness. Help me bring a little of you to everyone I meet."
       },
-      "2026-05-05": {
-        liturgicalDay: "Tuesday · 5th Week of Easter",
-        gospelReference: "John 14:27–31a",
-        theme: "Jesus gives us his peace \u2014 not the kind the world gives, but a quiet, strong peace that calms our hearts when we are afraid.",
-        question: "When do you feel scared or worried? How might Jesus\u2019 peace help you?",
-        prayer: "Jesus, thank you for your peace. When my heart feels shaky, please calm me. Help me trust that you are always with me."
+      "2026-06-10": {
+        liturgicalDay: "Wednesday \u00b7 10th Week in Ordinary Time",
+        gospelReference: "Matthew 5:17\u201319",
+        theme: "Jesus did not come to throw away God\u2019s good rules \u2014 he came to fulfill them. He shows us how to live every commandment with love.",
+        question: "What is one good rule that helps you love God or others better?",
+        prayer: "Jesus, thank you for showing me how to love. Help me follow God\u2019s good rules from my heart, not just because I have to. Let my obedience be love."
       },
-      "2026-05-06": {
-        liturgicalDay: "Wednesday · 5th Week of Easter",
-        gospelReference: "John 15:1–8",
-        theme: "Jesus says he is the vine and we are the branches. If we stay connected to him, we will grow and do beautiful things, like fruit on a healthy plant.",
-        question: "What are some ways you can stay connected to Jesus every day?",
-        prayer: "Jesus, keep me close to you like a branch on your vine. Help me grow strong in your love and do good things for others."
+      "2026-06-11": {
+        liturgicalDay: "St. Barnabas \u00b7 Apostle",
+        gospelReference: "Matthew 10:7\u201313",
+        theme: "Jesus sent his friends out two-by-two to share the good news that God\u2019s Kingdom is near. He sends us, too \u2014 into our families and friendships.",
+        question: "Who is one person you could share Jesus\u2019s love with this week?",
+        prayer: "Jesus, like St. Barnabas, help me share your good news. Let my words and actions show others how much you love them. St. Barnabas, pray for me."
       },
-      "2026-05-07": {
-        liturgicalDay: "Thursday · 5th Week of Easter",
-        gospelReference: "John 15:9–11",
-        theme: "Jesus tells us to stay in his love the same way he stays in the Father\u2019s love. When we do, our joy will be complete.",
-        question: "What does it feel like to be loved? How does Jesus\u2019 love feel different?",
-        prayer: "Jesus, thank you for loving me just like the Father loves you. Help me stay close in that love today. Fill me with your joy."
+      "2026-06-12": {
+        liturgicalDay: "The Most Sacred Heart of Jesus \u00b7 Solemnity",
+        gospelReference: "Luke 15:3\u20137",
+        theme: "Jesus\u2019s heart is so full of love that if even one little sheep gets lost, he runs out to find it. His Sacred Heart is always looking for us.",
+        question: "When you feel far from Jesus, how do you think he comes to find you?",
+        prayer: "Sacred Heart of Jesus, thank you for loving me so much that you would search for me. Keep me always close to your loving heart."
       },
-      "2026-05-08": {
-        liturgicalDay: "Friday · 5th Week of Easter",
-        gospelReference: "John 15:12–17",
-        theme: "Jesus calls us his friends, not just his helpers. A good friend loves us, tells us the truth, and wants only good for us \u2014 that\u2019s how Jesus loves.",
-        question: "What makes someone a really good friend? How is Jesus a friend to you?",
-        prayer: "Jesus, thank you for calling me your friend. Help me be a good friend to you and to the people around me. I want to love like you love."
+      "2026-06-13": {
+        liturgicalDay: "St. Anthony of Padua \u00b7 Priest and Doctor",
+        gospelReference: "Matthew 5:33\u201337",
+        theme: "Jesus tells us to always tell the truth. When we say yes, we mean yes. When we say no, we mean no. Honest hearts please God.",
+        question: "Why do you think Jesus loves it so much when we tell the truth?",
+        prayer: "Jesus, you are the Truth. Help me be honest in all I say. St. Anthony, pray that I always speak with a true heart."
       },
-      "2026-05-09": {
-        liturgicalDay: "Saturday · 5th Week of Easter",
-        gospelReference: "John 15:18–21",
-        theme: "Jesus tells us that because we belong to him, not everyone will understand or like us \u2014 but that is okay, because we are his.",
-        question: "Has someone ever been unkind because you did the right thing? What did Jesus say about that?",
-        prayer: "Jesus, help me be brave when it\u2019s hard to follow you. Remind me that I belong to you, no matter what. Stay close to me."
+      "2026-06-14": {
+        liturgicalDay: "11th Sunday in Ordinary Time",
+        gospelReference: "Luke 7:36\u20138:3",
+        theme: "A woman who had done many wrong things came to Jesus full of love. He forgave her completely, because she loved him so much.",
+        question: "What does it feel like when someone forgives you? How does Jesus forgive even more?",
+        prayer: "Jesus, thank you for forgiving me when I do wrong. Help me come to you with love. Wash my heart clean."
       },
-      "2026-05-10": {
-        liturgicalDay: "6th Sunday of Easter · Mother\u2019s Day",
-        gospelReference: "John 14:23–29",
-        theme: "Jesus promises to send the Holy Spirit to teach us everything. And he leaves us his peace \u2014 a peace that stays, even when the world is noisy.",
-        question: "Who are the people who teach you about Jesus? How can you thank them today?",
-        prayer: "Jesus, thank you for the Holy Spirit who helps me learn about you. Thank you for my mother and everyone who teaches me to love you. Fill our home with your peace."
+      "2026-06-15": {
+        liturgicalDay: "Monday \u00b7 11th Week in Ordinary Time",
+        gospelReference: "Matthew 5:38\u201342",
+        theme: "Jesus tells us to be different from the world. When someone is mean to us, we don\u2019t fight back the same way \u2014 we choose love and patience.",
+        question: "When someone hurts your feelings, what could you do that would make Jesus smile?",
+        prayer: "Jesus, when others are unkind, help me not to be unkind back. Give me your patience and your peace. Teach me to love like you."
+      },
+      "2026-06-16": {
+        liturgicalDay: "Tuesday \u00b7 11th Week in Ordinary Time",
+        gospelReference: "Matthew 5:43\u201348",
+        theme: "Jesus tells us to love even the people who are mean to us, and to pray for them. That is what makes us children of the Father in heaven.",
+        question: "Is there someone you find hard to love? How could you pray for them today?",
+        prayer: "Father, you love everyone, even people who hurt you. Help me love and pray for the people I find hard. Make my heart big like yours."
+      },
+      "2026-06-17": {
+        liturgicalDay: "Wednesday \u00b7 11th Week in Ordinary Time",
+        gospelReference: "Matthew 6:1\u20136, 16\u201318",
+        theme: "When we do good things, we don\u2019t need everyone to see \u2014 just God. The Father sees in secret, and quiet good deeds make him smile.",
+        question: "What is a good thing you could do today that nobody else has to know about?",
+        prayer: "Father, help me do good things just for you, not to show off. You see everything I do. I want my heart to please you."
+      },
+      "2026-06-18": {
+        liturgicalDay: "Thursday \u00b7 11th Week in Ordinary Time",
+        gospelReference: "Matthew 6:7\u201315",
+        theme: "Jesus teaches us the Our Father \u2014 the perfect prayer. In it, we ask for what we need and learn to forgive others, just like God forgives us.",
+        question: "Which line of the Our Father is your favorite? Why?",
+        prayer: "Our Father, who art in heaven, hallowed be thy name. Thy kingdom come, thy will be done, on earth as it is in heaven. Help me pray this prayer with my whole heart."
+      },
+      "2026-06-19": {
+        liturgicalDay: "Friday \u00b7 11th Week in Ordinary Time",
+        gospelReference: "Matthew 6:19\u201323",
+        theme: "Jesus says, \u201cWhere your treasure is, there your heart will be.\u201d Things will break and wear out \u2014 but love for God lasts forever.",
+        question: "What kind of treasure are you saving up in heaven by your good deeds?",
+        prayer: "Jesus, you are my real treasure. Help me love you more than any toy or thing. Where you are, that is where my heart wants to be."
+      },
+      "2026-06-20": {
+        liturgicalDay: "Saturday \u00b7 11th Week in Ordinary Time",
+        gospelReference: "Matthew 6:24\u201334",
+        theme: "Jesus tells us not to worry. Just look at the birds and the flowers \u2014 God takes care of them. He cares for us so much more.",
+        question: "What is something you sometimes worry about? How does Jesus help you trust?",
+        prayer: "Father, you take care of the birds and the flowers. I know you take care of me even more. Help me not to worry. I trust you."
+      },
+      "2026-06-21": {
+        liturgicalDay: "12th Sunday in Ordinary Time",
+        gospelReference: "Luke 9:18\u201324",
+        theme: "Jesus asks his friends, \u201cWho do you say that I am?\u201d Peter answers, \u201cYou are the Christ.\u201d Jesus wants each of us to answer that question too.",
+        question: "Who is Jesus to you?",
+        prayer: "Jesus, you are the Christ \u2014 the Son of the living God. You are my Lord, my Friend, and my Savior. Help me know you better every day."
+      },
+      "2026-06-22": {
+        liturgicalDay: "Monday \u00b7 12th Week in Ordinary Time",
+        gospelReference: "Matthew 7:1\u20135",
+        theme: "Jesus says we should not judge others harshly. Before noticing the little speck in someone else\u2019s eye, we should clean our own eye first.",
+        question: "How can you be patient with someone else\u2019s mistakes today?",
+        prayer: "Jesus, help me see other people the kind way you see them. Show me my own faults first before I judge anyone else. Make me humble and kind."
+      },
+      "2026-06-23": {
+        liturgicalDay: "Tuesday \u00b7 12th Week in Ordinary Time",
+        gospelReference: "Matthew 7:6, 12\u201314",
+        theme: "Jesus gives us the Golden Rule: \u201cDo to others what you want them to do to you.\u201d Treating others the way you want to be treated is how we follow him.",
+        question: "How do you want to be treated by others? How can you treat someone that way today?",
+        prayer: "Jesus, teach me to treat everyone the way I want to be treated. Help me be kind, fair, and gentle. Lead me through the narrow gate to your Kingdom."
+      },
+      "2026-06-24": {
+        liturgicalDay: "The Nativity of St. John the Baptist \u00b7 Solemnity",
+        gospelReference: "Luke 1:57\u201366, 80",
+        theme: "John the Baptist was born to prepare the way for Jesus. From the very beginning, God had a special job for him \u2014 just like he has a special plan for you.",
+        question: "What special thing do you think God might have for you to do in your life?",
+        prayer: "God, thank you for John the Baptist, who pointed the way to Jesus. Help me point to Jesus too, in everything I say and do. Show me your plan for me."
+      },
+      "2026-06-25": {
+        liturgicalDay: "Thursday \u00b7 12th Week in Ordinary Time",
+        gospelReference: "Matthew 7:21\u201329",
+        theme: "Jesus says we should build our lives on his words, like a strong house on solid rock. When storms come, that house stands firm.",
+        question: "What is one of Jesus\u2019s teachings you want to build your life on?",
+        prayer: "Jesus, you are the rock. Help me build my life on your words. When hard things happen, keep me strong because I trust in you."
+      },
+      "2026-06-26": {
+        liturgicalDay: "Friday \u00b7 12th Week in Ordinary Time",
+        gospelReference: "Matthew 8:1\u20134",
+        theme: "A man with a terrible sickness came to Jesus. Jesus reached out and touched him, and he was healed. Jesus is never afraid to come close to us.",
+        question: "When have you needed Jesus to come close to you? What was it like?",
+        prayer: "Jesus, you came close to a man no one would touch. Come close to me too. Heal whatever needs healing in my heart."
+      },
+      "2026-06-27": {
+        liturgicalDay: "Saturday \u00b7 12th Week in Ordinary Time",
+        gospelReference: "Matthew 8:5\u201317",
+        theme: "A Roman officer came to Jesus with such great trust that Jesus said, \u201cI have not seen faith like this!\u201d His simple trust made Jesus\u2019s heart glad.",
+        question: "At Mass we say, \u201cLord, I am not worthy that you should enter under my roof.\u201d How is that like the officer\u2019s prayer?",
+        prayer: "Jesus, like the centurion, I trust that you can do anything. Lord, I am not worthy, but only say the word and my soul shall be healed."
+      },
+      "2026-06-28": {
+        liturgicalDay: "13th Sunday in Ordinary Time",
+        gospelReference: "Luke 9:51\u201362",
+        theme: "Jesus calls people to follow him with all their hearts \u2014 no looking back. Following Jesus means going forward with him, every day.",
+        question: "What does it mean to follow Jesus today, in your home and at school?",
+        prayer: "Jesus, I want to follow you with my whole heart. Don\u2019t let me look back when you call. Lead me, and I will go where you go."
+      },
+      "2026-06-29": {
+        liturgicalDay: "Sts. Peter and Paul \u00b7 Apostles",
+        gospelReference: "Matthew 16:13\u201319",
+        theme: "Jesus made Peter the rock his Church is built on, and gave him the keys of the Kingdom. Today we thank God for Sts. Peter and Paul, our first great teachers.",
+        question: "What do you think it means that Jesus built his Church on a person \u2014 on Peter?",
+        prayer: "Lord Jesus, thank you for St. Peter, the first pope, and St. Paul, who brought your good news to many. Keep our Church strong and faithful. Sts. Peter and Paul, pray for us."
+      },
+      "2026-06-30": {
+        liturgicalDay: "Tuesday \u00b7 13th Week in Ordinary Time",
+        gospelReference: "Matthew 8:23\u201327",
+        theme: "Jesus\u2019s friends were scared in a big storm, but Jesus was sleeping in the boat. When they woke him, he calmed the wind and waves with just a word.",
+        question: "When your heart feels stormy, what could you ask Jesus to do?",
+        prayer: "Jesus, when life feels scary or wild, calm my heart. Remind me you are in the boat with me. Even the wind and the sea obey you."
+      },
+      "2026-07-01": {
+        liturgicalDay: "Wednesday \u00b7 13th Week in Ordinary Time",
+        gospelReference: "Matthew 8:28\u201334",
+        theme: "Jesus is stronger than anything that scares us. Even the bad spirits had to obey his word. He has all the power, and he uses it to help us.",
+        question: "When you feel scared, what is one thing you can remember about Jesus?",
+        prayer: "Jesus, you are stronger than anything that could ever scare me. Keep me safe in your love. I am never alone \u2014 you are with me."
+      },
+      "2026-07-02": {
+        liturgicalDay: "Thursday \u00b7 13th Week in Ordinary Time",
+        gospelReference: "Matthew 9:1\u20138",
+        theme: "Jesus did something even greater than healing a man who could not walk \u2014 he forgave his sins. Jesus has the power to forgive, because he is God.",
+        question: "How do you feel when you know your sins are forgiven by Jesus?",
+        prayer: "Jesus, thank you for forgiving me when I am sorry. Help me know how much you love me. Heal my heart, just like you healed the man."
+      },
+      "2026-07-03": {
+        liturgicalDay: "St. Thomas \u00b7 Apostle",
+        gospelReference: "John 20:24\u201329",
+        theme: "Thomas wanted to see Jesus to believe. When he did, he said, \u201cMy Lord and my God!\u201d Jesus blesses us when we believe without seeing.",
+        question: "Jesus is here even when we can\u2019t see him. Where do you feel him most?",
+        prayer: "My Lord and my God! Help me believe in you even when I can\u2019t see you. St. Thomas, pray for me when my faith feels small."
+      },
+      "2026-07-04": {
+        liturgicalDay: "Saturday \u00b7 13th Week in Ordinary Time \u00b7 Independence Day (USA)",
+        gospelReference: "Matthew 9:14\u201317",
+        theme: "Jesus came to make something new \u2014 new hearts, new joy, a new way of living. Today, on Independence Day, we thank God for the freedom to know and love him.",
+        question: "What does it mean to be truly free in Jesus?",
+        prayer: "Father, thank you for the freedom we have in our country, and for the deeper freedom Jesus gives us. Help me use my freedom to love you and serve others. Bless our country."
+      },
+      "2026-07-05": {
+        liturgicalDay: "14th Sunday in Ordinary Time",
+        gospelReference: "Luke 10:1\u201312, 17\u201320",
+        theme: "Jesus sent 72 helpers out two-by-two to share his peace. He sends us out, too \u2014 to our families, our friends, and everyone we meet.",
+        question: "How could you bring Jesus\u2019s peace to someone today?",
+        prayer: "Jesus, you sent your friends out to bring peace. Send me too \u2014 into my home, into my world. Let your peace start with me."
+      },
+      "2026-07-06": {
+        liturgicalDay: "Monday \u00b7 14th Week in Ordinary Time",
+        gospelReference: "Matthew 9:18\u201326",
+        theme: "A little girl had died, but Jesus took her hand and said, \u201cGet up.\u201d She rose right away. Jesus has power even over death.",
+        question: "How do you think the little girl\u2019s family felt when Jesus brought her back?",
+        prayer: "Jesus, you have power over everything \u2014 even death. Thank you for taking us by the hand and giving us new life. Hold me always."
+      },
+      "2026-07-07": {
+        liturgicalDay: "Tuesday \u00b7 14th Week in Ordinary Time",
+        gospelReference: "Matthew 9:32\u201338",
+        theme: "Jesus said, \u201cThe harvest is great, but the workers are few.\u201d He needs people who will share his love. He is looking for helpers.",
+        question: "How could you be one of Jesus\u2019s helpers today?",
+        prayer: "Jesus, I want to be your helper. Show me how I can share your love today. Send more good people into your Church to help others know you."
+      },
+      "2026-07-08": {
+        liturgicalDay: "Wednesday \u00b7 14th Week in Ordinary Time",
+        gospelReference: "Matthew 10:1\u20137",
+        theme: "Jesus picked twelve regular people \u2014 fishermen, a tax collector, friends \u2014 and made them his apostles. He calls regular people, like you and me, too.",
+        question: "How do you think Jesus is calling you to follow him today?",
+        prayer: "Jesus, you call regular people like me. Help me listen for your call today. I want to be your friend and your helper."
+      },
+      "2026-07-09": {
+        liturgicalDay: "Thursday \u00b7 14th Week in Ordinary Time",
+        gospelReference: "Matthew 10:7\u201315",
+        theme: "Jesus tells his friends, \u201cWherever you go, bring peace.\u201d We can bring Jesus\u2019s peace into our own homes \u2014 by being kind, helpful, and forgiving.",
+        question: "How can you bring peace to your home today?",
+        prayer: "Jesus, fill our home with your peace. Help me be the kind of person who brings peace, not arguments. Make me a peacemaker like you."
+      },
+      "2026-07-10": {
+        liturgicalDay: "Friday \u00b7 14th Week in Ordinary Time",
+        gospelReference: "Matthew 10:16\u201323",
+        theme: "Jesus tells us to be smart and gentle in this world \u2014 wise as snakes and gentle as doves. We do not have to be afraid; the Holy Spirit will help us.",
+        question: "When is a time you need to be brave for Jesus?",
+        prayer: "Holy Spirit, give me courage when it\u2019s hard. Make me wise and gentle. Help me speak up for what is good, with a kind heart."
+      },
+      "2026-07-11": {
+        liturgicalDay: "St. Benedict \u00b7 Abbot",
+        gospelReference: "Matthew 10:24\u201333",
+        theme: "Jesus tells us not to be afraid \u2014 God knows even how many hairs are on our heads. We are so precious to him.",
+        question: "What does it feel like to know God knows every little thing about you?",
+        prayer: "Father, you know me better than I know myself. Thank you for caring about every part of me. St. Benedict, pray that I work and pray with love."
+      },
+      "2026-07-12": {
+        liturgicalDay: "15th Sunday in Ordinary Time",
+        gospelReference: "Luke 10:25\u201337",
+        theme: "Jesus tells the story of the Good Samaritan \u2014 a man who stopped to help a stranger when others walked past. That is what it means to love our neighbor.",
+        question: "Who in your life right now might need you to be a good Samaritan?",
+        prayer: "Jesus, give me eyes to see who needs help today. Make me kind like the Good Samaritan. Help me stop and love the people you put in my path."
+      },
+      "2026-07-13": {
+        liturgicalDay: "Monday \u00b7 15th Week in Ordinary Time",
+        gospelReference: "Matthew 10:34\u201311:1",
+        theme: "Jesus says that following him sometimes means choosing him even when it is hard. He is worth more than anything or anyone else.",
+        question: "When is it hard to choose Jesus? How can he help you?",
+        prayer: "Jesus, I choose you. When following you is hard, give me strength. You are more important than anything else in my life."
+      },
+      "2026-07-14": {
+        liturgicalDay: "St. Kateri Tekakwitha \u00b7 Virgin",
+        gospelReference: "Matthew 11:20\u201324",
+        theme: "Jesus is sad when people see his wonderful works but don\u2019t change their hearts. He wants our hearts to be open to him and willing to grow.",
+        question: "How is Jesus inviting your heart to grow today?",
+        prayer: "Jesus, keep my heart open to you. Help me see your goodness all around me, and let it change me. St. Kateri, pray for me \u2014 help me love Jesus like you did."
+      },
+      "2026-07-15": {
+        liturgicalDay: "St. Bonaventure \u00b7 Bishop and Doctor",
+        gospelReference: "Matthew 11:25\u201327",
+        theme: "Jesus thanks the Father for showing the secrets of his Kingdom to little ones \u2014 to children, and to anyone with a simple, trusting heart.",
+        question: "Why do you think God loves little, trusting hearts so much?",
+        prayer: "Father, thank you for loving little hearts like mine. Keep me simple and trusting. St. Bonaventure, pray that I grow in wisdom and love."
+      },
+      "2026-07-16": {
+        liturgicalDay: "Thursday \u00b7 15th Week in Ordinary Time",
+        gospelReference: "Matthew 11:28\u201330",
+        theme: "Jesus says, \u201cCome to me, all who are tired, and I will give you rest.\u201d When we feel worn out or sad, Jesus is the One we can run to.",
+        question: "When you feel tired or sad, what does it look like to \u201ccome to Jesus\u201d?",
+        prayer: "Jesus, when I am tired, I come to you. When I am sad, I come to you. Give me your rest. Be my best friend, always."
+      },
+      "2026-07-17": {
+        liturgicalDay: "Friday \u00b7 15th Week in Ordinary Time",
+        gospelReference: "Matthew 12:1\u20138",
+        theme: "Jesus said, \u201cThe Sabbath was made for people, not people for the Sabbath.\u201d Sundays are God\u2019s gift to us \u2014 a day to rest, pray, and be with family.",
+        question: "What is something you love to do on Sundays with your family?",
+        prayer: "Jesus, thank you for Sundays \u2014 a special day to be with you and my family. Help us make every Sunday a day of love and rest."
       }
     };
 

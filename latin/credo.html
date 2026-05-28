@@ -1380,10 +1380,546 @@ const CURRICULUM = {
           ]
         }
       ]
+    },
+    {
+      id: "creed",
+      label: "Pillar I · Part Two",
+      title: "The Creed",
+      subtitle: "What We Believe",
+      lessons: [
+        {
+          id: "c1",
+          title: "I Believe",
+          subtitle: "The Act of Faith",
+          ccc: "CCC 142–184",
+          questions: [
+            {
+              type: "multipleChoice",
+              ccc: "CCC 150",
+              prompt: "What is faith, according to the Catechism?",
+              options: [
+                "A vague feeling of comfort",
+                "Personal trust in God and assent to the truths He reveals",
+                "Blind acceptance without thinking",
+                "An emotion that comes and goes"
+              ],
+              correct: 1,
+              explanation: "Faith is both personal (I trust God) AND intellectual (I believe what He reveals). It is not pure feeling, not pure reasoning — it is the whole person responding to God."
+            },
+            {
+              type: "trueFalse",
+              ccc: "CCC 156–159",
+              prompt: "Faith and reason are opposed to each other.",
+              correct: false,
+              explanation: "Pope St. John Paul II called faith and reason \"the two wings on which the human spirit rises to the contemplation of truth.\" The Catholic Church has always held that faith and reason work together — never against each other."
+            },
+            {
+              type: "fillBlank",
+              ccc: "CCC 158",
+              prompt: "Complete St. Anselm's famous phrase:",
+              sentenceParts: ["Faith seeks ", "___", "."],
+              bank: ["understanding", "peace", "miracles", "holiness", "comfort"],
+              correct: "understanding",
+              explanation: "St. Anselm's \"fides quaerens intellectum\" — faith seeks understanding. We do not believe in order to stop thinking; we believe in order to think rightly about God."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 153",
+              prompt: "Faith is fundamentally...",
+              options: [
+                "Something we earn through good works",
+                "A gift from God",
+                "A natural ability all humans share",
+                "Inherited automatically from parents"
+              ],
+              correct: 1,
+              explanation: "Faith is a supernatural gift, freely given by God. We can prepare for it, ask for it, and cooperate with it — but ultimately it is His gift, not our achievement."
+            },
+            {
+              type: "match",
+              ccc: "CCC 142–166",
+              prompt: "Match each aspect of faith to its meaning:",
+              pairs: [
+                ["Credo (I believe)", "The personal act of faith"],
+                ["Credimus (We believe)", "The faith of the Church"],
+                ["Obedience of faith", "Submitting freedom to God"],
+                ["Faith handed on", "Received through the Apostles"]
+              ],
+              explanation: "Faith is both deeply personal AND inseparable from the Church. We never believe alone — we believe with the Church, in a faith handed down from the Apostles."
+            },
+            {
+              type: "tapOrder",
+              ccc: "Nicene Creed",
+              prompt: "Arrange the opening of the Nicene Creed:",
+              tokens: ["I", "believe", "in", "one", "God"],
+              correctOrder: ["I", "believe", "in", "one", "God"],
+              explanation: "The first words of the Nicene Creed. Every act of Christian faith begins here — with the assertion that there is one God."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 166",
+              prompt: "Through whom did we ultimately receive the faith?",
+              options: [
+                "Modern theologians",
+                "Our own intuition",
+                "Our family, the Church, and the Apostles",
+                "Only the Pope"
+              ],
+              correct: 2,
+              explanation: "Faith is handed on (tradition). We received it through our parents, godparents, and the Church — and through the Church, from the Apostles, and through them, from Christ Himself."
+            },
+            {
+              type: "trueFalse",
+              ccc: "James 2:26 · CCC 1814–1816",
+              prompt: "True faith inevitably shows itself in how we live.",
+              correct: true,
+              explanation: "\"Faith without works is dead\" (James 2:26). Genuine faith always overflows into action. If we truly believe God is who He says He is, our lives will show it."
+            }
+          ]
+        },
+        {
+          id: "c2",
+          title: "The Symbol",
+          subtitle: "Of Faith",
+          ccc: "CCC 185–197",
+          questions: [
+            {
+              type: "multipleChoice",
+              ccc: "CCC 187",
+              prompt: "The word \"Creed\" (Latin: Credo) means...",
+              options: ["\"I doubt\"", "\"I believe\"", "\"I pray\"", "\"I obey\""],
+              correct: 1,
+              explanation: "Creed comes from the Latin \"credo\" — \"I believe.\" Each Creed is a confession of faith, beginning with this personal verb."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 191",
+              prompt: "How many articles is the Apostles' Creed traditionally divided into?",
+              options: ["Seven", "Ten", "Twelve", "Fourteen"],
+              correct: 2,
+              explanation: "The Apostles' Creed has twelve articles — traditionally one for each Apostle. The actual development was gradual, growing out of ancient baptismal creeds, but the twelvefold structure stuck."
+            },
+            {
+              type: "trueFalse",
+              ccc: "CCC 195",
+              prompt: "The Nicene Creed has its origins at the First Council of Nicaea (AD 325).",
+              correct: true,
+              explanation: "The Council of Nicaea responded to the Arian heresy by defining that Christ is \"of one substance\" with the Father. The Creed was later expanded at Constantinople (381), giving us the full Niceno-Constantinopolitan Creed we pray at Mass."
+            },
+            {
+              type: "fillBlank",
+              ccc: "CCC 750",
+              prompt: "Complete the four marks of the Church from the Creed:",
+              sentenceParts: ["I believe in one, holy, ", "___", ", and apostolic Church."],
+              bank: ["catholic", "faithful", "ancient", "perfect", "universal"],
+              correct: "catholic",
+              explanation: "The four marks of the Church: One, Holy, Catholic (universal), and Apostolic. Together, these four characteristics identify Christ's true Church."
+            },
+            {
+              type: "match",
+              ccc: "CCC 190",
+              prompt: "The Creed has three parts. Match each to its subject:",
+              pairs: [
+                ["First part", "God the Father and creation"],
+                ["Second part", "Jesus Christ and redemption"],
+                ["Third part", "Holy Spirit and the Church"]
+              ],
+              explanation: "The Creed is Trinitarian in structure — three parts mirroring the three Persons of God. This is not accidental; it reflects how Baptism is administered: \"In the name of the Father, and of the Son, and of the Holy Spirit.\""
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 188",
+              prompt: "The Greek word \"symbolon\" (root of \"Symbol of Faith\") originally meant...",
+              options: [
+                "A secret password",
+                "A token of recognition broken in two",
+                "A mystical sign",
+                "A drawing"
+              ],
+              correct: 1,
+              explanation: "A \"symbolon\" was a token broken in two, with each party keeping half. Reassembled, it identified its bearers as friends. A creed was your half — your \"symbol\" — that identified you as a fellow Christian."
+            },
+            {
+              type: "trueFalse",
+              ccc: "CCC 196–197",
+              prompt: "The Apostles' Creed and the Nicene Creed contradict each other on key points.",
+              correct: false,
+              explanation: "They agree completely. The Nicene Creed is longer and more precise (especially about Christ's divinity), but it is an expansion of the same apostolic faith, not a different one."
+            },
+            {
+              type: "tapOrder",
+              ccc: "Apostles' Creed",
+              prompt: "Arrange the opening words of the Apostles' Creed:",
+              tokens: ["I", "believe", "in", "God", "the", "Father"],
+              correctOrder: ["I", "believe", "in", "God", "the", "Father"],
+              explanation: "The opening of the Apostles' Creed. \"Patrem Omnipotentem\" — almighty Father. The Church's prayer always begins with this confession of the First Person of the Trinity."
+            }
+          ]
+        },
+        {
+          id: "c3",
+          title: "Maker of All",
+          subtitle: "Heaven and Earth",
+          ccc: "CCC 279–421",
+          questions: [
+            {
+              type: "multipleChoice",
+              ccc: "CCC 325–327",
+              prompt: "In the Creed, \"heaven and earth\" means...",
+              options: [
+                "Just the sky above and the ground below",
+                "All visible AND invisible creation",
+                "Only the physical universe",
+                "Only spiritual realities"
+              ],
+              correct: 1,
+              explanation: "\"Heaven\" refers to the invisible spiritual realm (angels, paradise); \"earth\" refers to the visible material realm. Together, they mean ALL of creation — every existing thing apart from God."
+            },
+            {
+              type: "trueFalse",
+              ccc: "CCC 328–336",
+              prompt: "Angels are real, personal, spiritual beings created by God.",
+              correct: true,
+              explanation: "Angels are not metaphors or pious imagination. They are personal, intelligent, spiritual creatures who serve God and minister to His people. Each of us has a guardian angel from baptism (CCC 336)."
+            },
+            {
+              type: "fillBlank",
+              ccc: "Genesis 1:31",
+              prompt: "Complete God's verdict on creation:",
+              sentenceParts: [
+                "And God saw everything that he had made, and behold, it was very ",
+                "___",
+                "."
+              ],
+              bank: ["good", "holy", "perfect", "beautiful", "wondrous"],
+              correct: "good",
+              explanation: "Six times in Genesis 1, God calls creation \"good.\" On the seventh — once humanity is included — He calls it \"very good.\" Creation is fundamentally good. Evil is a corruption of it, not part of its design."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 355–358",
+              prompt: "What makes humans unique among all earthly creatures?",
+              options: [
+                "Our intelligence",
+                "Our ability to communicate",
+                "We are made in the image and likeness of God",
+                "Our opposable thumbs"
+              ],
+              correct: 2,
+              explanation: "\"Of all visible creatures only man is able to know and love his Creator.\" We are the only earthly creature God willed for its own sake — capable of knowing Him, loving Him, and sharing in His own divine life."
+            },
+            {
+              type: "match",
+              ccc: "CCC 362–368",
+              prompt: "Match each aspect of the human person:",
+              pairs: [
+                ["Body", "Material principle, animated by the soul"],
+                ["Soul", "Spiritual principle, immortal"],
+                ["Heart", "Inmost center of the person"],
+                ["Image of God", "Capacity to know and love"]
+              ],
+              explanation: "The human person is body AND soul united — not a soul trapped in a body, but a single being. The body matters; the soul matters; together they make the human person made in God's image."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 396–401",
+              prompt: "What was the effect of original sin on human nature?",
+              options: [
+                "Human nature became completely evil",
+                "Human nature was wounded but not destroyed",
+                "Nothing changed at all",
+                "God abandoned humanity entirely"
+              ],
+              correct: 1,
+              explanation: "Original sin wounded human nature — we still have reason, free will, and the capacity for good, but they are weakened. We need grace to do consistent good. We are not totally depraved; we are injured and need the Divine Physician."
+            },
+            {
+              type: "tapOrder",
+              ccc: "Genesis 1:1",
+              prompt: "Arrange the opening of the Bible:",
+              tokens: ["In", "the", "beginning", "God", "created"],
+              correctOrder: ["In", "the", "beginning", "God", "created"],
+              explanation: "Genesis 1:1 — \"In the beginning, God created the heavens and the earth.\" The very first claim of Scripture: God is the source of all that exists. Before the universe, there was God."
+            },
+            {
+              type: "trueFalse",
+              ccc: "CCC 295",
+              prompt: "God created the universe because He needed something outside Himself.",
+              correct: false,
+              explanation: "God created in total freedom, out of pure goodness. He needed nothing. He created us as sheer gift — to share His own blessed life with creatures who could freely respond in love."
+            }
+          ]
+        },
+        {
+          id: "c4",
+          title: "Jesus Christ",
+          subtitle: "His Names",
+          ccc: "CCC 422–455",
+          questions: [
+            {
+              type: "multipleChoice",
+              ccc: "CCC 430–435",
+              prompt: "The name \"Jesus\" means...",
+              options: ["\"Holy One\"", "\"God saves\"", "\"King of kings\"", "\"Son of David\""],
+              correct: 1,
+              explanation: "\"Jesus\" is the Greek form of the Hebrew \"Yeshua\" — meaning \"YHWH saves,\" or simply \"God saves.\" The angel gave Mary this name BEFORE His birth (Luke 1:31). The name itself contains the gospel."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 436–440",
+              prompt: "The title \"Christ\" means...",
+              options: [
+                "\"Son of God\"",
+                "\"The Anointed One\" (Messiah)",
+                "\"The Holy One\"",
+                "\"Lord\""
+              ],
+              correct: 1,
+              explanation: "\"Christ\" is the Greek \"Christos,\" meaning \"Anointed One\" — the same as the Hebrew \"Mashiach\" (Messiah). Jesus is the long-promised Anointed One who fulfills the three offices of Priest, Prophet, and King."
+            },
+            {
+              type: "trueFalse",
+              ccc: "CCC 436",
+              prompt: "\"Christ\" is Jesus's last name, like a family surname.",
+              correct: false,
+              explanation: "\"Christ\" is a TITLE, not a surname. To say \"Jesus Christ\" is to make a creedal statement: this Jesus IS the Messiah. The early Christians risked their lives to proclaim this."
+            },
+            {
+              type: "fillBlank",
+              ccc: "Nicene Creed",
+              prompt: "Complete this phrase from the Nicene Creed:",
+              sentenceParts: ["", "___", " from Light, true God from true God."],
+              bank: ["Light", "Heaven", "Power", "Eternity", "Glory"],
+              correct: "Light",
+              explanation: "\"Light from Light\" — a beautiful image from the Nicene Creed. As light comes from a source without diminishing it, so the Son is begotten of the Father without dividing or diminishing the divine nature."
+            },
+            {
+              type: "match",
+              ccc: "CCC 436, 783–786",
+              prompt: "Christ's threefold office — match each role to its work:",
+              pairs: [
+                ["Priest", "Offers sacrifice and intercedes"],
+                ["Prophet", "Proclaims the truth of God"],
+                ["King", "Reigns over all creation"]
+              ],
+              explanation: "At baptism, every Christian shares in these three offices of Christ. We are all called to be priest, prophet, and king in our own state of life."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "Matthew 3:17 · CCC 535",
+              prompt: "At Jesus's baptism in the Jordan, the Father's voice from heaven declared:",
+              options: [
+                "\"I am the Lord your God\"",
+                "\"This is my beloved Son\"",
+                "\"Blessed is he who comes in the name of the Lord\"",
+                "\"Repent and believe\""
+              ],
+              correct: 1,
+              explanation: "\"This is my beloved Son, with whom I am well pleased.\" The Father testifies publicly to the divinity of Jesus at His baptism. The same voice will speak again at the Transfiguration: \"Listen to him.\""
+            },
+            {
+              type: "tapOrder",
+              ccc: "Matthew 16:16 · CCC 442",
+              prompt: "Arrange Peter's confession at Caesarea Philippi:",
+              tokens: ["You", "are", "the", "Christ"],
+              correctOrder: ["You", "are", "the", "Christ"],
+              explanation: "Peter's confession — the first apostolic profession of faith. Jesus called it the rock on which He would build His Church (Matthew 16:18). Every Christian creed is an echo of this moment."
+            },
+            {
+              type: "trueFalse",
+              ccc: "CCC 446–451",
+              prompt: "When early Christians called Jesus \"Lord,\" they meant He is God.",
+              correct: true,
+              explanation: "\"Lord\" (Kyrios) was the Greek translation of \"YHWH\" — God's covenant name in the Old Testament. Calling Jesus \"Lord\" was a declaration that He is God Himself. It was treason in Rome (Caesar was \"Lord\") and scandalous in Judaism — but it was the truth."
+            }
+          ]
+        },
+        {
+          id: "c5",
+          title: "God and Man",
+          subtitle: "The Incarnation",
+          ccc: "CCC 456–486",
+          questions: [
+            {
+              type: "multipleChoice",
+              ccc: "CCC 457",
+              prompt: "Why did the Son of God become man?",
+              options: [
+                "To teach us moral lessons",
+                "To save us by reconciling us with God",
+                "Because He wanted to experience humanity",
+                "To start a new religion"
+              ],
+              correct: 1,
+              explanation: "The first and primary reason: salvation. The Word became flesh to save us. He did not come merely to teach — He came to RESCUE us from sin and death and reunite us with God."
+            },
+            {
+              type: "trueFalse",
+              ccc: "CCC 464",
+              prompt: "Jesus is 50% God and 50% man.",
+              correct: false,
+              explanation: "A common mistake. Jesus is FULLY God AND FULLY man — 100% both, without division, confusion, or mixing. He did not trade some divinity for humanity; He took on a complete human nature while remaining fully divine."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 464–469",
+              prompt: "The Incarnation means Jesus is...",
+              options: [
+                "One Person with one nature",
+                "Two Persons with one nature",
+                "One Person with two natures (divine and human)",
+                "Two Persons with two natures"
+              ],
+              correct: 2,
+              explanation: "Jesus is ONE Divine Person who possesses TWO complete natures — a divine nature (always) and a human nature (taken on at the Incarnation). One \"who,\" two \"whats.\""
+            },
+            {
+              type: "fillBlank",
+              ccc: "John 1:14",
+              prompt: "Complete St. John's statement of the Incarnation:",
+              sentenceParts: ["And the Word became ", "___", " and dwelt among us."],
+              bank: ["flesh", "man", "human", "real", "near"],
+              correct: "flesh",
+              explanation: "The most concise statement of the Incarnation in Scripture. \"The Word became FLESH\" — not just appeared in flesh, not put on a human costume. He really, truly took on full human nature, body and soul."
+            },
+            {
+              type: "match",
+              ccc: "CCC 464–469",
+              prompt: "Match each early heresy to its error about Christ:",
+              pairs: [
+                ["Arianism", "Denied Jesus is fully God"],
+                ["Docetism", "Denied Jesus is fully man"],
+                ["Nestorianism", "Split Christ into two persons"],
+                ["Monophysitism", "Said Christ has only one nature"]
+              ],
+              explanation: "The early Church fought to express the truth clearly: Jesus is fully God, fully man, one Person, two natures. Each heresy denied one piece of this truth — and the Councils responded with greater clarity."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 467",
+              prompt: "The Council of Chalcedon (AD 451) declared that Christ is...",
+              options: [
+                "Mostly God, partly man",
+                "Like God in some ways",
+                "\"Truly God and truly man\" — one Person in two natures",
+                "A new kind of being, neither God nor man"
+              ],
+              correct: 2,
+              explanation: "Chalcedon's definition is THE definitive statement of Christology: \"One and the same Christ... in two natures, without confusion, without change, without division, without separation.\""
+            },
+            {
+              type: "trueFalse",
+              ccc: "CCC 475",
+              prompt: "Jesus had both a divine will AND a human will.",
+              correct: true,
+              explanation: "Yes. In Gethsemane, His human will recoiled from suffering, but freely submitted: \"not my will, but yours be done.\" Against the Monothelite heresy (one will), the Church defined that Christ has two complete wills, in perfect harmony."
+            },
+            {
+              type: "tapOrder",
+              ccc: "Nicene Creed",
+              prompt: "Arrange this phrase from the Nicene Creed about Christ:",
+              tokens: ["true", "God", "from", "true", "God"],
+              correctOrder: ["true", "God", "from", "true", "God"],
+              explanation: "\"True God from true God, begotten not made, consubstantial with the Father.\" The Nicene Creed's response to Arius. Jesus is not a created being or a demigod — He is genuinely, fully God."
+            }
+          ]
+        },
+        {
+          id: "c6",
+          title: "Born of Mary",
+          subtitle: "The Virgin",
+          ccc: "CCC 484–511",
+          questions: [
+            {
+              type: "multipleChoice",
+              ccc: "CCC 484–486",
+              prompt: "The Annunciation is the event when...",
+              options: [
+                "Mary visited her cousin Elizabeth",
+                "The angel Gabriel told Mary she would bear the Son of God",
+                "Jesus was born in Bethlehem",
+                "Mary was assumed into heaven"
+              ],
+              correct: 1,
+              explanation: "Luke 1:26–38. The angel Gabriel was sent to Mary in Nazareth to announce she would conceive by the Holy Spirit and bear the Son of God. The Church celebrates this on March 25 — nine months before Christmas."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 490–493",
+              prompt: "The Immaculate Conception refers to...",
+              options: [
+                "Mary conceiving Jesus without a human father",
+                "Mary herself being conceived without original sin",
+                "Jesus's miraculous conception",
+                "Mary remaining a virgin forever"
+              ],
+              correct: 1,
+              explanation: "A common confusion. The Immaculate Conception is about MARY's conception (in St. Anne's womb), NOT Jesus's. By a singular grace, God preserved Mary from original sin from the first moment of her existence."
+            },
+            {
+              type: "trueFalse",
+              ccc: "Luke 1:38 · CCC 494",
+              prompt: "Mary was forced to say yes at the Annunciation — she had no real choice.",
+              correct: false,
+              explanation: "\"Let it be done unto me according to your word\" (Luke 1:38). Mary freely consented. God respected her freedom. The Incarnation depended on the free \"yes\" of a young Jewish woman. Heaven held its breath."
+            },
+            {
+              type: "fillBlank",
+              ccc: "Luke 1:28",
+              prompt: "Complete Gabriel's greeting to Mary (the opening of the Hail Mary):",
+              sentenceParts: ["Hail Mary, full of ", "___", "."],
+              bank: ["grace", "glory", "love", "joy", "faith"],
+              correct: "grace",
+              explanation: "\"Kecharitomene\" in Greek — Gabriel's greeting to Mary. It is a perfect passive participle meaning \"having been completely filled with grace.\" This unique title points to her Immaculate Conception."
+            },
+            {
+              type: "match",
+              ccc: "CCC 495, 499, 502–507",
+              prompt: "Match each Marian title to its meaning:",
+              pairs: [
+                ["Theotokos", "\"God-bearer\" — Mother of God"],
+                ["Ever-Virgin", "Virgin before, during, and after birth"],
+                ["New Eve", "Undoes Eve's disobedience through her yes"],
+                ["Mother of the Church", "Given to all disciples at the Cross"]
+              ],
+              explanation: "Each Marian title is doctrinally precise. Each tells us something true about Mary — and through her, something true about Jesus and His Church."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 495",
+              prompt: "Why is Mary rightly called \"Mother of God\" (Theotokos)?",
+              options: [
+                "Because she is divine herself",
+                "Because her Son is truly God, so she is the mother of God-made-man",
+                "Because she rules over angels",
+                "Because she existed before Jesus"
+              ],
+              correct: 1,
+              explanation: "Defined at the Council of Ephesus (431) against Nestorius. Mary is not mother of Jesus's divine nature — He is eternally begotten of the Father. But she is the mother of the PERSON of Jesus, who is God. Therefore: Mother of God."
+            },
+            {
+              type: "tapOrder",
+              ccc: "Luke 1:28",
+              prompt: "Arrange the opening of the Hail Mary:",
+              tokens: ["Hail", "Mary", "full", "of", "grace"],
+              correctOrder: ["Hail", "Mary", "full", "of", "grace"],
+              explanation: "From Luke 1:28 — Gabriel's greeting. Combined with Elizabeth's words (Luke 1:42) and the Church's added intercession, this became the Hail Mary, the second most-prayed prayer in Christianity."
+            },
+            {
+              type: "trueFalse",
+              ccc: "CCC 410–411, 494",
+              prompt: "Mary is sometimes called \"the new Eve.\"",
+              correct: true,
+              explanation: "As Eve's disobedience brought sin into the world, Mary's obedience brought the Savior. Where Eve said NO to God's command, Mary said YES to God's invitation. St. Irenaeus (2nd century): \"The knot of Eve's disobedience was loosed by the obedience of Mary.\""
+            }
+          ]
+        }
+      ]
     }
   ],
   upcomingUnits: [
-    { label: 'Pillar I · Part Two', title: 'The Creed', desc: 'I believe in God the Father almighty...' },
+    { label: 'Pillar I · Part Three', title: 'The Paschal Mystery', desc: 'Suffered, died, rose again, ascended...' },
+    { label: 'Pillar I · Part Four', title: 'The Holy Spirit & The Church', desc: 'One, holy, catholic, apostolic' },
     { label: 'Pillar II', title: 'The Sacraments', desc: 'The seven channels of grace' },
     { label: 'Pillar III', title: 'Life in Christ', desc: 'The Ten Commandments and the moral life' },
     { label: 'Pillar IV', title: 'Christian Prayer', desc: 'The Our Father, line by line' }
