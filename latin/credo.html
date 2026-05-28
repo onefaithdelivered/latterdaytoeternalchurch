@@ -576,9 +576,13 @@ body {
 .option-btn:active { transform: translateY(1px); border-bottom-width: 3px; }
 
 .option-btn.selected {
-  background: rgba(30, 58, 95, 0.08);
+  background: rgba(30, 58, 95, 0.22);
   border-color: var(--c-navy);
+  border-bottom-width: 4px;
   color: var(--c-navy);
+  font-weight: 600;
+  transform: scale(1.01);
+  box-shadow: 0 0 0 2px rgba(30, 58, 95, 0.25);
 }
 
 .option-btn.correct {
@@ -765,14 +769,21 @@ body {
 .feedback-footer {
   background: var(--c-parchment-2);
   border-top: 1px solid var(--c-parchment-3);
-  padding: 18px 24px 22px;
   flex-shrink: 0;
-  transform: translateY(100%);
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  max-height: 50vh;
+  max-height: 0;
+  padding: 0 24px;
+  border-top-width: 0;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-top-width 0.3s ease;
+}
+.feedback-footer.show {
+  max-height: 70vh;
+  padding: 18px 24px 22px;
+  border-top-width: 1px;
   overflow-y: auto;
 }
-.feedback-footer.show { transform: translateY(0); }
 .feedback-footer.correct { background: rgba(45, 122, 79, 0.12); border-top-color: var(--c-emerald); }
 .feedback-footer.incorrect { background: rgba(196, 30, 30, 0.10); border-top-color: var(--c-vermillion); }
 
@@ -812,7 +823,32 @@ body {
   font-size: 17px;
   line-height: 1.45;
   color: var(--c-ink);
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+}
+
+.feedback-continue-btn {
+  width: 100%;
+  min-height: 52px;
+  border: none;
+  border-radius: 14px;
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--c-parchment);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  margin-bottom: max(2px, env(safe-area-inset-bottom));
+}
+.feedback-continue-btn:active { transform: translateY(2px); }
+.feedback-footer.correct .feedback-continue-btn {
+  background: linear-gradient(180deg, var(--c-emerald), #1e5a3a);
+  border-bottom: 4px solid #134024;
+}
+.feedback-footer.incorrect .feedback-continue-btn {
+  background: linear-gradient(180deg, var(--c-vermillion), var(--c-vermillion-dark));
+  border-bottom: 4px solid #5a0a0a;
 }
 
 .lesson-actions {
@@ -820,6 +856,19 @@ body {
   background: var(--c-parchment);
   border-top: 1px solid var(--c-parchment-3);
   flex-shrink: 0;
+  max-height: 200px;
+  overflow: hidden;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              padding 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-top-width 0.3s ease;
+}
+/* When feedback is showing, collapse the bottom actions — the Continue button
+   inside the feedback footer takes over */
+.feedback-footer.show ~ .lesson-actions {
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-top-width: 0;
 }
 
 .check-btn {
@@ -840,10 +889,23 @@ body {
 }
 .check-btn:active:not(:disabled) { transform: translateY(2px); border-bottom-width: 2px; }
 .check-btn:disabled {
-  background: var(--c-parchment-3);
+  background: var(--c-parchment-2);
   color: var(--c-ink-faint);
   border-bottom-color: var(--c-parchment-3);
   cursor: not-allowed;
+  opacity: 0.7;
+  outline: 1px dashed var(--c-parchment-3);
+  outline-offset: -1px;
+}
+
+/* Pulse the Check button when it becomes enabled (for fillBlank/tapOrder/match)
+   so the user sees the call-to-action clearly */
+@keyframes checkReadyPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201, 163, 47, 0.0), 0 4px 12px rgba(201, 163, 47, 0.25); }
+  50%      { box-shadow: 0 0 0 6px rgba(201, 163, 47, 0.15), 0 4px 12px rgba(201, 163, 47, 0.4); }
+}
+.check-btn:not(:disabled):not(.continue):not(.continue-wrong) {
+  animation: checkReadyPulse 1.4s ease-in-out infinite;
 }
 
 .check-btn.continue { background: linear-gradient(180deg, var(--c-emerald), #1e5a3a); color: var(--c-parchment); border-bottom-color: #134024; }
@@ -1105,6 +1167,7 @@ body {
         <div class="feedback-title" id="feedback-title">Well done</div>
       </div>
       <div class="feedback-explain" id="feedback-explain"></div>
+      <button class="feedback-continue-btn" id="feedback-continue-btn" onclick="onCheckClick()">Continue</button>
     </div>
     <div class="lesson-actions">
       <button class="check-btn" id="check-btn" onclick="onCheckClick()" disabled>Check</button>
@@ -1916,9 +1979,547 @@ const CURRICULUM = {
         }
       ]
     }
+,
+    {
+      id: "paschal",
+      label: "Pillar I · Part Three",
+      title: "The Paschal Mystery",
+      subtitle: "He Suffered for Us",
+      lessons: [
+        {
+          id: "p1",
+          title: "The Hour",
+          subtitle: "Toward the Cross",
+          ccc: "CCC 571–594",
+          questions: [
+            {
+              type: "multipleChoice",
+              ccc: "CCC 571",
+              prompt: "The Paschal Mystery refers to...",
+              options: [
+                "The Last Supper alone",
+                "Christ's Passion, Death, Resurrection, and Ascension",
+                "Only Good Friday",
+                "Christmas and Easter together"
+              ],
+              correct: 1,
+              explanation: "The Paschal Mystery is the heart of Christ's saving work — His Passion, Death, Resurrection, and Ascension. \"Paschal\" comes from \"Pesach\" (Passover), because Christ is the true Passover Lamb whose blood saves us."
+            },
+            {
+              type: "trueFalse",
+              ccc: "CCC 572",
+              prompt: "Jesus knew He would suffer and die long before it happened.",
+              correct: true,
+              explanation: "Jesus predicted His Passion three times in the Gospels (Mark 8:31, 9:31, 10:33). He freely entered Jerusalem knowing what awaited Him. This was not a tragedy that happened TO Him — it was His freely chosen mission."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 574–594",
+              prompt: "Why did many Jewish leaders reject Jesus's claim to be Messiah?",
+              options: [
+                "They didn't believe in God",
+                "They expected a political messiah who would defeat Rome",
+                "They had never heard of Him",
+                "He was a foreigner"
+              ],
+              correct: 1,
+              explanation: "Many awaited a Messiah who would militarily liberate Israel from Rome. Jesus's spiritual kingdom and willingness to suffer did not match those expectations. The Catechism is clear (CCC 597): responsibility for Jesus's death cannot be attributed to any Jews today — all sinners share that responsibility."
+            },
+            {
+              type: "fillBlank",
+              ccc: "Mark 10:45",
+              prompt: "Complete Jesus's statement of His mission:",
+              sentenceParts: ["The Son of Man came not to be served, but to ", "___", "."],
+              bank: ["serve", "save", "conquer", "reign", "teach"],
+              correct: "serve",
+              explanation: "\"The Son of Man came not to be served but to serve, and to give his life as a ransom for many\" (Mark 10:45). This single verse sums up Jesus's whole mission — service unto death."
+            },
+            {
+              type: "match",
+              ccc: "CCC 574–594",
+              prompt: "Match each charge brought against Jesus to its source:",
+              pairs: [
+                ["Blasphemy", "The Sanhedrin — for claiming divinity"],
+                ["Insurrection", "The Romans — for claiming kingship"],
+                ["Sabbath-breaking", "Pharisees — over His healings"],
+                ["Threatening the Temple", "Religious leaders"]
+              ],
+              explanation: "Jesus was tried by both Jewish religious authorities and Roman civil authorities. None of the charges were true in the sense intended — yet each was true in a deeper sense: He IS God, He IS King, His Temple was His Body."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 596",
+              prompt: "What was Pilate's verdict regarding Jesus?",
+              options: [
+                "Guilty of insurrection",
+                "Guilty of blasphemy",
+                "\"I find no guilt in him\" — yet he handed Him over anyway",
+                "Mentally unstable"
+              ],
+              correct: 2,
+              explanation: "Pilate declared Jesus innocent three times (Luke 23:4, 14, 22) but yielded to political pressure. He famously washed his hands of the matter — but moral responsibility cannot be washed away. A monument of cowardice."
+            },
+            {
+              type: "tapOrder",
+              ccc: "Luke 22:42",
+              prompt: "Arrange Jesus's prayer in Gethsemane:",
+              tokens: ["Not", "my", "will", "but", "yours"],
+              correctOrder: ["Not", "my", "will", "but", "yours"],
+              explanation: "\"Father, if you are willing, take this cup from me; yet not my will, but yours, be done\" (Luke 22:42). The agony in the garden shows Jesus's true humanity — He shrank from suffering — and His perfect obedience: His human will freely chose the Father's."
+            },
+            {
+              type: "trueFalse",
+              ccc: "CCC 591 · Mark 14:61–64",
+              prompt: "The high priest formally condemned Jesus for blasphemy.",
+              correct: true,
+              explanation: "When the high priest asked, \"Are you the Christ, the Son of the Blessed?\" Jesus answered: \"I am\" — and they condemned Him for blasphemy. The irony: He was condemned for telling the truth about who He is."
+            }
+          ]
+        },
+        {
+          id: "p2",
+          title: "The Cross",
+          subtitle: "Passion and Death",
+          ccc: "CCC 595–623",
+          questions: [
+            {
+              type: "multipleChoice",
+              ccc: "CCC 610–611",
+              prompt: "At the Last Supper, what did Jesus do that pointed forward to His sacrifice?",
+              options: [
+                "He preached a long sermon",
+                "He instituted the Eucharist, anticipating His sacrifice",
+                "He chose new apostles",
+                "He prayed alone for hours"
+              ],
+              correct: 1,
+              explanation: "\"This is my body, given for you. This is my blood, poured out for you\" (Luke 22:19–20). The Last Supper made the Cross a sacrament — and every Mass since makes the one sacrifice of Calvary present again."
+            },
+            {
+              type: "trueFalse",
+              ccc: "Matthew, Mark, Luke, John",
+              prompt: "All four Gospels describe Christ's crucifixion.",
+              correct: true,
+              explanation: "At a time when crucifixion was the most shameful death imaginable, the early Christians did not hide this central event. They proclaimed it openly: this is how God saved us. \"We preach Christ crucified\" — 1 Cor 1:23."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "Mark 15:21",
+              prompt: "Who carried Jesus's cross part of the way to Calvary?",
+              options: ["John the apostle", "Mary, His mother", "Simon of Cyrene", "Peter"],
+              correct: 2,
+              explanation: "Simon of Cyrene, a passerby, was compelled by Roman soldiers to help. His sons Alexander and Rufus are later mentioned by name as known Christians (Romans 16:13) — suggesting his chance encounter with Christ changed his whole family."
+            },
+            {
+              type: "fillBlank",
+              ccc: "John 19:30",
+              prompt: "Complete Jesus's final word from the Cross (in John's Gospel):",
+              sentenceParts: ["It is ", "___", "."],
+              bank: ["finished", "done", "over", "ended", "fulfilled"],
+              correct: "finished",
+              explanation: "\"It is finished\" — in Greek, \"Tetelestai.\" Not a sigh of defeat, but a cry of victory. The mission is accomplished. The same word was written across receipts when a debt was completely paid: \"Paid in full.\""
+            },
+            {
+              type: "match",
+              ccc: "The Seven Last Words",
+              prompt: "Match each of Christ's words from the Cross to its meaning:",
+              pairs: [
+                ["\"Father, forgive them\"", "Mercy for His persecutors"],
+                ["\"Today, with me in Paradise\"", "The promise to the good thief"],
+                ["\"Behold your mother\"", "Mary entrusted to all disciples"],
+                ["\"It is finished\"", "The mission of redemption complete"]
+              ],
+              explanation: "The Seven Last Words from the Cross reveal Christ's heart at the moment of His sacrifice — forgiving, saving, providing, suffering, accomplishing. The Church meditates on them especially on Good Friday."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "John 19:19–22",
+              prompt: "The letters \"INRI\" on traditional crucifixes stand for...",
+              options: [
+                "A Latin prayer",
+                "\"In the Name of the Risen Jesus\"",
+                "\"Jesus of Nazareth, King of the Jews\" in Latin",
+                "A code used by the early Church"
+              ],
+              correct: 2,
+              explanation: "INRI = \"Iesus Nazarenus Rex Iudaeorum.\" The placard above the Cross was meant as Roman mockery. The chief priests asked Pilate to change it; he refused: \"What I have written, I have written\" (John 19:22). Truth proclaimed even in mockery."
+            },
+            {
+              type: "tapOrder",
+              ccc: "Luke 23:46",
+              prompt: "Arrange Jesus's final word from the Cross (in Luke):",
+              tokens: ["Father", "into", "your", "hands"],
+              correctOrder: ["Father", "into", "your", "hands"],
+              explanation: "\"Father, into your hands I commend my spirit\" — quoting Psalm 31. Jesus dies as He lived: trusting the Father completely. The Church prays these words at Night Prayer (Compline) every evening."
+            },
+            {
+              type: "trueFalse",
+              ccc: "John 19:25",
+              prompt: "Mary, the mother of Jesus, stood at the foot of the Cross.",
+              correct: true,
+              explanation: "\"Standing by the cross of Jesus were his mother...\" (John 19:25). Mary, who said \"yes\" at the Annunciation, said \"yes\" again at Calvary. She did not flee. The Mater Dolorosa — Our Lady of Sorrows — shares in her Son's redemptive suffering."
+            }
+          ]
+        },
+        {
+          id: "p3",
+          title: "For Our Sake",
+          subtitle: "Why He Died",
+          ccc: "CCC 599–623",
+          questions: [
+            {
+              type: "multipleChoice",
+              ccc: "CCC 604–605",
+              prompt: "For whom did Jesus die?",
+              options: [
+                "Only for the Jewish people",
+                "Only for those who believed in Him",
+                "For all humanity, without exception",
+                "Only for a chosen few"
+              ],
+              correct: 2,
+              explanation: "CCC 605: \"There is not, never has been, and never will be a single human being for whom Christ did not suffer.\" His sacrifice is offered for every person of every time and place — though each must freely accept it."
+            },
+            {
+              type: "trueFalse",
+              ccc: "John 10:18 · CCC 609",
+              prompt: "Jesus's death was forced on Him unwillingly — He was a tragic victim.",
+              correct: false,
+              explanation: "\"No one takes my life from me, but I lay it down of my own accord\" (John 10:18). Jesus is no victim. He is a willing, conscious self-offering. The Cross is freely chosen love, not imposed tragedy."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 601–605",
+              prompt: "What does the word \"redemption\" mean?",
+              options: [
+                "To punish a wrongdoer",
+                "To buy back, to pay a ransom",
+                "To forget the past",
+                "To start over from scratch"
+              ],
+              correct: 1,
+              explanation: "\"Redemption\" comes from \"redimere\" — to buy back. Sin enslaved humanity; Christ paid the price to ransom us. The ransom is paid not to Satan (he has no rights over us) but to the demands of divine justice — paid by God, to God, for us."
+            },
+            {
+              type: "fillBlank",
+              ccc: "Isaiah 53:5",
+              prompt: "Complete this prophecy from Isaiah, fulfilled in Christ:",
+              sentenceParts: ["By his wounds we are ", "___", "."],
+              bank: ["healed", "saved", "freed", "forgiven", "redeemed"],
+              correct: "healed",
+              explanation: "Isaiah 53:5, written 700 years before Christ, describes the Suffering Servant: \"He was wounded for our transgressions... by his wounds we are healed.\" The Church sees Christ on every page of the Old Testament — most clearly here."
+            },
+            {
+              type: "match",
+              ccc: "CCC 599–618",
+              prompt: "Match each title that describes Christ in His sacrifice:",
+              pairs: [
+                ["Lamb of God", "The Passover sacrifice for our salvation"],
+                ["High Priest", "The one who offers the sacrifice"],
+                ["New Adam", "Repairs what the first Adam broke"],
+                ["Suffering Servant", "Fulfills Isaiah's prophecy"]
+              ],
+              explanation: "Each title shows a different facet of Christ's saving work. He is both the priest who offers the sacrifice AND the victim being offered — a unique perfection no Old Testament priest could achieve."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 613–614 · Hebrews 10:10",
+              prompt: "How does Christ's sacrifice differ from Old Testament sacrifices?",
+              options: [
+                "It was offered in a different temple",
+                "It was offered once and for all, perfect and complete",
+                "It was offered by a Levite",
+                "It involved animals"
+              ],
+              correct: 1,
+              explanation: "Hebrews 10:10: \"We have been sanctified through the offering of the body of Jesus Christ once for all.\" Old Testament sacrifices had to be repeated endlessly because they were imperfect. Christ's one sacrifice is perfect — the Mass re-presents it, doesn't repeat it."
+            },
+            {
+              type: "tapOrder",
+              ccc: "John 15:13",
+              prompt: "Arrange this teaching of Jesus on love:",
+              tokens: ["Greater", "love", "has", "no", "one"],
+              correctOrder: ["Greater", "love", "has", "no", "one"],
+              explanation: "\"Greater love has no one than this, that one lay down his life for his friends\" (John 15:13). The Cross IS this definition of love made visible. To follow Christ is to learn this kind of self-giving love."
+            },
+            {
+              type: "trueFalse",
+              ccc: "Colossians 1:24 · CCC 1505",
+              prompt: "Christians can unite their own suffering to Christ's sacrifice.",
+              correct: true,
+              explanation: "St. Paul: \"In my flesh I complete what is lacking in Christ's afflictions for the sake of his body, the church\" (Colossians 1:24). Christ's sacrifice is complete — but He invites us to join our suffering to His, making our own crosses redemptive too."
+            }
+          ]
+        },
+        {
+          id: "p4",
+          title: "Descended",
+          subtitle: "Holy Saturday",
+          ccc: "CCC 624–637",
+          questions: [
+            {
+              type: "multipleChoice",
+              ccc: "CCC 632–633",
+              prompt: "What does \"He descended into hell\" mean in the Apostles' Creed?",
+              options: [
+                "He suffered in the hell of the damned",
+                "He went to the realm of the dead (Sheol) to free the just souls awaiting Him",
+                "It is symbolic, not literal",
+                "He went to purgatory"
+              ],
+              correct: 1,
+              explanation: "The Creed uses \"hell\" (Hades, Sheol) in its older meaning — the abode of all who had died. Christ went there to bring salvation to the righteous of the Old Testament who had been waiting for their Redeemer. This is NOT the hell of the damned."
+            },
+            {
+              type: "trueFalse",
+              ccc: "Matthew 27:57–60",
+              prompt: "Jesus was buried in a borrowed tomb.",
+              correct: true,
+              explanation: "Joseph of Arimathea, a wealthy disciple, donated his own new tomb. The detail fulfills Isaiah 53:9 — \"With the rich was his tomb.\" Even in burial, every detail of Christ's life fulfills prophecy."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 633",
+              prompt: "The \"hell\" Jesus descended to was...",
+              options: [
+                "The eternal fire of the damned",
+                "The realm of the dead — \"Sheol\" or \"Hades\"",
+                "Purgatory as we now know it",
+                "A symbolic place, not real"
+              ],
+              correct: 1,
+              explanation: "Before Christ opened heaven, all who died — even the righteous — went to Sheol/Hades, awaiting redemption. The Catechism calls it the \"limbo of the fathers.\" Christ's descent to free them is sometimes called the \"Harrowing of Hell.\""
+            },
+            {
+              type: "fillBlank",
+              ccc: "1 Peter 3:19",
+              prompt: "Complete St. Peter's description of Christ's descent:",
+              sentenceParts: ["He went and preached to the spirits in ", "___", "."],
+              bank: ["prison", "darkness", "torment", "waiting", "sorrow"],
+              correct: "prison",
+              explanation: "1 Peter 3:19 — Christ \"went and preached to the spirits in prison.\" The righteous dead were not in torment, but they were not yet in the joy of heaven. Christ's descent brought them what they had longed for."
+            },
+            {
+              type: "match",
+              ccc: "CCC 624–637",
+              prompt: "Match each aspect of Holy Saturday:",
+              pairs: [
+                ["The body of Christ", "Rested in the tomb"],
+                ["The soul of Christ", "Descended to the dead"],
+                ["His divinity", "Remained united to both"],
+                ["The disciples", "Mourned, scattered, hidden"]
+              ],
+              explanation: "Holy Saturday is the day of silence — Christ in the tomb. The Catechism is precise: His body lay in death, His soul went to the dead, but His divinity never left either. The whole Person of Christ remained always God."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 633–635",
+              prompt: "Whom did Christ free during His descent?",
+              options: [
+                "All who had ever died",
+                "Only those who had asked for Him",
+                "The righteous of the Old Testament who had died in God's friendship",
+                "No one — He simply visited"
+              ],
+              correct: 2,
+              explanation: "Adam, Eve, Abraham, Moses, David, the prophets, John the Baptist — the just who had died in friendship with God now received the salvation they had longed for. The Eastern icon of the Resurrection shows Christ lifting Adam and Eve from their tombs."
+            },
+            {
+              type: "tapOrder",
+              ccc: "Apostles' Creed",
+              prompt: "Arrange this article of the Apostles' Creed:",
+              tokens: ["He", "descended", "into", "hell"],
+              correctOrder: ["He", "descended", "into", "hell"],
+              explanation: "This article of the Apostles' Creed reminds us that Christ's saving work reaches the dead — even those who lived before Him. No one is beyond the reach of His salvation, neither in space nor in time."
+            },
+            {
+              type: "trueFalse",
+              ccc: "CCC 626–627",
+              prompt: "Jesus truly died — His soul actually separated from His body.",
+              correct: true,
+              explanation: "Jesus did not merely appear to die. The Creed insists: He died, was buried, descended to the dead. Real death. This matters because His Resurrection is then a real conquest of death — not a clever recovery from a near-death state."
+            }
+          ]
+        },
+        {
+          id: "p5",
+          title: "He Is Risen",
+          subtitle: "The Resurrection",
+          ccc: "CCC 638–658",
+          questions: [
+            {
+              type: "multipleChoice",
+              ccc: "CCC 638",
+              prompt: "Why is the Resurrection the central event of the Christian faith?",
+              options: [
+                "It is a beautiful story",
+                "Without it, the Cross has no meaning and our faith is in vain",
+                "It happened on a Sunday",
+                "Mary Magdalene was the first witness"
+              ],
+              correct: 1,
+              explanation: "CCC 638 quotes St. Paul: \"If Christ has not been raised, then our preaching is in vain, and your faith is in vain\" (1 Cor 15:14). The Resurrection is not an optional belief — it is the very foundation. Without it, Christianity collapses."
+            },
+            {
+              type: "trueFalse",
+              ccc: "1 Corinthians 15:17",
+              prompt: "Without the Resurrection, the Christian faith would be empty.",
+              correct: true,
+              explanation: "St. Paul: \"If Christ has not been raised, your faith is futile and you are still in your sins\" (1 Cor 15:17). The early Christians did not preach merely \"Jesus was a good teacher\" — they preached \"He is risen.\" Without that, there is no Gospel."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "Mark 16:1–8",
+              prompt: "Who first discovered the empty tomb?",
+              options: [
+                "Peter and John",
+                "Pontius Pilate",
+                "The women who came to anoint the body",
+                "The Roman guards"
+              ],
+              correct: 2,
+              explanation: "Mary Magdalene, Mary the mother of James, and Salome came at dawn on the first day of the week. In a society where women's testimony was not legally accepted, the Gospels still record them as the first witnesses. This is itself an argument for the truth of the account."
+            },
+            {
+              type: "fillBlank",
+              ccc: "1 Corinthians 15:14",
+              prompt: "Complete St. Paul's statement on the Resurrection:",
+              sentenceParts: ["If Christ has not been raised, our faith is in ", "___", "."],
+              bank: ["vain", "doubt", "shadow", "danger", "ruin"],
+              correct: "vain",
+              explanation: "1 Corinthians 15:14. The whole 15th chapter is St. Paul's great defense of the Resurrection. He even names dozens of witnesses, daring his readers to go and ask them. The early Church was bet-the-house certain Christ had risen."
+            },
+            {
+              type: "match",
+              ccc: "CCC 641–644",
+              prompt: "Match each Resurrection appearance to where it happened:",
+              pairs: [
+                ["To Mary Magdalene", "Outside the empty tomb"],
+                ["To two disciples", "On the road to Emmaus"],
+                ["To the Apostles (Thomas absent)", "In a locked upper room"],
+                ["To Peter and others", "By the Sea of Tiberias"]
+              ],
+              explanation: "Christ appeared many times over forty days, to many different witnesses, in different places, doing different things — eating, walking, teaching, allowing them to touch Him. This was no single hallucination."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 645–646",
+              prompt: "What was the nature of Christ's resurrected body?",
+              options: [
+                "A ghost or spirit only",
+                "A different body, not really His",
+                "His true body, but glorified — beyond the limits of normal physics",
+                "An angel that looked like Him"
+              ],
+              correct: 2,
+              explanation: "His real body — He ate, was touched, showed His wounds. But also glorified — passing through locked doors, appearing and disappearing. The risen body is not a resuscitated corpse; it is human nature transformed by glory. Our own bodies will be like this someday."
+            },
+            {
+              type: "tapOrder",
+              ccc: "Apostles' Creed",
+              prompt: "Arrange this article from the Apostles' Creed:",
+              tokens: ["The", "third", "day", "He", "rose"],
+              correctOrder: ["The", "third", "day", "He", "rose"],
+              explanation: "\"The third day He rose again from the dead.\" Sunday — the first day of the week, now the Lord's Day. Every Sunday is a little Easter; every Mass is a celebration of the Resurrection."
+            },
+            {
+              type: "trueFalse",
+              ccc: "CCC 643–644 · Luke 24:11",
+              prompt: "The disciples expected the Resurrection — they were ready for it.",
+              correct: false,
+              explanation: "They didn't expect it at all. They thought it was an idle tale (Luke 24:11). Thomas refused to believe without proof. Even after seeing Him, some doubted (Matthew 28:17). The fact that the very first preachers had to be CONVINCED is itself a strong argument that they didn't invent it."
+            }
+          ]
+        },
+        {
+          id: "p6",
+          title: "He Will Come",
+          subtitle: "Ascension and Return",
+          ccc: "CCC 659–682",
+          questions: [
+            {
+              type: "multipleChoice",
+              ccc: "CCC 659 · Acts 1:3",
+              prompt: "How many days after Easter did Jesus ascend to heaven?",
+              options: ["7 days", "30 days", "40 days", "50 days"],
+              correct: 2,
+              explanation: "Forty days (Acts 1:3). The number is symbolic — Israel wandered 40 years, Christ fasted 40 days, Moses was on Sinai 40 days. The Easter season runs 50 days total, ending with Pentecost (the descent of the Holy Spirit)."
+            },
+            {
+              type: "trueFalse",
+              ccc: "John 14:18 · Matthew 28:20",
+              prompt: "When Jesus ascended, He abandoned His disciples.",
+              correct: false,
+              explanation: "\"I will not leave you orphans\" (John 14:18). \"I am with you always, to the end of the age\" (Matthew 28:20). The Ascension is not a goodbye but a transformation of His presence — He is now with us through the Spirit, in the sacraments, in the Church."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 663–664",
+              prompt: "What does \"seated at the right hand of the Father\" mean?",
+              options: [
+                "Jesus is literally sitting on a throne",
+                "He shares fully in the Father's glory, authority, and power",
+                "He is less important than the Father",
+                "He is resting after His work"
+              ],
+              correct: 1,
+              explanation: "A Scriptural image of supreme honor and authority. Christ now reigns as Lord of the universe. He is not a mere prophet remembered — He is the King of kings, sharing the Father's throne, until He returns."
+            },
+            {
+              type: "fillBlank",
+              ccc: "John 14:3",
+              prompt: "Complete Christ's promise to His disciples:",
+              sentenceParts: ["I will come again and take you to ", "___", "."],
+              bank: ["myself", "the Father", "paradise", "glory", "rest"],
+              correct: "myself",
+              explanation: "\"I will come again and will take you to myself, that where I am you may be also\" (John 14:3). The Christian life is oriented toward this — being WITH Christ forever. Heaven is not primarily a place but a Person."
+            },
+            {
+              type: "match",
+              ccc: "CCC 668–682",
+              prompt: "Match each aspect of Christ's Second Coming:",
+              pairs: [
+                ["Parousia", "The Greek term for His return"],
+                ["Last Judgment", "Every soul gives account"],
+                ["New heavens and new earth", "Creation itself is renewed"],
+                ["The date", "Known only to the Father"]
+              ],
+              explanation: "The Catechism treats the Second Coming with reverence and clarity. It will happen. It will judge. It will renew. But the timing is not for us to know — only to be ready."
+            },
+            {
+              type: "multipleChoice",
+              ccc: "CCC 673",
+              prompt: "What is the \"Parousia\"?",
+              options: [
+                "Another name for Pentecost",
+                "The Second Coming of Christ in glory",
+                "The Ascension",
+                "The resurrection of the body"
+              ],
+              correct: 1,
+              explanation: "From the Greek for \"presence\" or \"arrival.\" In the New Testament it refers specifically to Christ's glorious return at the end of time, when He will judge the living and the dead and inaugurate the new creation."
+            },
+            {
+              type: "tapOrder",
+              ccc: "Apostles' Creed",
+              prompt: "Arrange this article of the Creed:",
+              tokens: ["to", "judge", "the", "living", "and", "the", "dead"],
+              correctOrder: ["to", "judge", "the", "living", "and", "the", "dead"],
+              explanation: "\"He will come again in glory to judge the living and the dead.\" Christ's first coming was in mercy and humility. His second will be in glory and justice. Both are good news for those who love Him."
+            },
+            {
+              type: "trueFalse",
+              ccc: "Matthew 24:36",
+              prompt: "We can calculate the exact date of Christ's return from the Bible.",
+              correct: false,
+              explanation: "\"About that day or hour no one knows, not even the angels in heaven, nor the Son, but only the Father\" (Matthew 24:36). Many have tried to predict the date. All have been wrong. Our job is not to calculate but to be ready — every day."
+            }
+          ]
+        }
+      ]
+    }
   ],
   upcomingUnits: [
-    { label: 'Pillar I · Part Three', title: 'The Paschal Mystery', desc: 'Suffered, died, rose again, ascended...' },
     { label: 'Pillar I · Part Four', title: 'The Holy Spirit & The Church', desc: 'One, holy, catholic, apostolic' },
     { label: 'Pillar II', title: 'The Sacraments', desc: 'The seven channels of grace' },
     { label: 'Pillar III', title: 'Life in Christ', desc: 'The Ten Commandments and the moral life' },
@@ -2258,6 +2859,8 @@ function renderMultipleChoice(q, area) {
       btn.classList.add('selected');
       lessonState.currentAnswer = idx;
       document.getElementById('check-btn').disabled = false;
+      // Auto-submit after brief highlight so the user sees their selection
+      setTimeout(() => { if (!lessonState.answered) onCheckClick(); }, 280);
     });
     list.appendChild(btn);
   });
@@ -2282,6 +2885,8 @@ function renderTrueFalse(q, area) {
       btn.classList.add('selected');
       lessonState.currentAnswer = val;
       document.getElementById('check-btn').disabled = false;
+      // Auto-submit after brief highlight
+      setTimeout(() => { if (!lessonState.answered) onCheckClick(); }, 280);
     });
     list.appendChild(btn);
   });
@@ -2322,6 +2927,8 @@ function renderFillBlank(q, area) {
       slot.classList.remove('empty');
       lessonState.currentAnswer = word;
       document.getElementById('check-btn').disabled = false;
+      // Auto-submit after brief delay
+      setTimeout(() => { if (!lessonState.answered) onCheckClick(); }, 320);
     });
     bank.appendChild(chip);
   });
@@ -2367,6 +2974,8 @@ function checkOrderComplete(q) {
   if (tokens.length === q.tokens.length) {
     lessonState.currentAnswer = tokens;
     document.getElementById('check-btn').disabled = false;
+    // Auto-submit after brief delay so the user sees the final token placed
+    setTimeout(() => { if (!lessonState.answered) onCheckClick(); }, 500);
   } else {
     lessonState.currentAnswer = null;
     document.getElementById('check-btn').disabled = true;
@@ -2484,6 +3093,8 @@ function updateMatchAnswer(q) {
   if (Object.keys(lessonState.matches).length === q.pairs.length) {
     lessonState.currentAnswer = {...lessonState.matches};
     document.getElementById('check-btn').disabled = false;
+    // Auto-submit after a brief delay so the user sees the final pair colored
+    setTimeout(() => { if (!lessonState.answered) onCheckClick(); }, 500);
   } else {
     lessonState.currentAnswer = null;
     document.getElementById('check-btn').disabled = true;
