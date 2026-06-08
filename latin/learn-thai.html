@@ -256,9 +256,62 @@ box-shadow:0 -8px 32px rgba(0,0,0,0.4)}
 .listen-episode-card .ep-meta{font-size:9.5px;color:var(--gold);font-weight:600;letter-spacing:0.3px;text-transform:uppercase;opacity:0.85}
 .listen-episode-card:last-child{margin-bottom:30px}
 
+
+/* SPLASH / LAUNCH SCREEN */
+#splash{position:fixed;inset:0;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;
+ background:radial-gradient(115% 75% at 50% 30%,rgba(46,38,104,0.6) 0%,transparent 60%),radial-gradient(100% 60% at 50% 80%,rgba(140,52,52,0.1) 0%,transparent 55%),#09071a;
+ transition:opacity 0.75s var(--ease),transform 0.75s var(--ease)}
+#splash::after{content:'';position:absolute;inset:0;opacity:0.05;mix-blend-mode:overlay;pointer-events:none;
+ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='ns'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23ns)'/%3E%3C/svg%3E")}
+#splash.hide{opacity:0;transform:scale(1.06);pointer-events:none}
+.splash-mark{position:relative;width:132px;height:132px;display:flex;align-items:center;justify-content:center;margin-bottom:30px}
+.splash-glow{position:absolute;width:150px;height:150px;border-radius:50%;
+ background:radial-gradient(circle,rgba(224,181,82,0.4) 0%,transparent 62%);
+ opacity:0;animation:splGlow 2.4s ease-in-out 0.5s infinite}
+.splash-ring{position:absolute;inset:0;transform:rotate(-90deg)}
+.splash-ring circle{fill:none;stroke:url(#splGold);stroke-width:2.5;stroke-linecap:round;
+ stroke-dasharray:383;stroke-dashoffset:383;animation:splDraw 1.4s var(--ease) 0.15s forwards}
+.splash-char{font-family:'Noto Sans Thai',sans-serif;font-size:70px;font-weight:600;line-height:1;
+ background:linear-gradient(160deg,#f6dd9a,#e0b552 55%,#c79a3c);-webkit-background-clip:text;background-clip:text;color:transparent;
+ opacity:0;transform:scale(0.55);animation:splPop 0.95s var(--ease-spring) 0.3s forwards;
+ filter:drop-shadow(0 4px 26px rgba(224,181,82,0.45))}
+.splash-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--gold);opacity:0;transform:translateY(10px);animation:splRise 0.7s var(--ease) 0.85s forwards;margin-bottom:9px}
+.splash-thai{font-family:'Fraunces','Noto Sans Thai',serif;font-size:31px;font-weight:500;color:var(--white);opacity:0;transform:translateY(12px);animation:splRise 0.8s var(--ease) 1.05s forwards;text-shadow:0 2px 30px rgba(224,181,82,0.2)}
+.splash-dots{position:absolute;bottom:72px;display:flex;gap:8px;opacity:0;animation:splFade 0.6s ease 1.5s forwards}
+.splash-dots span{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:splDot 1.3s ease-in-out infinite}
+.splash-dots span:nth-child(2){animation-delay:0.18s}
+.splash-dots span:nth-child(3){animation-delay:0.36s}
+@keyframes splDraw{to{stroke-dashoffset:0}}
+@keyframes splPop{0%{opacity:0;transform:scale(0.55)}60%{opacity:1}100%{opacity:1;transform:scale(1)}}
+@keyframes splGlow{0%,100%{opacity:0.45;transform:scale(0.92)}50%{opacity:0.95;transform:scale(1.08)}}
+@keyframes splRise{to{opacity:1;transform:translateY(0)}}
+@keyframes splFade{to{opacity:1}}
+@keyframes splDot{0%,100%{opacity:0.3;transform:scale(0.8)}50%{opacity:1;transform:scale(1.25)}}
 </style>
 </head>
 <body>
+<div id="splash">
+  <div class="splash-mark">
+    <div class="splash-glow"></div>
+    <svg class="splash-ring" viewBox="0 0 128 128"><defs><linearGradient id="splGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f6dd9a"/><stop offset="0.5" stop-color="#e0b552"/><stop offset="1" stop-color="#c79a3c"/></linearGradient></defs><circle cx="64" cy="64" r="61"/></svg>
+    <div class="splash-char">ท</div>
+  </div>
+  <div class="splash-title">Learn Thai</div>
+  <div class="splash-thai">เรียนภาษาไทย</div>
+  <div class="splash-dots"><span></span><span></span><span></span></div>
+</div>
+<script>
+(function(){
+  function dismiss(){
+    var s=document.getElementById('splash');
+    if(!s)return;
+    s.classList.add('hide');
+    setTimeout(function(){if(s&&s.parentNode)s.parentNode.removeChild(s);},800);
+  }
+  // Hold the launch screen, then gracefully fade into the app
+  setTimeout(dismiss, 2350);
+})();
+</script>
 <div class="header thai-border"><h1>Learn Thai</h1><div class="thai-title">เรียนภาษาไทย</div></div>
 <div class="content">
 
