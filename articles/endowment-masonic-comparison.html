@@ -5,25 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Endowment and the Lodge | One Faith Delivered</title>
 <meta name="description" content="A primary-source, side-by-side comparison of the Masonic Blue Lodge degrees and the LDS temple endowment — what Joseph Smith borrowed from Nauvoo Freemasonry in 1842, and what he changed." />
+<meta name="author" content="One Faith Delivered" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="The Endowment and the Lodge" />
+<meta property="og:description" content="A primary-source, side-by-side comparison of the Masonic Blue Lodge degrees and the LDS temple endowment — what Joseph Smith borrowed from Nauvoo Freemasonry in 1842, and what he changed." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://onefaithdelivered.org/articles/endowment-masonic-comparison.html" />
+<meta property="og:image" content="https://onefaithdelivered.org/favicons/web-app-manifest-512x512.png" />
+<meta property="og:site_name" content="One Faith Delivered" />
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="The Endowment and the Lodge" />
+<meta name="twitter:description" content="A primary-source, side-by-side comparison of the Masonic Blue Lodge degrees and the LDS temple endowment." />
+<meta name="twitter:image" content="https://onefaithdelivered.org/favicons/web-app-manifest-512x512.png" />
+
 <link rel="canonical" href="https://onefaithdelivered.org/articles/endowment-masonic-comparison.html">
+<link rel="icon" href="../favicons/favicon.ico" sizes="any" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --crimson: #7a1f2b;
-    --crimson-deep: #5a1620;
+    --crimson: #8B0000;
+    --crimson-deep: #5C0000;
     --crimson-light: #a4334a;
-    --gold: #b8893a;
+    --gold: #C5A55A;
+    --dark-gold: #8B7335;
     --gold-light: #d4a85a;
     --gold-pale: #e8d4a0;
-    --parchment: #f7f1e3;
+    --parchment: #F5F0E8;
     --parchment-deep: #ede4cc;
-    --ink: #1f1a14;
+    --ink: #2A2A2A;
     --ink-soft: #3d342a;
-    --ink-muted: #6b5d4b;
-    --rule: #c8b896;
-    --bg: #faf6ec;
+    --ink-muted: #666;
+    --rule: #D0C8B8;
+    --bg: #F5F0E8;
   }
 
   [data-theme="dark"] {
@@ -68,59 +86,166 @@
     transition: width 0.1s ease;
   }
 
-  /* Sticky nav */
-  nav.top {
-    position: sticky;
-    top: 0;
-    background: var(--bg);
+  /* ── SITE NAV ── */
+  .site-nav {
+    position: sticky; top: 0; z-index: 9999;
+    background: linear-gradient(to bottom, rgba(245,240,232,0.98), rgba(240,235,225,0.95));
     border-bottom: 1px solid var(--rule);
-    z-index: 100;
     padding: 0.75rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: space-between;
+    backdrop-filter: blur(6px);
+    font-family: 'Source Serif 4', serif;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
   }
-
-  nav.top .brand {
+  .site-nav a.nav-home {
     font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
     font-weight: 700;
-    font-size: 1.1rem;
+    letter-spacing: 0.05em;
     color: var(--crimson);
-    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: color 0.2s;
   }
-
-  nav.top .brand small {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    color: var(--ink-muted);
-    font-weight: 400;
-    margin-left: 0.5rem;
+  .site-nav a.nav-home:hover { color: var(--crimson-deep); }
+  .site-nav .nav-back {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dark-gold);
+    text-decoration: none;
+    border: 1px solid rgba(139,115,53,0.35);
+    padding: 0.4rem 1.1rem;
+    border-radius: 3px;
+    transition: background 0.2s, color 0.2s;
   }
+  .site-nav .nav-back:hover {
+    background: rgba(139,115,53,0.08);
+    color: var(--crimson);
+  }
+  .site-nav .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .site-nav .nav-links a {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .site-nav .nav-links a:hover { color: var(--crimson); }
 
-  nav.top .controls {
-    display: flex;
-    gap: 1rem;
+  .nav-theme-btn,
+  .nav-print-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dark-gold);
+    background: none;
+    border: 1px solid rgba(139,115,53,0.35);
+    padding: 0.4rem 1.1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    display: inline-flex;
     align-items: center;
+    gap: 0.4rem;
+    white-space: nowrap;
   }
+  .nav-theme-btn:hover,
+  .nav-print-btn:hover { background: rgba(139,115,53,0.08); color: var(--crimson); }
 
-  nav.top button {
-    background: transparent;
-    border: 1px solid var(--rule);
-    color: var(--ink-soft);
-    padding: 0.4rem 0.8rem;
+  /* ── Hamburger ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px; height: 36px;
+    cursor: pointer;
+    background: none;
+    border: 1px solid rgba(139,115,53,0.3);
+    border-radius: 3px;
+    padding: 6px;
+    z-index: 10001;
+  }
+  .nav-hamburger span {
+    display: block; height: 2px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: all 0.25s;
+    transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── Sidebar ── */
+  .sidebar-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 10000;
+    backdrop-filter: blur(2px);
+  }
+  .sidebar-overlay.visible { display: block; }
+  .sidebar {
+    position: fixed;
+    top: 0; right: -280px;
+    width: 260px; height: 100%;
+    background: linear-gradient(to bottom, #FAF6F0, #F5F0E8);
+    border-left: 1px solid var(--rule);
+    z-index: 10002;
+    transition: right 0.3s ease;
+    overflow-y: auto;
+  }
+  .sidebar.open { right: 0; }
+  .sidebar-inner {
+    padding: 5rem 2rem 2rem;
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .sidebar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--crimson);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .sidebar-inner a {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.75rem;
-    letter-spacing: 0.05em;
-    cursor: pointer;
-    transition: all 0.2s;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(208,200,184,0.5);
+    transition: color 0.2s;
+  }
+  .sidebar-inner a:hover { color: var(--crimson); }
+  .sidebar-inner a.sidebar-back {
+    color: var(--dark-gold);
+    margin-top: 1.5rem;
+    border: 1px solid rgba(139,115,53,0.3);
+    padding: 0.7rem 1rem;
+    text-align: center;
     border-radius: 2px;
   }
-
-  nav.top button:hover {
-    background: var(--gold);
-    color: var(--bg);
-    border-color: var(--gold);
+  .sidebar-ornament {
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 8px;
+    text-align: center;
+    margin-top: 2rem;
   }
 
   /* Hero */
@@ -162,14 +287,14 @@
   }
 
   header.hero h1 em {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-weight: 500;
+    font-weight: 400;
     color: var(--crimson);
   }
 
   header.hero .deck {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Source Serif 4', serif;
     font-style: italic;
     font-size: 1.4rem;
     color: var(--ink-muted);
@@ -239,7 +364,7 @@
   }
 
   h4 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Source Serif 4', serif;
     font-style: italic;
     font-size: 1.3rem;
     font-weight: 500;
@@ -253,7 +378,7 @@
   }
 
   p.lead {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Source Serif 4', serif;
     font-size: 1.35rem;
     font-style: italic;
     color: var(--ink);
@@ -278,7 +403,7 @@
     border-left: 3px solid var(--gold);
     padding: 1rem 1.5rem;
     margin: 2rem 0;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Source Serif 4', serif;
     font-style: italic;
     font-size: 1.2rem;
     color: var(--ink-soft);
@@ -488,6 +613,15 @@
     header.hero { padding: 4rem 1.5rem 2.5rem; }
     main { padding: 0 1.5rem; }
     h2 { font-size: 2rem; }
+    .nav-hamburger { display: flex; margin-left: auto; order: 99; flex-shrink: 0; }
+    .site-nav .nav-links { display: none; }
+    .site-nav .nav-back { display: none; }
+    .site-nav { padding: 0.55rem 1rem; }
+    body { overflow-x: hidden; }
+    .sidebar { display: block; transform: translateX(100%); right: 0; position: fixed; }
+    .sidebar.open { transform: translateX(0); }
+    .sidebar-inner { padding: 4rem 1.5rem 2rem; }
+    .sidebar-overlay.visible { display: block; }
   }
 
   .col-card {
@@ -524,7 +658,7 @@
     text-align: center;
     border-top: 1px solid var(--rule);
     color: var(--ink-muted);
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Source Serif 4', serif;
     font-style: italic;
   }
 
@@ -575,7 +709,7 @@
 
   /* Print styles */
   @media print {
-    nav.top, .progress-bar, footer { display: none; }
+    .site-nav, .nav-hamburger, .sidebar, .sidebar-overlay, .progress-bar, footer { display: none; }
     body { background: white; color: black; }
     .comparison-wrapper { overflow: visible; }
   }
@@ -585,12 +719,24 @@
 
 <div class="progress-bar" id="progressBar"></div>
 
-<nav class="top">
-  <div class="brand">One Faith Delivered <small>by former Mormons, for future Catholics</small></div>
-  <div class="controls">
-    <button onclick="toggleTheme()">◐ Theme</button>
-    <button onclick="window.print()">⎙ Print</button>
-  </div>
+<nav class="site-nav">
+  <a href="../index.html" class="nav-home">One Faith Delivered</a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../articles.html">Articles</a></li>
+    <li><a href="../charts.html">Charts</a></li>
+    <li><a href="../topics.html">Topics</a></li>
+    <li><a href="../resources.html">Resources</a></li>
+  </ul>
+  <a href="../articles.html" class="nav-back">&#8592; All Articles</a>
+  <button class="nav-theme-btn" onclick="toggleTheme()" aria-label="Toggle light/dark theme" title="Toggle theme">◐ Theme</button>
+  <button class="nav-print-btn" onclick="window.print()" aria-label="Print or save as PDF" title="Print / Save as PDF">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    Print
+  </button>
+  <button class="nav-hamburger" onclick="toggleSidebar()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <header class="hero">
@@ -775,7 +921,7 @@
   <p>This is the King Follett Discourse in ritual form. "God himself was once as we are now, and is an exalted man," Smith would preach in April 1844; the endowment provides the ceremonial machinery by which mortals are inducted into the path toward becoming what God once was. No Masonic lodge has ever taught such a thing; no Masonic ritual contains it.</p>
 
   <div class="patristic-block">
-    <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; text-align: center; color: var(--ink-soft); margin: 0;">
+    <p style="font-family: 'Source Serif 4', serif; font-style: italic; font-size: 1.2rem; text-align: center; color: var(--ink-soft); margin: 0;">
       The Masonic forms gave Smith a vocabulary of gesture, secrecy, and ascent. His own revelations gave that vocabulary an entirely new sentence to speak. To recognize the borrowing is not yet to settle the meaning — but it does establish that the meaning, whatever it is, comes from Joseph Smith, and not from any tradition older than 1842.
     </p>
   </div>
@@ -923,7 +1069,7 @@
   <p>For those who have left the temple and find themselves still hungering for sacred ritual, for vows that bind, for matter sanctified, for ceremony freighted with meaning — Catholicism is not the absence of these things. It is their fulfillment, in a form that does not depend on private gestures or hidden names, and whose history can bear the daylight.</p>
 
   <div class="patristic-block">
-    <p style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; text-align: center; margin: 0;">
+    <p style="font-family: 'Source Serif 4', serif; font-style: italic; font-size: 1.2rem; text-align: center; margin: 0;">
       "What the Church has handed on, the Church has received from the apostles. We hold what we have received; we have received what we hold."
       <br><span style="font-family: 'JetBrains Mono', monospace; font-style: normal; font-size: 0.75rem; letter-spacing: 0.1em; color: var(--ink-muted); display: block; margin-top: 0.75rem;">— after the principle of <em>Quod ubique, quod semper, quod ab omnibus</em>, St. Vincent of Lérins, Commonitorium (434)</span>
     </p>
@@ -953,6 +1099,20 @@
   <span style="font-family: 'JetBrains Mono', monospace; font-style: normal; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--ink-muted);">BY FORMER MORMONS, FOR FUTURE CATHOLICS</span>
 </footer>
 
+<div class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<aside class="sidebar">
+  <div class="sidebar-inner">
+    <div class="sidebar-brand">One Faith Delivered</div>
+    <a href="../index.html">Home</a>
+    <a href="../articles.html">Articles</a>
+    <a href="../charts.html">Charts</a>
+    <a href="../topics.html">Topics</a>
+    <a href="../resources.html">Resources</a>
+    <a href="../articles.html" class="sidebar-back">&#8592; All Articles</a>
+    <div class="sidebar-ornament">✦ ✦ ✦</div>
+  </div>
+</aside>
+
 <script>
   // Reading progress
   window.addEventListener('scroll', () => {
@@ -967,6 +1127,28 @@
     const current = document.documentElement.getAttribute('data-theme');
     document.documentElement.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
   }
+
+  // Mobile sidebar toggle
+  function toggleSidebar() {
+    var btn = document.querySelector('.nav-hamburger'),
+        sidebar = document.querySelector('.sidebar'),
+        overlay = document.querySelector('.sidebar-overlay');
+    var isOpen = sidebar.classList.contains('open');
+    if (isOpen) {
+      sidebar.classList.remove('open');
+      btn.classList.remove('open');
+      overlay.classList.remove('visible');
+      document.body.style.overflow = '';
+    } else {
+      sidebar.classList.add('open');
+      btn.classList.add('open');
+      overlay.classList.add('visible');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && document.querySelector('.sidebar.open')) toggleSidebar();
+  });
 </script>
 
 </body>
