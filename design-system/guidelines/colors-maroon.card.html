@@ -1,0 +1,28 @@
+<!-- @dsCard group="Colors" viewport="700x170" name="Maroon — Hero Gradient" subtitle="Deep crimson gradient for heroes & feature panels" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--surface-page); font-family: var(--font-mono); }
+  .wrap { padding: 20px; }
+  .hero { height: 90px; border-radius: var(--radius-lg); background: var(--grad-hero); position: relative; overflow: hidden; box-shadow: var(--shadow-md); display: flex; align-items: center; justify-content: center; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: var(--texture-scanline); }
+  .hero span { position: relative; font-family: var(--font-display); font-size: 18px; font-weight: 900; color: var(--gold); letter-spacing: 0.04em; }
+  .stops { display: flex; gap: 10px; margin-top: 12px; }
+  .stop { flex: 1; font-size: 10px; color: var(--muted); letter-spacing: 0.04em; }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; vertical-align: middle; margin-right: 5px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero"><span>One Faith Delivered</span></div>
+    <div class="stops">
+      <div class="stop"><span class="dot" style="background:#4A0F1A"></span>#4A0F1A · maroon-1</div>
+      <div class="stop"><span class="dot" style="background:#6B1D2A"></span>#6B1D2A · maroon-2</div>
+      <div class="stop"><span class="dot" style="background:#3D1520"></span>#3D1520 · maroon-3</div>
+    </div>
+  </div>
+</body>
+</html>

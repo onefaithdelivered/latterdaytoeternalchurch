@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Long-Form Essay" description="One Faith Delivered article scaffold: maroon hero, intro card, comparison callout, sections, pull quote, timeline, scripture, and verdict panel." -->
+<helmet>
+<script src="./ds-base.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--surface-page); color: var(--ink); font-family: var(--font-body); }
+</style>
+</helmet>
+
+<article style="background: var(--surface-page);">
+
+  <header style="background: var(--grad-hero); color: var(--parchment); padding: 72px 40px 56px; text-align: center; position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background: var(--texture-scanline); pointer-events: none;"></div>
+    <div style="position: relative; z-index: 1;">
+      <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); opacity: 0.85; margin-bottom: 22px;">← All Articles</div>
+      <div style="color: var(--gold); font-size: 1rem; letter-spacing: 12px; opacity: 0.7; margin-bottom: 18px;">✦ &nbsp; ✦ &nbsp; ✦</div>
+      <h1 style="font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; letter-spacing: -0.5px; color: var(--parchment); margin: 0 0 14px; line-height: 1.2;">Behind <span style="color: var(--gold);">the Veil</span></h1>
+      <p style="font-family: var(--font-body); font-size: 1.1rem; font-weight: 300; font-style: italic; color: rgba(245,240,232,0.75); max-width: 680px; margin: 0 auto;">The Masonic Origins of the LDS Temple Ceremony, the Secret Second Anointing, and Why None of It Is Biblical</p>
+      <p style="font-family: var(--font-mono); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(197,165,90,0.65); margin-top: 22px;">Long-Form Essay · Temple &amp; Ritual · Historical Analysis</p>
+    </div>
+  </header>
+
+  <main style="max-width: 800px; margin: 0 auto; padding: 56px 24px 88px;">
+
+    <x-import component-from-global-scope="OneFaithDeliveredDesignSystem_5bc0cc.Card" rule="crimson" hint-size="100%,140px">
+      <p style="font-family: var(--font-body); font-size: 1.05rem; line-height: 1.9; color: var(--ink); margin: 0;">Open with the thesis. State the claim plainly, then promise the evidence — dates, names, and primary sources — that the essay will marshal. The temple ceremony's documented history begins not in ancient Jerusalem but in a Masonic lodge in Nauvoo, Illinois, in the spring of 1842.</p>
+    </x-import>
+
+    <div style="height: 32px;"></div>
+
+    <x-import component-from-global-scope="OneFaithDeliveredDesignSystem_5bc0cc.Callout" columns="{{ columns }}" hint-size="100%,170px"></x-import>
+
+    <x-import component-from-global-scope="OneFaithDeliveredDesignSystem_5bc0cc.SectionDivider" label="I — The Masonic Connection" hint-size="100%,48px"></x-import>
+
+    <h2 style="font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--crimson); line-height: 1.25; margin: 0 0 18px;">Seven Weeks: From Lodge to Endowment</h2>
+    <p style="font-family: var(--font-body); font-size: 1.02rem; line-height: 1.9; color: var(--ink); margin: 0 0 18px;">Body copy runs in Source Serif 4 at a generous 1.9 line-height. Build long, evidenced sentences, then land a short declarative punch. Joseph Smith was raised to Master Mason on March 16, 1842; exactly seven weeks later he introduced the endowment to nine men — every one a Freemason.</p>
+
+    <x-import component-from-global-scope="OneFaithDeliveredDesignSystem_5bc0cc.PullQuote" source="Heber C. Kimball, letter to Parley P. Pratt, June 1842" hint-size="100%,130px">Masonry was taken from preasthood but has become degenerated, but menny things are perfect.</x-import>
+
+    <x-import component-from-global-scope="OneFaithDeliveredDesignSystem_5bc0cc.SectionDivider" label="IV — The Evolving Ceremony" hint-size="100%,48px"></x-import>
+
+    <x-import component-from-global-scope="OneFaithDeliveredDesignSystem_5bc0cc.Timeline" title="Timeline of Major Changes" subtitle="From Joseph Smith's Nauvoo ceremony to the present day" rows="{{ rows }}" hint-size="100%,300px"></x-import>
+
+    <x-import component-from-global-scope="OneFaithDeliveredDesignSystem_5bc0cc.SectionDivider" label="VI — The Biblical Verdict" hint-size="100%,48px"></x-import>
+
+    <h2 style="font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--crimson); line-height: 1.25; margin: 0 0 18px;">What Does Scripture Actually Say?</h2>
+    <p style="font-family: var(--font-body); font-size: 1.02rem; line-height: 1.9; color: var(--ink); margin: 0 0 18px;">Set up the scripture by stating the doctrine it answers, then quote it in the ScriptureBox. Access to God comes through one mediator alone:</p>
+
+    <x-import component-from-global-scope="OneFaithDeliveredDesignSystem_5bc0cc.ScriptureBox" reference="1 Timothy 2:5–6" hint-size="100%,120px">"For there is one God, and there is one mediator between God and men, the man Christ Jesus, who gave himself as a ransom for all."</x-import>
+
+    <div style="background: var(--grad-hero); color: var(--parchment); border-radius: var(--radius-lg); padding: 48px 44px; margin-top: 56px; position: relative; overflow: hidden; text-align: center;">
+      <div style="position: absolute; inset: 8px; border: 1px solid rgba(197,165,90,0.25); border-radius: var(--radius-md); pointer-events: none;"></div>
+      <h3 style="position: relative; z-index: 1; font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: var(--gold); margin: 0 0 20px;">✦ &nbsp; A House Built on Sand &nbsp; ✦</h3>
+      <p style="position: relative; z-index: 1; font-family: var(--font-body); font-size: 1rem; line-height: 1.9; color: rgba(245,240,232,0.9); max-width: 640px; margin: 0 auto;">Close by collapsing the argument to a single point and an invitation. The endowment was assembled in 1842 from the rituals of a fraternal organization with no connection to Solomon, the apostles, or the God of the Bible.</p>
+      <p style="position: relative; z-index: 1; font-family: var(--font-display); font-style: italic; font-size: 1.1rem; color: var(--gold); margin-top: 28px;">His temple is not a locked building. His sacrifice is not a secret.</p>
+    </div>
+
+  </main>
+</article>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      columns: [
+        { label: 'LDS Claim', title: 'Restored Ancient Ordinance', body: 'The endowment was "kept hid from before the foundation of the world" and restored through Joseph Smith.' },
+        { label: 'Historical Record', title: 'Seven Weeks After Initiation', body: 'Joseph Smith became a Master Mason on March 15–16, 1842. He introduced the endowment on May 4, 1842.' },
+        { label: 'Biblical Reality', title: 'No Precedent in Scripture', body: 'Neither the Old nor New Testament contains any ceremony resembling the endowment.' },
+      ],
+      rows: [
+        { date: '1842', event: 'Endowment introduced by Joseph Smith to nine men — seven weeks after his Masonic initiation.' },
+        { date: '1990', event: 'Largest single revision. Blood oath penalties eliminated; Five Points of Fellowship removed.' },
+        { date: '2023', event: 'Further changes. Most handshake/token exchanges removed; live witness couple eliminated.' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+/* ═══════════════════════════════════════════════════════════
+   SPACING — One Faith Delivered
+   8px-ish rhythm with generous editorial whitespace.
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Space scale ── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-18: 72px;
+  --space-22: 88px;
+
+  /* ── Layout widths ── */
+  --measure-text:  800px;   /* article column max-width */
+  --measure-wide:  1100px;  /* index / grid layouts */
+
+  /* ── Component padding ── */
+  --pad-card:    28px 32px;  /* intro / scripture boxes */
+  --pad-compact: 14px 20px;  /* table rows */
+  --pad-button:  0.7rem 1.4rem;
+  --pad-chip:    0.4rem 1.1rem;
+}

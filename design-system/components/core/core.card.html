@@ -1,0 +1,44 @@
+<!-- @dsCard group="Components" viewport="700x230" name="Core — Buttons, Badges, Ornament" subtitle="Mono / serif / solid buttons, eyebrow badges, ✦ ornament" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: var(--surface-page); }
+  #root { padding: 24px 28px; }
+  .grp { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-bottom: 18px; }
+  .grp:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+  const { Button, Badge, Ornament } = window.OneFaithDeliveredDesignSystem_5bc0cc;
+  function Demo() {
+    return (
+      <div>
+        <div className="grp">
+          <Button variant="mono">All Articles</Button>
+          <Button variant="serif" tone="crimson">Read the Essay</Button>
+          <Button variant="solid" tone="crimson">Subscribe</Button>
+          <Button variant="mono" tone="gold">Print / PDF</Button>
+          <Button variant="mono" disabled>Disabled</Button>
+        </div>
+        <div className="grp">
+          <Badge>Long-Form Essay</Badge>
+          <Badge variant="outline" tone="crimson">Temple &amp; Ritual</Badge>
+          <Badge variant="underline">Freemasonry</Badge>
+          <Ornament />
+        </div>
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

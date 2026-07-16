@@ -1,0 +1,59 @@
+/* ═══════════════════════════════════════════════════════════
+   COLORS — One Faith Delivered
+   A crimson + gold ecclesiastical palette on warm parchment.
+   Base palette first, then semantic aliases.
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Brand: Crimson ── */
+  --crimson:        #8B0000;   /* primary brand red — headings, accents */
+  --dark-crimson:   #5C0000;   /* hover / deepened crimson */
+
+  /* ── Brand: Gold ── */
+  --gold:           #C5A55A;   /* ornaments, eyebrow labels on dark */
+  --dark-gold:      #8B7335;   /* mono labels on light, secondary accent */
+
+  /* ── Maroon (hero / dark surfaces) ── */
+  --maroon-1:       #4A0F1A;   /* gradient start */
+  --maroon-2:       #6B1D2A;   /* gradient mid */
+  --maroon-3:       #3D1520;   /* gradient end */
+
+  /* ── Neutrals (warm) ── */
+  --parchment:      #F5F0E8;   /* page background */
+  --parchment-2:    #FAF6F0;   /* lifted parchment (sidebars) */
+  --parchment-3:    #EDE7DB;   /* sunken parchment surface */
+  --white:          #FFFFFF;   /* card surface */
+  --card-alt:       #F8F4F0;   /* alternate card / middle column */
+  --dark-bg:        #1A1A1A;   /* near-black ink surface */
+  --ink:            #2A2A2A;   /* body text */
+  --muted:          #666666;   /* secondary text */
+  --line:           #D0C8B8;   /* hairline borders on parchment */
+
+  /* ── Tints (translucent accents) ── */
+  --gold-tint:      rgba(197,165,90,0.07);
+  --gold-line:      rgba(197,165,90,0.35);
+  --crimson-tint:   rgba(139,0,0,0.05);
+  --crimson-line:   rgba(139,0,0,0.25);
+
+  /* ═══ SEMANTIC ALIASES ═══ */
+  --text-body:      var(--ink);
+  --text-muted:     var(--muted);
+  --text-heading:   var(--crimson);
+  --text-on-dark:   var(--parchment);
+  --text-label:     var(--dark-gold);     /* mono eyebrow labels */
+  --text-label-dark: var(--gold);         /* mono labels on dark surfaces */
+
+  --surface-page:   var(--parchment);
+  --surface-card:   var(--white);
+  --surface-card-alt: var(--card-alt);
+  --surface-sunken: var(--parchment-3);
+  --surface-dark:   var(--dark-bg);
+
+  --border-default: var(--line);
+  --border-accent:  var(--crimson);
+  --border-gold:    var(--gold-line);
+
+  --accent:         var(--crimson);
+  --accent-hover:   var(--dark-crimson);
+  --accent-2:       var(--gold);
+}

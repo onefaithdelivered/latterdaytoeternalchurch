@@ -1,0 +1,26 @@
+<!-- @dsCard group="Spacing" viewport="700x150" name="Space Scale" subtitle="8px-based rhythm, generous editorial whitespace" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--surface-page); font-family: var(--font-mono); }
+  .wrap { padding: 22px 26px; display: flex; align-items: flex-end; gap: 16px; }
+  .col { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .bar { background: var(--crimson); width: 22px; border-radius: 2px 2px 0 0; }
+  .lab { font-size: 10px; color: var(--muted); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="col"><div class="bar" style="height:8px"></div><div class="lab">2 · 8</div></div>
+    <div class="col"><div class="bar" style="height:16px"></div><div class="lab">4 · 16</div></div>
+    <div class="col"><div class="bar" style="height:24px"></div><div class="lab">6 · 24</div></div>
+    <div class="col"><div class="bar" style="height:32px"></div><div class="lab">8 · 32</div></div>
+    <div class="col"><div class="bar" style="height:48px"></div><div class="lab">12 · 48</div></div>
+    <div class="col"><div class="bar" style="height:56px"></div><div class="lab">14 · 56</div></div>
+    <div class="col"><div class="bar" style="height:72px"></div><div class="lab">18 · 72</div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!-- @dsCard group="Spacing" viewport="700x150" name="Radii & Shadows" subtitle="Restrained 2–6px corners, soft warm shadows" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--surface-page); font-family: var(--font-mono); }
+  .wrap { padding: 24px 26px; display: flex; gap: 22px; align-items: center; }
+  .box { width: 72px; height: 56px; background: var(--white); border: 1px solid var(--line); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 6px; font-size: 10px; color: var(--muted); }
+  .s1 { box-shadow: var(--shadow-xs); }
+  .s2 { box-shadow: var(--shadow-sm); }
+  .s3 { box-shadow: var(--shadow-md); }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="box s1" style="border-radius:2px">xs 2px</div>
+    <div class="box s1" style="border-radius:3px">sm 3px</div>
+    <div class="box s2" style="border-radius:4px">md 4px</div>
+    <div class="box s3" style="border-radius:6px">lg 6px</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!-- @dsCard group="Components" viewport="700x400" name="Editorial — Quotes, Scripture, Callout, Timeline" subtitle="The long-form article building blocks" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: var(--surface-page); }
+  #root { padding: 8px 28px 24px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+  const { PullQuote, ScriptureBox, SectionDivider, Callout, Timeline, Card } = window.OneFaithDeliveredDesignSystem_5bc0cc;
+  function Demo() {
+    return (
+      <div>
+        <SectionDivider label="III — Shared Elements" />
+        <Callout columns={[
+          { label: 'LDS Claim', title: 'Restored Ancient Ordinance', body: 'The endowment was "kept hid from before the foundation of the world."' },
+          { label: 'Historical Record', title: 'Seven Weeks After Initiation', body: 'Joseph Smith became a Master Mason on March 15–16, 1842.' },
+          { label: 'Biblical Reality', title: 'No Precedent in Scripture', body: 'Neither Testament contains any ceremony resembling the endowment.' },
+        ]} />
+        <PullQuote source="Heber C. Kimball, June 1842">
+          Masonry was taken from preasthood but has become degenerated, but menny things are perfect.
+        </PullQuote>
+        <ScriptureBox reference="1 Timothy 2:5–6">
+          "For there is one God, and there is one mediator between God and men, the man Christ Jesus."
+        </ScriptureBox>
+        <Timeline
+          title="Timeline of Major Changes"
+          subtitle="From Nauvoo to the present day"
+          rows={[
+            { date: '1842', event: <span><strong>Endowment introduced</strong> to nine men — all Freemasons.</span> },
+            { date: '1990', event: <span><strong>Largest single revision.</strong> Blood oath penalties eliminated.</span> },
+            { date: '2023', event: <span>Most handshake/token exchanges removed.</span> },
+          ]}
+        />
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

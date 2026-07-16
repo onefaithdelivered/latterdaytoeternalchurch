@@ -1,0 +1,24 @@
+<!-- @dsCard group="Type" viewport="700x200" name="Type Scale" subtitle="From hero display down to mono labels" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--surface-page); color: var(--ink); }
+  .wrap { padding: 18px 26px; display: flex; flex-direction: column; gap: 6px; }
+  .line { display: flex; align-items: baseline; gap: 14px; }
+  .label { font-family: var(--font-mono); font-size: 10px; color: var(--muted); width: 120px; flex-shrink: 0; letter-spacing: 0.04em; }
+  .spec { font-family: var(--font-display); color: var(--crimson); font-weight: 700; line-height: 1.1; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="line"><span class="label">3xl · 3.2rem</span><span class="spec" style="font-size:32px;font-weight:900">Hero Display</span></div>
+    <div class="line"><span class="label">xl · 1.7rem</span><span class="spec" style="font-size:24px">Section Heading</span></div>
+    <div class="line"><span class="label">lg · 1.3rem</span><span class="spec" style="font-size:19px">Sub Heading</span></div>
+    <div class="line"><span class="label">base · 1.02rem</span><span class="spec" style="font-size:16px;font-family:var(--font-body);color:var(--ink);font-weight:400">Article body copy</span></div>
+    <div class="line"><span class="label">2xs · 0.72rem</span><span class="spec" style="font-size:11px;font-family:var(--font-mono);color:var(--dark-gold);font-weight:600;letter-spacing:0.12em;text-transform:uppercase">Eyebrow Label</span></div>
+  </div>
+</body>
+</html>
