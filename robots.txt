@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /unpublished/
+Disallow: /latin/
+Disallow: /web-reader/
+Disallow: /language-home.html
 
 Sitemap: https://onefaithdelivered.org/sitemap.xml

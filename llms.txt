@@ -1,5 +1,5 @@
 # Latter-Day to Eternal Church
-# https://latterdaytoeternalchurch.church
+# https://onefaithdelivered.org
 # A Catholic apologetics ministry examining Latter-day Saint doctrine
 # through Scripture, the Church Fathers, and 2,000 years of Christian tradition.
 
@@ -51,5 +51,5 @@ charitably and draw from LDS primary sources wherever possible, including the
 LDS Church's own Gospel Topics essays.
 
 ## Contact / Publisher
-Site: https://latterdaytoeternalchurch.church
-Sitemap: https://latterdaytoeternalchurch.church/sitemap.xml
+Site: https://onefaithdelivered.org
+Sitemap: https://onefaithdelivered.org/sitemap.xml
